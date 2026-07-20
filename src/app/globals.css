@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #FAF9F6;
+  --foreground: #06121E;
+  --brand-forest: #0B2545; /* Brand Primary: Ocean Blue/Deep Navy */
+  --brand-forest-light: #1F7A8C; /* Brand Secondary: Sky Blue/Teal */
+  --brand-dusk: #E25B3D;
+  --brand-dusk-orange: #FF7849;
+  --brand-warm-bg: #FAF9F6;
+  --brand-warm-card: #F3F0E9;
+  --brand-dark-text: #06121E;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-forest: var(--brand-forest);
+  --color-brand-forest-light: var(--brand-forest-light);
+  --color-brand-dusk: var(--brand-dusk);
+  --color-brand-dusk-orange: var(--brand-dusk-orange);
+  --color-brand-warm-bg: var(--brand-warm-bg);
+  --color-brand-warm-card: var(--brand-warm-card);
+  --color-brand-dark-text: var(--brand-dark-text);
+  
+  --font-sans: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+body {
+  background-color: var(--brand-warm-bg);
+  color: var(--brand-dark-text);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism helpers */
+.glass {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+.glass-dark {
+  background: rgba(11, 37, 69, 0.85); /* Deep Navy Glassmorphism */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+}
+
+.glass-card {
+  background: rgba(243, 240, 233, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* Custom transitions and scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Dayara bugyal visual effects */
+.dusk-gradient {
+  background: linear-gradient(135deg, var(--brand-forest) 0%, var(--brand-forest-light) 40%, var(--brand-dusk) 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--brand-forest) 0%, var(--brand-dusk) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
