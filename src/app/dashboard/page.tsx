@@ -1,186 +1,367 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { Compass, Calendar, AlertTriangle, FileText, Upload, ShieldCheck, CheckCircle, ArrowRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import {
+  Calendar, ShieldCheck, MapPin, User, LogOut, CheckCircle, FileText, Upload,
+  Download, ArrowRight, Star, Clock, AlertTriangle, Compass
+} from "lucide-react";
 
 export default function DashboardPage() {
-  const [medUploaded, setMedUploaded] = useState(false);
-  const [idUploaded, setIdUploaded] = useState(false);
+  const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
+  const [activeTab, setActiveTab] = useState<"bookings" | "documents" | "history">("bookings");
+  const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
+  const [feedbackSuccess, setFeedbackSuccess] = useState(false);
+  const [selectedStars, setSelectedStars] = useState(5);
+  const [reviewText, setReviewText] = useState("");
+
+  // Fix server-client mismatch
+  useEffect(() => {
+    setIsClient(true);
+    const loggedIn = localStorage.getItem("userLoggedIn");
+    if (!loggedIn) {
+      router.push("/login");
+    }
+  }, [router]);
+
+  if (!isClient) return null;
+
+  const handleLogout = () => {
+    localStorage.removeItem("userLoggedIn");
+    localStorage.removeItem("userEmail");
+    router.push("/login");
+  };
+
+  const simulateUpload = (docId: string) => {
+    setUploadProgress((prev) => ({ ...prev, [docId]: 1 }));
+    let progress = 1;
+    const interval = setInterval(() => {
+      progress += 15;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+      }
+      setUploadProgress((prev) => ({ ...prev, [docId]: progress }));
+    }, 150);
+  };
+
+  const handleFeedbackSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFeedbackSuccess(true);
+    setReviewText("");
+    setTimeout(() => setFeedbackSuccess(false), 3000);
+  };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-24 sm:pt-16 sm:pb-32 space-y-10">
-      {/* Welcome Banner */}
-      <div className="bg-brand-forest text-white rounded-3xl p-6 md:p-8 shadow-md flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-forest-light/10 rounded-full blur-2xl pointer-events-none" />
+    <div className="min-h-screen bg-brand-warm-bg py-10 font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
-        <div className="space-y-2 relative z-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-brand-dusk-orange block">
-            Explorer Profile
-          </span>
-          <h1 className="text-3xl font-extrabold font-serif">Welcome Back, Rohit!</h1>
-          <p className="text-xs text-gray-200">Member since July 2025 | Loyalty Tier: Alpine Sentinel</p>
+        {/* Profile Card Summary Banner */}
+        <div className="bg-brand-forest text-white rounded-3xl p-6 md:p-8 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative overflow-hidden">
+          <div className="absolute right-0 top-0 translate-x-1/4 -translate-y-1/4 opacity-10">
+            <Compass className="w-64 h-64 animate-spin-slow" />
+          </div>
+
+          <div className="space-y-2 z-10">
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-dusk-orange bg-white/10 px-3 py-1 rounded-full border border-white/10 inline-block">
+              Premium Trekker Club
+            </span>
+            <h1 className="text-2xl md:text-3xl font-extrabold font-serif">Welcome Back, Rahul!</h1>
+            <p className="text-xs text-sky-200">Email: {typeof window !== "undefined" ? localStorage.getItem("userEmail") : "trekker@tripmysoul.com"}</p>
+          </div>
+
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-2 text-xs font-bold bg-white/10 hover:bg-white/20 border border-white/20 px-5 py-2.5 rounded-full transition shadow-md shrink-0 z-10"
+          >
+            <LogOut className="w-4 h-4 text-brand-dusk-orange" />
+            <span>Logout Portal</span>
+          </button>
         </div>
 
-        <div className="flex gap-4 shrink-0 relative z-10 text-center">
-          <div className="bg-white/10 px-4 py-2.5 rounded-xl border border-white/5">
-            <span className="text-xl font-bold block">1</span>
-            <span className="text-[10px] text-gray-300 uppercase tracking-wider font-semibold">Trek Completed</span>
-          </div>
-          <div className="bg-white/10 px-4 py-2.5 rounded-xl border border-white/5">
-            <span className="text-xl font-bold block">1</span>
-            <span className="text-[10px] text-gray-300 uppercase tracking-wider font-semibold">Upcoming</span>
-          </div>
+        {/* Tab Selection Row */}
+        <div className="flex bg-white p-1 rounded-full border border-gray-150 text-xs font-bold max-w-md shadow-xs">
+          <button
+            onClick={() => setActiveTab("bookings")}
+            className={`flex-1 py-2.5 rounded-full text-center transition-all ${
+              activeTab === "bookings" ? "bg-brand-forest text-white shadow-xs" : "text-gray-500 hover:text-brand-forest"
+            }`}
+          >
+            My Bookings
+          </button>
+          <button
+            onClick={() => setActiveTab("documents")}
+            className={`flex-1 py-2.5 rounded-full text-center transition-all ${
+              activeTab === "documents" ? "bg-brand-forest text-white shadow-xs" : "text-gray-500 hover:text-brand-forest"
+            }`}
+          >
+            Medical & IDs
+          </button>
+          <button
+            onClick={() => setActiveTab("history")}
+            className={`flex-1 py-2.5 rounded-full text-center transition-all ${
+              activeTab === "history" ? "bg-brand-forest text-white shadow-xs" : "text-gray-500 hover:text-brand-forest"
+            }`}
+          >
+            Past Hikes
+          </button>
         </div>
-      </div>
 
-      {/* Main Sections Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        {/* Left Columns (Upcoming and Past Trips) */}
-        <div className="lg:col-span-2 space-y-8">
+        {/* Tab Contents */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           
-          {/* Upcoming Trip Card */}
-          <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-xs space-y-6">
-            <div className="flex items-center justify-between border-b border-gray-100 pb-4">
-              <h2 className="text-lg font-bold text-brand-dark-text font-serif">Upcoming Expeditions</h2>
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-dusk bg-brand-dusk/5 border border-brand-dusk/15 px-3 py-1 rounded-full flex items-center gap-1">
-                <AlertTriangle className="w-3.5 h-3.5 text-brand-dusk" />
-                <span>Action Required</span>
-              </span>
-            </div>
+          {/* Main Area */}
+          <div className="lg:col-span-2 space-y-6">
 
-            <div className="flex flex-col md:flex-row gap-6">
-              {/* Image banner */}
-              <div className="w-full md:w-48 aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 shrink-0">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=300&q=80"
-                  alt="Kedarkantha Trek"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            {/* TAB 1: BOOKINGS */}
+            {activeTab === "bookings" && (
+              <div className="space-y-6">
+                <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-4">
+                    <div>
+                      <h2 className="text-lg font-extrabold text-brand-dark-text font-serif">Active Registrations</h2>
+                      <p className="text-[10px] text-gray-400">1 Upcoming Himalayan trek found</p>
+                    </div>
+                    <span className="text-[9px] bg-green-500/10 text-green-600 font-bold border border-green-500/20 px-3 py-1 rounded-full uppercase tracking-wider">
+                      Confirmed
+                    </span>
+                  </div>
 
-              {/* Description */}
-              <div className="space-y-3 flex-grow flex flex-col justify-between">
-                <div className="space-y-1">
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Uttarakhand</span>
-                  <h3 className="text-base font-bold text-brand-dark-text">Kedarkantha Winter Trek</h3>
-                  <div className="flex items-center gap-1.5 text-xs text-gray-500 font-semibold pt-1">
-                    <Calendar className="w-4 h-4 text-brand-dusk-orange" />
-                    <span>10 Dec - 15 Dec 2026 (5 Days)</span>
+                  <div className="flex flex-col md:flex-row gap-6 items-start">
+                    <div className="w-full md:w-1/3 aspect-video sm:aspect-square bg-gray-100 rounded-2xl overflow-hidden relative shrink-0">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=350&q=85"
+                        alt="Kedarkantha Trek"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div className="flex-grow space-y-4 text-xs text-gray-500">
+                      <h3 className="text-base font-extrabold text-brand-dark-text font-serif">Kedarkantha Winter Summit</h3>
+                      
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-1">
+                          <span className="text-[9px] uppercase tracking-wider block text-gray-400">Departure Batch</span>
+                          <span className="font-extrabold text-brand-forest block">10 Dec - 15 Dec 2026</span>
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-[9px] uppercase tracking-wider block text-gray-400">Base Camp Town</span>
+                          <span className="font-extrabold text-brand-forest block">Sankri, Uttarakhand</span>
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-[9px] uppercase tracking-wider block text-gray-400">Group Size</span>
+                          <span className="font-extrabold text-brand-forest block">12 Trekkers</span>
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-[9px] uppercase tracking-wider block text-gray-400">Payment Status</span>
+                          <span className="font-extrabold text-brand-forest block flex items-center gap-1">
+                            <CheckCircle className="w-3.5 h-3.5 text-green-600" />
+                            <span>Paid (₹7,500)</span>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-3 pt-2">
+                        <a
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            alert("Downloading simulated PDF invoice folder...");
+                          }}
+                          className="flex items-center gap-1.5 px-4 py-2 border border-gray-150 rounded-full hover:bg-gray-50 font-bold transition text-[11px] text-brand-forest"
+                        >
+                          <Download className="w-3.5 h-3.5 text-brand-dusk-orange" />
+                          <span>Get PDF Invoice</span>
+                        </a>
+                        <button
+                          onClick={() => router.push("/treks/kedarkantha-trek")}
+                          className="flex items-center gap-1.5 px-4 py-2 bg-brand-forest text-white rounded-full hover:bg-brand-forest-light font-bold transition text-[11px] shadow-xs"
+                        >
+                          <span>Review Trail details</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                <div className="p-3 bg-amber-500/5 border border-amber-500/10 rounded-xl text-xs flex items-start gap-2.5 text-amber-800">
-                  <ShieldCheck className="w-4 h-4 text-brand-dusk-orange shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold block text-[10px] uppercase">Safety Review Pending</span>
-                    <span>Please upload your Medical Self-Declaration form below to clear safety clearances.</span>
-                  </div>
-                </div>
               </div>
-            </div>
-          </div>
+            )}
 
-          {/* Past Expeditions */}
-          <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-xs space-y-6">
-            <h2 className="text-lg font-bold text-brand-dark-text font-serif border-b border-gray-100 pb-4">
-              Past Adventures
-            </h2>
-            
-            <div className="flex items-center justify-between py-2.5">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-brand-forest/5 flex items-center justify-center text-brand-forest shrink-0">
-                  <Compass className="w-6 h-6 text-brand-forest" />
-                </div>
+            {/* TAB 2: DOCUMENTS */}
+            {activeTab === "documents" && (
+              <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
                 <div>
-                  <h3 className="font-bold text-sm text-brand-dark-text">Valley Of Flowers Trek</h3>
-                  <span className="text-[10px] text-gray-400 font-semibold">July 2025 | 6 Days</span>
+                  <h2 className="text-lg font-extrabold text-brand-dark-text font-serif">Document Uploads</h2>
+                  <p className="text-[10px] text-gray-400">Mandatory files required for trek clearances and forest permission slips.</p>
                 </div>
-              </div>
-              <div className="text-right">
-                <span className="text-xs font-bold text-green-700 bg-green-500/5 border border-green-500/15 px-3 py-1 rounded-full">
-                  Completed
-                </span>
-                <span className="text-[10px] text-gray-400 block mt-1">Order #TMS-81204</span>
-              </div>
-            </div>
-          </div>
 
-        </div>
+                <div className="space-y-4">
+                  {/* Document Card 1 */}
+                  <div className="p-4 border border-gray-150 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-brand-warm-bg/50">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <FileText className="w-4 h-4 text-brand-forest" />
+                        <span className="text-xs font-bold text-brand-dark-text">Medical Fitness Declaration</span>
+                      </div>
+                      <p className="text-[10px] text-gray-400 pl-6">Must be signed by a registered MBBS physician.</p>
+                    </div>
 
-        {/* Right Column (Upload Checklist & Rental Gear) */}
-        <div className="w-full space-y-8">
-          
-          {/* Document Upload Card */}
-          <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-xs space-y-6">
-            <h2 className="text-lg font-bold text-brand-dark-text font-serif border-b border-gray-100 pb-4">
-              Safety Documents
-            </h2>
+                    <div className="flex items-center gap-4 shrink-0 w-full sm:w-auto">
+                      {uploadProgress["med"] !== undefined ? (
+                        <div className="w-full sm:w-36 space-y-1">
+                          <div className="flex justify-between text-[9px] font-bold">
+                            <span>{uploadProgress["med"] === 100 ? "Uploaded" : "Uploading..."}</span>
+                            <span>{uploadProgress["med"]}%</span>
+                          </div>
+                          <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                            <div className="h-full bg-green-500 rounded-full transition-all" style={{ width: `${uploadProgress["med"]}%` }} />
+                          </div>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => simulateUpload("med")}
+                          className="flex items-center justify-center gap-1.5 px-4 py-2 bg-brand-forest hover:bg-brand-forest-light text-white rounded-full text-[10px] font-bold shadow-xs transition w-full sm:w-auto"
+                        >
+                          <Upload className="w-3.5 h-3.5" />
+                          <span>Upload PDF</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
 
-            <div className="space-y-4">
-              {/* Medical certificate */}
-              <div className="p-4 bg-brand-warm-bg rounded-2xl border border-gray-150 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <FileText className="w-5 h-5 text-brand-dusk-orange shrink-0" />
-                  <div>
-                    <span className="font-bold text-xs text-brand-dark-text block">Medical Declaration</span>
-                    <span className="text-[9px] text-gray-500">Required before batch starts</span>
+                  {/* Document Card 2 */}
+                  <div className="p-4 border border-gray-150 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-brand-warm-bg/50">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <FileText className="w-4 h-4 text-brand-forest" />
+                        <span className="text-xs font-bold text-brand-dark-text">Government Photo ID Slip</span>
+                      </div>
+                      <p className="text-[10px] text-gray-400 pl-6">Aadhaar card, Passport, or Voter ID copy.</p>
+                    </div>
+
+                    <div className="flex items-center gap-4 shrink-0 w-full sm:w-auto">
+                      {uploadProgress["id"] !== undefined ? (
+                        <div className="w-full sm:w-36 space-y-1">
+                          <div className="flex justify-between text-[9px] font-bold">
+                            <span>{uploadProgress["id"] === 100 ? "Uploaded" : "Uploading..."}</span>
+                            <span>{uploadProgress["id"]}%</span>
+                          </div>
+                          <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                            <div className="h-full bg-green-500 rounded-full transition-all" style={{ width: `${uploadProgress["id"]}%` }} />
+                          </div>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => simulateUpload("id")}
+                          className="flex items-center justify-center gap-1.5 px-4 py-2 bg-brand-forest hover:bg-brand-forest-light text-white rounded-full text-[10px] font-bold shadow-xs transition w-full sm:w-auto"
+                        >
+                          <Upload className="w-3.5 h-3.5" />
+                          <span>Upload File</span>
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
-                
-                {medUploaded ? (
-                  <CheckCircle className="w-5 h-5 text-green-600 shrink-0" />
-                ) : (
-                  <button
-                    onClick={() => setMedUploaded(true)}
-                    className="p-2 rounded-lg bg-brand-forest/5 hover:bg-brand-forest/10 text-brand-forest transition shrink-0"
-                    aria-label="Upload document"
-                  >
-                    <Upload className="w-4 h-4" />
-                  </button>
-                )}
               </div>
+            )}
 
-              {/* Gov ID Card */}
-              <div className="p-4 bg-brand-warm-bg rounded-2xl border border-gray-150 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <FileText className="w-5 h-5 text-brand-dusk-orange shrink-0" />
-                  <div>
-                    <span className="font-bold text-xs text-brand-dark-text block">Government ID Card</span>
-                    <span className="text-[9px] text-gray-500">Aadhaar, Voter ID, or Passport</span>
+            {/* TAB 3: PAST TRIPS */}
+            {activeTab === "history" && (
+              <div className="space-y-6">
+                {/* Past trip log */}
+                <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-4">
+                    <div>
+                      <h2 className="text-lg font-extrabold text-brand-dark-text font-serif">Completed Journeys</h2>
+                      <p className="text-[10px] text-gray-400">1 past trek found</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 items-start text-xs text-gray-500">
+                    <div className="w-16 h-16 bg-brand-warm-bg rounded-xl shrink-0 border border-gray-150 flex items-center justify-center text-brand-forest font-black uppercase text-[10px]">
+                      Valley
+                    </div>
+                    <div className="space-y-1 leading-none">
+                      <span className="font-extrabold text-brand-dark-text text-sm block">Valley of Flowers Trek</span>
+                      <span className="block text-[10px] text-gray-400 uppercase font-semibold">Uttarakhand • Aug 2025</span>
+                      <span className="block text-green-600 font-bold pt-1.5">Successfully Climbed 🌸</span>
+                    </div>
                   </div>
                 </div>
-                
-                {idUploaded ? (
-                  <CheckCircle className="w-5 h-5 text-green-600 shrink-0" />
-                ) : (
-                  <button
-                    onClick={() => setIdUploaded(true)}
-                    className="p-2 rounded-lg bg-brand-forest/5 hover:bg-brand-forest/10 text-brand-forest transition shrink-0"
-                    aria-label="Upload ID card"
-                  >
-                    <Upload className="w-4 h-4" />
-                  </button>
-                )}
+
+                {/* Review Form */}
+                <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm space-y-4">
+                  <h3 className="text-sm font-extrabold text-brand-dark-text font-serif">Submit Trek Review Feedback</h3>
+                  
+                  {feedbackSuccess ? (
+                    <div className="p-4 bg-green-500/10 border border-green-500/20 text-green-600 rounded-2xl flex items-center gap-2 text-xs font-bold justify-center">
+                      <CheckCircle className="w-4 h-4" />
+                      <span>Review submitted successfully! Thank you for sharing your experience.</span>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleFeedbackSubmit} className="space-y-4">
+                      <div className="space-y-1">
+                        <label className="text-[9px] uppercase tracking-wider font-extrabold text-gray-400 pl-1 block">Rating score</label>
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <button
+                              key={star}
+                              type="button"
+                              onClick={() => setSelectedStars(star)}
+                              className="focus:outline-none"
+                            >
+                              <Star className={`w-5 h-5 ${star <= selectedStars ? "text-amber-400 fill-current" : "text-gray-300"}`} />
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="space-y-1">
+                        <label className="text-[9px] uppercase tracking-wider font-extrabold text-gray-400 pl-1 block">Write your experience</label>
+                        <textarea
+                          rows={3}
+                          required
+                          value={reviewText}
+                          onChange={(e) => setReviewText(e.target.value)}
+                          placeholder="How were the guides, food, camp stay, and trail guidelines?"
+                          className="w-full p-3 bg-brand-warm-bg border border-gray-150 rounded-2xl text-xs text-brand-dark-text focus:outline-none placeholder-gray-400"
+                        />
+                      </div>
+
+                      <button
+                        type="submit"
+                        className="bg-brand-forest hover:bg-brand-forest-light text-white px-5 py-2.5 rounded-full text-[10px] font-bold shadow-xs transition"
+                      >
+                        Submit Feedback
+                      </button>
+                    </form>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
+
           </div>
 
-          {/* Recommended Gear Rental block */}
-          <div className="glass-card rounded-3xl p-6 border border-white/30 shadow-md space-y-4">
-            <h3 className="text-base font-bold text-brand-dark-text font-serif">Gear Rental Store</h3>
-            <p className="text-xs text-gray-500 leading-relaxed">
-              Don&apos;t buy expensive gear you may only use once. Rent high-quality trekking jackets, walking poles, and sleeping gear from our shop at Sankri basecamp.
-            </p>
-            <Link
-              href="/cabs"
-              className="inline-flex items-center gap-1 text-xs font-bold text-brand-forest hover:text-brand-dusk transition group"
-            >
-              <span>Explore Gear Rental catalog</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+          {/* Sidebar Area (Quick info / Calendar countdown) */}
+          <div className="space-y-6">
+            <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm space-y-4">
+              <h3 className="text-sm font-extrabold text-brand-dark-text font-serif flex items-center gap-2">
+                <Clock className="w-4 h-4 text-brand-dusk-orange" />
+                <span>Expedition Countdown</span>
+              </h3>
+              
+              <div className="bg-brand-warm-bg rounded-2xl p-4 text-center border border-gray-150 space-y-1.5">
+                <span className="text-3xl font-extrabold font-serif text-brand-forest block">142</span>
+                <span className="text-[10px] font-extrabold text-gray-450 uppercase tracking-widest block">Days Remaining</span>
+              </div>
+
+              <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-2xl text-[10px] text-amber-700 leading-relaxed flex items-start gap-2 font-medium">
+                <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
+                <p>Ensure medical sheets are uploaded at least 30 days prior to departure for pass clearances.</p>
+              </div>
+            </div>
           </div>
 
         </div>

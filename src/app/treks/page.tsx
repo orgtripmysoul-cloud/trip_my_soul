@@ -5,15 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Search, SlidersHorizontal, ArrowUpDown } from "lucide-react";
 import { TREKS } from "@/data/db";
 import TrekCard from "@/components/TrekCard";
-import FilterPanel from "@/components/FilterPanel";
-
-interface FilterState {
-  region: string[];
-  difficulty: string[];
-  months: string[];
-  duration: string[];
-  themes: string[];
-}
+import FilterPanel, { FilterState } from "@/components/FilterPanel";
 
 const initialFilters: FilterState = {
   region: [],
@@ -21,6 +13,16 @@ const initialFilters: FilterState = {
   months: [],
   duration: [],
   themes: [],
+  seasons: [],
+  upcomingOnly: false,
+};
+
+const SEASON_MAP: Record<string, string[]> = {
+  "Winter": ["Dec", "Jan", "Feb"],
+  "Spring": ["Mar", "Apr"],
+  "Summer": ["May", "Jun"],
+  "Monsoon": ["Jul", "Aug"],
+  "Autumn": ["Sep", "Oct", "Nov"]
 };
 
 function TreksList() {
@@ -29,13 +31,21 @@ function TreksList() {
   const [selectedFilters, setSelectedFilters] = useState<FilterState>(initialFilters);
   const [sortBy, setSortBy] = useState("price-asc");
 
-  // Read filter query from URL if present (e.g. from homepage trending button)
+  // Read filter queries from URL
   useEffect(() => {
     const filterQuery = searchParams.get("filter");
     const regionQuery = searchParams.get("region");
     
     if (filterQuery === "trending") {
-      // Set to some default or logic for trending, e.g. select all regions by default
+      setSelectedFilters((prev) => ({
+        ...prev,
+        upcomingOnly: true
+      }));
+    } else if (filterQuery === "family") {
+      setSelectedFilters((prev) => ({
+        ...prev,
+        themes: ["Family with Kids"]
+      }));
     }
     
     if (regionQuery) {
@@ -57,7 +67,7 @@ function TreksList() {
   // Handle instant filtering
   const filteredTreks = useMemo(() => {
     return TREKS.filter((trek) => {
-      // Search text query
+      // 1. Search text query
       const matchesSearch =
         trek.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         trek.region.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -65,38 +75,73 @@ function TreksList() {
 
       if (!matchesSearch) return false;
 
-      // Region Filter
+      // 2. Region Filter
       if (selectedFilters.region.length > 0 && !selectedFilters.region.includes(trek.region)) {
         return false;
       }
 
-      // Difficulty Filter
-      if (selectedFilters.difficulty.length > 0 && !selectedFilters.difficulty.includes(trek.difficulty)) {
-        return false;
+      // 3. Difficulty Filter (Fuzzy matching for extended grades)
+      if (selectedFilters.difficulty.length > 0) {
+        const matchesDiff = selectedFilters.difficulty.some((diff) => {
+          if (diff === "Easy-Moderate") return trek.difficulty.includes("Easy") || trek.difficulty.toLowerCase().includes("moderate");
+          if (diff === "Moderate-Difficult") return trek.difficulty.toLowerCase().includes("moderate") || trek.difficulty.toLowerCase().includes("difficult");
+          return trek.difficulty.toLowerCase().includes(diff.toLowerCase());
+        });
+        if (!matchesDiff) return false;
       }
 
-      // Month Filter
+      // 4. Month Filter
       if (selectedFilters.months.length > 0) {
         const hasMatchingMonth = trek.months.some((m) => selectedFilters.months.includes(m));
         if (!hasMatchingMonth) return false;
       }
 
-      // Theme Filter
-      if (selectedFilters.themes.length > 0) {
-        const hasMatchingTheme = trek.themes.some((t) => selectedFilters.themes.includes(t));
-        if (!hasMatchingTheme) return false;
+      // 5. Season Filter (Map to months)
+      if (selectedFilters.seasons.length > 0) {
+        const hasMatchingSeason = selectedFilters.seasons.some((season) => {
+          const seasonMonths = SEASON_MAP[season] || [];
+          return trek.months.some((m) => seasonMonths.includes(m));
+        });
+        if (!hasMatchingSeason) return false;
       }
 
-      // Duration Filter
+      // 6. Theme Filter (Fuzzy matching)
+      if (selectedFilters.themes.length > 0) {
+        const matchesTheme = selectedFilters.themes.some((theme) => {
+          if (theme === "Lakes") return trek.themes.some(t => t.toLowerCase().includes("lake")) || trek.name.toLowerCase().includes("lake");
+          if (theme === "Snow") return trek.themes.some(t => t.toLowerCase().includes("snow")) || trek.name.toLowerCase().includes("winter");
+          if (theme === "Meadow") return trek.themes.some(t => t.toLowerCase().includes("meadow"));
+          if (theme === "Glacier") return trek.themes.some(t => t.toLowerCase().includes("glacier"));
+          if (theme === "Beginner") return trek.difficulty.toLowerCase().includes("easy") || (trek.days && parseInt(trek.days.toString()) <= 4);
+          if (theme === "Family with Kids") return trek.themes.some(t => t.toLowerCase().includes("family")) || (trek.days && parseInt(trek.days.toString()) <= 5);
+          if (theme === "Summit a Peak") return trek.themes.some(t => t.toLowerCase().includes("summit") || t.toLowerCase().includes("peak")) || trek.name.toLowerCase().includes("peak") || trek.name.toLowerCase().includes("ghati");
+          return trek.themes.some(t => t.toLowerCase().includes(theme.toLowerCase()));
+        });
+        if (!matchesTheme) return false;
+      }
+
+      // 7. Duration Filter
       if (selectedFilters.duration.length > 0) {
         const days = typeof trek.days === "number" ? trek.days : parseInt(trek.days || "0");
         const matchesDuration = selectedFilters.duration.some((range) => {
           if (range.startsWith("Short") && days <= 4) return true;
           if (range.startsWith("Medium") && days >= 5 && days <= 7) return true;
-          if (range.startsWith("Long") && days >= 8) return true;
+          if (range.startsWith("Long") && days >= 8 && days <= 10) return true;
+          if (range.startsWith("Expedition") && days >= 11) return true;
           return false;
         });
         if (!matchesDuration) return false;
+      }
+
+      // 8. Upcoming Departures Filter (Next 60 Days: Current month and next month check)
+      if (selectedFilters.upcomingOnly) {
+        const today = new Date();
+        const currentMonthIdx = today.getMonth(); // 0 to 11
+        const nextMonthIdx = (currentMonthIdx + 1) % 12;
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const activeMonths = [monthNames[currentMonthIdx], monthNames[nextMonthIdx]];
+        const hasUpcoming = trek.months.some((m) => activeMonths.includes(m));
+        if (!hasUpcoming) return false;
       }
 
       return true;
@@ -132,6 +177,34 @@ function TreksList() {
     setSearchQuery("");
   };
 
+  const handleQuickFilter = (category: keyof Omit<FilterState, "upcomingOnly">, value: string) => {
+    setSelectedFilters({
+      ...initialFilters,
+      [category]: [value]
+    });
+  };
+
+  const isAnyFilterActive = 
+    selectedFilters.region.length > 0 ||
+    selectedFilters.difficulty.length > 0 ||
+    selectedFilters.months.length > 0 ||
+    selectedFilters.duration.length > 0 ||
+    selectedFilters.themes.length > 0 ||
+    selectedFilters.seasons.length > 0 ||
+    selectedFilters.upcomingOnly;
+
+  // Mobile scrollable quick filters configuration
+  const quickFilters = [
+    { label: "All", action: () => handleResetFilters(), active: !isAnyFilterActive },
+    { label: "Uttarakhand", action: () => handleQuickFilter("region", "Uttarakhand"), active: selectedFilters.region.includes("Uttarakhand") },
+    { label: "Himachal Pradesh", action: () => handleQuickFilter("region", "Himachal Pradesh"), active: selectedFilters.region.includes("Himachal Pradesh") },
+    { label: "Jammu & Kashmir", action: () => handleQuickFilter("region", "Jammu & Kashmir"), active: selectedFilters.region.includes("Jammu & Kashmir") },
+    { label: "Winter", action: () => handleQuickFilter("seasons", "Winter"), active: selectedFilters.seasons.includes("Winter") },
+    { label: "Summer", action: () => handleQuickFilter("seasons", "Summer"), active: selectedFilters.seasons.includes("Summer") },
+    { label: "Easy Treks", action: () => handleQuickFilter("difficulty", "Easy"), active: selectedFilters.difficulty.includes("Easy") },
+    { label: "Family Friendly", action: () => handleQuickFilter("themes", "Family with Kids"), active: selectedFilters.themes.includes("Family with Kids") },
+  ];
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-24 sm:pt-16 sm:pb-32">
       {/* Header Banner */}
@@ -148,7 +221,7 @@ function TreksList() {
       </div>
 
       {/* Search and Sort controls */}
-      <div className="flex flex-col sm:flex-row gap-4 items-center justify-between mb-8 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm w-full">
+      <div className="flex flex-col sm:flex-row gap-4 items-center justify-between mb-6 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm w-full">
         {/* Search */}
         <div className="flex items-center gap-2 px-3 py-2 bg-brand-warm-bg rounded-xl border border-gray-150 w-full sm:max-w-md">
           <Search className="w-4 h-4 text-gray-400 shrink-0" />
@@ -175,6 +248,23 @@ function TreksList() {
             <option value="days-desc">Duration: Long to Short</option>
           </select>
         </div>
+      </div>
+
+      {/* Mobile scrollable quick filter pills */}
+      <div className="lg:hidden flex overflow-x-auto no-scrollbar gap-2 pb-4 mb-6 -mx-4 px-4 whitespace-nowrap">
+        {quickFilters.map((pill) => (
+          <button
+            key={pill.label}
+            onClick={pill.action}
+            className={`text-xs px-4 py-2 rounded-full border font-bold transition-all duration-200 ${
+              pill.active
+                ? "bg-brand-forest text-white border-brand-forest shadow-xs scale-102"
+                : "bg-white text-gray-700 border-gray-150"
+            }`}
+          >
+            {pill.label}
+          </button>
+        ))}
       </div>
 
       {/* Main Grid Section */}

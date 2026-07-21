@@ -13,7 +13,7 @@ export interface Trek {
   themes: string[];
   inclusions?: { title: string; description: string }[];
   exclusions?: { title: string; description: string }[];
-  itinerary?: { day: number; title: string; description: string }[];
+  itinerary?: any[];
   faqs?: { title: string; description: string }[];
   thingtopack?: { title: string; description: string; img?: string }[];
   batches?: any;
@@ -429,7 +429,7 @@ export const TREKS: Trek[] = [
     "price": 16500,
     "days": 7,
     "nights": 6,
-    "region": "Uttarakhand",
+    "region": "Himachal Pradesh",
     "category": "Trending Treks",
     "startLocation": "Shimla to Shimla",
     "difficulty": "Moderate",
@@ -1668,11 +1668,80 @@ if (kedarkanthaIndex !== -1) {
   ];
 
   TREKS[kedarkanthaIndex].itinerary = [
-    { day: 1, title: "Dehradun to Sankri (Drive)", description: "Depart early from Dehradun Railway Station. Drive through the scenic Mussoorie and along the Tons River to reach Sankri village (6,400 ft) by evening. Stay in a local homestay." },
-    { day: 2, title: "Sankri to Juda Ka Taal (Trek)", description: "Start the trek with a gradual ascent through thick pine and oak forests. Walk for 4 hours to reach Juda Ka Taal (9,100 ft), a beautiful frozen lake campsite surrounded by tall pine trees." },
-    { day: 3, title: "Juda Ka Taal to Kedarkantha Base (Trek)", description: "Trek for 3 hours through beautiful snow trails to reach the Kedarkantha Base Camp (11,250 ft). Enjoy panoramic views of snow-capped Himalayan peaks like Swargarohini and Bandarpoonch." },
-    { day: 4, title: "Summit Ascent & Descent to Hargaon (Trek)", description: "Start at 3:30 AM for the summit climb to catch the sunrise. Reach the summit (12,500 ft) for breathtaking 360-degree views, then descend back to the base camp and continue to Hargaon campsite (8,900 ft)." },
-    { day: 5, title: "Hargaon to Sankri & Drive to Dehradun", description: "Trek down to Sankri village, then board the vehicle for the drive back to Dehradun. Reach Dehradun Railway Station by 8:00 PM." }
+    {
+      day: 1,
+      title: "Dehradun to Sankri Drive",
+      driveDistance: "198 km",
+      drivingTime: "8-9 Hours",
+      altitudePoints: [
+        { location: "Dehradun", m: 640, ft: 2100 },
+        { location: "Sankri", m: 1950, ft: 6400 }
+      ],
+      altitudeGain: { m: 1310, ft: 4300 },
+      detailedDescription: "Board the morning vehicle at Dehradun Railway Station. The drive winds along the Yamuna and Tons rivers, passing Mussoorie and Netwar. Arrive in the beautiful wooden homestay village of Sankri by late afternoon. Undergo fitness briefings and gear checkups.",
+      meals: "Dinner",
+      stayType: "Sankri Homestay"
+    },
+    {
+      day: 2,
+      title: "Sankri to Juda-ka-Talab Trek",
+      trekDistance: "4 km",
+      trekDuration: "4-5 Hours",
+      altitudePoints: [
+        { location: "Sankri", m: 1950, ft: 6400 },
+        { location: "Juda-ka-Talab", m: 2770, ft: 9100 }
+      ],
+      altitudeGain: { m: 820, ft: 2700 },
+      detailedDescription: "Begin the climb on a marked trail through pine forests. The trail rises steadily, crossing frozen streams and oak glades. Reach Juda-ka-Talab, a high-altitude frozen lake camp, and pitch double-sharing alpine tents.",
+      meals: "Breakfast, Lunch, Dinner",
+      stayType: "Juda-ka-Talab Tents"
+    },
+    {
+      day: 3,
+      title: "Juda-ka-Talab to Kedarkantha Basecamp",
+      trekDistance: "4 km",
+      trekDuration: "3-4 Hours",
+      altitudePoints: [
+        { location: "Juda-ka-Talab", m: 2770, ft: 9100 },
+        { location: "Base Camp", m: 3430, ft: 11250 }
+      ],
+      altitudeGain: { m: 660, ft: 2150 },
+      detailedDescription: "Trek through thick snow lanes and open meadows. The trail enters open snow slopes with panoramic views of Bandarpoonch, Swargarohini, and Black Peak. Setup camp on the snow slopes below the summit.",
+      meals: "Breakfast, Lunch, Dinner",
+      stayType: "Basecamp Snow Tents"
+    },
+    {
+      day: 4,
+      title: "Kedarkantha Basecamp to Summit & Hargaon Camp",
+      trekDistance: "9 km",
+      trekDuration: "7-8 Hours",
+      altitudePoints: [
+        { location: "Base Camp", m: 3430, ft: 11250 },
+        { location: "Kedarkantha Summit", m: 3810, ft: 12500 },
+        { location: "Hargaon Camp", m: 2710, ft: 8900 }
+      ],
+      altitudeGain: { m: 380, ft: 1250 },
+      detailedDescription: "Wake up at 2:00 AM for the summit climb in headlamps. Climb steep snow slopes to witness a 360-degree Himalayan sunrise from the Kedarkantha peak (12,500 ft). Descent to basecamp for hot lunch, and continue down to the pine-cleared campsite of Hargaon.",
+      meals: "Breakfast, Lunch, Dinner",
+      stayType: "Hargaon Forest Tents"
+    },
+    {
+      day: 5,
+      title: "Hargaon Camp to Sankri & Drive to Dehradun",
+      trekDistance: "6 km",
+      trekDuration: "3-4 Hours",
+      driveDistance: "198 km",
+      drivingTime: "8 Hours",
+      altitudePoints: [
+        { location: "Hargaon Camp", m: 2710, ft: 8900 },
+        { location: "Sankri", m: 1950, ft: 6400 },
+        { location: "Dehradun", m: 640, ft: 2100 }
+      ],
+      altitudeGain: null,
+      detailedDescription: "Trek down from Hargaon through open meadows and pine glades back to Sankri village. Celebrate the completion of the trek, say goodbye to local guides, and board the vehicle for the return drive to Dehradun. Reach Dehradun Railway Station by 8:00 PM.",
+      meals: "Breakfast, Lunch",
+      stayType: "Travel / Homestay"
+    }
   ];
 
   TREKS[kedarkanthaIndex].faqs = [
@@ -1715,4 +1784,113 @@ if (kedarkanthaIndex !== -1) {
       }
     }
   };
+
+  const buranGhatiIndex = TREKS.findIndex(t => t.slug === 'buran-ghati-pass-trek');
+  if (buranGhatiIndex !== -1) {
+    TREKS[buranGhatiIndex].itinerary = [
+      {
+        day: 1,
+        title: "Drive from Shimla to Janglik",
+        driveDistance: "150 km",
+        drivingTime: "7-8 Hours",
+        altitudePoints: [
+          { location: "Shimla", m: 2200, ft: 7200 },
+          { location: "Janglik", m: 2870, ft: 9415 }
+        ],
+        altitudeGain: { m: 670, ft: 2215 },
+        detailedDescription: "Board the morning vehicle at Shimla. The drive is exceptionally scenic, passing through the beautiful pine woods of Pabbar valley and crossing Rohru. Reach the heritage village of Janglik, where we will check into a local homestay.",
+        meals: "Dinner",
+        stayType: "Janglik Homestay"
+      },
+      {
+        day: 2,
+        title: "Janglik to Dayara Meadows",
+        trekDistance: "4 km",
+        trekDuration: "5 Hours",
+        altitudePoints: [
+          { location: "Janglik", m: 2870, ft: 9415 },
+          { location: "Dayara", m: 3375, ft: 11075 }
+        ],
+        altitudeGain: { m: 505, ft: 1660 },
+        detailedDescription: "The trek starts from Janglik village, climbing steadily through oak and pine forests. You will cross local wooden houses and streams before emerging into the vast, open rolling green fields of Dayara Meadows.",
+        meals: "Breakfast, Lunch, Dinner",
+        stayType: "Dayara Campsite"
+      },
+      {
+        day: 3,
+        title: "Dayara to Litham",
+        trekDistance: "3 km",
+        trekDuration: "3 Hours",
+        altitudePoints: [
+          { location: "Dayara", m: 3375, ft: 11075 },
+          { location: "Litham", m: 3577, ft: 11737 }
+        ],
+        altitudeGain: { m: 202, ft: 662 },
+        detailedDescription: "A gentle walk through alpine forests and alongside the bubbling Pabbar River. Litham campsite sits at a beautiful confluence, surrounded by tall snow-clad ridges on all sides.",
+        meals: "Breakfast, Lunch, Dinner",
+        stayType: "Litham Campsite"
+      },
+      {
+        day: 4,
+        title: "Excursion to Chandranahan Lake",
+        trekDistance: "6 km",
+        trekDuration: "6 Hours",
+        altitudePoints: [
+          { location: "Litham", m: 3577, ft: 11737 },
+          { location: "Chandranahan Lake", m: 4236, ft: 13900 },
+          { location: "Litham", m: 3577, ft: 11737 }
+        ],
+        altitudeGain: { m: 659, ft: 2163 },
+        detailedDescription: "Climb steeply along the waterfall trail to the source of the Pabbar River: the sacred glacial lakes of Chandranahan. The lakes remain surrounded by snow most of the year. Descend back to Litham for hot snacks.",
+        meals: "Breakfast, Lunch, Dinner",
+        stayType: "Litham Campsite"
+      },
+      {
+        day: 5,
+        title: "Litham to Dhunda Camp",
+        trekDistance: "5 km",
+        trekDuration: "5 Hours",
+        altitudePoints: [
+          { location: "Litham", m: 3577, ft: 11737 },
+          { location: "Dhunda", m: 4073, ft: 13365 }
+        ],
+        altitudeGain: { m: 496, ft: 1628 },
+        detailedDescription: "Enter the rugged alpine moraine zone, climbing steadily along the high ridges. Dhunda base camp offers panoramic views of the Buran Ghati pass summit and surrounding towers.",
+        meals: "Breakfast, Lunch, Dinner",
+        stayType: "Dhunda Campsite"
+      },
+      {
+        day: 6,
+        title: "Dhunda to Munirang via Buran Ghati Pass",
+        trekDistance: "7 km",
+        trekDuration: "8 Hours",
+        altitudePoints: [
+          { location: "Dhunda", m: 4073, ft: 13365 },
+          { location: "Buran Ghati Pass", m: 4572, ft: 15000 },
+          { location: "Munirang", m: 3596, ft: 11800 }
+        ],
+        altitudeGain: { m: 499, ft: 1635 },
+        detailedDescription: "Wake up at 3:30 AM for the summit climb. Climb steep snow slopes to reach the pass summit (15,000 ft). Experience the thrilling vertical slide down the ice wall before descending to Munirang camp.",
+        meals: "Breakfast, Lunch, Dinner",
+        stayType: "Munirang Campsite"
+      },
+      {
+        day: 7,
+        title: "Munirang to Barua & Drive to Shimla",
+        trekDistance: "5 km",
+        trekDuration: "3 Hours",
+        driveDistance: "240 km",
+        drivingTime: "9 Hours",
+        altitudePoints: [
+          { location: "Munirang", m: 3596, ft: 11800 },
+          { location: "Barua", m: 2042, ft: 6700 },
+          { location: "Shimla", m: 2200, ft: 7200 }
+        ],
+        altitudeGain: null,
+        detailedDescription: "Trek down through lush apple orchards and Kinnauri heritage villages to Barua. Board the vehicle for the drive back to Shimla railway station via the national highway.",
+        meals: "Breakfast, Lunch",
+        stayType: "Travel / Homestay"
+      }
+    ];
+  }
 }

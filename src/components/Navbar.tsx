@@ -1,15 +1,27 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { Menu, X, Compass, User, Phone } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { Menu, X, Compass, User, Phone, Search, FileText, Activity, Gem, GraduationCap, Tent, HelpCircle, ShoppingBag, Trees, Briefcase, Download, ChevronRight } from "lucide-react";
+import { TREKS } from "@/data/db";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  const searchResults = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    return TREKS.filter((t) =>
+      t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      t.region.toLowerCase().includes(searchQuery.toLowerCase())
+    ).slice(0, 5);
+  }, [searchQuery]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +43,46 @@ export default function Navbar() {
     { name: "About", href: "/about-us" },
     { name: "Blog", href: "/blogs" },
   ];
+
+  const drawerLinks = [
+    { name: "LOGIN", href: "/login" },
+    { name: "MY TREKS", href: "/dashboard" },
+    { name: "ARTICLE", href: "/blogs" },
+    { name: "TREK UPDATES", href: "/updates" },
+    { name: "PREMIUM TRIP", href: "/premium-trips" },
+    { name: "SCHOOL / COLLEGE", href: "/learning-programs" },
+    { name: "HIMALAYAN SUMMER CAMP", href: "/summer-camps" },
+    { name: "SUGGEST ME A TREK", href: "/suggest-a-trek" },
+    { name: "SHOP", href: "/store" },
+    { name: "HEAL HIMALA", href: "/heal-himala" },
+    { name: "RENT A GEAR", href: "/rent" },
+    { name: "CAREERS", href: "/careers" },
+    { name: "ABOUT US", href: "/about-us" },
+    { name: "CONTACT US", href: "/contact-us" },
+    { name: "DOWNLOAD BROCHURE", href: "#" },
+  ];
+
+  const getDrawerIcon = (name: string) => {
+    const cls = "w-4 h-4 text-brand-dusk-orange shrink-0";
+    switch (name) {
+      case "LOGIN": return <User className={cls} />;
+      case "MY TREKS": return <Compass className={cls} />;
+      case "ARTICLE": return <FileText className={cls} />;
+      case "TREK UPDATES": return <Activity className={cls} />;
+      case "PREMIUM TRIP": return <Gem className={cls} />;
+      case "SCHOOL / COLLEGE": return <GraduationCap className={cls} />;
+      case "HIMALAYAN SUMMER CAMP": return <Tent className={cls} />;
+      case "SUGGEST ME A TREK": return <HelpCircle className={cls} />;
+      case "SHOP": return <ShoppingBag className={cls} />;
+      case "HEAL HIMALA": return <Trees className={cls} />;
+      case "RENT A GEAR": return <ShoppingBag className={cls} />;
+      case "CAREERS": return <Briefcase className={cls} />;
+      case "ABOUT US": return <Compass className={cls} />;
+      case "CONTACT US": return <Phone className={cls} />;
+      case "DOWNLOAD BROCHURE": return <Download className={cls} />;
+      default: return <Compass className={cls} />;
+    }
+  };
 
   return (
     <>
@@ -69,7 +121,69 @@ export default function Navbar() {
                 </Link>
               );
             })}
-          </nav>
+        </nav>
+
+        {/* Desktop header search autocomplete */}
+        <div className="relative hidden md:block w-40 lg:w-56 shrink-0">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-white text-xs">
+            <Search className="w-3.5 h-3.5 opacity-60 shrink-0" />
+            <input
+              type="text"
+              placeholder="Search treks..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setIsSearchFocused(true)}
+              onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
+              className="bg-transparent border-0 focus:outline-none w-full text-white placeholder-gray-300 text-xs font-semibold"
+            />
+          </div>
+          
+          {/* Desktop Autocomplete Dropdown */}
+          {isSearchFocused && searchResults.length > 0 && (
+            <div className="absolute top-full left-0 mt-2 w-64 lg:w-72 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl overflow-hidden z-50 text-white font-sans text-xs">
+              <div className="p-2 space-y-1">
+                {searchResults.map((trek) => (
+                  <button
+                    key={trek.slug}
+                    onMouseDown={() => {
+                      router.push(`/treks/${trek.slug}`);
+                      setSearchQuery("");
+                    }}
+                    className="w-full flex items-center gap-3 p-2 hover:bg-white/10 rounded-xl transition text-left"
+                  >
+                    <div className="w-9 h-9 rounded-lg overflow-hidden bg-white/5 shrink-0 relative">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=80&q=80"
+                        alt={trek.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="space-y-0.5">
+                      <span className="font-bold text-xs block text-white truncate max-w-[120px] lg:max-w-[150px]">
+                        {trek.name}
+                      </span>
+                      <span className="text-[10px] text-gray-400 font-semibold block leading-none">
+                        {trek.region} • {trek.days} Days
+                      </span>
+                    </div>
+                    <div className="ml-auto text-right shrink-0">
+                      <span className="text-[10px] text-brand-dusk-orange font-bold">
+                        {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
+                      </span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {isSearchFocused && searchQuery && searchResults.length === 0 && (
+            <div className="absolute top-full left-0 mt-2 w-64 lg:w-72 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-4 text-center text-gray-400 z-50 text-[11px]">
+              No matching treks found.
+            </div>
+          )}
+        </div>
 
           {/* Right Button Panel */}
           <div className="hidden md:flex items-center space-x-4">
@@ -141,34 +255,111 @@ export default function Navbar() {
             </button>
           </div>
 
-          <nav className="flex flex-col space-y-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-base font-semibold border-b border-white/5 pb-2 hover:text-brand-dusk-orange transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
+        {/* Mobile search inside drawer */}
+        <div className="mb-6 relative">
+          <div className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-white text-xs">
+            <Search className="w-4 h-4 text-gray-400 shrink-0" />
+            <input
+              type="text"
+              placeholder="Search treks..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setIsSearchFocused(true)}
+              onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
+              className="bg-transparent border-0 focus:outline-none w-full text-white placeholder-gray-400 text-xs"
+            />
+          </div>
+          
+          {/* Mobile Autocomplete Dropdown */}
+          {isSearchFocused && searchResults.length > 0 && (
+            <div className="absolute top-full left-0 right-0 mt-2 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl overflow-hidden z-50 text-white font-sans text-xs">
+              <div className="p-2 space-y-1">
+                {searchResults.map((trek) => (
+                  <button
+                    key={trek.slug}
+                    onMouseDown={() => {
+                      router.push(`/treks/${trek.slug}`);
+                      setSearchQuery("");
+                      setIsOpen(false);
+                    }}
+                    className="w-full flex items-center gap-3 p-2 hover:bg-white/10 rounded-xl transition text-left"
+                  >
+                    <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/5 shrink-0 relative">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=80&q=80"
+                        alt={trek.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="space-y-0.5">
+                      <span className="font-bold text-[11px] block text-white truncate max-w-[150px]">
+                        {trek.name}
+                      </span>
+                      <span className="text-[9px] text-gray-400 font-semibold block leading-none">
+                        {trek.region} • {trek.days} Days
+                      </span>
+                    </div>
+                    <div className="ml-auto text-right shrink-0">
+                      <span className="text-[10px] text-brand-dusk-orange font-bold">
+                        {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
+                      </span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {isSearchFocused && searchQuery && searchResults.length === 0 && (
+            <div className="absolute top-full left-0 right-0 mt-2 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-4 text-center text-gray-400 z-50 text-[11px]">
+              No matching treks found.
+            </div>
+          )}
+        </div>
 
-            <div className="pt-6 flex flex-col space-y-4">
+          <nav className="flex flex-col space-y-6">
+            {/* Scrollable list of TTH-style links */}
+            <div className="flex flex-col space-y-3 overflow-y-auto max-h-[50vh] pr-1.5 scrollbar-thin">
+              {drawerLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="flex items-center justify-between text-xs font-bold border-b border-white/5 pb-2.5 hover:text-brand-dusk-orange transition-colors group"
+                  onClick={() => {
+                    if (link.name === "DOWNLOAD BROCHURE") {
+                      alert("Brochure PDF package download triggered!");
+                    }
+                    setIsOpen(false);
+                  }}
+                >
+                  <div className="flex items-center gap-3">
+                    {getDrawerIcon(link.name)}
+                    <span className="tracking-wide text-gray-200 group-hover:text-brand-dusk-orange transition-colors uppercase">
+                      {link.name}
+                    </span>
+                  </div>
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-500 group-hover:text-brand-dusk-orange transition-transform duration-200 group-hover:translate-x-0.5" />
+                </Link>
+              ))}
+            </div>
+
+            <div className="pt-2 flex flex-col space-y-3">
               <a
                 href="https://wa.me/918178613438"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-3 text-sm font-semibold py-2 px-4 rounded-lg bg-white/5 hover:bg-white/10 transition text-gray-200"
+                className="flex items-center space-x-3 text-xs font-semibold py-2 px-4 rounded-lg bg-white/5 hover:bg-white/10 transition text-gray-200"
               >
                 <Phone className="w-4 h-4 text-brand-dusk-orange" />
                 <span>+91 81786 13438</span>
               </a>
               <Link
                 href="/login"
-                className="flex items-center justify-center space-x-2 text-sm font-semibold bg-brand-dusk hover:bg-brand-dusk-orange text-white py-3 rounded-xl shadow-lg transition"
+                className="flex items-center justify-center space-x-2 text-xs font-semibold bg-brand-dusk hover:bg-brand-dusk-orange text-white py-2.5 rounded-xl shadow-lg transition"
                 onClick={() => setIsOpen(false)}
               >
-                <User className="w-5 h-5" />
+                <User className="w-4 h-4" />
                 <span>Sign In / My Trips</span>
               </Link>
             </div>
