@@ -28,10 +28,10 @@ const CATEGORIES: CategoryCard[] = [
     label: "Spiritual Yatra",
     icon: Sparkles,
     href: "/yatra",
-    image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=500&q=80",
+    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=500&q=80",
   },
   {
-    label: "Cab Booking",
+    label: "Cabs / Rentals",
     icon: Car,
     href: "/cabs",
     image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=500&q=80",
@@ -45,7 +45,7 @@ const CATEGORIES: CategoryCard[] = [
   {
     label: "Suggest Me a Trek",
     icon: Lightbulb,
-    href: "/contact-us",
+    href: "/suggest-a-trek",
     image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=80",
   },
   {
