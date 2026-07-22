@@ -36,7 +36,7 @@ export default function Home() {
   const [selectedFilters, setSelectedFilters] = useState<FilterState>(initialFilters);
   const [sortBy, setSortBy] = useState("price-asc");
 
-  // Tab states for Social Proof & Stay Informed sections matching TTH layout screenshot
+  // Tab states for Social Proof & Stay Informed sections
   const [activeTrustTab, setActiveTrustTab] = useState<"reviews" | "awards" | "trusted">("awards");
   const [activeInformedTab, setActiveInformedTab] = useState<"updates" | "articles" | "videos">("updates");
 
@@ -319,7 +319,7 @@ export default function Home() {
 
   return (
     <div className="w-full relative bg-brand-warm-bg overflow-x-hidden">
-      {/* 1. Hero Section with Carousel & Parallax */}
+      {/* SECTION 1: HERO — First impression + primary CTAs */}
       <section className="relative h-[85vh] md:h-[90vh] w-full flex items-center justify-center overflow-hidden bg-[#0B2545]">
         {/* Parallax Background overlay */}
         <div className="absolute inset-0 z-0">
@@ -365,7 +365,7 @@ export default function Home() {
             className="flex flex-col sm:flex-row justify-center items-center gap-4"
           >
             <Link
-              href="/treks"
+              href="#explore-treks"
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-dusk hover:bg-brand-dusk-orange text-white font-bold shadow-lg transform hover:-translate-y-0.5 transition duration-200 flex items-center justify-center gap-2"
             >
               <span>Explore Seasonal Treks</span>
@@ -383,7 +383,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Trust Stats Row (Matching TTH Screenshot top row) */}
+      {/* SECTION 2: STATS BAR — Quick credibility numbers right after hero */}
       <div className="relative z-20 max-w-5xl mx-auto px-4 -mt-16 md:-mt-20 mb-8">
         <div className="grid grid-cols-3 gap-3 md:gap-6 text-brand-dark-text">
           <div className="bg-white rounded-2xl p-4 md:p-6 text-center shadow-lg border border-red-500/30 space-y-1 transform hover:-translate-y-1 transition duration-300">
@@ -406,10 +406,229 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Category Carousel Strip */}
+      {/* SECTION 3: CATEGORY QUICK-NAV CAROUSEL — Lets visitors jump to what they want early */}
       <CategoryCarousel />
 
-      {/* 3. Social Proof & Recognition Tabs Section (Matching TTH Screenshot middle section) */}
+      {/* SECTION 4: "TOP TREKS THIS SEASON" CAROUSEL — Show product immediately after the hook */}
+      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8 gap-4">
+          <div className="space-y-2">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk-orange">
+              TRENDING TRAILS
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-text font-serif leading-tight">
+              Top Treks This Season
+            </h2>
+          </div>
+          <Link
+            href="#explore-treks"
+            className="flex items-center gap-2 text-sm font-bold text-brand-forest hover:text-brand-dusk transition group"
+          >
+            <span>View All Treks</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+
+        <SwiperCarousel slidesPerView={1}>
+          {topTreks.map((trek) => (
+            <TrekCard key={trek.slug} trek={trek} />
+          ))}
+        </SwiperCarousel>
+      </section>
+
+      {/* SECTION 5: "WHY CHOOSE TRIPMYSOUL" TRUST PILLARS — Build confidence right after showing product */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-100">
+        <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
+          <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk">
+            Our Core Pillars
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-text font-serif leading-none">
+            Why Choose TripMySoul?
+          </h2>
+          <p className="text-sm text-gray-600">
+            We are dedicated to safety, trail cleanliness, and giving back to the mountain communities that support us.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {WHY_CHOOSE_US.map((metric, idx) => {
+            const Icon = metric.icon === "Shield" ? Shield : metric.icon === "Leaf" ? Leaf : Compass;
+            return (
+              <div
+                key={idx}
+                className="bg-white border border-gray-100 rounded-3xl p-8 hover:shadow-lg transition-shadow duration-300 space-y-4 flex flex-col justify-between"
+              >
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-2xl bg-brand-forest/5 flex items-center justify-center text-brand-forest">
+                    <Icon className="w-6 h-6 text-brand-dusk-orange" />
+                  </div>
+                  <h3 className="text-lg font-bold text-brand-dark-text">{metric.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{metric.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* SECTION 6: "FIND YOUR NEXT HEALING JOURNEY" — Full filterable trek grid (main conversion surface) */}
+      <section id="explore-treks" className="py-16 bg-white border-y border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          
+          {/* Header Description Banner */}
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk-orange bg-brand-forest/5 px-3.5 py-1.5 rounded-full inline-block">
+              EXPLORE EXPEDITIONS
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-serif text-brand-dark-text leading-tight">
+              Find Your Next Healing Journey
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-500 leading-relaxed font-medium">
+              Find your next healing journey from our verified high-altitude expeditions. Filter by region, month, theme, or difficulty level.
+            </p>
+          </div>
+
+          {/* Search bar & Sort Controls */}
+          <div className="bg-white border border-gray-150 p-4 sm:p-6 rounded-3xl shadow-sm space-y-4 max-w-5xl mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+              {/* Search input */}
+              <div className="flex items-center gap-2 px-4 py-3 bg-brand-warm-bg rounded-2xl border border-gray-150 w-full sm:flex-1">
+                <Search className="w-4 h-4 text-gray-400 shrink-0" />
+                <input
+                  type="text"
+                  placeholder="Search treks (e.g. Kedarkantha, Sankri)..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="bg-transparent border-0 text-xs sm:text-sm focus:outline-none w-full text-brand-dark-text placeholder-gray-400 font-sans"
+                />
+              </div>
+
+              {/* Sort selector */}
+              <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto justify-between sm:justify-end border border-gray-150 rounded-2xl px-4 py-2.5 bg-white">
+                <ArrowUpDown className="w-4 h-4 text-brand-forest shrink-0" />
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="text-xs font-bold bg-transparent border-0 focus:outline-none text-brand-dark-text font-sans cursor-pointer"
+                >
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="days-asc">Duration: Short to Long</option>
+                  <option value="days-desc">Duration: Long to Short</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Quick Filter Pill Buttons */}
+            <div className="flex overflow-x-auto no-scrollbar gap-2.5 pt-2 pb-1 whitespace-nowrap">
+              {quickFilters.map((pill) => (
+                <button
+                  key={pill.label}
+                  onClick={pill.action}
+                  className={`text-xs px-4 py-2 rounded-full border font-bold transition-all duration-200 font-sans ${
+                    pill.active
+                      ? "bg-[#0B2545] text-white border-[#0B2545] shadow-xs"
+                      : "bg-white text-gray-700 border-gray-250 hover:border-[#0B2545]/40"
+                  }`}
+                >
+                  {pill.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Treks List Section with Facets */}
+          <div className="flex flex-col lg:flex-row gap-8 items-start pt-4">
+            {/* Desktop Filter Panel */}
+            <FilterPanel
+              selectedFilters={selectedFilters}
+              onFilterChange={setSelectedFilters}
+              onReset={handleResetFilters}
+            />
+
+            {/* Treks Grid */}
+            <div className="flex-grow w-full space-y-6">
+              <div className="flex justify-between items-center text-xs font-black uppercase tracking-wider text-gray-400 font-sans pl-1">
+                <span>SHOWING {sortedTreks.length} TREKS</span>
+              </div>
+
+              {sortedTreks.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {sortedTreks.map((trek) => (
+                    <TrekCard key={trek.slug} trek={trek} />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-16 bg-white border border-gray-100 rounded-3xl p-8 max-w-xl mx-auto space-y-4 shadow-xs">
+                  <SlidersHorizontal className="w-10 h-10 text-brand-dusk-orange mx-auto animate-pulse" />
+                  <h3 className="text-base font-bold text-brand-dark-text">No matching treks found</h3>
+                  <p className="text-xs text-gray-500">
+                    Try loosening your filters, changing the region, or resetting search options.
+                  </p>
+                  <button
+                    onClick={handleResetFilters}
+                    className="px-5 py-2.5 rounded-full bg-brand-forest hover:bg-brand-forest-light text-white font-bold text-xs shadow-md transition"
+                  >
+                    Clear all filters
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* SECTION 7: "HIMALAYAN REGIONS" — Secondary browse path by destination */}
+      <section className="py-20 bg-brand-warm-card/40 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk">
+              Explore by Territory
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-text font-serif leading-none">
+              Himalayan Regions
+            </h2>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Every region offers a unique flavor. Wander through the rolling high-altitude meadows (bugyals) of Uttarakhand, negotiate mountain passes in Himachal, or seek pristine lakes in Kashmir.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {REGIONS.map((region) => (
+              <Link
+                key={region.slug}
+                href={`/regions/${region.slug}`}
+                className="group relative h-96 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-end p-6 border border-white/10"
+              >
+                <div className="absolute inset-0 z-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={region.image}
+                    alt={region.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B2545]/90 via-[#0B2545]/40 to-transparent" />
+                </div>
+
+                <div className="relative z-10 text-white space-y-2">
+                  <h3 className="text-2xl font-bold font-serif">{region.name}</h3>
+                  <p className="text-xs text-gray-200 leading-relaxed line-clamp-2">
+                    {region.description}
+                  </p>
+                  <div className="pt-2 flex items-center gap-1.5 text-xs font-bold text-brand-dusk-orange">
+                    <span>Explore region treks</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8: GOOGLE REVIEWS / AWARDS / TRUSTED BY TABS — Social proof reinforcement */}
       <section className="py-16 bg-white border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           
@@ -518,7 +737,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. "Stay Informed" Section (Matching TTH Screenshot bottom section) */}
+      {/* SECTION 9: "STAY INFORMED" (Latest Updates / Articles / Videos) — Content & engagement layer */}
       <section className="py-16 bg-brand-warm-bg border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-center">
           
@@ -640,226 +859,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Seasonal Top Treks Carousel */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8 gap-4">
-          <div className="space-y-2">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk-orange">
-              TRENDING TRAILS
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-text font-serif leading-tight">
-              Top Treks This Season
-            </h2>
-          </div>
-          <Link
-            href="/treks"
-            className="flex items-center gap-2 text-sm font-bold text-brand-forest hover:text-brand-dusk transition group"
-          >
-            <span>View All Treks</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-
-        <SwiperCarousel slidesPerView={1}>
-          {topTreks.map((trek) => (
-            <TrekCard key={trek.slug} trek={trek} />
-          ))}
-        </SwiperCarousel>
-      </section>
-
-      {/* 6. Interactive Trek Search, Filter & Catalog Section */}
-      <section id="explore-treks" className="py-16 bg-white border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          
-          {/* Header Description Banner */}
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk-orange bg-brand-forest/5 px-3.5 py-1.5 rounded-full inline-block">
-              EXPLORE EXPEDITIONS
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-serif text-brand-dark-text leading-tight">
-              Find Your Next Healing Journey
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500 leading-relaxed font-medium">
-              Find your next healing journey from our verified high-altitude expeditions. Filter by region, month, theme, or difficulty level.
-            </p>
-          </div>
-
-          {/* Search bar & Sort Controls */}
-          <div className="bg-white border border-gray-150 p-4 sm:p-6 rounded-3xl shadow-sm space-y-4 max-w-5xl mx-auto">
-            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-              {/* Search input */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-brand-warm-bg rounded-2xl border border-gray-150 w-full sm:flex-1">
-                <Search className="w-4 h-4 text-gray-400 shrink-0" />
-                <input
-                  type="text"
-                  placeholder="Search treks (e.g. Kedarkantha, Sankri)..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bg-transparent border-0 text-xs sm:text-sm focus:outline-none w-full text-brand-dark-text placeholder-gray-400 font-sans"
-                />
-              </div>
-
-              {/* Sort selector */}
-              <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto justify-between sm:justify-end border border-gray-150 rounded-2xl px-4 py-2.5 bg-white">
-                <ArrowUpDown className="w-4 h-4 text-brand-forest shrink-0" />
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="text-xs font-bold bg-transparent border-0 focus:outline-none text-brand-dark-text font-sans cursor-pointer"
-                >
-                  <option value="price-asc">Price: Low to High</option>
-                  <option value="price-desc">Price: High to Low</option>
-                  <option value="days-asc">Duration: Short to Long</option>
-                  <option value="days-desc">Duration: Long to Short</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Quick Filter Pill Buttons */}
-            <div className="flex overflow-x-auto no-scrollbar gap-2.5 pt-2 pb-1 whitespace-nowrap">
-              {quickFilters.map((pill) => (
-                <button
-                  key={pill.label}
-                  onClick={pill.action}
-                  className={`text-xs px-4 py-2 rounded-full border font-bold transition-all duration-200 font-sans ${
-                    pill.active
-                      ? "bg-[#0B2545] text-white border-[#0B2545] shadow-xs"
-                      : "bg-white text-gray-700 border-gray-250 hover:border-[#0B2545]/40"
-                  }`}
-                >
-                  {pill.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Treks List Section with Facets */}
-          <div className="flex flex-col lg:flex-row gap-8 items-start pt-4">
-            {/* Desktop Filter Panel */}
-            <FilterPanel
-              selectedFilters={selectedFilters}
-              onFilterChange={setSelectedFilters}
-              onReset={handleResetFilters}
-            />
-
-            {/* Treks Grid */}
-            <div className="flex-grow w-full space-y-6">
-              <div className="flex justify-between items-center text-xs font-black uppercase tracking-wider text-gray-400 font-sans pl-1">
-                <span>SHOWING {sortedTreks.length} TREKS</span>
-              </div>
-
-              {sortedTreks.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {sortedTreks.map((trek) => (
-                    <TrekCard key={trek.slug} trek={trek} />
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-16 bg-white border border-gray-100 rounded-3xl p-8 max-w-xl mx-auto space-y-4 shadow-xs">
-                  <SlidersHorizontal className="w-10 h-10 text-brand-dusk-orange mx-auto animate-pulse" />
-                  <h3 className="text-base font-bold text-brand-dark-text">No matching treks found</h3>
-                  <p className="text-xs text-gray-500">
-                    Try loosening your filters, changing the region, or resetting search options.
-                  </p>
-                  <button
-                    onClick={handleResetFilters}
-                    className="px-5 py-2.5 rounded-full bg-brand-forest hover:bg-brand-forest-light text-white font-bold text-xs shadow-md transition"
-                  >
-                    Clear all filters
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 7. Region Grid Section */}
-      <section className="py-20 bg-brand-warm-card/40 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk">
-              Explore by Territory
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-text font-serif leading-none">
-              Himalayan Regions
-            </h2>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Every region offers a unique flavor. Wander through the rolling high-altitude meadows (bugyals) of Uttarakhand, negotiate mountain passes in Himachal, or seek pristine lakes in Kashmir.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {REGIONS.map((region) => (
-              <Link
-                key={region.slug}
-                href={`/regions/${region.slug}`}
-                className="group relative h-96 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-end p-6 border border-white/10"
-              >
-                <div className="absolute inset-0 z-0">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={region.image}
-                    alt={region.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B2545]/90 via-[#0B2545]/40 to-transparent" />
-                </div>
-
-                <div className="relative z-10 text-white space-y-2">
-                  <h3 className="text-2xl font-bold font-serif">{region.name}</h3>
-                  <p className="text-xs text-gray-200 leading-relaxed line-clamp-2">
-                    {region.description}
-                  </p>
-                  <div className="pt-2 flex items-center gap-1.5 text-xs font-bold text-brand-dusk-orange">
-                    <span>Explore region treks</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Why Choose Us Section */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-          <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk">
-            Our Core Pillars
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-text font-serif leading-none">
-            Why Choose TripMySoul?
-          </h2>
-          <p className="text-sm text-gray-600">
-            We are dedicated to safety, trail cleanliness, and giving back to the mountain communities that support us.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {WHY_CHOOSE_US.map((metric, idx) => {
-            const Icon = metric.icon === "Shield" ? Shield : metric.icon === "Leaf" ? Leaf : Compass;
-            return (
-              <div
-                key={idx}
-                className="bg-white border border-gray-100 rounded-3xl p-8 hover:shadow-lg transition-shadow duration-300 space-y-4 flex flex-col justify-between"
-              >
-                <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-2xl bg-brand-forest/5 flex items-center justify-center text-brand-forest">
-                    <Icon className="w-6 h-6 text-brand-dusk-orange" />
-                  </div>
-                  <h3 className="text-lg font-bold text-brand-dark-text">{metric.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{metric.description}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* 9. Instagram Feed */}
+      {/* SECTION 10: INSTAGRAM FEED — Community/social layer, near the end */}
       <section className="py-16 bg-brand-warm-card/25 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           <div className="space-y-2">
