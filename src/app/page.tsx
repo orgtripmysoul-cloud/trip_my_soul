@@ -546,18 +546,30 @@ export default function Home() {
               onReset={handleResetFilters}
             />
 
-            {/* Treks Grid */}
-            <div className="flex-grow w-full space-y-6">
+            {/* Treks Carousel (prevents long vertical scroll) */}
+            <div className="flex-grow min-w-0 w-full space-y-6">
               <div className="flex justify-between items-center text-xs font-black uppercase tracking-wider text-gray-400 font-sans pl-1">
                 <span>SHOWING {sortedTreks.length} TREKS</span>
+                <span className="text-[10px] text-brand-forest font-semibold">Swipe / Click arrows to explore →</span>
               </div>
 
               {sortedTreks.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                <SwiperCarousel
+                  key={`${searchQuery}-${sortBy}-${JSON.stringify(selectedFilters)}`}
+                  slidesPerView={1}
+                  spaceBetween={20}
+                  showNavigation={true}
+                  showPagination={true}
+                  breakpoints={{
+                    640: { slidesPerView: 1, spaceBetween: 16 },
+                    768: { slidesPerView: 2, spaceBetween: 20 },
+                    1280: { slidesPerView: 3, spaceBetween: 24 },
+                  }}
+                >
                   {sortedTreks.map((trek) => (
                     <TrekCard key={trek.slug} trek={trek} />
                   ))}
-                </div>
+                </SwiperCarousel>
               ) : (
                 <div className="text-center py-16 bg-white border border-gray-100 rounded-3xl p-8 max-w-xl mx-auto space-y-4 shadow-xs">
                   <SlidersHorizontal className="w-10 h-10 text-brand-dusk-orange mx-auto animate-pulse" />
