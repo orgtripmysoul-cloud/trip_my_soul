@@ -10,6 +10,9 @@ import { TREKS } from "@/data/db";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isChooseTrekOpen, setIsChooseTrekOpen] = useState(false);
+  const [selectedModalRegion, setSelectedModalRegion] = useState("All");
+  const [selectedModalSeason, setSelectedModalSeason] = useState("All");
   const pathname = usePathname();
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
@@ -186,7 +189,16 @@ export default function Navbar() {
         </div>
 
           {/* Right Button Panel */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-3">
+            {/* TTH-style Choose Trek button */}
+            <button
+              onClick={() => setIsChooseTrekOpen(true)}
+              className="flex items-center space-x-1.5 text-xs font-bold px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white transition shadow-xs"
+            >
+              <Compass className="w-3.5 h-3.5 text-brand-dusk-orange" />
+              <span>Choose Trek</span>
+            </button>
+
             <a
               href="https://wa.me/918178613438"
               target="_blank"
@@ -206,7 +218,14 @@ export default function Navbar() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex md:hidden items-center space-x-4">
+          <div className="flex md:hidden items-center space-x-2">
+            <button
+              onClick={() => setIsChooseTrekOpen(true)}
+              className="flex items-center space-x-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-brand-dusk text-white"
+            >
+              <Compass className="w-3 h-3 text-brand-dusk-orange" />
+              <span>Choose</span>
+            </button>
             <Link
               href="/login"
               className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition text-white"
@@ -366,6 +385,155 @@ export default function Navbar() {
           </nav>
         </div>
       </div>
+
+      {/* TTH Signature "Choose Trek" Quick-Finder Modal */}
+      {isChooseTrekOpen && (
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="bg-[#0B2545] border border-white/20 text-white rounded-3xl max-w-3xl w-full p-6 md:p-8 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button
+              onClick={() => setIsChooseTrekOpen(false)}
+              className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-brand-dusk-orange text-xs font-extrabold uppercase tracking-widest">
+                <Compass className="w-4 h-4" />
+                <span>Quick Trek Finder</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-extrabold font-serif">Choose Your Himalayan Trek</h2>
+              <p className="text-xs text-gray-300">Filter expeditions by region, season, or duration instantly.</p>
+            </div>
+
+            {/* Region Filter Pills */}
+            <div className="space-y-2">
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block">1. Select Region</span>
+              <div className="flex flex-wrap gap-2">
+                {["All", "Uttarakhand", "Himachal Pradesh", "Jammu & Kashmir"].map((reg) => (
+                  <button
+                    key={reg}
+                    onClick={() => setSelectedModalRegion(reg)}
+                    className={`text-xs px-4 py-2 rounded-full border font-bold transition ${
+                      selectedModalRegion === reg
+                        ? "bg-brand-dusk-orange text-white border-brand-dusk-orange"
+                        : "bg-white/5 border-white/15 text-gray-200 hover:bg-white/10"
+                    }`}
+                  >
+                    {reg}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Season Filter Pills */}
+            <div className="space-y-2">
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block">2. Select Season</span>
+              <div className="flex flex-wrap gap-2">
+                {["All", "Winter", "Spring", "Summer", "Monsoon", "Autumn"].map((seas) => (
+                  <button
+                    key={seas}
+                    onClick={() => setSelectedModalSeason(seas)}
+                    className={`text-xs px-4 py-2 rounded-full border font-bold transition ${
+                      selectedModalSeason === seas
+                        ? "bg-brand-dusk-orange text-white border-brand-dusk-orange"
+                        : "bg-white/5 border-white/15 text-gray-200 hover:bg-white/10"
+                    }`}
+                  >
+                    {seas}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Matching Treks List */}
+            <div className="space-y-3 pt-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                  Recommended Treks ({
+                    TREKS.filter(t => {
+                      if (selectedModalRegion !== "All" && t.region !== selectedModalRegion) return false;
+                      if (selectedModalSeason !== "All") {
+                        const seasonMonths: Record<string, string[]> = {
+                          "Winter": ["Dec", "Jan", "Feb"],
+                          "Spring": ["Mar", "Apr"],
+                          "Summer": ["May", "Jun"],
+                          "Monsoon": ["Jul", "Aug"],
+                          "Autumn": ["Sep", "Oct", "Nov"]
+                        };
+                        const months = seasonMonths[selectedModalSeason] || [];
+                        if (!t.months.some(m => months.includes(m))) return false;
+                      }
+                      return true;
+                    }).length
+                  })
+                </span>
+                <Link
+                  href="/compare-treks"
+                  onClick={() => setIsChooseTrekOpen(false)}
+                  className="text-xs font-bold text-brand-dusk-orange hover:underline flex items-center gap-1"
+                >
+                  <span>Compare Treks Matrix →</span>
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-56 overflow-y-auto pr-1">
+                {TREKS.filter(t => {
+                  if (selectedModalRegion !== "All" && t.region !== selectedModalRegion) return false;
+                  if (selectedModalSeason !== "All") {
+                    const seasonMonths: Record<string, string[]> = {
+                      "Winter": ["Dec", "Jan", "Feb"],
+                      "Spring": ["Mar", "Apr"],
+                      "Summer": ["May", "Jun"],
+                      "Monsoon": ["Jul", "Aug"],
+                      "Autumn": ["Sep", "Oct", "Nov"]
+                    };
+                    const months = seasonMonths[selectedModalSeason] || [];
+                    if (!t.months.some(m => months.includes(m))) return false;
+                  }
+                  return true;
+                }).slice(0, 6).map(trek => (
+                  <button
+                    key={trek.slug}
+                    onClick={() => {
+                      setIsChooseTrekOpen(false);
+                      router.push(`/treks/${trek.slug}`);
+                    }}
+                    className="flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition text-left group"
+                  >
+                    <div>
+                      <span className="font-bold text-xs block text-white group-hover:text-brand-dusk-orange transition">{trek.name}</span>
+                      <span className="text-[10px] text-gray-400">{trek.region} • {trek.days} Days</span>
+                    </div>
+                    <span className="text-xs font-bold text-brand-dusk-orange">
+                      {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Action Bar */}
+            <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between items-center">
+              <Link
+                href={`/treks?${selectedModalRegion !== "All" ? `region=${selectedModalRegion.toLowerCase().replace(/\s+/g, '-')}` : ''}`}
+                onClick={() => setIsChooseTrekOpen(false)}
+                className="w-full sm:w-auto px-6 py-3 rounded-full bg-brand-dusk hover:bg-brand-dusk-orange text-white font-bold text-xs text-center transition shadow-lg"
+              >
+                Browse All Filtered Treks
+              </Link>
+              <Link
+                href="/corporate-expeditions"
+                onClick={() => setIsChooseTrekOpen(false)}
+                className="text-xs font-semibold text-gray-300 hover:text-white transition"
+              >
+                Custom Group / School Expedition Request
+              </Link>
+            </div>
+
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -1,4 +1,13 @@
-// Type definitions for TripMySoul database
+export interface TrekBatch {
+  id: string;
+  startDate: string;
+  endDate: string;
+  availableSeats: number;
+  totalSeats: number;
+  status: "Available" | "Filling Fast" | "Sold Out";
+  basePrice: number;
+}
+
 export interface Trek {
   slug: string;
   name: string;
@@ -17,6 +26,9 @@ export interface Trek {
   faqs?: { title: string; description: string }[];
   thingtopack?: { title: string; description: string; img?: string }[];
   batches?: any;
+  fitnessRequirement?: string;
+  maxAltitude?: string;
+  totalDistance?: string;
 }
 
 export interface Office {
