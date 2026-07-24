@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   Calendar, ShieldCheck, MapPin, User, LogOut, CheckCircle, FileText, Upload,
-  Download, ArrowRight, Star, Clock, AlertTriangle, Compass
+  Download, ArrowRight, Star, Clock, AlertTriangle, Compass, XCircle, X, AlertCircle, RotateCcw
 } from "lucide-react";
 
 export default function DashboardPage() {
@@ -15,6 +15,13 @@ export default function DashboardPage() {
   const [feedbackSuccess, setFeedbackSuccess] = useState(false);
   const [selectedStars, setSelectedStars] = useState(5);
   const [reviewText, setReviewText] = useState("");
+
+  // Cancellation State
+  const [isCancelled, setIsCancelled] = useState(false);
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [cancelReason, setCancelReason] = useState("Schedule Conflict");
+  const [cancelNotes, setCancelNotes] = useState("");
+  const [cancelSuccessMsg, setCancelSuccessMsg] = useState(false);
 
   // Fix server-client mismatch
   useEffect(() => {
@@ -123,10 +130,28 @@ export default function DashboardPage() {
                       <h2 className="text-lg font-extrabold text-brand-dark-text font-serif">Active Registrations</h2>
                       <p className="text-[10px] text-gray-400">1 Upcoming Himalayan trek found</p>
                     </div>
-                    <span className="text-[9px] bg-green-500/10 text-green-600 font-bold border border-green-500/20 px-3 py-1 rounded-full uppercase tracking-wider">
-                      Confirmed
-                    </span>
+                    {isCancelled ? (
+                      <span className="text-[9px] bg-red-500/10 text-red-600 font-bold border border-red-500/20 px-3 py-1 rounded-full uppercase tracking-wider">
+                        Cancelled
+                      </span>
+                    ) : (
+                      <span className="text-[9px] bg-green-500/10 text-green-600 font-bold border border-green-500/20 px-3 py-1 rounded-full uppercase tracking-wider">
+                        Confirmed
+                      </span>
+                    )}
                   </div>
+
+                  {cancelSuccessMsg && (
+                    <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-2xl text-xs font-semibold flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                        <span>Booking Cancelled. Your full refund of ₹7,500 has been initiated to your source account.</span>
+                      </div>
+                      <button onClick={() => setCancelSuccessMsg(false)} className="text-emerald-700 hover:text-emerald-900">
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  )}
 
                   <div className="flex flex-col md:flex-row gap-6 items-start">
                     <div className="w-full md:w-1/3 aspect-video sm:aspect-square bg-gray-100 rounded-2xl overflow-hidden relative shrink-0">
@@ -134,12 +159,14 @@ export default function DashboardPage() {
                       <img
                         src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=350&q=85"
                         alt="Kedarkantha Trek"
-                        className="w-full h-full object-cover"
+                        className={`w-full h-full object-cover ${isCancelled ? "grayscale" : ""}`}
                       />
                     </div>
 
                     <div className="flex-grow space-y-4 text-xs text-gray-500">
-                      <h3 className="text-base font-extrabold text-brand-dark-text font-serif">Kedarkantha Winter Summit</h3>
+                      <h3 className="text-base font-extrabold text-brand-dark-text font-serif">
+                        Kedarkantha Winter Summit {isCancelled && <span className="text-xs text-red-500 font-sans font-bold">(Cancelled)</span>}
+                      </h3>
                       
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-1">
@@ -156,32 +183,63 @@ export default function DashboardPage() {
                         </div>
                         <div className="space-y-1">
                           <span className="text-[9px] uppercase tracking-wider block text-gray-400">Payment Status</span>
-                          <span className="font-extrabold text-brand-forest block flex items-center gap-1">
-                            <CheckCircle className="w-3.5 h-3.5 text-green-600" />
-                            <span>Paid (₹7,500)</span>
+                          <span className="font-extrabold block">
+                            {isCancelled ? (
+                              <span className="text-amber-600 font-bold flex items-center gap-1">
+                                <Clock className="w-3.5 h-3.5" />
+                                <span>Refund Initiated (₹7,500)</span>
+                              </span>
+                            ) : (
+                              <span className="text-brand-forest font-extrabold flex items-center gap-1">
+                                <CheckCircle className="w-3.5 h-3.5 text-green-600" />
+                                <span>Paid (₹7,500)</span>
+                              </span>
+                            )}
                           </span>
                         </div>
                       </div>
 
-                      <div className="flex flex-wrap gap-3 pt-2">
+                      <div className="flex flex-wrap gap-2.5 pt-2">
                         <a
                           href="#"
                           onClick={(e) => {
                             e.preventDefault();
                             alert("Downloading simulated PDF invoice folder...");
                           }}
-                          className="flex items-center gap-1.5 px-4 py-2 border border-gray-150 rounded-full hover:bg-gray-50 font-bold transition text-[11px] text-brand-forest"
+                          className="flex items-center gap-1.5 px-3.5 py-1.5 border border-gray-150 rounded-full hover:bg-gray-50 font-bold transition text-[11px] text-brand-forest"
                         >
                           <Download className="w-3.5 h-3.5 text-brand-dusk-orange" />
                           <span>Get PDF Invoice</span>
                         </a>
                         <button
                           onClick={() => router.push("/treks/kedarkantha-trek")}
-                          className="flex items-center gap-1.5 px-4 py-2 bg-brand-forest text-white rounded-full hover:bg-brand-forest-light font-bold transition text-[11px] shadow-xs"
+                          className="flex items-center gap-1.5 px-3.5 py-1.5 bg-brand-forest text-white rounded-full hover:bg-brand-forest-light font-bold transition text-[11px] shadow-xs"
                         >
                           <span>Review Trail details</span>
                           <ArrowRight className="w-3.5 h-3.5" />
                         </button>
+
+                        {/* CANCEL BOOKING BUTTON */}
+                        {!isCancelled ? (
+                          <button
+                            onClick={() => setIsCancelModalOpen(true)}
+                            className="flex items-center gap-1.5 px-3.5 py-1.5 border border-red-200 hover:bg-red-50 text-red-600 rounded-full font-bold transition text-[11px]"
+                          >
+                            <XCircle className="w-3.5 h-3.5" />
+                            <span>Cancel Booking</span>
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => {
+                              setIsCancelled(false);
+                              setCancelSuccessMsg(false);
+                            }}
+                            className="flex items-center gap-1.5 px-3.5 py-1.5 border border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-full font-bold transition text-[11px]"
+                          >
+                            <RotateCcw className="w-3.5 h-3.5" />
+                            <span>Re-activate Booking</span>
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -367,6 +425,95 @@ export default function DashboardPage() {
         </div>
 
       </div>
+
+      {/* Cancellation Confirmation Modal */}
+      {isCancelModalOpen && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 max-w-lg w-full space-y-6 shadow-2xl relative font-sans">
+            <button
+              onClick={() => setIsCancelModalOpen(false)}
+              className="absolute top-4 right-4 p-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-red-50 text-red-600 border border-red-200 flex items-center justify-center shrink-0">
+                <XCircle className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-brand-dark-text font-serif">Cancel Registration</h3>
+                <p className="text-xs text-gray-500">Kedarkantha Winter Summit (10 Dec - 15 Dec 2026)</p>
+              </div>
+            </div>
+
+            {/* Cancellation Policy terms notice */}
+            <div className="p-4 bg-amber-50 border border-amber-200 rounded-2xl text-xs text-amber-800 space-y-2">
+              <div className="font-bold flex items-center gap-1.5 text-amber-900">
+                <AlertCircle className="w-4 h-4 text-amber-700 shrink-0" />
+                <span>TripMySoul Refund Policy Terms</span>
+              </div>
+              <ul className="list-disc pl-4 space-y-1 text-[11px] leading-relaxed text-amber-950 font-medium">
+                <li>30+ days prior to departure: <strong>100% full refund</strong> or 100% trek voucher credit without deduction.</li>
+                <li>Refund will be credited to your original payment method within 3 to 5 business days.</li>
+              </ul>
+            </div>
+
+            {/* Reason selector form */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setIsCancelled(true);
+                setIsCancelModalOpen(false);
+                setCancelSuccessMsg(true);
+              }}
+              className="space-y-4 text-xs"
+            >
+              <div>
+                <label className="font-bold text-gray-700 block mb-1.5">Reason for Cancellation</label>
+                <select
+                  value={cancelReason}
+                  onChange={(e) => setCancelReason(e.target.value)}
+                  className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none font-semibold text-gray-700 bg-white"
+                >
+                  <option value="Schedule Conflict">Schedule Conflict / Work Commitments</option>
+                  <option value="Health / Medical Issue">Health / Fitness / Medical Issue</option>
+                  <option value="Family Emergency">Family Emergency</option>
+                  <option value="Changed Travel Plan">Changed Travel Plans / Switched Trek</option>
+                  <option value="Other">Other Reason</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="font-bold text-gray-700 block mb-1.5">Additional Notes (Optional)</label>
+                <textarea
+                  rows={2}
+                  placeholder="Share any comments or feedback for our team..."
+                  value={cancelNotes}
+                  onChange={(e) => setCancelNotes(e.target.value)}
+                  className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none text-xs"
+                />
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setIsCancelModalOpen(false)}
+                  className="w-full sm:w-1/2 py-3 rounded-full border border-gray-200 hover:bg-gray-50 text-gray-700 font-bold text-xs transition"
+                >
+                  Keep My Booking
+                </button>
+                <button
+                  type="submit"
+                  className="w-full sm:w-1/2 py-3 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs transition shadow-md"
+                >
+                  Confirm Cancellation
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
