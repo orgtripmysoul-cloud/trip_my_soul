@@ -56,6 +56,7 @@ export default function TrekDetailPage() {
   const [notifySuccess, setNotifySuccess] = useState(false);
   const [isBrochureOpen, setIsBrochureOpen] = useState(false);
   const [isFitnessModalOpen, setIsFitnessModalOpen] = useState(false);
+  const [isFixedDeparturesOpen, setIsFixedDeparturesOpen] = useState(false);
   const [userRunMinutes, setUserRunMinutes] = useState(30);
   const [fitnessCalculated, setFitnessCalculated] = useState<boolean>(false);
 
@@ -166,9 +167,9 @@ export default function TrekDetailPage() {
 
   const handleBookNow = () => {
     if (!selectedBatch) {
-      handleTabClick("cost-terms");
+      setIsFixedDeparturesOpen(true);
     } else {
-      setIsBooked(true);
+      router.push(`/checkout?slug=${trek.slug}&batch=${encodeURIComponent(selectedBatch)}&price=${trek.price || 12450}`);
     }
   };
 
@@ -852,6 +853,92 @@ export default function TrekDetailPage() {
         </div>
 
       </div>
+
+      {/* TTH Signature "Fixed Departures" Date Selector Modal */}
+      {isFixedDeparturesOpen && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-gray-150 rounded-3xl p-6 max-w-sm w-full space-y-4 shadow-2xl relative font-sans">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <div className="flex items-center gap-2 text-brand-dark-text font-serif">
+                <Calendar className="w-4 h-4 text-red-500" />
+                <h3 className="text-base font-extrabold">Fixed Departures</h3>
+              </div>
+              <button
+                onClick={() => setIsFixedDeparturesOpen(false)}
+                className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Departure Month Accordions & Special Batches */}
+            <div className="space-y-2 text-xs">
+              {[
+                { month: "July-2026", dates: ["05 Jul - 10 Jul", "12 Jul - 17 Jul", "19 Jul - 24 Jul"] },
+                { month: "August-2026", dates: ["02 Aug - 07 Aug", "06 Aug - 11 Aug", "16 Aug - 21 Aug"] },
+                { month: "September-2026", dates: ["06 Sep - 11 Sep", "13 Sep - 18 Sep", "20 Sep - 25 Sep"] },
+              ].map((mBlock) => (
+                <details key={mBlock.month} className="group border border-gray-200 rounded-xl overflow-hidden bg-white">
+                  <summary className="flex items-center justify-between p-3 font-bold text-gray-800 cursor-pointer bg-gray-50/50 hover:bg-gray-100/50 transition">
+                    <span>{mBlock.month}</span>
+                    <ChevronDown className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform" />
+                  </summary>
+                  <div className="p-2 space-y-1.5 bg-white border-t border-gray-150">
+                    {mBlock.dates.map((dStr) => (
+                      <button
+                        key={dStr}
+                        onClick={() => {
+                          setIsFixedDeparturesOpen(false);
+                          router.push(`/checkout?slug=${trek.slug}&batch=${encodeURIComponent(dStr + " 2026")}&price=${trek.price || 12450}`);
+                        }}
+                        className="w-full flex items-center justify-between p-2 rounded-lg hover:bg-brand-forest/5 text-left border border-gray-100 hover:border-brand-forest/30 transition group/btn"
+                      >
+                        <span className="font-semibold text-gray-700 group-hover/btn:text-brand-forest">{dStr}</span>
+                        <span className="text-[10px] font-bold text-[#E84855] uppercase">Book Batch →</span>
+                      </button>
+                    ))}
+                  </div>
+                </details>
+              ))}
+
+              {/* Special Category Badges */}
+              <button
+                onClick={() => {
+                  setIsFixedDeparturesOpen(false);
+                  router.push(`/checkout?slug=${trek.slug}&batch=${encodeURIComponent("Women Only Batch (10 Aug - 15 Aug 2026)")}&price=${trek.price || 12450}`);
+                }}
+                className="w-full flex items-center gap-2 p-3 rounded-xl bg-pink-50 border border-pink-200 text-pink-700 font-bold hover:bg-pink-100 transition text-left"
+              >
+                <span className="text-base">♀</span>
+                <span>Women Only Batch</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setIsFixedDeparturesOpen(false);
+                  router.push(`/checkout?slug=${trek.slug}&batch=${encodeURIComponent("Senior Citizen Batch (18 Aug - 23 Aug 2026)")}&price=${trek.price || 12450}`);
+                }}
+                className="w-full flex items-center gap-2 p-3 rounded-xl bg-purple-50 border border-purple-200 text-purple-700 font-bold hover:bg-purple-100 transition text-left"
+              >
+                <span className="text-base">🚶</span>
+                <span>Senior Citizen Only Batch</span>
+              </button>
+            </div>
+
+            <button
+              onClick={() => {
+                setIsFixedDeparturesOpen(false);
+                router.push(`/checkout?slug=${trek.slug}&batch=${encodeURIComponent("06 Aug-11 Aug 2026")}&price=${trek.price || 12450}`);
+              }}
+              className="w-full py-3 rounded-xl bg-[#E84855] hover:bg-[#d63b48] text-white font-extrabold text-xs uppercase tracking-wider transition shadow-md flex items-center justify-center gap-1.5"
+            >
+              <Calendar className="w-4 h-4" />
+              <span>View Departures Dates</span>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Brochure Download Modal */}
       {isBrochureOpen && (
