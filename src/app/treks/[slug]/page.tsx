@@ -2,11 +2,12 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   MapPin, Calendar, Compass, ShieldAlert, BadgeCheck, X, Activity, Check, AlertCircle,
   TrendingUp, Globe, Utensils, Train, Plane, Home, ShieldCheck, Heart, Share2, Phone,
   MessageSquare, ChevronDown, Download, AlertTriangle, HelpCircle, Sparkles,
-  ClipboardList, Map, Bell, Maximize2
+  ClipboardList, Map, Bell, Maximize2, Star, Play, ArrowRight, BookOpen
 } from "lucide-react";
 import { TREKS } from "@/data/db";
 
@@ -23,6 +24,9 @@ const TABS = [
   { id: "cancellation", label: "Cancellation Policy" },
   { id: "imp-links", label: "Imp. Links" },
   { id: "faqs", label: "FAQs" },
+  { id: "trek-article", label: "Article" },
+  { id: "similar-treks", label: "Similar Treks" },
+  { id: "trek-reviews", label: "Reviews & Videos" },
 ];
 
 interface ItineraryDay {
@@ -56,14 +60,28 @@ export default function TrekDetailPage() {
   const [notifySuccess, setNotifySuccess] = useState(false);
   const [isBrochureOpen, setIsBrochureOpen] = useState(false);
   const [isFitnessModalOpen, setIsFitnessModalOpen] = useState(false);
-  const [isFixedDeparturesOpen, setIsFixedDeparturesOpen] = useState(false);
   const [userRunMinutes, setUserRunMinutes] = useState(30);
   const [fitnessCalculated, setFitnessCalculated] = useState<boolean>(false);
+
+  // Inline Departure Batch Filters
+  const [selectedMonthFilter, setSelectedMonthFilter] = useState<string>("All");
+  const [filterWomenOnly, setFilterWomenOnly] = useState<boolean>(false);
+  const [filterSeniorOnly, setFilterSeniorOnly] = useState<boolean>(false);
+  const [reviewTab, setReviewTab] = useState<"reviews" | "videos">("reviews");
 
   // Retrieve the trek from our database
   const trek = useMemo(() => {
     return TREKS.find((t) => t.slug === slug) || null;
   }, [slug]);
+
+  // Similar Treks calculation
+  const similarTreks = useMemo(() => {
+    if (!trek) return [];
+    const matches = TREKS.filter(
+      (t) => t.slug !== trek.slug && (t.region === trek.region || t.difficulty === trek.difficulty)
+    );
+    return matches.length > 0 ? matches.slice(0, 4) : TREKS.filter((t) => t.slug !== trek.slug).slice(0, 4);
+  }, [trek]);
 
   // Handle active tab highlighting on scroll
   useEffect(() => {
@@ -167,28 +185,73 @@ export default function TrekDetailPage() {
 
   const handleBookNow = () => {
     if (!selectedBatch) {
-      setIsFixedDeparturesOpen(true);
+      handleTabClick("cost-terms");
     } else {
       router.push(`/checkout?slug=${trek.slug}&batch=${encodeURIComponent(selectedBatch)}&price=${trek.price || 12450}`);
     }
   };
 
-  const batchData = (trek.batches as any)?.years?.["2026"]?.months || [
+  const rawBatchData = (trek.batches as any)?.years?.["2026"]?.months || [
+    {
+      month: "Jul",
+      trips: [
+        { startDate: "05 Jul", endDate: "10 Jul", status: "Open" },
+        { startDate: "15 Jul", endDate: "20 Jul", status: "Filling Fast", isWomenOnly: true },
+        { startDate: "25 Jul", endDate: "30 Jul", status: "Open" },
+      ],
+    },
+    {
+      month: "Aug",
+      trips: [
+        { startDate: "02 Aug", endDate: "07 Aug", status: "Open" },
+        { startDate: "06 Aug", endDate: "11 Aug", status: "Open", isWomenOnly: true },
+        { startDate: "16 Aug", endDate: "21 Aug", status: "Filling Fast", isSeniorOnly: true },
+      ],
+    },
+    {
+      month: "Sep",
+      trips: [
+        { startDate: "06 Sep", endDate: "11 Sep", status: "Open" },
+        { startDate: "13 Sep", endDate: "18 Sep", status: "Open", isSeniorOnly: true },
+        { startDate: "20 Sep", endDate: "25 Sep", status: "Filling Fast" },
+      ],
+    },
     {
       month: "Oct",
       trips: [
         { startDate: "10 Oct", endDate: "15 Oct", status: "Open" },
-        { startDate: "20 Oct", endDate: "25 Oct", status: "Open" },
+        { startDate: "20 Oct", endDate: "25 Oct", status: "Open", isWomenOnly: true },
       ],
     },
     {
       month: "Nov",
       trips: [
         { startDate: "05 Nov", endDate: "10 Nov", status: "Open" },
-        { startDate: "15 Nov", endDate: "20 Nov", status: "Filling Fast" },
+        { startDate: "15 Nov", endDate: "20 Nov", status: "Filling Fast", isSeniorOnly: true },
+      ],
+    },
+    {
+      month: "Dec",
+      trips: [
+        { startDate: "05 Dec", endDate: "10 Dec", status: "Open", isWomenOnly: true },
+        { startDate: "15 Dec", endDate: "20 Dec", status: "Open" },
       ],
     },
   ];
+
+  const filteredBatchData = useMemo(() => {
+    return rawBatchData
+      .filter((mBlock: any) => selectedMonthFilter === "All" || mBlock.month === selectedMonthFilter)
+      .map((mBlock: any) => ({
+        ...mBlock,
+        trips: mBlock.trips.filter((t: any) => {
+          if (filterWomenOnly && !t.isWomenOnly) return false;
+          if (filterSeniorOnly && !t.isSeniorOnly) return false;
+          return true;
+        })
+      }))
+      .filter((mBlock: any) => mBlock.trips.length > 0);
+  }, [rawBatchData, selectedMonthFilter, filterWomenOnly, filterSeniorOnly]);
 
   return (
     <div className="bg-brand-warm-bg relative min-h-screen font-sans">
@@ -634,52 +697,136 @@ export default function TrekDetailPage() {
               </ul>
             )}
 
-            {/* BATCH SELECTOR BLOCK */}
-            <div id="batch-picker" className="pt-6 border-t border-gray-100 space-y-4">
-              <span className="text-sm font-extrabold text-brand-dark-text font-serif block">Available Departure Batches</span>
-              
-              <div className="space-y-6">
-                {batchData.map((monthBlock: any) => (
-                  <div key={monthBlock.month} className="space-y-2.5">
-                    <span className="text-xs font-bold text-brand-forest uppercase tracking-wider block pl-1">
-                      {monthBlock.month} 2026
-                    </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {monthBlock.trips.map((trip: any, idx: number) => {
-                        const isSelected = selectedBatch === `${monthBlock.month}-${idx}`;
-                        const isFull = trip.status.toLowerCase() === "closed";
-                        return (
-                          <button
-                            key={idx}
-                            disabled={isFull}
-                            onClick={() => setSelectedBatch(isSelected ? null : `${monthBlock.month}-${idx}`)}
-                            className={`p-3 border rounded-2xl flex items-center justify-between transition-all text-left ${
-                              isFull ? "bg-gray-100 border-gray-200 opacity-60 cursor-not-allowed" :
-                              isSelected ? "bg-brand-forest text-white border-brand-forest ring-2 ring-brand-forest/20 shadow-xs" :
-                              "bg-white hover:border-brand-forest/40 border-gray-150"
-                            }`}
-                          >
-                            <div className="space-y-1">
-                              <span className={`text-xs font-extrabold block ${isSelected ? "text-white" : "text-brand-dark-text"}`}>
-                                {trip.startDate} - {trip.endDate}
-                              </span>
-                              <span className="text-[9px] text-gray-400 font-semibold uppercase block">
-                                Year 2026
-                              </span>
-                            </div>
-                            <span className={`text-[9px] px-2 py-0.75 rounded-full font-bold uppercase tracking-wider ${
-                              isFull ? "bg-gray-200 text-gray-500" :
-                              trip.status === "Filling Fast" ? "bg-amber-500/10 text-amber-600 border border-amber-500/20" :
-                              isSelected ? "bg-white/20 text-white" : "bg-green-500/10 text-green-600 border border-green-500/20"
-                            }`}>
-                              {trip.status}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
+            {/* BATCH SELECTOR BLOCK (Merged Fixed Departures & Filters) */}
+            <div id="batch-picker" className="pt-6 border-t border-gray-100 space-y-4 font-sans">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gray-100 pb-3">
+                <div>
+                  <span className="text-base font-extrabold text-brand-dark-text font-serif block">Available Departure Batches</span>
+                  <p className="text-[10px] text-gray-400">Select your preferred date batch to lock in your slot.</p>
+                </div>
+
+                {/* Special Batch Toggles */}
+                <div className="flex flex-wrap gap-2 text-xs">
+                  <button
+                    onClick={() => setFilterWomenOnly(!filterWomenOnly)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border font-bold transition text-[11px] ${
+                      filterWomenOnly
+                        ? "bg-pink-500 text-white border-pink-500 shadow-xs"
+                        : "bg-pink-50 text-pink-700 border-pink-200 hover:bg-pink-100"
+                    }`}
+                  >
+                    <span>♀ Women Only</span>
+                  </button>
+                  <button
+                    onClick={() => setFilterSeniorOnly(!filterSeniorOnly)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border font-bold transition text-[11px] ${
+                      filterSeniorOnly
+                        ? "bg-purple-600 text-white border-purple-600 shadow-xs"
+                        : "bg-purple-50 text-purple-700 border-purple-200 hover:bg-purple-100"
+                    }`}
+                  >
+                    <span>🚶 Senior Citizen</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Month Filter Pills */}
+              <div className="flex flex-wrap gap-1.5">
+                {["All", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].map((m) => (
+                  <button
+                    key={m}
+                    onClick={() => setSelectedMonthFilter(m)}
+                    className={`px-3 py-1 rounded-full text-xs font-bold transition ${
+                      selectedMonthFilter === m
+                        ? "bg-[#0B2545] text-white shadow-xs"
+                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    }`}
+                  >
+                    {m === "All" ? "All Months" : `${m} 2026`}
+                  </button>
                 ))}
+              </div>
+
+              {/* Filtered Batches List */}
+              <div className="space-y-5 pt-1">
+                {filteredBatchData.length > 0 ? (
+                  filteredBatchData.map((monthBlock: any) => (
+                    <div key={monthBlock.month} className="space-y-2.5">
+                      <span className="text-xs font-bold text-brand-forest uppercase tracking-wider block pl-1">
+                        {monthBlock.month} 2026
+                      </span>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {monthBlock.trips.map((trip: any, idx: number) => {
+                          const batchId = `${trip.startDate} - ${trip.endDate}`;
+                          const isSelected = selectedBatch === batchId;
+                          const isFull = trip.status?.toLowerCase() === "closed";
+                          return (
+                            <div
+                              key={idx}
+                              onClick={() => {
+                                if (!isFull) setSelectedBatch(isSelected ? null : batchId);
+                              }}
+                              className={`p-3.5 border rounded-2xl flex items-center justify-between transition-all cursor-pointer text-left ${
+                                isFull ? "bg-gray-100 border-gray-200 opacity-60 cursor-not-allowed" :
+                                isSelected ? "bg-[#0B2545] text-white border-[#0B2545] ring-2 ring-[#0B2545]/20 shadow-md" :
+                                "bg-white hover:border-brand-forest/40 border-gray-150 shadow-xs"
+                              }`}
+                            >
+                              <div className="space-y-1">
+                                <div className="flex items-center gap-1.5 flex-wrap">
+                                  <span className={`text-xs font-extrabold block ${isSelected ? "text-white" : "text-brand-dark-text"}`}>
+                                    {trip.startDate} - {trip.endDate}
+                                  </span>
+                                  {trip.isWomenOnly && (
+                                    <span className="text-[9px] bg-pink-100 text-pink-700 font-bold px-1.5 py-0.5 rounded">
+                                      ♀ Women
+                                    </span>
+                                  )}
+                                  {trip.isSeniorOnly && (
+                                    <span className="text-[9px] bg-purple-100 text-purple-700 font-bold px-1.5 py-0.5 rounded">
+                                      🚶 Senior
+                                    </span>
+                                  )}
+                                </div>
+                                <span className={`text-[10px] ${isSelected ? "text-gray-300" : "text-gray-400"} font-semibold uppercase block`}>
+                                  Year 2026 • {trek.price ? `₹${trek.price.toLocaleString()}` : "₹12,450"}
+                                </span>
+                              </div>
+
+                              <div className="flex flex-col items-end gap-1.5 shrink-0">
+                                <span className={`text-[9px] px-2 py-0.75 rounded-full font-bold uppercase tracking-wider ${
+                                  isFull ? "bg-gray-200 text-gray-500" :
+                                  trip.status === "Filling Fast" ? "bg-amber-500/10 text-amber-600 border border-amber-500/20" :
+                                  isSelected ? "bg-white/20 text-white" : "bg-green-500/10 text-green-600 border border-green-500/20"
+                                }`}>
+                                  {trip.status}
+                                </span>
+
+                                {!isFull && (
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      router.push(`/checkout?slug=${trek.slug}&batch=${encodeURIComponent(batchId + " 2026")}&price=${trek.price || 12450}`);
+                                    }}
+                                    className={`text-[10px] font-bold underline transition ${
+                                      isSelected ? "text-brand-dusk-orange" : "text-brand-forest hover:text-brand-dusk-orange"
+                                    }`}
+                                  >
+                                    Book Now →
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="p-6 bg-gray-50 border border-gray-150 rounded-2xl text-center text-xs text-gray-500 font-medium">
+                    No departure batches found matching the selected filters.
+                  </div>
+                )}
               </div>
             </div>
           </section>
@@ -796,6 +943,249 @@ export default function TrekDetailPage() {
             </div>
           </section>
 
+          {/* TREK ARTICLE SECTION */}
+          <section id="trek-article" className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+              <div>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-dusk-orange block">Official Trek Guide</span>
+                <h2 className="text-xl font-extrabold text-brand-dark-text font-serif">Trek Article & Written Guide</h2>
+              </div>
+              <Link
+                href="/blogs"
+                className="text-xs font-bold text-brand-forest hover:text-brand-dusk-orange transition flex items-center gap-1"
+              >
+                <span>Read More on Blog</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center bg-brand-warm-bg/50 border border-gray-150 rounded-2xl p-5">
+              <div className="aspect-video w-full rounded-xl overflow-hidden relative shadow-xs">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80"
+                  alt={trek.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <div className="space-y-3 text-xs">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-forest bg-brand-forest/10 px-2.5 py-1 rounded-full inline-block">
+                  Featured Trail Guide
+                </span>
+                <h3 className="text-base font-extrabold text-brand-dark-text font-serif leading-snug">
+                  The Complete Guide to {trek.name}: Trail Contours, Campsites & Preparation
+                </h3>
+                <p className="text-gray-650 leading-relaxed font-medium">
+                  Everything you need to know about preparing for {trek.name}. Deep-dive analysis of altitude sickness prevention, terrain contours, camp temperature ranges, and gear checklist.
+                </p>
+                <div className="flex items-center gap-4 pt-1">
+                  <span className="text-[10px] font-semibold text-gray-400">⏱️ 6 min read</span>
+                  <Link
+                    href="/blogs"
+                    className="inline-flex items-center gap-1 font-bold text-brand-dusk-orange hover:underline text-xs"
+                  >
+                    <span>Read Full Article</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* SIMILAR TREKS SECTION */}
+          <section id="similar-treks" className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+              <div>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-dusk-orange block">Explore Alternatives</span>
+                <h2 className="text-xl font-extrabold text-brand-dark-text font-serif">Similar Himalayan Treks</h2>
+              </div>
+              <Link
+                href="/treks"
+                className="text-xs font-bold text-brand-forest hover:text-brand-dusk-orange transition flex items-center gap-1"
+              >
+                <span>View All {TREKS.length} Treks</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {similarTreks.map((st) => (
+                <div
+                  key={st.slug}
+                  className="border border-gray-150 rounded-2xl overflow-hidden bg-white hover:shadow-md transition group flex flex-col justify-between"
+                >
+                  <div className="relative aspect-video w-full overflow-hidden bg-gray-100">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=400&q=80"
+                      alt={st.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <span className="absolute top-3 left-3 text-[9px] font-extrabold uppercase bg-[#0B2545]/90 text-white px-2.5 py-1 rounded-full backdrop-blur-xs">
+                      {st.region}
+                    </span>
+                  </div>
+
+                  <div className="p-4 space-y-3 flex-grow flex flex-col justify-between">
+                    <div className="space-y-1">
+                      <h3 className="font-extrabold text-sm text-brand-dark-text font-serif group-hover:text-brand-forest transition">
+                        {st.name}
+                      </h3>
+                      <div className="flex items-center gap-3 text-[11px] text-gray-500 font-medium">
+                        <span>📅 {st.days} Days</span>
+                        <span>•</span>
+                        <span className="text-brand-forest font-bold">{st.difficulty}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+                      <div>
+                        <span className="text-[9px] text-gray-400 uppercase block font-semibold">Starting from</span>
+                        <span className="text-sm font-black text-brand-forest">
+                          {st.price ? `₹${st.price.toLocaleString()}` : "TBD"}
+                        </span>
+                      </div>
+                      <Link
+                        href={`/treks/${st.slug}`}
+                        className="px-3.5 py-1.5 rounded-full bg-[#0B2545] hover:bg-brand-dusk-orange text-white text-xs font-bold transition shadow-xs"
+                      >
+                        Explore →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* TREK REVIEWS & VIDEOS SECTION */}
+          <section id="trek-reviews" className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm space-y-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-100 pb-4 gap-4">
+              <div>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-dusk-orange block">Verified Feedback</span>
+                <h2 className="text-xl font-extrabold text-brand-dark-text font-serif">Trek Reviews & Videos</h2>
+              </div>
+
+              <div className="flex bg-brand-warm-bg p-1 rounded-full border border-gray-150 text-[10px] font-bold">
+                <button
+                  onClick={() => setReviewTab("reviews")}
+                  className={`px-4 py-1.5 rounded-full uppercase transition-all ${
+                    reviewTab === "reviews" ? "bg-[#0B2545] text-white shadow-xs" : "text-gray-500 hover:text-brand-forest"
+                  }`}
+                >
+                  ⭐ Reviews (128)
+                </button>
+                <button
+                  onClick={() => setReviewTab("videos")}
+                  className={`px-4 py-1.5 rounded-full uppercase transition-all ${
+                    reviewTab === "videos" ? "bg-[#0B2545] text-white shadow-xs" : "text-gray-500 hover:text-brand-forest"
+                  }`}
+                >
+                  📹 Trail Videos (4)
+                </button>
+              </div>
+            </div>
+
+            {/* Written Reviews Tab */}
+            {reviewTab === "reviews" && (
+              <div className="space-y-4 font-sans">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    {
+                      name: "Ananya Roy",
+                      role: "Verified Trekker",
+                      date: "Jan 2026",
+                      rating: 5,
+                      text: `Summiting ${trek.name} with TripMySoul was a dream come true! The guide team carried oxygen tanks and checked our SpO2 twice daily. Food at high camp was fresh and hot!`,
+                      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80"
+                    },
+                    {
+                      name: "Vikramaditya Singh",
+                      role: "Experienced Hiker",
+                      date: "Dec 2025",
+                      rating: 5,
+                      text: `The campsite management and safety protocols on ${trek.name} are top notch. Triple-layer sleeping bags kept us warm even at -8°C at night!`,
+                      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80"
+                    },
+                    {
+                      name: "Pooja Sharma",
+                      role: "Women Only Batch Trekker",
+                      date: "Nov 2025",
+                      rating: 5,
+                      text: "Joined the Women-Only batch and felt completely safe and empowered! Our female trek leader was super supportive during steep incline sections.",
+                      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=80&q=80"
+                    },
+                    {
+                      name: "Rohan Kulkarni",
+                      role: "Solo Traveler",
+                      date: "Oct 2025",
+                      rating: 5,
+                      text: "Clear instructions from base camp to summit ridge. TripMySoul's logistics and transport coordination made the journey seamless.",
+                      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80"
+                    }
+                  ].map((rev, idx) => (
+                    <div key={idx} className="p-4 rounded-2xl border border-gray-150 bg-brand-warm-bg/40 space-y-3 text-xs">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2.5">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={rev.avatar} alt={rev.name} className="w-8 h-8 rounded-full object-cover border border-brand-forest/20" />
+                          <div>
+                            <span className="font-extrabold text-brand-dark-text block">{rev.name}</span>
+                            <span className="text-[10px] text-gray-400 font-semibold">{rev.role} • {rev.date}</span>
+                          </div>
+                        </div>
+                        <div className="flex text-amber-400">
+                          {Array.from({ length: rev.rating }).map((_, i) => (
+                            <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                          ))}
+                        </div>
+                      </div>
+                      <p className="text-gray-650 leading-relaxed font-medium italic">
+                        &quot;{rev.text}&quot;
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Videos Tab */}
+            {reviewTab === "videos" && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans">
+                {[
+                  { title: `${trek.name} Summit Ridge Walk`, duration: "4:15", views: "12.4k views" },
+                  { title: "Basecamp Campsite Routine & Dining Tent", duration: "3:20", views: "8.1k views" },
+                  { title: "Pass Crossing & Snow Slide Experience", duration: "5:02", views: "15.9k views" },
+                  { title: "Trekker Testimonials & Guide Briefing", duration: "2:45", views: "6.3k views" },
+                ].map((v, idx) => (
+                  <div key={idx} className="border border-gray-150 rounded-2xl overflow-hidden bg-white space-y-2 group">
+                    <div className="aspect-video w-full bg-gray-900 relative flex items-center justify-center overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&q=80"
+                        alt={v.title}
+                        className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="w-12 h-12 rounded-full bg-brand-dusk-orange text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <Play className="w-5 h-5 fill-current ml-0.5" />
+                      </div>
+                      <span className="absolute bottom-2 right-2 text-[10px] font-bold bg-black/80 text-white px-2 py-0.5 rounded">
+                        {v.duration}
+                      </span>
+                    </div>
+                    <div className="p-3">
+                      <h4 className="font-extrabold text-xs text-brand-dark-text group-hover:text-brand-forest transition">
+                        {v.title}
+                      </h4>
+                      <span className="text-[10px] text-gray-400 font-semibold">{v.views} • Official TripMySoul Vlog</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+
         </div>
 
         {/* Right Column (Booking Widget Card) */}
@@ -820,7 +1210,7 @@ export default function TrekDetailPage() {
               <div className="flex justify-between">
                 <span className="text-gray-400 font-semibold">Selected Batch:</span>
                 <span className="font-bold text-brand-dusk-orange">
-                  {selectedBatch ? selectedBatch.replace("-", " Batch ") : "Select Batch Below"}
+                  {selectedBatch ? selectedBatch : "Select Batch Above"}
                 </span>
               </div>
               <div className="flex justify-between">
@@ -853,92 +1243,6 @@ export default function TrekDetailPage() {
         </div>
 
       </div>
-
-      {/* TTH Signature "Fixed Departures" Date Selector Modal */}
-      {isFixedDeparturesOpen && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
-          <div className="bg-white border border-gray-150 rounded-3xl p-6 max-w-sm w-full space-y-4 shadow-2xl relative font-sans">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-              <div className="flex items-center gap-2 text-brand-dark-text font-serif">
-                <Calendar className="w-4 h-4 text-red-500" />
-                <h3 className="text-base font-extrabold">Fixed Departures</h3>
-              </div>
-              <button
-                onClick={() => setIsFixedDeparturesOpen(false)}
-                className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Departure Month Accordions & Special Batches */}
-            <div className="space-y-2 text-xs">
-              {[
-                { month: "July-2026", dates: ["05 Jul - 10 Jul", "12 Jul - 17 Jul", "19 Jul - 24 Jul"] },
-                { month: "August-2026", dates: ["02 Aug - 07 Aug", "06 Aug - 11 Aug", "16 Aug - 21 Aug"] },
-                { month: "September-2026", dates: ["06 Sep - 11 Sep", "13 Sep - 18 Sep", "20 Sep - 25 Sep"] },
-              ].map((mBlock) => (
-                <details key={mBlock.month} className="group border border-gray-200 rounded-xl overflow-hidden bg-white">
-                  <summary className="flex items-center justify-between p-3 font-bold text-gray-800 cursor-pointer bg-gray-50/50 hover:bg-gray-100/50 transition">
-                    <span>{mBlock.month}</span>
-                    <ChevronDown className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform" />
-                  </summary>
-                  <div className="p-2 space-y-1.5 bg-white border-t border-gray-150">
-                    {mBlock.dates.map((dStr) => (
-                      <button
-                        key={dStr}
-                        onClick={() => {
-                          setIsFixedDeparturesOpen(false);
-                          router.push(`/checkout?slug=${trek.slug}&batch=${encodeURIComponent(dStr + " 2026")}&price=${trek.price || 12450}`);
-                        }}
-                        className="w-full flex items-center justify-between p-2 rounded-lg hover:bg-brand-forest/5 text-left border border-gray-100 hover:border-brand-forest/30 transition group/btn"
-                      >
-                        <span className="font-semibold text-gray-700 group-hover/btn:text-brand-forest">{dStr}</span>
-                        <span className="text-[10px] font-bold text-[#E84855] uppercase">Book Batch →</span>
-                      </button>
-                    ))}
-                  </div>
-                </details>
-              ))}
-
-              {/* Special Category Badges */}
-              <button
-                onClick={() => {
-                  setIsFixedDeparturesOpen(false);
-                  router.push(`/checkout?slug=${trek.slug}&batch=${encodeURIComponent("Women Only Batch (10 Aug - 15 Aug 2026)")}&price=${trek.price || 12450}`);
-                }}
-                className="w-full flex items-center gap-2 p-3 rounded-xl bg-pink-50 border border-pink-200 text-pink-700 font-bold hover:bg-pink-100 transition text-left"
-              >
-                <span className="text-base">♀</span>
-                <span>Women Only Batch</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  setIsFixedDeparturesOpen(false);
-                  router.push(`/checkout?slug=${trek.slug}&batch=${encodeURIComponent("Senior Citizen Batch (18 Aug - 23 Aug 2026)")}&price=${trek.price || 12450}`);
-                }}
-                className="w-full flex items-center gap-2 p-3 rounded-xl bg-purple-50 border border-purple-200 text-purple-700 font-bold hover:bg-purple-100 transition text-left"
-              >
-                <span className="text-base">🚶</span>
-                <span>Senior Citizen Only Batch</span>
-              </button>
-            </div>
-
-            <button
-              onClick={() => {
-                setIsFixedDeparturesOpen(false);
-                router.push(`/checkout?slug=${trek.slug}&batch=${encodeURIComponent("06 Aug-11 Aug 2026")}&price=${trek.price || 12450}`);
-              }}
-              className="w-full py-3 rounded-xl bg-[#E84855] hover:bg-[#d63b48] text-white font-extrabold text-xs uppercase tracking-wider transition shadow-md flex items-center justify-center gap-1.5"
-            >
-              <Calendar className="w-4 h-4" />
-              <span>View Departures Dates</span>
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* Brochure Download Modal */}
       {isBrochureOpen && (
