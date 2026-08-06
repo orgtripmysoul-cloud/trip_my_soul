@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import {
   Compass, Shield, Leaf, ArrowRight, Star, MapPin, Award, Search, ArrowUpDown, SlidersHorizontal,
-  Users, Trophy, CheckCircle, FileText, Video, Activity, Play, ExternalLink
+  Users, Trophy, CheckCircle, FileText, Video, Activity, Play, ExternalLink, Filter, HelpCircle, ChevronDown
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { TREKS, WHY_CHOOSE_US, TRUST_STATS, REGIONS } from "@/data/db";
@@ -31,21 +31,52 @@ const SEASON_MAP: Record<string, string[]> = {
   "Autumn": ["Sep", "Oct", "Nov"]
 };
 
+const HERO_IMAGES = [
+  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1486873249359-2731bd6dafc7?auto=format&fit=crop&w=1920&q=80",
+];
+
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilters, setSelectedFilters] = useState<FilterState>(initialFilters);
   const [sortBy, setSortBy] = useState("price-asc");
 
+  // FAQ accordion state
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+
+  // Hero background slideshow timer state
+  const [heroSlideIndex, setHeroSlideIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroSlideIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Section 4 "Top Treks This Season" filters state
+  const [seasonRegionFilter, setSeasonRegionFilter] = useState("All");
+  const [seasonDifficultyFilter, setSeasonDifficultyFilter] = useState("All");
+  const [seasonPriceFilter, setSeasonPriceFilter] = useState("All");
+
   // Tab states for Social Proof & Stay Informed sections
-  const [activeTrustTab, setActiveTrustTab] = useState<"reviews" | "awards" | "trusted">("awards");
+  const [activeTrustTab, setActiveTrustTab] = useState<"reviews" | "youtube" | "awards" | "trusted">("reviews");
   const [activeInformedTab, setActiveInformedTab] = useState<"updates" | "articles" | "videos">("updates");
 
-  // Get top winter and trending treks for carousel
-  const topTreks = useMemo(() => {
-    return TREKS.filter(
-      (t) => t.category.toLowerCase().includes("trending") || t.slug === "kedarkantha-trek"
-    ).slice(0, 6);
-  }, []);
+  // Filtered Top Treks for Section 4
+  const filteredSeasonTreks = useMemo(() => {
+    return TREKS.filter((t) => {
+      if (seasonRegionFilter !== "All" && t.region !== seasonRegionFilter) return false;
+      if (seasonDifficultyFilter !== "All" && !t.difficulty.toLowerCase().includes(seasonDifficultyFilter.toLowerCase())) return false;
+      if (seasonPriceFilter === "under-10k" && (t.price || 0) >= 10000) return false;
+      if (seasonPriceFilter === "10k-15k" && ((t.price || 0) < 10000 || (t.price || 0) > 15000)) return false;
+      if (seasonPriceFilter === "above-15k" && (t.price || 0) <= 15000) return false;
+      return true;
+    }).slice(0, 8);
+  }, [seasonRegionFilter, seasonDifficultyFilter, seasonPriceFilter]);
 
   // Real-time trek search & filter matching
   const filteredTreks = useMemo(() => {
@@ -235,6 +266,30 @@ export default function Home() {
     }
   ];
 
+  const youtubeReviewsData = [
+    {
+      title: "Kedarkantha Summit Expedition Vlog & Review",
+      channel: "Mountain Trekkers India",
+      views: "128K views",
+      duration: "14:20",
+      image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80"
+    },
+    {
+      title: "Buran Ghati Pass Ice Wall Experience",
+      channel: "Himalayan Vlogs",
+      views: "95K views",
+      duration: "11:45",
+      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=500&q=80"
+    },
+    {
+      title: "Kashmir Great Lakes Trekker Review",
+      channel: "Trail Seekers",
+      views: "210K views",
+      duration: "18:05",
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80"
+    }
+  ];
+
   const trustedByData = [
     { name: "IMF Affiliated", desc: "Indian Mountaineering Foundation", icon: Award },
     { name: "ATOAI Member", desc: "Adventure Tour Operators Assn of India", icon: Shield },
@@ -319,16 +374,25 @@ export default function Home() {
 
   return (
     <div className="w-full relative bg-brand-warm-bg overflow-x-hidden">
-      {/* SECTION 1: HERO — First impression + primary CTAs */}
+      {/* SECTION 1: HERO — Background Slideshow + Google Reviews Widget */}
       <section className="relative h-[85vh] md:h-[90vh] w-full flex items-center justify-center overflow-hidden bg-[#0B2545]">
-        {/* Parallax Background overlay */}
+        {/* Auto-playing Photo Slideshow Background */}
         <div className="absolute inset-0 z-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80"
-            alt="Himalayas Hero Background"
-            className="w-full h-full object-cover opacity-60 scale-105 pointer-events-none"
-          />
+          {HERO_IMAGES.map((imgUrl, idx) => (
+            <div
+              key={imgUrl}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                idx === heroSlideIndex ? "opacity-60 scale-105" : "opacity-0 scale-100"
+              }`}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={imgUrl}
+                alt={`Himalayas Hero Background Slide ${idx + 1}`}
+                className="w-full h-full object-cover pointer-events-none"
+              />
+            </div>
+          ))}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0B2545] via-[#0B2545]/40 to-transparent" />
         </div>
 
@@ -368,110 +432,59 @@ export default function Home() {
               href="#explore-treks"
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-dusk hover:bg-brand-dusk-orange text-white font-bold shadow-lg transform hover:-translate-y-0.5 transition duration-200 flex items-center justify-center gap-2"
             >
-              <span>Explore Seasonal Treks</span>
+              <span>View Upcoming Treks and Trips</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
             <a
-              href="https://wa.me/918178613438"
+              href="https://www.instagram.com/tripmysoul.in/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold backdrop-blur-md border border-white/20 transition duration-200 flex items-center justify-center gap-2"
             >
-              <span>Speak to Experts</span>
+              <ExternalLink className="w-5 h-5 text-brand-dusk-orange" />
+              <span>View Social Media</span>
             </a>
+          </motion.div>
+
+          {/* Hero Google Reviews Widget */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
+            className="pt-4 max-w-md mx-auto"
+          >
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3.5 flex items-center justify-between text-left gap-3 shadow-lg">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-full bg-white text-blue-600 font-black text-xs flex items-center justify-center shrink-0 shadow-xs">
+                  G
+                </div>
+                <div>
+                  <div className="flex items-center gap-1 text-amber-400 text-xs">
+                    <span className="font-extrabold text-white mr-1 text-xs">4.9</span>
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                    ))}
+                  </div>
+                  <span className="text-[10px] text-gray-200 font-semibold block">
+                    Based on 2,500+ Verified Google Reviews
+                  </span>
+                </div>
+              </div>
+              <a
+                href="#reviews"
+                className="text-[10px] font-extrabold text-brand-dusk-orange uppercase tracking-wider hover:underline shrink-0"
+              >
+                Read Reviews →
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* SECTION 2: STATS BAR — Quick credibility numbers right after hero */}
-      <div className="relative z-20 max-w-5xl mx-auto px-4 -mt-16 md:-mt-20 mb-8">
-        <div className="grid grid-cols-3 gap-3 md:gap-6 text-brand-dark-text">
-          <div className="bg-white rounded-2xl p-4 md:p-6 text-center shadow-lg border border-red-500/30 space-y-1 transform hover:-translate-y-1 transition duration-300">
-            <Users className="w-5 h-5 text-brand-dusk-orange mx-auto" />
-            <span className="text-xl md:text-3xl font-extrabold text-brand-dark-text block leading-none pt-1">500,000+</span>
-            <span className="text-[10px] md:text-xs text-gray-500 font-bold block uppercase tracking-wider">Happy Trekkers</span>
-          </div>
-
-          <div className="bg-white rounded-2xl p-4 md:p-6 text-center shadow-lg border border-gray-150 space-y-1 transform hover:-translate-y-1 transition duration-300">
-            <Compass className="w-5 h-5 text-brand-forest mx-auto" />
-            <span className="text-xl md:text-3xl font-extrabold text-brand-dark-text block leading-none pt-1">100+</span>
-            <span className="text-[10px] md:text-xs text-gray-500 font-bold block uppercase tracking-wider">Verified Routes</span>
-          </div>
-
-          <div className="bg-white rounded-2xl p-4 md:p-6 text-center shadow-lg border border-gray-150 space-y-1 transform hover:-translate-y-1 transition duration-300">
-            <Trophy className="w-5 h-5 text-amber-500 mx-auto" />
-            <span className="text-xl md:text-3xl font-extrabold text-brand-dark-text block leading-none pt-1">20+</span>
-            <span className="text-[10px] md:text-xs text-gray-500 font-bold block uppercase tracking-wider">Awards Won</span>
-          </div>
-        </div>
-      </div>
-
-      {/* SECTION 3: CATEGORY QUICK-NAV CAROUSEL — Lets visitors jump to what they want early */}
+      {/* SECTION 2: CATEGORY QUICK-NAV CAROUSEL */}
       <CategoryCarousel />
 
-      {/* SECTION 4: "TOP TREKS THIS SEASON" CAROUSEL — Show product immediately after the hook */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8 gap-4">
-          <div className="space-y-2">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk-orange">
-              TRENDING TRAILS
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-text font-serif leading-tight">
-              Top Treks This Season
-            </h2>
-          </div>
-          <Link
-            href="#explore-treks"
-            className="flex items-center gap-2 text-sm font-bold text-brand-forest hover:text-brand-dusk transition group"
-          >
-            <span>View All Treks</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-
-        <SwiperCarousel slidesPerView={1}>
-          {topTreks.map((trek) => (
-            <TrekCard key={trek.slug} trek={trek} />
-          ))}
-        </SwiperCarousel>
-      </section>
-
-      {/* SECTION 5: "WHY CHOOSE TRIPMYSOUL" TRUST PILLARS — Build confidence right after showing product */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-100">
-        <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-          <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk">
-            Our Core Pillars
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-text font-serif leading-none">
-            Why Choose TripMySoul?
-          </h2>
-          <p className="text-sm text-gray-600">
-            We are dedicated to safety, trail cleanliness, and giving back to the mountain communities that support us.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {WHY_CHOOSE_US.map((metric, idx) => {
-            const Icon = metric.icon === "Shield" ? Shield : metric.icon === "Leaf" ? Leaf : Compass;
-            return (
-              <div
-                key={idx}
-                className="bg-white border border-gray-100 rounded-3xl p-8 hover:shadow-lg transition-shadow duration-300 space-y-4 flex flex-col justify-between"
-              >
-                <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-2xl bg-brand-forest/5 flex items-center justify-center text-brand-forest">
-                    <Icon className="w-6 h-6 text-brand-dusk-orange" />
-                  </div>
-                  <h3 className="text-lg font-bold text-brand-dark-text">{metric.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{metric.description}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* SECTION 6: "FIND YOUR NEXT HEALING JOURNEY" — Full filterable trek grid (main conversion surface) */}
+      {/* SECTION 3: "EXPLORE EXPEDITIONS" (Find Your Next Healing Journey) — Main trek filter grid */}
       <section id="explore-treks" className="py-16 bg-white border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           
@@ -546,7 +559,7 @@ export default function Home() {
               onReset={handleResetFilters}
             />
 
-            {/* Treks Carousel (prevents long vertical scroll) */}
+            {/* Treks Grid / Carousel */}
             <div className="flex-grow min-w-0 w-full space-y-6">
               <div className="flex justify-between items-center text-xs font-black uppercase tracking-wider text-gray-400 font-sans pl-1">
                 <span>SHOWING {sortedTreks.length} TREKS</span>
@@ -591,7 +604,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 7: "HIMALAYAN REGIONS" — Secondary browse path by destination */}
+      {/* SECTION 4: "HIMALAYAN REGIONS" — Browse path by territory */}
       <section className="py-20 bg-brand-warm-card/40 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
@@ -640,116 +653,168 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 8: GOOGLE REVIEWS / AWARDS / TRUSTED BY TABS — Social proof reinforcement */}
-      <section className="py-16 bg-white border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      {/* SECTION 5: "WHY CHOOSE TRIPMYSOUL?" — Placed directly after Himalayan Regions */}
+      <section id="why-choose-us" className="py-16 bg-white border-t border-gray-150">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
-          {/* Tab Selection Pills */}
-          <div className="flex justify-center overflow-x-auto no-scrollbar gap-3 whitespace-nowrap pb-1">
-            <button
-              onClick={() => setActiveTrustTab("reviews")}
-              className={`flex items-center gap-2 text-xs px-5 py-2.5 rounded-full border font-bold transition-all ${
-                activeTrustTab === "reviews"
-                  ? "bg-[#0B2545] text-white border-[#0B2545] shadow-md"
-                  : "bg-white text-gray-700 border-gray-250 hover:border-[#0B2545]/40"
-              }`}
-            >
-              <Star className="w-3.5 h-3.5 text-amber-400 fill-current" />
-              <span>Google Reviews</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTrustTab("awards")}
-              className={`flex items-center gap-2 text-xs px-5 py-2.5 rounded-full border font-bold transition-all ${
-                activeTrustTab === "awards"
-                  ? "bg-[#0B2545] text-white border-[#0B2545] shadow-md"
-                  : "bg-white text-gray-700 border-gray-250 hover:border-[#0B2545]/40"
-              }`}
-            >
-              <Trophy className="w-3.5 h-3.5 text-amber-400" />
-              <span>Awards</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTrustTab("trusted")}
-              className={`flex items-center gap-2 text-xs px-5 py-2.5 rounded-full border font-bold transition-all ${
-                activeTrustTab === "trusted"
-                  ? "bg-[#0B2545] text-white border-[#0B2545] shadow-md"
-                  : "bg-white text-gray-700 border-gray-250 hover:border-[#0B2545]/40"
-              }`}
-            >
-              <Shield className="w-3.5 h-3.5 text-sky-400" />
-              <span>Trusted By</span>
-            </button>
+          {/* Header */}
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk-orange bg-brand-forest/5 px-3.5 py-1.5 rounded-full inline-block">
+              TRUST & SAFETY STANDARDS
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-dark-text font-serif leading-tight">
+              Why Choose TripMySoul?
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-500 leading-relaxed font-medium">
+              Dedicated to mountaineering safety, eco-conscious trail stewardship, and authentic local guides across the Himalayas.
+            </p>
           </div>
 
-          {/* TAB 1: GOOGLE REVIEWS */}
-          {activeTrustTab === "reviews" && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in">
-              {googleReviewsData.map((rev, idx) => (
-                <div key={idx} className="bg-brand-warm-bg/50 border border-gray-150 rounded-3xl p-6 shadow-xs space-y-4 flex flex-col justify-between">
+          {/* Core Pillars Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {WHY_CHOOSE_US.map((metric, idx) => {
+              const Icon = metric.icon === "Shield" ? Shield : metric.icon === "Leaf" ? Leaf : Compass;
+              return (
+                <div
+                  key={idx}
+                  className="bg-brand-warm-bg/40 border border-gray-150 rounded-3xl p-6 hover:shadow-md transition-shadow duration-300 space-y-3 flex flex-col justify-between"
+                >
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1 text-amber-400">
-                        {[...Array(rev.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-current" />
-                        ))}
+                    <div className="w-10 h-10 rounded-2xl bg-brand-forest/10 flex items-center justify-center text-brand-forest">
+                      <Icon className="w-5 h-5 text-brand-dusk-orange" />
+                    </div>
+                    <h3 className="text-base font-bold text-brand-dark-text">{metric.title}</h3>
+                    <p className="text-xs text-gray-600 leading-relaxed font-medium">{metric.description}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* FOLDED STATS BAR */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div className="bg-[#0B2545] text-white rounded-2xl p-5 text-center shadow-md space-y-1">
+              <Users className="w-6 h-6 text-brand-dusk-orange mx-auto" />
+              <span className="text-2xl sm:text-3xl font-extrabold block leading-none pt-1">500,000+</span>
+              <span className="text-[10px] sm:text-xs text-gray-300 font-bold uppercase tracking-wider block">Happy Trekkers</span>
+            </div>
+
+            <div className="bg-[#0B2545] text-white rounded-2xl p-5 text-center shadow-md space-y-1">
+              <Compass className="w-6 h-6 text-green-400 mx-auto" />
+              <span className="text-2xl sm:text-3xl font-extrabold block leading-none pt-1">100+</span>
+              <span className="text-[10px] sm:text-xs text-gray-300 font-bold uppercase tracking-wider block">Verified Routes</span>
+            </div>
+
+            <div className="bg-[#0B2545] text-white rounded-2xl p-5 text-center shadow-md space-y-1">
+              <Trophy className="w-6 h-6 text-amber-400 mx-auto" />
+              <span className="text-2xl sm:text-3xl font-extrabold block leading-none pt-1">20+</span>
+              <span className="text-[10px] sm:text-xs text-gray-300 font-bold uppercase tracking-wider block">Awards Won</span>
+            </div>
+          </div>
+
+          {/* REVIEWS & TRUST TABS */}
+          <div id="reviews" className="space-y-6 pt-4 border-t border-gray-150">
+            {/* Tab Selection Pills */}
+            <div className="flex justify-center overflow-x-auto no-scrollbar gap-2.5 whitespace-nowrap pb-1">
+              <button
+                onClick={() => setActiveTrustTab("youtube")}
+                className={`flex items-center gap-2 text-xs px-5 py-2.5 rounded-full border font-bold transition-all ${
+                  activeTrustTab === "youtube"
+                    ? "bg-[#0B2545] text-white border-[#0B2545] shadow-md"
+                    : "bg-white text-gray-700 border-gray-250 hover:border-[#0B2545]/40"
+                }`}
+              >
+                <Video className="w-3.5 h-3.5 text-red-500" />
+                <span>YouTube Reviews</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTrustTab("awards")}
+                className={`flex items-center gap-2 text-xs px-5 py-2.5 rounded-full border font-bold transition-all ${
+                  activeTrustTab === "awards"
+                    ? "bg-[#0B2545] text-white border-[#0B2545] shadow-md"
+                    : "bg-white text-gray-700 border-gray-250 hover:border-[#0B2545]/40"
+                }`}
+              >
+                <Trophy className="w-3.5 h-3.5 text-amber-400" />
+                <span>Awards</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTrustTab("trusted")}
+                className={`flex items-center gap-2 text-xs px-5 py-2.5 rounded-full border font-bold transition-all ${
+                  activeTrustTab === "trusted"
+                    ? "bg-[#0B2545] text-white border-[#0B2545] shadow-md"
+                    : "bg-white text-gray-700 border-gray-250 hover:border-[#0B2545]/40"
+                }`}
+              >
+                <Shield className="w-3.5 h-3.5 text-sky-400" />
+                <span>Trusted By</span>
+              </button>
+            </div>
+
+            {/* TAB 1: YOUTUBE REVIEWS */}
+            {activeTrustTab === "youtube" && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in">
+                {youtubeReviewsData.map((vid, idx) => (
+                  <div key={idx} className="bg-white border border-gray-150 rounded-3xl overflow-hidden shadow-xs space-y-3 p-4">
+                    <div className="aspect-video rounded-2xl overflow-hidden bg-gray-900 relative group cursor-pointer" onClick={() => alert(`Playing ${vid.title}...`)}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={vid.image} alt={vid.title} className="w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition">
+                          <Play className="w-5 h-5 fill-current ml-0.5" />
+                        </div>
                       </div>
-                      <span className="text-[10px] font-extrabold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full uppercase border border-blue-100">
-                        Verified Google
+                      <span className="absolute bottom-2 right-2 bg-black/80 text-white text-[9px] font-bold px-2 py-0.5 rounded">
+                        {vid.duration}
                       </span>
                     </div>
-                    <p className="text-xs text-gray-600 leading-relaxed italic">&ldquo;{rev.text}&rdquo;</p>
-                  </div>
-                  
-                  <div className="flex items-center gap-3 border-t border-gray-200/60 pt-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={rev.avatar} alt={rev.name} className="w-10 h-10 rounded-full object-cover border" />
-                    <div>
-                      <span className="font-bold text-xs text-brand-dark-text block">{rev.name}</span>
-                      <span className="text-[10px] text-brand-forest font-semibold">{rev.trek}</span>
+                    <div className="space-y-1">
+                      <span className="text-xs font-bold text-brand-dark-text block line-clamp-1">{vid.title}</span>
+                      <span className="text-[10px] text-gray-400 font-semibold block">{vid.channel} • {vid.views}</span>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </div>
+            )}
 
-          {/* TAB 2: AWARDS */}
-          {activeTrustTab === "awards" && (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 animate-fade-in">
-              {awardsData.map((award, idx) => (
-                <div key={idx} className="bg-white border border-gray-150 rounded-3xl overflow-hidden shadow-xs hover:shadow-md transition text-center flex flex-col justify-between p-4 space-y-3">
-                  <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 relative">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={award.image} alt={award.title} className="w-full h-full object-cover" />
+            {/* TAB 2: AWARDS */}
+            {activeTrustTab === "awards" && (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 animate-fade-in">
+                {awardsData.map((award, idx) => (
+                  <div key={idx} className="bg-white border border-gray-150 rounded-3xl overflow-hidden shadow-xs hover:shadow-md transition text-center flex flex-col justify-between p-4 space-y-3">
+                    <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 relative">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={award.image} alt={award.title} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="space-y-1">
+                      <span className="text-xs font-extrabold text-brand-dark-text block">{award.title}</span>
+                      <span className="text-[10px] text-gray-400 font-semibold block">{award.organization} ({award.year})</span>
+                    </div>
                   </div>
-                  <div className="space-y-1">
-                    <span className="text-xs font-extrabold text-brand-dark-text block">{award.title}</span>
-                    <span className="text-[10px] text-gray-400 font-semibold block">{award.organization} ({award.year})</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </div>
+            )}
 
-          {/* TAB 3: TRUSTED BY */}
-          {activeTrustTab === "trusted" && (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in">
-              {trustedByData.map((item, idx) => (
-                <div key={idx} className="bg-white border border-gray-150 rounded-3xl p-6 text-center space-y-2 shadow-xs hover:shadow-md transition">
-                  <item.icon className="w-8 h-8 text-brand-forest mx-auto" />
-                  <span className="text-xs font-extrabold text-brand-dark-text block uppercase">{item.name}</span>
-                  <p className="text-[10px] text-gray-400 font-medium">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          )}
+            {/* TAB 3: TRUSTED BY */}
+            {activeTrustTab === "trusted" && (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in">
+                {trustedByData.map((item, idx) => (
+                  <div key={idx} className="bg-white border border-gray-150 rounded-3xl p-6 text-center space-y-2 shadow-xs hover:shadow-md transition">
+                    <item.icon className="w-8 h-8 text-brand-forest mx-auto" />
+                    <span className="text-xs font-extrabold text-brand-dark-text block uppercase">{item.name}</span>
+                    <p className="text-[10px] text-gray-400 font-medium">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
         </div>
       </section>
 
-      {/* SECTION 9: "STAY INFORMED" (Latest Updates / Articles / Videos) — Content & engagement layer */}
+      {/* SECTION 6: "STAY INFORMED" (Latest Updates / Articles / Videos) */}
       <section className="py-16 bg-brand-warm-bg border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-center">
           
@@ -871,8 +936,92 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 10: INSTAGRAM FEED — Community/social layer, near the end */}
-      <section className="py-16 bg-brand-warm-card/25 border-t border-gray-100">
+      {/* SECTION 7: STANDALONE FAQ SECTION — Expandable Accordion Directly Below Stay Informed */}
+      <section className="py-16 bg-white border-b border-gray-150">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          
+          <div className="text-center space-y-3">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk-orange bg-brand-forest/5 px-3.5 py-1.5 rounded-full inline-block">
+              HELP & GUIDANCE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-serif text-brand-dark-text">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-500 font-medium max-w-xl mx-auto">
+              Everything you need to know about booking, safety standards, rentals, and policies.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "What is included in the TripMySoul trek package?",
+                a: "Our trek packages include all high-altitude camping lodging (alpine tents/homestays), certified mountaineering guides, organic vegetarian meals on trail, forest permits, safety equipment (oxygen cylinders, SpO2 meters, stretcher tents), and baseline emergency medical support."
+              },
+              {
+                q: "How do I book a departure date for a trek?",
+                a: "Explore our trek catalog, select your preferred departure batch date from the batch schedule, enter your trekker information, and click 'Book Expedition Slot' to reserve your seat instantly."
+              },
+              {
+                q: "What is the cancellation and refund policy?",
+                a: "Cancellations made 30+ days prior to departure receive a 90% monetary refund or 100% voucher credit valid for 1 year.",
+                link: "/policies/cancellation-policy",
+                linkText: "View official Cancellation Policy →"
+              },
+              {
+                q: "Do you provide high-altitude trekking gear on rent?",
+                a: "Yes! We offer rental down jackets (-10°C rated), high-ankle waterproof trekking boots, trekking poles, thermal liners, and rain ponchos directly through our store.",
+                link: "/rent",
+                linkText: "Explore Gear Rental Store →"
+              },
+              {
+                q: "What safety protocols are followed on high-altitude treks?",
+                a: "Every expedition carries medical emergency kits, portable oxygen cylinders, pulse oximeters, and hyperbaric safety equipment managed by certified Wilderness First Responder guide staff."
+              }
+            ].map((faq, idx) => {
+              const isOpen = expandedFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="bg-brand-warm-bg/40 border border-gray-150 rounded-2xl overflow-hidden shadow-xs transition duration-200"
+                >
+                  <button
+                    onClick={() => setExpandedFaq(isOpen ? null : idx)}
+                    className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-bold text-sm text-brand-dark-text hover:text-brand-forest transition"
+                  >
+                    <span className="flex items-center gap-3">
+                      <HelpCircle className="w-4 h-4 text-brand-dusk-orange shrink-0" />
+                      <span>{faq.q}</span>
+                    </span>
+                    <ChevronDown
+                      className={`w-4 h-4 text-gray-400 shrink-0 transition-transform duration-300 ${
+                        isOpen ? "rotate-180 text-brand-dusk-orange" : ""
+                      }`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 pb-5 pt-1 text-xs text-gray-600 leading-relaxed font-medium space-y-2 border-t border-gray-150/60 bg-white/60">
+                      <p>{faq.a}</p>
+                      {faq.link && (
+                        <Link
+                          href={faq.link}
+                          className="inline-block text-brand-forest font-bold hover:underline text-[11px] pt-1"
+                        >
+                          {faq.linkText}
+                        </Link>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* SECTION 8: INSTAGRAM FEED — Community/social layer */}
+      <section id="social-community" className="py-16 bg-brand-warm-card/25 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           <div className="space-y-2">
             <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">

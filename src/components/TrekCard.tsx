@@ -86,20 +86,20 @@ export default function TrekCard({ trek }: TrekCardProps) {
           </p>
         </div>
 
-        {/* Pricing & CTA */}
-        <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
-          <div>
-            <span className="text-[10px] text-gray-400 block font-medium uppercase tracking-wider">Starting Price</span>
-            <span className="text-xl font-extrabold text-brand-forest">
-              {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
-            </span>
-          </div>
-          
+        {/* Departure & Details Action Buttons */}
+        <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between gap-2.5 font-sans">
+          <Link
+            href={`/checkout?slug=${trek.slug}`}
+            className="flex-1 py-2.5 px-3 text-center text-xs font-extrabold text-brand-dusk-orange bg-brand-dusk-orange/10 hover:bg-brand-dusk-orange hover:text-white rounded-xl transition-all duration-200 border border-brand-dusk-orange/30 shadow-xs"
+          >
+            View Departure
+          </Link>
+
           <Link
             href={`/treks/${trek.slug}`}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-brand-forest/5 text-brand-forest group-hover:bg-brand-dusk group-hover:text-white transition-all duration-300"
+            className="flex-1 py-2.5 px-3 text-center text-xs font-extrabold text-white bg-brand-forest hover:bg-brand-forest-light rounded-xl transition-all duration-200 shadow-xs"
           >
-            <ArrowRight className="w-5 h-5" />
+            View Details
           </Link>
         </div>
       </div>

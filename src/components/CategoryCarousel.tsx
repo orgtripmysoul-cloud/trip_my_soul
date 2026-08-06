@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { Compass, Sparkles, Car, Users, Lightbulb, BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
+import { Compass, Sparkles, Car, Users, Lightbulb, BookOpen, ChevronLeft, ChevronRight, MapPin, Gem, GraduationCap, Tent } from "lucide-react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -19,40 +19,52 @@ interface CategoryCard {
 
 const CATEGORIES: CategoryCard[] = [
   {
-    label: "Trending Treks",
-    icon: Compass,
-    href: "/treks?filter=trending",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80",
+    label: "Explore South",
+    icon: MapPin,
+    href: "/treks?region=south",
+    image: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=500&q=80",
   },
   {
-    label: "Spiritual Yatra",
-    icon: Sparkles,
-    href: "/yatra",
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=500&q=80",
+    label: "Premium Trip",
+    icon: Gem,
+    href: "/premium-trips",
+    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=500&q=80",
   },
   {
-    label: "Cabs / Rentals",
-    icon: Car,
-    href: "/cabs",
-    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=500&q=80",
+    label: "Learning Program",
+    icon: GraduationCap,
+    href: "/learning-programs",
+    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=500&q=80",
   },
   {
-    label: "Family With Kids",
+    label: "Family with Kids",
     icon: Users,
     href: "/treks?filter=family",
     image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=500&q=80",
   },
   {
-    label: "Suggest Me a Trek",
+    label: "Summer Camp",
+    icon: Tent,
+    href: "/summer-camps",
+    image: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    label: "Car/Rentals",
+    icon: Car,
+    href: "/cabs",
+    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    label: "Spiritual Journey",
+    icon: Sparkles,
+    href: "/yatra",
+    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    label: "Suggest Me",
     icon: Lightbulb,
     href: "/suggest-a-trek",
     image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=80",
-  },
-  {
-    label: "Adventure Blog",
-    icon: BookOpen,
-    href: "/blogs",
-    image: "https://images.unsplash.com/photo-1486916856992-e4db22c8df33?auto=format&fit=crop&w=500&q=80",
   },
 ];
 

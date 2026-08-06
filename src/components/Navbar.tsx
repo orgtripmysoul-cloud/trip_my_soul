@@ -39,50 +39,37 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Trending", href: "/treks?filter=trending" },
-    { name: "Treks", href: "/treks" },
-    { name: "Yatra", href: "/yatra" },
-    { name: "Cabs", href: "/cabs" },
-    { name: "About", href: "/about-us" },
-    { name: "Blog", href: "/blogs" },
+    { name: "Careers", href: "/careers" },
+    { name: "Rent", href: "/rent" },
+    { name: "Contact Us", href: "/contact-us" },
+    { name: "My Profile", href: "/dashboard" },
+    { name: "All Treks", href: "/treks" },
+    { name: "All Trip", href: "/treks" },
+    { name: "Our Story", href: "/about-us" },
   ];
 
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+
   const drawerLinks = [
-    { name: "LOGIN", href: "/login" },
-    { name: "MY TREKS", href: "/dashboard" },
-    { name: "ARTICLE", href: "/blogs" },
-    { name: "TREK UPDATES", href: "/updates" },
-    { name: "PREMIUM TRIP", href: "/premium-trips" },
-    { name: "SCHOOL / COLLEGE", href: "/learning-programs" },
-    { name: "HIMALAYAN SUMMER CAMP", href: "/summer-camps" },
-    { name: "SUGGEST ME A TREK", href: "/suggest-a-trek" },
-    { name: "SHOP", href: "/store" },
-    { name: "HEAL HIMALA", href: "/heal-himala" },
-    { name: "RENT A GEAR", href: "/rent" },
-    { name: "CAREERS", href: "/careers" },
-    { name: "ABOUT US", href: "/about-us" },
-    { name: "CONTACT US", href: "/contact-us" },
-    { name: "DOWNLOAD BROCHURE", href: "#" },
+    { name: "Careers", href: "/careers" },
+    { name: "Rent", href: "/rent" },
+    { name: "Contact Us", href: "/contact-us" },
+    { name: "My Profile", href: "/dashboard" },
+    { name: "All Treks", href: "/treks" },
+    { name: "All Trip", href: "/treks" },
+    { name: "Our Story", href: "/about-us" },
   ];
 
   const getDrawerIcon = (name: string) => {
     const cls = "w-4 h-4 text-brand-dusk-orange shrink-0";
     switch (name) {
-      case "LOGIN": return <User className={cls} />;
-      case "MY TREKS": return <Compass className={cls} />;
-      case "ARTICLE": return <FileText className={cls} />;
-      case "TREK UPDATES": return <Activity className={cls} />;
-      case "PREMIUM TRIP": return <Gem className={cls} />;
-      case "SCHOOL / COLLEGE": return <GraduationCap className={cls} />;
-      case "HIMALAYAN SUMMER CAMP": return <Tent className={cls} />;
-      case "SUGGEST ME A TREK": return <HelpCircle className={cls} />;
-      case "SHOP": return <ShoppingBag className={cls} />;
-      case "HEAL HIMALA": return <Trees className={cls} />;
-      case "RENT A GEAR": return <ShoppingBag className={cls} />;
-      case "CAREERS": return <Briefcase className={cls} />;
-      case "ABOUT US": return <Compass className={cls} />;
-      case "CONTACT US": return <Phone className={cls} />;
-      case "DOWNLOAD BROCHURE": return <Download className={cls} />;
+      case "Careers": return <Briefcase className={cls} />;
+      case "Rent": return <ShoppingBag className={cls} />;
+      case "Contact Us": return <Phone className={cls} />;
+      case "My Profile": return <User className={cls} />;
+      case "All Treks": return <Compass className={cls} />;
+      case "All Trip": return <Trees className={cls} />;
+      case "Our Story": return <FileText className={cls} />;
       default: return <Compass className={cls} />;
     }
   };
@@ -210,14 +197,73 @@ export default function Navbar() {
               <span>+91 81786 13438</span>
             </a>
 
-            {/* Account / My Trips */}
-            <Link
-              href="/login"
-              className="flex items-center space-x-1.5 text-xs font-bold bg-brand-dusk hover:bg-brand-dusk-orange text-white px-3.5 py-1.5 rounded-full shadow-md transition transform hover:-translate-y-0.5 whitespace-nowrap"
-            >
-              <User className="w-3.5 h-3.5" />
-              <span>My Trips</span>
-            </Link>
+            {/* Account / Profile Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
+                onBlur={() => setTimeout(() => setIsProfileMenuOpen(false), 200)}
+                className="flex items-center space-x-1.5 text-xs font-bold bg-brand-dusk hover:bg-brand-dusk-orange text-white px-3.5 py-1.5 rounded-full shadow-md transition transform hover:-translate-y-0.5 whitespace-nowrap"
+              >
+                <User className="w-3.5 h-3.5" />
+                <span>My Trips & Profile</span>
+                <ChevronRight className={`w-3 h-3 transition-transform ${isProfileMenuOpen ? "rotate-90" : ""}`} />
+              </button>
+
+              {/* Profile Dropdown Menu */}
+              {isProfileMenuOpen && (
+                <div className="absolute top-full right-0 mt-2 w-56 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 text-white font-sans text-xs p-2 space-y-1 animate-fade-in">
+                  <Link
+                    href="/dashboard"
+                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold"
+                  >
+                    <User className="w-4 h-4 text-brand-dusk-orange" />
+                    <span>My Profile & Bookings</span>
+                  </Link>
+                  <Link
+                    href="/treks"
+                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold"
+                  >
+                    <Compass className="w-4 h-4 text-brand-dusk-orange" />
+                    <span>All Treks</span>
+                  </Link>
+                  <Link
+                    href="/treks"
+                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold"
+                  >
+                    <Trees className="w-4 h-4 text-brand-dusk-orange" />
+                    <span>All Trips</span>
+                  </Link>
+                  <Link
+                    href="/about-us"
+                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold"
+                  >
+                    <FileText className="w-4 h-4 text-brand-dusk-orange" />
+                    <span>Our Story</span>
+                  </Link>
+                  <Link
+                    href="/rent"
+                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold"
+                  >
+                    <ShoppingBag className="w-4 h-4 text-brand-dusk-orange" />
+                    <span>Rent Gear</span>
+                  </Link>
+                  <Link
+                    href="/careers"
+                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold"
+                  >
+                    <Briefcase className="w-4 h-4 text-brand-dusk-orange" />
+                    <span>Careers</span>
+                  </Link>
+                  <Link
+                    href="/contact-us"
+                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold border-t border-white/10 pt-2"
+                  >
+                    <Phone className="w-4 h-4 text-brand-dusk-orange" />
+                    <span>Contact Us</span>
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Mobile menu button */}
