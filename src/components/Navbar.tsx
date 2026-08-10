@@ -267,24 +267,24 @@ export default function Navbar() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex md:hidden items-center space-x-2">
+          <div className="flex md:hidden items-center space-x-1.5">
             <button
               onClick={() => setIsChooseTrekOpen(true)}
-              className="flex items-center space-x-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-brand-dusk text-white"
+              className="flex items-center space-x-1.5 text-xs font-bold px-3 py-2.5 rounded-full bg-brand-dusk text-white min-h-[44px]"
             >
-              <Compass className="w-3 h-3 text-brand-dusk-orange" />
+              <Compass className="w-4 h-4 text-brand-dusk-orange" />
               <span>Choose</span>
             </button>
             <Link
               href="/login"
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition text-white"
+              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition text-white min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="User account"
             >
               <User className="w-5 h-5" />
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition text-white"
+              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition text-white min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -317,7 +317,7 @@ export default function Navbar() {
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-1 rounded-full bg-white/10 hover:bg-white/20 transition"
+              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition min-w-[44px] min-h-[44px] flex items-center justify-center"
             >
               <X className="w-6 h-6" />
             </button>

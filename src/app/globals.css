@@ -28,11 +28,31 @@
   --font-serif: 'Playfair Display', serif;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--brand-warm-bg);
   color: var(--brand-dark-text);
   font-family: 'Outfit', sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+/* Safe-area helpers for notched phones & bottom sticky bars */
+.safe-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+}
+
+.pb-mobile-nav {
+  padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 1024px) {
+  .pb-mobile-nav {
+    padding-bottom: 0;
+  }
 }
 
 /* Glassmorphism helpers */
@@ -67,6 +87,20 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Horizontal scroll with touch momentum */
+.scroll-touch {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+/* Fade hint on horizontally scrollable areas (mobile) */
+@media (max-width: 767px) {
+  .scroll-fade-x {
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  }
 }
 
 /* Dayara bugyal visual effects */

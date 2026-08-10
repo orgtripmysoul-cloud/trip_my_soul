@@ -34,7 +34,7 @@ export default function StoreCatalogPage() {
   const cartTotal = Object.values(cart).reduce((a, b) => a + b, 0);
 
   return (
-    <div className="min-h-screen bg-brand-warm-bg py-12 font-sans">
+    <div className="min-h-screen bg-brand-warm-bg py-8 sm:py-12 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Banner */}
@@ -54,7 +54,7 @@ export default function StoreCatalogPage() {
         </div>
 
         {/* Category Pill Filters */}
-        <div className="flex overflow-x-auto no-scrollbar gap-2 whitespace-nowrap pb-1">
+        <div className="flex overflow-x-auto scroll-touch no-scrollbar gap-2 whitespace-nowrap pb-1 -mx-4 px-4 sm:mx-0 sm:px-0">
           {["All", "Apparel", "Hardware", "Footwear", "Bags", "Accessories"].map((cat) => (
             <button
               key={cat}
@@ -94,7 +94,7 @@ export default function StoreCatalogPage() {
                 <div className="p-5 space-y-4 flex-grow flex flex-col justify-between">
                   <div className="space-y-1">
                     <div className="flex justify-between items-center">
-                      <span className="text-xs font-bold text-brand-dark-text leading-snug truncate max-w-[200px] block">{p.name}</span>
+                      <span className="text-xs font-bold text-brand-dark-text leading-snug line-clamp-2 flex-1 min-w-0">{p.name}</span>
                       <div className="flex items-center gap-0.5 text-amber-400 shrink-0 text-[10px] font-bold">
                         <Star className="w-3.5 h-3.5 fill-current" />
                         <span>{p.rating}</span>
@@ -113,7 +113,7 @@ export default function StoreCatalogPage() {
 
                     <button
                       onClick={() => handleAddToCart(p.id)}
-                      className={`px-4.5 py-2 rounded-full text-[10px] font-bold shadow-xs transition ${
+                      className={`px-4 py-2.5 rounded-full text-xs font-bold shadow-xs transition min-h-[44px] shrink-0 ${
                         qty > 0
                           ? "bg-green-600 text-white hover:bg-green-700"
                           : "bg-brand-forest text-white hover:bg-brand-forest-light"

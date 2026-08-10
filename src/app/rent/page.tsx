@@ -87,10 +87,10 @@ export default function RentGearPage() {
         </div>
 
         {/* Content Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
           
           {/* Rent Catalog list */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-4 order-last lg:order-first">
             <h2 className="text-base font-extrabold text-brand-dark-text font-serif pl-1">Equipment Catalog</h2>
             
             <div className="space-y-4">
@@ -155,8 +155,8 @@ export default function RentGearPage() {
             </div>
           </div>
 
-          {/* Rental Cart Widget */}
-          <div className="space-y-6">
+          {/* Rental Cart Widget — shown first on mobile */}
+          <div className="space-y-6 order-first lg:order-last">
             <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-md space-y-6">
               <h3 className="text-sm font-extrabold text-brand-dark-text font-serif border-b border-gray-100 pb-3 flex items-center gap-2">
                 <ShoppingBag className="w-4.5 h-4.5 text-brand-dusk-orange" />

@@ -7,7 +7,7 @@ import {
   MapPin, Calendar, Compass, ShieldAlert, BadgeCheck, X, Activity, Check, AlertCircle,
   TrendingUp, Globe, Utensils, Train, Plane, Home, ShieldCheck, Heart, Share2, Phone,
   MessageSquare, ChevronDown, Download, AlertTriangle, HelpCircle, Sparkles,
-  ClipboardList, Map, Bell, Maximize2, Star, Play, ArrowRight, BookOpen
+  ClipboardList, Map, Bell, Maximize2, Star, Play, ArrowRight, BookOpen, MoreHorizontal
 } from "lucide-react";
 import { TREKS } from "@/data/db";
 
@@ -51,6 +51,7 @@ export default function TrekDetailPage() {
   const [activeTabId, setActiveTabId] = useState("overview");
   const [wishlistSaved, setWishlistSaved] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
+  const [mobileFabOpen, setMobileFabOpen] = useState(false);
   const [selectedBatch, setSelectedBatch] = useState<string | null>(null);
   const [isBooked, setIsBooked] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
@@ -254,7 +255,7 @@ export default function TrekDetailPage() {
   }, [rawBatchData, selectedMonthFilter, filterWomenOnly, filterSeniorOnly]);
 
   return (
-    <div className="bg-brand-warm-bg relative min-h-screen font-sans">
+    <div className="bg-brand-warm-bg relative min-h-screen font-sans pb-mobile-nav lg:pb-0">
       {/* Hero Banner Section */}
       <div className="relative h-[40vh] md:h-[45vh] w-full bg-brand-forest overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -283,14 +284,14 @@ export default function TrekDetailPage() {
 
       {/* STICKY SECTION TAB BAR */}
       <div className="sticky top-[72px] md:top-[80px] z-30 w-full bg-brand-forest border-y border-white/10 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 overflow-x-auto no-scrollbar whitespace-nowrap flex gap-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 overflow-x-auto scroll-touch scroll-fade-x no-scrollbar whitespace-nowrap flex gap-2">
           {TABS.map((tab) => {
             const isActive = activeTabId === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab.id)}
-                className={`text-xs px-4 py-2 rounded-full font-bold uppercase tracking-wider transition-all duration-200 shrink-0 ${
+                className={`text-[11px] sm:text-xs px-3.5 sm:px-4 py-2.5 sm:py-2 rounded-full font-bold uppercase tracking-wider transition-all duration-200 shrink-0 min-h-[40px] ${
                   isActive
                     ? "bg-white text-brand-dark-text shadow-sm"
                     : "border border-white/10 text-white hover:bg-white/10"
@@ -303,8 +304,71 @@ export default function TrekDetailPage() {
         </div>
       </div>
 
-      {/* FLOATING ACTION BUTTONS (Right Viewport Stack) */}
-      <div className="fixed right-4 bottom-28 md:bottom-32 z-40 flex flex-col gap-3">
+      {/* FLOATING ACTION BUTTONS — collapsed on mobile, full stack on desktop */}
+      <div className="fixed right-3 sm:right-4 bottom-[5.5rem] lg:bottom-32 z-40 flex flex-col items-end gap-3">
+        {/* Mobile: expandable action menu */}
+        <div className="lg:hidden flex flex-col items-end gap-2">
+          {mobileFabOpen && (
+            <div className="flex flex-col gap-2 animate-fade-in">
+              <button
+                onClick={() => { setWishlistSaved(!wishlistSaved); }}
+                className={`p-3 rounded-full shadow-lg border transition-all min-w-[44px] min-h-[44px] flex items-center justify-center ${
+                  wishlistSaved ? "bg-pink-550 border-pink-550 text-white" : "bg-pink-50 border-pink-200 text-pink-550"
+                }`}
+                aria-label="Save to Wishlist"
+              >
+                <Heart className={`w-5 h-5 ${wishlistSaved ? "fill-current" : ""}`} />
+              </button>
+              <button
+                onClick={handleShare}
+                className="p-3 rounded-full bg-blue-50 border border-blue-200 text-blue-600 shadow-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label="Share page link"
+              >
+                <Share2 className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => { setIsBrochureOpen(true); setMobileFabOpen(false); }}
+                className="p-3 rounded-full bg-[#0B2545] border border-white/20 text-white shadow-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label="Download brochure"
+              >
+                <Download className="w-5 h-5 text-brand-dusk-orange" />
+              </button>
+              <button
+                onClick={() => { setIsFitnessModalOpen(true); setMobileFabOpen(false); }}
+                className="p-3 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 shadow-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label="Fitness calculator"
+              >
+                <Activity className="w-5 h-5" />
+              </button>
+              <a
+                href="tel:+918178613438"
+                className="p-3 rounded-full bg-sky-50 border border-sky-200 text-sky-600 shadow-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label="Call support"
+              >
+                <Phone className="w-5 h-5" />
+              </a>
+              <a
+                href={`https://wa.me/918178613438?text=Hi%20TripMySoul,%20I'm%20interested%20in%20booking%20the%20${encodeURIComponent(trek.name)}.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-green-50 border border-green-200 text-green-600 shadow-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label="WhatsApp Contact"
+              >
+                <MessageSquare className="w-5 h-5 fill-current" />
+              </a>
+            </div>
+          )}
+          <button
+            onClick={() => setMobileFabOpen(!mobileFabOpen)}
+            className="p-3.5 rounded-full bg-[#0B2545] border border-white/20 text-white shadow-xl min-w-[48px] min-h-[48px] flex items-center justify-center"
+            aria-label="Quick actions"
+          >
+            {mobileFabOpen ? <X className="w-5 h-5" /> : <MoreHorizontal className="w-5 h-5" />}
+          </button>
+        </div>
+
+        {/* Desktop: full FAB stack */}
+        <div className="hidden lg:flex flex-col gap-3">
         <button
           onClick={() => setWishlistSaved(!wishlistSaved)}
           className={`p-3 rounded-full shadow-lg border transition-all hover:scale-105 active:scale-95 ${
@@ -365,6 +429,7 @@ export default function TrekDetailPage() {
         >
           <MessageSquare className="w-5 h-5 fill-current" />
         </a>
+        </div>
       </div>
 
       {/* Main Content Layout */}
@@ -1392,9 +1457,25 @@ export default function TrekDetailPage() {
         </div>
       )}
 
+      {/* Mobile Sticky Booking Bar */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] px-4 py-3 safe-bottom flex items-center gap-3">
+        <div className="shrink-0">
+          <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wide block">From</span>
+          <span className="text-lg font-extrabold text-brand-forest leading-none">
+            {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
+          </span>
+        </div>
+        <button
+          onClick={handleBookNow}
+          className="flex-1 bg-brand-forest hover:bg-brand-forest-light text-white py-3.5 rounded-full font-bold text-sm shadow-lg transition min-h-[48px]"
+        >
+          {selectedBatch ? "Book Now" : "Choose Dates"}
+        </button>
+      </div>
+
       {/* Sticky Bottom Notification Bar */}
       {showNotifyBar && (
-        <div className="fixed bottom-4 right-4 z-40 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 text-white rounded-2xl p-3 shadow-2xl flex items-center gap-3.5 max-w-sm animate-fade-in font-sans">
+        <div className="fixed bottom-[4.75rem] left-3 right-3 lg:bottom-4 lg:right-4 lg:left-auto z-40 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 text-white rounded-2xl p-3.5 shadow-2xl flex items-center gap-3 lg:max-w-sm animate-fade-in font-sans">
           <div className="w-8 h-8 rounded-full bg-brand-dusk-orange/10 border border-brand-dusk-orange/20 text-brand-dusk-orange flex items-center justify-center shrink-0">
             <Bell className="w-4 h-4" />
           </div>
@@ -1408,13 +1489,13 @@ export default function TrekDetailPage() {
               <span className="text-[10px] font-extrabold uppercase tracking-wide text-brand-dusk-orange block leading-none">
                 Notify Me of Future Dates
               </span>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2 flex-1 min-w-0">
                 <input
                   type="email"
                   placeholder="your-email@mail.com"
                   value={notifyEmail}
                   onChange={(e) => setNotifyEmail(e.target.value)}
-                  className="bg-white/5 border border-white/10 text-[9px] px-2 py-1 rounded focus:outline-none w-28 text-white"
+                  className="bg-white/5 border border-white/10 text-xs px-3 py-2 rounded-lg focus:outline-none flex-1 min-w-0 text-white"
                 />
                 <button
                   onClick={() => {
@@ -1427,7 +1508,7 @@ export default function TrekDetailPage() {
                       }, 2500);
                     }
                   }}
-                  className="bg-brand-dusk-orange hover:bg-brand-dusk-orange/90 text-white text-[9px] font-bold px-2 py-1 rounded transition"
+                  className="bg-brand-dusk-orange hover:bg-brand-dusk-orange/90 text-white text-xs font-bold px-4 py-2 rounded-lg transition shrink-0 min-h-[40px]"
                 >
                   Join
                 </button>
@@ -1696,8 +1777,8 @@ function ItineraryViewer({ itinerary }: ItineraryViewerProps) {
             </span>
             
             {/* Custom SVG line chart */}
-            <div className="relative w-full overflow-x-auto no-scrollbar">
-              <svg className="mx-auto w-[460px] h-[150px] overflow-visible" viewBox="0 0 460 150">
+            <div className="relative w-full overflow-x-auto scroll-touch">
+              <svg className="w-full max-w-full h-auto min-h-[150px] overflow-visible" viewBox="0 0 460 150" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   {/* Blue Area Gradient */}
                   <linearGradient id="area-grad" x1="0" y1="0" x2="0" y2="1">

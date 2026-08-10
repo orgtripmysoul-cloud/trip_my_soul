@@ -213,10 +213,10 @@ function CheckoutContent() {
         </div>
 
         {/* Main Two-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+
           {/* Left Column: Participant Details & Add-Ons */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-6 order-last lg:order-first">
             
             {/* 1. Add Co-Participants Box */}
             <div className="bg-white border border-gray-150 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
@@ -225,7 +225,7 @@ function CheckoutContent() {
                 <h2 className="text-lg font-bold text-brand-dark-text">Add Participants</h2>
               </div>
 
-              <form onSubmit={handleAddCoParticipant} className="flex gap-2">
+              <form onSubmit={handleAddCoParticipant} className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="email"
                   placeholder="Enter email id to add your co-participant"
@@ -376,9 +376,9 @@ function CheckoutContent() {
 
           </div>
 
-          {/* Right Column: Payment Summary Card */}
-          <div className="space-y-6">
-            <div className="bg-white border border-gray-200 rounded-3xl p-6 sm:p-8 shadow-md space-y-5 sticky top-28">
+          {/* Right Column: Payment Summary Card — shown first on mobile */}
+          <div className="space-y-6 order-first lg:order-last">
+            <div className="bg-white border border-gray-200 rounded-3xl p-6 sm:p-8 shadow-md space-y-5 lg:sticky lg:top-28">
               <h2 className="text-xl font-bold font-serif text-brand-dark-text flex items-center gap-2">
                 <span className="text-[#E84855] font-black">₹</span>
                 <span>Payment Summary</span>

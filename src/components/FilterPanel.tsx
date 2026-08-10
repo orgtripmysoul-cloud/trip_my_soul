@@ -164,10 +164,10 @@ export default function FilterPanel({ selectedFilters, onFilterChange, onReset }
       </aside>
 
       {/* Mobile Floating Button */}
-      <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-30">
+      <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-30 safe-bottom">
         <button
           onClick={() => setIsOpenMobile(true)}
-          className="flex items-center gap-2 bg-brand-forest hover:bg-brand-forest-light text-white font-bold px-6 py-3.5 rounded-full shadow-2xl transition duration-200 text-sm"
+          className="flex items-center gap-2 bg-brand-forest hover:bg-brand-forest-light text-white font-bold px-6 py-3.5 rounded-full shadow-2xl transition duration-200 text-sm min-h-[48px]"
         >
           <Filter className="w-4 h-4" />
           <span>Filters & Sort</span>

@@ -28,8 +28,17 @@ export default function CompareTreksPage() {
     setSelectedSlugs(selectedSlugs.filter((s) => s !== slug));
   };
 
+  const comparisonRows = [
+    { label: "Duration", getValue: (t: Trek) => `${t.days} Days / ${t.nights} Nights` },
+    { label: "Difficulty Grade", getValue: (t: Trek) => t.difficulty, isBadge: true },
+    { label: "Basecamp Start", getValue: (t: Trek) => t.startLocation || "Dehradun / Basecamp" },
+    { label: "Active Months", getValue: (t: Trek) => t.months.join(", ") },
+    { label: "Peak Altitude", getValue: (t: Trek) => t.maxAltitude || "12,500 ft+" },
+    { label: "Mountaineering Guide", getValue: () => "Certified", isCheck: true },
+  ];
+
   return (
-    <div className="min-h-screen bg-brand-warm-bg pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 font-sans">
+    <div className="min-h-screen bg-brand-warm-bg pt-20 sm:pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6 sm:space-y-8 font-sans">
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-gray-200 pb-6">
         <div>
@@ -62,9 +71,58 @@ export default function CompareTreksPage() {
         )}
       </div>
 
-      {/* Comparison Matrix Table */}
+      {/* Comparison Matrix */}
       {selectedTreks.length > 0 ? (
-        <div className="overflow-x-auto no-scrollbar bg-white rounded-3xl border border-gray-150 shadow-md">
+        <>
+          {/* Mobile: stacked trek cards */}
+          <div className="md:hidden space-y-4">
+            {selectedTreks.map((trek) => (
+              <div key={trek.slug} className="bg-white rounded-3xl border border-gray-150 shadow-md overflow-hidden">
+                <div className="p-4 border-b border-gray-100 relative">
+                  <button
+                    onClick={() => removeTrek(trek.slug)}
+                    className="absolute top-3 right-3 p-2 rounded-full text-gray-400 hover:text-red-500 hover:bg-gray-100 transition min-w-[40px] min-h-[40px] flex items-center justify-center"
+                    title="Remove from comparison"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                  <span className="text-[10px] font-extrabold uppercase text-brand-dusk-orange">{trek.region}</span>
+                  <h3 className="text-base font-bold text-brand-dark-text pr-10">{trek.name}</h3>
+                  <span className="text-xl font-extrabold text-brand-forest block mt-1">
+                    {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
+                  </span>
+                </div>
+                <div className="divide-y divide-gray-100 text-xs">
+                  {comparisonRows.map((row) => (
+                    <div key={row.label} className="flex justify-between gap-4 px-4 py-3">
+                      <span className="text-gray-500 font-semibold shrink-0">{row.label}</span>
+                      {row.isCheck ? (
+                        <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                      ) : row.isBadge ? (
+                        <span className="px-2.5 py-1 rounded-full bg-brand-forest/10 text-brand-forest text-[11px] font-bold text-right">
+                          {row.getValue(trek)}
+                        </span>
+                      ) : (
+                        <span className="font-semibold text-brand-dark-text text-right">{row.getValue(trek)}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <div className="p-4">
+                  <Link
+                    href={`/treks/${trek.slug}`}
+                    className="flex items-center justify-center gap-1.5 w-full py-3 rounded-full bg-[#0B2545] hover:bg-brand-dusk-orange text-white text-xs font-bold transition shadow-xs min-h-[44px]"
+                  >
+                    <span>Explore Trek</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: comparison table */}
+          <div className="hidden md:block overflow-x-auto scroll-touch bg-white rounded-3xl border border-gray-150 shadow-md">
           <table className="w-full text-left border-collapse min-w-[700px]">
             <thead>
               <tr className="border-b border-gray-150 bg-gray-50/50">
@@ -176,6 +234,7 @@ export default function CompareTreksPage() {
             </tbody>
           </table>
         </div>
+        </>
       ) : (
         <div className="text-center py-20 bg-white border border-gray-150 rounded-3xl p-8 space-y-4 max-w-md mx-auto">
           <Compass className="w-12 h-12 text-brand-dusk-orange mx-auto" />

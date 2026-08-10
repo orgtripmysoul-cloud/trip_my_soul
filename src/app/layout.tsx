@@ -3,6 +3,12 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   title: "Trekking in India | Best Adventure Travel & Holiday Packages | TripMySoul",
   description: "Explore the best high-altitude treks and spiritual yatras in India with TripMySoul. Affordable holiday packages, expert local guides, and scenic trail routes in Uttarakhand, Himachal, and Kashmir.",
@@ -25,7 +31,7 @@ export default function RootLayout({
     <html lang="en" className="h-full scroll-smooth">
       <body className="min-h-full flex flex-col bg-brand-warm-bg font-sans antialiased text-brand-dark-text">
         <Navbar />
-        <main className="flex-grow pt-[72px] md:pt-[80px]">{children}</main>
+        <main className="flex-grow pt-[72px] md:pt-[80px] min-w-0 overflow-x-clip">{children}</main>
         <Footer />
       </body>
     </html>

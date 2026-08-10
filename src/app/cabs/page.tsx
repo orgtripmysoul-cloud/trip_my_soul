@@ -54,14 +54,14 @@ export default function CabsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-24 sm:pt-16 sm:pb-32 flex flex-col lg:flex-row gap-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-24 sm:pt-16 sm:pb-32 flex flex-col lg:flex-row gap-8 lg:gap-12">
       {/* Left Column (Content & Fleet list) */}
-      <div className="w-full lg:w-2/3 space-y-10">
+      <div className="w-full lg:w-2/3 space-y-8 sm:space-y-10 order-last lg:order-first">
         <div className="space-y-4">
           <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk">
             Himalayan Transport
           </span>
-          <h1 className="text-4xl font-extrabold font-serif text-brand-dark-text leading-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold font-serif text-brand-dark-text leading-tight">
             Reliable Cab & Transport Bookings
           </h1>
           <p className="text-sm text-gray-500 leading-relaxed">
@@ -107,9 +107,9 @@ export default function CabsPage() {
         </div>
       </div>
 
-      {/* Right Column (Booking Form Card) */}
-      <div className="w-full lg:w-1/3">
-        <div className="glass-card rounded-3xl p-6 md:p-8 border border-white/30 shadow-xl sticky top-28 space-y-6 bg-white/60">
+      {/* Right Column (Booking Form Card) — shown first on mobile */}
+      <div className="w-full lg:w-1/3 order-first lg:order-last">
+        <div className="glass-card rounded-3xl p-6 md:p-8 border border-white/30 shadow-xl lg:sticky lg:top-28 space-y-6 bg-white/60">
           <div className="flex items-center gap-2 pb-4 border-b border-gray-100">
             <Car className="w-6 h-6 text-brand-dusk-orange shrink-0" />
             <h2 className="text-lg font-bold text-brand-dark-text font-serif">Quick Cab Query</h2>

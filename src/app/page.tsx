@@ -63,7 +63,7 @@ export default function Home() {
   const [seasonPriceFilter, setSeasonPriceFilter] = useState("All");
 
   // Tab states for Social Proof & Stay Informed sections
-  const [activeTrustTab, setActiveTrustTab] = useState<"reviews" | "youtube" | "awards" | "trusted">("reviews");
+  const [activeTrustTab, setActiveTrustTab] = useState<"reviews" | "youtube" | "awards" | "trusted">("youtube");
   const [activeInformedTab, setActiveInformedTab] = useState<"updates" | "articles" | "videos">("updates");
 
   // Filtered Top Treks for Section 4
@@ -291,10 +291,16 @@ export default function Home() {
   ];
 
   const trustedByData = [
-    { name: "IMF Affiliated", desc: "Indian Mountaineering Foundation", icon: Award },
-    { name: "ATOAI Member", desc: "Adventure Tour Operators Assn of India", icon: Shield },
-    { name: "Uttarakhand Tourism", desc: "State Registered Adventure Operator", icon: CheckCircle },
-    { name: "MSME Certified", desc: "Ministry of Micro, Small & Medium Enterprises", icon: Award }
+    { name: "NIDHI+", desc: "National Integrated Database of Hospitality Industry", image: "/trusted/nidhi_plus.png" },
+    { name: "Indian Army", desc: "Indian Armed Forces", image: "/trusted/indian_army.png" },
+    { name: "IIT Kharagpur", desc: "Indian Institute of Technology Kharagpur", image: "/trusted/iit_kharagpur.png" },
+    { name: "IMF", desc: "Indian Mountaineering Foundation", image: "/trusted/imf.png" },
+    { name: "The Doon School", desc: "The Doon School", image: "/trusted/doon_school.png" },
+    { name: "Uttarakhand Tourism", desc: "State Registered Adventure Operator", image: "/trusted/uttarakhand_tourism.png" },
+    { name: "Startup India", desc: "Government of India Initiative", image: "/trusted/startup_india.png" },
+    { name: "ATOAI", desc: "Adventure Tour Operators Association of India", image: "/trusted/atoai.png" },
+    { name: "MSME", desc: "Micro, Small & Medium Enterprises", image: "/trusted/msme.png" },
+    { name: "Ministry of Tourism", desc: "Government of India", image: "/trusted/ministry_tourism.png" },
   ];
 
   const latestUpdatesData = [
@@ -375,7 +381,7 @@ export default function Home() {
   return (
     <div className="w-full relative bg-brand-warm-bg overflow-x-hidden">
       {/* SECTION 1: HERO — Background Slideshow + Google Reviews Widget */}
-      <section className="relative h-[85vh] md:h-[90vh] w-full flex items-center justify-center overflow-hidden bg-[#0B2545]">
+      <section className="relative min-h-[70vh] sm:min-h-[80vh] md:h-[90vh] w-full flex items-center justify-center overflow-hidden bg-[#0B2545]">
         {/* Auto-playing Photo Slideshow Background */}
         <div className="absolute inset-0 z-0">
           {HERO_IMAGES.map((imgUrl, idx) => (
@@ -397,7 +403,7 @@ export default function Home() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white space-y-6 md:space-y-8 mt-10">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center text-white space-y-4 sm:space-y-6 md:space-y-8 py-8 sm:py-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -407,7 +413,7 @@ export default function Home() {
             <span className="text-xs md:text-sm font-extrabold uppercase tracking-widest text-brand-dusk-orange bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 inline-block">
               Himalayan Wilderness Expeditions
             </span>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold font-serif leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold font-serif leading-tight tracking-tight">
               Where Every Journey <br />
               <span className="text-brand-dusk-orange font-normal italic">Heals the Soul</span>
             </h1>
@@ -654,8 +660,8 @@ export default function Home() {
       </section>
 
       {/* SECTION 5: "WHY CHOOSE TRIPMYSOUL?" — Placed directly after Himalayan Regions */}
-      <section id="why-choose-us" className="py-16 bg-white border-t border-gray-150">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section id="why-choose-us" className="py-10 sm:py-16 bg-white border-t border-gray-150">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
           
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -715,10 +721,10 @@ export default function Home() {
           {/* REVIEWS & TRUST TABS */}
           <div id="reviews" className="space-y-6 pt-4 border-t border-gray-150">
             {/* Tab Selection Pills */}
-            <div className="flex justify-center overflow-x-auto no-scrollbar gap-2.5 whitespace-nowrap pb-1">
+            <div className="flex justify-start sm:justify-center overflow-x-auto no-scrollbar gap-2 sm:gap-2.5 whitespace-nowrap pb-1 -mx-4 px-4 sm:mx-0 sm:px-0">
               <button
                 onClick={() => setActiveTrustTab("youtube")}
-                className={`flex items-center gap-2 text-xs px-5 py-2.5 rounded-full border font-bold transition-all ${
+                className={`flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full border font-bold transition-all shrink-0 ${
                   activeTrustTab === "youtube"
                     ? "bg-[#0B2545] text-white border-[#0B2545] shadow-md"
                     : "bg-white text-gray-700 border-gray-250 hover:border-[#0B2545]/40"
@@ -730,7 +736,7 @@ export default function Home() {
 
               <button
                 onClick={() => setActiveTrustTab("awards")}
-                className={`flex items-center gap-2 text-xs px-5 py-2.5 rounded-full border font-bold transition-all ${
+                className={`flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full border font-bold transition-all shrink-0 ${
                   activeTrustTab === "awards"
                     ? "bg-[#0B2545] text-white border-[#0B2545] shadow-md"
                     : "bg-white text-gray-700 border-gray-250 hover:border-[#0B2545]/40"
@@ -742,7 +748,7 @@ export default function Home() {
 
               <button
                 onClick={() => setActiveTrustTab("trusted")}
-                className={`flex items-center gap-2 text-xs px-5 py-2.5 rounded-full border font-bold transition-all ${
+                className={`flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full border font-bold transition-all shrink-0 ${
                   activeTrustTab === "trusted"
                     ? "bg-[#0B2545] text-white border-[#0B2545] shadow-md"
                     : "bg-white text-gray-700 border-gray-250 hover:border-[#0B2545]/40"
@@ -799,14 +805,31 @@ export default function Home() {
 
             {/* TAB 3: TRUSTED BY */}
             {activeTrustTab === "trusted" && (
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in">
-                {trustedByData.map((item, idx) => (
-                  <div key={idx} className="bg-white border border-gray-150 rounded-3xl p-6 text-center space-y-2 shadow-xs hover:shadow-md transition">
-                    <item.icon className="w-8 h-8 text-brand-forest mx-auto" />
-                    <span className="text-xs font-extrabold text-brand-dark-text block uppercase">{item.name}</span>
-                    <p className="text-[10px] text-gray-400 font-medium">{item.desc}</p>
-                  </div>
-                ))}
+              <div className="space-y-2 sm:space-y-3 animate-fade-in">
+                <p className="md:hidden text-[10px] text-center text-gray-400 font-semibold tracking-wide">
+                  Swipe to see all partners →
+                </p>
+                <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory md:snap-none -mx-4 px-4 md:mx-0 md:px-0 pb-1 touch-pan-x">
+                  {trustedByData.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="snap-start shrink-0 w-[42%] sm:w-[30%] md:w-auto md:shrink bg-white border border-gray-150 rounded-2xl md:rounded-3xl overflow-hidden shadow-xs hover:shadow-md transition text-center flex flex-col p-3 md:p-4 space-y-2 md:space-y-3"
+                    >
+                      <div className="aspect-[4/3] md:aspect-square rounded-xl md:rounded-2xl overflow-hidden bg-gray-50 flex items-center justify-center p-2 md:p-3">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
+                      </div>
+                      <div className="space-y-0.5 md:space-y-1 min-h-[2.25rem] md:min-h-0">
+                        <span className="text-[10px] md:text-xs font-extrabold text-brand-dark-text block leading-tight line-clamp-2 md:line-clamp-none">
+                          {item.name}
+                        </span>
+                        <p className="hidden sm:block text-[9px] md:text-[10px] text-gray-400 font-medium line-clamp-2">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>

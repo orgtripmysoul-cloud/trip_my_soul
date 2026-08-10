@@ -251,7 +251,7 @@ function TreksList() {
       </div>
 
       {/* Mobile scrollable quick filter pills */}
-      <div className="lg:hidden flex overflow-x-auto no-scrollbar gap-2 pb-4 mb-6 -mx-4 px-4 whitespace-nowrap">
+      <div className="lg:hidden flex overflow-x-auto scroll-touch no-scrollbar gap-2 pb-4 mb-6 -mx-4 px-4 whitespace-nowrap">
         {quickFilters.map((pill) => (
           <button
             key={pill.label}
