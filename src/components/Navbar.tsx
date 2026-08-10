@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, Compass, User, Phone, Search, FileText, Activity, Gem, GraduationCap, Tent, HelpCircle, ShoppingBag, Trees, Briefcase, Download, ChevronRight } from "lucide-react";
+import { Menu, X, Compass, User, Phone, Search, FileText, Trees, Briefcase, ChevronRight, ShoppingBag, Tent, Backpack } from "lucide-react";
 import { TREKS } from "@/data/db";
 
 export default function Navbar() {
@@ -38,27 +38,43 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
+  const navLinksBeforeTreks = [
     { name: "Careers", href: "/careers" },
     { name: "Rent", href: "/rent" },
     { name: "Contact Us", href: "/contact-us" },
     { name: "My Profile", href: "/dashboard" },
     { name: "All Treks", href: "/treks" },
     { name: "All Trip", href: "/treks" },
+  ];
+
+  const navLinksTripMiddle = [
+    { name: "Weekend Trips", href: "/weekend-trips" },
+    { name: "Backpacking Trips", href: "/backpacking-trips" },
+  ];
+
+  const navLinksAfterTreks = [
     { name: "Our Story", href: "/about-us" },
   ];
 
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
 
-  const drawerLinks = [
-    { name: "Careers", href: "/careers" },
-    { name: "Rent", href: "/rent" },
-    { name: "Contact Us", href: "/contact-us" },
-    { name: "My Profile", href: "/dashboard" },
-    { name: "All Treks", href: "/treks" },
-    { name: "All Trip", href: "/treks" },
-    { name: "Our Story", href: "/about-us" },
-  ];
+  const renderNavLink = (link: { name: string; href: string }) => {
+    const isActive =
+      pathname === link.href ||
+      (link.href !== "/treks" && pathname.startsWith(link.href));
+
+    return (
+      <Link
+        key={link.name}
+        href={link.href}
+        className={`text-xs xl:text-sm font-semibold tracking-wide whitespace-nowrap transition-colors hover:text-brand-dusk-orange ${
+          isActive ? "text-brand-dusk-orange border-b-2 border-brand-dusk-orange pb-0.5" : "text-gray-100"
+        }`}
+      >
+        {link.name}
+      </Link>
+    );
+  };
 
   const getDrawerIcon = (name: string) => {
     const cls = "w-4 h-4 text-brand-dusk-orange shrink-0";
@@ -69,6 +85,8 @@ export default function Navbar() {
       case "My Profile": return <User className={cls} />;
       case "All Treks": return <Compass className={cls} />;
       case "All Trip": return <Trees className={cls} />;
+      case "Weekend Trips": return <Tent className={cls} />;
+      case "Backpacking Trips": return <Backpack className={cls} />;
       case "Our Story": return <FileText className={cls} />;
       default: return <Compass className={cls} />;
     }
@@ -97,20 +115,9 @@ export default function Navbar() {
 
           {/* Desktop Nav Links */}
           <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7 shrink-0">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href || (link.href !== "/treks" && pathname.startsWith(link.href));
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`text-xs xl:text-sm font-semibold tracking-wide whitespace-nowrap transition-colors hover:text-brand-dusk-orange ${
-                    isActive ? "text-brand-dusk-orange border-b-2 border-brand-dusk-orange pb-0.5" : "text-gray-100"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
+            {navLinksBeforeTreks.map(renderNavLink)}
+            {navLinksTripMiddle.map(renderNavLink)}
+            {navLinksAfterTreks.map(renderNavLink)}
           </nav>
 
           {/* Right Action Bar (Search + Choose Trek + Contact + Account) */}
@@ -389,17 +396,46 @@ export default function Navbar() {
           <nav className="flex flex-col space-y-6">
             {/* Scrollable list of TTH-style links */}
             <div className="flex flex-col space-y-3 overflow-y-auto max-h-[50vh] pr-1.5 scrollbar-thin">
-              {drawerLinks.map((link) => (
+              {navLinksBeforeTreks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
                   className="flex items-center justify-between text-xs font-bold border-b border-white/5 pb-2.5 hover:text-brand-dusk-orange transition-colors group"
-                  onClick={() => {
-                    if (link.name === "DOWNLOAD BROCHURE") {
-                      alert("Brochure PDF package download triggered!");
-                    }
-                    setIsOpen(false);
-                  }}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <div className="flex items-center gap-3">
+                    {getDrawerIcon(link.name)}
+                    <span className="tracking-wide text-gray-200 group-hover:text-brand-dusk-orange transition-colors uppercase">
+                      {link.name}
+                    </span>
+                  </div>
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-500 group-hover:text-brand-dusk-orange transition-transform duration-200 group-hover:translate-x-0.5" />
+                </Link>
+              ))}
+
+              {navLinksTripMiddle.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="flex items-center justify-between text-xs font-bold border-b border-white/5 pb-2.5 hover:text-brand-dusk-orange transition-colors group"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <div className="flex items-center gap-3">
+                    {getDrawerIcon(link.name)}
+                    <span className="tracking-wide text-gray-200 group-hover:text-brand-dusk-orange transition-colors uppercase">
+                      {link.name}
+                    </span>
+                  </div>
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-500 group-hover:text-brand-dusk-orange transition-transform duration-200 group-hover:translate-x-0.5" />
+                </Link>
+              ))}
+
+              {navLinksAfterTreks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="flex items-center justify-between text-xs font-bold border-b border-white/5 pb-2.5 hover:text-brand-dusk-orange transition-colors group"
+                  onClick={() => setIsOpen(false)}
                 >
                   <div className="flex items-center gap-3">
                     {getDrawerIcon(link.name)}

@@ -13,13 +13,32 @@ export interface FilterState {
   upcomingOnly: boolean;
 }
 
+export interface FilterOptions {
+  region: string[];
+  difficulty: string[];
+  seasons: string[];
+  months: string[];
+  duration: string[];
+  themes: string[];
+}
+
+const DEFAULT_FILTER_OPTIONS: FilterOptions = {
+  region: ["Uttarakhand", "Himachal Pradesh", "Jammu & Kashmir"],
+  difficulty: ["Easy", "Easy-Moderate", "Moderate", "Moderate-Difficult", "Difficult", "Challenging"],
+  seasons: ["Spring", "Summer", "Monsoon", "Autumn", "Winter"],
+  months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  duration: ["Short (1-4 Days)", "Medium (5-7 Days)", "Long (8-10 Days)", "Expedition (11+ Days)"],
+  themes: ["Lakes", "Snow", "Meadow", "Glacier", "Waterfall", "Beginner", "Couples", "Family with Kids", "Off-Beat", "Summit a Peak"],
+};
+
 interface FilterPanelProps {
   selectedFilters: FilterState;
   onFilterChange: (filters: FilterState) => void;
   onReset: () => void;
+  filterOptions?: FilterOptions;
 }
 
-export default function FilterPanel({ selectedFilters, onFilterChange, onReset }: FilterPanelProps) {
+export default function FilterPanel({ selectedFilters, onFilterChange, onReset, filterOptions }: FilterPanelProps) {
   const [isOpenMobile, setIsOpenMobile] = useState(false);
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     region: true,
@@ -30,14 +49,7 @@ export default function FilterPanel({ selectedFilters, onFilterChange, onReset }
     months: false,
   });
 
-  const filterOptions = {
-    region: ["Uttarakhand", "Himachal Pradesh", "Jammu & Kashmir"],
-    difficulty: ["Easy", "Easy-Moderate", "Moderate", "Moderate-Difficult", "Difficult", "Challenging"],
-    seasons: ["Spring", "Summer", "Monsoon", "Autumn", "Winter"],
-    months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    duration: ["Short (1-4 Days)", "Medium (5-7 Days)", "Long (8-10 Days)", "Expedition (11+ Days)"],
-    themes: ["Lakes", "Snow", "Meadow", "Glacier", "Waterfall", "Beginner", "Couples", "Family with Kids", "Off-Beat", "Summit a Peak"],
-  };
+  const resolvedFilterOptions = filterOptions ?? DEFAULT_FILTER_OPTIONS;
 
   const toggleSection = (section: string) => {
     setExpandedSections((prev) => ({
@@ -75,7 +87,7 @@ export default function FilterPanel({ selectedFilters, onFilterChange, onReset }
     selectedFilters.upcomingOnly;
 
   const FilterSection = ({ title, category }: { title: string; category: keyof Omit<FilterState, "upcomingOnly"> }) => {
-    const list = filterOptions[category];
+    const list = resolvedFilterOptions[category];
     const isExpanded = expandedSections[category];
 
     return (

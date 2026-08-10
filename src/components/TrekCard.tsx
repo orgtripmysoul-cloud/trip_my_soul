@@ -8,9 +8,12 @@ import { Trek } from "@/data/db";
 
 interface TrekCardProps {
   trek: Trek;
+  detailsHref?: string;
+  imageUrl?: string;
+  description?: string;
 }
 
-export default function TrekCard({ trek }: TrekCardProps) {
+export default function TrekCard({ trek, detailsHref, imageUrl, description }: TrekCardProps) {
   // Determine color coding for difficulty badge
   const getDifficultyColor = (level: string) => {
     switch (level.toLowerCase()) {
@@ -47,7 +50,7 @@ export default function TrekCard({ trek }: TrekCardProps) {
       <div className="relative aspect-[4/3] overflow-hidden bg-gray-100 shrink-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={getPlaceholderImage(trek.slug)}
+          src={imageUrl ?? getPlaceholderImage(trek.slug)}
           alt={trek.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
           loading="lazy"
@@ -82,7 +85,7 @@ export default function TrekCard({ trek }: TrekCardProps) {
           </h3>
           
           <p className="text-xs text-gray-500 line-clamp-2">
-            Experience the scenic trails of {trek.startLocation || "the Himalayas"}. Prepare for breathtaking heights and beautiful valley stays.
+            {description ?? `Experience the scenic trails of ${trek.startLocation || "the Himalayas"}. Prepare for breathtaking heights and beautiful valley stays.`}
           </p>
         </div>
 
@@ -96,7 +99,7 @@ export default function TrekCard({ trek }: TrekCardProps) {
           </Link>
 
           <Link
-            href={`/treks/${trek.slug}`}
+            href={detailsHref ?? `/treks/${trek.slug}`}
             className="flex-1 py-2.5 px-3 text-center text-xs font-extrabold text-white bg-brand-forest hover:bg-brand-forest-light rounded-xl transition-all duration-200 shadow-xs"
           >
             View Details
