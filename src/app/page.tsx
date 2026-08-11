@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import {
   Compass, Shield, Leaf, ArrowRight, Star, MapPin, Award, Search, ArrowUpDown, SlidersHorizontal,
-  Users, Trophy, CheckCircle, FileText, Video, Activity, Play, ExternalLink, Filter, HelpCircle, ChevronDown
+  Users, Trophy, CheckCircle, FileText, Video, Activity, Play, Filter, HelpCircle, ChevronDown
 } from "lucide-react";
-import { motion } from "framer-motion";
 import { TREKS, WHY_CHOOSE_US, TRUST_STATS, REGIONS } from "@/data/db";
 import TrekCard from "@/components/TrekCard";
 import SwiperCarousel from "@/components/SwiperCarousel";
 import CategoryCarousel from "@/components/CategoryCarousel";
+import HeroSection from "@/components/HeroSection";
 import FilterPanel, { FilterState } from "@/components/FilterPanel";
 
 const initialFilters: FilterState = {
@@ -31,14 +31,6 @@ const SEASON_MAP: Record<string, string[]> = {
   "Autumn": ["Sep", "Oct", "Nov"]
 };
 
-const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1486873249359-2731bd6dafc7?auto=format&fit=crop&w=1920&q=80",
-];
-
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilters, setSelectedFilters] = useState<FilterState>(initialFilters);
@@ -46,16 +38,6 @@ export default function Home() {
 
   // FAQ accordion state
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
-
-  // Hero background slideshow timer state
-  const [heroSlideIndex, setHeroSlideIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setHeroSlideIndex((prev) => (prev + 1) % HERO_IMAGES.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
 
   // Section 4 "Top Treks This Season" filters state
   const [seasonRegionFilter, setSeasonRegionFilter] = useState("All");
@@ -381,111 +363,7 @@ export default function Home() {
   return (
     <div className="w-full relative bg-brand-warm-bg overflow-x-hidden">
       {/* SECTION 1: HERO — Background Slideshow + Google Reviews Widget */}
-      <section className="relative min-h-[70vh] sm:min-h-[80vh] md:h-[90vh] w-full flex items-center justify-center overflow-hidden bg-[#0B2545]">
-        {/* Auto-playing Photo Slideshow Background */}
-        <div className="absolute inset-0 z-0">
-          {HERO_IMAGES.map((imgUrl, idx) => (
-            <div
-              key={imgUrl}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                idx === heroSlideIndex ? "opacity-60 scale-105" : "opacity-0 scale-100"
-              }`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={imgUrl}
-                alt={`Himalayas Hero Background Slide ${idx + 1}`}
-                className="w-full h-full object-cover pointer-events-none"
-              />
-            </div>
-          ))}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0B2545] via-[#0B2545]/40 to-transparent" />
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center text-white space-y-4 sm:space-y-6 md:space-y-8 py-8 sm:py-0">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-4"
-          >
-            <span className="text-xs md:text-sm font-extrabold uppercase tracking-widest text-brand-dusk-orange bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 inline-block">
-              Himalayan Wilderness Expeditions
-            </span>
-            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold font-serif leading-tight tracking-tight">
-              Where Every Journey <br />
-              <span className="text-brand-dusk-orange font-normal italic">Heals the Soul</span>
-            </h1>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-sm sm:text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed"
-          >
-            Join curated, small-group treks across the towering ranges of Uttarakhand, Himachal, and Kashmir. Fully certified mountaineering guides, clean campsites, and rigorous safety standards.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="flex flex-col sm:flex-row justify-center items-center gap-4"
-          >
-            <Link
-              href="#explore-treks"
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-dusk hover:bg-brand-dusk-orange text-white font-bold shadow-lg transform hover:-translate-y-0.5 transition duration-200 flex items-center justify-center gap-2"
-            >
-              <span>View Upcoming Treks and Trips</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <a
-              href="https://www.instagram.com/tripmysoul.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold backdrop-blur-md border border-white/20 transition duration-200 flex items-center justify-center gap-2"
-            >
-              <ExternalLink className="w-5 h-5 text-brand-dusk-orange" />
-              <span>View Social Media</span>
-            </a>
-          </motion.div>
-
-          {/* Hero Google Reviews Widget */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-            className="pt-4 max-w-md mx-auto"
-          >
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3.5 flex items-center justify-between text-left gap-3 shadow-lg">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-full bg-white text-blue-600 font-black text-xs flex items-center justify-center shrink-0 shadow-xs">
-                  G
-                </div>
-                <div>
-                  <div className="flex items-center gap-1 text-amber-400 text-xs">
-                    <span className="font-extrabold text-white mr-1 text-xs">4.9</span>
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                    ))}
-                  </div>
-                  <span className="text-[10px] text-gray-200 font-semibold block">
-                    Based on 2,500+ Verified Google Reviews
-                  </span>
-                </div>
-              </div>
-              <a
-                href="#reviews"
-                className="text-[10px] font-extrabold text-brand-dusk-orange uppercase tracking-wider hover:underline shrink-0"
-              >
-                Read Reviews →
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* SECTION 2: CATEGORY QUICK-NAV CAROUSEL */}
       <CategoryCarousel />
