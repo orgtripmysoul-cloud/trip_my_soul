@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { MapPin, Calendar, ArrowRight } from "lucide-react";
+import { MapPin, Clock, Mountain } from "lucide-react";
 import { motion } from "framer-motion";
 import { Trek } from "@/data/db";
 
@@ -14,18 +14,18 @@ interface TrekCardProps {
 }
 
 export default function TrekCard({ trek, detailsHref, imageUrl, description }: TrekCardProps) {
-  // Determine color coding for difficulty badge
+  // Difficulty is rendered inline in the meta line, so we only need a text colour here
   const getDifficultyColor = (level: string) => {
     switch (level.toLowerCase()) {
       case "easy":
-        return "bg-green-500/10 text-green-700 border-green-500/20";
+        return "text-green-700";
       case "moderate":
-        return "bg-amber-500/10 text-amber-700 border-amber-500/20";
+        return "text-amber-700";
       case "difficult":
       case "strenuous":
-        return "bg-red-500/10 text-red-700 border-red-500/20";
+        return "text-red-700";
       default:
-        return "bg-brand-forest/10 text-brand-forest border-brand-forest/20";
+        return "text-brand-forest";
     }
   };
 
@@ -55,52 +55,73 @@ export default function TrekCard({ trek, detailsHref, imageUrl, description }: T
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
           loading="lazy"
         />
-        
-        {/* Floating details */}
-        <div className="absolute top-4 left-4 flex gap-2">
-          <span className={`text-xs font-bold px-3 py-1 rounded-full border ${getDifficultyColor(trek.difficulty)}`}>
-            {trek.difficulty}
-          </span>
-        </div>
 
-        {/* Floating Season / Duration */}
-        <div className="absolute bottom-4 left-4 bg-brand-forest/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5">
-          <Calendar className="w-3.5 h-3.5 text-brand-dusk-orange" />
-          <span>{trek.days} Days / {trek.nights} Nights</span>
-        </div>
+        {/* Region tag — image otherwise kept clean, stats live in the meta line below */}
+        <span className="absolute top-4 left-4 text-[10px] font-extrabold uppercase tracking-wider bg-brand-forest/85 backdrop-blur-md text-white px-3 py-1 rounded-full">
+          {trek.region}
+        </span>
       </div>
 
       {/* Details Body */}
       <div className="p-5 flex flex-col flex-grow justify-between">
-        <div className="space-y-2">
-          {/* Region */}
-          <div className="flex items-center text-gray-500 gap-1.5 text-xs font-semibold uppercase tracking-wider">
-            <MapPin className="w-3.5 h-3.5 text-brand-dusk" />
-            <span>{trek.region}</span>
-          </div>
-
+        <div className="space-y-2.5">
           {/* Title */}
           <h3 className="text-lg font-bold text-brand-dark-text group-hover:text-brand-dusk transition-colors line-clamp-1">
             {trek.name}
           </h3>
-          
+
+          {/* Compact meta line: location · altitude · duration · difficulty */}
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs font-semibold text-gray-600">
+            <span className="flex items-center gap-1">
+              <MapPin className="w-3.5 h-3.5 text-brand-dusk shrink-0" />
+              <span>{trek.startLocation || trek.region}</span>
+            </span>
+
+            {trek.maxAltitude && (
+              <span className="flex items-center gap-1">
+                <Mountain className="w-3.5 h-3.5 text-brand-dusk shrink-0" />
+                <span>{trek.maxAltitude}</span>
+              </span>
+            )}
+
+            <span className="flex items-center gap-1">
+              <Clock className="w-3.5 h-3.5 text-brand-dusk shrink-0" />
+              <span>{trek.days} Days</span>
+            </span>
+
+            <span className={`font-extrabold ${getDifficultyColor(trek.difficulty)}`}>
+              {trek.difficulty}
+            </span>
+          </div>
+
           <p className="text-xs text-gray-500 line-clamp-2">
             {description ?? `Experience the scenic trails of ${trek.startLocation || "the Himalayas"}. Prepare for breathtaking heights and beautiful valley stays.`}
           </p>
         </div>
 
-        {/* Departure & Details Action Buttons */}
-        <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between gap-2.5 font-sans">
-          <Link
-            href={`/checkout?slug=${trek.slug}`}
-            className="flex-1 py-2.5 px-3 text-center text-xs font-extrabold text-brand-dusk-orange bg-brand-dusk-orange/10 hover:bg-brand-dusk-orange hover:text-white rounded-xl transition-all duration-200 border border-brand-dusk-orange/30 shadow-xs"
-          >
-            View Departure
-          </Link>
+        {/* Price & Details Action */}
+        <div className="mt-5 pt-4 border-t border-gray-100 space-y-3 font-sans">
+          <div className="flex items-end justify-between gap-2">
+            <div>
+              <span className="text-[10px] text-gray-400 uppercase block font-semibold tracking-wider">
+                Starting from
+              </span>
+              <span className="text-lg font-black text-brand-forest leading-none">
+                {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
+              </span>
+            </div>
+
+            <Link
+              href={`/checkout?slug=${trek.slug}`}
+              className="text-xs font-extrabold text-brand-dusk-orange hover:underline shrink-0"
+            >
+              View Departure
+            </Link>
+          </div>
 
           <Link
             href={detailsHref ?? `/treks/${trek.slug}`}
-            className="flex-1 py-2.5 px-3 text-center text-xs font-extrabold text-white bg-brand-forest hover:bg-brand-forest-light rounded-xl transition-all duration-200 shadow-xs"
+            className="block w-full py-2.5 px-3 text-center text-xs font-extrabold text-white bg-brand-forest hover:bg-brand-forest-light rounded-xl transition-all duration-200 shadow-xs"
           >
             View Details
           </Link>
