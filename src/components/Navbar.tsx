@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, Compass, User, Phone, Search, FileText, Trees, Briefcase, ChevronRight, ShoppingBag, Tent, Backpack } from "lucide-react";
 import { TREKS } from "@/data/db";
+import { getPhoneForPath } from "@/config/contact";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +18,9 @@ export default function Navbar() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  // Weekend / backpacking routes use a different contact desk.
+  const phone = getPhoneForPath(pathname);
 
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return [];
@@ -67,7 +71,7 @@ export default function Navbar() {
       <Link
         key={link.name}
         href={link.href}
-        className={`text-xs xl:text-sm font-semibold tracking-wide whitespace-nowrap transition-colors hover:text-brand-dusk-orange ${
+        className={`text-xs 2xl:text-sm font-semibold tracking-wide whitespace-nowrap shrink-0 transition-colors hover:text-brand-dusk-orange ${
           isActive ? "text-brand-dusk-orange border-b-2 border-brand-dusk-orange pb-0.5" : "text-gray-100"
         }`}
       >
@@ -114,7 +118,9 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7 shrink-0">
+          {/* Shrinkable + internally scrollable, so a cramped viewport never
+              pushes the right action bar off the edge of the screen. */}
+          <nav className="hidden lg:flex items-center gap-x-4 xl:gap-x-5 2xl:gap-x-7 min-w-0 py-1 overflow-x-auto no-scrollbar scroll-touch">
             {navLinksBeforeTreks.map(renderNavLink)}
             {navLinksTripMiddle.map(renderNavLink)}
             {navLinksAfterTreks.map(renderNavLink)}
@@ -123,7 +129,7 @@ export default function Navbar() {
           {/* Right Action Bar (Search + Choose Trek + Contact + Account) */}
           <div className="hidden md:flex items-center space-x-2.5 lg:space-x-3 shrink-0">
             {/* Desktop search input */}
-            <div className="relative w-36 lg:w-44 xl:w-52">
+            <div className="relative w-32 lg:w-36 xl:w-44 2xl:w-52">
               <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-white text-xs">
                 <Search className="w-3.5 h-3.5 opacity-60 shrink-0" />
                 <input
@@ -187,21 +193,23 @@ export default function Navbar() {
             {/* Choose Trek Quick Finder Trigger */}
             <button
               onClick={() => setIsChooseTrekOpen(true)}
-              className="flex items-center space-x-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white transition whitespace-nowrap shadow-xs"
+              aria-label="Choose a trek"
+              title="Choose Trek"
+              className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white transition whitespace-nowrap shadow-xs shrink-0"
             >
               <Compass className="w-3.5 h-3.5 text-brand-dusk-orange shrink-0" />
-              <span>Choose Trek</span>
+              <span className="hidden 2xl:inline">Choose Trek</span>
             </button>
 
-            {/* Phone support */}
+            {/* Phone support — icon-only until there is room for the full number */}
             <a
-              href="https://wa.me/918178613438"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden xl:flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition whitespace-nowrap"
+              href={`tel:${phone.tel}`}
+              aria-label={`Call TripMySoul on ${phone.display}`}
+              title={phone.display}
+              className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition whitespace-nowrap shrink-0"
             >
-              <Phone className="w-3.5 h-3.5 text-brand-dusk-orange" />
-              <span>+91 81786 13438</span>
+              <Phone className="w-3.5 h-3.5 text-brand-dusk-orange shrink-0" />
+              <span className="hidden 2xl:inline">{phone.display}</span>
             </a>
 
             {/* Account / Profile Dropdown */}
@@ -209,10 +217,11 @@ export default function Navbar() {
               <button
                 onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
                 onBlur={() => setTimeout(() => setIsProfileMenuOpen(false), 200)}
-                className="flex items-center space-x-1.5 text-xs font-bold bg-brand-dusk hover:bg-brand-dusk-orange text-white px-3.5 py-1.5 rounded-full shadow-md transition transform hover:-translate-y-0.5 whitespace-nowrap"
+                className="flex items-center gap-1.5 text-xs font-bold bg-brand-dusk hover:bg-brand-dusk-orange text-white px-3.5 py-1.5 rounded-full shadow-md transition transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
               >
-                <User className="w-3.5 h-3.5" />
-                <span>My Trips & Profile</span>
+                <User className="w-3.5 h-3.5 shrink-0" />
+                <span className="hidden 2xl:inline">My Trips &amp; Profile</span>
+                <span className="2xl:hidden">Profile</span>
                 <ChevronRight className={`w-3 h-3 transition-transform ${isProfileMenuOpen ? "rotate-90" : ""}`} />
               </button>
 
@@ -450,13 +459,11 @@ export default function Navbar() {
 
             <div className="pt-2 flex flex-col space-y-3">
               <a
-                href="https://wa.me/918178613438"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`tel:${phone.tel}`}
                 className="flex items-center space-x-3 text-xs font-semibold py-2 px-4 rounded-lg bg-white/5 hover:bg-white/10 transition text-gray-200"
               >
-                <Phone className="w-4 h-4 text-brand-dusk-orange" />
-                <span>+91 81786 13438</span>
+                <Phone className="w-4 h-4 text-brand-dusk-orange shrink-0" />
+                <span>{phone.display}</span>
               </a>
               <Link
                 href="/login"
