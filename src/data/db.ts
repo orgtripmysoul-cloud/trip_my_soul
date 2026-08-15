@@ -8,6 +8,137 @@ export interface TrekBatch {
   basePrice: number;
 }
 
+/** One departure slot inside a month block. */
+export interface BatchTrip {
+  startDate: string;
+  endDate: string;
+  status: string;
+  isWomenOnly?: boolean;
+  isSeniorOnly?: boolean;
+}
+
+export interface BatchMonth {
+  month: string;
+  trips: BatchTrip[];
+}
+
+/** Departures grouped by year then month, e.g. `years["2026"].months`. */
+export interface TrekBatches {
+  years?: Record<string, { months?: BatchMonth[] }>;
+}
+
+export interface AltitudePoint {
+  location: string;
+  m: number;
+  ft: number;
+}
+
+/** Per-day accommodation. Feeds the itinerary "Accommodation" tab. */
+export interface DayAccommodation {
+  type: string;
+  name?: string;
+}
+
+/** Per-day meals. Replaces the flat `meals` string; both are supported. */
+export interface DayFood {
+  breakfast?: string;
+  lunch?: string;
+  snacks?: string;
+  dinner?: string;
+}
+
+export interface ItineraryDay {
+  day: number;
+  title: string;
+  description?: string;
+  detailedDescription?: string;
+  altitudePoints?: AltitudePoint[];
+  altitudeGain?: { m: number; ft: number } | null;
+  driveDistance?: string;
+  drivingTime?: string;
+  trekDistance?: string;
+  trekDuration?: string;
+  meals?: string;
+  stayType?: string;
+  accommodation?: DayAccommodation;
+  food?: DayFood;
+}
+
+export interface GalleryImage {
+  url: string;
+  caption?: string;
+}
+
+/** Alternate route/campsite for a trek. Variant tabs render only at 2+. */
+export interface RouteVariant {
+  id: string;
+  name: string;
+  days: number | string;
+  price: number | null;
+}
+
+/** A category of gear, e.g. { category: "Foot gear", items: [...] }. */
+export interface EquipmentGroup {
+  category: string;
+  items: string[];
+}
+
+/** One refund tier. `daysTo: null` means "and below". */
+export interface CancellationTier {
+  label: string;
+  daysFrom: number;
+  daysTo: number | null;
+  cashPct: number;
+  voucherPct: number;
+  transferAllowed: boolean;
+}
+
+export interface HealthCheckItem {
+  label: string;
+  threshold: string;
+}
+
+export interface VideoTestimonial {
+  videoUrl: string;
+  thumbnail: string;
+  trekkerName: string;
+  batch: string;
+  duration: string;
+}
+
+export interface RelatedArticle {
+  slug: string;
+  title: string;
+  excerpt: string;
+  image: string;
+}
+
+export interface TravelOption {
+  from: string;
+  name: string;
+  departure?: string;
+  arrival?: string;
+  note?: string;
+}
+
+export interface TravelMode {
+  summary: string;
+  options?: TravelOption[];
+}
+
+export interface HowToReach {
+  air: TravelMode;
+  train: TravelMode;
+  road: TravelMode;
+  pickup: {
+    point: string;
+    time: string;
+    dropPoint: string;
+    dropTime: string;
+    note?: string;
+  };
+}
+
 export interface Trek {
   slug: string;
   name: string;
@@ -22,13 +153,29 @@ export interface Trek {
   themes: string[];
   inclusions?: { title: string; description: string }[];
   exclusions?: { title: string; description: string }[];
-  itinerary?: any[];
+  itinerary?: ItineraryDay[];
   faqs?: { title: string; description: string }[];
   thingtopack?: { title: string; description: string; img?: string }[];
-  batches?: any;
+  batches?: TrekBatches;
   fitnessRequirement?: string;
   maxAltitude?: string;
   totalDistance?: string;
+
+  // --- Extended detail-page fields. All optional; `trekDefaults.ts` fills the gaps. ---
+  gallery?: GalleryImage[];
+  routeVariants?: RouteVariant[];
+  equipmentProvided?: EquipmentGroup[];
+  personalEquipment?: EquipmentGroup[];
+  trekEssentialsPdfUrl?: string;
+  cancellationTiers?: CancellationTier[];
+  emergencyCancellation?: string;
+  healthChecklist?: HealthCheckItem[];
+  minAgeWithGuardian?: number;
+  soloAgeMin?: number;
+  disclaimerFormUrl?: string;
+  videoTestimonials?: VideoTestimonial[];
+  relatedArticles?: RelatedArticle[];
+  howToReach?: HowToReach;
 }
 
 export interface Office {
