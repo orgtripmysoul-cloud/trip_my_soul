@@ -8,6 +8,42 @@ export interface TripNavItem {
   tagline: string;
 }
 
+/** A payment/city variant, e.g. "Full Payment - From Mysore". Each has its own price. */
+export interface TripPackage {
+  id: string;
+  label: string;
+  price: number;
+  advanceAmount?: number;
+}
+
+/** One timed line inside a day, e.g. { time: "7:00 AM", text: "Depart from pickup point" }. */
+export interface TripItineraryEntry {
+  time?: string;
+  text: string;
+}
+
+/** `day: 0` is the start/pickup day where the trip begins the night before. */
+export interface TripItineraryDay {
+  day: number;
+  title: string;
+  entries: TripItineraryEntry[];
+}
+
+export interface TripUsp {
+  title: string;
+  description: string;
+}
+
+export interface TripDestinationHighlight {
+  name: string;
+  blurb: string;
+}
+
+export interface TripGalleryImage {
+  url: string;
+  caption?: string;
+}
+
 export interface TripListingItem extends TripNavItem {
   region: string;
   startLocation: string;
@@ -19,6 +55,45 @@ export interface TripListingItem extends TripNavItem {
   themes: string[];
   category: string;
   detailsPath: string;
+
+  // --- Detail-template fields. All optional; unpopulated sections render an empty state. ---
+
+  // Header
+  tripCode?: string;
+  availability?: string;
+  endLocation?: string;
+  minAge?: number;
+  maxAge?: number;
+  maxGroupSize?: string;
+
+  // Booking widget
+  originalPrice?: number;
+  batchDates?: string[];
+  packages?: TripPackage[];
+
+  // Overview
+  intro?: string;
+  usps?: TripUsp[];
+  idealFor?: string;
+  differentiators?: string[];
+  importantNote?: string;
+  destinationHighlights?: TripDestinationHighlight[];
+
+  // Itinerary
+  itinerary?: TripItineraryDay[];
+
+  // Costing
+  costIncludes?: string[];
+  costExcludes?: string[];
+
+  // Other info
+  cancellationPolicy?: string;
+  thingsToCarry?: string[];
+  thingsToRemember?: string[];
+
+  // Media & related
+  gallery?: TripGalleryImage[];
+  relatedSlugs?: string[];
 }
 
 function parseDuration(duration: string): { days: number; nights: number } {
@@ -84,13 +159,74 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
     },
     {
       region: "Tamil Nadu",
-      startLocation: "Ooty",
+      startLocation: "Mysore",
       difficulty: "Easy",
       price: 8999,
       months: ["Mar", "Apr", "May", "Jun", "Sep", "Oct", "Nov", "Dec"],
       themes: ["Meadow", "Family with Kids", "Couples"],
       category: "Weekend Trip",
       detailsPath: "/trips/weekend/ooty-coonoor",
+
+      /* --- SAMPLE DATA -------------------------------------------------
+         Worked example so the detail template can be reviewed end to end.
+         Prices, dates and timings are illustrative — replace before this
+         trip is promoted. Every other trip renders empty states instead.
+         ------------------------------------------------------------- */
+      tripCode: "TMS-WK-0037",
+      availability: "Every Thu & Fri",
+      endLocation: "Mysore",
+      minAge: 18,
+      maxGroupSize: "Max 2 Couples",
+      originalPrice: 14999,
+      batchDates: [
+        "2026-09-03", "2026-09-04", "2026-09-10", "2026-09-11",
+        "2026-09-17", "2026-09-18", "2026-09-24", "2026-09-25",
+      ],
+      packages: [
+        { id: "advance-mysore", label: "Advance Pay — From Mysore", price: 2999, advanceAmount: 2999 },
+        { id: "full-mysore", label: "Full Payment — From Mysore", price: 8999 },
+        { id: "full-bengaluru", label: "Full Payment — From Bengaluru", price: 10499 },
+      ],
+      idealFor: "Couples and small groups wanting a slow hill weekend",
+      intro:
+        "Three days in the Nilgiris, without the checklist rush. You travel in a private vehicle with one other couple at most, stay somewhere quiet, and spend the days between tea slopes, a toy train ride, and viewpoints that are worth more than ten minutes each.",
+      usps: [
+        {
+          title: "Private Vehicle",
+          description: "Shared with at most one other couple — never a full tempo traveller, never a stranger in the middle seat.",
+        },
+        {
+          title: "Complimentary Bed Decoration",
+          description: "Arranged on your first night at no extra cost. A small touch, but it changes how the trip starts.",
+        },
+        {
+          title: "Unhurried Days",
+          description: "Four or five stops a day, not twelve. Long enough at each to actually sit down.",
+        },
+      ],
+      differentiators: [
+        "Maximum two couples per vehicle, so the trip stays quiet",
+        "Stays booked for location over star rating — you wake up to the view",
+        "A trip coordinator travels with you rather than calling from an office",
+        "No forced shopping stops or commission-driven detours",
+      ],
+      importantNote:
+        "We are honest about what we control. Stays, vehicle, coordinator and timings are ours to guarantee. Hill weather, Nilgiri traffic, toy train ticket availability and forest-department timings are not — if any of these shift the plan, your coordinator will rework the day with you on the spot rather than quietly dropping a stop.",
+      destinationHighlights: [
+        {
+          name: "Ooty",
+          blurb: "The Nilgiris' best-known hill station, and still worth it off-season. Tea slopes run right up to the road, and the botanical gardens are best walked early before the day crowd arrives.",
+        },
+        {
+          name: "Coonoor",
+          blurb: "Quieter than Ooty and better for it. Lamb's Rock and Dolphin's Nose look over the plains, and the tea factories here still run tours worth the stop.",
+        },
+        {
+          name: "Pykara",
+          blurb: "A lake and falls set inside a reserved forest belt about 20 km from Ooty. The boat ride is short; the drive through the shola forest to get there is the real reason to come.",
+        },
+      ],
+      relatedSlugs: ["coorg-chikmagalur", "munnar", "gokarna-dandeli"],
     }
   ),
   toListingItem(

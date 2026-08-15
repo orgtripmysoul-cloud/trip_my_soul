@@ -4,7 +4,7 @@ import React, { useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { Compass } from "lucide-react";
-import TripPlaceholderPage from "@/components/TripPlaceholderPage";
+import TripDetailPage from "@/components/trip-detail/TripDetailPage";
 import { getWeekendTrip } from "@/data/trips";
 
 export default function WeekendTripPage() {
@@ -27,6 +27,6 @@ export default function WeekendTripPage() {
   }
 
   return (
-    <TripPlaceholderPage trip={trip} category="Weekend Trip" />
+    <TripDetailPage trip={trip} category="Weekend Trip" />
   );
 }
