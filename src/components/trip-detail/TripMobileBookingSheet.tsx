@@ -42,16 +42,18 @@ export default function TripMobileBookingSheet(props: TripMobileBookingSheetProp
       <div className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] px-4 py-3 safe-bottom flex items-center gap-3">
         <div className="shrink-0">
           <div className="flex items-baseline gap-1.5">
-            {trip.originalPrice && trip.originalPrice > price && (
+            {price !== null && trip.originalPrice && trip.originalPrice > price && (
               <span className="text-[11px] text-gray-400 line-through font-semibold">
                 ₹{trip.originalPrice.toLocaleString()}
               </span>
             )}
             <span className="text-lg font-extrabold text-brand-forest leading-none">
-              ₹{price.toLocaleString()}
+              {price !== null ? `₹${price.toLocaleString()}` : "On request"}
             </span>
           </div>
-          <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wide">per person</span>
+          <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wide">
+            {price !== null ? "per person" : "enquire for rates"}
+          </span>
         </div>
         <button
           onClick={() => setIsOpen(true)}

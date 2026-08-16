@@ -36,8 +36,15 @@ interface TripBookingFormProps {
   compact?: boolean;
 }
 
-/** Resolves the price to display: the chosen package's, else the trip's base. */
-export function activePrice(trip: TripListingItem, selectedPackageId: string | null) {
+/**
+ * Resolves the price to display: the chosen package's, else the trip's base.
+ * Returns null when the trip has no published rate — rendered as
+ * "Price on request" rather than a fabricated figure.
+ */
+export function activePrice(
+  trip: TripListingItem,
+  selectedPackageId: string | null
+): number | null {
   const pkg = trip.packages?.find((p) => p.id === selectedPackageId);
   return pkg?.price ?? trip.price;
 }
@@ -60,17 +67,27 @@ export default function TripBookingForm({
       {/* Price */}
       <div className="space-y-1">
         <span className="text-[10px] text-gray-400 font-extrabold uppercase tracking-wider block">
-          {selectedPkg?.advanceAmount ? "Pay now to reserve" : "Price per person"}
+          {price === null
+            ? "Pricing"
+            : selectedPkg?.advanceAmount
+            ? "Pay now to reserve"
+            : "Price per person"}
         </span>
         <div className="flex items-baseline gap-2 flex-wrap">
-          {trip.originalPrice && trip.originalPrice > price && (
+          {price !== null && trip.originalPrice && trip.originalPrice > price && (
             <span className="text-base text-gray-400 line-through font-semibold">
               ₹{trip.originalPrice.toLocaleString()}
             </span>
           )}
-          <span className="text-3xl font-extrabold font-serif text-brand-forest">
-            ₹{price.toLocaleString()}
-          </span>
+          {price !== null ? (
+            <span className="text-3xl font-extrabold font-serif text-brand-forest">
+              ₹{price.toLocaleString()}
+            </span>
+          ) : (
+            <span className="text-xl font-extrabold font-serif text-brand-forest">
+              Price on request
+            </span>
+          )}
         </div>
         {selectedPkg?.advanceAmount && (
           <span className="text-[10px] text-gray-500 font-semibold block">
@@ -146,12 +163,21 @@ export default function TripBookingForm({
             {error}
           </p>
         )}
-        <button
-          onClick={onProceed}
-          className="w-full bg-brand-forest hover:bg-brand-forest-light text-white py-3.5 rounded-full font-bold text-sm shadow-lg transition hover:-translate-y-0.5 transform duration-200 min-h-[48px]"
-        >
-          Proceed to Booking
-        </button>
+        {price === null && trip.contactPhone ? (
+          <a
+            href={`tel:${trip.contactPhone.replace(/[^\d+]/g, "")}`}
+            className="w-full bg-brand-forest hover:bg-brand-forest-light text-white py-3.5 rounded-full font-bold text-sm shadow-lg transition hover:-translate-y-0.5 transform duration-200 min-h-[48px] flex items-center justify-center"
+          >
+            Enquire for Pricing
+          </a>
+        ) : (
+          <button
+            onClick={onProceed}
+            className="w-full bg-brand-forest hover:bg-brand-forest-light text-white py-3.5 rounded-full font-bold text-sm shadow-lg transition hover:-translate-y-0.5 transform duration-200 min-h-[48px]"
+          >
+            Proceed to Booking
+          </button>
+        )}
         <button
           onClick={onToggleWishlist}
           className={`w-full py-3 rounded-full font-bold text-xs border transition flex items-center justify-center gap-2 min-h-[44px] ${

@@ -1,4 +1,11 @@
 import type { Trek } from "@/data/db";
+import {
+  PAYMENT_DETAILS,
+  TRIP_BOOKING_TERMS,
+  TRIP_CANCELLATION_POLICY,
+  TRIP_GROUND_RULES,
+  TROPICAL_PACKING_LIST,
+} from "@/data/tripShared";
 
 export interface TripNavItem {
   name: string;
@@ -14,6 +21,10 @@ export interface TripPackage {
   label: string;
   price: number;
   advanceAmount?: number;
+  /** Pricing-table columns: group size, vehicle and room sharing. */
+  paxLabel?: string;
+  vehicle?: string;
+  sharing?: string;
 }
 
 /** One timed line inside a day, e.g. { time: "7:00 AM", text: "Depart from pickup point" }. */
@@ -50,7 +61,8 @@ export interface TripListingItem extends TripNavItem {
   difficulty: string;
   days: number;
   nights: number;
-  price: number;
+  /** null renders as "Price on request" — used when the source has no figure. */
+  price: number | null;
   months: string[];
   themes: string[];
   category: string;
@@ -73,6 +85,8 @@ export interface TripListingItem extends TripNavItem {
 
   // Overview
   intro?: string;
+  /** Headline attractions, as listed on the itinerary PDF. */
+  highlights?: string[];
   usps?: TripUsp[];
   idealFor?: string;
   differentiators?: string[];
@@ -94,6 +108,23 @@ export interface TripListingItem extends TripNavItem {
   // Media & related
   gallery?: TripGalleryImage[];
   relatedSlugs?: string[];
+
+  // Booking & contact
+  /** Per-trip enquiry number; falls back to the site-wide desk when unset. */
+  contactPhone?: string;
+  /** Caveat shown above the pricing table, e.g. what the fare excludes. */
+  priceNote?: string;
+  bookingAdvance?: number;
+  balanceDueDays?: number;
+  kidsPolicy?: string;
+  paymentDetails?: {
+    bank: string;
+    accountName: string;
+    accountNumber: string;
+    ifsc: string;
+    accountType: string;
+    upiNote: string;
+  };
 }
 
 function parseDuration(duration: string): { days: number; nights: number } {
@@ -382,6 +413,282 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       themes: ["Lakes", "Couples", "Family with Kids"],
       category: "Backpacking Trip",
       detailsPath: "/trips/backpacking/kerala",
+    }
+  ),
+  toListingItem(
+    {
+      name: "Kerala Special",
+      slug: "kerala-special",
+      duration: "4N/5D",
+      heroImage: "https://images.unsplash.com/photo-1593693411515-c20261bcad6e?auto=format&fit=crop&w=1920&q=80",
+      tagline: "Munnar tea country, an Alleppey houseboat night, and the Kovalam–Varkala coast.",
+    },
+    {
+      region: "Kerala",
+      startLocation: "Kochi",
+      endLocation: "Trivandrum",
+      difficulty: "Easy",
+      price: 10500,
+      months: ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
+      themes: ["Lakes", "Couples", "Family with Kids"],
+      category: "Backpacking Trip",
+      detailsPath: "/trips/backpacking/kerala-special",
+
+      contactPhone: "+91-9121343330",
+      minAge: 5,
+      intro:
+        "A 5-day, 4-night circuit from Kochi through Munnar's tea hills, an overnight houseboat cruise on the Alleppey backwaters, and coastal stops at Kovalam and Varkala before departure from Trivandrum. Includes waterfalls, tea gardens, an elephant park, and temple visits.",
+      highlights: [
+        "Valara & Cheeyappara Waterfalls",
+        "Eravikulam National Park",
+        "Mattupetty Dam & Lake",
+        "Echo Point",
+        "Rajamalai Garden",
+        "Tata Tea Gardens",
+        "Carmelagiri Elephant Park",
+        "Chocolate Factory",
+        "Houseboat stay",
+        "Jatayu Earth Center",
+        "Varkala Beach",
+        "Azhimala Shiva Temple",
+        "Padmanabhaswamy Temple",
+        "Kathakali / Kalaripattu show",
+      ],
+      priceNote:
+        "Prices are per person, Kochi to Kochi. Train tickets to and from your origin city are NOT included — 3AC fare is added separately based on availability.",
+
+      /**
+       * Per-person rates by group size, Kochi to Kochi. Train fare excluded.
+       *
+       * NOTE: the 7-pax rate (₹16,500) is higher than both 6-pax (₹10,500) and
+       * 8-pax (₹11,000), breaking the downward trend of every other tier.
+       * Published as supplied from the source PDF and awaiting confirmation —
+       * do not "correct" it without checking with the operator.
+       */
+      packages: [
+        { id: "pax-2", label: "2 pax — Sedan, 2 sharing", price: 15000, paxLabel: "2 pax", vehicle: "Sedan", sharing: "2 sharing" },
+        { id: "pax-3", label: "3 pax — Sedan, 3 sharing", price: 13500, paxLabel: "3 pax", vehicle: "Sedan", sharing: "3 sharing" },
+        { id: "pax-4", label: "4 pax — Sedan, 2 sharing", price: 12500, paxLabel: "4 pax", vehicle: "Sedan", sharing: "2 sharing" },
+        { id: "pax-5", label: "5 pax — Ertiga, 2/3 sharing", price: 12500, paxLabel: "5 pax", vehicle: "Ertiga", sharing: "2/3 sharing" },
+        { id: "pax-6", label: "6 pax — Innova, 3 sharing", price: 10500, paxLabel: "6 pax", vehicle: "Innova", sharing: "3 sharing" },
+        { id: "pax-7", label: "7 pax — Tempo, 2/3 sharing", price: 16500, paxLabel: "7 pax", vehicle: "Tempo", sharing: "2/3 sharing" },
+        { id: "pax-8", label: "8 pax — Tempo, 2/3 sharing", price: 11000, paxLabel: "8 pax", vehicle: "Tempo", sharing: "2/3 sharing" },
+        { id: "pax-9", label: "9+ pax — Tempo, 2/3 sharing", price: 10500, paxLabel: "9+ pax", vehicle: "Tempo", sharing: "2/3 sharing" },
+      ],
+      kidsPolicy:
+        "Under 5 years travel free. Ages 5–10 pay 50% of the adult rate. Over 10 pays the full adult rate.",
+
+      itinerary: [
+        {
+          day: 0,
+          title: "Departure day",
+          entries: [
+            { text: "Board an overnight sleeper-class train from your origin city." },
+            { text: "Arrive at the station 45–60 minutes before departure." },
+            { text: "Train tickets are not included in the package — 3AC fare is added separately based on availability." },
+          ],
+        },
+        {
+          day: 1,
+          title: "Cochin to Munnar",
+          entries: [
+            { text: "Arrive in Cochin and start the drive up to Munnar." },
+            { text: "Stop at Valara and Cheeyappara Waterfalls on the way." },
+            { text: "Visit a spice plantation." },
+            { text: "Evening Kathakali and Kalaripattu performance." },
+            { text: "Overnight in Munnar." },
+          ],
+        },
+        {
+          day: 2,
+          title: "Munnar",
+          entries: [
+            { text: "Eravikulam National Park." },
+            { text: "Mattupetty Dam and Lake, then Echo Point." },
+            { text: "Rajamalai Garden and the Tata Tea Gardens." },
+            { text: "Carmelagiri Elephant Park and the chocolate factory." },
+            { text: "Overnight in Munnar." },
+          ],
+        },
+        {
+          day: 3,
+          title: "Munnar to Alleppey",
+          entries: [
+            { text: "Drive to Alleppey through villages and paddy fields." },
+            { text: "Board a traditional houseboat by midday." },
+            { text: "Cruise the backwaters." },
+            { text: "Kerala-style lunch served on board." },
+            { text: "Rest of the day at leisure. Overnight on the houseboat." },
+          ],
+        },
+        {
+          day: 4,
+          title: "Alleppey to Kovalam",
+          entries: [
+            { text: "Disembark after breakfast and drive to Kovalam." },
+            { text: "En route: Jatayu Earth Center." },
+            { text: "Varkala Beach." },
+            { text: "Continue to the Varkala hotel. Overnight in Kovalam / Varkala." },
+          ],
+        },
+        {
+          day: 5,
+          title: "Trivandrum and departure",
+          entries: [
+            { text: "Check out and proceed towards Trivandrum." },
+            { text: "Azhimala Shiva Temple." },
+            { text: "Padmanabhaswamy Temple." },
+            { text: "Drop at Trivandrum airport or railway station. Trip concludes." },
+          ],
+        },
+      ],
+
+      costIncludes: [
+        "Private vehicle for all 5 days",
+        "4 nights accommodation — 1 night houseboat, 3 nights hotel",
+        "4 breakfasts, 1 lunch and 1 dinner",
+        "Trip captain for group departures",
+        "Tolls, parking, guide charges and state permits",
+        "Basic first aid",
+      ],
+      costExcludes: [
+        "Meals not listed above",
+        "Air and train fare",
+        "Transport beyond the stated itinerary",
+        "Boating and elephant ride charges",
+        "Personal expenses",
+        "Costs arising from natural calamities or events beyond our control",
+        "5% GST",
+      ],
+
+      thingsToCarry: TROPICAL_PACKING_LIST.flatMap((g) => g.items),
+      thingsToRemember: TRIP_GROUND_RULES,
+      cancellationPolicy: TRIP_CANCELLATION_POLICY,
+      bookingAdvance: TRIP_BOOKING_TERMS.advancePerPerson,
+      balanceDueDays: TRIP_BOOKING_TERMS.balanceDueDays,
+      paymentDetails: PAYMENT_DETAILS,
+      relatedSlugs: ["kerala-thekkady", "kerala"],
+    }
+  ),
+  toListingItem(
+    {
+      name: "Backpacking Trip Kerala",
+      slug: "kerala-thekkady",
+      duration: "4N/5D",
+      // NB: photo-1602216050166 (used by the older "kerala" entry) now 404s on Unsplash.
+      heroImage: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1920&q=80",
+      tagline: "A Kochi round trip through Munnar's tea slopes, Thekkady's spice hills and the Alleppey backwaters.",
+    },
+    {
+      region: "Kerala",
+      startLocation: "Kochi",
+      endLocation: "Kochi",
+      difficulty: "Easy",
+      // No rates in the source PDF — renders as "Price on request" until supplied.
+      price: null,
+      months: ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
+      themes: ["Lakes", "Couples", "Family with Kids"],
+      category: "Backpacking Trip",
+      detailsPath: "/trips/backpacking/kerala-thekkady",
+
+      contactPhone: "+91 7337475300",
+      minAge: 5,
+      intro:
+        "A round-trip backpacking circuit from Kochi covering Munnar's tea hills, Thekkady's spice hills and Periyar wildlife area, and an overnight houseboat stay in the Alleppey backwaters, before returning to Kochi.",
+      highlights: [
+        "Valara & Cheeyappara Waterfalls",
+        "Eravikulam National Park",
+        "Mattupetty Dam & Lake",
+        "Echo Point",
+        "Rajamalai Garden",
+        "Tata Tea Gardens",
+        "Chocolate Factory",
+        "Periyar National Park (Thekkady)",
+        "Spice plantation tour",
+        "Houseboat stay",
+        "Optional Kathakali / Kalaripattu show",
+      ],
+      priceNote:
+        "No rates are published in the source itinerary. Contact the trips desk on +91 7337475300 for current pricing.",
+
+      itinerary: [
+        {
+          day: 1,
+          title: "Kochi to Munnar",
+          entries: [
+            { text: "Arrive in Kochi and drive up to Munnar." },
+            { text: "Stop at Valara and Cheeyappara Waterfalls." },
+            { text: "Visit a spice plantation." },
+            { text: "Optional Kathakali and Kalaripattu performance." },
+            { text: "Overnight in Munnar." },
+          ],
+        },
+        {
+          day: 2,
+          title: "Munnar",
+          entries: [
+            { text: "Eravikulam National Park — home of the Nilgiri Tahr." },
+            { text: "Boat ride at Mattupetty Dam, then Echo Point." },
+            { text: "Rajamalai Garden and a Tata Tea Gardens tour." },
+            { text: "Chocolate factory visit." },
+            { text: "Overnight in Munnar." },
+          ],
+        },
+        {
+          day: 3,
+          title: "Munnar to Thekkady",
+          entries: [
+            { text: "Drive to Thekkady and check in." },
+            { text: "Periyar National Park area — wildlife spotting, elephant rides available." },
+            { text: "Afternoon spice plantation tour (optional, surcharge applies)." },
+            { text: "Overnight in Thekkady." },
+          ],
+        },
+        {
+          day: 4,
+          title: "Thekkady to Alleppey",
+          entries: [
+            { text: "Drive to Alleppey and check in to the houseboat." },
+            { text: "Cruise the backwaters." },
+            { text: "Kerala lunch served on board." },
+            { text: "Dinner and overnight on the houseboat." },
+          ],
+        },
+        {
+          day: 5,
+          title: "Back to Kochi",
+          entries: [
+            { text: "Breakfast on the houseboat." },
+            { text: "Drive back to Kochi." },
+            { text: "Drop at Kochi airport." },
+          ],
+        },
+      ],
+
+      costIncludes: [
+        "Private vehicle for all 5 days",
+        "4 nights accommodation — 1 night houseboat, 3 nights hotel",
+        "4 breakfasts, 1 lunch and 1 dinner",
+        "Trip captain for group departures",
+        "Tolls, parking, guide charges and state permits",
+        "Basic first aid",
+      ],
+      costExcludes: [
+        "Meals not listed above",
+        "Transport beyond the stated itinerary",
+        "Boating and elephant ride charges",
+        "Personal expenses",
+        "Costs arising from natural calamities or events beyond our control",
+        "5% GST",
+      ],
+
+      thingsToCarry: TROPICAL_PACKING_LIST.flatMap((g) => g.items),
+      thingsToRemember: TRIP_GROUND_RULES,
+      cancellationPolicy: TRIP_CANCELLATION_POLICY,
+      bookingAdvance: TRIP_BOOKING_TERMS.advancePerPerson,
+      balanceDueDays: TRIP_BOOKING_TERMS.balanceDueDays,
+      paymentDetails: PAYMENT_DETAILS,
+      relatedSlugs: ["kerala-special", "kerala"],
     }
   ),
 ];

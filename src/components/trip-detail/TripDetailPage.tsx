@@ -6,7 +6,12 @@ import TripHeader from "./TripHeader";
 import TripTabNav, { TRIP_TABS } from "./TripTabNav";
 import TripBookingWidget from "./TripBookingWidget";
 import TripMobileBookingSheet from "./TripMobileBookingSheet";
-import TripEmptySection from "./TripEmptySection";
+import TripOverviewTab from "./TripOverviewTab";
+import TripItineraryTab from "./TripItineraryTab";
+import TripCostingTab from "./TripCostingTab";
+import TripOtherInfoTab from "./TripOtherInfoTab";
+import TripGalleryTab from "./TripGalleryTab";
+import TripReviewsTab from "./TripReviewsTab";
 import { formatBatchDate, activePrice, type TripBookingState } from "./TripBookingForm";
 import type { TripListingItem } from "@/data/trips";
 
@@ -67,9 +72,9 @@ export default function TripDetailPage({ trip, category }: TripDetailPageProps) 
     const year = booking.selectedDate?.split("-")[0] ?? "";
     const batchLabel = booking.selectedDate ? `${day} ${month} ${year}` : "Flexible dates";
 
-    router.push(
-      `/checkout?slug=${trip.slug}&batch=${encodeURIComponent(batchLabel)}&price=${activePrice(trip, booking.selectedPackageId)}`
-    );
+    const price = activePrice(trip, booking.selectedPackageId);
+    const priceParam = price !== null ? `&price=${price}` : "";
+    router.push(`/checkout?slug=${trip.slug}&batch=${encodeURIComponent(batchLabel)}${priceParam}`);
   };
 
   const bookingProps = {
@@ -95,27 +100,27 @@ export default function TripDetailPage({ trip, category }: TripDetailPageProps) 
         {/* Tab panels — all rendered, tabs scroll to them */}
         <div className="w-full lg:flex-1 min-w-0 space-y-6">
           <section id="overview" className={PANEL}>
-            <TripEmptySection label="trip overview" />
+            <TripOverviewTab trip={trip} />
           </section>
 
           <section id="itinerary" className={PANEL}>
-            <TripEmptySection label="day-by-day itinerary" />
+            <TripItineraryTab trip={trip} />
           </section>
 
           <section id="costing" className={PANEL}>
-            <TripEmptySection label="cost breakdown" />
+            <TripCostingTab trip={trip} />
           </section>
 
           <section id="other-info" className={PANEL}>
-            <TripEmptySection label="policy and packing information" />
+            <TripOtherInfoTab trip={trip} />
           </section>
 
           <section id="gallery" className={PANEL}>
-            <TripEmptySection label="photo gallery" />
+            <TripGalleryTab trip={trip} />
           </section>
 
           <section id="reviews" className={PANEL}>
-            <TripEmptySection label="traveller reviews" />
+            <TripReviewsTab trip={trip} />
           </section>
         </div>
 
