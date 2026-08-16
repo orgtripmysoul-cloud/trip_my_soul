@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Lightbulb } from "lucide-react";
+import { AlertTriangle, ArrowRight, Lightbulb } from "lucide-react";
 import { MissingField, SubHeading, TabTitle, TickList } from "./TripSectionParts";
 import {
   TRIP_POLICY_LINKS,
@@ -20,6 +20,17 @@ export default function TripOtherInfoTab({ trip }: TripOtherInfoTabProps) {
   return (
     <div className="space-y-8">
       <TabTitle>Other information</TabTitle>
+
+      {/* Flag where the source itinerary is incomplete or contradicts itself */}
+      {trip.sourceCaveat && (
+        <p className="flex items-start gap-2.5 text-xs leading-relaxed bg-amber-50 border border-amber-200 text-amber-900 rounded-xl px-4 py-3">
+          <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5 text-amber-600" />
+          <span>
+            <strong className="block mb-0.5">Awaiting confirmation from the operator</strong>
+            {trip.sourceCaveat}
+          </span>
+        </p>
+      )}
 
       {/* Inclusions / exclusions */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -70,6 +81,40 @@ export default function TripOtherInfoTab({ trip }: TripOtherInfoTabProps) {
           </ul>
         </div>
       </div>
+
+      {/* Transport by group size */}
+      {trip.transportModes && trip.transportModes.length > 0 && (
+        <div>
+          <SubHeading>Mode of transportation</SubHeading>
+          <div className="overflow-x-auto border border-gray-150 rounded-2xl">
+            <table className="w-full text-xs border-collapse">
+              <tbody>
+                {trip.transportModes.map((m, i) => (
+                  <tr key={m.group} className={i > 0 ? "border-t border-gray-150" : ""}>
+                    <td className="px-4 py-2.5 font-extrabold text-brand-dark-text whitespace-nowrap">{m.group}</td>
+                    <td className="px-4 py-2.5 text-gray-650 font-medium">{m.vehicle}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Rental gear */}
+      {trip.rentalGear && trip.rentalGear.length > 0 && (
+        <div>
+          <SubHeading>Gear available to rent</SubHeading>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-1.5 text-xs">
+            {trip.rentalGear.map((g) => (
+              <div key={g.item} className="flex justify-between gap-3 border-b border-gray-100 py-1.5">
+                <span className="text-gray-650 font-medium">{g.item}</span>
+                <span className="font-extrabold text-brand-forest tabular-nums shrink-0">₹{g.price}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Age criteria */}
       <div>

@@ -8,8 +8,17 @@
 
 import type { EquipmentGroup } from "@/data/db";
 
-/** Bank details for offline transfers. Same account across all trips. */
-export const PAYMENT_DETAILS = {
+/** Enquiry numbers printed across the Himalayan trip PDFs. */
+export const TRIP_CONTACT_NUMBERS = ["+91 90685 13438", "+91 81786 13438", "+91 97209 42463"];
+
+/**
+ * Bank details.
+ *
+ * There are two accounts in use. The Kerala itineraries quote one, the
+ * Uttarakhand / Himachal itineraries another — they are not interchangeable,
+ * so each trip points at the set printed on its own PDF.
+ */
+export const PAYMENT_DETAILS_KERALA = {
   bank: "Axis Bank",
   accountName: "Trip My Soul",
   accountNumber: "925020045561157",
@@ -17,6 +26,99 @@ export const PAYMENT_DETAILS = {
   accountType: "Current A/C",
   upiNote: "UPI accepted — PhonePe, GPay, Paytm, BHIM",
 };
+
+export const PAYMENT_DETAILS_HIMALAYAN = {
+  bank: "Axis Bank",
+  accountName: "Trip My Soul",
+  accountNumber: "923020026632117",
+  ifsc: "UTIB0005171",
+  accountType: "Current A/C",
+  upiNote:
+    "UPI: tripmysoulteam-3@okaxis or tripmysoulteam-4@okaxis · GPay / PhonePe: 8178613438 (Trip My Soul, Pramod Panwar)",
+};
+
+/** @deprecated Use the explicitly named account above. Kept for existing imports. */
+export const PAYMENT_DETAILS = PAYMENT_DETAILS_KERALA;
+
+/** Pay to receive confirmation; balance collected on arrival. */
+export const CONFIRMATION_POLICY =
+  "Your booking is confirmed once payment is received and Trip My Soul has emailed your confirmation. The remaining amount is collected on arrival.";
+
+/** Vehicle allocated by group size, as printed on the Himalayan trip PDFs. */
+export const TRANSPORT_BY_GROUP_SIZE: { group: string; vehicle: string }[] = [
+  { group: "4 members", vehicle: "Hatchback — Alto / Swift or equivalent" },
+  { group: "5–8 members", vehicle: "Tata Sumo / Mahindra Bolero or equivalent / Ertiga" },
+  { group: "9–14 / 17 members", vehicle: "Tempo Traveller" },
+  { group: "26–45 members", vehicle: "Bus (larger treks only)" },
+];
+
+/** Sliding-scale cancellation used by the Himalayan trips. */
+export const TIERED_CANCELLATION_POLICY =
+  "Cancel 30 or more days before travel and a 25% cancellation fee applies. Between 15 and 30 days, 50%. Within 15 days of departure, 100% — no refund.";
+
+/** Packing list carried across the Himalayan trek itineraries. */
+export const HIMALAYAN_TREK_PACKING_LIST: EquipmentGroup[] = [
+  {
+    category: "Pack & poles",
+    items: ["Rucksack with rain cover", "Trekking poles", "Day backpack"],
+  },
+  {
+    category: "Clothing",
+    items: [
+      "Thermals",
+      "Quick-dry t-shirts",
+      "Fleece jacket",
+      "Trek pants",
+      "Woollen cap and buff",
+      "Waterproof gloves",
+      "Woollen socks",
+    ],
+  },
+  {
+    category: "Footwear",
+    items: ["Trekking shoes", "Camping slippers"],
+  },
+  {
+    category: "Essentials",
+    items: [
+      "Personal first aid kit",
+      "Rain gear",
+      "Sun cap and sunglasses",
+      "Sunscreen and lip balm",
+      "Water bottle",
+      "Power bank",
+    ],
+  },
+];
+
+/** On-site rental, priced per item per trek. */
+export const TREK_RENTAL_GEAR: { item: string; price: number }[] = [
+  { item: "Trekking shoes", price: 500 },
+  { item: "Jacket", price: 500 },
+  { item: "Backpack", price: 500 },
+  { item: "Trek pants", price: 250 },
+  { item: "Woollen cap", price: 150 },
+  { item: "Waterproof gloves", price: 150 },
+  { item: "Water bottle", price: 150 },
+  { item: "Headlamp", price: 100 },
+  { item: "Sunglasses", price: 100 },
+  { item: "Rain cover", price: 100 },
+  { item: "Buff", price: 100 },
+  { item: "Socks", price: 100 },
+];
+
+/** Exclusions repeated verbatim across the Himalayan trek PDFs. */
+export const HIMALAYAN_TREK_EXCLUSIONS = [
+  "5% GST",
+  "Travel and health insurance",
+  "Meals during transportation",
+  "Airfare and train fare",
+  "Medical expenses",
+  "Tips, laundry and personal expenses",
+  "Costs arising from unscheduled delays such as landslides",
+  "Force majeure and evacuation charges",
+  "Anything not listed under inclusions",
+];
 
 /** Standard booking terms for short group trips. */
 export const TRIP_BOOKING_TERMS = {

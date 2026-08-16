@@ -99,10 +99,34 @@ export default function TripCostingTab({ trip }: TripCostingTabProps) {
             <strong className="text-brand-dark-text">{trip.balanceDueDays ?? 10} days</strong> before the
             departure date.
           </p>
+        ) : trip.confirmationPolicy ? (
+          <p className="text-xs text-gray-650 leading-relaxed">{trip.confirmationPolicy}</p>
         ) : (
           <MissingField>No booking terms are given in the source itinerary.</MissingField>
         )}
+        {trip.bookingAdvance && trip.confirmationPolicy && (
+          <p className="text-xs text-gray-650 leading-relaxed mt-2">{trip.confirmationPolicy}</p>
+        )}
       </div>
+
+      {/* Enquiry numbers */}
+      {trip.contactNumbers && trip.contactNumbers.length > 0 && (
+        <div>
+          <SubHeading>Enquiries</SubHeading>
+          <div className="flex flex-wrap gap-2">
+            {trip.contactNumbers.map((n) => (
+              <a
+                key={n}
+                href={`tel:${n.replace(/[^\d+]/g, "")}`}
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-forest bg-brand-warm-bg border border-gray-150 hover:bg-gray-100 px-3.5 py-2 rounded-full transition"
+              >
+                <Phone className="w-3.5 h-3.5 text-brand-dusk-orange" />
+                <span>{n}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Payment details */}
       {trip.paymentDetails && (
