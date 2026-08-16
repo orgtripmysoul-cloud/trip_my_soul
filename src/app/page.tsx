@@ -456,7 +456,7 @@ export default function Home() {
                   slidesPerView={1}
                   spaceBetween={20}
                   showNavigation={true}
-                  showPagination={true}
+                  showPagination={false}
                   breakpoints={{
                     640: { slidesPerView: 1, spaceBetween: 16 },
                     768: { slidesPerView: 2, spaceBetween: 20 },

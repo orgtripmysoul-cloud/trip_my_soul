@@ -45,7 +45,8 @@ export default function SwiperCarousel({
   if (autoplayDelay > 0) modules.push(Autoplay);
 
   return (
-    <div className="relative w-full carousel-container pb-12">
+    // Bottom padding only reserves room for the dots; collapse it when they're off.
+    <div className={`relative w-full carousel-container ${showPagination ? "pb-12" : "pb-2"}`}>
       <Swiper
         modules={modules}
         spaceBetween={spaceBetween}
