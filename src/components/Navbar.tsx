@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, Compass, User, Phone, Search, FileText, Trees, Briefcase, ChevronRight, ShoppingBag, Tent, Backpack } from "lucide-react";
+import { Menu, X, Compass, User, Phone, Search, FileText, Trees, Briefcase, ChevronRight, ChevronDown, ShoppingBag, Tent, Backpack } from "lucide-react";
 import { TREKS } from "@/data/db";
 import { getPhoneForPath } from "@/config/contact";
 
@@ -61,19 +61,54 @@ export default function Navbar() {
   ];
 
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
 
-  const renderNavLink = (link: { name: string; href: string }) => {
-    const isActive =
-      pathname === link.href ||
-      (link.href !== "/treks" && pathname.startsWith(link.href));
+  /**
+   * Desktop nav overflow strategy.
+   *
+   * Nine links cannot fit beside the logo and action bar below ~1900px, so each
+   * item is assigned the breakpoint at which it becomes inline. Anything not yet
+   * inline lives in the "More" dropdown, so every item is reachable at every
+   * width without hidden scrolling or clipping.
+   */
+  const NAV_TIER: Record<string, "lg" | "xl" | "more"> = {
+    "All Treks": "lg",
+    "Weekend Trips": "lg",
+    "Backpacking Trips": "lg",
+    "All Trip": "xl",
+    "Our Story": "xl",
+    "Contact Us": "more",
+    "Careers": "more",
+    "Rent": "more",
+    "My Profile": "more",
+  };
+
+  const desktopNavLinks = [
+    ...navLinksBeforeTreks,
+    ...navLinksTripMiddle,
+    ...navLinksAfterTreks,
+  ].sort(
+    (a, b) =>
+      Object.keys(NAV_TIER).indexOf(a.name) - Object.keys(NAV_TIER).indexOf(b.name)
+  );
+
+  const inlineLinks = desktopNavLinks.filter((l) => NAV_TIER[l.name] !== "more");
+  /** "more"-tier items always live here; "xl"-tier items only until they go inline. */
+  const overflowLinks = desktopNavLinks.filter((l) => NAV_TIER[l.name] !== "lg");
+
+  const isLinkActive = (href: string) =>
+    pathname === href || (href !== "/treks" && pathname.startsWith(href));
+
+  const renderNavLink = (link: { name: string; href: string }, extraClass = "") => {
+    const isActive = isLinkActive(link.href);
 
     return (
       <Link
         key={link.name}
         href={link.href}
-        className={`text-xs 2xl:text-sm font-semibold tracking-wide whitespace-nowrap shrink-0 transition-colors hover:text-brand-dusk-orange ${
+        className={`items-center text-xs font-semibold tracking-wide whitespace-nowrap shrink-0 transition-colors hover:text-brand-dusk-orange ${
           isActive ? "text-brand-dusk-orange border-b-2 border-brand-dusk-orange pb-0.5" : "text-gray-100"
-        }`}
+        } ${extraClass}`}
       >
         {link.name}
       </Link>
@@ -118,18 +153,57 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          {/* Shrinkable + internally scrollable, so a cramped viewport never
-              pushes the right action bar off the edge of the screen. */}
-          <nav className="hidden lg:flex items-center gap-x-4 xl:gap-x-5 2xl:gap-x-7 min-w-0 py-1 overflow-x-auto no-scrollbar scroll-touch">
-            {navLinksBeforeTreks.map(renderNavLink)}
-            {navLinksTripMiddle.map(renderNavLink)}
-            {navLinksAfterTreks.map(renderNavLink)}
+          {/* Links that fit are inline; the rest sit in "More" — nothing is ever
+              clipped or hidden behind a scrollbar. See NAV_TIER above. */}
+          <nav className="hidden lg:flex items-center gap-x-4 xl:gap-x-5 py-1 shrink-0">
+            {inlineLinks.map((link) =>
+              renderNavLink(
+                link,
+                NAV_TIER[link.name] === "lg" ? "inline-flex" : "hidden xl:inline-flex"
+              )
+            )}
+
+            {/* More dropdown */}
+            <div className="relative shrink-0">
+              <button
+                onClick={() => setIsMoreMenuOpen(!isMoreMenuOpen)}
+                onBlur={() => setTimeout(() => setIsMoreMenuOpen(false), 200)}
+                aria-haspopup="menu"
+                aria-expanded={isMoreMenuOpen}
+                className="flex items-center gap-1 text-xs font-semibold tracking-wide whitespace-nowrap text-gray-100 hover:text-brand-dusk-orange transition-colors"
+              >
+                <span>More</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isMoreMenuOpen ? "rotate-180" : ""}`} />
+              </button>
+
+              {isMoreMenuOpen && (
+                <div
+                  role="menu"
+                  className="absolute top-full right-0 mt-3 w-52 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 p-2 space-y-0.5 animate-fade-in"
+                >
+                  {overflowLinks.map((link) => (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      role="menuitem"
+                      onClick={() => setIsMoreMenuOpen(false)}
+                      className={`flex items-center gap-2.5 p-2.5 rounded-xl text-xs font-bold transition hover:bg-white/10 ${
+                        isLinkActive(link.href) ? "text-brand-dusk-orange" : "text-gray-100"
+                      } ${NAV_TIER[link.name] === "xl" ? "xl:hidden" : ""}`}
+                    >
+                      {getDrawerIcon(link.name)}
+                      <span>{link.name}</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Right Action Bar (Search + Choose Trek + Contact + Account) */}
-          <div className="hidden md:flex items-center space-x-2.5 lg:space-x-3 shrink-0">
+          <div className="hidden lg:flex items-center space-x-2.5 lg:space-x-3 shrink-0">
             {/* Desktop search input */}
-            <div className="relative w-32 lg:w-36 xl:w-44 2xl:w-52">
+            <div className="relative w-32 xl:w-44 2xl:w-52">
               <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-white text-xs">
                 <Search className="w-3.5 h-3.5 opacity-60 shrink-0" />
                 <input
@@ -283,7 +357,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex md:hidden items-center space-x-1.5">
+          <div className="flex lg:hidden items-center space-x-1.5">
             <button
               onClick={() => setIsChooseTrekOpen(true)}
               className="flex items-center space-x-1.5 text-xs font-bold px-3 py-2.5 rounded-full bg-brand-dusk text-white min-h-[44px]"
@@ -311,7 +385,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer (Glassmorphic Slide-over) */}
       <div
-        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setIsOpen(false)}
