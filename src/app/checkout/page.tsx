@@ -3,7 +3,8 @@
 import React, { useState, useMemo, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { TREKS } from "@/data/db";
+import { TREKS, WILDLIFE, YATRAS } from "@/data/db";
+import { ALL_TRIPS, tripToTrek } from "@/data/trips";
 import {
   Calendar, Check, X, Shield, Plus, Info, ArrowLeft, ArrowRight,
   DollarSign, CheckCircle2, User, HelpCircle, Lock, ShieldCheck
@@ -15,10 +16,16 @@ function CheckoutContent() {
 
   const slugParam = searchParams.get("slug") || searchParams.get("trek") || "valley-of-flowers-trek";
   const batchParam = searchParams.get("batch") || "06 Aug-11 Aug 2026";
-  const priceParam = parseInt(searchParams.get("price") || "12450", 10);
+  const rawPriceParam = searchParams.get("price");
+  const priceParam = rawPriceParam ? parseInt(rawPriceParam, 10) : null;
 
+  // Trips book through here too, so resolve the slug against every catalogue.
+  // Falling back to an unrelated package would show the wrong name and fare.
   const trek = useMemo(() => {
-    return TREKS.find((t) => t.slug === slugParam) || TREKS[0];
+    const fromCatalogue = [...TREKS, ...YATRAS, ...WILDLIFE].find((t) => t.slug === slugParam);
+    if (fromCatalogue) return fromCatalogue;
+    const fromTrips = ALL_TRIPS.find((t) => t.slug === slugParam);
+    return fromTrips ? tripToTrek(fromTrips) : null;
   }, [slugParam]);
 
   // Currency Converter state (INR vs USD)
@@ -54,7 +61,7 @@ function CheckoutContent() {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   // Price calculations
-  const basePricePerPerson = trek.price || priceParam || 12450;
+  const basePricePerPerson = priceParam ?? trek?.price ?? 0;
   
   const totalAddOns = useMemo(() => {
     return participants.reduce((total, p) => {
@@ -147,6 +154,21 @@ function CheckoutContent() {
       setPaymentSuccess(true);
     }, 2000);
   };
+
+  if (!trek) {
+    return (
+      <div className="max-w-md mx-auto py-40 px-4 text-center space-y-4">
+        <Info className="w-12 h-12 text-brand-dusk-orange mx-auto" />
+        <h1 className="text-2xl font-bold text-brand-dark-text">Package not found</h1>
+        <p className="text-xs text-gray-500">
+          We could not find a package matching this link. Browse the catalogue and try again.
+        </p>
+        <Link href="/treks" className="text-xs font-bold text-brand-forest hover:underline">
+          Browse all treks
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#F7F9FC] pt-24 pb-20 font-sans text-brand-dark-text">

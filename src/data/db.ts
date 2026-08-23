@@ -142,6 +142,12 @@ export interface HowToReach {
 export interface Trek {
   slug: string;
   name: string;
+  /**
+   * One-line summary shown on the listing card. Only set where a real source
+   * itinerary exists — cards without one fall back to a neutral factual line
+   * rather than invented copy.
+   */
+  tagline?: string;
   price: number | null;
   days: number | string | null;
   nights: number | string | null;
@@ -295,12 +301,13 @@ export const TREKS: Trek[] = [
   {
     "slug": "yulla-kanda-trek",
     "name": "Yulla Kanda Trek",
-    "price": 9000,
-    "days": 4,
-    "nights": 3,
+    "tagline": "The world's highest Shri Krishna temple, at 12,778 ft in Kinnaur — three days from Shimla.",
+    "price": null,
+    "days": 3,
+    "nights": 2,
     "region": "Himachal Pradesh",
     "category": "Trending Treks",
-    "startLocation": "Yulla Khas  to Yulla Khas",
+    "startLocation": "Shimla to Shimla",
     "difficulty": "Moderate",
     "months": [
       "Oct",
@@ -1281,12 +1288,13 @@ export const TREKS: Trek[] = [
   {
     "slug": "panch-kedar-trek",
     "name": "Panch Kedar",
-    "price": 35000,
+    "tagline": "All five Panch Kedar shrines in one circuit — Kedarnath, Madhyamaheshwar, Tungnath, Rudranath and Kalpeshwar — over twelve days from Rishikesh.",
+    "price": 34999,
     "days": 12,
     "nights": 11,
     "region": "Uttarakhand",
     "category": "trending treks",
-    "startLocation": "Haridwar to Haridwar",
+    "startLocation": "Rishikesh / Haridwar",
     "difficulty": "Moderate",
     "months": [
       "Oct",
@@ -1342,6 +1350,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "chopta-tungnath-trek",
     "name": "Chopta Tungnath Trek",
+    "tagline": "Tungnath — the world's highest Shiva temple — plus the Chandrashila summit and Deoria Tal, in three days from Rishikesh.",
     "price": 4999,
     "days": 3,
     "nights": 2,
@@ -1371,7 +1380,8 @@ export const YATRAS: Trek[] = [
   {
     "slug": "kedarnath-yatra",
     "name": "Kedarnath Yatra",
-    "price": 7999,
+    "tagline": "Four days from Haridwar to the Kedarnath shrine at 11,755 ft, with an overnight halt at the temple.",
+    "price": 6499,
     "days": 4,
     "nights": 3,
     "region": "Uttarakhand",
@@ -1458,7 +1468,8 @@ export const YATRAS: Trek[] = [
   {
     "slug": "chardham-yatra",
     "name": "Chardham Yatra",
-    "price": 22999,
+    "tagline": "Yamunotri, Gangotri, Kedarnath and Badrinath across ten days from Haridwar or Rishikesh.",
+    "price": 24999,
     "days": 10,
     "nights": 9,
     "region": "Uttarakhand",

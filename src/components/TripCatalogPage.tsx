@@ -7,6 +7,7 @@ import FilterPanel, { FilterState } from "@/components/FilterPanel";
 import {
   TripListingItem,
   tripToTrek,
+  tripSearchHaystack,
   deriveFilterOptionsFromTrips,
   deriveQuickFilters,
 } from "@/data/trips";
@@ -58,12 +59,10 @@ export default function TripCatalogPage({
     return trips.filter((trip) => {
       const trek = tripToTrek(trip);
 
-      const matchesSearch =
-        trek.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        trek.region.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        trek.startLocation.toLowerCase().includes(searchQuery.toLowerCase());
-
-      if (!matchesSearch) return false;
+      // Matches on name, alternate spellings, region, route, theme and highlights,
+      // so "Madmaheshwar" or "Kedar" surfaces every relevant package.
+      const query = searchQuery.trim().toLowerCase();
+      if (query && !tripSearchHaystack(trip).includes(query)) return false;
 
       if (selectedFilters.region.length > 0 && !selectedFilters.region.includes(trek.region)) {
         return false;

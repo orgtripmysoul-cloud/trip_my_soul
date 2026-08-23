@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MapPin, Clock, Mountain } from "lucide-react";
 import { motion } from "framer-motion";
 import { Trek } from "@/data/db";
+import { CANONICAL_TRIP_PATHS } from "@/data/trips";
 
 interface TrekCardProps {
   trek: Trek;
@@ -95,7 +96,9 @@ export default function TrekCard({ trek, detailsHref, imageUrl, description }: T
           </div>
 
           <p className="text-xs text-gray-500 line-clamp-2">
-            {description ?? `Experience the scenic trails of ${trek.startLocation || "the Himalayas"}. Prepare for breathtaking heights and beautiful valley stays.`}
+            {description ??
+              trek.tagline ??
+              `${trek.days ? `${trek.days}-day ` : ""}${trek.difficulty.toLowerCase()} route in ${trek.region}. Open the trip page for the full day-by-day plan, inclusions and pricing.`}
           </p>
         </div>
 
@@ -120,7 +123,7 @@ export default function TrekCard({ trek, detailsHref, imageUrl, description }: T
           </div>
 
           <Link
-            href={detailsHref ?? `/treks/${trek.slug}`}
+            href={detailsHref ?? CANONICAL_TRIP_PATHS[trek.slug] ?? `/treks/${trek.slug}`}
             className="block w-full py-2.5 px-3 text-center text-xs font-extrabold text-white bg-brand-forest hover:bg-brand-forest-light rounded-xl transition-all duration-200 shadow-xs"
           >
             View Details

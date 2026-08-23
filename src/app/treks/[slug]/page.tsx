@@ -3,7 +3,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { AlertCircle } from "lucide-react";
-import { TREKS } from "@/data/db";
+import { TREKS, WILDLIFE, YATRAS } from "@/data/db";
 import { TREK_SECTION_TABS } from "@/data/trekDefaults";
 import { resolveTrekDetail } from "@/lib/trekDetail";
 
@@ -48,18 +48,22 @@ export default function TrekDetailPage() {
   const [isBrochureOpen, setIsBrochureOpen] = useState(false);
   const [isFitnessModalOpen, setIsFitnessModalOpen] = useState(false);
 
-  const trek = useMemo(() => TREKS.find((t) => t.slug === slug) || null, [slug]);
+  // `/yatra` and the wildlife listings link here too, so resolve against every
+  // catalogue rather than TREKS alone — otherwise those cards 404.
+  const catalogue = useMemo(() => [...TREKS, ...YATRAS, ...WILDLIFE], []);
+
+  const trek = useMemo(() => catalogue.find((t) => t.slug === slug) || null, [catalogue, slug]);
 
   // Similar Treks calculation
   const similarTreks = useMemo(() => {
     if (!trek) return [];
-    const matches = TREKS.filter(
+    const matches = catalogue.filter(
       (t) => t.slug !== trek.slug && (t.region === trek.region || t.difficulty === trek.difficulty)
     );
     return matches.length > 0
       ? matches.slice(0, 4)
-      : TREKS.filter((t) => t.slug !== trek.slug).slice(0, 4);
-  }, [trek]);
+      : catalogue.filter((t) => t.slug !== trek.slug).slice(0, 4);
+  }, [catalogue, trek]);
 
   // Handle active tab highlighting on scroll
   useEffect(() => {
@@ -216,7 +220,7 @@ export default function TrekDetailPage() {
           </section>
 
           <section id="similar-treks" className={`${CARD} space-y-6`}>
-            <TrekSimilar similarTreks={similarTreks} totalTrekCount={TREKS.length} />
+            <TrekSimilar similarTreks={similarTreks} totalTrekCount={catalogue.length} />
           </section>
 
           <section id="trek-reviews" className={`${CARD} space-y-8`}>

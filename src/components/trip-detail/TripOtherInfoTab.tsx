@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { AlertTriangle, ArrowRight, Lightbulb } from "lucide-react";
+import { AlertTriangle, ArrowRight, CalendarDays, Lightbulb } from "lucide-react";
 import { MissingField, SubHeading, TabTitle, TickList } from "./TripSectionParts";
 import {
   TRIP_POLICY_LINKS,
@@ -52,35 +52,72 @@ export default function TripOtherInfoTab({ trip }: TripOtherInfoTabProps) {
         </div>
       </div>
 
-      {/* Things to pack — shared list */}
+      {/* Departure information */}
+      {trip.availability && (
+        <div>
+          <SubHeading>Departure information</SubHeading>
+          <p className="flex items-start gap-2 text-xs text-gray-650 leading-relaxed">
+            <CalendarDays className="w-3.5 h-3.5 text-brand-dusk-orange shrink-0 mt-0.5" />
+            <span>{trip.availability}</span>
+          </p>
+        </div>
+      )}
+
+      {/*
+        Things to carry. A trip's own list comes off its itinerary PDF and wins;
+        the shared tropical list is only a fallback for the South India trips
+        that have none, and must never be shown against a Himalayan trek.
+      */}
       <div>
-        <SubHeading>Things to pack</SubHeading>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
-          {TROPICAL_PACKING_LIST.map((group) => (
-            <div key={group.category}>
-              <span className="block text-xs font-extrabold text-brand-dark-text mb-1.5">
-                {group.category}
+        <SubHeading>Things to carry</SubHeading>
+        {trip.thingsToCarry && trip.thingsToCarry.length > 0 ? (
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 pl-4 list-disc text-xs text-gray-650 font-medium leading-relaxed">
+            {trip.thingsToCarry.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
+              {TROPICAL_PACKING_LIST.map((group) => (
+                <div key={group.category}>
+                  <span className="block text-xs font-extrabold text-brand-dark-text mb-1.5">
+                    {group.category}
+                  </span>
+                  <ul className="space-y-1 pl-4 list-disc text-xs text-gray-650 font-medium leading-relaxed">
+                    {group.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 bg-brand-warm-bg border border-gray-150 rounded-2xl p-4">
+              <span className="flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-wider text-brand-forest mb-2">
+                <Lightbulb className="w-3.5 h-3.5 text-brand-dusk-orange" />
+                Pro tips
               </span>
-              <ul className="space-y-1 pl-4 list-disc text-xs text-gray-650 font-medium leading-relaxed">
-                {group.items.map((item) => (
-                  <li key={item}>{item}</li>
+              <ul className="space-y-1 pl-4 list-disc text-xs text-gray-650 font-medium">
+                {TROPICAL_PACKING_PRO_TIPS.map((tip) => (
+                  <li key={tip}>{tip}</li>
                 ))}
               </ul>
             </div>
-          ))}
-        </div>
-        <div className="mt-5 bg-brand-warm-bg border border-gray-150 rounded-2xl p-4">
-          <span className="flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-wider text-brand-forest mb-2">
-            <Lightbulb className="w-3.5 h-3.5 text-brand-dusk-orange" />
-            Pro tips
-          </span>
-          <ul className="space-y-1 pl-4 list-disc text-xs text-gray-650 font-medium">
-            {TROPICAL_PACKING_PRO_TIPS.map((tip) => (
-              <li key={tip}>{tip}</li>
+          </>
+        )}
+      </div>
+
+      {/* Good to know — per-trip ground rules */}
+      {trip.thingsToRemember && trip.thingsToRemember.length > 0 && (
+        <div>
+          <SubHeading>Good to know before you book</SubHeading>
+          <ul className="space-y-1 pl-4 list-disc text-xs text-gray-650 font-medium leading-relaxed">
+            {trip.thingsToRemember.map((item) => (
+              <li key={item}>{item}</li>
             ))}
           </ul>
         </div>
-      </div>
+      )}
 
       {/* Transport by group size */}
       {trip.transportModes && trip.transportModes.length > 0 && (

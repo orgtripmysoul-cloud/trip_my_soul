@@ -12,6 +12,7 @@ import TripCostingTab from "./TripCostingTab";
 import TripOtherInfoTab from "./TripOtherInfoTab";
 import TripGalleryTab from "./TripGalleryTab";
 import TripReviewsTab from "./TripReviewsTab";
+import TripRelatedTrips from "./TripRelatedTrips";
 import { formatBatchDate, activePrice, type TripBookingState } from "./TripBookingForm";
 import type { TripListingItem } from "@/data/trips";
 
@@ -122,6 +123,12 @@ export default function TripDetailPage({ trip, category }: TripDetailPageProps) 
           <section id="reviews" className={PANEL}>
             <TripReviewsTab trip={trip} />
           </section>
+
+          {(trip.relatedSlugs?.length ?? 0) > 0 && (
+            <section id="related" className={PANEL}>
+              <TripRelatedTrips trip={trip} />
+            </section>
+          )}
         </div>
 
         <TripBookingWidget {...bookingProps} />

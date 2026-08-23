@@ -43,6 +43,8 @@ export default function TripOverviewTab({ trip }: TripOverviewTabProps) {
           label="Min age"
           value={trip.minAge ? `${trip.minAge}+ years` : "Not specified"}
         />
+        {trip.altitude && <Fact label="Altitude" value={trip.altitude} />}
+        {trip.months.length > 0 && <Fact label="Best months" value={trip.months.join(", ")} />}
       </div>
 
       {/* Highlights */}

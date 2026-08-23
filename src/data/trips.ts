@@ -76,6 +76,15 @@ export interface TripListingItem extends TripNavItem {
   category: string;
   detailsPath: string;
 
+  /**
+   * Other names the same package is sold or searched under, e.g. "Madmaheshwar"
+   * for Madhyamaheshwar. Feeds catalogue search so one canonical trip answers
+   * every spelling rather than being duplicated per variant.
+   */
+  alternateNames?: string[];
+  /** Highest point, only where the source itinerary prints a figure. */
+  altitude?: string;
+
   // --- Detail-template fields. All optional; unpopulated sections render an empty state. ---
 
   // Header
@@ -321,6 +330,8 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       themes: ["Snow", "Meadow", "Forest", "Pilgrimage"],
       category: "Weekend Trip",
       detailsPath: "/trips/weekend/chopta-tungnath-trek",
+      alternateNames: ["Chopta Tungnath Chandrashila Trek", "Tungnath Trek", "Chandrashila Trek", "Deoria Tal", "Chopta Trek", "Kedar"],
+      altitude: "Chandrashila — a 4,000 m Himalayan summit",
       minAge: 8,
       availability: "Weekend batches every Friday from Delhi",
       intro:
@@ -397,11 +408,15 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       themes: ["Pilgrimage", "Meadow", "Forest"],
       category: "Weekend Trip",
       detailsPath: "/trips/weekend/madmaheshwar-trek",
+      alternateNames: ["Madhyamaheshwar Trek", "Madmaheshwar", "Madhyamaheshwar", "Budha Madmaheshwar", "Panch Kedar", "Kedar"],
+      altitude: "Madhyamaheshwar Temple — 3,490 m",
       minAge: 12,
       intro:
         "The Madhyamaheshwar shrine at 3,490 m as a standalone short package rather than part of the longer Panch Kedar circuit. Pickup and drop at Akshardham Metro Station, Gate No. 1.",
       highlights: ["Madhyamaheshwar Temple, 3,490 m", "Budha Madhmaheshwar", "Devprayag Sangam", "Dhari Devi Temple", "Omkareshwar Temple, Ukhimath"],
       priceNote: "No rates are published in the source itinerary. Contact the trips desk for current pricing.",
+      sourceCaveat:
+        "Two points are unresolved in the source itinerary. It carries no price page at all, so no fare is shown here rather than an invented one — please call the trips desk. It also gives the shrine altitude twice and differently: about 3,289 m in the overview and 3,490 m on the Day 2 page. Both figures are reproduced as printed.",
       itinerary: [
         { day: 0, title: "Overnight departure from Delhi", entries: [{ time: "9:30 PM", text: "Pickup at Akshardham Metro Station, Gate No. 1." }, { text: "Car, MUV, SUV or Tempo Traveller depending on group size." }, { text: "Overnight journey Delhi → Rishikesh, about 6 hours." }] },
         { day: 1, title: "Rishikesh to Ransi", entries: [{ text: "Devprayag Sangam." }, { text: "Dhari Devi Temple." }, { text: "Omkareshwar Temple at Ukhimath." }, { text: "Check into the Ransi homestay. Dinner and overnight." }] },
@@ -466,7 +481,7 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       contactNumbers: TRIP_CONTACT_NUMBERS,
       contactPhone: "+91 81786 13438",
       paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
-      relatedSlugs: ["three-kedar-yatra", "chopta-tungnath-trek", "panch-kedar-yatra"],
+      relatedSlugs: ["madhyamaheshwar-trek-4-day", "three-kedar-yatra", "panch-kedar-yatra"],
     }
   ),
 
@@ -488,6 +503,8 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       themes: ["Pilgrimage", "Meadow", "Forest"],
       category: "Weekend Trip",
       detailsPath: "/trips/weekend/yulla-kanda-trek",
+      alternateNames: ["Yulla Kanda", "Yula Kanda", "Krishna Temple Trek", "Kinnaur Trek", "Yulla Khas"],
+      altitude: "Shri Krishna Temple — 12,778 ft",
       minAge: 12,
       intro:
         "Yulla Kanda sits in Kinnaur district, Himachal Pradesh. Its temple at 12,778 ft is dedicated to Lord Krishna and is the highest of its kind in the world — built by the Pandavas according to the Mahabharata, and the site of the Bushahr royal family's annual Janmashtami cap-throwing ritual.",
@@ -500,6 +517,8 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
         "Panoramic mountain views",
       ],
       priceNote: "No rates are published in the source itinerary. Contact the trips desk for current pricing.",
+      sourceCaveat:
+        "The source itinerary is a partial export — its pages are numbered up to 10 but only 7 were supplied, and none of them carries a price, so no fare is shown here. The accommodation lines also disagree: the day-by-day plan describes a homestay at Yulla Kanda on night 1 and a camp near the temple on night 2, while the inclusions list a single night in a hotel at Tapri. Both are reproduced as printed; please confirm the stay plan when you book.",
       itinerary: [
         { day: 1, title: "Shimla to Yulla Kanda", entries: [{ text: "Drive 4–5 hours." }, { text: "Check into the homestay and explore the village." }, { text: "Traditional Himachali dinner, optional bonfire. Overnight homestay." }] },
         { day: 2, title: "Krishna Temple", entries: [{ text: "Hike 6–7 hours, or arrange transport." }, { text: "Explore the temple and take in the panoramic mountain views." }, { text: "Campfire dinner. Overnight camp." }] },
@@ -984,11 +1003,22 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       themes: ["Pilgrimage", "Snow", "Forest"],
       category: "Backpacking Trip",
       detailsPath: "/trips/backpacking/char-dham-yatra",
+      alternateNames: ["Chardham Yatra", "Char Dham", "Chota Char Dham", "Yamunotri", "Gangotri", "Kedarnath", "Badrinath", "Kedar"],
+      altitude: "Yamunotri 3,291 m, as printed in the source itinerary",
       minAge: 12,
       intro:
         "The full Char Dham circuit — Yamunotri, Gangotri, Kedarnath and Badrinath — over ten days, starting and finishing at Haridwar or Rishikesh.",
-      highlights: ["Yamunotri", "Gangotri", "Kedarnath", "Badrinath", "Mana Village", "Tapt Kund", "Saraswati River"],
+      highlights: [
+        "Yamunotri — westernmost Dham, 3,291 m, under Banderpunch (6,361 m)",
+        "Gangotri Temple — 20 ft white granite shrine at the Bhagirathi's origin",
+        "Kedarnath Temple, with the 4:45 AM Abhishek",
+        "Badrinath Temple and a bath at the Tapt Kund hot spring",
+        "Mana Village, Ganesh Gufa and the Saraswati river",
+        "Vishwanath Temple at Uttarkashi",
+      ],
       priceNote: "₹24,999 + 5% GST ex-Haridwar / Rishikesh / Dehradun. ₹26,999 + 5% GST for Delhi to Delhi.",
+      sourceCaveat:
+        "The source PDF labels itself inconsistently. Its cover and every itinerary page carry a \"05D/04N\" badge, while the file header and the day-by-day plan run to ten days; the inclusions page describes \"8N 9D\" of accommodation rather than nine nights. The ten-day itinerary below is what the pages actually describe. Confirm the exact night count with the trips desk before you book.",
       packages: [
         { id: "ex-haridwar", label: "Ex-Haridwar / Rishikesh / Dehradun", price: 24999, paxLabel: "Ex-Haridwar", vehicle: "By group size", sharing: "Triple / quad" },
         { id: "ex-delhi", label: "Ex-Delhi (Delhi to Delhi)", price: 26999, paxLabel: "Ex-Delhi", vehicle: "By group size", sharing: "Triple / quad" },
@@ -1006,10 +1036,10 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
         { day: 10, title: "Return to Haridwar", entries: [{ text: "Drive back to Rishikesh / Haridwar, 10–12 hours. Trip ends." }] },
       ],
       costIncludes: [
-        "9 nights accommodation — standard hotel, homestay, guesthouse or camp, triple / quad sharing",
-        "Meals on MAP basis at Guptkashi, Kedarnath and Badrinath — basic Indian veg buffet, breakfast and dinner only",
-        "Private vehicle transport, Haridwar / Rishikesh round trip",
-        "All tolls, parking, fuel, green tax and driver allowance",
+        "Accommodation for the trip — standard hotel, homestay, guesthouse or camp in base room category, triple / quad sharing (the source prints this as \"8N 9D\")",
+        "Meals as specified in the itinerary, on MAP basis at Guptkashi, Kedarnath and Badrinath — basic Indian vegetarian buffet, breakfast and dinner only",
+        "Transportation by private vehicle on a sharing basis, Haridwar / Rishikesh to Haridwar / Rishikesh as per the itinerary",
+        "All toll tax, parking, fuel, green tax and driver allowance",
       ],
       costExcludes: [
         "5% GST",
@@ -1028,7 +1058,26 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       confirmationPolicy: CONFIRMATION_POLICY,
       contactNumbers: TRIP_CONTACT_NUMBERS,
       paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
-      thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
+      thingsToCarry: [
+        "40–60 L rucksack with rain cover",
+        "Hot and cold water bottle",
+        "Personal medical kit",
+        "Snacks — energy bars, dry fruit and ORS",
+        "3 t-shirts",
+        "1 fleece jacket",
+        "1 down jacket",
+        "1 raincoat or poncho",
+        "Thermal inners, upper and lower",
+        "2 trek pants",
+        "1 pair gloves",
+        "Sun cap and woollen cap",
+        "UV-protected sunglasses",
+        "4 pairs socks and 1 pair woollen socks",
+        "Hand sanitiser",
+        "Toilet paper",
+        "Lip balm",
+        "Neck gaiter or buff",
+      ],
       thingsToRemember: TRIP_GROUND_RULES,
       relatedSlugs: ["kedarnath-badrinath-tungnath", "kedarnath-yatra", "panch-kedar-yatra"],
     }
@@ -1052,11 +1101,21 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       themes: ["Pilgrimage", "Meadow", "Forest"],
       category: "Backpacking Trip",
       detailsPath: "/trips/backpacking/panch-kedar-yatra",
+      alternateNames: ["Panch Kedar", "Panch Kedar Trek", "Five Kedar", "Kedarnath", "Madhyamaheshwar", "Madmaheshwar", "Tungnath", "Rudranath", "Kalpeshwar", "Kedar"],
       minAge: 15,
       intro:
-        "Twelve days covering all five Panch Kedar shrines — Kedarnath, Madhyamaheshwar, Tungnath, Rudranath and Kalpeshwar — from Rishikesh.",
-      highlights: ["Kedarnath", "Madhyamaheshwar", "Tungnath", "Rudranath", "Kalpeshwar", "Pannar Bugyal", "Chopta"],
-      priceNote: "₹34,999 per person, excluding GST.",
+        "There are few places where you can take in Himalayan peaks, sunrise and sunset like this and seek the blessings of Shiva at the same time. Twelve days from Rishikesh covering all five Panch Kedar shrines in one continuous circuit — Kedarnath at the head of the Mandakini, Madhyamaheshwar above Ransi, Tungnath at Chopta, Rudranath beyond Pannar Bugyal, and the Kalpeshwar cave temple at Urgam.",
+      highlights: [
+        "Kedarnath Temple — 21 km trek each way from Gaurikund",
+        "Madhyamaheshwar via Khatra, Nanu, Moukheem and Koon",
+        "Tungnath — the world's highest Shiva temple",
+        "Rudranath, reached over Pitradhar",
+        "Kalpeshwar cave temple at Urgam",
+        "Pannar Bugyal via Pung Bugyal, Mauli Karak and Luiti Bugyal",
+      ],
+      priceNote: "₹34,999 per person, excluding GST. 5% GST applies on the invoice amount.",
+      sourceCaveat:
+        "Days 10 and 11 are inconsistent in the source itinerary. The Day 10 heading reads \"Rudranath — Sagar Village (trek back), Sagar Village — Urgam (drive 60 km / 2 hrs)\" but its body says the night is spent in Sagar; the Day 11 heading reads \"Sagar — Kalpeshwar\" while its body describes the 2 km walk starting from Urgam village. The plan below follows the headings. Confirm the Day 10 overnight with the trips desk.",
       itinerary: [
         { day: 1, title: "Rishikesh to Guptkashi", entries: [{ text: "Drive 204 km, about 7 hours, via Devprayag and Rudraprayag." }, { text: "Overnight Guptkashi." }] },
         { day: 2, title: "Kedarnath", entries: [{ text: "Trek 21 km one way. Overnight Kedarnath." }] },
@@ -1109,12 +1168,23 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       themes: ["Pilgrimage", "Meadow", "Forest"],
       category: "Backpacking Trip",
       detailsPath: "/trips/backpacking/three-kedar-yatra",
+      alternateNames: ["3 Kedar", "Three Kedar", "3 Kedar's Yatra", "Madhmaheshwar", "Madhyamaheshwar", "Madmaheshwar", "Rudranath", "Kalpeshwar", "Kedar"],
+      altitude: "Madhmaheshwar Temple — 2,286 m, as printed in the source itinerary",
       minAge: 15,
       availability: "Weekend batches every Saturday from Haridwar / Rishikesh",
       intro:
         "Three of the five Panch Kedar shrines — Madmaheshwar, Rudranath and Kalpeshwar — across eight days from Rishikesh.",
-      highlights: ["Madhmaheshwar Temple", "Pannar Bugyal", "Rudranath Temple", "Nanda Devi & Trishul views", "Kalpeshwar cave temple"],
-      priceNote: "₹18,999 per person.",
+      highlights: [
+        "Three Panch Kedar shrines — Madhmaheshwar, Rudranath and Kalpeshwar",
+        "Camping in remote meadows and valleys under clear skies",
+        "Ancient forest, high-altitude meadow, waterfalls and Garhwali villages",
+        "Views of Chaukhamba, Nanda Devi, Neelkanth and Trishul",
+        "Pannar Bugyal alpine camp",
+        "The Kalpeshwar cave temple, well away from the tourist circuit",
+      ],
+      priceNote: "₹18,999 per person. 5% GST applies on the invoice amount.",
+      sourceCaveat:
+        "The inclusions block in the source PDF appears to be carried over from a shorter itinerary. It lists meals \"from Day 1 dinner to Day 5 breakfast\" and a transfer from Haridwar, whereas this is an eight-day trip running from Rishikesh. The accommodation count (7 nights) does match. Inclusions are reproduced as printed — confirm the meal plan and pickup city with the trips desk.",
       itinerary: [
         { day: 1, title: "Rishikesh to Ransi", entries: [{ text: "Drive about 220 km, 6–7 hours, via Devprayag and Rudraprayag." }, { text: "Overnight Ransi." }] },
         { day: 2, title: "Madhmaheshwar", entries: [{ text: "Trek about 18 km, 6–7 hours, to 2,286 m." }, { text: "Evening darshan and puja. Camp overnight near the temple." }] },
@@ -1149,6 +1219,99 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
 
   toListingItem(
     {
+      name: "Madhyamaheshwar Trek — 4 Days",
+      slug: "madhyamaheshwar-trek-4-day",
+      duration: "3N/4D",
+      heroImage: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?auto=format&fit=crop&w=1920&q=80",
+      tagline: "Ransi to the Madhyamaheshwar shrine and a pre-dawn climb to Buda Madhyamaheshwar, ex-Haridwar.",
+    },
+    {
+      region: "Uttarakhand",
+      startLocation: "Haridwar / Rishikesh",
+      endLocation: "Haridwar / Rishikesh",
+      difficulty: "Moderate",
+      price: null,
+      months: ["May", "Jun", "Sep", "Oct"],
+      themes: ["Pilgrimage", "Meadow", "Forest"],
+      category: "Backpacking Trip",
+      detailsPath: "/trips/backpacking/madhyamaheshwar-trek-4-day",
+      alternateNames: [
+        "Madhyamaheshwar Trek",
+        "Madmaheshwar Trek",
+        "Madhmaheshwar",
+        "Buda Madhyamaheshwar",
+        "Budha Madmaheshwar",
+        "Ransi",
+        "Sari Village",
+        "Panch Kedar",
+        "Kedar",
+      ],
+      minAge: 12,
+      intro:
+        "The same Madhyamaheshwar shrine as the Delhi package, run over four days from Haridwar or Rishikesh with an extra night at Sari and a full day at the temple. The trail leaves the base village of Ransi and climbs through forest, mountain streams and traditional Himalayan villages inside the Kedarnath Wildlife Sanctuary. The reason to spend the extra day is the pre-dawn walk up to Buda Madhyamaheshwar for sunrise over the Chaukhamba massif.",
+      highlights: [
+        "Madhyamaheshwar Temple, reached on foot from Ransi",
+        "Buda Madhyamaheshwar at sunrise over the Chaukhamba massif",
+        "The trail through the Kedarnath Wildlife Sanctuary",
+        "Alaknanda river views on the drive in",
+        "Ukhimath, Rudraprayag and Devprayag en route",
+        "A full rest day at the shrine rather than a turnaround",
+      ],
+      priceNote:
+        "The source itinerary is a day-by-day plan only and publishes no rates. Contact the trips desk for current pricing.",
+      sourceCaveat:
+        "This source document contains the itinerary alone — it carries no pricing, inclusions, exclusions or cancellation terms, so those sections are left empty here rather than filled from another package. The day numbering also has a gap: Day 3 ends at Madhyamaheshwar and Day 4 opens with the drive out of Sari, without describing the descent between the two. Please confirm the Day 3–4 handover, the fare and what the fare covers with the trips desk.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Haridwar / Rishikesh to Sari",
+          entries: [
+            { text: "Drive about 200 km, 7–8 hours." },
+            { text: "Alaknanda river views, through Devprayag, Rudraprayag and Ukhimath." },
+            { text: "Reach Sari by evening and settle in. Overnight Sari." },
+          ],
+        },
+        {
+          day: 2,
+          title: "Sari to Ransi, then trek to Madhyamaheshwar",
+          entries: [
+            { text: "Early start, short drive from Sari to Ransi — the base village for the trek." },
+            { text: "Trek from Ransi through forest, mountain streams and traditional Himalayan villages." },
+            { text: "The trail climbs gradually through the Kedarnath Wildlife Sanctuary." },
+            { text: "Reach the temple by evening. Overnight near the shrine." },
+          ],
+        },
+        {
+          day: 3,
+          title: "Buda Madhyamaheshwar at sunrise",
+          entries: [
+            { text: "Pre-dawn 2 km hike to Buda Madhyamaheshwar — a steep ascent of about an hour." },
+            { text: "Sunrise over the Chaukhamba massif." },
+            { text: "Return to Madhyamaheshwar Temple for breakfast." },
+            { text: "Rest of the day free at the shrine." },
+          ],
+        },
+        {
+          day: 4,
+          title: "Sari to Haridwar / Rishikesh",
+          entries: [
+            { text: "After breakfast, begin the return drive from Sari Village." },
+            { text: "Scenic drive through the Garhwal Himalayas via Ukhimath, Rudraprayag and Devprayag." },
+            { text: "Reach Haridwar / Rishikesh by evening. Trip ends." },
+          ],
+        },
+      ],
+      confirmationPolicy: CONFIRMATION_POLICY,
+      contactNumbers: TRIP_CONTACT_NUMBERS,
+      contactPhone: "+91 81786 13438",
+      paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
+      thingsToRemember: TRIP_GROUND_RULES,
+      relatedSlugs: ["madmaheshwar-trek", "three-kedar-yatra", "panch-kedar-yatra"],
+    }
+  ),
+
+  toListingItem(
+    {
       name: "Rudranath Trek",
       slug: "rudranath-trek",
       duration: "4N/5D",
@@ -1165,6 +1328,8 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       themes: ["Pilgrimage", "Meadow", "Forest"],
       category: "Backpacking Trip",
       detailsPath: "/trips/backpacking/rudranath-trek",
+      alternateNames: ["Rudranath", "Rudranath Yatra", "Panar Bugyal", "Pannar Bugyal", "Sagar Village", "Panch Kedar", "Kedar"],
+      altitude: "Rudranath Temple — 2,286 m, as printed in the source itinerary",
       minAge: 15,
       availability: "Weekend batches every Saturday from Haridwar / Rishikesh",
       intro:
@@ -1217,14 +1382,23 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       themes: ["Pilgrimage", "Snow"],
       category: "Backpacking Trip",
       detailsPath: "/trips/backpacking/kedarnath-yatra",
+      alternateNames: ["Kedarnath", "Kedarnath Dham", "Guptkashi", "Gaurikund", "Sonprayag", "Panch Kedar", "Kedar"],
+      altitude: "Kedarnath — 3,384 m (11,755 ft), as printed in the source itinerary",
       minAge: 12,
-      availability: "Daily departures available",
+      availability: "Daily departures from Haridwar / Rishikesh",
       intro:
-        "Four days from Haridwar to the Kedarnath shrine at 3,384 m and back, with an overnight stay at the temple.",
-      highlights: ["Kedarnath Temple", "Dhari Devi", "Rudraprayag Sangam", "Mandakini river", "Pre-dawn Abhishek"],
+        "Four days from Haridwar to the Kedarnath shrine and back, with an overnight stay at the temple. The trail from Sonprayag climbs through valleys, rhododendron canopy and the chattis at Gaurikund and Jungle Chatti, and the halt at Guptkashi on the way up doubles as an acclimatisation night.",
+      highlights: [
+        "Kedarnath Temple at 11,755 ft, with the pre-dawn Abhishek",
+        "Kedarnath Dome and Kedar Peak at sunrise and sunset",
+        "Guptkashi — Vishwanath and Ardhnarishwar Temples",
+        "Gaurikund and Jungle Chatti on the trek route",
+        "Dhari Devi and the Rudraprayag Sangam en route",
+        "The Mandakini river at Tilwara",
+      ],
       priceNote: "₹6,499 per person, excluding GST.",
       sourceCaveat:
-        "The inclusions section in the source PDF appears to be boilerplate carried over from a longer itinerary — it refers to 7 nights of accommodation and meals from Day 1 dinner to Day 5 breakfast, which does not match this 4-day trip. Inclusions are withheld pending confirmation; the itinerary, pricing and transport details below are accurate as printed.",
+        "Two things in the source PDF do not line up. The inclusions section is boilerplate carried over from a longer itinerary — it refers to 7 nights of accommodation and meals from Day 1 dinner to Day 5 breakfast, which cannot apply to a 4-day trip, so inclusions are withheld here pending confirmation. The calendar page also states daily departures from Haridwar / Rishikesh while a later page states weekend batches every Saturday. The itinerary, pricing, transport and packing details below are accurate as printed.",
       itinerary: [
         { day: 1, title: "Haridwar to Guptkashi", entries: [{ text: "Drive 220 km, 8–9 hours, to 1,319 m." }, { text: "Passes Dhari Devi, Rudraprayag Sangam and the Mandakini river." }, { text: "Overnight Guptkashi." }] },
         { day: 2, title: "Kedarnath", entries: [{ text: "20 km by road, then 20 km trek one way to 3,384 m." }, { text: "Doli, palki, pony and horse available at your own cost." }, { text: "Temple visit. Overnight Kedarnath." }] },
@@ -1262,6 +1436,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       themes: ["Pilgrimage", "Snow", "Meadow"],
       category: "Backpacking Trip",
       detailsPath: "/trips/backpacking/kedarnath-badrinath-tungnath",
+      alternateNames: ["Kedarnath Badrinath Tungnath", "Do Dham with Tungnath", "Kedarnath", "Badrinath", "Tungnath", "Chandrashila", "Chopta", "Kedar"],
       minAge: 12,
       intro:
         "Six days from Haridwar taking in Kedarnath, Tungnath — the highest Shiva temple in the world — and Badrinath.",
@@ -1414,4 +1589,47 @@ export function getWeekendTrip(slug: string): TripListingItem | undefined {
 
 export function getBackpackingTrip(slug: string): TripListingItem | undefined {
   return BACKPACKING_TRIPS.find((t) => t.slug === slug);
+}
+
+/** Every catalogued trip, across both catalogues. */
+export const ALL_TRIPS: TripListingItem[] = [...WEEKEND_TRIPS, ...BACKPACKING_TRIPS];
+
+/** Look a trip up by slug in either catalogue — used for related-trip cards. */
+export function getTripBySlug(slug: string): TripListingItem | undefined {
+  return ALL_TRIPS.find((t) => t.slug === slug);
+}
+
+/**
+ * Legacy `db.ts` slugs that describe the same package as a fully-detailed trip
+ * in this file. Cards for these point at the trip page so a package has one
+ * canonical detail page instead of a thin duplicate on `/treks/[slug]`.
+ */
+export const CANONICAL_TRIP_PATHS: Record<string, string> = {
+  // TREKS
+  "panch-kedar-trek": "/trips/backpacking/panch-kedar-yatra",
+  "yulla-kanda-trek": "/trips/weekend/yulla-kanda-trek",
+  // YATRAS
+  "chopta-tungnath-trek": "/trips/weekend/chopta-tungnath-trek",
+  "kedarnath-yatra": "/trips/backpacking/kedarnath-yatra",
+  "chardham-yatra": "/trips/backpacking/char-dham-yatra",
+};
+
+/** Free-text haystack for catalogue search: name, aliases, place and theme. */
+export function tripSearchHaystack(trip: TripListingItem): string {
+  return [
+    trip.name,
+    trip.tagline,
+    trip.region,
+    trip.startLocation,
+    trip.endLocation,
+    trip.category,
+    trip.difficulty,
+    trip.duration,
+    ...(trip.alternateNames ?? []),
+    ...trip.themes,
+    ...(trip.highlights ?? []),
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
 }

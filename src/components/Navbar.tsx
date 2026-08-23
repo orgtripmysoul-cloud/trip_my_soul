@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, Compass, User, Phone, Search, FileText, Trees, Briefcase, ChevronRight, ChevronDown, ShoppingBag, Tent, Backpack } from "lucide-react";
 import { TREKS } from "@/data/db";
+import { ALL_TRIPS, CANONICAL_TRIP_PATHS, tripSearchHaystack } from "@/data/trips";
 import { getPhoneForPath } from "@/config/contact";
 
 export default function Navbar() {
@@ -22,12 +23,40 @@ export default function Navbar() {
   // Weekend / backpacking routes use a different contact desk.
   const phone = getPhoneForPath(pathname);
 
+  /**
+   * Global search. Detailed trips rank first and match on their alternate
+   * names too, so "Madmaheshwar" or "Kedar" finds every relevant package;
+   * legacy treks fill the rest. Slugs already covered by a canonical trip
+   * page are dropped so one package never appears twice in the dropdown.
+   */
   const searchResults = useMemo(() => {
-    if (!searchQuery.trim()) return [];
-    return TREKS.filter((t) =>
-      t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      t.region.toLowerCase().includes(searchQuery.toLowerCase())
-    ).slice(0, 5);
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return [];
+
+    const tripHits = ALL_TRIPS.filter((t) => tripSearchHaystack(t).includes(query)).map((t) => ({
+      slug: t.slug,
+      name: t.name,
+      region: t.region,
+      days: t.days as number | string | null,
+      price: t.price,
+      href: t.detailsPath,
+    }));
+
+    const canonicalised = new Set(Object.keys(CANONICAL_TRIP_PATHS));
+    const trekHits = TREKS.filter(
+      (t) =>
+        !canonicalised.has(t.slug) &&
+        (t.name.toLowerCase().includes(query) || t.region.toLowerCase().includes(query))
+    ).map((t) => ({
+      slug: t.slug,
+      name: t.name,
+      region: t.region,
+      days: t.days,
+      price: t.price,
+      href: `/treks/${t.slug}`,
+    }));
+
+    return [...tripHits, ...trekHits].slice(0, 6);
   }, [searchQuery]);
 
   useEffect(() => {
@@ -225,7 +254,7 @@ export default function Navbar() {
                       <button
                         key={trek.slug}
                         onMouseDown={() => {
-                          router.push(`/treks/${trek.slug}`);
+                          router.push(trek.href);
                           setSearchQuery("");
                         }}
                         className="w-full flex items-center gap-3 p-2 hover:bg-white/10 rounded-xl transition text-left"
@@ -436,7 +465,7 @@ export default function Navbar() {
                   <button
                     key={trek.slug}
                     onMouseDown={() => {
-                      router.push(`/treks/${trek.slug}`);
+                      router.push(trek.href);
                       setSearchQuery("");
                       setIsOpen(false);
                     }}
@@ -663,7 +692,7 @@ export default function Navbar() {
                     key={trek.slug}
                     onClick={() => {
                       setIsChooseTrekOpen(false);
-                      router.push(`/treks/${trek.slug}`);
+                      router.push(CANONICAL_TRIP_PATHS[trek.slug] ?? `/treks/${trek.slug}`);
                     }}
                     className="flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition text-left group"
                   >
