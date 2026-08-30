@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import Link from "next/link";
 import {
   Compass, Shield, Leaf, ArrowRight, Star, MapPin, Award, Search, ArrowUpDown, SlidersHorizontal,
   Users, Trophy, CheckCircle, FileText, Video, Activity, Play, Filter,
-  GraduationCap, CreditCard, ShieldCheck, Backpack, RefreshCcw, Sparkles, UserRound, Triangle
+  GraduationCap, CreditCard, ShieldCheck, Backpack, RefreshCcw, Sparkles, UserRound, Triangle,
+  X, ChevronLeft, ChevronRight
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { TREKS, YATRAS, WHY_CHOOSE_US, TRUST_STATS, Trek } from "@/data/db";
@@ -320,6 +321,20 @@ const FAQ_CATEGORIES: FaqCategory[] = [
   }
 ];
 
+// Traveller video reviews (YouTube Shorts IDs)
+const YOUTUBE_SHORTS = [
+  "FS6NI7Nf8Ks",
+  "XNOrJds6GzM",
+  "Ki_DVHtDHY8",
+  "fgJrD034ZMo",
+  "pJ9esoHTl7g",
+  "2kiN04lZm3w",
+  "BlqxzWWO-bA",
+  "dF1S-eVRZ2k",
+  "pKyGupLGzqA",
+  "k5eQTVJ5q1I",
+];
+
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilters, setSelectedFilters] = useState<FilterState>(initialFilters);
@@ -341,6 +356,38 @@ export default function Home() {
   // Tab states for Social Proof & Stay Informed sections
   const [activeTrustTab, setActiveTrustTab] = useState<"trusted" | "reviews" | "youtube" | "awards">("trusted");
   const [activeInformedTab, setActiveInformedTab] = useState<"updates" | "articles" | "videos">("updates");
+
+  // Fullscreen lightbox for the traveller video reviews (null = closed)
+  const [activeShortIndex, setActiveShortIndex] = useState<number | null>(null);
+
+  const closeShort = useCallback(() => setActiveShortIndex(null), []);
+  const stepShort = useCallback((delta: number) => {
+    setActiveShortIndex((current) =>
+      current === null
+        ? current
+        : (current + delta + YOUTUBE_SHORTS.length) % YOUTUBE_SHORTS.length
+    );
+  }, []);
+
+  // Keyboard controls + page scroll lock while the lightbox is open
+  useEffect(() => {
+    if (activeShortIndex === null) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeShort();
+      if (event.key === "ArrowRight") stepShort(1);
+      if (event.key === "ArrowLeft") stepShort(-1);
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [activeShortIndex, closeShort, stepShort]);
 
   // Filtered Top Treks for Section 4
   const filteredSeasonTreks = useMemo(() => {
@@ -487,10 +534,10 @@ export default function Home() {
         ),
       active: selectedFilters.upcomingOnly,
     },
+    { label: "Winter", action: () => selectSeason("Winter"), active: selectedFilters.seasons.includes("Winter") },
     { label: "Spiritual Journey", action: () => selectCollection("yatra"), active: activeCollection === "yatra" },
     { label: "Weekend Trips", action: () => selectCollection("weekend"), active: activeCollection === "weekend" },
     { label: "Monsoon", action: () => selectSeason("Monsoon"), active: selectedFilters.seasons.includes("Monsoon") },
-    { label: "Winter", action: () => selectSeason("Winter"), active: selectedFilters.seasons.includes("Winter") },
     { label: "Summer", action: () => selectSeason("Summer"), active: selectedFilters.seasons.includes("Summer") },
     { label: "Spring", action: () => selectSeason("Spring"), active: selectedFilters.seasons.includes("Spring") },
     { label: "Backpacking Trips", action: () => selectCollection("backpacking"), active: activeCollection === "backpacking" },
@@ -544,29 +591,6 @@ export default function Home() {
     }
   ];
 
-  const youtubeReviewsData = [
-    {
-      title: "Kedarkantha Summit Expedition Vlog & Review",
-      channel: "Mountain Trekkers India",
-      views: "128K views",
-      duration: "14:20",
-      image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-      title: "Buran Ghati Pass Ice Wall Experience",
-      channel: "Himalayan Vlogs",
-      views: "95K views",
-      duration: "11:45",
-      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-      title: "Kashmir Great Lakes Trekker Review",
-      channel: "Trail Seekers",
-      views: "210K views",
-      duration: "18:05",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80"
-    }
-  ];
 
   const trustedByData = [
     { name: "NIDHI+", desc: "National Integrated Database of Hospitality Industry", image: "/trusted/nidhi_plus.png" },
@@ -973,27 +997,44 @@ export default function Home() {
 
             {/* TAB 3: VIDEO REVIEWS */}
             {activeTrustTab === "youtube" && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 animate-fade-in">
-                {youtubeReviewsData.map((vid, idx) => (
-                  <div key={idx} className="bg-white border border-gray-150 rounded-3xl overflow-hidden shadow-xs space-y-3 p-4 min-w-0">
-                    <div className="aspect-video rounded-2xl overflow-hidden bg-gray-900 relative group cursor-pointer" onClick={() => alert(`Playing ${vid.title}...`)}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={vid.image} alt={vid.title} className="w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition">
-                          <Play className="w-5 h-5 fill-current ml-0.5" />
-                        </div>
+              <div className="animate-fade-in">
+                <SwiperCarousel
+                  slidesPerView={1.2}
+                  spaceBetween={16}
+                  showNavigation={true}
+                  showPagination={false}
+                  breakpoints={{
+                    640: { slidesPerView: 2.2, spaceBetween: 16 },
+                    768: { slidesPerView: 3.2, spaceBetween: 16 },
+                    1280: { slidesPerView: 4, spaceBetween: 16 },
+                  }}
+                >
+                  {YOUTUBE_SHORTS.map((videoId, idx) => (
+                    <button
+                      key={videoId}
+                      type="button"
+                      onClick={() => setActiveShortIndex(idx)}
+                      aria-label="Play traveller video review fullscreen"
+                      className="group w-full max-w-[280px] mx-auto block bg-white border border-gray-150 rounded-3xl shadow-xs hover:shadow-md transition p-3 cursor-pointer"
+                    >
+                      <div className="relative aspect-[9/16] w-full overflow-hidden rounded-2xl bg-gray-900">
+                        <iframe
+                          src={`https://www.youtube.com/embed/${videoId}`}
+                          title={`Traveller video review ${videoId}`}
+                          allow="autoplay; encrypted-media"
+                          allowFullScreen
+                          className="w-full h-full rounded-2xl pointer-events-none"
+                        />
+                        {/* Transparent catcher: clicks open the lightbox instead of playing inline */}
+                        <span className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition">
+                          <span className="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 group-hover:scale-110 transition">
+                            <Play className="w-5 h-5 fill-current ml-0.5" />
+                          </span>
+                        </span>
                       </div>
-                      <span className="absolute bottom-2 right-2 bg-black/80 text-white text-[9px] font-bold px-2 py-0.5 rounded">
-                        {vid.duration}
-                      </span>
-                    </div>
-                    <div className="space-y-1 min-w-0">
-                      <span className="text-xs font-bold text-brand-dark-text block line-clamp-2">{vid.title}</span>
-                      <span className="text-[10px] text-gray-400 font-semibold block truncate">{vid.channel} • {vid.views}</span>
-                    </div>
-                  </div>
-                ))}
+                    </button>
+                  ))}
+                </SwiperCarousel>
               </div>
             )}
 
@@ -1268,6 +1309,62 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FULLSCREEN VIDEO REVIEW LIGHTBOX */}
+      {activeShortIndex !== null && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Traveller video review"
+          onClick={closeShort}
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
+        >
+          <button
+            type="button"
+            onClick={closeShort}
+            aria-label="Close video"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition"
+          >
+            <X className="w-5 h-5" />
+          </button>
+
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); stepShort(-1); }}
+            aria-label="Previous video"
+            className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); stepShort(1); }}
+            aria-label="Next video"
+            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative h-[85vh] aspect-[9/16] max-w-[95vw] rounded-2xl overflow-hidden bg-black shadow-2xl"
+          >
+            <iframe
+              key={YOUTUBE_SHORTS[activeShortIndex]}
+              src={`https://www.youtube.com/embed/${YOUTUBE_SHORTS[activeShortIndex]}?autoplay=1&playsinline=1&rel=0`}
+              title={`Traveller video review ${YOUTUBE_SHORTS[activeShortIndex]}`}
+              allow="autoplay; encrypted-media; fullscreen"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+
+          <span className="absolute bottom-5 left-1/2 -translate-x-1/2 text-[11px] font-semibold text-white/70">
+            {activeShortIndex + 1} / {YOUTUBE_SHORTS.length}
+          </span>
+        </div>
+      )}
     </div>
   );
 }

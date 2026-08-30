@@ -408,9 +408,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -438,9 +435,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -467,9 +461,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -496,9 +487,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -525,9 +513,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -554,9 +539,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -583,9 +565,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -612,9 +591,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -641,9 +617,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -670,9 +643,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -699,9 +669,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -728,9 +695,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -757,9 +721,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -786,9 +747,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -931,9 +889,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -960,9 +915,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -989,9 +941,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1018,9 +967,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1047,9 +993,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1134,9 +1077,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1163,9 +1103,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1192,9 +1129,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1221,9 +1155,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1250,9 +1181,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1279,9 +1207,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1308,9 +1233,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1337,9 +1259,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1366,9 +1285,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1395,9 +1311,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1425,9 +1338,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1454,9 +1364,6 @@ export const TREKS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1469,7 +1376,475 @@ export const TREKS: Trek[] = [
       "Forest",
       "Pass Crossing"
     ]
-  }
+  },
+  {
+    // TODO(content): winter catalogue stub for Deoriatal-Chopta Trek. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "deoriatal-chopta-trek",
+    "name": "Deoriatal-Chopta Trek",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Panwali Kantha Trek. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "panwali-kantha-trek",
+    "name": "Panwali Kantha Trek",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Khaliya Top Trek. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "khaliya-top-trek",
+    "name": "Khaliya Top Trek",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Munsiyari-Khalia Top. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "munsiyari-khalia-top",
+    "name": "Munsiyari-Khalia Top",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Kartik Swami Trek. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "kartik-swami-trek",
+    "name": "Kartik Swami Trek",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Auli Snow Trip. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "auli-snow-trip",
+    "name": "Auli Snow Trip",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Chopta with Auli. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "chopta-with-auli",
+    "name": "Chopta with Auli",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Chopta Snow Trip. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "chopta-snow-trip",
+    "name": "Chopta Snow Trip",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Munsiyari Snow Trip. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "munsiyari-snow-trip",
+    "name": "Munsiyari Snow Trip",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Kanatal Winter Trip. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "kanatal-winter-trip",
+    "name": "Kanatal Winter Trip",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Dhanaulti Snow Trip. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "dhanaulti-snow-trip",
+    "name": "Dhanaulti Snow Trip",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Mussoorie Winter Escape. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "mussoorie-winter-escape",
+    "name": "Mussoorie Winter Escape",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Chakrata Winter Trip. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "chakrata-winter-trip",
+    "name": "Chakrata Winter Trip",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Nainital Winter Trip. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "nainital-winter-trip",
+    "name": "Nainital Winter Trip",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Ranikhet Winter Trip. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "ranikhet-winter-trip",
+    "name": "Ranikhet Winter Trip",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Binsar Winter Escape. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "binsar-winter-escape",
+    "name": "Binsar Winter Escape",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Kausani Winter Trip. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "kausani-winter-trip",
+    "name": "Kausani Winter Trip",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
+  {
+    // TODO(content): winter catalogue stub for Mukteshwar Winter Trip. Every value marked TODO
+    // below is a placeholder — ops to confirm before this listing goes live.
+    "slug": "mukteshwar-winter-trip",
+    "name": "Mukteshwar Winter Trip",
+    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "days": 3, // TODO(content): real duration.
+    "nights": 2, // TODO(content): real duration.
+    "region": "Uttarakhand",
+    "category": "Upcoming Winter Treks",
+    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
+    "startLocation": "",
+    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "months": [
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Snow"
+    ]
+    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
+    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
+    // back to the default hero image while it is unset).
+  },
 ];
 
 export const YATRAS: Trek[] = [
@@ -1517,9 +1892,6 @@ export const YATRAS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1549,9 +1921,6 @@ export const YATRAS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1578,9 +1947,6 @@ export const YATRAS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1611,9 +1977,6 @@ export const YATRAS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1643,9 +2006,6 @@ export const YATRAS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1675,9 +2035,6 @@ export const YATRAS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1704,9 +2061,6 @@ export const YATRAS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
@@ -1736,9 +2090,6 @@ export const YATRAS: Trek[] = [
     "months": [
       "Oct",
       "Nov",
-      "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
