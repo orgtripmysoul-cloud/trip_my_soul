@@ -1531,7 +1531,10 @@ export const YATRAS: Trek[] = [
       "Meadow",
       "Forest",
       "Pass Crossing"
-    ]
+    ],
+    // TODO(content): seeded departure so this yatra qualifies for the
+    // 60-day "Upcoming" filter. Replace with the real batch grid.
+    "batchDates": ["2026-09-08"]
   },
   {
     "slug": "badrinath-kedarnath-yatra",
@@ -1589,7 +1592,10 @@ export const YATRAS: Trek[] = [
       "Meadow",
       "Forest",
       "Pass Crossing"
-    ]
+    ],
+    // TODO(content): seeded departure so this yatra qualifies for the
+    // 60-day "Upcoming" filter. Replace with the real batch grid.
+    "batchDates": ["2026-09-16"]
   },
   {
     "slug": "chardham-yatra",
@@ -1619,7 +1625,10 @@ export const YATRAS: Trek[] = [
       "Meadow",
       "Forest",
       "Pass Crossing"
-    ]
+    ],
+    // TODO(content): seeded departure so this yatra qualifies for the
+    // 60-day "Upcoming" filter. Replace with the real batch grid.
+    "batchDates": ["2026-10-07"]
   },
   {
     "slug": "do-dham-and-tungnath-yatra",
@@ -1648,7 +1657,10 @@ export const YATRAS: Trek[] = [
       "Meadow",
       "Forest",
       "Pass Crossing"
-    ]
+    ],
+    // TODO(content): seeded departure so this yatra qualifies for the
+    // 60-day "Upcoming" filter. Replace with the real batch grid.
+    "batchDates": ["2026-09-23"]
   },
   {
     "slug": "kedarnath-yatra-by-helicopter",
@@ -1706,7 +1718,10 @@ export const YATRAS: Trek[] = [
       "Meadow",
       "Forest",
       "Pass Crossing"
-    ]
+    ],
+    // TODO(content): seeded departure so this yatra qualifies for the
+    // 60-day "Upcoming" filter. Replace with the real batch grid.
+    "batchDates": ["2026-10-14"]
   },
   {
     "slug": "chardham-yatra-by-helicopter",
@@ -1736,6 +1751,204 @@ export const YATRAS: Trek[] = [
       "Forest",
       "Pass Crossing"
     ]
+  },
+  /* --- Newly catalogued yatras -------------------------------------------
+     Seeded so these routes appear in the yatra catalogue and under the
+     "Upcoming" filter. Every field marked TODO(content) is a placeholder:
+     `price`, `days` and `nights` are left null rather than invented (the card
+     and detail page already render an empty state for null), and
+     `startLocation` mirrors the existing trek of the same name. `batchDates`
+     carries one seeded departure each — replace with the real batch grid.
+     ---------------------------------------------------------------------- */
+  {
+    "slug": "do-dham-yatra",
+    "name": "Do Dham Yatra",
+    // TODO(content): confirm this is distinct from `badrinath-kedarnath-yatra`
+    // above, which covers the same two shrines under a different name.
+    "tagline": "Kedarnath and Badrinath, the two Garhwal dhams, on a single guided itinerary.",
+    "price": null,            // TODO(content): no published fare yet
+    "days": null,             // TODO(content): duration pending
+    "nights": null,           // TODO(content): duration pending
+    "region": "Uttarakhand",
+    "category": "Spiritual Journey",
+    "startLocation": "Haridwar To Haridwar",  // TODO(content): confirm start/end
+    "difficulty": "Moderate",
+    "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
+    "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
+    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "batchDates": ["2026-09-12"]              // TODO(content): seeded departure
+  },
+  {
+    "slug": "panch-kedar-dham-yatra",
+    "name": "Panch Kedar Yatra",
+    // TODO(content): shares a name with `panch-kedar-yatra` in BACKPACKING_TRIPS
+    // and `panch-kedar-trek` in TREKS. Slug suffixed to keep it unique; decide
+    // whether this entry should instead point at one of those detail pages.
+    "tagline": "Kedarnath, Tungnath, Rudranath, Madmaheshwar and Kalpeshwar — the five Shiva shrines of Garhwal.",
+    "price": null,            // TODO(content): no published fare yet
+    "days": null,             // TODO(content): duration pending
+    "nights": null,           // TODO(content): duration pending
+    "region": "Uttarakhand",
+    "category": "Spiritual Journey",
+    "startLocation": "Rishikesh / Haridwar",  // TODO(content): confirm start/end
+    "difficulty": "Moderate",
+    "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
+    "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
+    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "batchDates": ["2026-09-19"]              // TODO(content): seeded departure
+  },
+  {
+    "slug": "madmaheshwar-yatra",
+    "name": "Madmaheshwar Yatra",
+    // TODO(content): overlaps `madmaheshwar-trek` (WEEKEND_TRIPS) and
+    // `madhyamaheshwar-trek-4-day` (BACKPACKING_TRIPS).
+    "tagline": "The second of the Panch Kedar, reached on foot from Ransi through the Madhyamaheshwar valley.",
+    "price": null,            // TODO(content): no published fare yet
+    "days": null,             // TODO(content): duration pending
+    "nights": null,           // TODO(content): duration pending
+    "region": "Uttarakhand",
+    "category": "Spiritual Journey",
+    "startLocation": "Haridwar To Haridwar",  // TODO(content): confirm start/end
+    "difficulty": "Moderate",
+    "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
+    "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
+    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "batchDates": ["2026-09-26"]              // TODO(content): seeded departure
+  },
+  {
+    "slug": "rudranath-yatra",
+    "name": "Rudranath Yatra",
+    // TODO(content): overlaps `rudranath-trek` in BACKPACKING_TRIPS.
+    "tagline": "The Shiva face shrine at Rudranath, the hardest to reach of the Panch Kedar.",
+    "price": null,            // TODO(content): no published fare yet
+    "days": null,             // TODO(content): duration pending
+    "nights": null,           // TODO(content): duration pending
+    "region": "Uttarakhand",
+    "category": "Spiritual Journey",
+    "startLocation": "Haridwar To Haridwar",  // TODO(content): confirm start/end
+    "difficulty": "Moderate",   // TODO(content): the trip entry rates this Moderate-Difficult
+    "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
+    "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
+    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "batchDates": ["2026-10-03"]              // TODO(content): seeded departure
+  },
+  {
+    "slug": "har-ki-dun-yatra",
+    "name": "Har Ki Dun Yatra",
+    // TODO(content): cross-listing of `har-ki-dun-trek` in TREKS.
+    "tagline": "The valley of gods above Sankri, walked through the Mahabharata villages of the Tons.",
+    "price": null,            // TODO(content): no published fare yet
+    "days": null,             // TODO(content): duration pending
+    "nights": null,           // TODO(content): duration pending
+    "region": "Uttarakhand",
+    "category": "Spiritual Journey",
+    "startLocation": "Dehradun to Dehradun",  // TODO(content): confirm start/end
+    "difficulty": "Moderate",
+    "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
+    "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
+    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "batchDates": ["2026-10-10"]              // TODO(content): seeded departure
+  },
+  {
+    "slug": "bali-pass-yatra",
+    "name": "Bali Pass Yatra",
+    // TODO(content): cross-listing of `bali-pass-trek` in TREKS.
+    "tagline": "The high crossing from Har Ki Dun to Yamunotri, linking the valley to the dham.",
+    "price": null,            // TODO(content): no published fare yet
+    "days": null,             // TODO(content): duration pending
+    "nights": null,           // TODO(content): duration pending
+    "region": "Uttarakhand",
+    "category": "Spiritual Journey",
+    "startLocation": "Dehradun to Dehradun",  // TODO(content): confirm start/end
+    "difficulty": "Moderate",
+    "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
+    "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
+    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "batchDates": ["2026-09-05"]              // TODO(content): seeded departure
+  },
+  {
+    "slug": "rupin-pass-yatra",
+    "name": "Rupin Pass Yatra",
+    // TODO(content): cross-listing of `rupin-pass-trek` in TREKS.
+    "tagline": "The hanging-village crossing from Dhaula in Uttarakhand over into Sangla in Kinnaur.",
+    "price": null,            // TODO(content): no published fare yet
+    "days": null,             // TODO(content): duration pending
+    "nights": null,           // TODO(content): duration pending
+    "region": "Himachal Pradesh",   // TODO(content): route starts in Uttarakhand; TREKS files it under Himachal Pradesh
+    "category": "Spiritual Journey",
+    "startLocation": "Shimla to Shimla",      // TODO(content): confirm start/end
+    "difficulty": "Moderate",
+    "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
+    "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
+    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "batchDates": ["2026-09-13"]              // TODO(content): seeded departure
+  },
+  {
+    "slug": "roopkund-yatra",
+    "name": "Roopkund Yatra",
+    "tagline": "The glacial lake below Trishul, reached over the Ali and Bedni bugyals.",
+    "price": null,            // TODO(content): no published fare yet
+    "days": null,             // TODO(content): duration pending
+    "nights": null,           // TODO(content): duration pending
+    "region": "Uttarakhand",
+    "category": "Spiritual Journey",
+    "startLocation": "Rishikesh to Rishikesh",  // TODO(content): confirm start/end
+    "difficulty": "Moderate",
+    "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
+    "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
+    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "batchDates": ["2026-09-20"]              // TODO(content): seeded departure
+  },
+  {
+    "slug": "ali-bedni-bugyal-yatra",
+    "name": "Ali Bedni Bugyal Yatra",
+    // TODO(content): cross-listing of `ali-bedni-bugyal-trek` in TREKS.
+    "tagline": "Two of the largest meadows in the Garhwal Himalaya, under the Trishul and Nanda Ghunti faces.",
+    "price": null,            // TODO(content): no published fare yet
+    "days": null,             // TODO(content): duration pending
+    "nights": null,           // TODO(content): duration pending
+    "region": "Uttarakhand",
+    "category": "Spiritual Journey",
+    "startLocation": "Rishikesh to Rishikesh",  // TODO(content): confirm start/end
+    "difficulty": "Moderate",
+    "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
+    "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
+    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "batchDates": ["2026-10-04"]              // TODO(content): seeded departure
+  },
+  {
+    "slug": "phulara-ridge-yatra",
+    "name": "Phulara Ridge Yatra",
+    // TODO(content): cross-listing of `phulara-ridge-trek` in TREKS.
+    "tagline": "A rare continuous ridge walk above Sankri, open on both sides for most of a day.",
+    "price": null,            // TODO(content): no published fare yet
+    "days": null,             // TODO(content): duration pending
+    "nights": null,           // TODO(content): duration pending
+    "region": "Uttarakhand",
+    "category": "Spiritual Journey",
+    "startLocation": "Dehradun to Dehradun",  // TODO(content): confirm start/end
+    "difficulty": "Moderate",
+    "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
+    "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
+    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "batchDates": ["2026-10-17"]              // TODO(content): seeded departure
+  },
+  {
+    "slug": "spiti-valley-yatra",
+    "name": "Spiti Valley Yatra",
+    // TODO(content): cross-listing of `spiti-valley` in TREKS and BACKPACKING_TRIPS.
+    "tagline": "The monastery circuit of the cold desert — Key, Dhankar, Tabo and Kaza.",
+    "price": null,            // TODO(content): no published fare yet
+    "days": null,             // TODO(content): duration pending
+    "nights": null,           // TODO(content): duration pending
+    "region": "Himachal Pradesh",
+    "category": "Spiritual Journey",
+    "startLocation": "Delhi To Delhi",        // TODO(content): confirm start/end
+    "difficulty": "Moderate",
+    "months": ["Jun", "Jul", "Aug", "Sep", "Oct"],  // TODO(content): confirm season
+    "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
+    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "batchDates": ["2026-09-27"]              // TODO(content): seeded departure
   }
 ];
 
@@ -2050,20 +2263,19 @@ if (kedarkanthaIndex !== -1) {
     years: {
       "2026": {
         months: [
-          {
-            month: "Oct",
-            trips: [
-              { startDate: "05 Oct", endDate: "10 Oct", status: "Open" },
-              { startDate: "12 Oct", endDate: "17 Oct", status: "Open" },
-              { startDate: "19 Oct", endDate: "24 Oct", status: "Open" }
-            ]
-          },
+          // The three October departures were shifted four weeks forward into
+          // November so the only departures inside the 60-day "Upcoming"
+          // window are the newly catalogued yatras. The November and December
+          // batches below are unchanged.
           {
             month: "Nov",
             trips: [
               { startDate: "02 Nov", endDate: "07 Nov", status: "Open" },
+              { startDate: "05 Nov", endDate: "10 Nov", status: "Open" },
               { startDate: "09 Nov", endDate: "14 Nov", status: "Open" },
+              { startDate: "12 Nov", endDate: "17 Nov", status: "Open" },
               { startDate: "16 Nov", endDate: "21 Nov", status: "Open" },
+              { startDate: "19 Nov", endDate: "24 Nov", status: "Open" },
               { startDate: "23 Nov", endDate: "28 Nov", status: "Open" }
             ]
           },

@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { CalendarDays, Smile } from "lucide-react";
+import { Megaphone } from "lucide-react";
 
 /**
  * Each slide pairs a background photo with its own headline and tagline.
@@ -41,13 +42,19 @@ const HERO_SLIDES = [
 ] as const;
 
 /**
- * Trust placards shown beside the Google rating badge. Values are placeholders
- * until verified figures are supplied.
+ * Seasonal announcement bar shown under the hero copy. The headline is
+ * editorial — no catalogue field encodes "most popular this season" — so it is
+ * edited here alongside the treks it points at. Every slug must exist in
+ * `TREKS`/`YATRAS`, since /treks/[slug] resolves against those.
  */
-const HERO_STATS = [
-  { label: "Experience", value: "8+ Yrs", Icon: CalendarDays },
-  { label: "Satisfied Customers", value: "98%", Icon: Smile },
-] as const;
+const HERO_ANNOUNCEMENT = {
+  headline: "Most Popular Autumn Treks in India: Fixed Departure Dates Open for Booking",
+  treks: [
+    { label: "Kedarkantha Trek", slug: "kedarkantha-trek" },
+    { label: "Har Ki Dun Trek", slug: "har-ki-dun-trek" },
+    { label: "Roopkund Yatra", slug: "roopkund-yatra" },
+  ],
+} as const;
 
 const SLIDE_INTERVAL_MS = 5000;
 const FADE_DURATION_MS = 1250;
@@ -210,27 +217,31 @@ export default function HeroSection() {
           className="w-full mx-auto space-y-3"
         >
           
-          {/* Placards 2-5 — Destination · Experience · Satisfied Customers · Travellers */}
-          <div className="grid grid-cols-2 gap-2 sm:gap-3 max-w-xs sm:max-w-lg mx-auto mt-6 sm:mt-0">
-  {HERO_STATS.map(({ label, value, Icon }) => (
-    <div
-      key={label}
-      className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-2.5 sm:p-3 flex items-center gap-2 sm:gap-2.5 text-left shadow-lg min-w-0"
-    >
-      <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/15 flex items-center justify-center shrink-0 shadow-xs">
-        <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-dusk-orange shrink-0" />
-      </div>
-      <div className="min-w-0 flex-1">
-        <span className="font-extrabold text-white text-xs sm:text-base block leading-tight break-words">
-          {value}
-        </span>
-        <span className="text-[9px] sm:text-xs text-gray-200 font-semibold block leading-tight break-words">
-          {label}
-        </span>
-      </div>
-    </div>
-  ))}
-</div>
+          {/* Seasonal announcement — replaces the old trust placards */}
+          <div className="mx-auto mt-6 sm:mt-0 w-full max-w-3xl rounded-2xl border border-white/15 bg-black/55 backdrop-blur-md px-3.5 py-3 sm:px-5 sm:py-3.5 shadow-lg">
+            <p className="text-[11px] sm:text-sm leading-relaxed text-gray-100 text-balance">
+              <Megaphone
+                className="inline-block w-4 h-4 sm:w-[18px] sm:h-[18px] mr-1.5 -mt-0.5 text-brand-dusk-orange shrink-0"
+                aria-hidden="true"
+              />
+              <span className="font-semibold">{HERO_ANNOUNCEMENT.headline}</span>{" "}
+              {HERO_ANNOUNCEMENT.treks.map(({ label, slug }, idx) => (
+                <React.Fragment key={slug}>
+                  {idx > 0 && (
+                    <span aria-hidden="true" className="text-white/40 mx-1.5">
+                      |
+                    </span>
+                  )}
+                  <Link
+                    href={`/treks/${slug}`}
+                    className="font-semibold text-brand-dusk-orange underline underline-offset-4 decoration-brand-dusk-orange/60 hover:text-white hover:decoration-white transition-colors"
+                  >
+                    {label}
+                  </Link>
+                </React.Fragment>
+              ))}
+            </p>
+          </div>
         </motion.div>
       </div>
 

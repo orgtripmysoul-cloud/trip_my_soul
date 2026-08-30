@@ -11,6 +11,7 @@ import {
   deriveFilterOptionsFromTrips,
   deriveQuickFilters,
 } from "@/data/trips";
+import { departsWithinWindow } from "@/lib/upcoming";
 
 const initialFilters: FilterState = {
   region: [],
@@ -118,15 +119,9 @@ export default function TripCatalogPage({
         if (!matchesDuration) return false;
       }
 
-      if (selectedFilters.upcomingOnly) {
-        const today = new Date();
-        const currentMonthIdx = today.getMonth();
-        const nextMonthIdx = (currentMonthIdx + 1) % 12;
-        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const activeMonths = [monthNames[currentMonthIdx], monthNames[nextMonthIdx]];
-        const hasUpcoming = trek.months.some((m) => activeMonths.includes(m));
-        if (!hasUpcoming) return false;
-      }
+      // A real departure in the next 60 days. Previously this compared
+      // operating months, which matched every trip in the catalogue.
+      if (selectedFilters.upcomingOnly && !departsWithinWindow(trek)) return false;
 
       return true;
     });

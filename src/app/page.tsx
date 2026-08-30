@@ -20,6 +20,7 @@ import {
   TripListingItem,
   tripToTrek,
 } from "@/data/trips";
+import { departsWithinWindow } from "@/lib/upcoming";
 
 const initialFilters: FilterState = {
   region: [],
@@ -38,8 +39,6 @@ const SEASON_MAP: Record<string, string[]> = {
   "Monsoon": ["Jul", "Aug"],
   "Autumn": ["Sep", "Oct", "Nov"]
 };
-
-const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 /**
  * One row of the "Find Your Next Healing Journey" grid. Treks render straight
@@ -78,7 +77,10 @@ const isWeekendCategory = (category: string) =>
 
 /** Collections behind the quick-filter pills. Keys match `CollectionKey`. */
 const COLLECTIONS: Record<"all" | "yatra" | "weekend" | "backpacking", CatalogEntry[]> = {
-  all: TREKS.map((trek) => ({ trek })),
+  all: dedupeBySlug([
+    ...TREKS.map((trek) => ({ trek })),
+    ...YATRAS.map((trek) => ({ trek })),
+  ]),
   yatra: YATRAS.map((trek) => ({ trek })),
   weekend: dedupeBySlug([
     ...WEEKEND_TRIPS.map(tripEntry),
@@ -89,68 +91,9 @@ const COLLECTIONS: Record<"all" | "yatra" | "weekend" | "backpacking", CatalogEn
 
 type CollectionKey = keyof typeof COLLECTIONS;
 
-/** How far ahead the "Upcoming" pill looks for a departure. */
-const UPCOMING_WINDOW_DAYS = 60;
-
-/** Parses a batch label like "05 Oct" under year key "2026". */
-const parseBatchDate = (startDate: string, year: string): Date | null => {
-  const match = startDate.trim().match(/^(\d{1,2})\s+([A-Za-z]{3})/);
-  if (!match) return null;
-  const monthIdx = MONTH_NAMES.indexOf(match[2].slice(0, 1).toUpperCase() + match[2].slice(1, 3).toLowerCase());
-  if (monthIdx < 0) return null;
-  return new Date(Number(year), monthIdx, Number(match[1]));
-};
-
-const entryDepartures = (entry: CatalogEntry): Date[] => {
-  if (entry.batchDates?.length) {
-    return entry.batchDates
-      .map((iso) => new Date(`${iso}T00:00:00`))
-      .filter((date) => !Number.isNaN(date.getTime()));
-  }
-
-  const years = entry.trek.batches?.years ?? {};
-  return Object.entries(years).flatMap(([year, block]) =>
-    (block?.months ?? []).flatMap((monthBlock) =>
-      monthBlock.trips
-        .map((trip) => parseBatchDate(trip.startDate, year))
-        .filter((date): date is Date => date !== null)
-    )
-  );
-};
-
-/** Month labels touched by the window starting today. */
-const monthsInWindow = (days: number): string[] => {
-  const start = new Date();
-  const end = new Date(start);
-  end.setDate(end.getDate() + days);
-
-  const labels: string[] = [];
-  const cursor = new Date(start.getFullYear(), start.getMonth(), 1);
-  while (cursor <= end) {
-    labels.push(MONTH_NAMES[cursor.getMonth()]);
-    cursor.setMonth(cursor.getMonth() + 1);
-  }
-  return labels;
-};
-
-/**
- * True when the entry departs inside the window. Real batch dates win; entries
- * that only publish operating months fall back to a month overlap.
- */
-const departsWithinWindow = (entry: CatalogEntry, days = UPCOMING_WINDOW_DAYS): boolean => {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const until = new Date(today);
-  until.setDate(until.getDate() + days);
-
-  const departures = entryDepartures(entry);
-  if (departures.length > 0) {
-    return departures.some((date) => date >= today && date <= until);
-  }
-
-  const windowMonths = monthsInWindow(days);
-  return entry.trek.months.some((month) => windowMonths.includes(month));
-};
+/** True when a catalogue entry has a published departure inside the window. */
+const entryIsUpcoming = (entry: CatalogEntry): boolean =>
+  departsWithinWindow(entry.trek, entry.batchDates);
 
 /** One question row inside a help category. */
 interface FaqItem {
@@ -483,7 +426,7 @@ export default function Home() {
       return true;
     })
     // 8. Upcoming Departures Filter — anything leaving in the next 60 days
-    .filter((entry) => !selectedFilters.upcomingOnly || departsWithinWindow(entry));
+    .filter((entry) => !selectedFilters.upcomingOnly || entryIsUpcoming(entry));
   }, [searchQuery, selectedFilters, activeCollection]);
 
   // Sort treks

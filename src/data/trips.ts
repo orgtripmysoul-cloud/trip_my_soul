@@ -237,9 +237,12 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       minAge: 18,
       maxGroupSize: "Max 2 Couples",
       originalPrice: 14999,
+      // Shifted nine weeks forward (same Thu/Fri pattern) so the only
+      // departures inside the 60-day "Upcoming" window are the newly
+      // catalogued yatras. Still sample data — see the note above.
       batchDates: [
-        "2026-09-03", "2026-09-04", "2026-09-10", "2026-09-11",
-        "2026-09-17", "2026-09-18", "2026-09-24", "2026-09-25",
+        "2026-11-05", "2026-11-06", "2026-11-12", "2026-11-13",
+        "2026-11-19", "2026-11-20", "2026-11-26", "2026-11-27",
       ],
       packages: [
         { id: "advance-mysore", label: "Advance Pay — From Mysore", price: 2999, advanceAmount: 2999 },

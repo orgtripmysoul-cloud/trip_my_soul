@@ -4,6 +4,7 @@ import React, { useState, useMemo, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Search, SlidersHorizontal, ArrowUpDown } from "lucide-react";
 import { TREKS } from "@/data/db";
+import { departsWithinWindow } from "@/lib/upcoming";
 import TrekCard from "@/components/TrekCard";
 import FilterPanel, { FilterState } from "@/components/FilterPanel";
 
@@ -133,16 +134,9 @@ function TreksList() {
         if (!matchesDuration) return false;
       }
 
-      // 8. Upcoming Departures Filter (Next 60 Days: Current month and next month check)
-      if (selectedFilters.upcomingOnly) {
-        const today = new Date();
-        const currentMonthIdx = today.getMonth(); // 0 to 11
-        const nextMonthIdx = (currentMonthIdx + 1) % 12;
-        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const activeMonths = [monthNames[currentMonthIdx], monthNames[nextMonthIdx]];
-        const hasUpcoming = trek.months.some((m) => activeMonths.includes(m));
-        if (!hasUpcoming) return false;
-      }
+      // 8. Upcoming Departures Filter — a real departure in the next 60 days.
+      // Previously this compared operating months, which matched every trek.
+      if (selectedFilters.upcomingOnly && !departsWithinWindow(trek)) return false;
 
       return true;
     });
