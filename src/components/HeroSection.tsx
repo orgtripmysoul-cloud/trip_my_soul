@@ -174,32 +174,7 @@ export default function HeroSection() {
           transition={{ delay: 0.7, duration: 0.5 }}
           className="w-full mx-auto space-y-3"
         >
-          {/* Placard 1 — Google Review */}
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3.5 flex items-center justify-between text-left gap-2 sm:gap-3 shadow-lg max-w-md mx-auto">
-            <div className="flex items-center gap-2.5 min-w-0 flex-1">
-              <div className="w-9 h-9 rounded-full bg-white text-blue-600 font-black text-xs flex items-center justify-center shrink-0 shadow-xs">
-                G
-              </div>
-              <div className="min-w-0">
-                <div className="flex items-center gap-1 text-amber-400 text-xs">
-                  <span className="font-extrabold text-white mr-1 text-xs">4.9</span>
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-current shrink-0" />
-                  ))}
-                </div>
-                <span className="text-[10px] text-gray-200 font-semibold block leading-snug">
-                  Based on 2,500+ Verified Google Reviews
-                </span>
-              </div>
-            </div>
-            <a
-              href="#reviews"
-              className="text-[10px] font-extrabold text-brand-dusk-orange uppercase tracking-wider hover:underline shrink-0 min-h-[44px] flex items-center text-right"
-            >
-              Read Reviews →
-            </a>
-          </div>
-
+          
           {/* Placards 2-5 — Destination · Experience · Satisfied Customers · Travellers */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-md sm:max-w-4xl mx-auto">
             {HERO_STATS.map(({ label, value, Icon }) => (
