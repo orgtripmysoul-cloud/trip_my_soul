@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Star, MapPin, CalendarDays, Smile, Users } from "lucide-react";
+import { CalendarDays, Smile } from "lucide-react";
 
 const HERO_SLIDES = [
   "/assets/hero/hero-slide-1.jpeg",
@@ -14,10 +14,8 @@ const HERO_SLIDES = [
  * until verified figures are supplied.
  */
 const HERO_STATS = [
-  { label: "Destination", value: "80+", Icon: MapPin },
   { label: "Experience", value: "8+ Yrs", Icon: CalendarDays },
   { label: "Satisfied Customers", value: "98%", Icon: Smile },
-  { label: "Travellers", value: "1,00,000+", Icon: Users },
 ] as const;
 
 const SLIDE_INTERVAL_MS = 5000;
@@ -172,26 +170,26 @@ export default function HeroSection() {
         >
           
           {/* Placards 2-5 — Destination · Experience · Satisfied Customers · Travellers */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-md sm:max-w-4xl mx-auto">
-            {HERO_STATS.map(({ label, value, Icon }) => (
-              <div
-                key={label}
-                className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3.5 sm:p-5 flex items-center gap-2.5 sm:gap-4 text-left shadow-lg min-w-0"
-              >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/15 flex items-center justify-center shrink-0 shadow-xs">
-                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-brand-dusk-orange shrink-0" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <span className="font-extrabold text-white text-base sm:text-xl block leading-tight break-words">
-                    {value}
-                  </span>
-                  <span className="text-[11px] sm:text-sm text-gray-200 font-semibold block leading-tight break-words">
-                    {label}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 max-w-xs sm:max-w-lg mx-auto">
+  {HERO_STATS.map(({ label, value, Icon }) => (
+    <div
+      key={label}
+      className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-2.5 sm:p-3 flex items-center gap-2 sm:gap-2.5 text-left shadow-lg min-w-0"
+    >
+      <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/15 flex items-center justify-center shrink-0 shadow-xs">
+        <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-dusk-orange shrink-0" />
+      </div>
+      <div className="min-w-0 flex-1">
+        <span className="font-extrabold text-white text-xs sm:text-base block leading-tight break-words">
+          {value}
+        </span>
+        <span className="text-[9px] sm:text-xs text-gray-200 font-semibold block leading-tight break-words">
+          {label}
+        </span>
+      </div>
+    </div>
+  ))}
+</div>
         </motion.div>
       </div>
 
