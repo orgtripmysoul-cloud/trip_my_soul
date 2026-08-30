@@ -28,7 +28,7 @@ const CATEGORIES: CategoryCard[] = [
     label: "Premium Trip",
     icon: Gem,
     href: "/premium-trips",
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=500&q=80",
+    image: "/premium_trip.jpeg",
   },
   {
     label: "Learning Program",
@@ -40,13 +40,13 @@ const CATEGORIES: CategoryCard[] = [
     label: "Family with Kids",
     icon: Users,
     href: "/treks?filter=family",
-    image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=500&q=80",
+    image: "/family_with_kids.jpeg",
   },
   {
     label: "Summer Camp",
     icon: Tent,
     href: "/summer-camps",
-    image: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=500&q=80",
+    image: "/summer_camp.jpeg",
   },
   {
     label: "Car/Rentals",
@@ -58,13 +58,13 @@ const CATEGORIES: CategoryCard[] = [
     label: "Spiritual Journey",
     icon: Sparkles,
     href: "/yatra",
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=500&q=80",
+    image: "/spiritual_journey.jpeg",
   },
   {
     label: "Suggest Me",
     icon: Lightbulb,
     href: "/suggest-a-trek",
-    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=500&q=80",
+    image: "/suggest_me.jpeg",
   },
 ];
 

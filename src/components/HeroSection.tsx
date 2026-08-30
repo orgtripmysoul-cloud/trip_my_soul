@@ -5,8 +5,39 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { CalendarDays, Smile } from "lucide-react";
 
+/**
+ * Each slide pairs a background photo with its own headline and tagline.
+ * Slides 1 and 4 intentionally share the same copy.
+ */
 const HERO_SLIDES = [
-  "/assets/hero/hero-slide-1.jpeg",
+  {
+    src: "/assets/hero/hero_slide_1.jpeg",
+    headline: "One Life.",
+    accent: "Countless Stories.",
+    tagline:
+      "Don’t just collect destinations. Collect moments, friendships, adventures, and memories that stay forever.",
+  },
+  {
+    src: "/assets/hero/hero_slide_2.jpeg",
+    headline: "Some Journeys Take You Places.",
+    accent: "Some Take You Within.",
+    tagline:
+      "Travel beyond destinations. Discover stories, moments, and a little more of yourself along the way.",
+  },
+  {
+    src: "/assets/hero/hero_slide_3.jpeg",
+    headline: "Maybe You Don’t Need A New Place.",
+    accent: "Maybe You Need A New Feeling.",
+    tagline:
+      "Step away from the ordinary and find moments that reconnect you with life, nature, and yourself.",
+  },
+  {
+    src: "/assets/hero/hero_slide_4.jpeg",
+    headline: "One Life.",
+    accent: "Countless Stories.",
+    tagline:
+      "Don’t just collect destinations. Collect moments, friendships, adventures, and memories that stay forever.",
+  },
 ] as const;
 
 /**
@@ -31,7 +62,7 @@ function HeroSlideshow({
   const [fadeActive, setFadeActive] = useState(false);
 
   useEffect(() => {
-    HERO_SLIDES.forEach((src) => {
+    HERO_SLIDES.forEach(({ src }) => {
       const img = new window.Image();
       img.src = src;
     });
@@ -72,7 +103,7 @@ function HeroSlideshow({
           aria-hidden={!isIncoming || !fadeActive}
         >
           <Image
-            src={HERO_SLIDES[index]}
+            src={HERO_SLIDES[index].src}
             alt={`TripMySoul expedition photo ${index + 1}`}
             fill
             priority={index === 0}
@@ -133,6 +164,8 @@ export default function HeroSection() {
     startAutoplay();
   };
 
+  const { headline, accent, tagline } = HERO_SLIDES[activeIndex];
+
   return (
     <section className="relative min-h-[70vh] sm:min-h-[80vh] md:min-h-[90vh] w-full flex items-center justify-center overflow-hidden bg-[#0B2545]">
       <HeroSlideshow activeIndex={activeIndex} previousIndex={previousIndex} />
@@ -147,19 +180,27 @@ export default function HeroSection() {
           <span className="text-[11px] sm:text-xs md:text-sm font-extrabold uppercase tracking-widest text-brand-dusk-orange bg-white/10 backdrop-blur-md px-3.5 sm:px-4 py-2 rounded-full border border-white/10 inline-block max-w-full">
             Himalayan Wilderness Expeditions
           </span>
-          <h1 className="text-[1.75rem] sm:text-5xl md:text-7xl font-bold font-serif leading-tight tracking-tight text-balance break-words">
-            One Life. Countless Stories.<br />
-            <span className="text-brand-dusk-orange font-normal italic">Heals the Soul</span>
-          </h1>
+          <motion.h1
+            key={`headline-${activeIndex}`}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="text-[1.75rem] sm:text-5xl md:text-7xl font-bold font-serif leading-tight tracking-tight text-balance break-words"
+          >
+            {headline}
+            <br />
+            <span className="text-brand-dusk-orange font-normal italic">{accent}</span>
+          </motion.h1>
         </motion.div>
 
         <motion.p
+          key={`tagline-${activeIndex}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
           className="text-sm sm:text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed"
         >
-          Don’t just collect destinations. Collect moments, friendships, adventures, and memories that stay forever.
+          {tagline}
         </motion.p>
 
         <motion.div
