@@ -6,11 +6,7 @@ import { motion } from "framer-motion";
 import { Star, MapPin, CalendarDays, Smile, Users } from "lucide-react";
 
 const HERO_SLIDES = [
-  "/assets/hero/hero-slide-1.png",
-  "/assets/hero/hero-slide-2.png",
-  "/assets/hero/hero-slide-3.png",
-  "/assets/hero/hero-slide-4.png",
-  "/assets/hero/hero-slide-5.png",
+  "/assets/hero/hero-slide-1.jpeg",
 ] as const;
 
 /**
@@ -154,7 +150,7 @@ export default function HeroSection() {
             Himalayan Wilderness Expeditions
           </span>
           <h1 className="text-[1.75rem] sm:text-5xl md:text-7xl font-bold font-serif leading-tight tracking-tight text-balance break-words">
-            Where Every Journey <br />
+            One Life. Countless Stories.<br />
             <span className="text-brand-dusk-orange font-normal italic">Heals the Soul</span>
           </h1>
         </motion.div>
@@ -165,7 +161,7 @@ export default function HeroSection() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="text-sm sm:text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed"
         >
-          Join curated, small-group treks across the towering ranges of Uttarakhand, Himachal, and Kashmir. Fully certified mountaineering guides, clean campsites, and rigorous safety standards.
+          Don’t just collect destinations. Collect moments, friendships, adventures, and memories that stay forever.
         </motion.p>
 
         <motion.div
