@@ -116,8 +116,8 @@ export default function Navbar() {
       <Link
         key={link.name}
         href={link.href}
-        className={`items-center text-sm font-semibold tracking-wide whitespace-nowrap shrink-0 transition-colors hover:text-brand-dusk ${
-          isActive ? "text-brand-dusk border-b-2 border-brand-dusk pb-0.5" : "text-brand-forest"
+        className={`items-center text-sm font-semibold tracking-wide whitespace-nowrap shrink-0 transition-colors hover:text-brand-dusk-orange ${
+          isActive ? "text-brand-dusk-orange border-b-2 border-brand-dusk-orange pb-0.5" : "text-white"
         } ${extraClass}`}
       >
         {link.name}
@@ -139,16 +139,16 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-brand-warm-bg/90 backdrop-blur-md border-b border-brand-forest/10 text-brand-forest ${
-          isScrolled ? "py-2.5 shadow-md" : "py-3.5 shadow-sm"
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-brand-forest/95 backdrop-blur-md border-b border-white/15 text-white ${
+          isScrolled ? "py-1 shadow-md" : "py-1 shadow-sm"
         }`}
       >
         <div className="w-full max-w-full px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-4">
           {/* Logo Section */}
           <Link href="/" className="flex items-center min-h-[44px] group shrink-0">
-            <div className="relative h-8 w-40 md:h-8.5 md:w-44">
+            <div className="relative h-12 w-[177px] lg:h-14 lg:w-[207px]">
               <Image
-                src="/tripmysoul-mobile-logo.png"
+                src="/tripmysoul_mobile_logo.png"
                 alt="TripMySoul Logo"
                 fill
                 className="object-contain object-left group-hover:scale-102 transition-transform duration-200"
@@ -232,9 +232,9 @@ export default function Navbar() {
               href={`tel:${phone.tel}`}
               aria-label={`Call TripMySoul on ${phone.display}`}
               title={phone.display}
-              className="flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-full border border-brand-forest/20 text-brand-forest hover:bg-brand-forest/5 transition whitespace-nowrap shrink-0"
+              className="flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-full border border-white/25 text-white hover:bg-white/10 transition whitespace-nowrap shrink-0"
             >
-              <Phone className="w-4 h-4 text-brand-dusk shrink-0" />
+              <Phone className="w-4 h-4 text-brand-dusk-orange shrink-0" />
               <span className="hidden 2xl:inline">{phone.display}</span>
             </a>
 
@@ -252,14 +252,14 @@ export default function Navbar() {
           <div className="flex lg:hidden items-center space-x-1.5">
             <Link
               href="/login"
-              className="p-2.5 rounded-full bg-brand-forest/5 hover:bg-brand-forest/10 border border-brand-forest/15 transition text-brand-forest min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition text-white min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="User account"
             >
               <User className="w-5 h-5" />
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2.5 rounded-full bg-brand-forest/5 hover:bg-brand-forest/10 border border-brand-forest/15 transition text-brand-forest min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition text-white min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -286,13 +286,17 @@ export default function Navbar() {
         >
           {/* Header - pinned, never scrolls out of reach */}
           <div className="flex justify-between items-center gap-3 shrink-0 border-b border-brand-forest/10 px-5 pt-5 pb-4">
-            <div className="relative h-6 w-28 sm:w-32 shrink-0">
-              <Image
-                src="/tripmysoul-mobile-logo.png"
-                alt="TripMySoul Logo"
-                fill
-                className="object-contain object-left"
-              />
+            {/* Navy chip: the logo wordmark is white, so it needs a dark backdrop
+                to stay legible against the drawer's cream panel. */}
+            <div className="bg-brand-forest rounded-lg px-2.5 py-1.5 shrink-0">
+              <div className="relative h-10 w-[148px]">
+                <Image
+                  src="/tripmysoul_mobile_logo.png"
+                  alt="TripMySoul Logo"
+                  fill
+                  className="object-contain object-left"
+                />
+              </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}

@@ -34,7 +34,7 @@ const CATEGORIES: CategoryCard[] = [
     label: "Learning Program",
     icon: GraduationCap,
     href: "/learning-programs",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=500&q=80",
+    image: "/learning_program.jpeg",
   },
   {
     label: "Family with Kids",
@@ -52,7 +52,7 @@ const CATEGORIES: CategoryCard[] = [
     label: "Car/Rentals",
     icon: Car,
     href: "/cabs",
-    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=500&q=80",
+    image: "/car_rental.jpeg",
   },
   {
     label: "Spiritual Journey",

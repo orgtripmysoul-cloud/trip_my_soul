@@ -178,7 +178,7 @@ export default function HeroSection() {
           className="space-y-4"
         >
           <span className="text-[11px] sm:text-xs md:text-sm font-extrabold uppercase tracking-widest text-brand-dusk-orange bg-white/10 backdrop-blur-md px-3.5 sm:px-4 py-2 rounded-full border border-white/10 inline-block max-w-full">
-            Himalayan Wilderness Expeditions
+            Where Journeys Touch Your Soul
           </span>
           <motion.h1
             key={`headline-${activeIndex}`}
@@ -211,7 +211,7 @@ export default function HeroSection() {
         >
           
           {/* Placards 2-5 — Destination · Experience · Satisfied Customers · Travellers */}
-          <div className="grid grid-cols-2 gap-2 sm:gap-3 max-w-xs sm:max-w-lg mx-auto">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 max-w-xs sm:max-w-lg mx-auto mt-6 sm:mt-0">
   {HERO_STATS.map(({ label, value, Icon }) => (
     <div
       key={label}
