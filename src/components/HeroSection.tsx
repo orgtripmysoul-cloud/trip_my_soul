@@ -18,10 +18,10 @@ const HERO_SLIDES = [
  * until verified figures are supplied.
  */
 const HERO_STATS = [
-  { label: "Destination", value: "50+", Icon: MapPin },
-  { label: "Experience", value: "12+ Yrs", Icon: CalendarDays },
+  { label: "Destination", value: "80+", Icon: MapPin },
+  { label: "Experience", value: "8+ Yrs", Icon: CalendarDays },
   { label: "Satisfied Customers", value: "98%", Icon: Smile },
-  { label: "Travellers", value: "10,000+", Icon: Users },
+  { label: "Travellers", value: "1,00,000+", Icon: Users },
 ] as const;
 
 const SLIDE_INTERVAL_MS = 5000;
