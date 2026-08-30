@@ -58,24 +58,24 @@ export default function TrekCard({ trek, detailsHref, imageUrl, description }: T
         />
 
         {/* Region tag — image otherwise kept clean, stats live in the meta line below */}
-        <span className="absolute top-4 left-4 text-[10px] font-extrabold uppercase tracking-wider bg-brand-forest/85 backdrop-blur-md text-white px-3 py-1 rounded-full">
+        <span className="absolute top-3 left-3 sm:top-4 sm:left-4 max-w-[calc(100%-1.5rem)] sm:max-w-[calc(100%-2rem)] truncate text-[10px] font-extrabold uppercase tracking-wider bg-brand-forest/85 backdrop-blur-md text-white px-3 py-1 rounded-full">
           {trek.region}
         </span>
       </div>
 
       {/* Details Body */}
-      <div className="p-5 flex flex-col flex-grow justify-between">
+      <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between min-w-0">
         <div className="space-y-2.5">
           {/* Title */}
-          <h3 className="text-lg font-bold text-brand-dark-text group-hover:text-brand-dusk transition-colors line-clamp-1">
+          <h3 className="text-base sm:text-lg font-bold text-brand-dark-text group-hover:text-brand-dusk transition-colors line-clamp-2 break-words">
             {trek.name}
           </h3>
 
           {/* Compact meta line: location · altitude · duration · difficulty */}
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs font-semibold text-gray-600">
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-1 min-w-0 max-w-full">
               <MapPin className="w-3.5 h-3.5 text-brand-dusk shrink-0" />
-              <span>{trek.startLocation || trek.region}</span>
+              <span className="truncate">{trek.startLocation || trek.region}</span>
             </span>
 
             {trek.maxAltitude && (
@@ -105,18 +105,18 @@ export default function TrekCard({ trek, detailsHref, imageUrl, description }: T
         {/* Price & Details Action */}
         <div className="mt-5 pt-4 border-t border-gray-100 space-y-3 font-sans">
           <div className="flex items-end justify-between gap-2">
-            <div>
+            <div className="min-w-0">
               <span className="text-[10px] text-gray-400 uppercase block font-semibold tracking-wider">
                 Starting from
               </span>
-              <span className="text-lg font-black text-brand-forest leading-none">
+              <span className="text-base sm:text-lg font-black text-brand-forest leading-none block truncate">
                 {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
               </span>
             </div>
 
             <Link
               href={`/checkout?slug=${trek.slug}`}
-              className="text-xs font-extrabold text-brand-dusk-orange hover:underline shrink-0"
+              className="flex items-center min-h-[44px] text-xs font-extrabold text-brand-dusk-orange hover:underline shrink-0 whitespace-nowrap"
             >
               View Departure
             </Link>
@@ -124,7 +124,7 @@ export default function TrekCard({ trek, detailsHref, imageUrl, description }: T
 
           <Link
             href={detailsHref ?? CANONICAL_TRIP_PATHS[trek.slug] ?? `/treks/${trek.slug}`}
-            className="block w-full py-2.5 px-3 text-center text-xs font-extrabold text-white bg-brand-forest hover:bg-brand-forest-light rounded-xl transition-all duration-200 shadow-xs"
+            className="flex items-center justify-center w-full min-h-[44px] py-2.5 px-3 text-center text-xs font-extrabold text-white bg-brand-forest hover:bg-brand-forest-light rounded-xl transition-all duration-200 shadow-xs"
           >
             View Details
           </Link>

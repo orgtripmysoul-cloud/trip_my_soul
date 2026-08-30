@@ -15,10 +15,27 @@ export interface BatchTrip {
   status: string;
   isWomenOnly?: boolean;
   isSeniorOnly?: boolean;
+  /**
+   * Seats still open on this departure.
+   *
+   * TODO(data-model): no source currently publishes per-batch capacity — the
+   * seeded batches in this file and every `batchDates` listing only carry a
+   * status string. Until the booking backend tracks bookings against a batch
+   * capacity, this stays undefined and the departures sheet falls back to a
+   * plain "Open" badge. Populate it (with `totalSeats`) once seat counts exist.
+   */
+  seatsLeft?: number;
+  /** Capacity of the departure, where the source tracks one. See `seatsLeft`. */
+  totalSeats?: number;
 }
 
 export interface BatchMonth {
   month: string;
+  /**
+   * Calendar year this month block departs in, e.g. `"2026"`. Optional for the
+   * hand-seeded blocks below, which inherit the year of their `years` key.
+   */
+  year?: string;
   trips: BatchTrip[];
 }
 
@@ -51,6 +68,8 @@ export interface ItineraryDay {
   day: number;
   title: string;
   description?: string;
+  /** Timed lines for the day, as printed on a trip itinerary PDF. */
+  entries?: { time?: string; text: string }[];
   detailedDescription?: string;
   altitudePoints?: AltitudePoint[];
   altitudeGain?: { m: number; ft: number } | null;
@@ -139,6 +158,48 @@ export interface HowToReach {
   };
 }
 
+export interface PricePackage {
+  id: string;
+  label: string;
+  price: number;
+  advanceAmount?: number;
+  /** Pricing-table columns: group size, vehicle and room sharing. */
+  paxLabel?: string;
+  vehicle?: string;
+  sharing?: string;
+}
+
+export interface Usp {
+  title: string;
+  description: string;
+}
+
+export interface DestinationHighlight {
+  name: string;
+  blurb: string;
+}
+
+export interface PaymentDetails {
+  bank: string;
+  accountName: string;
+  accountNumber: string;
+  ifsc: string;
+  accountType: string;
+  upiNote: string;
+}
+
+/** Vehicle allocated by group size. */
+export interface TransportModeByGroup {
+  group: string;
+  vehicle: string;
+}
+
+/** Gear available to hire on site, priced per item. */
+export interface RentalGearItem {
+  item: string;
+  price: number;
+}
+
 export interface Trek {
   slug: string;
   name: string;
@@ -182,6 +243,71 @@ export interface Trek {
   videoTestimonials?: VideoTestimonial[];
   relatedArticles?: RelatedArticle[];
   howToReach?: HowToReach;
+
+  /**
+   * --- Shared detail-page fields. ---
+   *
+   * Populated by the trip catalogue via `tripToTrek`, and available to treks as
+   * the CMS grows. Every one is optional: `resolveTrekDetail` falls back to
+   * `trekDefaults.ts`, and each section hides itself when it has nothing to show,
+   * so treks and trips render through the exact same page.
+   */
+
+  // Header
+  heroImage?: string;
+  /** Canonical URL for this listing, e.g. `/trips/weekend/munnar`. Defaults to `/treks/{slug}`. */
+  detailsPath?: string;
+  tripCode?: string;
+  availability?: string;
+  endLocation?: string;
+  minAge?: number;
+  maxAge?: number;
+  maxGroupSize?: string;
+
+  // Overview & about
+  intro?: string;
+  aboutParagraphs?: string[];
+  highlights?: string[];
+  usps?: Usp[];
+  idealFor?: string;
+  differentiators?: string[];
+  importantNote?: string;
+  destinationHighlights?: DestinationHighlight[];
+  /** Note shown when the source itinerary is incomplete or self-contradictory. */
+  sourceCaveat?: string;
+
+  // Cost terms
+  originalPrice?: number;
+  packages?: PricePackage[];
+  /** Caveat shown above the pricing table, e.g. what the fare excludes. */
+  priceNote?: string;
+  bookingAdvance?: number;
+  balanceDueDays?: number;
+  kidsPolicy?: string;
+  paymentDetails?: PaymentDetails;
+  confirmationPolicy?: string;
+  /** Departure dates as ISO strings, used when `batches` is unset. */
+  batchDates?: string[];
+
+  // Essentials & logistics
+  packingList?: EquipmentGroup[];
+  thingsToRemember?: string[];
+  transportModes?: TransportModeByGroup[];
+  rentalGear?: RentalGearItem[];
+  transport?: { railHead: string; airport: string; road: string };
+
+  // Policies & contact
+  cancellationPolicyText?: string;
+  contactPhone?: string;
+  contactNumbers?: string[];
+
+  /**
+   * Whether unfilled fields may fall back to the generic Himalayan-trek copy in
+   * `trekDefaults.ts` (altitude, campsite meals, packing list, mock itinerary).
+   * Treks leave this unset; `tripToTrek` sets it false so a backwaters or beach
+   * trip renders an empty section rather than invented trek facts.
+   */
+  useTrekFallbacks?: boolean;
 }
 
 export interface Office {

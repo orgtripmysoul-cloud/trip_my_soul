@@ -199,16 +199,16 @@ export default function TripCatalogPage({
             placeholder={searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-transparent border-0 text-sm focus:outline-none w-full text-brand-dark-text placeholder-gray-400"
+            className="bg-transparent border-0 text-base lg:text-sm focus:outline-none w-full text-brand-dark-text placeholder-gray-400 self-stretch py-3 -my-3"
           />
         </div>
 
-        <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto justify-end">
+        <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto justify-end min-w-0">
           <ArrowUpDown className="w-4 h-4 text-brand-forest shrink-0" />
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="text-xs font-semibold py-2 px-4 rounded-xl border border-gray-200 bg-white focus:outline-none text-brand-dark-text"
+            className="text-base lg:text-xs font-semibold min-h-[44px] py-2 px-4 rounded-xl border border-gray-200 bg-white focus:outline-none text-brand-dark-text min-w-0 max-w-full"
           >
             <option value="price-asc">Price: Low to High</option>
             <option value="price-desc">Price: High to Low</option>
@@ -223,7 +223,7 @@ export default function TripCatalogPage({
           <button
             key={pill.label}
             onClick={pill.action}
-            className={`text-xs px-4 py-2 rounded-full border font-bold transition-all duration-200 ${
+            className={`text-xs px-4 min-h-[44px] shrink-0 inline-flex items-center rounded-full border font-bold transition-all duration-200 ${
               pill.active
                 ? "bg-brand-forest text-white border-brand-forest shadow-xs scale-102"
                 : "bg-white text-gray-700 border-gray-150"

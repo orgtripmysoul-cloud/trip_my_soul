@@ -39,7 +39,7 @@ export default function TrekReviews({ reviews, trailVideos }: TrekReviewsProps) 
         <div className="flex bg-brand-warm-bg p-1 rounded-full border border-gray-150 text-[10px] font-bold">
           <button
             onClick={() => setReviewTab("reviews")}
-            className={`px-4 py-1.5 rounded-full uppercase transition-all ${
+            className={`px-4 min-h-[44px] inline-flex items-center justify-center rounded-full uppercase transition-all ${
               reviewTab === "reviews" ? "bg-[#0B2545] text-white shadow-xs" : "text-gray-500 hover:text-brand-forest"
             }`}
           >
@@ -47,7 +47,7 @@ export default function TrekReviews({ reviews, trailVideos }: TrekReviewsProps) 
           </button>
           <button
             onClick={() => setReviewTab("videos")}
-            className={`px-4 py-1.5 rounded-full uppercase transition-all ${
+            className={`px-4 min-h-[44px] inline-flex items-center justify-center rounded-full uppercase transition-all ${
               reviewTab === "videos" ? "bg-[#0B2545] text-white shadow-xs" : "text-gray-500 hover:text-brand-forest"
             }`}
           >

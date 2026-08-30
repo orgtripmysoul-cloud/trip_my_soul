@@ -79,7 +79,7 @@ export default function BlogGridPage() {
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`text-xs px-4 py-2 rounded-full font-bold border transition-all ${
+            className={`text-xs px-4 min-h-[44px] shrink-0 inline-flex items-center rounded-full font-bold border transition-all ${
               selectedCategory === cat
                 ? "bg-brand-forest text-white border-brand-forest shadow-sm"
                 : "bg-white text-gray-700 border-gray-250 hover:bg-brand-warm-bg"

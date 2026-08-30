@@ -42,7 +42,7 @@ export default function YatraPage() {
             placeholder="Search Yatras (e.g. Kedarnath, Chardham)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-transparent border-0 text-sm focus:outline-none w-full text-brand-dark-text placeholder-gray-400"
+            className="bg-transparent border-0 text-base lg:text-sm focus:outline-none w-full text-brand-dark-text placeholder-gray-400 self-stretch py-3 -my-3"
           />
         </div>
       </div>

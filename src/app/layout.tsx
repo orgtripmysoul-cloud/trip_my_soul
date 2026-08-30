@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
       <body className="min-h-full flex flex-col bg-brand-warm-bg font-sans antialiased text-brand-dark-text" suppressHydrationWarning>
         <Navbar />
-        <main className="flex-grow pt-[72px] md:pt-[80px] min-w-0 overflow-x-clip">{children}</main>
+        <main className="flex-grow pt-[72px] lg:pt-[80px] min-w-0 overflow-x-clip">{children}</main>
         <Footer />
       </body>
     </html>

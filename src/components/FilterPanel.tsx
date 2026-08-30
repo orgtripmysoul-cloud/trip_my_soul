@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Filter, X, ChevronDown, RefreshCw } from "lucide-react";
 
 export interface FilterState {
@@ -51,6 +51,21 @@ export default function FilterPanel({ selectedFilters, onFilterChange, onReset, 
 
   const resolvedFilterOptions = filterOptions ?? DEFAULT_FILTER_OPTIONS;
 
+  // Freeze the page behind the mobile sheet, and let Escape close it.
+  useEffect(() => {
+    if (!isOpenMobile) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpenMobile(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isOpenMobile]);
+
   const toggleSection = (section: string) => {
     setExpandedSections((prev) => ({
       ...prev,
@@ -94,10 +109,11 @@ export default function FilterPanel({ selectedFilters, onFilterChange, onReset, 
       <div className="space-y-3 pb-5 border-b border-gray-100">
         <button
           onClick={() => toggleSection(category)}
-          className="w-full text-xs font-bold uppercase tracking-wider text-brand-forest-light flex items-center justify-between hover:text-brand-dusk transition"
+          className="w-full min-h-[44px] gap-3 text-xs font-bold uppercase tracking-wider text-brand-forest-light flex items-center justify-between hover:text-brand-dusk transition"
+          aria-expanded={isExpanded}
         >
-          <span>{title}</span>
-          <ChevronDown className={`w-3.5 h-3.5 opacity-60 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
+          <span className="truncate">{title}</span>
+          <ChevronDown className={`w-3.5 h-3.5 shrink-0 opacity-60 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
         </button>
         
         {isExpanded && (
@@ -108,7 +124,7 @@ export default function FilterPanel({ selectedFilters, onFilterChange, onReset, 
                 <button
                   key={option}
                   onClick={() => toggleFilter(category, option)}
-                  className={`text-xs px-3 py-1.5 rounded-full border transition-all duration-250 font-semibold ${
+                  className={`text-xs px-3.5 min-h-[44px] lg:min-h-[36px] shrink-0 max-w-full truncate rounded-full border transition-all duration-250 font-semibold ${
                     isChecked
                       ? "bg-brand-forest text-white border-brand-forest shadow-sm scale-102"
                       : "bg-white text-gray-700 border-gray-200 hover:border-brand-forest/30 hover:bg-brand-warm-bg"
@@ -202,69 +218,78 @@ export default function FilterPanel({ selectedFilters, onFilterChange, onReset, 
         onClick={() => setIsOpenMobile(false)}
       >
         <div
-          className={`absolute bottom-0 left-0 w-full rounded-t-[2.5rem] bg-white p-6 max-h-[85vh] overflow-y-auto shadow-2xl transition-transform duration-300 transform ${
+          className={`absolute bottom-0 left-0 w-full rounded-t-[2rem] sm:rounded-t-[2.5rem] bg-white max-h-[85vh] flex flex-col overflow-hidden shadow-2xl transition-transform duration-300 transform ${
             isOpenMobile ? "translate-y-0" : "translate-y-full"
           }`}
           onClick={(e) => e.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Filters"
         >
-          <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
+          <div className="flex items-center justify-between gap-3 shrink-0 px-5 pt-5 pb-4 border-b border-gray-200">
             <h3 className="text-lg font-bold text-brand-dark-text flex items-center gap-2">
               <Filter className="w-5 h-5 text-brand-forest" />
               <span>Filters</span>
             </h3>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 shrink-0">
               {isAnyFilterActive && (
                 <button
                   onClick={onReset}
-                  className="text-xs font-semibold text-brand-dusk flex items-center gap-1"
+                  className="min-h-[44px] px-2 text-xs font-semibold text-brand-dusk flex items-center gap-1"
                 >
-                  <RefreshCw className="w-3.5 h-3.5" />
+                  <RefreshCw className="w-3.5 h-3.5 shrink-0" />
                   <span>Reset</span>
                 </button>
               )}
               <button
                 onClick={() => setIsOpenMobile(false)}
-                className="p-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
+                aria-label="Close filters"
               >
                 <X className="w-6 h-6" />
               </button>
             </div>
           </div>
 
-          {/* Mobile departures toggle */}
-          <div className="flex items-center justify-between pb-5 border-b border-gray-150 mb-5">
-            <div className="space-y-0.5">
-              <span className="text-xs font-bold text-brand-dark-text block">Upcoming Departures</span>
-              <span className="text-[10px] text-gray-400 block font-medium">Within next 60 days</span>
-            </div>
-            <button
-              onClick={toggleUpcomingOnly}
-              className={`w-11 h-6 rounded-full relative transition-colors ${
-                selectedFilters.upcomingOnly ? "bg-brand-dusk" : "bg-gray-250"
-              }`}
-              aria-label="Toggle upcoming departures"
-            >
-              <div
-                className={`w-4.5 h-4.5 rounded-full bg-white absolute top-0.75 left-0.75 shadow-sm transition-transform ${
-                  selectedFilters.upcomingOnly ? "translate-x-5" : ""
+          {/* Scrollable facet list */}
+          <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-5 py-5">
+            {/* Mobile departures toggle */}
+            <div className="flex items-center justify-between gap-4 pb-5 border-b border-gray-150 mb-5">
+              <div className="space-y-0.5 min-w-0">
+                <span className="text-xs font-bold text-brand-dark-text block">Upcoming Departures</span>
+                <span className="text-[10px] text-gray-400 block font-medium">Within next 60 days</span>
+              </div>
+              <button
+                onClick={toggleUpcomingOnly}
+                className={`w-11 h-6 shrink-0 rounded-full relative transition-colors before:absolute before:content-[''] before:-inset-y-2.5 before:-inset-x-1 ${
+                  selectedFilters.upcomingOnly ? "bg-brand-dusk" : "bg-gray-250"
                 }`}
-              />
-            </button>
+                aria-label="Toggle upcoming departures"
+              >
+                <div
+                  className={`w-4.5 h-4.5 rounded-full bg-white absolute top-0.75 left-0.75 shadow-sm transition-transform ${
+                    selectedFilters.upcomingOnly ? "translate-x-5" : ""
+                  }`}
+                />
+              </button>
+            </div>
+
+            <div className="space-y-6">
+              <FilterSection title="Region" category="region" />
+              <FilterSection title="Difficulty Grade" category="difficulty" />
+              <FilterSection title="Duration" category="duration" />
+              <FilterSection title="Seasons" category="seasons" />
+              <FilterSection title="Trek Theme" category="themes" />
+              <FilterSection title="Best Month" category="months" />
+            </div>
           </div>
 
-          <div className="space-y-6 pb-20">
-            <FilterSection title="Region" category="region" />
-            <FilterSection title="Difficulty Grade" category="difficulty" />
-            <FilterSection title="Duration" category="duration" />
-            <FilterSection title="Seasons" category="seasons" />
-            <FilterSection title="Trek Theme" category="themes" />
-            <FilterSection title="Best Month" category="months" />
-          </div>
-
-          <div className="absolute bottom-0 left-0 w-full bg-white p-4 border-t border-gray-100 flex gap-4">
+          {/* Pinned footer - previously absolute inside the scroll box, which
+              buried it below six facet groups. */}
+          <div className="shrink-0 bg-white px-4 pt-4 safe-bottom-lg border-t border-gray-100">
             <button
               onClick={() => setIsOpenMobile(false)}
-              className="w-full bg-brand-forest hover:bg-brand-forest-light text-white font-bold py-3.5 rounded-xl text-center shadow-lg transition"
+              className="w-full min-h-[48px] bg-brand-forest hover:bg-brand-forest-light text-white font-bold py-3.5 rounded-xl text-center shadow-lg transition"
             >
               Apply Filters
             </button>

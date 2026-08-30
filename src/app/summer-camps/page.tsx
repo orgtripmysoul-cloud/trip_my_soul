@@ -62,10 +62,10 @@ export default function SummerCampsPage() {
             }}
             className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs"
           >
-            <input type="text" required placeholder="Contact Name" className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none" />
-            <input type="email" required placeholder="Institutional Email" className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none" />
-            <input type="text" required placeholder="School / University Name" className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none" />
-            <select className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none font-bold text-gray-500">
+            <input type="text" required placeholder="Contact Name" className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none text-base lg:text-sm" />
+            <input type="email" required placeholder="Institutional Email" className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none text-base lg:text-sm" />
+            <input type="text" required placeholder="School / University Name" className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none text-base lg:text-sm" />
+            <select className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none font-bold text-gray-500 text-base lg:text-sm">
               <option>Estimated Batch Size (20-40)</option>
               <option>Estimated Batch Size (40-80)</option>
               <option>Estimated Batch Size (80+)</option>
@@ -73,7 +73,7 @@ export default function SummerCampsPage() {
             
             <button
               type="submit"
-              className="sm:col-span-2 bg-brand-forest hover:bg-brand-forest-light text-white py-3 rounded-full font-bold shadow-md transition"
+              className="sm:col-span-2 bg-brand-forest hover:bg-brand-forest-light text-white min-h-[44px] inline-flex items-center justify-center py-3 rounded-full font-bold shadow-md transition"
             >
               Raise Proposal Request
             </button>

@@ -62,10 +62,10 @@ export default function LearningProgramsPage() {
             }}
             className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs"
           >
-            <input type="text" required placeholder="Coordinator Name" className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none" />
-            <input type="email" required placeholder="Business Email Address" className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none" />
-            <input type="text" required placeholder="Company / Organization" className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none" />
-            <select className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none font-bold text-gray-500">
+            <input type="text" required placeholder="Coordinator Name" className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none text-base lg:text-sm" />
+            <input type="email" required placeholder="Business Email Address" className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none text-base lg:text-sm" />
+            <input type="text" required placeholder="Company / Organization" className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none text-base lg:text-sm" />
+            <select className="p-3 bg-brand-warm-bg border border-gray-150 rounded-xl focus:outline-none font-bold text-gray-500 text-base lg:text-sm">
               <option>Preferred Course Length (3 Days)</option>
               <option>Preferred Course Length (5 Days)</option>
               <option>Preferred Course Length (7+ Days)</option>
@@ -73,7 +73,7 @@ export default function LearningProgramsPage() {
             
             <button
               type="submit"
-              className="sm:col-span-2 bg-brand-forest hover:bg-brand-forest-light text-white py-3 rounded-full font-bold shadow-md transition"
+              className="sm:col-span-2 bg-brand-forest hover:bg-brand-forest-light text-white min-h-[44px] inline-flex items-center justify-center py-3 rounded-full font-bold shadow-md transition"
             >
               Request Leadership Catalog
             </button>

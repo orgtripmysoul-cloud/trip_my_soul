@@ -143,7 +143,7 @@ export default function RentGearPage() {
                       ) : (
                         <button
                           onClick={() => handleQtyChange(item.id, 1)}
-                          className="px-4 py-2 border border-brand-forest hover:bg-brand-forest hover:text-white rounded-full text-[10px] font-bold text-brand-forest shadow-xs transition"
+                          className="px-4 py-2 min-h-[44px] inline-flex items-center justify-center border border-brand-forest hover:bg-brand-forest hover:text-white rounded-full text-[10px] font-bold text-brand-forest shadow-xs transition"
                         >
                           Add to Hire
                         </button>
@@ -169,12 +169,12 @@ export default function RentGearPage() {
                   {/* Select rental days */}
                   <div className="space-y-1">
                     <label className="text-[9px] uppercase tracking-wider font-extrabold text-gray-400 pl-1">Rental Duration</label>
-                    <div className="flex items-center gap-2 px-3 py-2 bg-brand-warm-bg border border-gray-150 rounded-xl">
+                    <div className="flex items-center gap-2 px-3 py-2 min-h-[44px] bg-brand-warm-bg border border-gray-150 rounded-xl">
                       <Calendar className="w-4 h-4 text-gray-400" />
                       <select
                         value={days}
                         onChange={(e) => setDays(parseInt(e.target.value))}
-                        className="bg-transparent border-0 text-xs font-bold focus:outline-none w-full text-brand-dark-text"
+                        className="bg-transparent border-0 text-base lg:text-xs font-bold focus:outline-none w-full min-w-0 text-brand-dark-text self-stretch py-3 -my-3"
                       >
                         {[3, 4, 5, 6, 7, 8, 9, 10].map((d) => (
                           <option key={d} value={d}>{d} Days (Trek length)</option>
@@ -186,12 +186,12 @@ export default function RentGearPage() {
                   {/* Pick up Base Camp */}
                   <div className="space-y-1">
                     <label className="text-[9px] uppercase tracking-wider font-extrabold text-gray-400 pl-1">Collection Point</label>
-                    <div className="flex items-center gap-2 px-3 py-2 bg-brand-warm-bg border border-gray-150 rounded-xl">
+                    <div className="flex items-center gap-2 px-3 py-2 min-h-[44px] bg-brand-warm-bg border border-gray-150 rounded-xl">
                       <Compass className="w-4 h-4 text-gray-400" />
                       <select
                         value={pickupPoint}
                         onChange={(e) => setPickupPoint(e.target.value)}
-                        className="bg-transparent border-0 text-xs font-bold focus:outline-none w-full text-brand-dark-text"
+                        className="bg-transparent border-0 text-base lg:text-xs font-bold focus:outline-none w-full min-w-0 text-brand-dark-text self-stretch py-3 -my-3"
                       >
                         <option value="Sankri Base Camp">Sankri Base Camp (Kedarkantha/Har Ki Dun)</option>
                         <option value="Sari Village Camp">Sari Village Camp (Deoriatal Chopta)</option>

@@ -99,7 +99,7 @@ export default function ContactUsPage() {
                     placeholder="Enter name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full p-3 bg-brand-warm-bg rounded-xl border border-gray-150 text-xs focus:outline-none text-brand-dark-text"
+                    className="w-full p-3 min-h-[44px] bg-brand-warm-bg rounded-xl border border-gray-150 text-base lg:text-xs focus:outline-none text-brand-dark-text"
                     required
                   />
                 </div>
@@ -112,7 +112,7 @@ export default function ContactUsPage() {
                     placeholder="e.g. +91 9876543210"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full p-3 bg-brand-warm-bg rounded-xl border border-gray-150 text-xs focus:outline-none text-brand-dark-text"
+                    className="w-full p-3 min-h-[44px] bg-brand-warm-bg rounded-xl border border-gray-150 text-base lg:text-xs focus:outline-none text-brand-dark-text"
                     required
                   />
                 </div>
@@ -127,7 +127,7 @@ export default function ContactUsPage() {
                   placeholder="name@domain.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full p-3 bg-brand-warm-bg rounded-xl border border-gray-150 text-xs focus:outline-none text-brand-dark-text"
+                  className="w-full p-3 min-h-[44px] bg-brand-warm-bg rounded-xl border border-gray-150 text-base lg:text-xs focus:outline-none text-brand-dark-text"
                   required
                 />
               </div>
@@ -141,7 +141,7 @@ export default function ContactUsPage() {
                   placeholder="How can we help you? Let us know if you want custom packages..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full p-3 bg-brand-warm-bg rounded-xl border border-gray-150 text-xs focus:outline-none text-brand-dark-text resize-none"
+                  className="w-full p-3 min-h-[44px] bg-brand-warm-bg rounded-xl border border-gray-150 text-base lg:text-xs focus:outline-none text-brand-dark-text resize-none"
                 />
               </div>
 

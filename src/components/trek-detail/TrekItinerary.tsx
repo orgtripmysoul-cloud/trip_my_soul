@@ -6,10 +6,9 @@ import type { NormalizedItineraryDay } from "@/lib/trekDetail";
 
 type ViewMode = "quick" | "detailed" | "graph";
 
-const VIEW_MODES: { id: ViewMode; label: string }[] = [
+const BASE_VIEW_MODES: { id: ViewMode; label: string }[] = [
   { id: "quick", label: "Quick" },
   { id: "detailed", label: "Detailed" },
-  { id: "graph", label: "Trek Graph" },
 ];
 
 /** A day plotted on the altitude profile, with its SVG coordinates. */
@@ -25,13 +24,21 @@ interface GraphPoint {
 
 interface TrekItineraryProps {
   itinerary: NormalizedItineraryDay[];
+  noun: string;
   onViewDepartures: () => void;
 }
 
-export default function TrekItinerary({ itinerary, onViewDepartures }: TrekItineraryProps) {
+export default function TrekItinerary({ itinerary, noun, onViewDepartures }: TrekItineraryProps) {
   const [viewMode, setViewMode] = useState<ViewMode>("quick");
   const [expandedDays, setExpandedDays] = useState<Record<number, boolean>>({ 1: true });
   const [hoveredPoint, setHoveredPoint] = useState<GraphPoint | null>(null);
+
+  // The altitude profile only means something where the days carry elevations.
+  const hasAltitudeData = itinerary.some((d) => d.altitudePoints.length > 0);
+  const viewModes = hasAltitudeData
+    ? [...BASE_VIEW_MODES, { id: "graph" as ViewMode, label: noun + " Graph" }]
+    : BASE_VIEW_MODES;
+  const activeView = viewMode === "graph" && !hasAltitudeData ? "quick" : viewMode;
 
   const toggleDayExpanded = (day: number) => {
     setExpandedDays((prev) => ({ ...prev, [day]: !prev[day] }));
@@ -102,19 +109,30 @@ export default function TrekItinerary({ itinerary, onViewDepartures }: TrekItine
     return tot || 5500;
   }, [itinerary]);
 
+  if (itinerary.length === 0) {
+    return (
+      <div className="p-6 bg-brand-warm-bg border border-gray-150 rounded-2xl text-center text-xs text-gray-500 font-medium">
+        The day-by-day plan for this {noun.toLowerCase()} is being finalised. Call our desk for the
+        current route and timings.
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       {/* 1. View Mode Toggles */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-150 pb-4 gap-4">
-        <h3 className="text-base font-extrabold text-brand-dark-text font-serif">Expedition Schedule</h3>
+        <h3 className="text-base font-extrabold text-brand-dark-text font-serif">
+          {noun === "Trek" ? "Expedition Schedule" : "Day-by-day Schedule"}
+        </h3>
 
         <div className="flex bg-gray-100 p-1 rounded-full border border-gray-250/50 text-[10px] font-bold">
-          {VIEW_MODES.map((mode) => (
+          {viewModes.map((mode) => (
             <button
               key={mode.id}
               onClick={() => setViewMode(mode.id)}
-              className={`px-4.5 py-1.5 rounded-full uppercase transition-all ${
-                viewMode === mode.id ? "bg-brand-forest text-white shadow-xs" : "text-gray-500 hover:text-brand-forest"
+              className={`px-4.5 min-h-[44px] inline-flex items-center justify-center rounded-full uppercase transition-all ${
+                activeView === mode.id ? "bg-brand-forest text-white shadow-xs" : "text-gray-500 hover:text-brand-forest"
               }`}
             >
               {mode.label}
@@ -124,7 +142,7 @@ export default function TrekItinerary({ itinerary, onViewDepartures }: TrekItine
       </div>
 
       {/* 2. Quick View List */}
-      {viewMode === "quick" && (
+      {activeView === "quick" && (
         <div className="relative pl-6 border-l-2 border-brand-forest/20 space-y-8 py-2">
           {itinerary.map((day) => (
             <div key={day.day} className="relative space-y-1">
@@ -162,9 +180,12 @@ export default function TrekItinerary({ itinerary, onViewDepartures }: TrekItine
                       {day.trekDuration || "TBD"})
                     </li>
                   )}
-                  <li>
-                    <span className="font-bold text-gray-400">Stay & Meals:</span> {day.stayType} • {day.meals}
-                  </li>
+                  {(day.stayType || day.meals) && (
+                    <li>
+                      <span className="font-bold text-gray-400">Stay & Meals:</span>{" "}
+                      {[day.stayType, day.meals].filter(Boolean).join(" • ")}
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>
@@ -173,7 +194,7 @@ export default function TrekItinerary({ itinerary, onViewDepartures }: TrekItine
       )}
 
       {/* 3. Detailed View Accordion */}
-      {viewMode === "detailed" && (
+      {activeView === "detailed" && (
         <div className="space-y-3">
           {itinerary.map((day) => {
             const isOpen = !!expandedDays[day.day];
@@ -190,27 +211,51 @@ export default function TrekItinerary({ itinerary, onViewDepartures }: TrekItine
                 </button>
                 {isOpen && (
                   <div className="p-5 text-xs text-gray-650 bg-white border-t border-gray-150 space-y-4 leading-relaxed">
-                    <p className="font-medium text-gray-700">{day.detailedDescription}</p>
+                    {day.entries?.length ? (
+                      <ul className="space-y-2.5">
+                        {day.entries.map((entry, i) => (
+                          <li key={i} className="flex items-start gap-2.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-brand-dusk-orange shrink-0 mt-1.5" />
+                            <span className="font-medium text-gray-700">
+                              {entry.time && (
+                                <span className="font-extrabold text-brand-forest mr-1.5">{entry.time}</span>
+                              )}
+                              {entry.text}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="font-medium text-gray-700">{day.detailedDescription}</p>
+                    )}
 
                     {/* Day parameters summary footer */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-gray-100 text-[10px] font-sans font-semibold">
-                      <div>
-                        <span className="text-gray-400 uppercase block tracking-wider mb-1">Campsite Stay</span>
-                        <span className="font-bold text-brand-dark-text block">{day.stayType}</span>
+                    {(day.stayType || day.meals || day.trekDistance || day.driveDistance) && (
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-gray-100 text-[10px] font-sans font-semibold">
+                        {day.stayType && (
+                          <div>
+                            <span className="text-gray-400 uppercase block tracking-wider mb-1">Stay</span>
+                            <span className="font-bold text-brand-dark-text block">{day.stayType}</span>
+                          </div>
+                        )}
+                        {day.meals && (
+                          <div>
+                            <span className="text-gray-400 uppercase block tracking-wider mb-1">Meals Served</span>
+                            <span className="font-bold text-brand-dark-text block">{day.meals}</span>
+                          </div>
+                        )}
+                        {(day.trekDistance || day.driveDistance) && (
+                          <div>
+                            <span className="text-gray-400 uppercase block tracking-wider mb-1">Trek / Drive</span>
+                            <span className="font-bold text-brand-dark-text block">
+                              {day.trekDistance
+                                ? `Trek ${day.trekDistance} (${day.trekDuration})`
+                                : `Drive ${day.driveDistance} (${day.drivingTime})`}
+                            </span>
+                          </div>
+                        )}
                       </div>
-                      <div>
-                        <span className="text-gray-400 uppercase block tracking-wider mb-1">Meals Served</span>
-                        <span className="font-bold text-brand-dark-text block">{day.meals}</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-400 uppercase block tracking-wider mb-1">Trek / Drive</span>
-                        <span className="font-bold text-brand-dark-text block">
-                          {day.trekDistance
-                            ? `Trek ${day.trekDistance} (${day.trekDuration})`
-                            : `Drive ${day.driveDistance} (${day.drivingTime})`}
-                        </span>
-                      </div>
-                    </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -220,7 +265,7 @@ export default function TrekItinerary({ itinerary, onViewDepartures }: TrekItine
       )}
 
       {/* 4. Trek Graph View */}
-      {viewMode === "graph" && (
+      {activeView === "graph" && (
         <div className="space-y-6">
           <div className="bg-brand-warm-bg rounded-2xl p-4 border border-gray-150 relative">
             <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-forest block mb-4 text-center">
@@ -309,18 +354,18 @@ export default function TrekItinerary({ itinerary, onViewDepartures }: TrekItine
           </div>
 
           {/* Graph summary statistics */}
-          <div className="grid grid-cols-3 gap-4 text-center text-xs font-semibold">
-            <div className="p-3 bg-white border border-gray-150 rounded-2xl shadow-xs space-y-1">
-              <span className="text-[10px] text-gray-400 uppercase block tracking-wider">Highest point</span>
-              <span className="font-extrabold text-brand-dark-text block">{maxTrekAltitude.toLocaleString()} Ft</span>
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center text-xs font-semibold">
+            <div className="p-2.5 sm:p-3 bg-white border border-gray-150 rounded-2xl shadow-xs space-y-1 min-w-0">
+              <span className="text-[10px] text-gray-400 uppercase block tracking-wider break-words">Highest point</span>
+              <span className="font-extrabold text-brand-dark-text block break-words">{maxTrekAltitude.toLocaleString()} Ft</span>
             </div>
-            <div className="p-3 bg-white border border-gray-150 rounded-2xl shadow-xs space-y-1">
-              <span className="text-[10px] text-gray-400 uppercase block tracking-wider">Alt Gain</span>
-              <span className="font-extrabold text-brand-dark-text block">+{totalAltitudeGain.toLocaleString()} Ft</span>
+            <div className="p-2.5 sm:p-3 bg-white border border-gray-150 rounded-2xl shadow-xs space-y-1 min-w-0">
+              <span className="text-[10px] text-gray-400 uppercase block tracking-wider break-words">Alt Gain</span>
+              <span className="font-extrabold text-brand-dark-text block break-words">+{totalAltitudeGain.toLocaleString()} Ft</span>
             </div>
-            <div className="p-3 bg-white border border-gray-150 rounded-2xl shadow-xs space-y-1">
-              <span className="text-[10px] text-gray-400 uppercase block tracking-wider">Distance</span>
-              <span className="font-extrabold text-brand-dark-text block">{totalTrekDistance} Km</span>
+            <div className="p-2.5 sm:p-3 bg-white border border-gray-150 rounded-2xl shadow-xs space-y-1 min-w-0">
+              <span className="text-[10px] text-gray-400 uppercase block tracking-wider break-words">Distance</span>
+              <span className="font-extrabold text-brand-dark-text block break-words">{totalTrekDistance} Km</span>
             </div>
           </div>
         </div>
@@ -330,7 +375,7 @@ export default function TrekItinerary({ itinerary, onViewDepartures }: TrekItine
       <div className="flex justify-center pt-2">
         <button
           onClick={onViewDepartures}
-          className="bg-brand-dusk hover:bg-brand-dusk-orange text-white font-extrabold px-6 py-3 rounded-full text-xs shadow-md transition"
+          className="bg-brand-dusk hover:bg-brand-dusk-orange text-white font-extrabold min-h-[44px] inline-flex items-center justify-center px-6 py-3 rounded-full text-xs shadow-md transition"
         >
           View Departure Dates
         </button>

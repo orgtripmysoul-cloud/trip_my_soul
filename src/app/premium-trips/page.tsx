@@ -79,7 +79,7 @@ export default function PremiumTripsPage() {
             href="https://wa.me/918178613438?text=Hi%20TripMySoul,%20I'm%2520interested%252520in%252520customizing%252520a%252520Premium%252520private%252520Trek."
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-brand-dusk-orange hover:bg-brand-dusk-orange/95 text-white font-extrabold px-6 py-3 rounded-full text-xs shadow-lg transition shrink-0 z-10 flex items-center gap-1.5"
+            className="bg-brand-dusk-orange hover:bg-brand-dusk-orange/95 min-h-[44px] inline-flex items-center justify-center text-white font-extrabold px-6 py-3 rounded-full text-xs shadow-lg transition shrink-0 z-10 flex items-center gap-1.5"
           >
             <span>Consult Planner</span>
             <ArrowRight className="w-4 h-4" />

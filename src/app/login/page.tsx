@@ -69,7 +69,7 @@ export default function LoginPage() {
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent border-0 text-sm focus:outline-none w-full text-brand-dark-text"
+                className="bg-transparent border-0 text-base lg:text-sm focus:outline-none w-full min-w-0 text-brand-dark-text self-stretch py-3 -my-3"
               />
             </div>
           </div>
@@ -84,12 +84,12 @@ export default function LoginPage() {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="bg-transparent border-0 text-sm focus:outline-none w-full text-brand-dark-text"
+                className="bg-transparent border-0 text-base lg:text-sm focus:outline-none w-full min-w-0 text-brand-dark-text self-stretch py-3 -my-3"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 text-gray-400 hover:text-brand-forest transition"
+                className="absolute right-1 min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-400 hover:text-brand-forest transition"
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
@@ -113,7 +113,7 @@ export default function LoginPage() {
             <span className="font-bold text-brand-forest">Demo/Test Credentials:</span>
             <button
               onClick={handleFillMockCredentials}
-              className="text-[10px] text-brand-dusk-orange font-bold uppercase tracking-wider hover:underline"
+              className="text-[10px] text-brand-dusk-orange font-bold uppercase tracking-wider inline-flex items-center min-h-[44px] px-1 hover:underline"
             >
               Auto-Fill
             </button>

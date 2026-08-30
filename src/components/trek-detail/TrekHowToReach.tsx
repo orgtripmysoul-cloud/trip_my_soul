@@ -13,11 +13,11 @@ export default function TrekHowToReach({ transport }: TrekHowToReachProps) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-gray-650">
         <div className="space-y-2 p-4 bg-brand-warm-bg rounded-2xl border border-gray-150">
           <span className="font-extrabold text-brand-forest uppercase tracking-wider block">By Air</span>
-          <p>{transport.airport}. Board direct flight to local airport, then hire shared cabs to base town.</p>
+          <p>{transport.airport}. Fly in to the nearest airport, then continue by shared or private cab.</p>
         </div>
         <div className="space-y-2 p-4 bg-brand-warm-bg rounded-2xl border border-gray-150">
           <span className="font-extrabold text-brand-forest uppercase tracking-wider block">By Train</span>
-          <p>{transport.railHead}. Regular overnight trains connect major cities to these junctions.</p>
+          <p>{transport.railHead}. Regular overnight trains connect major cities to this junction.</p>
         </div>
         <div className="space-y-2 p-4 bg-brand-warm-bg rounded-2xl border border-gray-150">
           <span className="font-extrabold text-brand-forest uppercase tracking-wider block">By Road</span>

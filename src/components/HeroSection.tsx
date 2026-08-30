@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, ExternalLink, Star } from "lucide-react";
+import { Star, MapPin, CalendarDays, Smile, Users } from "lucide-react";
 
 const HERO_SLIDES = [
   "/assets/hero/hero-slide-1.png",
@@ -12,6 +11,17 @@ const HERO_SLIDES = [
   "/assets/hero/hero-slide-3.png",
   "/assets/hero/hero-slide-4.png",
   "/assets/hero/hero-slide-5.png",
+] as const;
+
+/**
+ * Trust placards shown beside the Google rating badge. Values are placeholders
+ * until verified figures are supplied.
+ */
+const HERO_STATS = [
+  { label: "Destination", value: "50+", Icon: MapPin },
+  { label: "Experience", value: "12+ Yrs", Icon: CalendarDays },
+  { label: "Satisfied Customers", value: "98%", Icon: Smile },
+  { label: "Travellers", value: "10,000+", Icon: Users },
 ] as const;
 
 const SLIDE_INTERVAL_MS = 5000;
@@ -130,20 +140,20 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[70vh] sm:min-h-[80vh] md:h-[90vh] w-full flex items-center justify-center overflow-hidden bg-[#0B2545]">
+    <section className="relative min-h-[70vh] sm:min-h-[80vh] md:min-h-[90vh] w-full flex items-center justify-center overflow-hidden bg-[#0B2545]">
       <HeroSlideshow activeIndex={activeIndex} previousIndex={previousIndex} />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center text-white space-y-4 sm:space-y-6 md:space-y-8 py-8 sm:py-0">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 text-center text-white space-y-4 sm:space-y-6 md:space-y-8 py-12 sm:py-14">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="space-y-4"
         >
-          <span className="text-xs md:text-sm font-extrabold uppercase tracking-widest text-brand-dusk-orange bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 inline-block">
+          <span className="text-[11px] sm:text-xs md:text-sm font-extrabold uppercase tracking-widest text-brand-dusk-orange bg-white/10 backdrop-blur-md px-3.5 sm:px-4 py-2 rounded-full border border-white/10 inline-block max-w-full">
             Himalayan Wilderness Expeditions
           </span>
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold font-serif leading-tight tracking-tight">
+          <h1 className="text-[1.75rem] sm:text-5xl md:text-7xl font-bold font-serif leading-tight tracking-tight text-balance break-words">
             Where Every Journey <br />
             <span className="text-brand-dusk-orange font-normal italic">Heals the Soul</span>
           </h1>
@@ -159,63 +169,62 @@ export default function HeroSection() {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="flex flex-col sm:flex-row justify-center items-center gap-4"
-        >
-          <Link
-            href="#explore-treks"
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-dusk hover:bg-brand-dusk-orange text-white font-bold shadow-lg transform hover:-translate-y-0.5 transition duration-200 flex items-center justify-center gap-2"
-          >
-            <span>View Upcoming Treks and Trips</span>
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-          <a
-            href="https://www.instagram.com/tripmysoul.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold backdrop-blur-md border border-white/20 transition duration-200 flex items-center justify-center gap-2"
-          >
-            <ExternalLink className="w-5 h-5 text-brand-dusk-orange" />
-            <span>View Social Media</span>
-          </a>
-        </motion.div>
-
-        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.5 }}
-          className="pt-4 max-w-md mx-auto"
+          className="w-full mx-auto space-y-3"
         >
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3.5 flex items-center justify-between text-left gap-3 shadow-lg">
-            <div className="flex items-center gap-2.5">
+          {/* Placard 1 — Google Review */}
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3.5 flex items-center justify-between text-left gap-2 sm:gap-3 shadow-lg max-w-md mx-auto">
+            <div className="flex items-center gap-2.5 min-w-0 flex-1">
               <div className="w-9 h-9 rounded-full bg-white text-blue-600 font-black text-xs flex items-center justify-center shrink-0 shadow-xs">
                 G
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="flex items-center gap-1 text-amber-400 text-xs">
                   <span className="font-extrabold text-white mr-1 text-xs">4.9</span>
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-current shrink-0" />
                   ))}
                 </div>
-                <span className="text-[10px] text-gray-200 font-semibold block">
+                <span className="text-[10px] text-gray-200 font-semibold block leading-snug">
                   Based on 2,500+ Verified Google Reviews
                 </span>
               </div>
             </div>
             <a
               href="#reviews"
-              className="text-[10px] font-extrabold text-brand-dusk-orange uppercase tracking-wider hover:underline shrink-0"
+              className="text-[10px] font-extrabold text-brand-dusk-orange uppercase tracking-wider hover:underline shrink-0 min-h-[44px] flex items-center text-right"
             >
               Read Reviews →
             </a>
           </div>
+
+          {/* Placards 2-5 — Destination · Experience · Satisfied Customers · Travellers */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-md sm:max-w-4xl mx-auto">
+            {HERO_STATS.map(({ label, value, Icon }) => (
+              <div
+                key={label}
+                className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3.5 sm:p-5 flex items-center gap-2.5 sm:gap-4 text-left shadow-lg min-w-0"
+              >
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/15 flex items-center justify-center shrink-0 shadow-xs">
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-brand-dusk-orange shrink-0" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <span className="font-extrabold text-white text-base sm:text-xl block leading-tight break-words">
+                    {value}
+                  </span>
+                  <span className="text-[11px] sm:text-sm text-gray-200 font-semibold block leading-tight break-words">
+                    {label}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-5 sm:bottom-6 left-0 right-0 z-20 flex justify-center items-center gap-2">
+      <div className="absolute bottom-0 sm:bottom-1 left-0 right-0 z-20 flex justify-center items-center">
         {HERO_SLIDES.map((_, idx) => (
           <button
             key={idx}
@@ -223,12 +232,16 @@ export default function HeroSection() {
             onClick={() => goToSlide(idx)}
             aria-label={`Go to slide ${idx + 1}`}
             aria-current={idx === activeIndex ? "true" : undefined}
-            className={`h-2 rounded-full transition-all duration-300 ease-in-out ${
-              idx === activeIndex
-                ? "w-[18px] bg-brand-dusk"
-                : "w-2 bg-white/40 hover:bg-white/60"
-            }`}
-          />
+            className="w-11 h-11 flex items-center justify-center group shrink-0"
+          >
+            <span
+              className={`h-2 rounded-full transition-all duration-300 ease-in-out ${
+                idx === activeIndex
+                  ? "w-[18px] bg-brand-dusk"
+                  : "w-2 bg-white/40 group-hover:bg-white/60"
+              }`}
+            />
+          </button>
         ))}
       </div>
     </section>

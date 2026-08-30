@@ -75,14 +75,15 @@ export default function CategoryCarousel() {
         <Swiper
           modules={[Navigation]}
           spaceBetween={0}
-          slidesPerView={2.2}
+          slidesPerView={1.7}
           loop={true}
           navigation={{
             prevEl: ".category-prev",
             nextEl: ".category-next",
           }}
           breakpoints={{
-            480: { slidesPerView: 2.2 },
+            400: { slidesPerView: 2.1 },
+            480: { slidesPerView: 2.4 },
             640: { slidesPerView: 3.3 },
             768: { slidesPerView: 4.5 },
             1024: { slidesPerView: 5.5 },
@@ -104,9 +105,9 @@ export default function CategoryCarousel() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B2545]/90 via-[#0B2545]/30 to-transparent pointer-events-none" />
                   
                   {/* Text + Icon bottom left */}
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center space-x-2 text-white">
+                  <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 flex items-center gap-1.5 sm:gap-2 text-white">
                     <Icon className="w-4 h-4 shrink-0" />
-                    <span className="text-xs sm:text-sm font-extrabold tracking-wide uppercase leading-none font-sans drop-shadow-sm">
+                    <span className="min-w-0 text-[11px] sm:text-sm font-extrabold tracking-wide uppercase leading-tight font-sans drop-shadow-sm break-words">
                       {cat.label}
                     </span>
                   </div>
@@ -118,13 +119,13 @@ export default function CategoryCarousel() {
 
         {/* Custom Navigation Arrows - Always visible on desktop, hidden on mobile */}
         <button
-          className="category-prev absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/40 hover:bg-white/70 backdrop-blur-md text-brand-dark-text shadow-md flex items-center justify-center transition-all opacity-0 pointer-events-none lg:opacity-100 lg:pointer-events-auto hover:scale-105 active:scale-95"
+          className="category-prev absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/40 hover:bg-white/70 backdrop-blur-md text-brand-dark-text shadow-md flex items-center justify-center transition-all opacity-0 pointer-events-none lg:opacity-100 lg:pointer-events-auto hover:scale-105 active:scale-95"
           aria-label="Previous Slide"
         >
           <ChevronLeft className="w-5 h-5 shrink-0" />
         </button>
         <button
-          className="category-next absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/40 hover:bg-white/70 backdrop-blur-md text-brand-dark-text shadow-md flex items-center justify-center transition-all opacity-0 pointer-events-none lg:opacity-100 lg:pointer-events-auto hover:scale-105 active:scale-95"
+          className="category-next absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/40 hover:bg-white/70 backdrop-blur-md text-brand-dark-text shadow-md flex items-center justify-center transition-all opacity-0 pointer-events-none lg:opacity-100 lg:pointer-events-auto hover:scale-105 active:scale-95"
           aria-label="Next Slide"
         >
           <ChevronRight className="w-5 h-5 shrink-0" />

@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { TREKS, WILDLIFE, YATRAS } from "@/data/db";
 import { ALL_TRIPS, tripToTrek } from "@/data/trips";
+import { TREK_ADD_ONS } from "@/data/addOns";
 import {
   Calendar, Check, X, Shield, Plus, Info, ArrowLeft, ArrowRight,
   DollarSign, CheckCircle2, User, HelpCircle, Lock, ShieldCheck
@@ -41,9 +42,9 @@ function CheckoutContent() {
       email: "srishtirana28@gmail.com",
       isPrimary: true,
       addOns: {
-        insurance: true, // ₹240
-        offload: false,   // ₹1,000
-        transport: false  // ₹3,400
+        insurance: true,
+        offload: false,
+        transport: false
       }
     }
   ]);
@@ -65,10 +66,10 @@ function CheckoutContent() {
   
   const totalAddOns = useMemo(() => {
     return participants.reduce((total, p) => {
-      let addOnSum = 0;
-      if (p.addOns.insurance) addOnSum += 240;
-      if (p.addOns.offload) addOnSum += 1000;
-      if (p.addOns.transport) addOnSum += 3400;
+      const addOnSum = TREK_ADD_ONS.reduce(
+        (sum, addOn) => (p.addOns[addOn.key] ? sum + addOn.price : sum),
+        0
+      );
       return total + addOnSum;
     }, 0);
   }, [participants]);
@@ -178,7 +179,7 @@ function CheckoutContent() {
         <div className="flex items-center justify-between">
           <button
             onClick={() => router.back()}
-            className="flex items-center gap-1.5 text-xs font-bold text-gray-500 hover:text-brand-forest transition"
+            className="inline-flex items-center gap-1.5 min-h-[44px] text-xs font-bold text-gray-500 hover:text-brand-forest transition"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Trek Details</span>
@@ -214,7 +215,7 @@ function CheckoutContent() {
             </span>
             <button
               onClick={() => setCurrency(currency === "INR" ? "USD" : "INR")}
-              className="text-[10px] font-bold text-blue-600 hover:underline block mt-1 mx-auto"
+              className="text-[10px] font-bold text-blue-600 hover:underline inline-flex items-center justify-center min-h-[44px] mt-1 mx-auto"
             >
               Convert to {currency === "INR" ? "USD" : "INR"}
             </button>
@@ -228,7 +229,7 @@ function CheckoutContent() {
             href="https://wa.me/918178613438?text=Hi%20TripMySoul,%20I'm%20having%20trouble%20booking%20my%20trek."
             target="_blank"
             rel="noopener noreferrer"
-            className="font-bold text-blue-700 hover:underline inline-flex items-center gap-1"
+            className="font-bold text-blue-700 hover:underline inline-flex items-center min-h-[44px] gap-1"
           >
             Click Here to try again on WhatsApp
           </a>.
@@ -253,11 +254,11 @@ function CheckoutContent() {
                   placeholder="Enter email id to add your co-participant"
                   value={coParticipantEmail}
                   onChange={(e) => setCoParticipantEmail(e.target.value)}
-                  className="flex-grow p-3 rounded-2xl border border-gray-200 text-xs focus:outline-none focus:border-brand-dusk"
+                  className="flex-grow p-3 min-h-[44px] rounded-2xl border border-gray-200 text-base lg:text-xs focus:outline-none focus:border-brand-dusk"
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-[#E84855] hover:bg-[#d63b48] text-white font-bold text-xs rounded-2xl transition shadow-sm shrink-0"
+                  className="px-6 py-3 min-h-[44px] inline-flex items-center justify-center bg-[#E84855] hover:bg-[#d63b48] text-white font-bold text-xs rounded-2xl transition shadow-sm shrink-0"
                 >
                   Add Participant
                 </button>
@@ -311,56 +312,26 @@ function CheckoutContent() {
                     </span>
 
                     <div className="space-y-2 text-xs">
-                      {/* Insurance */}
-                      <label className="flex items-center justify-between p-2.5 rounded-xl border border-gray-150 hover:bg-gray-50/50 cursor-pointer transition">
-                        <div className="flex items-center gap-2">
-                          <input
-                            type="checkbox"
-                            checked={p.addOns.insurance}
-                            onChange={() => toggleAddOn(p.id, "insurance")}
-                            className="w-4 h-4 text-brand-dusk rounded focus:ring-0 cursor-pointer"
-                          />
-                          <span className="font-bold text-gray-700">Medical & Trek Insurance</span>
-                          <span title="Covers high altitude emergency hospitalization">
-                            <HelpCircle className="w-3.5 h-3.5 text-gray-400" />
-                          </span>
-                        </div>
-                        <span className="font-bold text-gray-600">{displayPrice(240)}</span>
-                      </label>
-
-                      {/* Offload */}
-                      <label className="flex items-center justify-between p-2.5 rounded-xl border border-gray-150 hover:bg-gray-50/50 cursor-pointer transition">
-                        <div className="flex items-center gap-2">
-                          <input
-                            type="checkbox"
-                            checked={p.addOns.offload}
-                            onChange={() => toggleAddOn(p.id, "offload")}
-                            className="w-4 h-4 text-brand-dusk rounded focus:ring-0 cursor-pointer"
-                          />
-                          <span className="font-bold text-gray-700">Backpack Offloading (to Mule/Porter)</span>
-                          <span title="Porter carries your main 12kg backpack on trail">
-                            <HelpCircle className="w-3.5 h-3.5 text-gray-400" />
-                          </span>
-                        </div>
-                        <span className="font-bold text-gray-600">{displayPrice(1000)}</span>
-                      </label>
-
-                      {/* Transport */}
-                      <label className="flex items-center justify-between p-2.5 rounded-xl border border-gray-150 hover:bg-gray-50/50 cursor-pointer transition">
-                        <div className="flex items-center gap-2">
-                          <input
-                            type="checkbox"
-                            checked={p.addOns.transport}
-                            onChange={() => toggleAddOn(p.id, "transport")}
-                            className="w-4 h-4 text-brand-dusk rounded focus:ring-0 cursor-pointer"
-                          />
-                          <span className="font-bold text-gray-700">Shared Basecamp Transport (Pickup & Drop)</span>
-                          <span title="Dehradun/Rishikesh to Base Camp roundtrip">
-                            <HelpCircle className="w-3.5 h-3.5 text-gray-400" />
-                          </span>
-                        </div>
-                        <span className="font-bold text-gray-600">{displayPrice(3400)}</span>
-                      </label>
+                      {TREK_ADD_ONS.map((addOn) => (
+                        <label
+                          key={addOn.key}
+                          className="flex items-center justify-between gap-2 min-h-[44px] p-2.5 rounded-xl border border-gray-150 hover:bg-gray-50/50 cursor-pointer transition"
+                        >
+                          <div className="flex items-center gap-2">
+                            <input
+                              type="checkbox"
+                              checked={p.addOns[addOn.key]}
+                              onChange={() => toggleAddOn(p.id, addOn.key)}
+                              className="w-5 h-5 shrink-0 text-brand-dusk rounded focus:ring-0 cursor-pointer"
+                            />
+                            <span className="font-bold text-gray-700">{addOn.label}</span>
+                            <span title={addOn.description}>
+                              <HelpCircle className="w-3.5 h-3.5 text-gray-400" />
+                            </span>
+                          </div>
+                          <span className="font-bold text-gray-600">{displayPrice(addOn.price)}</span>
+                        </label>
+                      ))}
                     </div>
                   </div>
 
@@ -376,12 +347,12 @@ function CheckoutContent() {
                         placeholder="Enter Promo Coupon (e.g. TRIPMYSOUL10)"
                         value={couponCode}
                         onChange={(e) => setCouponCode(e.target.value)}
-                        className="flex-grow p-2.5 rounded-xl border border-gray-200 text-xs uppercase font-bold focus:outline-none"
+                        className="flex-grow p-2.5 min-h-[44px] rounded-xl border border-gray-200 text-base lg:text-xs uppercase font-bold focus:outline-none"
                       />
                       <button
                         type="button"
                         onClick={handleApplyCoupon}
-                        className="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-xs rounded-xl transition"
+                        className="px-4 py-2.5 min-h-[44px] inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-xs rounded-xl transition"
                       >
                         Apply
                       </button>
@@ -449,16 +420,16 @@ function CheckoutContent() {
 
               {/* Terms Checkbox */}
               <div className="pt-2">
-                <label className="flex items-start gap-2.5 cursor-pointer text-xs text-gray-600 font-medium">
+                <label className="flex items-start gap-2.5 min-h-[44px] py-2 cursor-pointer text-xs text-gray-600 font-medium">
                   <input
                     type="checkbox"
                     checked={acceptedTerms}
                     onChange={(e) => setAcceptedTerms(e.target.checked)}
-                    className="w-4 h-4 text-brand-dusk rounded focus:ring-0 mt-0.5 shrink-0"
+                    className="w-5 h-5 shrink-0 text-brand-dusk rounded focus:ring-0 mt-0.5 shrink-0"
                   />
                   <span>
                     I accept Term and Condition |{" "}
-                    <a href="/policies/terms-and-conditions" target="_blank" className="text-blue-600 font-bold hover:underline">
+                    <a href="/policies/terms-and-conditions" target="_blank" className="text-blue-600 font-bold hover:underline inline-flex items-center min-h-[44px]">
                       READ T&C
                     </a>
                   </span>

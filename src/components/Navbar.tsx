@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, Compass, User, Phone, Search, FileText, Trees, Briefcase, ChevronRight, ChevronDown, ShoppingBag, Tent, Backpack } from "lucide-react";
+import { Menu, X, Compass, User, Phone, Search, FileText, Briefcase, ChevronRight, ShoppingBag } from "lucide-react";
 import { TREKS } from "@/data/db";
 import { ALL_TRIPS, CANONICAL_TRIP_PATHS, tripSearchHaystack } from "@/data/trips";
 import { getPhoneForPath } from "@/config/contact";
@@ -71,59 +71,40 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinksBeforeTreks = [
-    { name: "Careers", href: "/careers" },
-    { name: "Rent", href: "/rent" },
-    { name: "Contact Us", href: "/contact-us" },
-    { name: "My Profile", href: "/dashboard" },
-    { name: "All Treks", href: "/treks" },
-    { name: "All Trip", href: "/treks" },
-  ];
+  /**
+   * While the mobile drawer is open, freeze the page behind it. Without this
+   * the body keeps scrolling under the overlay on iOS/Android, and the user
+   * loses their place the moment they close the menu.
+   */
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isOpen]);
 
-  const navLinksTripMiddle = [
-    { name: "Weekend Trips", href: "/weekend-trips" },
-    { name: "Backpacking Trips", href: "/backpacking-trips" },
-  ];
-
-  const navLinksAfterTreks = [
-    { name: "Our Story", href: "/about-us" },
-  ];
-
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false);
+  // Navigating from inside the drawer should always dismiss it.
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   /**
-   * Desktop nav overflow strategy.
-   *
-   * Nine links cannot fit beside the logo and action bar below ~1900px, so each
-   * item is assigned the breakpoint at which it becomes inline. Anything not yet
-   * inline lives in the "More" dropdown, so every item is reachable at every
-   * width without hidden scrolling or clipping.
+   * The whole navbar. Four links plus the trek search fit beside the logo at
+   * every width, so the old NAV_TIER / "More" overflow machinery is gone.
    */
-  const NAV_TIER: Record<string, "lg" | "xl" | "more"> = {
-    "All Treks": "lg",
-    "Weekend Trips": "lg",
-    "Backpacking Trips": "lg",
-    "All Trip": "xl",
-    "Our Story": "xl",
-    "Contact Us": "more",
-    "Careers": "more",
-    "Rent": "more",
-    "My Profile": "more",
-  };
-
-  const desktopNavLinks = [
-    ...navLinksBeforeTreks,
-    ...navLinksTripMiddle,
-    ...navLinksAfterTreks,
-  ].sort(
-    (a, b) =>
-      Object.keys(NAV_TIER).indexOf(a.name) - Object.keys(NAV_TIER).indexOf(b.name)
-  );
-
-  const inlineLinks = desktopNavLinks.filter((l) => NAV_TIER[l.name] !== "more");
-  /** "more"-tier items always live here; "xl"-tier items only until they go inline. */
-  const overflowLinks = desktopNavLinks.filter((l) => NAV_TIER[l.name] !== "lg");
+  const navLinks = [
+    { name: "Our Story", href: "/about-us" },
+    { name: "Rent", href: "/rent" },
+    { name: "Careers", href: "/careers" },
+    { name: "My Profile", href: "/dashboard" },
+  ];
 
   const isLinkActive = (href: string) =>
     pathname === href || (href !== "/treks" && pathname.startsWith(href));
@@ -135,8 +116,8 @@ export default function Navbar() {
       <Link
         key={link.name}
         href={link.href}
-        className={`items-center text-xs font-semibold tracking-wide whitespace-nowrap shrink-0 transition-colors hover:text-brand-dusk-orange ${
-          isActive ? "text-brand-dusk-orange border-b-2 border-brand-dusk-orange pb-0.5" : "text-gray-100"
+        className={`items-center text-sm font-semibold tracking-wide whitespace-nowrap shrink-0 transition-colors hover:text-brand-dusk ${
+          isActive ? "text-brand-dusk border-b-2 border-brand-dusk pb-0.5" : "text-brand-forest"
         } ${extraClass}`}
       >
         {link.name}
@@ -145,16 +126,11 @@ export default function Navbar() {
   };
 
   const getDrawerIcon = (name: string) => {
-    const cls = "w-4 h-4 text-brand-dusk-orange shrink-0";
+    const cls = "w-4 h-4 text-brand-dusk shrink-0";
     switch (name) {
       case "Careers": return <Briefcase className={cls} />;
       case "Rent": return <ShoppingBag className={cls} />;
-      case "Contact Us": return <Phone className={cls} />;
       case "My Profile": return <User className={cls} />;
-      case "All Treks": return <Compass className={cls} />;
-      case "All Trip": return <Trees className={cls} />;
-      case "Weekend Trips": return <Tent className={cls} />;
-      case "Backpacking Trips": return <Backpack className={cls} />;
       case "Our Story": return <FileText className={cls} />;
       default: return <Compass className={cls} />;
     }
@@ -163,13 +139,13 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 glass-dark text-white shadow-lg ${
-          isScrolled ? "py-2.5" : "py-3.5"
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-brand-warm-bg/90 backdrop-blur-md border-b border-brand-forest/10 text-brand-forest ${
+          isScrolled ? "py-2.5 shadow-md" : "py-3.5 shadow-sm"
         }`}
       >
         <div className="w-full max-w-full px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-4">
           {/* Logo Section */}
-          <Link href="/" className="flex items-center group shrink-0">
+          <Link href="/" className="flex items-center min-h-[44px] group shrink-0">
             <div className="relative h-8 w-40 md:h-8.5 md:w-44">
               <Image
                 src="/tripmysoul-mobile-logo.png"
@@ -182,73 +158,31 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          {/* Links that fit are inline; the rest sit in "More" — nothing is ever
-              clipped or hidden behind a scrollbar. See NAV_TIER above. */}
-          <nav className="hidden lg:flex items-center gap-x-4 xl:gap-x-5 py-1 shrink-0">
-            {inlineLinks.map((link) =>
-              renderNavLink(
-                link,
-                NAV_TIER[link.name] === "lg" ? "inline-flex" : "hidden xl:inline-flex"
-              )
-            )}
-
-            {/* More dropdown */}
-            <div className="relative shrink-0">
-              <button
-                onClick={() => setIsMoreMenuOpen(!isMoreMenuOpen)}
-                onBlur={() => setTimeout(() => setIsMoreMenuOpen(false), 200)}
-                aria-haspopup="menu"
-                aria-expanded={isMoreMenuOpen}
-                className="flex items-center gap-1 text-xs font-semibold tracking-wide whitespace-nowrap text-gray-100 hover:text-brand-dusk-orange transition-colors"
-              >
-                <span>More</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isMoreMenuOpen ? "rotate-180" : ""}`} />
-              </button>
-
-              {isMoreMenuOpen && (
-                <div
-                  role="menu"
-                  className="absolute top-full right-0 mt-3 w-52 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 p-2 space-y-0.5 animate-fade-in"
-                >
-                  {overflowLinks.map((link) => (
-                    <Link
-                      key={link.name}
-                      href={link.href}
-                      role="menuitem"
-                      onClick={() => setIsMoreMenuOpen(false)}
-                      className={`flex items-center gap-2.5 p-2.5 rounded-xl text-xs font-bold transition hover:bg-white/10 ${
-                        isLinkActive(link.href) ? "text-brand-dusk-orange" : "text-gray-100"
-                      } ${NAV_TIER[link.name] === "xl" ? "xl:hidden" : ""}`}
-                    >
-                      {getDrawerIcon(link.name)}
-                      <span>{link.name}</span>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+          <nav className="hidden lg:flex items-center gap-x-5 xl:gap-x-7 py-1 shrink-0">
+            {navLinks.map((link) => renderNavLink(link, "inline-flex"))}
           </nav>
 
-          {/* Right Action Bar (Search + Choose Trek + Contact + Account) */}
+          {/* Right Action Bar (Search Treks + Phone + Sign In) */}
           <div className="hidden lg:flex items-center space-x-2.5 lg:space-x-3 shrink-0">
-            {/* Desktop search input */}
-            <div className="relative w-32 xl:w-44 2xl:w-52">
-              <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-white text-xs">
-                <Search className="w-3.5 h-3.5 opacity-60 shrink-0" />
+            {/* Desktop "Search Treks" input */}
+            <div className="relative w-56 xl:w-72 2xl:w-96">
+              <div className="flex items-center gap-2 px-4 py-2.5 bg-white border border-brand-forest/15 rounded-full text-brand-forest text-sm shadow-xs">
+                <Search className="w-5 h-5 text-brand-forest/50 shrink-0" />
                 <input
                   type="text"
-                  placeholder="Search treks..."
+                  placeholder="Search Treks"
+                  aria-label="Search Treks"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onFocus={() => setIsSearchFocused(true)}
                   onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
-                  className="bg-transparent border-0 focus:outline-none w-full text-white placeholder-gray-300 text-xs font-semibold"
+                  className="bg-transparent border-0 focus:outline-none w-full text-brand-forest placeholder-brand-forest/45 text-base lg:text-sm font-semibold"
                 />
               </div>
-              
+
               {/* Autocomplete Dropdown */}
               {isSearchFocused && searchResults.length > 0 && (
-                <div className="absolute top-full right-0 mt-2 w-64 lg:w-72 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl overflow-hidden z-50 text-white font-sans text-xs">
+                <div className="absolute top-full right-0 mt-2 w-[min(24rem,calc(100vw-2rem))] bg-white border border-brand-forest/10 rounded-2xl shadow-xl overflow-hidden z-50 text-brand-forest font-sans text-xs">
                   <div className="p-2 space-y-1">
                     {searchResults.map((trek) => (
                       <button
@@ -257,9 +191,9 @@ export default function Navbar() {
                           router.push(trek.href);
                           setSearchQuery("");
                         }}
-                        className="w-full flex items-center gap-3 p-2 hover:bg-white/10 rounded-xl transition text-left"
+                        className="w-full flex items-center gap-3 p-2 hover:bg-brand-warm-card rounded-xl transition text-left"
                       >
-                        <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/5 shrink-0 relative">
+                        <div className="w-8 h-8 rounded-lg overflow-hidden bg-brand-warm-card shrink-0 relative">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=80&q=80"
@@ -267,16 +201,16 @@ export default function Navbar() {
                             className="w-full h-full object-cover"
                           />
                         </div>
-                        <div className="space-y-0.5">
-                          <span className="font-bold text-xs block text-white truncate max-w-[130px]">
+                        <div className="space-y-0.5 min-w-0 flex-1">
+                          <span className="font-bold text-sm block text-brand-forest truncate">
                             {trek.name}
                           </span>
-                          <span className="text-[10px] text-gray-400 font-semibold block leading-none">
+                          <span className="text-[11px] text-brand-forest/60 font-semibold block leading-none truncate">
                             {trek.region} • {trek.days} Days
                           </span>
                         </div>
                         <div className="ml-auto text-right shrink-0">
-                          <span className="text-[10px] text-brand-dusk-orange font-bold">
+                          <span className="text-xs text-brand-dusk font-bold">
                             {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
                           </span>
                         </div>
@@ -285,125 +219,47 @@ export default function Navbar() {
                   </div>
                 </div>
               )}
-              
+
               {isSearchFocused && searchQuery && searchResults.length === 0 && (
-                <div className="absolute top-full right-0 mt-2 w-64 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-3 text-center text-gray-400 z-50 text-[11px]">
+                <div className="absolute top-full right-0 mt-2 w-[min(20rem,calc(100vw-2rem))] bg-white border border-brand-forest/10 rounded-2xl shadow-xl p-3 text-center text-brand-forest/60 z-50 text-[11px]">
                   No matching treks found.
                 </div>
               )}
             </div>
-
-            {/* Choose Trek Quick Finder Trigger */}
-            <button
-              onClick={() => setIsChooseTrekOpen(true)}
-              aria-label="Choose a trek"
-              title="Choose Trek"
-              className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white transition whitespace-nowrap shadow-xs shrink-0"
-            >
-              <Compass className="w-3.5 h-3.5 text-brand-dusk-orange shrink-0" />
-              <span className="hidden 2xl:inline">Choose Trek</span>
-            </button>
 
             {/* Phone support — icon-only until there is room for the full number */}
             <a
               href={`tel:${phone.tel}`}
               aria-label={`Call TripMySoul on ${phone.display}`}
               title={phone.display}
-              className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition whitespace-nowrap shrink-0"
+              className="flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-full border border-brand-forest/20 text-brand-forest hover:bg-brand-forest/5 transition whitespace-nowrap shrink-0"
             >
-              <Phone className="w-3.5 h-3.5 text-brand-dusk-orange shrink-0" />
+              <Phone className="w-4 h-4 text-brand-dusk shrink-0" />
               <span className="hidden 2xl:inline">{phone.display}</span>
             </a>
 
-            {/* Account / Profile Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-                onBlur={() => setTimeout(() => setIsProfileMenuOpen(false), 200)}
-                className="flex items-center gap-1.5 text-xs font-bold bg-brand-dusk hover:bg-brand-dusk-orange text-white px-3.5 py-1.5 rounded-full shadow-md transition transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
-              >
-                <User className="w-3.5 h-3.5 shrink-0" />
-                <span className="hidden 2xl:inline">My Trips &amp; Profile</span>
-                <span className="2xl:hidden">Profile</span>
-                <ChevronRight className={`w-3 h-3 transition-transform ${isProfileMenuOpen ? "rotate-90" : ""}`} />
-              </button>
-
-              {/* Profile Dropdown Menu */}
-              {isProfileMenuOpen && (
-                <div className="absolute top-full right-0 mt-2 w-56 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 text-white font-sans text-xs p-2 space-y-1 animate-fade-in">
-                  <Link
-                    href="/dashboard"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold"
-                  >
-                    <User className="w-4 h-4 text-brand-dusk-orange" />
-                    <span>My Profile & Bookings</span>
-                  </Link>
-                  <Link
-                    href="/treks"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold"
-                  >
-                    <Compass className="w-4 h-4 text-brand-dusk-orange" />
-                    <span>All Treks</span>
-                  </Link>
-                  <Link
-                    href="/treks"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold"
-                  >
-                    <Trees className="w-4 h-4 text-brand-dusk-orange" />
-                    <span>All Trips</span>
-                  </Link>
-                  <Link
-                    href="/about-us"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold"
-                  >
-                    <FileText className="w-4 h-4 text-brand-dusk-orange" />
-                    <span>Our Story</span>
-                  </Link>
-                  <Link
-                    href="/rent"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold"
-                  >
-                    <ShoppingBag className="w-4 h-4 text-brand-dusk-orange" />
-                    <span>Rent Gear</span>
-                  </Link>
-                  <Link
-                    href="/careers"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold"
-                  >
-                    <Briefcase className="w-4 h-4 text-brand-dusk-orange" />
-                    <span>Careers</span>
-                  </Link>
-                  <Link
-                    href="/contact-us"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white/10 transition font-bold border-t border-white/10 pt-2"
-                  >
-                    <Phone className="w-4 h-4 text-brand-dusk-orange" />
-                    <span>Contact Us</span>
-                  </Link>
-                </div>
-              )}
-            </div>
+            {/* Sign In */}
+            <Link
+              href="/login"
+              className="flex items-center gap-2 text-sm font-bold bg-brand-dusk hover:bg-brand-dusk-orange text-white px-5 py-2.5 rounded-full shadow-md transition transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
+            >
+              <User className="w-4 h-4 shrink-0" />
+              <span>Sign In</span>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
           <div className="flex lg:hidden items-center space-x-1.5">
-            <button
-              onClick={() => setIsChooseTrekOpen(true)}
-              className="flex items-center space-x-1.5 text-xs font-bold px-3 py-2.5 rounded-full bg-brand-dusk text-white min-h-[44px]"
-            >
-              <Compass className="w-4 h-4 text-brand-dusk-orange" />
-              <span>Choose</span>
-            </button>
             <Link
               href="/login"
-              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition text-white min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="p-2.5 rounded-full bg-brand-forest/5 hover:bg-brand-forest/10 border border-brand-forest/15 transition text-brand-forest min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="User account"
             >
               <User className="w-5 h-5" />
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition text-white min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="p-2.5 rounded-full bg-brand-forest/5 hover:bg-brand-forest/10 border border-brand-forest/15 transition text-brand-forest min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -412,21 +268,25 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Drawer (Glassmorphic Slide-over) */}
+      {/* Mobile Drawer (Slide-over) */}
       <div
-        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 z-40 bg-brand-dark-text/40 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setIsOpen(false)}
       >
         <div
-          className={`absolute top-0 right-0 w-4/5 max-w-sm h-full glass-dark text-white p-6 shadow-2xl transition-transform duration-300 transform ${
+          className={`absolute top-0 right-0 w-[85%] max-w-sm h-full bg-brand-warm-bg text-brand-forest shadow-2xl transition-transform duration-300 transform flex flex-col overflow-hidden ${
             isOpen ? "translate-x-0" : "translate-x-full"
           }`}
           onClick={(e) => e.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site menu"
         >
-          <div className="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
-            <div className="relative h-6 w-32">
+          {/* Header - pinned, never scrolls out of reach */}
+          <div className="flex justify-between items-center gap-3 shrink-0 border-b border-brand-forest/10 px-5 pt-5 pb-4">
+            <div className="relative h-6 w-28 sm:w-32 shrink-0">
               <Image
                 src="/tripmysoul-mobile-logo.png"
                 alt="TripMySoul Logo"
@@ -436,163 +296,137 @@ export default function Navbar() {
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="p-2.5 rounded-full bg-brand-forest/5 hover:bg-brand-forest/10 border border-brand-forest/15 transition min-w-[44px] min-h-[44px] flex items-center justify-center shrink-0"
+              aria-label="Close menu"
             >
               <X className="w-6 h-6" />
             </button>
           </div>
 
-        {/* Mobile search inside drawer */}
-        <div className="mb-6 relative">
-          <div className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-white text-xs">
-            <Search className="w-4 h-4 text-gray-400 shrink-0" />
-            <input
-              type="text"
-              placeholder="Search treks..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onFocus={() => setIsSearchFocused(true)}
-              onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
-              className="bg-transparent border-0 focus:outline-none w-full text-white placeholder-gray-400 text-xs"
-            />
-          </div>
-          
-          {/* Mobile Autocomplete Dropdown */}
-          {isSearchFocused && searchResults.length > 0 && (
-            <div className="absolute top-full left-0 right-0 mt-2 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl overflow-hidden z-50 text-white font-sans text-xs">
-              <div className="p-2 space-y-1">
-                {searchResults.map((trek) => (
-                  <button
-                    key={trek.slug}
-                    onMouseDown={() => {
-                      router.push(trek.href);
-                      setSearchQuery("");
-                      setIsOpen(false);
-                    }}
-                    className="w-full flex items-center gap-3 p-2 hover:bg-white/10 rounded-xl transition text-left"
-                  >
-                    <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/5 shrink-0 relative">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=80&q=80"
-                        alt={trek.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="space-y-0.5">
-                      <span className="font-bold text-[11px] block text-white truncate max-w-[150px]">
-                        {trek.name}
-                      </span>
-                      <span className="text-[9px] text-gray-400 font-semibold block leading-none">
-                        {trek.region} • {trek.days} Days
-                      </span>
-                    </div>
-                    <div className="ml-auto text-right shrink-0">
-                      <span className="text-[10px] text-brand-dusk-orange font-bold">
-                        {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
-                      </span>
-                    </div>
-                  </button>
-                ))}
+          {/*
+            Scrollable middle. The drawer is a flex column so the call / sign-in
+            actions stay pinned to the bottom: on a 667px-tall phone the old
+            fixed-height layout pushed them off-screen entirely.
+          */}
+          <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-5 py-5">
+            {/* Mobile "Search Treks" inside drawer */}
+            <div className="mb-6 relative">
+              <div className="flex items-center gap-2.5 px-4 py-3 bg-white border border-brand-forest/15 rounded-xl text-brand-forest">
+                <Search className="w-5 h-5 text-brand-forest/50 shrink-0" />
+                {/* text-base (16px) stops iOS Safari zooming in on focus */}
+                <input
+                  type="text"
+                  placeholder="Search Treks"
+                  aria-label="Search Treks"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onFocus={() => setIsSearchFocused(true)}
+                  onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
+                  className="bg-transparent border-0 focus:outline-none w-full min-w-0 text-brand-forest placeholder-brand-forest/45 text-base self-stretch py-3 -my-3"
+                />
               </div>
-            </div>
-          )}
-          
-          {isSearchFocused && searchQuery && searchResults.length === 0 && (
-            <div className="absolute top-full left-0 right-0 mt-2 bg-[#0B2545]/95 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-4 text-center text-gray-400 z-50 text-[11px]">
-              No matching treks found.
-            </div>
-          )}
-        </div>
 
-          <nav className="flex flex-col space-y-6">
-            {/* Scrollable list of TTH-style links */}
-            <div className="flex flex-col space-y-3 overflow-y-auto max-h-[50vh] pr-1.5 scrollbar-thin">
-              {navLinksBeforeTreks.map((link) => (
+              {/* Mobile Autocomplete Dropdown */}
+              {isSearchFocused && searchResults.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-brand-forest/10 rounded-2xl shadow-xl overflow-hidden z-50 text-brand-forest font-sans text-xs">
+                  <div className="p-2 space-y-1">
+                    {searchResults.map((trek) => (
+                      <button
+                        key={trek.slug}
+                        onMouseDown={() => {
+                          router.push(trek.href);
+                          setSearchQuery("");
+                          setIsOpen(false);
+                        }}
+                        className="w-full flex items-center gap-3 p-2 hover:bg-brand-warm-card rounded-xl transition text-left"
+                      >
+                        <div className="w-8 h-8 rounded-lg overflow-hidden bg-brand-warm-card shrink-0 relative">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=80&q=80"
+                            alt={trek.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="space-y-0.5 min-w-0 flex-1">
+                          <span className="font-bold text-[11px] block text-brand-forest truncate">
+                            {trek.name}
+                          </span>
+                          <span className="text-[9px] text-brand-forest/60 font-semibold block leading-none truncate">
+                            {trek.region} • {trek.days} Days
+                          </span>
+                        </div>
+                        <div className="ml-auto text-right shrink-0">
+                          <span className="text-xs text-brand-dusk font-bold">
+                            {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
+                          </span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {isSearchFocused && searchQuery && searchResults.length === 0 && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-brand-forest/10 rounded-2xl shadow-xl p-4 text-center text-brand-forest/60 z-50 text-[11px]">
+                  No matching treks found.
+                </div>
+              )}
+            </div>
+
+            <nav className="flex flex-col">
+              {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="flex items-center justify-between text-xs font-bold border-b border-white/5 pb-2.5 hover:text-brand-dusk-orange transition-colors group"
+                  className="flex items-center justify-between gap-3 min-h-[52px] py-3 text-sm font-bold border-b border-brand-forest/10 hover:text-brand-dusk transition-colors group"
                   onClick={() => setIsOpen(false)}
                 >
-                  <div className="flex items-center gap-3">
+                  <span className="flex items-center gap-3 min-w-0">
                     {getDrawerIcon(link.name)}
-                    <span className="tracking-wide text-gray-200 group-hover:text-brand-dusk-orange transition-colors uppercase">
+                    <span className="tracking-wide text-brand-forest group-hover:text-brand-dusk transition-colors uppercase truncate">
                       {link.name}
                     </span>
-                  </div>
-                  <ChevronRight className="w-3.5 h-3.5 text-gray-500 group-hover:text-brand-dusk-orange transition-transform duration-200 group-hover:translate-x-0.5" />
+                  </span>
+                  <ChevronRight className="w-4 h-4 shrink-0 text-brand-forest/40 group-hover:text-brand-dusk transition-transform duration-200 group-hover:translate-x-0.5" />
                 </Link>
               ))}
+            </nav>
+          </div>
 
-              {navLinksTripMiddle.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="flex items-center justify-between text-xs font-bold border-b border-white/5 pb-2.5 hover:text-brand-dusk-orange transition-colors group"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <div className="flex items-center gap-3">
-                    {getDrawerIcon(link.name)}
-                    <span className="tracking-wide text-gray-200 group-hover:text-brand-dusk-orange transition-colors uppercase">
-                      {link.name}
-                    </span>
-                  </div>
-                  <ChevronRight className="w-3.5 h-3.5 text-gray-500 group-hover:text-brand-dusk-orange transition-transform duration-200 group-hover:translate-x-0.5" />
-                </Link>
-              ))}
-
-              {navLinksAfterTreks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="flex items-center justify-between text-xs font-bold border-b border-white/5 pb-2.5 hover:text-brand-dusk-orange transition-colors group"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <div className="flex items-center gap-3">
-                    {getDrawerIcon(link.name)}
-                    <span className="tracking-wide text-gray-200 group-hover:text-brand-dusk-orange transition-colors uppercase">
-                      {link.name}
-                    </span>
-                  </div>
-                  <ChevronRight className="w-3.5 h-3.5 text-gray-500 group-hover:text-brand-dusk-orange transition-transform duration-200 group-hover:translate-x-0.5" />
-                </Link>
-              ))}
-            </div>
-
-            <div className="pt-2 flex flex-col space-y-3">
-              <a
-                href={`tel:${phone.tel}`}
-                className="flex items-center space-x-3 text-xs font-semibold py-2 px-4 rounded-lg bg-white/5 hover:bg-white/10 transition text-gray-200"
-              >
-                <Phone className="w-4 h-4 text-brand-dusk-orange shrink-0" />
-                <span>{phone.display}</span>
-              </a>
-              <Link
-                href="/login"
-                className="flex items-center justify-center space-x-2 text-xs font-semibold bg-brand-dusk hover:bg-brand-dusk-orange text-white py-2.5 rounded-xl shadow-lg transition"
-                onClick={() => setIsOpen(false)}
-              >
-                <User className="w-4 h-4" />
-                <span>Sign In / My Trips</span>
-              </Link>
-            </div>
-          </nav>
+          {/* Pinned actions - always reachable regardless of screen height */}
+          <div className="shrink-0 border-t border-brand-forest/10 bg-brand-warm-bg px-5 pt-4 safe-bottom-lg flex flex-col gap-3">
+            <a
+              href={`tel:${phone.tel}`}
+              className="flex items-center gap-3 min-h-[48px] px-4 py-2.5 rounded-lg bg-white border border-brand-forest/15 hover:bg-brand-warm-card transition text-sm font-semibold text-brand-forest"
+            >
+              <Phone className="w-4 h-4 text-brand-dusk shrink-0" />
+              <span className="truncate">{phone.display}</span>
+            </a>
+            <Link
+              href="/login"
+              className="flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-xl bg-brand-dusk hover:bg-brand-dusk-orange text-white text-sm font-semibold shadow-lg transition"
+              onClick={() => setIsOpen(false)}
+            >
+              <User className="w-4 h-4 shrink-0" />
+              <span className="truncate">Sign In / My Trips</span>
+            </Link>
+          </div>
         </div>
       </div>
 
       {/* TTH Signature "Choose Trek" Quick-Finder Modal */}
       {isChooseTrekOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-[#0B2545] border border-white/20 text-white rounded-3xl max-w-3xl w-full p-6 md:p-8 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-[#0B2545] border border-white/20 text-white rounded-3xl max-w-3xl w-full p-5 sm:p-6 md:p-8 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto overscroll-contain">
             <button
               onClick={() => setIsChooseTrekOpen(false)}
-              className="absolute top-5 right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition"
+              className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition min-w-[44px] min-h-[44px] flex items-center justify-center"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="space-y-1">
+            <div className="space-y-1 pr-12">
               <div className="flex items-center gap-2 text-brand-dusk-orange text-xs font-extrabold uppercase tracking-widest">
                 <Compass className="w-4 h-4" />
                 <span>Quick Trek Finder</span>
@@ -609,7 +443,7 @@ export default function Navbar() {
                   <button
                     key={reg}
                     onClick={() => setSelectedModalRegion(reg)}
-                    className={`text-xs px-4 py-2 rounded-full border font-bold transition ${
+                    className={`text-xs px-4 min-h-[40px] rounded-full border font-bold transition ${
                       selectedModalRegion === reg
                         ? "bg-brand-dusk-orange text-white border-brand-dusk-orange"
                         : "bg-white/5 border-white/15 text-gray-200 hover:bg-white/10"
@@ -629,7 +463,7 @@ export default function Navbar() {
                   <button
                     key={seas}
                     onClick={() => setSelectedModalSeason(seas)}
-                    className={`text-xs px-4 py-2 rounded-full border font-bold transition ${
+                    className={`text-xs px-4 min-h-[40px] rounded-full border font-bold transition ${
                       selectedModalSeason === seas
                         ? "bg-brand-dusk-orange text-white border-brand-dusk-orange"
                         : "bg-white/5 border-white/15 text-gray-200 hover:bg-white/10"
@@ -696,11 +530,11 @@ export default function Navbar() {
                     }}
                     className="flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition text-left group"
                   >
-                    <div>
-                      <span className="font-bold text-xs block text-white group-hover:text-brand-dusk-orange transition">{trek.name}</span>
-                      <span className="text-[10px] text-gray-400">{trek.region} • {trek.days} Days</span>
+                    <div className="min-w-0 flex-1">
+                      <span className="font-bold text-xs block text-white group-hover:text-brand-dusk-orange transition truncate">{trek.name}</span>
+                      <span className="text-[10px] text-gray-400 block truncate">{trek.region} • {trek.days} Days</span>
                     </div>
-                    <span className="text-xs font-bold text-brand-dusk-orange">
+                    <span className="text-xs font-bold text-brand-dusk-orange shrink-0 ml-3">
                       {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
                     </span>
                   </button>

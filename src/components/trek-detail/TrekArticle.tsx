@@ -6,21 +6,24 @@ import { ArrowRight } from "lucide-react";
 
 interface TrekArticleProps {
   trekName: string;
+  noun: string;
 }
 
-export default function TrekArticle({ trekName }: TrekArticleProps) {
+export default function TrekArticle({ trekName, noun }: TrekArticleProps) {
   return (
     <>
       <div className="flex items-center justify-between border-b border-gray-100 pb-4">
         <div>
           <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-dusk-orange block">
-            Official Trek Guide
+            Official {noun} Guide
           </span>
-          <h2 className="text-xl font-extrabold text-brand-dark-text font-serif">Trek Article & Written Guide</h2>
+          <h2 className="text-xl font-extrabold text-brand-dark-text font-serif">
+            {noun} Article & Written Guide
+          </h2>
         </div>
         <Link
           href="/blogs"
-          className="text-xs font-bold text-brand-forest hover:text-brand-dusk-orange transition flex items-center gap-1"
+          className="text-xs font-bold inline-flex items-center min-h-[44px] text-brand-forest hover:text-brand-dusk-orange transition flex items-center gap-1"
         >
           <span>Read More on Blog</span>
           <ArrowRight className="w-3.5 h-3.5" />
@@ -52,7 +55,7 @@ export default function TrekArticle({ trekName }: TrekArticleProps) {
             <span className="text-[10px] font-semibold text-gray-400">⏱️ 6 min read</span>
             <Link
               href="/blogs"
-              className="inline-flex items-center gap-1 font-bold text-brand-dusk-orange hover:underline text-xs"
+              className="inline-flex items-center gap-1 min-h-[44px] font-bold text-brand-dusk-orange hover:underline text-xs"
             >
               <span>Read Full Article</span>
               <ArrowRight className="w-3.5 h-3.5" />

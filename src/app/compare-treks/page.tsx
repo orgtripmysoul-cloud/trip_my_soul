@@ -42,7 +42,7 @@ export default function CompareTreksPage() {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-gray-200 pb-6">
         <div>
-          <Link href="/treks" className="flex items-center gap-2 text-xs font-bold text-brand-forest hover:text-brand-dusk mb-2">
+          <Link href="/treks" className="inline-flex items-center gap-2 min-h-[44px] text-xs font-bold text-brand-forest hover:text-brand-dusk mb-2">
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Treks Catalog</span>
           </Link>
@@ -58,7 +58,7 @@ export default function CompareTreksPage() {
                 if (e.target.value) addTrek(e.target.value);
                 e.target.value = "";
               }}
-              className="text-xs font-bold px-4 py-2.5 rounded-full bg-[#0B2545] text-white border border-[#0B2545] cursor-pointer shadow-md focus:outline-none"
+              className="text-base lg:text-xs font-bold px-4 py-2.5 min-h-[44px] max-w-full rounded-full bg-[#0B2545] text-white border border-[#0B2545] cursor-pointer shadow-md focus:outline-none"
             >
               <option value="">+ Add Trek to Compare...</option>
               {availableTreks.map((t) => (
@@ -81,7 +81,7 @@ export default function CompareTreksPage() {
                 <div className="p-4 border-b border-gray-100 relative">
                   <button
                     onClick={() => removeTrek(trek.slug)}
-                    className="absolute top-3 right-3 p-2 rounded-full text-gray-400 hover:text-red-500 hover:bg-gray-100 transition min-w-[40px] min-h-[40px] flex items-center justify-center"
+                    className="absolute top-1 right-1 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-gray-400 hover:text-red-500 hover:bg-gray-100 transition min-w-[40px] min-h-[40px] flex items-center justify-center"
                     title="Remove from comparison"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -131,7 +131,7 @@ export default function CompareTreksPage() {
                   <th key={trek.slug} className="p-4 sm:p-6 text-center border-l border-gray-150 min-w-[200px] relative">
                     <button
                       onClick={() => removeTrek(trek.slug)}
-                      className="absolute top-3 right-3 p-1 rounded-full text-gray-400 hover:text-red-500 hover:bg-gray-100 transition"
+                      className="absolute top-1 right-1 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-gray-400 hover:text-red-500 hover:bg-gray-100 transition"
                       title="Remove from comparison"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
@@ -223,7 +223,7 @@ export default function CompareTreksPage() {
                   <td key={t.slug} className="p-4 text-center border-l border-gray-100">
                     <Link
                       href={`/treks/${t.slug}`}
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0B2545] hover:bg-brand-dusk-orange text-white text-xs font-bold transition shadow-xs"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 min-h-[44px] rounded-full bg-[#0B2545] hover:bg-brand-dusk-orange text-white text-xs font-bold transition shadow-xs"
                     >
                       <span>Explore Trek</span>
                       <ArrowRight className="w-3.5 h-3.5" />

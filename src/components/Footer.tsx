@@ -1,100 +1,59 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { Compass, Mail, Phone, MapPin, Send } from "lucide-react";
+import { Compass, Mail, Phone, MapPin } from "lucide-react";
 import { OFFICES } from "@/data/db";
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setEmail("");
-      setTimeout(() => setSubscribed(false), 5000);
-    }
-  };
-
   return (
-    <footer className="bg-brand-forest text-white pt-12 sm:pt-16 pb-8 safe-bottom relative overflow-hidden">
+    <footer className="bg-brand-forest text-white pt-12 sm:pt-16 safe-bottom-footer relative overflow-hidden">
       {/* Background decoration elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-brand-forest-light/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-dusk/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12">
-          {/* Brand Info & Newsletter */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 border-b border-white/10 pb-10 sm:pb-12">
+          {/* Brand Info */}
           <div className="space-y-6">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-brand-dusk flex items-center justify-center">
+            <Link href="/" className="flex items-center gap-3 min-h-[44px]">
+              <div className="w-10 h-10 shrink-0 rounded-full bg-brand-dusk flex items-center justify-center">
                 <Compass className="w-6 h-6 text-white" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <span className="text-xl font-bold tracking-wider block leading-none">TripMySoul</span>
-                <span className="text-[10px] sm:text-xs text-brand-dusk-orange tracking-widest block mt-0.5">Where Every Journey Heals the Soul</span>
+                <span className="text-[10px] sm:text-xs text-brand-dusk-orange tracking-widest block mt-0.5 break-words">Where Every Journey Heals the Soul</span>
               </div>
             </Link>
             <p className="text-sm text-gray-300 leading-relaxed">
               We guide adventurers to discover the majestic Himalayan heights. Dedicated to sustainable tourism, community building, and unmatched safety.
             </p>
-            {/* Newsletter */}
-            <form onSubmit={handleSubscribe} className="space-y-3">
-              <label htmlFor="newsletter-email" className="block text-xs font-semibold uppercase tracking-wider text-brand-dusk-orange">
-                Subscribe to our Newsletter
-              </label>
-              <div className="flex glass-card rounded-lg overflow-hidden p-1 border border-white/15">
-                <input
-                  id="newsletter-email"
-                  type="email"
-                  placeholder="Enter email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-transparent border-0 text-white text-sm px-3 py-2 w-full focus:outline-none placeholder-gray-400"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="bg-brand-dusk hover:bg-brand-dusk-orange text-white p-3 rounded-md transition duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center shrink-0"
-                  aria-label="Subscribe"
-                >
-                  <Send className="w-4 h-4" />
-                </button>
-              </div>
-              {subscribed && (
-                <p className="text-xs text-green-400 animate-pulse">
-                  Subscribed! Welcome to the tribe.
-                </p>
-              )}
-            </form>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
             <h3 className="text-base font-bold text-brand-dusk-orange tracking-wide">Quick Navigation</h3>
-            <ul className="space-y-2.5 text-sm text-gray-300">
+            <ul className="space-y-0.5 text-sm text-gray-300">
               <li>
-                <Link href="/" className="hover:text-white transition">Home</Link>
+                <Link href="/" className="flex items-center min-h-[44px] hover:text-white transition">Home</Link>
               </li>
               <li>
-                <Link href="/treks" className="hover:text-white transition">All Himalayan Treks</Link>
+                <Link href="/treks" className="flex items-center min-h-[44px] hover:text-white transition">All Himalayan Treks</Link>
               </li>
               <li>
-                <Link href="/yatra" className="hover:text-white transition">Pilgrimage Yatras</Link>
+                <Link href="/yatra" className="flex items-center min-h-[44px] hover:text-white transition">Pilgrimage Yatras</Link>
               </li>
               <li>
-                <Link href="/cabs" className="hover:text-white transition">Book Cabs</Link>
+                <Link href="/cabs" className="flex items-center min-h-[44px] hover:text-white transition">Book Cabs</Link>
               </li>
               <li>
-                <Link href="/about-us" className="hover:text-white transition">About Our Story</Link>
+                <Link href="/about-us" className="flex items-center min-h-[44px] hover:text-white transition">About Our Story</Link>
               </li>
               <li>
-                <Link href="/blogs" className="hover:text-white transition">Trek Updates & Blog</Link>
+                <Link href="/blogs" className="flex items-center min-h-[44px] hover:text-white transition">Trek Updates & Blog</Link>
               </li>
               <li>
-                <Link href="/contact-us" className="hover:text-white transition">Contact Us</Link>
+                <Link href="/contact-us" className="flex items-center min-h-[44px] hover:text-white transition">Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -102,21 +61,21 @@ export default function Footer() {
           {/* Popular Treks */}
           <div className="space-y-4">
             <h3 className="text-base font-bold text-brand-dusk-orange tracking-wide">Popular Trails</h3>
-            <ul className="space-y-2.5 text-sm text-gray-300">
+            <ul className="space-y-0.5 text-sm text-gray-300">
               <li>
-                <Link href="/treks/kedarkantha-trek" className="hover:text-white transition block">Kedarkantha Trek (5 Days)</Link>
+                <Link href="/treks/kedarkantha-trek" className="flex items-center min-h-[44px] hover:text-white transition">Kedarkantha Trek (5 Days)</Link>
               </li>
               <li>
-                <Link href="/treks/kashmir-great-lakes-trek" className="hover:text-white transition block">Kashmir Great Lakes (8 Days)</Link>
+                <Link href="/treks/kashmir-great-lakes-trek" className="flex items-center min-h-[44px] hover:text-white transition">Kashmir Great Lakes (8 Days)</Link>
               </li>
               <li>
-                <Link href="/treks/hampta-pass-trek" className="hover:text-white transition block">Hampta Pass Trek (5 Days)</Link>
+                <Link href="/treks/hampta-pass-trek" className="flex items-center min-h-[44px] hover:text-white transition">Hampta Pass Trek (5 Days)</Link>
               </li>
               <li>
-                <Link href="/treks/brahmatal-trek" className="hover:text-white transition block">Brahmatal Trek (5 Days)</Link>
+                <Link href="/treks/brahmatal-trek" className="flex items-center min-h-[44px] hover:text-white transition">Brahmatal Trek (5 Days)</Link>
               </li>
               <li>
-                <Link href="/treks/har-ki-dun-trek" className="hover:text-white transition block">Har Ki Dun Trek (7 Days)</Link>
+                <Link href="/treks/har-ki-dun-trek" className="flex items-center min-h-[44px] hover:text-white transition">Har Ki Dun Trek (7 Days)</Link>
               </li>
             </ul>
           </div>
@@ -125,26 +84,30 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-base font-bold text-brand-dusk-orange tracking-wide">Get In Touch</h3>
             <div className="space-y-3 text-sm text-gray-300">
-              <a href="tel:+918178613438" className="flex items-center space-x-3 hover:text-white transition">
-                <Phone className="w-4 h-4 text-brand-dusk-orange shrink-0" />
-                <span>+91 81786 13438</span>
-              </a>
-              <a href="mailto:tripmysoulteam@gmail.com" className="flex items-center space-x-3 hover:text-white transition">
+              <a href="mailto:tripmysoulteam@gmail.com" className="flex items-center gap-3 min-h-[44px] hover:text-white transition">
                 <Mail className="w-4 h-4 text-brand-dusk-orange shrink-0" />
-                <span>tripmysoulteam@gmail.com</span>
+                <span className="min-w-0 break-all">tripmysoulteam@gmail.com</span>
               </a>
-              <div className="flex items-start space-x-3">
+              <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-brand-dusk-orange shrink-0 mt-1" />
-                <div>
+                <div className="min-w-0">
                   <span className="font-semibold block text-xs text-white">Dehradun Office:</span>
-                  <span className="text-xs">Saraswati Vihar, Ajabpur Khurd, Dehradun, Uttarakhand - 248001</span>
+                  <span className="text-xs block break-words">Saraswati Vihar, Ajabpur Khurd, Dehradun, Uttarakhand - 248001</span>
+                  <a href="tel:+918178613438" className="mt-1 flex items-center gap-2 min-h-[44px] text-xs hover:text-white transition">
+                    <Phone className="w-3.5 h-3.5 text-brand-dusk-orange shrink-0" />
+                    <span>+91 81786 13438</span>
+                  </a>
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
+              <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-brand-dusk-orange shrink-0 mt-1" />
-                <div>
+                <div className="min-w-0">
                   <span className="font-semibold block text-xs text-white">Hyderabad Office:</span>
-                  <span className="text-xs">Sai Baba Nagar Colony, Kukatpally, Hyderabad, Telangana - 500072</span>
+                  <span className="text-xs block break-words">Sai Baba Nagar Colony, Kukatpally, Hyderabad, Telangana - 500072</span>
+                  <a href="tel:+918178613438" className="mt-1 flex items-center gap-2 min-h-[44px] text-xs hover:text-white transition">
+                    <Phone className="w-3.5 h-3.5 text-brand-dusk-orange shrink-0" />
+                    <span>+91 81786 13438</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -152,15 +115,15 @@ export default function Footer() {
         </div>
 
         {/* Policies & Copyright */}
-        <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-            <Link href="/policies/payment-policy" className="hover:text-white transition">Payment Policy</Link>
-            <Link href="/policies/cancellation-policy" className="hover:text-white transition">Cancellation Policy</Link>
-            <Link href="/policies/terms-conditions" className="hover:text-white transition">Terms & Conditions</Link>
-            <Link href="/policies/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
+        <div className="mt-8 flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-6 text-xs text-gray-400">
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-0 lg:gap-x-6">
+            <Link href="/policies/payment-policy" className="flex items-center min-h-[44px] hover:text-white transition">Payment Policy</Link>
+            <Link href="/policies/cancellation-policy" className="flex items-center min-h-[44px] hover:text-white transition">Cancellation Policy</Link>
+            <Link href="/policies/terms-conditions" className="flex items-center min-h-[44px] hover:text-white transition">Terms & Conditions</Link>
+            <Link href="/policies/privacy-policy" className="flex items-center min-h-[44px] hover:text-white transition">Privacy Policy</Link>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
             <a href="https://www.facebook.com/tripmysoul.in/" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-full bg-white/5 hover:bg-brand-dusk hover:text-white transition min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Facebook">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
@@ -178,7 +141,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <p className="text-center md:text-right">
+          <p className="text-center lg:text-right">
             &copy; {new Date().getFullYear()} TripMySoul Pvt. Ltd. All rights reserved.
           </p>
         </div>

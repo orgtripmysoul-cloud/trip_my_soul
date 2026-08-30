@@ -94,7 +94,7 @@ export default function CorporateExpeditionsPage() {
                     placeholder="e.g. Infosys / Doon School"
                     value={formData.orgName}
                     onChange={(e) => setFormData({ ...formData, orgName: e.target.value })}
-                    className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-dusk"
+                    className="w-full p-3 min-h-[44px] text-base lg:text-sm rounded-xl border border-gray-200 focus:outline-none focus:border-brand-dusk"
                   />
                 </div>
                 <div>
@@ -105,7 +105,7 @@ export default function CorporateExpeditionsPage() {
                     placeholder="e.g. Saurabh Sharma"
                     value={formData.contactPerson}
                     onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
-                    className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-dusk"
+                    className="w-full p-3 min-h-[44px] text-base lg:text-sm rounded-xl border border-gray-200 focus:outline-none focus:border-brand-dusk"
                   />
                 </div>
               </div>
@@ -119,7 +119,7 @@ export default function CorporateExpeditionsPage() {
                     placeholder="name@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-dusk"
+                    className="w-full p-3 min-h-[44px] text-base lg:text-sm rounded-xl border border-gray-200 focus:outline-none focus:border-brand-dusk"
                   />
                 </div>
                 <div>
@@ -130,7 +130,7 @@ export default function CorporateExpeditionsPage() {
                     placeholder="+91 9876543210"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-dusk"
+                    className="w-full p-3 min-h-[44px] text-base lg:text-sm rounded-xl border border-gray-200 focus:outline-none focus:border-brand-dusk"
                   />
                 </div>
               </div>
@@ -141,7 +141,7 @@ export default function CorporateExpeditionsPage() {
                   <select
                     value={formData.groupType}
                     onChange={(e) => setFormData({ ...formData, groupType: e.target.value })}
-                    className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none font-semibold bg-white"
+                    className="w-full p-3 min-h-[44px] text-base lg:text-sm rounded-xl border border-gray-200 focus:outline-none font-semibold bg-white"
                   >
                     <option value="Corporate Team Building">Corporate Team Building</option>
                     <option value="School Expedition">School Students</option>
@@ -153,7 +153,7 @@ export default function CorporateExpeditionsPage() {
                   <select
                     value={formData.groupSize}
                     onChange={(e) => setFormData({ ...formData, groupSize: e.target.value })}
-                    className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none font-semibold bg-white"
+                    className="w-full p-3 min-h-[44px] text-base lg:text-sm rounded-xl border border-gray-200 focus:outline-none font-semibold bg-white"
                   >
                     <option value="10-20 Trekkers">10 - 20 Trekkers</option>
                     <option value="20-50 Trekkers">20 - 50 Trekkers</option>
@@ -165,7 +165,7 @@ export default function CorporateExpeditionsPage() {
                   <select
                     value={formData.preferredRegion}
                     onChange={(e) => setFormData({ ...formData, preferredRegion: e.target.value })}
-                    className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none font-semibold bg-white"
+                    className="w-full p-3 min-h-[44px] text-base lg:text-sm rounded-xl border border-gray-200 focus:outline-none font-semibold bg-white"
                   >
                     <option value="Uttarakhand">Uttarakhand</option>
                     <option value="Himachal Pradesh">Himachal Pradesh</option>
@@ -181,7 +181,7 @@ export default function CorporateExpeditionsPage() {
                   placeholder="Mention any specific team building activities, food preferences, or custom dates..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-dusk"
+                  className="w-full p-3 min-h-[44px] text-base lg:text-sm rounded-xl border border-gray-200 focus:outline-none focus:border-brand-dusk"
                 />
               </div>
 

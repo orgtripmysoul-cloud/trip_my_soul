@@ -59,7 +59,7 @@ export default function HealHimalaPage() {
 
           <button
             onClick={() => alert("Volunteer application logged! Our operations team will email you the next campaign schedule.")}
-            className="bg-brand-forest hover:bg-brand-forest-light text-white font-extrabold px-6 py-3 rounded-full text-xs shadow-md transition"
+            className="bg-brand-forest hover:bg-brand-forest-light text-white font-extrabold min-h-[44px] inline-flex items-center justify-center px-6 py-3 rounded-full text-xs shadow-md transition"
           >
             Volunteer for Cleanups
           </button>

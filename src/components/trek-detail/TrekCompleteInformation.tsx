@@ -2,23 +2,35 @@
 
 import React, { useState } from "react";
 import { ChevronDown, Compass } from "lucide-react";
+import type { ResolvedTrekDetail } from "@/lib/trekDetail";
 
 interface TrekCompleteInformationProps {
-  trekName: string;
+  detail: ResolvedTrekDetail;
+  noun: string;
+}
+
+interface InfoSection {
+  id: string;
+  title: string;
+  content: React.ReactNode;
 }
 
 /**
- * Deep-dive accordions. The Buran Ghati variants are trek-specific copy that
- * still lives here; Phase 4 moves this content behind the defaults layer.
+ * Deep-dive accordions.
+ *
+ * Treks get the safety/fitness/campsite briefing — the Buran Ghati variants are
+ * trek-specific copy that still lives here. Trips get the logistics their own
+ * itinerary publishes instead: ground rules, vehicles, kids and enquiry numbers.
  */
-export default function TrekCompleteInformation({ trekName }: TrekCompleteInformationProps) {
+export default function TrekCompleteInformation({ detail, noun }: TrekCompleteInformationProps) {
   const [openSection, setOpenSection] = useState<string | null>(null);
 
   const toggleSection = (id: string) => setOpenSection(openSection === id ? null : id);
 
-  const isBuran = trekName.toLowerCase().includes("buran");
+  const { trek, useTrekFallbacks, thingsToRemember, transportModes, kidsPolicy, contactNumbers, contactPhone } = detail;
+  const isBuran = trek.name.toLowerCase().includes("buran");
 
-  const sections = [
+  const trekSections: InfoSection[] = [
     {
       id: "safety",
       title: "🛡️ Safety Guidelines & Emergency Exit Plans",
@@ -80,7 +92,7 @@ export default function TrekCompleteInformation({ trekName }: TrekCompleteInform
       ) : (
         <div className="space-y-3 font-sans">
           <p>
-            Graded as <strong>Moderate</strong>. A basic aerobic fitness level is required.
+            Graded as <strong>{trek.difficulty}</strong>. A basic aerobic fitness level is required.
           </p>
           <p>
             Start running 4 km in 30 minutes at least 3 weeks prior to departure. Stair climbing and lunges help build
@@ -172,6 +184,73 @@ export default function TrekCompleteInformation({ trekName }: TrekCompleteInform
     },
   ];
 
+  const listingSections: InfoSection[] = [];
+
+  if (thingsToRemember.length > 0) {
+    listingSections.push({
+      id: "ground-rules",
+      title: "📝 Things to Remember on the Road",
+      content: (
+        <ul className="list-disc pl-4 space-y-1.5 text-xs text-gray-555 leading-relaxed font-medium font-sans">
+          {thingsToRemember.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      ),
+    });
+  }
+
+  if (transportModes.length > 0) {
+    listingSections.push({
+      id: "vehicles",
+      title: "🚐 Vehicle Allocated by Group Size",
+      content: (
+        <div className="space-y-2 font-sans">
+          {transportModes.map((mode) => (
+            <div
+              key={mode.group}
+              className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 p-3 bg-brand-warm-bg/50 border border-gray-150/40 rounded-xl text-xs"
+            >
+              <span className="font-extrabold text-brand-forest">{mode.group}</span>
+              <span className="font-medium text-gray-555">{mode.vehicle}</span>
+            </div>
+          ))}
+        </div>
+      ),
+    });
+  }
+
+  if (kidsPolicy) {
+    listingSections.push({
+      id: "kids",
+      title: "👨‍👩‍👧 Travelling with Children",
+      content: <p className="text-xs text-gray-555 leading-relaxed font-medium font-sans">{kidsPolicy}</p>,
+    });
+  }
+
+  const numbers = [contactPhone, ...contactNumbers].filter(Boolean) as string[];
+  if (numbers.length > 0) {
+    listingSections.push({
+      id: "enquiries",
+      title: "📞 Enquiries & Booking Desk",
+      content: (
+        <ul className="space-y-1.5 text-xs font-sans font-medium">
+          {[...new Set(numbers)].map((number) => (
+            <li key={number}>
+              <a href={`tel:${number.replace(/\s+/g, "")}`} className="text-brand-forest font-bold hover:underline">
+                {number}
+              </a>
+            </li>
+          ))}
+        </ul>
+      ),
+    });
+  }
+
+  const sections = useTrekFallbacks ? [...trekSections, ...listingSections] : listingSections;
+
+  if (sections.length === 0) return null;
+
   return (
     <div className="space-y-4 font-sans">
       {/* Header */}
@@ -181,10 +260,10 @@ export default function TrekCompleteInformation({ trekName }: TrekCompleteInform
         </div>
         <div>
           <h2 className="text-lg font-extrabold text-brand-dark-text font-serif leading-none">
-            Complete Trek Information
+            Complete {noun} Information
           </h2>
           <p className="text-[10px] text-gray-400 mt-1">
-            Deep-dive details regarding safety checklists, routes, permits, and fitness rules.
+            Deep-dive details regarding safety checklists, routes, permits, and ground rules.
           </p>
         </div>
       </div>

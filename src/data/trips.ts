@@ -1,4 +1,4 @@
-import type { Trek } from "@/data/db";
+import type { EquipmentGroup, ItineraryDay, Trek } from "@/data/db";
 import {
   CONFIRMATION_POLICY,
   HIMALAYAN_TREK_EXCLUSIONS,
@@ -1480,10 +1480,61 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
   ),
 ];
 
+/**
+ * Splits a one-line cost item into a bold lead and its detail, so a plain
+ * string list renders in the same two-tier layout the treks use.
+ * "Private vehicle — all 5 days" becomes { title, description }.
+ */
+function toCostItem(line: string): { title: string; description: string } {
+  const match = line.match(/^(.{3,42}?)\s*[—–:-]\s+(.+)$/);
+  if (match) return { title: match[1].trim(), description: match[2].trim() };
+
+  // No natural split: lead with the first clause, keep the rest as detail.
+  const comma = line.indexOf(", ");
+  if (comma > 2 && comma < 42) {
+    return { title: line.slice(0, comma).trim(), description: line.slice(comma + 2).trim() };
+  }
+  return { title: line, description: "" };
+}
+
+/** Spreads a flat carry list into three balanced columns for the essentials grid. */
+function toPackingGroups(items: string[]): EquipmentGroup[] {
+  if (!items.length) return [];
+  const perColumn = Math.ceil(items.length / 3);
+  return [0, 1, 2]
+    .map((col) => items.slice(col * perColumn, (col + 1) * perColumn))
+    .filter((chunk) => chunk.length > 0)
+    .map((chunk, idx) => ({ category: idx === 0 ? "What to carry" : "", items: chunk }));
+}
+
+/** Keeps the timed lines intact and joins them into prose for the summary view. */
+function toItineraryDays(days: TripItineraryDay[]): ItineraryDay[] {
+  return days.map((day) => {
+    const lines = day.entries.map((e) => (e.time ? `${e.time} — ${e.text}` : e.text));
+    return {
+      day: day.day,
+      title: day.title,
+      description: lines.join(" "),
+      detailedDescription: lines.join(" "),
+      entries: day.entries,
+    };
+  });
+}
+
+/**
+ * Adapts a trip listing to the shared detail model.
+ *
+ * Weekend getaways, backpacking circuits and Himalayan treks are sold from
+ * different catalogues but read the same on the site, so all of them render
+ * through `TrekDetailView`. This is the one place that translates trip-shaped
+ * data into `Trek`: nothing is invented here, and `useTrekFallbacks: false`
+ * stops the resolver filling the gaps with generic Himalayan trek copy.
+ */
 export function tripToTrek(trip: TripListingItem): Trek {
   return {
     slug: trip.slug,
     name: trip.name,
+    tagline: trip.tagline,
     price: trip.price,
     days: trip.days,
     nights: trip.nights,
@@ -1493,6 +1544,58 @@ export function tripToTrek(trip: TripListingItem): Trek {
     difficulty: trip.difficulty,
     months: trip.months,
     themes: trip.themes,
+
+    // Header
+    heroImage: trip.heroImage,
+    detailsPath: trip.detailsPath,
+    tripCode: trip.tripCode,
+    availability: trip.availability,
+    endLocation: trip.endLocation,
+    minAge: trip.minAge,
+    maxAge: trip.maxAge,
+    maxGroupSize: trip.maxGroupSize,
+    maxAltitude: trip.altitude,
+
+    // Overview & about
+    intro: trip.intro,
+    highlights: trip.highlights,
+    usps: trip.usps,
+    idealFor: trip.idealFor,
+    differentiators: trip.differentiators,
+    importantNote: trip.importantNote,
+    destinationHighlights: trip.destinationHighlights,
+    sourceCaveat: trip.sourceCaveat,
+
+    // Itinerary
+    itinerary: trip.itinerary ? toItineraryDays(trip.itinerary) : undefined,
+
+    // Cost terms
+    originalPrice: trip.originalPrice,
+    inclusions: trip.costIncludes?.map(toCostItem),
+    exclusions: trip.costExcludes?.map(toCostItem),
+    batchDates: trip.batchDates,
+    packages: trip.packages,
+    priceNote: trip.priceNote,
+    bookingAdvance: trip.bookingAdvance,
+    balanceDueDays: trip.balanceDueDays,
+    kidsPolicy: trip.kidsPolicy,
+    paymentDetails: trip.paymentDetails,
+    confirmationPolicy: trip.confirmationPolicy,
+
+    // Essentials & logistics
+    packingList: trip.thingsToCarry ? toPackingGroups(trip.thingsToCarry) : undefined,
+    thingsToRemember: trip.thingsToRemember,
+    transportModes: trip.transportModes,
+    rentalGear: trip.rentalGear,
+
+    // Policies & contact
+    cancellationPolicyText: trip.cancellationPolicy,
+    contactPhone: trip.contactPhone,
+    contactNumbers: trip.contactNumbers,
+
+    gallery: trip.gallery,
+
+    useTrekFallbacks: false,
   };
 }
 

@@ -12,32 +12,83 @@ import type {
   BatchMonth,
   CancellationTier,
   EquipmentGroup,
+  GalleryImage,
   HealthCheckItem,
   ItineraryDay,
 } from "@/data/db";
 
-/** Horizontal section tabs, in page order. */
-export const TREK_SECTION_TABS = [
-  { id: "overview", label: "Overview" },
-  { id: "about-trek", label: "About Trek" },
-  { id: "itinerary", label: "Itinerary" },
-  { id: "eligibility", label: "Eligibility" },
-  { id: "video", label: "Video" },
-  { id: "how-to-reach", label: "How to Reach" },
-  { id: "cost-terms", label: "Cost Terms" },
-  { id: "trek-essentials", label: "Trek Essentials" },
-  { id: "cancellation", label: "Cancellation Policy" },
-  { id: "imp-links", label: "Imp. Links" },
-  { id: "faqs", label: "FAQs" },
-  { id: "trek-article", label: "Article" },
-  { id: "similar-treks", label: "Similar Treks" },
-  { id: "trek-reviews", label: "Reviews & Videos" },
-];
+/**
+ * Horizontal section tabs, in page order.
+ *
+ * `noun` is "Trek" or "Trip" — the sections are identical either way, only the
+ * label wording follows the listing type.
+ */
+export function buildSectionTabs(noun: string = "Trek") {
+  const plural = `${noun}s`;
+  return [
+    { id: "overview", label: "Overview" },
+    { id: "about-trek", label: `About ${noun}` },
+    { id: "itinerary", label: "Itinerary" },
+    { id: "eligibility", label: "Eligibility" },
+    { id: "photos", label: "Photos" },
+    { id: "how-to-reach", label: "How to Reach" },
+    { id: "cost-terms", label: "Cost Terms" },
+    { id: "trek-essentials", label: `${noun} Essentials` },
+    { id: "cancellation", label: "Cancellation Policy" },
+    { id: "imp-links", label: "Imp. Links" },
+    { id: "faqs", label: "FAQs" },
+    { id: "trek-article", label: "Article" },
+    { id: "similar-treks", label: `Similar ${plural}` },
+    { id: "trek-reviews", label: "Reviews & Videos" },
+  ];
+}
+
+export const TREK_SECTION_TABS = buildSectionTabs("Trek");
 
 export const DEFAULT_PRICE = 12450;
 
 export const HERO_IMAGE =
   "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80";
+
+/**
+ * Photo album shown when a listing publishes no `gallery` of its own. Generic
+ * Himalayan trail imagery — captions stay descriptive rather than naming a
+ * place the photo may not show.
+ */
+export const DEFAULT_GALLERY: GalleryImage[] = [
+  {
+    url: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1200&q=80",
+    caption: "First light over the ridgeline",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1533240332313-0db49b459ad6?auto=format&fit=crop&w=900&q=80",
+    caption: "Camp pitched above the treeline",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1501554728187-ce583db33af7?auto=format&fit=crop&w=900&q=80",
+    caption: "Climbing through the pine forest",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?auto=format&fit=crop&w=900&q=80",
+    caption: "Alpine meadows on the approach",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=900&q=80",
+    caption: "Snow line before the pass",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80",
+    caption: "Clear night sky from basecamp",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=900&q=80",
+    caption: "Trail switchbacks on day two",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=80",
+    caption: "Summit day, sunrise from the top",
+  },
+];
 
 export const ROUTE_MAP_IMAGE =
   "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=85";
@@ -56,7 +107,7 @@ export const OVERVIEW_DEFAULTS = {
   campStay: "Guest Homestay & Alpine Tents",
 };
 
-/** Transport hubs keyed off the trek's region. */
+/** Transport hubs keyed off the listing's region. */
 export const TRANSPORT_BY_REGION = {
   uttarakhand: {
     railHead: "Dehradun Railway Station (DDN)",
@@ -68,10 +119,40 @@ export const TRANSPORT_BY_REGION = {
     airport: "Bhuntar Airport, Kullu",
     road: "Regular buses & private cabs from Manali/Shimla",
   },
-  default: {
+  kashmir: {
     railHead: "Jammu Tawi Railway Station",
     airport: "Srinagar Airport (SXR)",
     road: "Shared/Private cabs from Srinagar to Base Camp",
+  },
+  ladakh: {
+    railHead: "Jammu Tawi Railway Station",
+    airport: "Kushok Bakula Rimpochee Airport, Leh (IXL)",
+    road: "Manali–Leh and Srinagar–Leh highways, open roughly May to October",
+  },
+  kerala: {
+    railHead: "Ernakulam Junction (ERS), Kochi",
+    airport: "Cochin International Airport (COK)",
+    road: "NH-544 and NH-66 connect Kochi to Munnar, Thekkady and Alleppey",
+  },
+  karnataka: {
+    railHead: "Mangaluru Junction (MAJN) / Bengaluru (SBC)",
+    airport: "Mangaluru (IXE) / Kempegowda International, Bengaluru (BLR)",
+    road: "Overnight buses and private cabs from Bengaluru to the Western Ghats",
+  },
+  tamilnadu: {
+    railHead: "Coimbatore Junction (CBE) / Mettupalayam (MTP)",
+    airport: "Coimbatore International Airport (CJB)",
+    road: "Ghat roads climb from Mettupalayam to Coonoor and Ooty",
+  },
+  meghalaya: {
+    railHead: "Guwahati Railway Station (GHY)",
+    airport: "Lokpriya Gopinath Bordoloi International, Guwahati (GAU)",
+    road: "Shared sumos and private cabs on the Guwahati–Shillong highway",
+  },
+  default: {
+    railHead: "Nearest major railway junction",
+    airport: "Nearest domestic airport",
+    road: "State transport buses and private cabs to the start point",
   },
 };
 
@@ -321,6 +402,29 @@ export const ELIGIBILITY_PARAGRAPHS = [
   "To complete this climb comfortably, you should maintain a baseline cardiovascular health. We recommend starting running/jogging routines 4 weeks before the trip (aiming for 5 km in 35-40 minutes).",
   "Individuals with severe asthma, cardiac history, or chronic knee problems must consult their physician before registering.",
 ];
+
+/**
+ * Fitness copy for listings that are not high-altitude climbs. Built from the
+ * listing's own grade and age limits rather than the generic trek paragraphs.
+ */
+export function buildEligibilityParagraphs(
+  difficulty: string,
+  minAge?: number,
+  maxAge?: number
+): string[] {
+  const ageLine =
+    minAge && maxAge
+      ? `This itinerary is open to travellers aged ${minAge} to ${maxAge}.`
+      : minAge
+      ? `This itinerary is open to travellers aged ${minAge} and above.`
+      : "There is no fixed age limit on this itinerary.";
+
+  return [
+    `Graded ${difficulty}. Days are built around drives, sightseeing stops and short walks, so a baseline level of everyday fitness is enough — no prior trekking experience is required.`,
+    `${ageLine} Travellers with a cardiac history, chronic knee trouble or reduced mobility should tell us at the time of booking so we can plan the pace and the stops around them.`,
+  ];
+}
+
 
 /* ------------------------------------------------------------------ */
 /* Itinerary generation & normalisation                                */

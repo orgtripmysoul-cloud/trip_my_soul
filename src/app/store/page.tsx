@@ -59,7 +59,7 @@ export default function StoreCatalogPage() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`text-xs px-4.5 py-2 rounded-full border font-bold transition ${
+              className={`text-xs px-4.5 min-h-[44px] shrink-0 inline-flex items-center rounded-full border font-bold transition ${
                 activeCategory === cat
                   ? "bg-brand-forest text-white border-brand-forest"
                   : "bg-white text-gray-600 border-gray-150 hover:border-brand-forest/30"

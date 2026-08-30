@@ -7,10 +7,11 @@ import type { QuickItineraryDay } from "@/lib/trekDetail";
 
 interface TrekQuickItineraryProps {
   trekName: string;
+  noun: string;
   itinerary: QuickItineraryDay[];
 }
 
-export default function TrekQuickItinerary({ trekName, itinerary }: TrekQuickItineraryProps) {
+export default function TrekQuickItinerary({ trekName, noun, itinerary }: TrekQuickItineraryProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
 
@@ -37,7 +38,7 @@ export default function TrekQuickItinerary({ trekName, itinerary }: TrekQuickIti
       {/* 1. Header with Collapse Toggle */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="w-full flex items-center justify-between text-left focus:outline-none"
+        className="w-full flex items-center justify-between gap-3 min-h-[44px] text-left focus:outline-none"
       >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-brand-forest/5 text-brand-forest rounded-full flex items-center justify-center shrink-0">
@@ -45,7 +46,9 @@ export default function TrekQuickItinerary({ trekName, itinerary }: TrekQuickIti
           </div>
           <div>
             <h2 className="text-lg font-extrabold text-brand-dark-text font-serif leading-none">Quick Itinerary</h2>
-            <p className="text-[10px] text-gray-400 mt-1">Get your trek route and day-by-day plan at a glance.</p>
+            <p className="text-[10px] text-gray-400 mt-1">
+              Get your {noun.toLowerCase()} route and day-by-day plan at a glance.
+            </p>
           </div>
         </div>
         <ChevronDown className={`w-5 h-5 text-brand-forest transition-transform ${isCollapsed ? "" : "rotate-180"}`} />
@@ -75,7 +78,7 @@ export default function TrekQuickItinerary({ trekName, itinerary }: TrekQuickIti
             {/* View Fullscreen Action in Top-Right */}
             <button
               onClick={() => setIsMapModalOpen(true)}
-              className="absolute top-3 right-3 p-2 bg-[#0B2545]/90 hover:bg-brand-dusk-orange text-white rounded-full transition border border-white/10 shadow-md focus:outline-none flex items-center justify-center"
+              className="absolute top-2 right-2 min-w-[44px] min-h-[44px] flex items-center justify-center bg-[#0B2545]/90 hover:bg-brand-dusk-orange text-white rounded-full transition border border-white/10 shadow-md focus:outline-none flex items-center justify-center"
               title="View Fullscreen"
             >
               <Maximize2 className="w-4 h-4 text-white" />
@@ -132,7 +135,7 @@ export default function TrekQuickItinerary({ trekName, itinerary }: TrekQuickIti
                                 e.preventDefault();
                                 alert("Partner Homestay coordinates: Rohru/Dehradun Hub");
                               }}
-                              className="text-brand-dusk underline hover:text-brand-dusk-orange font-black"
+                              className="text-brand-dusk underline hover:text-brand-dusk-orange font-black inline-flex items-center min-h-[44px]"
                             >
                               {day.pickupPoint}
                             </a>
@@ -183,7 +186,7 @@ export default function TrekQuickItinerary({ trekName, itinerary }: TrekQuickIti
                 illustrated topographical route map
               </span>
               <h3 className="text-md font-extrabold text-white font-serif uppercase mt-1 tracking-wider">
-                TRIPMYSOUL {trekName.toUpperCase()} TREK MAP
+                TRIPMYSOUL {trekName.toUpperCase()} {noun.toUpperCase()} MAP
               </h3>
             </div>
 
@@ -199,7 +202,7 @@ export default function TrekQuickItinerary({ trekName, itinerary }: TrekQuickIti
 
             {/* Caption bar */}
             <div className="w-full bg-[#021020] border-t border-white/5 py-3 text-center text-[10px] text-gray-400 font-sans font-bold uppercase tracking-wider">
-              A route map of the {trekName} trek
+              A route map of the {trekName} {noun.toLowerCase()}
             </div>
           </div>
         </div>

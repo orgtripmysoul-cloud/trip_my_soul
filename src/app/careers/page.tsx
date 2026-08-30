@@ -51,7 +51,7 @@ export default function CareersPage() {
                 </span>
                 <button
                   onClick={() => alert(`Applying for ${job.title} raised! Please email your portfolio to careers@tripmysoul.in.`)}
-                  className="bg-brand-forest hover:bg-brand-forest-light text-white px-4 py-2 rounded-full text-[10px] font-bold shadow-xs transition"
+                  className="bg-brand-forest hover:bg-brand-forest-light text-white px-4 py-2 min-h-[44px] inline-flex items-center justify-center rounded-full text-[10px] font-bold shadow-xs transition"
                 >
                   Apply Now
                 </button>

@@ -1,19 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import TripHeader from "./TripHeader";
-import TripTabNav, { TRIP_TABS } from "./TripTabNav";
-import TripBookingWidget from "./TripBookingWidget";
-import TripMobileBookingSheet from "./TripMobileBookingSheet";
-import TripOverviewTab from "./TripOverviewTab";
-import TripItineraryTab from "./TripItineraryTab";
-import TripCostingTab from "./TripCostingTab";
-import TripOtherInfoTab from "./TripOtherInfoTab";
-import TripGalleryTab from "./TripGalleryTab";
-import TripReviewsTab from "./TripReviewsTab";
-import TripRelatedTrips from "./TripRelatedTrips";
-import { formatBatchDate, activePrice, type TripBookingState } from "./TripBookingForm";
+import React, { useMemo } from "react";
+import TrekDetailView from "@/components/trek-detail/TrekDetailView";
+import { BACKPACKING_TRIPS, WEEKEND_TRIPS, tripToTrek } from "@/data/trips";
 import type { TripListingItem } from "@/data/trips";
 
 interface TripDetailPageProps {
@@ -21,120 +10,48 @@ interface TripDetailPageProps {
   category: "Weekend Trip" | "Backpacking Trip";
 }
 
-/** Shared white card shell used by every tab panel. */
-const PANEL = "bg-white border border-gray-150 rounded-3xl p-6 md:p-8 shadow-sm scroll-mt-40";
-
+/**
+ * Trip detail page.
+ *
+ * Trips render through the same `TrekDetailView` as the treks — this component
+ * only picks the catalogue a trip belongs to (for the "Similar Trips" rail and
+ * the back link) and hands the listing over as a `Trek`.
+ */
 export default function TripDetailPage({ trip, category }: TripDetailPageProps) {
-  const router = useRouter();
+  const isBackpacking = category === "Backpacking Trip";
+  const catalogue = isBackpacking ? BACKPACKING_TRIPS : WEEKEND_TRIPS;
+  const browseHref = isBackpacking ? "/backpacking-trips" : "/weekend-trips";
 
-  const [activeTabId, setActiveTabId] = useState("overview");
-  const [booking, setBooking] = useState<TripBookingState>({
-    selectedDate: null,
-    selectedPackageId: trip.packages?.[0]?.id ?? null,
-    wishlisted: false,
-  });
-  const [bookingError, setBookingError] = useState<string | null>(null);
+  const trek = useMemo(() => tripToTrek(trip), [trip]);
 
-  // Highlight the tab whose panel is currently in view.
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 220;
-      for (const tab of TRIP_TABS) {
-        const el = document.getElementById(tab.id);
-        if (el && scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) {
-          setActiveTabId(tab.id);
-          break;
-        }
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // The trip's own related list wins; otherwise fall back to the same region or
+  // grade, the way the treks rail does.
+  const similar = useMemo(() => {
+    const related = (trip.relatedSlugs ?? [])
+      .map((slug) => catalogue.find((t) => t.slug === slug))
+      .filter((t): t is TripListingItem => !!t);
 
-  const handleTabClick = (tabId: string) => {
-    const el = document.getElementById(tabId);
-    if (el) {
-      window.scrollTo({ top: el.offsetTop - 160, behavior: "smooth" });
-      setActiveTabId(tabId);
-    }
-  };
+    const rest = catalogue.filter(
+      (t) =>
+        t.slug !== trip.slug &&
+        !related.some((r) => r.slug === t.slug) &&
+        (t.region === trip.region || t.difficulty === trip.difficulty)
+    );
 
-  const handleProceed = () => {
-    const needsDate = !!trip.batchDates?.length;
-    if (needsDate && !booking.selectedDate) {
-      setBookingError("Pick a departure date to continue.");
-      return;
-    }
-    setBookingError(null);
+    const picks = [...related, ...rest].slice(0, 4);
+    const filled =
+      picks.length > 0 ? picks : catalogue.filter((t) => t.slug !== trip.slug).slice(0, 4);
 
-    const { day, month } = booking.selectedDate
-      ? formatBatchDate(booking.selectedDate)
-      : { day: 0, month: "" };
-    const year = booking.selectedDate?.split("-")[0] ?? "";
-    const batchLabel = booking.selectedDate ? `${day} ${month} ${year}` : "Flexible dates";
-
-    const price = activePrice(trip, booking.selectedPackageId);
-    const priceParam = price !== null ? `&price=${price}` : "";
-    router.push(`/checkout?slug=${trip.slug}&batch=${encodeURIComponent(batchLabel)}${priceParam}`);
-  };
-
-  const bookingProps = {
-    trip,
-    state: booking,
-    error: bookingError,
-    onSelectDate: (iso: string) => {
-      setBooking((b) => ({ ...b, selectedDate: iso }));
-      setBookingError(null);
-    },
-    onSelectPackage: (id: string) => setBooking((b) => ({ ...b, selectedPackageId: id })),
-    onToggleWishlist: () => setBooking((b) => ({ ...b, wishlisted: !b.wishlisted })),
-    onProceed: handleProceed,
-  };
+    return filled.map(tripToTrek);
+  }, [catalogue, trip]);
 
   return (
-    <div className="min-h-screen bg-brand-warm-bg font-sans pb-mobile-nav lg:pb-0">
-      <TripHeader trip={trip} category={category} />
-
-      <TripTabNav activeTabId={activeTabId} onTabClick={handleTabClick} />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10 flex flex-col lg:flex-row gap-8 items-start">
-        {/* Tab panels — all rendered, tabs scroll to them */}
-        <div className="w-full lg:flex-1 min-w-0 space-y-6">
-          <section id="overview" className={PANEL}>
-            <TripOverviewTab trip={trip} />
-          </section>
-
-          <section id="itinerary" className={PANEL}>
-            <TripItineraryTab trip={trip} />
-          </section>
-
-          <section id="costing" className={PANEL}>
-            <TripCostingTab trip={trip} />
-          </section>
-
-          <section id="other-info" className={PANEL}>
-            <TripOtherInfoTab trip={trip} />
-          </section>
-
-          <section id="gallery" className={PANEL}>
-            <TripGalleryTab trip={trip} />
-          </section>
-
-          <section id="reviews" className={PANEL}>
-            <TripReviewsTab trip={trip} />
-          </section>
-
-          {(trip.relatedSlugs?.length ?? 0) > 0 && (
-            <section id="related" className={PANEL}>
-              <TripRelatedTrips trip={trip} />
-            </section>
-          )}
-        </div>
-
-        <TripBookingWidget {...bookingProps} />
-      </div>
-
-      <TripMobileBookingSheet {...bookingProps} />
-    </div>
+    <TrekDetailView
+      trek={trek}
+      similar={similar}
+      totalCount={catalogue.length}
+      browseHref={browseHref}
+      noun="Trip"
+    />
   );
 }

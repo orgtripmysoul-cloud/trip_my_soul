@@ -25,7 +25,7 @@ export default function TrekInclusions({ inclusions, exclusions }: TrekInclusion
         <div className="flex bg-brand-warm-bg p-1 rounded-full border border-gray-150 text-[10px] font-bold">
           <button
             onClick={() => setCostTab("inclusions")}
-            className={`px-4 py-1.5 rounded-full uppercase transition-all ${
+            className={`px-4 min-h-[44px] inline-flex items-center justify-center rounded-full uppercase transition-all ${
               costTab === "inclusions" ? "bg-brand-forest text-white" : "text-gray-500"
             }`}
           >
@@ -33,7 +33,7 @@ export default function TrekInclusions({ inclusions, exclusions }: TrekInclusion
           </button>
           <button
             onClick={() => setCostTab("exclusions")}
-            className={`px-4 py-1.5 rounded-full uppercase transition-all ${
+            className={`px-4 min-h-[44px] inline-flex items-center justify-center rounded-full uppercase transition-all ${
               costTab === "exclusions" ? "bg-brand-forest text-white" : "text-gray-500"
             }`}
           >
@@ -42,21 +42,28 @@ export default function TrekInclusions({ inclusions, exclusions }: TrekInclusion
         </div>
       </div>
 
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-gray-650">
-        {items.map((item, idx) => (
-          <li key={idx} className="flex items-start gap-2.5">
-            {costTab === "inclusions" ? (
-              <Check className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
-            ) : (
-              <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-            )}
-            <div>
-              <span className="font-bold text-brand-dark-text block">{item.title}</span>
-              <span>{item.description}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {items.length === 0 ? (
+        <p className="text-xs text-gray-500 font-medium">
+          The {costTab === "inclusions" ? "inclusion" : "exclusion"} list for this itinerary is not
+          published yet — our desk will confirm it with your quote.
+        </p>
+      ) : (
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-gray-650">
+          {items.map((item, idx) => (
+            <li key={idx} className="flex items-start gap-2.5">
+              {costTab === "inclusions" ? (
+                <Check className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
+              ) : (
+                <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+              )}
+              <div>
+                <span className="font-bold text-brand-dark-text block">{item.title}</span>
+                {item.description && <span>{item.description}</span>}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

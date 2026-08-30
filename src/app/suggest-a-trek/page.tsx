@@ -134,7 +134,7 @@ export default function SuggestTrekPage() {
                 <button
                   disabled={!fitness}
                   onClick={handleNext}
-                  className="bg-brand-forest disabled:opacity-50 text-white font-extrabold px-6 py-2.5 rounded-full text-xs shadow-md hover:-translate-y-0.5 transform transition flex items-center gap-1.5"
+                  className="bg-brand-forest disabled:opacity-50 text-white font-extrabold min-h-[44px] inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs shadow-md hover:-translate-y-0.5 transform transition flex items-center gap-1.5"
                 >
                   <span>Continue</span>
                   <ChevronRight className="w-4 h-4" />
@@ -182,7 +182,7 @@ export default function SuggestTrekPage() {
                 <button
                   disabled={!region}
                   onClick={handleNext}
-                  className="bg-brand-forest disabled:opacity-50 text-white font-extrabold px-6 py-2.5 rounded-full text-xs shadow-md hover:-translate-y-0.5 transform transition flex items-center gap-1.5"
+                  className="bg-brand-forest disabled:opacity-50 text-white font-extrabold min-h-[44px] inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs shadow-md hover:-translate-y-0.5 transform transition flex items-center gap-1.5"
                 >
                   <span>Continue</span>
                   <ChevronRight className="w-4 h-4" />
@@ -232,7 +232,7 @@ export default function SuggestTrekPage() {
                 <button
                   disabled={!season}
                   onClick={handleNext}
-                  className="bg-brand-forest disabled:opacity-50 text-white font-extrabold px-6 py-2.5 rounded-full text-xs shadow-md hover:-translate-y-0.5 transform transition flex items-center gap-1.5"
+                  className="bg-brand-forest disabled:opacity-50 text-white font-extrabold min-h-[44px] inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs shadow-md hover:-translate-y-0.5 transform transition flex items-center gap-1.5"
                 >
                   <span>Continue</span>
                   <ChevronRight className="w-4 h-4" />
@@ -264,7 +264,7 @@ export default function SuggestTrekPage() {
                   step="500"
                   value={budget}
                   onChange={(e) => setBudget(parseInt(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-brand-forest"
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-brand-forest text-base lg:text-sm"
                 />
               </div>
 
@@ -278,7 +278,7 @@ export default function SuggestTrekPage() {
                 </button>
                 <button
                   onClick={handleNext}
-                  className="bg-brand-dusk hover:bg-brand-dusk-orange text-white font-extrabold px-8 py-3 rounded-full text-xs shadow-lg hover:-translate-y-0.5 transform transition flex items-center gap-1.5"
+                  className="bg-brand-dusk hover:bg-brand-dusk-orange text-white font-extrabold min-h-[44px] inline-flex items-center justify-center px-8 py-3 rounded-full text-xs shadow-lg hover:-translate-y-0.5 transform transition flex items-center gap-1.5"
                 >
                   <span>Find Recommendations</span>
                   <ArrowRight className="w-4 h-4" />

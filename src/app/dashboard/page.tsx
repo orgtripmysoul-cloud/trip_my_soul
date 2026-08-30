@@ -384,7 +384,7 @@ export default function DashboardPage() {
                           value={reviewText}
                           onChange={(e) => setReviewText(e.target.value)}
                           placeholder="How were the guides, food, camp stay, and trail guidelines?"
-                          className="w-full p-3 bg-brand-warm-bg border border-gray-150 rounded-2xl text-xs text-brand-dark-text focus:outline-none placeholder-gray-400"
+                          className="w-full p-3 bg-brand-warm-bg border border-gray-150 rounded-2xl text-base lg:text-xs text-brand-dark-text focus:outline-none placeholder-gray-400"
                         />
                       </div>
 
@@ -474,7 +474,7 @@ export default function DashboardPage() {
                 <select
                   value={cancelReason}
                   onChange={(e) => setCancelReason(e.target.value)}
-                  className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none font-semibold text-gray-700 bg-white"
+                  className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none font-semibold text-gray-700 bg-white text-base lg:text-sm"
                 >
                   <option value="Schedule Conflict">Schedule Conflict / Work Commitments</option>
                   <option value="Health / Medical Issue">Health / Fitness / Medical Issue</option>
@@ -491,7 +491,7 @@ export default function DashboardPage() {
                   placeholder="Share any comments or feedback for our team..."
                   value={cancelNotes}
                   onChange={(e) => setCancelNotes(e.target.value)}
-                  className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none text-xs"
+                  className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none text-base lg:text-xs"
                 />
               </div>
 

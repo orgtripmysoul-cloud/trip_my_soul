@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Activity, BadgeCheck, Download, X } from "lucide-react";
+import ModalShell from "./ModalShell";
 
 interface TrekModalsProps {
   trekName: string;
@@ -13,28 +14,6 @@ interface TrekModalsProps {
   onCloseFitness: () => void;
   isBooked: boolean;
   onCloseBooked: () => void;
-}
-
-function ModalShell({
-  onClose,
-  children,
-}: {
-  onClose: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
-      <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 max-w-md w-full text-center space-y-5 shadow-2xl relative font-sans">
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 p-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
-        >
-          <X className="w-5 h-5" />
-        </button>
-        {children}
-      </div>
-    </div>
-  );
 }
 
 export default function TrekModals({
@@ -77,15 +56,15 @@ export default function TrekModals({
           >
             <div>
               <label className="font-bold text-gray-700 block mb-1">Your Full Name</label>
-              <input required type="text" placeholder="Saurabh Sharma" className="w-full p-2.5 rounded-xl border border-gray-200 focus:outline-none" />
+              <input required type="text" placeholder="Saurabh Sharma" className="w-full p-2.5 rounded-xl border border-gray-200 focus:outline-none text-base lg:text-sm" />
             </div>
             <div>
               <label className="font-bold text-gray-700 block mb-1">Email Address</label>
-              <input required type="email" placeholder="name@domain.com" className="w-full p-2.5 rounded-xl border border-gray-200 focus:outline-none" />
+              <input required type="email" placeholder="name@domain.com" className="w-full p-2.5 rounded-xl border border-gray-200 focus:outline-none text-base lg:text-sm" />
             </div>
             <div>
               <label className="font-bold text-gray-700 block mb-1">WhatsApp Number</label>
-              <input required type="tel" placeholder="+91 9876543210" className="w-full p-2.5 rounded-xl border border-gray-200 focus:outline-none" />
+              <input required type="tel" placeholder="+91 9876543210" className="w-full p-2.5 rounded-xl border border-gray-200 focus:outline-none text-base lg:text-sm" />
             </div>
 
             <button

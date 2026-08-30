@@ -127,7 +127,7 @@ export default function CabsPage() {
                   placeholder="e.g. Dehradun Airport, Haridwar"
                   value={pickup}
                   onChange={(e) => setPickup(e.target.value)}
-                  className="bg-transparent border-0 text-xs focus:outline-none w-full text-brand-dark-text"
+                  className="bg-transparent border-0 text-base lg:text-xs focus:outline-none w-full min-w-0 text-brand-dark-text self-stretch py-3 -my-3 min-h-[44px]"
                   required
                 />
               </div>
@@ -144,7 +144,7 @@ export default function CabsPage() {
                   placeholder="e.g. Sankri, Rishikesh, Joshimath"
                   value={drop}
                   onChange={(e) => setDrop(e.target.value)}
-                  className="bg-transparent border-0 text-xs focus:outline-none w-full text-brand-dark-text"
+                  className="bg-transparent border-0 text-base lg:text-xs focus:outline-none w-full min-w-0 text-brand-dark-text self-stretch py-3 -my-3 min-h-[44px]"
                   required
                 />
               </div>
@@ -160,7 +160,7 @@ export default function CabsPage() {
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="bg-transparent border-0 text-xs focus:outline-none w-full text-brand-dark-text"
+                  className="bg-transparent border-0 text-base lg:text-xs focus:outline-none w-full min-w-0 text-brand-dark-text self-stretch py-3 -my-3 min-h-[44px]"
                   required
                 />
               </div>
@@ -175,7 +175,7 @@ export default function CabsPage() {
                   id="passengers-input"
                   value={passengers}
                   onChange={(e) => setPassengers(e.target.value)}
-                  className="bg-transparent border-0 text-xs focus:outline-none w-full text-brand-dark-text"
+                  className="bg-transparent border-0 text-base lg:text-xs focus:outline-none w-full min-w-0 text-brand-dark-text self-stretch py-3 -my-3 min-h-[44px]"
                 >
                   <option value="1-4">1 - 4 passengers</option>
                   <option value="5-7">5 - 7 passengers</option>
