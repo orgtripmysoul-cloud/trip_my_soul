@@ -363,13 +363,6 @@ export const OFFICES: Office[] = [
     phone: "+91-8178613438",
     email: "tripmysoulteam@gmail.com",
     timings: "9:00 AM - 6:00 PM"
-  },
-  {
-    city: "Registered Office (Barkot)",
-    address: "Jayara Resort and Cafe, Yamunapul, Rajgarhi, Chhatanga, Uttarakhand - 249141",
-    phone: "+91-8178613438",
-    email: "tripmysoulteam@gmail.com",
-    timings: "Open 24/7"
   }
 ];
 
@@ -1880,7 +1873,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "kedarnath-yatra",
-    "name": "Kedarnath Yatra",
+    "name": "Kedarnath Trek",
     "tagline": "Four days from Haridwar to the Kedarnath shrine at 11,755 ft, with an overnight halt at the temple.",
     "price": 6499,
     "days": 4,
@@ -1936,7 +1929,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "kedarnath-and-tungnath-yatra",
-    "name": "Kedarnath and Tungnath Yatra",
+    "name": "Kedarnath and Tungnath Trek",
     "price": 10999,
     "days": 5,
     "nights": 4,
@@ -1965,7 +1958,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "chardham-yatra",
-    "name": "Chardham Yatra",
+    "name": "Chardham Trek",
     "tagline": "Yamunotri, Gangotri, Kedarnath and Badrinath across ten days from Haridwar or Rishikesh.",
     "price": 24999,
     "days": 10,
@@ -1995,7 +1988,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "do-dham-and-tungnath-yatra",
-    "name": "Do Dham And Tungnath Yatra",
+    "name": "Do Dham And Tungnath Trek",
     "price": 14999,
     "days": 6,
     "nights": 5,
@@ -2113,7 +2106,7 @@ export const YATRAS: Trek[] = [
      ---------------------------------------------------------------------- */
   {
     "slug": "do-dham-yatra",
-    "name": "Do Dham Yatra",
+    "name": "Do Dham Trek",
     // TODO(content): confirm this is distinct from `badrinath-kedarnath-yatra`
     // above, which covers the same two shrines under a different name.
     "tagline": "Kedarnath and Badrinath, the two Garhwal dhams, on a single guided itinerary.",
@@ -2131,7 +2124,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "panch-kedar-dham-yatra",
-    "name": "Panch Kedar Yatra",
+    "name": "Panch Kedar Trek",
     // TODO(content): shares a name with `panch-kedar-yatra` in BACKPACKING_TRIPS
     // and `panch-kedar-trek` in TREKS. Slug suffixed to keep it unique; decide
     // whether this entry should instead point at one of those detail pages.
@@ -2150,7 +2143,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "madmaheshwar-yatra",
-    "name": "Madmaheshwar Yatra",
+    "name": "Madmaheshwar Trek",
     // TODO(content): overlaps `madmaheshwar-trek` (WEEKEND_TRIPS) and
     // `madhyamaheshwar-trek-4-day` (BACKPACKING_TRIPS).
     "tagline": "The second of the Panch Kedar, reached on foot from Ransi through the Madhyamaheshwar valley.",
@@ -2168,7 +2161,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "rudranath-yatra",
-    "name": "Rudranath Yatra",
+    "name": "Rudranath Trek",
     // TODO(content): overlaps `rudranath-trek` in BACKPACKING_TRIPS.
     "tagline": "The Shiva face shrine at Rudranath, the hardest to reach of the Panch Kedar.",
     "price": null,            // TODO(content): no published fare yet
@@ -2185,7 +2178,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "har-ki-dun-yatra",
-    "name": "Har Ki Dun Yatra",
+    "name": "Har Ki Dun Trek",
     // TODO(content): cross-listing of `har-ki-dun-trek` in TREKS.
     "tagline": "The valley of gods above Sankri, walked through the Mahabharata villages of the Tons.",
     "price": null,            // TODO(content): no published fare yet
@@ -2202,7 +2195,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "bali-pass-yatra",
-    "name": "Bali Pass Yatra",
+    "name": "Bali Pass Trek",
     // TODO(content): cross-listing of `bali-pass-trek` in TREKS.
     "tagline": "The high crossing from Har Ki Dun to Yamunotri, linking the valley to the dham.",
     "price": null,            // TODO(content): no published fare yet
@@ -2219,7 +2212,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "rupin-pass-yatra",
-    "name": "Rupin Pass Yatra",
+    "name": "Rupin Pass Trek",
     // TODO(content): cross-listing of `rupin-pass-trek` in TREKS.
     "tagline": "The hanging-village crossing from Dhaula in Uttarakhand over into Sangla in Kinnaur.",
     "price": null,            // TODO(content): no published fare yet
@@ -2236,7 +2229,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "roopkund-yatra",
-    "name": "Roopkund Yatra",
+    "name": "Roopkund Trek",
     "tagline": "The glacial lake below Trishul, reached over the Ali and Bedni bugyals.",
     "price": null,            // TODO(content): no published fare yet
     "days": null,             // TODO(content): duration pending
@@ -2252,7 +2245,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "ali-bedni-bugyal-yatra",
-    "name": "Ali Bedni Bugyal Yatra",
+    "name": "Ali Bedni Bugyal Trek",
     // TODO(content): cross-listing of `ali-bedni-bugyal-trek` in TREKS.
     "tagline": "Two of the largest meadows in the Garhwal Himalaya, under the Trishul and Nanda Ghunti faces.",
     "price": null,            // TODO(content): no published fare yet
@@ -2269,7 +2262,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "phulara-ridge-yatra",
-    "name": "Phulara Ridge Yatra",
+    "name": "Phulara Ridge Trek",
     // TODO(content): cross-listing of `phulara-ridge-trek` in TREKS.
     "tagline": "A rare continuous ridge walk above Sankri, open on both sides for most of a day.",
     "price": null,            // TODO(content): no published fare yet
@@ -2286,7 +2279,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "spiti-valley-yatra",
-    "name": "Spiti Valley Yatra",
+    "name": "Spiti Valley Trek",
     // TODO(content): cross-listing of `spiti-valley` in TREKS and BACKPACKING_TRIPS.
     "tagline": "The monastery circuit of the cold desert — Key, Dhankar, Tabo and Kaza.",
     "price": null,            // TODO(content): no published fare yet

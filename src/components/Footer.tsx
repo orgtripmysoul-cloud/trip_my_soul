@@ -66,13 +66,13 @@ export default function Footer() {
                 <Link href="/treks/kedarkantha-trek" className="flex items-center min-h-[44px] hover:text-white transition">Kedarkantha Trek (5 Days)</Link>
               </li>
               <li>
-                <Link href="/treks/kashmir-great-lakes-trek" className="flex items-center min-h-[44px] hover:text-white transition">Kashmir Great Lakes (8 Days)</Link>
+                <Link href="/treks/kashmir-great-lakes-trek" className="flex items-center min-h-[44px] hover:text-white transition">Kuari valley of Flowers (8 Days)</Link>
               </li>
               <li>
                 <Link href="/treks/hampta-pass-trek" className="flex items-center min-h-[44px] hover:text-white transition">Hampta Pass Trek (5 Days)</Link>
               </li>
               <li>
-                <Link href="/treks/brahmatal-trek" className="flex items-center min-h-[44px] hover:text-white transition">Brahmatal Trek (5 Days)</Link>
+                <Link href="/treks/brahmatal-trek" className="flex items-center min-h-[44px] hover:text-white transition">Kuari Pass treak Trek (5 Days)</Link>
               </li>
               <li>
                 <Link href="/treks/har-ki-dun-trek" className="flex items-center min-h-[44px] hover:text-white transition">Har Ki Dun Trek (7 Days)</Link>
@@ -95,7 +95,7 @@ export default function Footer() {
                   <span className="text-xs block break-words">Saraswati Vihar, Ajabpur Khurd, Dehradun, Uttarakhand - 248001</span>
                   <a href="tel:+918178613438" className="mt-1 flex items-center gap-2 min-h-[44px] text-xs hover:text-white transition">
                     <Phone className="w-3.5 h-3.5 text-brand-dusk-orange shrink-0" />
-                    <span>+91 81786 13438</span>
+                    <span>+91 8178613438, +91 9068513438</span>
                   </a>
                 </div>
               </div>
@@ -106,7 +106,7 @@ export default function Footer() {
                   <span className="text-xs block break-words">Sai Baba Nagar Colony, Kukatpally, Hyderabad, Telangana - 500072</span>
                   <a href="tel:+918178613438" className="mt-1 flex items-center gap-2 min-h-[44px] text-xs hover:text-white transition">
                     <Phone className="w-3.5 h-3.5 text-brand-dusk-orange shrink-0" />
-                    <span>+91 81786 13438</span>
+                    <span>091213 43330, +91 99599 09204</span>
                   </a>
                 </div>
               </div>
