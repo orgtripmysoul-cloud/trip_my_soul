@@ -4,27 +4,6 @@ import React from "react";
 import { ShieldCheck, Heart, Leaf } from "lucide-react";
 
 export default function AboutUsPage() {
-  const teamMembers = [
-    {
-      name: "Pramod Panwar",
-      role: "CEO & Founder",
-      bio: "High-altitude explorer and wilderness expert dedicated to safety and community integration across Himalayan routes.",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
-    },
-    {
-      name: "Karan Negi",
-      role: "Head Operations (Dehradun)",
-      bio: "With over 10 years of operations experience, ensuring seamless transport logistics and medical coordination.",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
-    },
-    {
-      name: "Rishi Raj",
-      role: "Lead Expedition Guide",
-      bio: "Mountaineer certified by NIM Uttarkashi. Has successfully summitted 15+ high-altitude passes.",
-      avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=300&q=80",
-    },
-  ];
-
   return (
     <div className="bg-brand-warm-bg min-h-screen">
       {/* Page Header Banner */}
@@ -223,47 +202,6 @@ export default function AboutUsPage() {
               </div>
             );
           })}
-        </div>
-
-        {/* Section 5: Team profiles */}
-        <div className="space-y-12">
-          <div className="text-center space-y-3">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-brand-dusk">
-              Himalayan Experts
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold font-serif text-brand-dark-text leading-tight">
-              Meet the Team
-            </h2>
-            <p className="text-xs text-gray-500">
-              The guides, organizers, and builders who make your high-altitude dreams safe.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {teamMembers.map((member, idx) => (
-              <div
-                key={idx}
-                className="bg-white border border-gray-100 rounded-3xl p-6 shadow-xs text-center space-y-4 hover:shadow-lg transition duration-200"
-              >
-                {/* Avatar with cover */}
-                <div className="w-24 h-24 rounded-full overflow-hidden mx-auto border-2 border-brand-forest/20 relative bg-gray-100">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={member.avatar}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="font-bold text-brand-dark-text text-base">{member.name}</h3>
-                  <span className="text-[10px] font-extrabold text-brand-dusk-orange uppercase tracking-wider block">
-                    {member.role}
-                  </span>
-                </div>
-                <p className="text-xs text-gray-500 leading-relaxed">{member.bio}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </div>

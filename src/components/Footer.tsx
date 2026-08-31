@@ -66,13 +66,13 @@ export default function Footer() {
                 <Link href="/treks/kedarkantha-trek" className="flex items-center min-h-[44px] hover:text-white transition">Kedarkantha Trek (5 Days)</Link>
               </li>
               <li>
-                <Link href="/treks/kashmir-great-lakes-trek" className="flex items-center min-h-[44px] hover:text-white transition">Kuari valley of Flowers (8 Days)</Link>
+                <Link href="/treks/valley-of-flowers-trek" className="flex items-center min-h-[44px] hover:text-white transition">Valley of Flowers Trek (6 Days)</Link>
               </li>
               <li>
                 <Link href="/treks/hampta-pass-trek" className="flex items-center min-h-[44px] hover:text-white transition">Hampta Pass Trek (5 Days)</Link>
               </li>
               <li>
-                <Link href="/treks/brahmatal-trek" className="flex items-center min-h-[44px] hover:text-white transition">Kuari Pass treak Trek (5 Days)</Link>
+                <Link href="/treks/kuari-pass-trek" className="flex items-center min-h-[44px] hover:text-white transition">Kuari Pass Trek (6 Days)</Link>
               </li>
               <li>
                 <Link href="/treks/har-ki-dun-trek" className="flex items-center min-h-[44px] hover:text-white transition">Har Ki Dun Trek (7 Days)</Link>
