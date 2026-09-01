@@ -44,6 +44,24 @@ export default function AboutUsPage() {
             </h2>
           </div>
 
+          {/* Founder portrait */}
+          <figure className="flex flex-col items-center gap-3">
+            <div className="w-56 sm:w-72 aspect-[4/5] rounded-3xl overflow-hidden border-4 border-white shadow-md bg-brand-warm-card">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/CEO.png"
+                alt="Pramod Panwar, founder of Trip My Soul"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <figcaption className="text-center space-y-0.5">
+              <span className="block text-sm font-bold text-brand-dark-text">Pramod Panwar</span>
+              <span className="block text-[11px] uppercase tracking-widest font-extrabold text-brand-dusk-orange">
+                Founder &amp; CEO, Trip My Soul
+              </span>
+            </figcaption>
+          </figure>
+
           <div className="max-w-3xl mx-auto space-y-5">
             <p className="text-base text-brand-dark-text font-serif italic leading-relaxed">
               Every journey begins with a feeling.
