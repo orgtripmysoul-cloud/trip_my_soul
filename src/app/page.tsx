@@ -677,6 +677,7 @@ export default function Home() {
     "/Instagram_stories/IMG_3932.JPG.jpeg",
     "/Instagram_stories/IMG_3933.JPG.jpeg",
     "/Instagram_stories/IMG_3935.JPG.jpeg",
+    "/Instagram_stories/IMG_3938.jpeg",
   ];
 
   return (
@@ -1285,7 +1286,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4">
             {instagramPosts.map((img, idx) => (
               <a
                 key={idx}
