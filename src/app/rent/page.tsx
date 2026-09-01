@@ -2,24 +2,37 @@
 
 import React, { useState, useMemo } from "react";
 import {
-  Compass, ShieldCheck, HelpCircle, Phone, ArrowRight, ShieldAlert, CheckCircle,
-  ShoppingBag, Trash2, Calendar
+  Compass, ShieldCheck, ArrowRight, ShieldAlert, CheckCircle,
+  ShoppingBag, Trash2, Calendar,
+  Footprints, Shirt, Pickaxe, Backpack, Hand, Flashlight, Glasses,
+  PersonStanding, Snowflake, Umbrella, HardHat, Droplet
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 interface RentalItem {
   id: string;
   name: string;
   pricePerDay: number;
-  image: string;
+  /** Icon shown when no product photo is set. */
+  icon: LucideIcon;
+  /** Optional product photo; falls back to the icon when absent. */
+  image?: string;
   description: string;
 }
 
 const RENTAL_CATALOG: RentalItem[] = [
-  { id: "poles", name: "Anti-Shock Trekking Poles (Pair)", pricePerDay: 40, image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=150&q=80", description: "Lightweight carbon-fiber poles with cork grips." },
-  { id: "jacket", name: "Heavy Down Insulated Jacket (-10°C)", pricePerDay: 90, image: "https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=150&q=80", description: "Waterproof windproof duck-down jacket." },
-  { id: "backpack", name: "60L Expedition Backpack with Rain Cover", pricePerDay: 70, image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=150&q=80", description: "Ergonomic shoulder straps and waist adjustments." },
-  { id: "spikes", name: "Crampons / Microspikes (Pair)", pricePerDay: 50, image: "https://images.unsplash.com/photo-1605548230624-8d2d0419c517?auto=format&fit=crop&w=150&q=80", description: "18-point steel microspikes for safe snow hiking." },
-  { id: "gaiters", name: "Waterproof Snow Gaiters", pricePerDay: 30, image: "https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?auto=format&fit=crop&w=150&q=80", description: "Elastic cord locks to prevent mud and snow entries." }
+  { id: "shoes", name: "Trekking Shoes", pricePerDay: 150, icon: Footprints, image: "/Rent/shoes.jpeg", description: "High-ankle waterproof boots with deep-lug grip soles." },
+  { id: "jacket", name: "Trekking Jacket", pricePerDay: 150, icon: Shirt, image: "/Rent/jacket.jpeg", description: "Insulated windproof jacket rated for sub-zero camps." },
+  { id: "backpack", name: "Backpack", pricePerDay: 150, icon: Backpack, image: "/Rent/trekking_bag.jpeg", description: "50-60L rucksack with rain cover and padded hip belt." },
+  { id: "pant", name: "Trek Pant", pricePerDay: 70, icon: PersonStanding, image: "/Rent/trek_pant.jpeg", description: "Quick-dry stretch trek trousers for long walking days." },
+  { id: "stick", name: "Trekking Stick", pricePerDay: 50, icon: Pickaxe, image: "/Rent/trekking_stick.jpeg", description: "Adjustable anti-shock pole for descents and snow." },
+  { id: "gloves", name: "Waterproof Gloves", pricePerDay: 50, icon: Hand, image: "/Rent/gloves.jpeg", description: "Insulated outer gloves for snow and wind chill." },
+  { id: "headlamp", name: "Headlamp", pricePerDay: 50, icon: Flashlight, image: "/Rent/headlamp.jpeg", description: "LED head torch for summit pushes and campsite use." },
+  { id: "sunglasses", name: "Sunglasses", pricePerDay: 50, icon: Glasses, image: "/Rent/sunglasses.jpeg", description: "UV-protection shades for snow and high-altitude glare." },
+  { id: "socks", name: "Woollen Socks", pricePerDay: 50, icon: Snowflake, image: "/Rent/woollen_socks.jpeg", description: "Thick thermal socks that stay warm inside boots." },
+  { id: "raincoat", name: "Raincoat", pricePerDay: 50, icon: Umbrella, image: "/Rent/raincoat.png", description: "Full-cover rain protection for monsoon trails." },
+  { id: "cap", name: "Woollen Cap", pricePerDay: 50, icon: HardHat, image: "/Rent/woollen_cap.png", description: "Warm knit cap that covers the ears on cold mornings." },
+  { id: "bottle", name: "Water Bottle", pricePerDay: 50, icon: Droplet, image: "/Rent/water_bottle.jpeg", description: "Insulated one-litre bottle that resists freezing on summit days." }
 ];
 
 export default function RentGearPage() {
@@ -82,7 +95,7 @@ export default function RentGearPage() {
             Rent A Gear
           </h1>
           <p className="text-xs text-gray-500">
-            Hire high-altitude climbing equipment at nominal per-day charges. Collect items directly from your trek's basecamp village.
+            Hire high-altitude climbing equipment at nominal per-day charges. Collect items directly from your trek&rsquo;s basecamp village.
           </p>
         </div>
 
@@ -93,49 +106,66 @@ export default function RentGearPage() {
           <div className="lg:col-span-2 space-y-4 order-last lg:order-first">
             <h2 className="text-base font-extrabold text-brand-dark-text font-serif pl-1">Equipment Catalog</h2>
             
-            <div className="space-y-4">
+            {/* Product grid — image tile, name, then per-day price */}
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
               {RENTAL_CATALOG.map((item) => {
                 const qtyInCart = cart[item.id] || 0;
                 return (
-                  <div key={item.id} className="bg-white border border-gray-100 rounded-3xl p-4 md:p-6 shadow-xs flex flex-col sm:flex-row gap-4 items-center justify-between">
-                    <div className="flex items-center gap-4 w-full sm:w-auto">
-                      <div className="w-16 h-16 rounded-2xl overflow-hidden bg-gray-100 shrink-0 relative">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="space-y-1">
-                        <span className="text-sm font-bold text-brand-dark-text block">{item.name}</span>
-                        <p className="text-[10px] text-gray-400 leading-normal">{item.description}</p>
-                        <span className="text-[10px] text-brand-dusk-orange font-bold block">
-                          ₹{item.pricePerDay} / day
+                  <div
+                    key={item.id}
+                    className="bg-white border border-gray-100 rounded-3xl p-3 shadow-xs flex flex-col gap-3"
+                  >
+                    {/* Product image tile */}
+                    <div className="relative aspect-square rounded-2xl bg-brand-warm-bg border border-gray-150 overflow-hidden flex items-center justify-center">
+                      {item.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={item.image} alt={item.name} loading="lazy" className="w-full h-full object-cover" />
+                      ) : (
+                        <item.icon className="w-10 h-10 text-brand-forest" strokeWidth={1.5} />
+                      )}
+                      {qtyInCart > 0 && (
+                        <span className="absolute top-2 right-2 w-6 h-6 rounded-full bg-brand-forest text-white text-[10px] font-extrabold flex items-center justify-center shadow-xs">
+                          {qtyInCart}
                         </span>
-                      </div>
+                      )}
+                    </div>
+
+                    {/* Name and price */}
+                    <div className="px-1 space-y-0.5">
+                      <span
+                        title={item.description}
+                        className="text-xs sm:text-sm font-bold text-brand-dark-text block leading-snug"
+                      >
+                        {item.name}
+                      </span>
+                      <span className="text-[10px] text-brand-dusk-orange font-bold block">
+                        ₹{item.pricePerDay} / day
+                      </span>
                     </div>
 
                     {/* Quantity selectors */}
-                    <div className="flex items-center gap-3 shrink-0">
+                    <div className="mt-auto">
                       {qtyInCart > 0 ? (
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center justify-between gap-1">
                           <button
                             onClick={() => handleQtyChange(item.id, -1)}
-                            className="w-8 h-8 rounded-full border border-gray-150 flex items-center justify-center text-xs font-bold text-brand-forest hover:bg-gray-55 transition"
+                            aria-label={`Reduce ${item.name} quantity`}
+                            className="w-9 h-9 rounded-full border border-gray-150 flex items-center justify-center text-xs font-bold text-brand-forest hover:bg-gray-55 transition"
                           >
                             -
                           </button>
-                          <span className="text-xs font-bold text-brand-dark-text w-6 text-center">{qtyInCart}</span>
+                          <span className="text-xs font-bold text-brand-dark-text text-center">{qtyInCart}</span>
                           <button
                             onClick={() => handleQtyChange(item.id, 1)}
-                            className="w-8 h-8 rounded-full border border-gray-150 flex items-center justify-center text-xs font-bold text-brand-forest hover:bg-gray-55 transition"
+                            aria-label={`Increase ${item.name} quantity`}
+                            className="w-9 h-9 rounded-full border border-gray-150 flex items-center justify-center text-xs font-bold text-brand-forest hover:bg-gray-55 transition"
                           >
                             +
                           </button>
                           <button
                             onClick={() => handleRemove(item.id)}
-                            className="p-2 text-red-500 hover:text-red-700 transition"
+                            aria-label={`Remove ${item.name}`}
+                            className="w-9 h-9 flex items-center justify-center text-red-500 hover:text-red-700 transition"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
@@ -143,7 +173,7 @@ export default function RentGearPage() {
                       ) : (
                         <button
                           onClick={() => handleQtyChange(item.id, 1)}
-                          className="px-4 py-2 min-h-[44px] inline-flex items-center justify-center border border-brand-forest hover:bg-brand-forest hover:text-white rounded-full text-[10px] font-bold text-brand-forest shadow-xs transition"
+                          className="w-full px-3 py-2 min-h-[44px] inline-flex items-center justify-center border border-brand-forest hover:bg-brand-forest hover:text-white rounded-full text-[10px] font-bold text-brand-forest shadow-xs transition"
                         >
                           Add to Hire
                         </button>
