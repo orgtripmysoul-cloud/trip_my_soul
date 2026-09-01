@@ -672,12 +672,11 @@ export default function Home() {
   ];
 
   const instagramPosts = [
-    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1486873249359-2731bd6dafc7?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1472214222555-d404758b1c42?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1482862549707-f63cb32c5fd9?auto=format&fit=crop&w=400&q=80",
+    "/Instagram_stories/IMG_3927.JPG.jpeg",
+    "/Instagram_stories/IMG_3929.JPG.jpeg",
+    "/Instagram_stories/IMG_3932.JPG.jpeg",
+    "/Instagram_stories/IMG_3933.JPG.jpeg",
+    "/Instagram_stories/IMG_3935.JPG.jpeg",
   ];
 
   return (
@@ -1286,7 +1285,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
             {instagramPosts.map((img, idx) => (
               <a
                 key={idx}
@@ -1299,6 +1298,7 @@ export default function Home() {
                 <img
                   src={img}
                   alt={`Instagram photo ${idx + 1}`}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
