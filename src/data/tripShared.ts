@@ -11,35 +11,6 @@ import type { EquipmentGroup } from "@/data/db";
 /** Enquiry numbers printed across the Himalayan trip PDFs. */
 export const TRIP_CONTACT_NUMBERS = ["+91 90685 13438", "+91 81786 13438", "+91 97209 42463"];
 
-/**
- * Bank details.
- *
- * There are two accounts in use. The Kerala itineraries quote one, the
- * Uttarakhand / Himachal itineraries another — they are not interchangeable,
- * so each trip points at the set printed on its own PDF.
- */
-export const PAYMENT_DETAILS_KERALA = {
-  bank: "Axis Bank",
-  accountName: "Trip My Soul",
-  accountNumber: "925020045561157",
-  ifsc: "UTIB0000068",
-  accountType: "Current A/C",
-  upiNote: "UPI accepted — PhonePe, GPay, Paytm, BHIM",
-};
-
-export const PAYMENT_DETAILS_HIMALAYAN = {
-  bank: "Axis Bank",
-  accountName: "Trip My Soul",
-  accountNumber: "923020026632117",
-  ifsc: "UTIB0005171",
-  accountType: "Current A/C",
-  upiNote:
-    "UPI: tripmysoulteam-3@okaxis or tripmysoulteam-4@okaxis · GPay / PhonePe: 8178613438 (Trip My Soul, Pramod Panwar)",
-};
-
-/** @deprecated Use the explicitly named account above. Kept for existing imports. */
-export const PAYMENT_DETAILS = PAYMENT_DETAILS_KERALA;
-
 /** Pay to receive confirmation; balance collected on arrival. */
 export const CONFIRMATION_POLICY =
   "Your booking is confirmed once payment is received and Trip My Soul has emailed your confirmation. The remaining amount is collected on arrival.";

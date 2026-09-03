@@ -3,6 +3,30 @@
 import React, { useMemo, useState } from "react";
 import type { BatchMonth } from "@/data/db";
 
+const MONTH_NAMES: Record<string, string> = {
+  Jan: "January",
+  Feb: "February",
+  Mar: "March",
+  Apr: "April",
+  May: "May",
+  Jun: "June",
+  Jul: "July",
+  Aug: "August",
+  Sep: "September",
+  Oct: "October",
+  Nov: "November",
+  Dec: "December",
+};
+
+/**
+ * Above this many departures the whole schedule is no longer a list worth
+ * scanning, so the "All Months" pill is dropped and a month is always in view.
+ */
+const ALL_MONTHS_MAX_BATCHES = 24;
+
+/** A month with several dozen departures reads better three-up on a wide screen. */
+const DENSE_MONTH_BATCHES = 12;
+
 interface TrekDeparturesProps {
   batchMonths: BatchMonth[];
   /** Calendar year the batches belong to. */
@@ -12,6 +36,9 @@ interface TrekDeparturesProps {
   selectedBatch: string | null;
   onSelectBatch: (batchId: string | null) => void;
   onBookBatch: (batchId: string) => void;
+  /** Listing name and length, used in the section heading and its lead line. */
+  trekName?: string;
+  durationDays?: number | string | null;
 }
 
 export default function TrekDepartures({
@@ -21,24 +48,49 @@ export default function TrekDepartures({
   selectedBatch,
   onSelectBatch,
   onBookBatch,
+  trekName,
+  durationDays,
 }: TrekDeparturesProps) {
-  const [selectedMonthFilter, setSelectedMonthFilter] = useState<string>("All");
+  const monthKey = (m: BatchMonth) => `${m.year ?? year}-${m.month}`;
+
+  const totalBatches = useMemo(
+    () => batchMonths.reduce((count, m) => count + m.trips.length, 0),
+    [batchMonths]
+  );
+
+  const showAllMonthsOption = batchMonths.length > 1 && totalBatches <= ALL_MONTHS_MAX_BATCHES;
+
+  const [selectedMonthFilter, setSelectedMonthFilter] = useState<string>(() =>
+    showAllMonthsOption || batchMonths.length === 0 ? "All" : monthKey(batchMonths[0])
+  );
   const [filterWomenOnly, setFilterWomenOnly] = useState(false);
   const [filterSeniorOnly, setFilterSeniorOnly] = useState(false);
+
+  /** "Open batches are available from November 2026 to April 2027." */
+  const openRange = useMemo(() => {
+    const open = batchMonths.filter((m) =>
+      m.trips.some((t) => (t.status ?? "").toLowerCase() === "open")
+    );
+    if (open.length === 0) return null;
+    const label = (m: BatchMonth) => `${MONTH_NAMES[m.month] ?? m.month} ${m.year ?? year}`;
+    const first = label(open[0]);
+    const last = label(open[open.length - 1]);
+    return first === last ? first : `${first} to ${last}`;
+  }, [batchMonths, year]);
 
   // Filter pills follow the months this listing actually departs in. A block
   // carries its own year once the dates span more than one, so the pills stay
   // distinct where the same month appears twice.
   const monthFilters = useMemo(
     () => [
-      { key: "All", month: "All", year },
+      ...(showAllMonthsOption ? [{ key: "All", month: "All", year }] : []),
       ...batchMonths.map((m) => ({
         key: `${m.year ?? year}-${m.month}`,
         month: m.month,
         year: m.year ?? year,
       })),
     ],
-    [batchMonths, year]
+    [batchMonths, year, showAllMonthsOption]
   );
 
   const hasSpecialBatches = useMemo(
@@ -65,13 +117,16 @@ export default function TrekDepartures({
   }, [batchMonths, year, selectedMonthFilter, filterWomenOnly, filterSeniorOnly]);
 
   return (
-    <div id="batch-picker" className="pt-6 border-t border-gray-100 space-y-4 font-sans">
+    <div id="batch-picker" className="space-y-4 font-sans">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gray-100 pb-3">
         <div>
-          <span className="text-base font-extrabold text-brand-dark-text font-serif block">
-            Available Departure Batches
-          </span>
-          <p className="text-[10px] text-gray-400">Select your preferred date batch to lock in your slot.</p>
+          <h2 className="text-lg font-extrabold text-brand-dark-text font-serif">
+            {trekName ? `${trekName} Departure Batches` : "Available Departure Batches"}
+          </h2>
+          <p className="text-[11px] text-gray-400 mt-1 leading-relaxed">
+            Choose your preferred {durationDays ? `${durationDays}-day ` : ""}departure batch.
+            {openRange && ` Open batches are available from ${openRange}.`}
+          </p>
         </div>
 
         {/* Special Batch Toggles */}
@@ -125,18 +180,32 @@ export default function TrekDepartures({
             ))}
           </div>
 
-          {/* Filtered Batches List */}
-          <div className="space-y-5 pt-1">
+          {/* Filtered Batches List. Keyed on the month so the switch fades in. */}
+          <div key={selectedMonthFilter} className="space-y-5 pt-1 animate-fade-in">
             {filteredBatchData.length > 0 ? (
               filteredBatchData.map((monthBlock) => (
                 <div
                   key={`${monthBlock.year ?? year}-${monthBlock.month}`}
                   className="space-y-2.5"
                 >
-                  <span className="text-xs font-bold text-brand-forest uppercase tracking-wider block pl-1">
-                    {monthBlock.month} {monthBlock.year ?? year}
-                  </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="flex items-center gap-2 pl-1">
+                    <span className="text-xs font-bold text-brand-forest uppercase tracking-wider">
+                      {monthBlock.month} {monthBlock.year ?? year}
+                    </span>
+                    {monthBlock.trips.some((t) => (t.status ?? "").toLowerCase() === "open") && (
+                      <span className="text-[9px] px-2 py-0.75 rounded-full font-bold uppercase tracking-wider bg-green-500/10 text-green-600 border border-green-500/20">
+                        Open
+                      </span>
+                    )}
+                    <span className="text-[10px] text-gray-400 font-semibold">
+                      {monthBlock.trips.length} batch{monthBlock.trips.length === 1 ? "" : "es"}
+                    </span>
+                  </div>
+                  <div
+                    className={`grid grid-cols-1 sm:grid-cols-2 gap-3 ${
+                      monthBlock.trips.length > DENSE_MONTH_BATCHES ? "lg:grid-cols-3" : ""
+                    }`}
+                  >
                     {monthBlock.trips.map((trip, idx) => {
                       const batchId = `${trip.startDate} - ${trip.endDate}`;
                       const isSelected = selectedBatch === batchId;
@@ -158,7 +227,7 @@ export default function TrekDepartures({
                           <div className="space-y-1">
                             <div className="flex items-center gap-1.5 flex-wrap">
                               <span className={`text-xs font-extrabold block ${isSelected ? "text-white" : "text-brand-dark-text"}`}>
-                                {trip.startDate} - {trip.endDate}
+                                {trip.startDate} → {trip.endDate}
                               </span>
                               {trip.isWomenOnly && (
                                 <span className="text-[9px] bg-pink-100 text-pink-700 font-bold px-1.5 py-0.5 rounded">

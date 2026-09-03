@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Car, ChevronDown, Clock, Footprints, Home, Star, Utensils } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import type { NormalizedItineraryDay } from "@/lib/trekDetail";
 
 type ViewMode = "quick" | "detailed" | "graph";
@@ -22,6 +24,52 @@ interface GraphPoint {
   gain: number;
 }
 
+/** One icon + label cell in a day's quick-info line. */
+function MetaItem({ icon: Icon, children }: { icon: LucideIcon; children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 min-w-0">
+      <Icon className="w-3.5 h-3.5 text-brand-dusk-orange shrink-0" />
+      <span className="font-semibold text-gray-550">{children}</span>
+    </span>
+  );
+}
+
+/**
+ * The overview a day shows while collapsed: how far you move, how long it
+ * takes, where you sleep and what you eat. Each cell is skipped when the day
+ * publishes no figure for it, so a listing with a bare itinerary shows nothing
+ * rather than an invented line.
+ */
+function DayMeta({ day }: { day: NormalizedItineraryDay }) {
+  const hasMeta =
+    day.trekDistance || day.driveDistance || day.timeNote || day.stayType || day.meals;
+  if (!hasMeta) return null;
+
+  return (
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[10px] sm:text-[11px] font-sans">
+      {day.trekDistance && (
+        <MetaItem icon={Footprints}>
+          Trek {day.trekDistance}
+          {day.trekDuration ? ` · ${day.trekDuration}` : ""}
+        </MetaItem>
+      )}
+      {day.driveDistance && (
+        <MetaItem icon={Car}>
+          Drive {day.driveDistance}
+          {day.drivingTime ? ` · ${day.drivingTime}` : ""}
+        </MetaItem>
+      )}
+      {day.timeNote && (
+        <MetaItem icon={Clock}>
+          {day.timeNote.label} {day.timeNote.value}
+        </MetaItem>
+      )}
+      {day.stayType && <MetaItem icon={Home}>{day.stayType}</MetaItem>}
+      {day.meals && <MetaItem icon={Utensils}>{day.meals}</MetaItem>}
+    </div>
+  );
+}
+
 interface TrekItineraryProps {
   itinerary: NormalizedItineraryDay[];
   noun: string;
@@ -29,7 +77,7 @@ interface TrekItineraryProps {
 }
 
 export default function TrekItinerary({ itinerary, noun, onViewDepartures }: TrekItineraryProps) {
-  const [viewMode, setViewMode] = useState<ViewMode>("quick");
+  const [viewMode, setViewMode] = useState<ViewMode>("detailed");
   const [expandedDays, setExpandedDays] = useState<Record<number, boolean>>({ 1: true });
   const [hoveredPoint, setHoveredPoint] = useState<GraphPoint | null>(null);
 
@@ -202,62 +250,89 @@ export default function TrekItinerary({ itinerary, noun, onViewDepartures }: Tre
               <div key={day.day} className="border border-gray-150 rounded-2xl overflow-hidden bg-white">
                 <button
                   onClick={() => toggleDayExpanded(day.day)}
-                  className="w-full flex items-center justify-between p-4 bg-brand-warm-bg text-left hover:bg-gray-100 transition"
+                  aria-expanded={isOpen}
+                  className="w-full flex items-start justify-between gap-3 p-4 bg-brand-warm-bg text-left hover:bg-gray-100 transition"
                 >
-                  <span className="font-extrabold text-xs text-brand-forest uppercase tracking-wider">
-                    Day {day.day}: {day.title}
-                  </span>
-                  <ChevronDown className={`w-4 h-4 text-brand-forest transition-transform ${isOpen ? "rotate-180" : ""}`} />
-                </button>
-                {isOpen && (
-                  <div className="p-5 text-xs text-gray-650 bg-white border-t border-gray-150 space-y-4 leading-relaxed">
-                    {day.entries?.length ? (
-                      <ul className="space-y-2.5">
-                        {day.entries.map((entry, i) => (
-                          <li key={i} className="flex items-start gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-brand-dusk-orange shrink-0 mt-1.5" />
-                            <span className="font-medium text-gray-700">
-                              {entry.time && (
-                                <span className="font-extrabold text-brand-forest mr-1.5">{entry.time}</span>
-                              )}
-                              {entry.text}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="font-medium text-gray-700">{day.detailedDescription}</p>
-                    )}
+                  <div className="min-w-0 space-y-2">
+                    <span className="font-extrabold text-xs text-brand-forest uppercase tracking-wider block">
+                      Day {day.day}: {day.title}
+                    </span>
+                    <DayMeta day={day} />
+                  </div>
 
-                    {/* Day parameters summary footer */}
-                    {(day.stayType || day.meals || day.trekDistance || day.driveDistance) && (
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-gray-100 text-[10px] font-sans font-semibold">
-                        {day.stayType && (
-                          <div>
-                            <span className="text-gray-400 uppercase block tracking-wider mb-1">Stay</span>
-                            <span className="font-bold text-brand-dark-text block">{day.stayType}</span>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span className="hidden sm:inline text-[10px] font-extrabold uppercase tracking-wider text-brand-dusk-orange">
+                      {isOpen ? "Hide details" : "View details"}
+                    </span>
+                    <motion.div
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="p-1 rounded-full bg-brand-forest/5 text-brand-forest"
+                    >
+                      <ChevronDown className="w-4 h-4" />
+                    </motion.div>
+                  </div>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="p-5 text-xs text-gray-650 bg-white border-t border-gray-150 space-y-4 leading-relaxed">
+                        {day.detailedParagraphs?.length ? (
+                          <div className="space-y-3">
+                            {day.detailedParagraphs.map((para, i) => (
+                              <p key={i} className="font-medium text-gray-700">
+                                {para}
+                              </p>
+                            ))}
                           </div>
+                        ) : day.entries?.length ? (
+                          <ul className="space-y-2.5">
+                            {day.entries.map((entry, i) => (
+                              <li key={i} className="flex items-start gap-2.5">
+                                <span className="w-1.5 h-1.5 rounded-full bg-brand-dusk-orange shrink-0 mt-1.5" />
+                                <span className="font-medium text-gray-700">
+                                  {entry.time && (
+                                    <span className="font-extrabold text-brand-forest mr-1.5">{entry.time}</span>
+                                  )}
+                                  {entry.text}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="font-medium text-gray-700">{day.detailedDescription}</p>
                         )}
-                        {day.meals && (
-                          <div>
-                            <span className="text-gray-400 uppercase block tracking-wider mb-1">Meals Served</span>
-                            <span className="font-bold text-brand-dark-text block">{day.meals}</span>
-                          </div>
-                        )}
-                        {(day.trekDistance || day.driveDistance) && (
-                          <div>
-                            <span className="text-gray-400 uppercase block tracking-wider mb-1">Trek / Drive</span>
-                            <span className="font-bold text-brand-dark-text block">
-                              {day.trekDistance
-                                ? `Trek ${day.trekDistance} (${day.trekDuration})`
-                                : `Drive ${day.driveDistance} (${day.drivingTime})`}
+
+                        {/* Day highlights, where the itinerary publishes them */}
+                        {day.highlights && day.highlights.length > 0 && (
+                          <div className="space-y-2 pt-1 border-t border-gray-100">
+                            <span className="text-[10px] font-extrabold text-brand-forest uppercase tracking-wider flex items-center gap-1.5 pt-3">
+                              <Star className="w-3.5 h-3.5 text-brand-dusk-orange" />
+                              <span>Highlights</span>
                             </span>
+                            <div className="flex flex-wrap gap-1.5">
+                              {day.highlights.map((item) => (
+                                <span
+                                  key={item}
+                                  className="inline-block text-[10px] font-bold text-brand-forest bg-brand-forest/5 border border-brand-forest/10 rounded-full px-2.5 py-1"
+                                >
+                                  {item}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         )}
                       </div>
-                    )}
-                  </div>
-                )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}

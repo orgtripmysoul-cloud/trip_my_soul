@@ -20,13 +20,13 @@ function Fact({ icon: Icon, label, value, valueClassName = "" }: FactProps) {
   if (value === undefined || value === null || value === "") return null;
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-start gap-3">
       <div className="p-2 bg-brand-forest/5 rounded-xl text-brand-forest shrink-0">
         <Icon className="w-4 h-4" />
       </div>
-      <div>
-        <span className="font-semibold block text-[10px] text-gray-400 uppercase">{label}</span>
-        <span className={`font-extrabold text-brand-dark-text text-sm leading-none ${valueClassName}`}>
+      <div className="min-w-0 flex-1">
+        <span className="font-semibold block text-[10px] text-gray-400 uppercase leading-tight">{label}</span>
+        <span className={`block font-extrabold text-brand-dark-text text-sm leading-snug break-words hyphens-auto ${valueClassName}`}>
           {value}
         </span>
       </div>
@@ -64,7 +64,7 @@ export default function TrekOverviewFacts({ detail, noun, onViewDepartures }: Tr
         </div>
 
         {/* Column 2 */}
-        <div className="space-y-4 border-t sm:border-t-0 sm:border-x border-gray-100 sm:px-6">
+        <div className="space-y-4 border-t pt-6 sm:border-t-0 sm:pt-0 sm:border-x border-gray-100 sm:px-6">
           <Fact icon={Globe} label="Country" value={country} valueClassName="font-sans" />
           <Fact icon={TrendingUp} label="Max Altitude" value={maxAltitude} valueClassName="font-sans" />
           <Fact icon={ShieldAlert} label={`${noun} Grade`} value={trek.difficulty} valueClassName="font-sans" />
@@ -74,18 +74,13 @@ export default function TrekOverviewFacts({ detail, noun, onViewDepartures }: Tr
         </div>
 
         {/* Column 3 */}
-        <div className="space-y-4 border-t sm:border-t-0 border-gray-100">
+        <div className="space-y-4 border-t pt-6 sm:border-t-0 sm:pt-0 border-gray-100">
           <Fact icon={MapPin} label="Location State" value={trek.region} />
           <Fact icon={MapPin} label="Ends At" value={endLocation} />
           <Fact icon={TrendingUp} label={`${noun} Distance`} value={totalDistance} />
           <Fact icon={Train} label="Nearest Rail Head" value={transport.railHead} />
           <Fact icon={Home} label="Camp Stay" value={campStay} />
-          <Fact
-            icon={Plane}
-            label="Nearest Airport"
-            value={transport.airport}
-            valueClassName="truncate max-w-[130px] md:max-w-none block"
-          />
+          <Fact icon={Plane} label="Nearest Airport" value={transport.airport} />
         </div>
       </div>
 

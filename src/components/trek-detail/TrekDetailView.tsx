@@ -18,6 +18,7 @@ import TrekEligibility from "./TrekEligibility";
 import TrekPhotoAlbum from "./TrekPhotoAlbum";
 import TrekHowToReach from "./TrekHowToReach";
 import TrekInclusions from "./TrekInclusions";
+import TrekCostSummary from "./TrekCostSummary";
 import TrekPricing from "./TrekPricing";
 import TrekDepartures from "./TrekDepartures";
 import TrekBookingTerms from "./TrekBookingTerms";
@@ -225,17 +226,32 @@ export default function TrekDetailView({
           </section>
 
           <section id="how-to-reach" className={`${CARD} space-y-6`}>
-            <TrekHowToReach transport={detail.transport} />
+            <TrekHowToReach
+              transport={detail.transport}
+              howToReach={detail.howToReach}
+              trekName={trek.name}
+            />
           </section>
 
+          {/* The fare and its terms first, then what the fare covers. */}
           <section id="cost-terms" className={`${CARD} space-y-8`}>
-            <TrekInclusions inclusions={detail.inclusions} exclusions={detail.exclusions} />
+            <TrekCostSummary
+              detail={detail}
+              noun={noun}
+              price={activePrice}
+              onBookNow={handleBookNow}
+            />
             <TrekPricing
               packages={detail.packages}
               priceNote={detail.priceNote}
               selectedPackageId={selectedPackageId}
               onSelectPackage={setSelectedPackageId}
             />
+            <TrekBookingTerms detail={detail} />
+          </section>
+
+          {/* Dates sit between the fare and what it covers, right before booking. */}
+          <section id="departures" className={`${CARD} space-y-6`}>
             <TrekDepartures
               batchMonths={detail.batchMonths}
               year={detail.batchYear}
@@ -243,8 +259,13 @@ export default function TrekDetailView({
               selectedBatch={selectedBatch}
               onSelectBatch={setSelectedBatch}
               onBookBatch={goToCheckout}
+              trekName={trek.name}
+              durationDays={trek.days}
             />
-            <TrekBookingTerms detail={detail} />
+          </section>
+
+          <section id="inclusions" className={`${CARD} space-y-6`}>
+            <TrekInclusions inclusions={detail.inclusions} exclusions={detail.exclusions} />
           </section>
 
           <section id="trek-essentials" className={`${CARD} space-y-6`}>
@@ -279,6 +300,17 @@ export default function TrekDetailView({
             <TrekArticle trekName={trek.name} noun={noun} />
           </section>
 
+          {/* Social proof reads better before we point at other departures. */}
+          <section id="trek-reviews" className={`${CARD} space-y-8`}>
+            <TrekReviews
+              reviews={detail.reviews}
+              trailVideos={detail.trailVideos}
+              externalReviews={detail.externalReviews}
+              reviewVideos={detail.reviewVideos}
+              trekName={trek.name}
+            />
+          </section>
+
           <section id="similar-treks" className={`${CARD} space-y-6`}>
             <TrekSimilar
               similarTreks={similar}
@@ -286,10 +318,6 @@ export default function TrekDetailView({
               noun={noun}
               browseHref={browseHref}
             />
-          </section>
-
-          <section id="trek-reviews" className={`${CARD} space-y-8`}>
-            <TrekReviews reviews={detail.reviews} trailVideos={detail.trailVideos} />
           </section>
         </div>
 

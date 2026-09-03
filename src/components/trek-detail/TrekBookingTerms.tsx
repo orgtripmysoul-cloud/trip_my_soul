@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Banknote, Baby, CheckCircle2, Wallet } from "lucide-react";
+import { Baby, CheckCircle2, Wallet } from "lucide-react";
 import type { ResolvedTrekDetail } from "@/lib/trekDetail";
 
 interface TrekBookingTermsProps {
@@ -22,14 +22,16 @@ function Row({ label, value }: { label: string; value: string }) {
  * account the money goes to. Renders only what the listing publishes.
  */
 export default function TrekBookingTerms({ detail }: TrekBookingTermsProps) {
-  const { bookingAdvance, balanceDueDays, kidsPolicy, confirmationPolicy, paymentDetails } = detail;
+  const {
+    bookingAdvance, bookingAdvancePct, balanceDueDays, kidsPolicy, confirmationPolicy,
+  } = detail;
 
   const hasTerms =
     bookingAdvance !== undefined ||
+    bookingAdvancePct !== undefined ||
     balanceDueDays !== undefined ||
     kidsPolicy ||
-    confirmationPolicy ||
-    paymentDetails;
+    confirmationPolicy;
 
   if (!hasTerms) return null;
 
@@ -43,14 +45,21 @@ export default function TrekBookingTerms({ detail }: TrekBookingTermsProps) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-        {(bookingAdvance !== undefined || balanceDueDays !== undefined || kidsPolicy) && (
+        {(bookingAdvance !== undefined ||
+          bookingAdvancePct !== undefined ||
+          balanceDueDays !== undefined ||
+          kidsPolicy) && (
           <div className="p-4 bg-brand-warm-bg rounded-2xl border border-gray-150 space-y-2.5">
             <span className="font-extrabold text-brand-forest uppercase tracking-wider flex items-center gap-2 text-[11px]">
               <Wallet className="w-4 h-4 text-brand-dusk-orange" />
               <span>Payment schedule</span>
             </span>
-            {bookingAdvance !== undefined && (
-              <Row label="Advance per person" value={`₹${bookingAdvance.toLocaleString()}`} />
+            {bookingAdvancePct !== undefined ? (
+              <Row label="Booking amount" value={`${bookingAdvancePct}% of the trek cost`} />
+            ) : (
+              bookingAdvance !== undefined && (
+                <Row label="Advance per person" value={`₹${bookingAdvance.toLocaleString()}`} />
+              )
             )}
             {balanceDueDays !== undefined && (
               <Row label="Balance due" value={`${balanceDueDays} days before departure`} />
@@ -64,22 +73,6 @@ export default function TrekBookingTerms({ detail }: TrekBookingTermsProps) {
           </div>
         )}
 
-        {paymentDetails && (
-          <div className="p-4 bg-brand-warm-bg rounded-2xl border border-gray-150 space-y-2.5">
-            <span className="font-extrabold text-brand-forest uppercase tracking-wider flex items-center gap-2 text-[11px]">
-              <Banknote className="w-4 h-4 text-brand-dusk-orange" />
-              <span>Account details</span>
-            </span>
-            <Row label="Bank" value={paymentDetails.bank} />
-            <Row label="Account name" value={paymentDetails.accountName} />
-            <Row label="Account number" value={paymentDetails.accountNumber} />
-            <Row label="IFSC" value={paymentDetails.ifsc} />
-            <Row label="Account type" value={paymentDetails.accountType} />
-            <p className="text-[10px] text-gray-500 leading-relaxed font-medium pt-1">
-              {paymentDetails.upiNote}
-            </p>
-          </div>
-        )}
       </div>
 
       {confirmationPolicy && (

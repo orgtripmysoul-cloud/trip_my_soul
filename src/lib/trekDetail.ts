@@ -10,7 +10,7 @@
  * catalogues render through one page and one model.
  */
 
-import type { BatchMonth, ItineraryDay, Trek } from "@/data/db";
+import type { BatchMonth, DayTimeNote, ItineraryDay, Trek, TrekBatches } from "@/data/db";
 import {
   BATCH_YEAR,
   DEFAULT_BATCH_MONTHS,
@@ -47,6 +47,9 @@ export interface NormalizedItineraryDay {
   trekDistance?: string;
   trekDuration?: string;
   detailedDescription: string;
+  detailedParagraphs?: string[];
+  highlights?: string[];
+  timeNote?: DayTimeNote;
   entries?: { time?: string; text: string }[];
   meals?: string;
   stayType?: string;
@@ -168,6 +171,11 @@ export function normalizeItinerary(
       day: item.day,
       title: item.title,
       entries: item.entries,
+      detailedParagraphs: item.detailedParagraphs,
+      highlights: item.highlights,
+      /** Day 1 falls back to its own pickup time where no note is published. */
+      timeNote:
+        item.timeNote ?? (item.pickupTime ? { label: "Pickup", value: item.pickupTime } : undefined),
       altitudePoints:
         item.altitudePoints ??
         (synthesize
@@ -207,20 +215,40 @@ export function normalizeQuickItinerary(
   return itinerary.map((item) => {
     const isTransferDay = item.day === firstDay || item.day === 5 || item.day === 7;
     const isFirst = item.day === firstDay;
+    /** A day's own pickup details win over the generic hub and time. */
+    const dayPickupPoint = item.pickupPoint || pickupPointText;
+    const dayPickupTime = item.pickupTime || (synthesize ? "9:30 AM" : undefined);
     return {
       day: item.day,
       title: item.title,
       driveDistance: item.driveDistance || (synthesize && isTransferDay ? "150 km" : undefined),
       drivingTime: item.drivingTime || (synthesize && isTransferDay ? "7-8 Hours" : undefined),
-      pickupPoint: isFirst ? pickupPointText : undefined,
-      pickupTime: isFirst && synthesize ? "9:30 AM" : undefined,
+      pickupPoint: isFirst ? dayPickupPoint : undefined,
+      pickupTime: isFirst ? dayPickupTime : undefined,
       basecamp: isFirst ? basecampText : undefined,
       transportDetails:
         isFirst && synthesize
-          ? `Transport organised from ${pickupPointText} at 9:30 AM. Cost per vehicle shared among trekkers.`
+          ? `Transport organised from ${dayPickupPoint} at ${dayPickupTime}. Cost per vehicle shared among trekkers.`
           : undefined,
     };
   });
+}
+
+/**
+ * Every published month block, in year order, each stamped with the year it
+ * departs in.
+ *
+ * A winter schedule runs past December, so its blocks live under two year keys
+ * ("2026" and "2027"); reading a single year would silently drop half the
+ * season. The blocks are flattened instead, and the picker keeps the months
+ * apart by their own `year`.
+ */
+export function batchMonthsFromBatches(batches: TrekBatches): BatchMonth[] {
+  return Object.entries(batches.years ?? {})
+    .sort(([a], [b]) => a.localeCompare(b))
+    .flatMap(([year, block]) =>
+      (block?.months ?? []).map((month) => ({ ...month, year: month.year ?? year }))
+    );
 }
 
 export type ResolvedTrekDetail = ReturnType<typeof resolveTrekDetail>;
@@ -238,13 +266,15 @@ export function resolveTrekDetail(trek: Trek) {
     ? generateMockItinerary(toDayCount(trek.days))
     : [];
 
-  const batchMonths: BatchMonth[] =
-    trek.batches?.years?.[BATCH_YEAR]?.months ??
-    (trek.batchDates?.length
-      ? batchMonthsFromDates(trek.batchDates, toDayCount(trek.days))
-      : fb
-      ? DEFAULT_BATCH_MONTHS
-      : []);
+  const publishedBatchMonths = trek.batches ? batchMonthsFromBatches(trek.batches) : [];
+
+  const batchMonths: BatchMonth[] = publishedBatchMonths.length
+    ? publishedBatchMonths
+    : trek.batchDates?.length
+    ? batchMonthsFromDates(trek.batchDates, toDayCount(trek.days))
+    : fb
+    ? DEFAULT_BATCH_MONTHS
+    : [];
 
   return {
     trek,
@@ -262,6 +292,8 @@ export function resolveTrekDetail(trek: Trek) {
     seasons: deriveSeasons(trek.months),
     trailType: deriveTrailType(trek.themes),
     transport: trek.transport ?? deriveTransport(trek.region),
+    /** Published travel copy, where the listing has it; else `transport` alone. */
+    howToReach: trek.howToReach,
     country: OVERVIEW_DEFAULTS.country,
     maxAltitude: trek.maxAltitude ?? (fb ? OVERVIEW_DEFAULTS.maxAltitude : undefined),
     totalDistance: trek.totalDistance ?? (fb ? OVERVIEW_DEFAULTS.totalDistance : undefined),
@@ -285,15 +317,20 @@ export function resolveTrekDetail(trek: Trek) {
     inclusions: trek.inclusions ?? (fb ? DEFAULT_INCLUSIONS : []),
     exclusions: trek.exclusions ?? (fb ? DEFAULT_EXCLUSIONS : []),
     batchMonths,
-    /** Year the batches belong to, taken from the listing dates where it has them. */
-    batchYear: trek.batchDates?.[0]?.slice(0, 4) ?? BATCH_YEAR,
+    /**
+     * Year used by month blocks that carry none of their own. Blocks from
+     * `batches` and `batchDates` are stamped individually, so this only backs
+     * the hand-seeded defaults.
+     */
+    batchYear: batchMonths[0]?.year ?? trek.batchDates?.[0]?.slice(0, 4) ?? BATCH_YEAR,
     routeVariants: trek.routeVariants ?? [],
     packages: trek.packages ?? [],
     priceNote: trek.priceNote,
     bookingAdvance: trek.bookingAdvance,
+    bookingAdvancePct: trek.bookingAdvancePct,
+    bookingTerms: trek.bookingTerms ?? [],
     balanceDueDays: trek.balanceDueDays,
     kidsPolicy: trek.kidsPolicy,
-    paymentDetails: trek.paymentDetails,
     confirmationPolicy: trek.confirmationPolicy,
 
     // Reference content
@@ -322,6 +359,8 @@ export function resolveTrekDetail(trek: Trek) {
     // Media & copy
     gallery: trek.gallery ?? [],
     videoTestimonials: trek.videoTestimonials ?? [],
+    externalReviews: trek.externalReviews ?? [],
+    reviewVideos: trek.reviewVideos ?? [],
     relatedArticles: trek.relatedArticles ?? [],
     reviews: buildDefaultReviews(trek.name),
     trailVideos: buildDefaultTrailVideos(trek.name),
@@ -334,6 +373,8 @@ export function resolveTrekDetail(trek: Trek) {
     differentiators: trek.differentiators ?? [],
     importantNote: trek.importantNote,
     destinationHighlights: trek.destinationHighlights ?? [],
+    eligibilityCriteria: trek.eligibilityCriteria ?? [],
+    fitnessCriteria: trek.fitnessCriteria ?? [],
     eligibilityParagraphs: fb
       ? ELIGIBILITY_PARAGRAPHS
       : buildEligibilityParagraphs(trek.difficulty, trek.minAge, trek.maxAge),

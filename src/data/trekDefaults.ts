@@ -32,14 +32,16 @@ export function buildSectionTabs(noun: string = "Trek") {
     { id: "eligibility", label: "Eligibility" },
     { id: "photos", label: "Photos" },
     { id: "how-to-reach", label: "How to Reach" },
-    { id: "cost-terms", label: "Cost Terms" },
+    { id: "cost-terms", label: "Cost & Terms" },
+    { id: "departures", label: "Departures" },
+    { id: "inclusions", label: "Inclusions" },
     { id: "trek-essentials", label: `${noun} Essentials` },
     { id: "cancellation", label: "Cancellation Policy" },
     { id: "imp-links", label: "Imp. Links" },
     { id: "faqs", label: "FAQs" },
     { id: "trek-article", label: "Article" },
-    { id: "similar-treks", label: `Similar ${plural}` },
     { id: "trek-reviews", label: "Reviews & Videos" },
+    { id: "similar-treks", label: `Similar ${plural}` },
   ];
 }
 

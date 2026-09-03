@@ -21,7 +21,9 @@ export default function TrekInclusions({ inclusions, exclusions }: TrekInclusion
   return (
     <>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-100 pb-4 gap-4">
-        <h2 className="text-lg font-extrabold text-brand-dark-text font-serif">Cost Terms & Inclusions</h2>
+        <h2 className="text-lg font-extrabold text-brand-dark-text font-serif">
+          What&apos;s Included &amp; What&apos;s Not
+        </h2>
         <div className="flex bg-brand-warm-bg p-1 rounded-full border border-gray-150 text-[10px] font-bold">
           <button
             onClick={() => setCostTab("inclusions")}

@@ -3,8 +3,6 @@ import {
   CONFIRMATION_POLICY,
   HIMALAYAN_TREK_EXCLUSIONS,
   HIMALAYAN_TREK_PACKING_LIST,
-  PAYMENT_DETAILS_HIMALAYAN,
-  PAYMENT_DETAILS_KERALA,
   TIERED_CANCELLATION_POLICY,
   TRANSPORT_BY_GROUP_SIZE,
   TREK_RENTAL_GEAR,
@@ -145,14 +143,6 @@ export interface TripListingItem extends TripNavItem {
   bookingAdvance?: number;
   balanceDueDays?: number;
   kidsPolicy?: string;
-  paymentDetails?: {
-    bank: string;
-    accountName: string;
-    accountNumber: string;
-    ifsc: string;
-    accountType: string;
-    upiNote: string;
-  };
 }
 
 function parseDuration(duration: string): { days: number; nights: number } {
@@ -385,7 +375,6 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       cancellationPolicy: TIERED_CANCELLATION_POLICY,
       confirmationPolicy: CONFIRMATION_POLICY,
       contactNumbers: TRIP_CONTACT_NUMBERS,
-      paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
       thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
       rentalGear: TREK_RENTAL_GEAR,
       thingsToRemember: TRIP_GROUND_RULES,
@@ -483,7 +472,6 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       confirmationPolicy: CONFIRMATION_POLICY,
       contactNumbers: TRIP_CONTACT_NUMBERS,
       contactPhone: "+91 81786 13438",
-      paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
       relatedSlugs: ["madhyamaheshwar-trek-4-day", "three-kedar-yatra", "panch-kedar-yatra"],
     }
   ),
@@ -567,7 +555,6 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       thingsToRemember: TRIP_GROUND_RULES,
       confirmationPolicy: CONFIRMATION_POLICY,
       contactNumbers: TRIP_CONTACT_NUMBERS,
-      paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
       relatedSlugs: ["chopta-tungnath-trek", "shimla-manali"],
     }
   ),
@@ -858,7 +845,6 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       cancellationPolicy: TRIP_CANCELLATION_POLICY,
       bookingAdvance: TRIP_BOOKING_TERMS.advancePerPerson,
       balanceDueDays: TRIP_BOOKING_TERMS.balanceDueDays,
-      paymentDetails: PAYMENT_DETAILS_KERALA,
       relatedSlugs: ["kerala-thekkady", "kerala"],
     }
   ),
@@ -979,7 +965,6 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       cancellationPolicy: TRIP_CANCELLATION_POLICY,
       bookingAdvance: TRIP_BOOKING_TERMS.advancePerPerson,
       balanceDueDays: TRIP_BOOKING_TERMS.balanceDueDays,
-      paymentDetails: PAYMENT_DETAILS_KERALA,
       relatedSlugs: ["kerala-special", "kerala"],
     }
   ),
@@ -1060,7 +1045,6 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       cancellationPolicy: TIERED_CANCELLATION_POLICY,
       confirmationPolicy: CONFIRMATION_POLICY,
       contactNumbers: TRIP_CONTACT_NUMBERS,
-      paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
       thingsToCarry: [
         "40–60 L rucksack with rain cover",
         "Hot and cold water bottle",
@@ -1145,7 +1129,6 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       cancellationPolicy: TIERED_CANCELLATION_POLICY,
       confirmationPolicy: CONFIRMATION_POLICY,
       contactNumbers: TRIP_CONTACT_NUMBERS,
-      paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
       thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
       rentalGear: TREK_RENTAL_GEAR,
       thingsToRemember: TRIP_GROUND_RULES,
@@ -1212,7 +1195,6 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       cancellationPolicy: TIERED_CANCELLATION_POLICY,
       confirmationPolicy: CONFIRMATION_POLICY,
       contactNumbers: TRIP_CONTACT_NUMBERS,
-      paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
       thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
       rentalGear: TREK_RENTAL_GEAR,
       thingsToRemember: TRIP_GROUND_RULES,
@@ -1307,7 +1289,6 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       confirmationPolicy: CONFIRMATION_POLICY,
       contactNumbers: TRIP_CONTACT_NUMBERS,
       contactPhone: "+91 81786 13438",
-      paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
       thingsToRemember: TRIP_GROUND_RULES,
       relatedSlugs: ["madmaheshwar-trek", "three-kedar-yatra", "panch-kedar-yatra"],
     }
@@ -1359,7 +1340,6 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       cancellationPolicy: TIERED_CANCELLATION_POLICY,
       confirmationPolicy: CONFIRMATION_POLICY,
       contactNumbers: TRIP_CONTACT_NUMBERS,
-      paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
       thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
       rentalGear: TREK_RENTAL_GEAR,
       thingsToRemember: TRIP_GROUND_RULES,
@@ -1413,7 +1393,6 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       cancellationPolicy: TIERED_CANCELLATION_POLICY,
       confirmationPolicy: CONFIRMATION_POLICY,
       contactNumbers: TRIP_CONTACT_NUMBERS,
-      paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
       thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
       rentalGear: TREK_RENTAL_GEAR,
       thingsToRemember: TRIP_GROUND_RULES,
@@ -1475,7 +1454,6 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       cancellationPolicy: TIERED_CANCELLATION_POLICY,
       confirmationPolicy: CONFIRMATION_POLICY,
       contactNumbers: TRIP_CONTACT_NUMBERS,
-      paymentDetails: PAYMENT_DETAILS_HIMALAYAN,
       thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
       thingsToRemember: TRIP_GROUND_RULES,
       relatedSlugs: ["kedarnath-yatra", "char-dham-yatra", "chopta-tungnath-trek"],
@@ -1582,7 +1560,6 @@ export function tripToTrek(trip: TripListingItem): Trek {
     bookingAdvance: trip.bookingAdvance,
     balanceDueDays: trip.balanceDueDays,
     kidsPolicy: trip.kidsPolicy,
-    paymentDetails: trip.paymentDetails,
     confirmationPolicy: trip.confirmationPolicy,
 
     // Essentials & logistics
