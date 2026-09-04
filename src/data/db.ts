@@ -170,6 +170,30 @@ export interface RelatedArticle {
   image: string;
 }
 
+/** One block of a long-form guide: an optional heading and its prose. */
+export interface ArticleSection {
+  /** Omitted on the opening block, which runs straight into prose under the title. */
+  heading?: string;
+  paragraphs: string[];
+}
+
+/**
+ * A written guide published against a listing, rendered in full in the Article
+ * section. Listings without one fall back to the generic teaser card that
+ * points at the blog.
+ */
+export interface ArticleContent {
+  title: string;
+  /** Standfirst printed under the title. */
+  standfirst?: string;
+  readMinutes?: number;
+  /** Lead image. Falls back to the listing's hero when unset. */
+  image?: string;
+  sections: ArticleSection[];
+  /** Sign-off line printed after the last section. */
+  signoff?: string;
+}
+
 export interface TravelOption {
   from: string;
   name: string;
@@ -298,6 +322,8 @@ export interface Trek {
   /** YouTube review videos, as watch/Shorts URLs. */
   reviewVideos?: string[];
   relatedArticles?: RelatedArticle[];
+  /** Long-form written guide for this listing, shown in the Article section. */
+  article?: ArticleContent;
   howToReach?: HowToReach;
 
   /**
@@ -873,14 +899,20 @@ export const TREKS: Trek[] = [
   {
     "slug": "kuari-pass-trek",
     "name": "Kuari Pass Trek",
-    "price": 8999,
+    "tagline": "Six days from Dehradun over Lord Curzon's trail to the 12,516 ft Kuari Pass, facing Nanda Devi, Dronagiri, Kamet and Chaukhamba.",
+    "price": 7999,
     "days": 6,
     "nights": 5,
     "region": "Uttarakhand",
     "category": "Upcoming Winter Treks",
     "startLocation": "Dehradun To Dehradun",
+    "endLocation": "Dehradun",
     "difficulty": "Moderate",
+    "maxAltitude": "12,516 ft / 3,815 m",
+    "totalDistance": "30–35 Kilometers",
+    "availability": "December – June & September – November",
     "months": [
+      "Sep",
       "Oct",
       "Nov",
       "Dec",
@@ -889,8 +921,7 @@ export const TREKS: Trek[] = [
       "Mar",
       "Apr",
       "May",
-      "Jun",
-      "Jul"
+      "Jun"
     ],
     "themes": [
       "Snow",
@@ -3220,4 +3251,774 @@ if (kedarkanthaIndex !== -1) {
       }
     ];
   }
+}
+
+// Static details for Kuari Pass Trek (uid: kuari-pass-trek), the Lord Curzon Trail.
+// Trek essentials (packing list) and the cancellation policy are deliberately
+// left unset: Kedarkantha publishes neither either, so both listings render the
+// same shared copy from `trekDefaults.ts` / `TrekCancellation`.
+const kuariPassIndex = TREKS.findIndex(t => t.slug === 'kuari-pass-trek');
+if (kuariPassIndex !== -1) {
+  TREKS[kuariPassIndex].aboutParagraphs = [
+    "Kuari Pass is a high crossing in the Garhwal Himalayas of Uttarakhand, reached from Joshimath. The trail climbs through dense oak and rhododendron forest, opens into alpine meadows and follows high ridges to the pass at 12,516 ft (3,815 m), covering roughly 30–35 km over 6 days and 5 nights. It is graded moderate, and the standard route asks for no technical climbing.",
+    "The route is better known as the Lord Curzon Trail, after the viceroy who popularised it in 1905. What sets it apart is the panorama from the pass itself: Nanda Devi, Dronagiri, Kamet, Chaukhamba and Trishul stand around the crossing in what amounts to a natural amphitheatre, without any of the mountaineering the peaks themselves would demand.",
+    "From Joshimath a short drive reaches the roadhead, and the trek proper begins through traditional Himalayan villages and forest to the campsite at Gulling. Day three climbs to the open meadows of Khullara, and from there summit day crosses meadow and ridge to the pass and back. The views widen with every hundred metres of altitude gained.",
+    "In winter the whole route above Gulling lies under snow and the trail becomes considerably more demanding; spring and autumn trade the snow for green meadows, colour in the forest and the clearest mountain views of the year. That range is why the pass suits both a prepared first-timer and a trekker who has been at altitude before."
+  ];
+
+  TREKS[kuariPassIndex].highlights = [
+    "Kuari Pass summit at 12,516 ft",
+    "The historic Lord Curzon Trail",
+    "Winter snow trails",
+    "Gorson Bugyal & Auli",
+    "Nanda Devi & Dronagiri views",
+    "Chaukhamba & Kamet range views",
+    "Oak & rhododendron forests",
+    "Alpine meadows",
+    "Himalayan camping"
+  ];
+
+  TREKS[kuariPassIndex].usps = [
+    {
+      title: "Base town: Joshimath",
+      description: "The trek is run out of Joshimath at 7,545 ft, reached on a 280 km drive from Dehradun, with a short 15 km transfer to the roadhead on the first and last trekking days."
+    },
+    {
+      title: "The Lord Curzon Trail",
+      description: "The route Lord Curzon popularised in 1905, still one of the classic walks of the Garhwal — history and high Himalayan views on the same trail."
+    },
+    {
+      title: "Khullara meadow campsite",
+      description: "Two nights at Khullara, around 11,014 ft, where the forest gives way to open meadow and the Nanda Devi group is in full view on a clear morning."
+    },
+    {
+      title: "Summit day to 12,516 ft",
+      description: "An early start from Khullara for 8 km and 8–9 hours across meadow and ridge to the pass and back, the longest and most rewarding day of the trek."
+    },
+    {
+      title: "A snow trek from December to March",
+      description: "Through the winter months the trail above Gulling is under snow, and gaiters or microspikes may be needed on the approach to the pass depending on conditions."
+    }
+  ];
+
+  TREKS[kuariPassIndex].destinationHighlights = [
+    { name: "Joshimath", blurb: "The Garhwal hill town at 7,545 ft that serves as base for the trek, and the gateway to Auli and the Nanda Devi region." },
+    { name: "Tugasi Village", blurb: "The roadhead at about 8,530 ft, a short drive from Joshimath, where the walking begins and ends." },
+    { name: "Gulling", blurb: "The first campsite at roughly 9,264 ft, set among Himalayan forest with the valley opening out below." },
+    { name: "Khullara", blurb: "Open meadow camp at about 11,014 ft, the highest night of the trek and its finest viewpoint short of the pass." },
+    { name: "Kuari Pass", blurb: "The 12,516 ft / 3,815 m high point, ringed by Nanda Devi, Dronagiri, Kamet and Chaukhamba." }
+  ];
+
+  TREKS[kuariPassIndex].differentiators = [
+    "Region: Garhwal Himalayas, Chamoli district, Uttarakhand",
+    "Trek type: pass crossing — Kuari Pass at 12,516 ft is the high point of the route",
+    "Terrain: forest trails, alpine meadows, high ridges and, in winter, snow",
+    "Known as: the Lord Curzon Trail, popularised in 1905"
+  ];
+
+  TREKS[kuariPassIndex].idealFor =
+    "First-time trekkers with good fitness, experienced trekkers, snow-trek and mountain-photography enthusiasts.";
+
+  TREKS[kuariPassIndex].importantNote =
+    "Between December and March the route above Gulling is snowbound and the grade rises from moderate to moderate–challenging; gaiters and microspikes may be required on summit day, and your guide will call the start time on the conditions. The panorama from the pass depends entirely on the weather, so treat a clear morning as a bonus rather than a guarantee.";
+
+  TREKS[kuariPassIndex].itinerary = [
+    {
+      day: 1,
+      title: "Dehradun to Joshimath",
+      driveDistance: "280 km",
+      drivingTime: "9-10 Hours",
+      pickupPoint: "Dehradun Railway Station / Prince Chowk",
+      altitudePoints: [
+        { location: "Dehradun", m: 637, ft: 2089 },
+        { location: "Joshimath", m: 2300, ft: 7545 }
+      ],
+      altitudeGain: { m: 1663, ft: 5456 },
+      description: "A long, scenic drive up the Alaknanda valley to Joshimath, the base for the trek.",
+      detailedParagraphs: [
+        "Your Kuari Pass adventure begins early in the morning from Dehradun. We drive towards Joshimath, the gateway to some of the most spectacular trekking routes in Uttarakhand.",
+        "The journey takes you through Rishikesh, Devprayag, Srinagar, Rudraprayag, Karnaprayag and Nandaprayag. Along the way you pass the dramatic valleys and sacred river confluences that make the Garhwal Himalayas what they are.",
+        "As the road climbs towards Joshimath the landscape changes from river valleys to towering mountains and dense Himalayan forest.",
+        "On reaching Joshimath, check into your hotel and meet your trek leader and fellow trekkers. The team runs a trek briefing and equipment check, and explains the plan for the days ahead."
+      ],
+      highlights: ["Alaknanda Valley Drive", "River Confluences", "Joshimath", "Trek Briefing"],
+      meals: "Dinner",
+      stayType: "Hotel in Joshimath — twin/triple sharing"
+    },
+    {
+      day: 2,
+      title: "Joshimath to Tugasi Village, trek to Gulling",
+      driveDistance: "15 km",
+      trekDistance: "3 km",
+      trekDuration: "3-4 Hours",
+      altitudePoints: [
+        { location: "Joshimath", m: 2300, ft: 7545 },
+        { location: "Tugasi Village", m: 2600, ft: 8530 },
+        { location: "Gulling", m: 2824, ft: 9264 }
+      ],
+      altitudeGain: { m: 524, ft: 1719 },
+      description: "A short transfer to the roadhead, then an easy first walk through forest to the Gulling campsite.",
+      detailedParagraphs: [
+        "After breakfast, leave Joshimath and drive to Tugasi Village, the roadhead for the trek.",
+        "From Tugasi the trekking begins. The trail climbs gradually through traditional Himalayan landscapes, terraced slopes and forested sections.",
+        "As you gain altitude the views open up, revealing the valleys below and the first of the distant Himalayan peaks. The short first day is deliberate — it gives your body time to adapt to the altitude.",
+        "After a few hours of walking you reach Gulling campsite. Settle into your tent, eat a warm meal and spend the evening in the quiet of the mountains."
+      ],
+      highlights: ["Himalayan Villages", "Forest Trail", "Valley Views", "First Camp"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Gulling campsite — twin sharing"
+    },
+    {
+      day: 3,
+      title: "Gulling to Khullara",
+      trekDistance: "5.5 km",
+      trekDuration: "4-5 Hours",
+      altitudePoints: [
+        { location: "Gulling", m: 2824, ft: 9264 },
+        { location: "Khullara", m: 3357, ft: 11014 }
+      ],
+      altitudeGain: { m: 533, ft: 1750 },
+      description: "A steady climb through oak and rhododendron forest to the open meadow camp at Khullara.",
+      detailedParagraphs: [
+        "Wake up to mountain views and, weather permitting, a spectacular Himalayan sunrise.",
+        "After breakfast, begin the trek towards Khullara. The trail climbs steadily through dense oak and rhododendron forest, with occasional clearings that open onto the surrounding ranges.",
+        "Higher up, the vegetation thins and the landscape gives way to high-altitude meadows and ridges. The trail is scenic rather than technical, but the altitude makes the climb more demanding — take regular breaks, stay hydrated and hold a comfortable pace.",
+        "By afternoon you arrive at Khullara campsite, one of the finest camps on the trek, with wide Himalayan views in every direction. Spend the evening resting and preparing for the hardest and best day of the trek."
+      ],
+      highlights: ["Oak & Rhododendron Forest", "Nanda Devi Views", "Dronagiri Views", "Meadow Camp"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Khullara campsite — twin sharing"
+    },
+    {
+      day: 4,
+      title: "Khullara to Kuari Pass and back",
+      trekDistance: "8 km",
+      trekDuration: "8-9 Hours",
+      timeNote: { label: "Summit start", value: "Early morning" },
+      altitudePoints: [
+        { location: "Khullara", m: 3357, ft: 11014 },
+        { location: "Kuari Pass", m: 3815, ft: 12516 },
+        { location: "Khullara", m: 3357, ft: 11014 }
+      ],
+      altitudeGain: { m: 458, ft: 1502 },
+      description: "The summit day — meadow and ridge to the pass at 12,516 ft, with Nanda Devi, Dronagiri, Kamet and Chaukhamba all around, then back down to camp.",
+      detailedParagraphs: [
+        "This is the most exciting and most demanding day of your Kuari Pass Trek.",
+        "Start early from Khullara. The trail moves into high-altitude meadows and ridges, and the landscape grows steadily more open and more dramatic.",
+        "The final approach is a steady climb to the pass. In winter, snow can make the trail considerably harder, and gear such as gaiters or microspikes may be needed depending on conditions.",
+        "After several hours you reach Kuari Pass at approximately 12,516 ft. Standing at the crossing, you are surrounded by an extraordinary Himalayan panorama — on a clear day the view takes in Nanda Devi, Dronagiri, Kamet and Chaukhamba. Take the time to enjoy it, and to photograph it.",
+        "Then begin the descent to Khullara. The return is easier on the lungs, though it can still be demanding on the legs after a long day. Reach camp by evening for a warm dinner and a well-earned rest."
+      ],
+      highlights: [
+        "Kuari Pass at 12,516 ft",
+        "Panoramic Himalayan Views",
+        "Nanda Devi & Kamet",
+        "Chaukhamba & Dronagiri",
+        "High Ridge Walk"
+      ],
+      meals: "Breakfast, Packed Lunch & Dinner",
+      stayType: "Khullara campsite — twin sharing"
+    },
+    {
+      day: 5,
+      title: "Khullara to Tugasi Village, drive to Joshimath",
+      trekDistance: "8.5 km",
+      trekDuration: "5-7 Hours",
+      driveDistance: "15 km",
+      drivingTime: "30 Minutes-1 Hour",
+      altitudePoints: [
+        { location: "Khullara", m: 3357, ft: 11014 },
+        { location: "Tugasi Village", m: 2600, ft: 8530 },
+        { location: "Joshimath", m: 2300, ft: 7545 }
+      ],
+      altitudeGain: null,
+      description: "The long descent off the meadows and back through forest to the roadhead, then a short drive to Joshimath.",
+      detailedParagraphs: [
+        "After breakfast, begin the descent from Khullara towards Tugasi Village.",
+        "The trail takes you back through Himalayan forest and mountain slopes. After several days at altitude the descent feels refreshing as the air warms and the landscape changes around you.",
+        "Walk at a comfortable pace and enjoy the last stretch of trail. At Tugasi Village the trekking section comes to an end, and you board the vehicle for the short drive back to Joshimath.",
+        "Check into the hotel, freshen up and relax after completing the trek. Spend the evening trading stories with the rest of the group."
+      ],
+      highlights: ["Forest Descent", "Trek Ends at Tugasi", "Return to Joshimath"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Hotel in Joshimath — twin/triple sharing"
+    },
+    {
+      day: 6,
+      title: "Joshimath to Dehradun",
+      driveDistance: "280 km",
+      drivingTime: "9-10 Hours",
+      timeNote: { label: "Drop-off", value: "Dehradun Railway Station / Prince Chowk" },
+      altitudePoints: [
+        { location: "Joshimath", m: 2300, ft: 7545 },
+        { location: "Dehradun", m: 637, ft: 2089 }
+      ],
+      altitudeGain: null,
+      description: "The drive back down the Alaknanda valley to Dehradun, where the trek concludes.",
+      detailedParagraphs: [
+        "After breakfast, begin the journey back to Dehradun.",
+        "The drive follows the scenic mountain route through Nandaprayag, Karnaprayag, Rudraprayag, Srinagar, Devprayag and Rishikesh.",
+        "As you descend from the mountains towards the plains, take one last look at the landscapes that have been home for the past few days.",
+        "The Kuari Pass Trek officially concludes on arrival in Dehradun — with photographs, and with the memory of Himalayan forest, high meadows, snow trails and the mountains of Uttarakhand."
+      ],
+      highlights: ["Alaknanda Valley", "River Confluences", "Journey Ends"],
+      meals: "Breakfast",
+      // The trek ends on this day; an empty stay keeps the generic
+      // "Hotel / Homestay" fallback out of the day's quick-info line.
+      stayType: ""
+    }
+  ];
+
+  /**
+   * The source listing and its own itinerary disagree on two figures, so both
+   * are recorded as published rather than quietly reconciled: the roadhead is
+   * named as Dhak Village in the route summary but as Tugasi Village on every
+   * itinerary day, and the headline 30–35 km does not match the per-day
+   * distances, which total about 25 km.
+   */
+  TREKS[kuariPassIndex].sourceCaveat =
+    "The published route names the roadhead as Dhak Village, while the day-by-day itinerary starts and ends the walk at Tugasi Village; the daily trek distances total about 25 km against a headline figure of 30–35 km. Both are listed here as published — your trek leader will confirm the roadhead used on your departure.";
+
+  TREKS[kuariPassIndex].faqs = [
+    {
+      title: "What is the Kuari Pass Trek?",
+      description: "Kuari Pass Trek is a scenic high-altitude trek in Uttarakhand, famous for the historic Lord Curzon Trail, alpine meadows, Himalayan forests and panoramic views of peaks such as Nanda Devi, Dronagiri, Chaukhamba and Kamet."
+    },
+    {
+      title: "How difficult is the Kuari Pass Trek?",
+      description: "Kuari Pass is generally rated Moderate. The trek involves continuous ascents, high-altitude terrain and long trekking days. During winter, snow and icy sections can make the trek more challenging."
+    },
+    {
+      title: "What is the maximum altitude of Kuari Pass?",
+      description: "Kuari Pass reaches approximately 12,500 ft (3,815 m) above sea level."
+    },
+    {
+      title: "How many days are required for the Kuari Pass Trek?",
+      description: "The standard Trip My Soul itinerary is 6 Days / 5 Nights, including transportation from Dehradun, the trek and return to Dehradun."
+    },
+    {
+      title: "What is the best time to do the Kuari Pass Trek?",
+      description: "Kuari Pass can be experienced in different seasons. December to March is popular for a snow experience, while April to June and September to November offer different landscapes and generally clearer mountain views. Actual snow conditions vary each year."
+    },
+    {
+      title: "Is Kuari Pass suitable for beginners?",
+      description: "Yes. Kuari Pass can be suitable for fit beginners with proper preparation. You should be comfortable walking several kilometres and climbing continuously for a few hours. Good cardiovascular fitness is especially important."
+    },
+    {
+      title: "How do I reach the Kuari Pass Trek starting point?",
+      description: "Trip My Soul’s standard itinerary starts from Dehradun. From Dehradun, you travel by road to Joshimath and then continue towards Tugasi Village, from where the trekking route begins."
+    },
+    {
+      title: "Will there be snow on the Kuari Pass Trek?",
+      description: "Snow is most likely during the winter months, particularly from December to March, but the amount of snow depends on seasonal weather conditions. Snow cannot be guaranteed on every departure."
+    },
+    {
+      title: "What accommodation is provided during the trek?",
+      description: "The itinerary includes hotel accommodation in Joshimath and camping accommodation during the trekking days. Camping is generally on a twin-sharing basis, subject to campsite conditions."
+    },
+    {
+      title: "What should I carry for the Kuari Pass Trek?",
+      description: "Essential items include good trekking shoes, warm layers, waterproof jacket, thermal wear, gloves, woollen cap, sunglasses, sunscreen, water bottles, personal medicines, headlamp and a trekking backpack. During winter, gaiters and microspikes may be required depending on snow conditions."
+    }
+  ];
+
+  TREKS[kuariPassIndex].article = {
+    title: "Kuari Pass Trek: A Journey Where the Mountains Speak to Your Soul",
+    standfirst:
+      "Ancient forests, quiet mountain villages, vast alpine meadows and a high Himalayan ridge — the Lord Curzon Trail, told the way it is felt.",
+    readMinutes: 7,
+    sections: [
+      {
+        paragraphs: [
+          "There are journeys where you travel to reach a destination.",
+          "And then there are journeys where the destination becomes only an excuse to discover yourself.",
+          "Kuari Pass is one of those journeys.",
+          "Hidden in the Garhwal Himalayas of Uttarakhand, the Kuari Pass Trek takes you through ancient forests, quiet mountain villages, vast alpine meadows and high Himalayan ridges. But beyond the altitude and distance, there is something about this trail that stays with you long after you have returned home.",
+          "It is not just a trek.",
+          "It is a conversation with the mountains."
+        ]
+      },
+      {
+        heading: "The Beginning: Leaving the Ordinary Behind",
+        paragraphs: [
+          "The journey begins from Dehradun.",
+          "As the road leaves the city behind and enters the mountains, everything slowly changes. The noise becomes quieter. The air becomes cooler. The roads become narrower, while the mountains become bigger.",
+          "You travel through Rishikesh, Devprayag, Srinagar, Rudraprayag and Karnaprayag before reaching Joshimath.",
+          "Along the way, rivers meet rivers, valleys open beneath you and Himalayan villages appear on distant slopes.",
+          "By the time you reach Joshimath, you realise that you have already left your everyday life far behind.",
+          "Tomorrow, the real journey begins."
+        ]
+      },
+      {
+        heading: "Walking Into the Himalayas",
+        paragraphs: [
+          "From Tugasi Village, you finally put your feet on the trail.",
+          "The first few steps may feel ordinary.",
+          "But slowly, the world begins to change.",
+          "The sound of vehicles disappears. The forest becomes your companion. Oak and rhododendron trees surround the trail, while the mountains appear through gaps between the branches.",
+          "Every turn reveals something new.",
+          "A distant peak.",
+          "A quiet valley.",
+          "A small Himalayan village.",
+          "Or simply a moment of silence that you didn’t know you needed.",
+          "And somewhere along the trail, you stop checking your phone.",
+          "Because there is finally nothing more interesting on the screen than what is standing in front of you."
+        ]
+      },
+      {
+        heading: "Gulling: Your First Night Under the Mountains",
+        paragraphs: [
+          "When you reach Gulling, the mountains begin to feel closer.",
+          "The campsite becomes your home for the night.",
+          "As evening arrives, the temperature drops and the sky slowly fills with stars.",
+          "There are no city lights competing with them.",
+          "Just darkness, mountains and an endless Himalayan sky.",
+          "You sit around the campsite with people who were strangers only a day ago.",
+          "Stories begin.",
+          "Laughter follows.",
+          "And somehow, by the end of the evening, everyone feels like they have known each other for much longer.",
+          "This is one of the beautiful things about trekking.",
+          "The mountains have a way of turning strangers into companions."
+        ]
+      },
+      {
+        heading: "Khullara: Where the Mountains Begin to Open Up",
+        paragraphs: [
+          "The trail towards Khullara takes you deeper into the Himalayas.",
+          "The forests gradually begin to thin, and the landscape starts opening into wide mountain views.",
+          "With every step, you gain altitude.",
+          "And with every step, the mountains become more magnificent.",
+          "Nanda Devi and Dronagiri begin to dominate the horizon when the weather is clear.",
+          "You may feel tired.",
+          "Your legs may ask you to stop.",
+          "But then you look up.",
+          "And suddenly, the tiredness feels worth it.",
+          "Because some views cannot be explained in photographs.",
+          "They have to be earned with your feet."
+        ]
+      },
+      {
+        heading: "The Day of Kuari Pass",
+        paragraphs: [
+          "Then comes the day you have been waiting for.",
+          "You wake up early.",
+          "The morning is cold.",
+          "The trail ahead is long.",
+          "But there is excitement in the air.",
+          "Today, you walk towards Kuari Pass.",
+          "The trail climbs through high-altitude meadows and mountain ridges. During winter, snow can transform the landscape into a completely different world.",
+          "Step by step, you continue upwards.",
+          "There may be moments when your breathing becomes heavier.",
+          "There may be moments when you wonder how much farther you have to go.",
+          "But eventually, the trail rises one final time.",
+          "And you reach the pass."
+        ]
+      },
+      {
+        heading: "Standing at 12,500+ Feet",
+        paragraphs: [
+          "At Kuari Pass, something changes.",
+          "You stop walking.",
+          "You simply stand there.",
+          "Around you are some of the greatest landscapes the Himalayas have to offer.",
+          "Nanda Devi.",
+          "Dronagiri.",
+          "Chaukhamba.",
+          "Kamet.",
+          "The peaks rise beyond the ridges, enormous and silent.",
+          "For a few moments, nobody needs to say anything.",
+          "Because there are moments when words become too small.",
+          "You look back at the trail you walked.",
+          "The forests.",
+          "The campsites.",
+          "The climbs.",
+          "The cold mornings.",
+          "The tired legs.",
+          "And you realise something.",
+          "The mountain was never just something you were climbing.",
+          "It was showing you how far you could go."
+        ]
+      },
+      {
+        heading: "The Descent: Leaving, But Not Really Leaving",
+        paragraphs: [
+          "Eventually, every trek has to end.",
+          "You descend from the high mountains towards Tugasi and return to Joshimath.",
+          "The scenery changes again.",
+          "The air becomes warmer.",
+          "The forests become denser.",
+          "The road takes you back towards the towns.",
+          "But something inside you feels different.",
+          "You came to the Himalayas looking for a trek.",
+          "You leave carrying memories.",
+          "The sunrise from the campsite.",
+          "The sound of your footsteps on the trail.",
+          "The laughter around the tent.",
+          "The first sight of the Himalayan peaks.",
+          "That one difficult climb.",
+          "And the feeling of standing at Kuari Pass."
+        ]
+      },
+      {
+        heading: "Why Kuari Pass Stays With You",
+        paragraphs: [
+          "Kuari Pass is not the highest trek in the Himalayas.",
+          "It is not about conquering a mountain.",
+          "It is about experiencing one.",
+          "It teaches you to walk slowly.",
+          "To appreciate silence.",
+          "To respect nature.",
+          "To celebrate small victories.",
+          "And sometimes, simply to look up.",
+          "In our everyday lives, we spend so much time trying to reach somewhere.",
+          "The Kuari Pass trail reminds us that sometimes the journey itself is the destination."
+        ]
+      },
+      {
+        heading: "Come Walk With Us",
+        paragraphs: [
+          "At Trip My Soul, we believe a trek should be more than a package.",
+          "It should be a memory you carry for years.",
+          "A sunrise you remember when life gets difficult.",
+          "A mountain view that makes you pause.",
+          "A group of strangers who become friends.",
+          "And a trail that reminds you that you are capable of much more than you thought.",
+          "So, if you are looking for a journey that takes you away from the noise and closer to yourself, pack your backpack.",
+          "Leave the ordinary behind.",
+          "And walk with us into the Himalayas.",
+          "Kuari Pass is waiting."
+        ]
+      }
+    ],
+    signoff: "Trip My Soul — Travel Far. Feel More."
+  };
+
+  TREKS[kuariPassIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: 10–60 years recommended" },
+    { icon: "Footprints", text: "Experience: No prior trekking experience required" },
+    { icon: "Dumbbell", text: "Fitness: Basic to moderate fitness required" },
+    { icon: "Mountain", text: "Altitude: Up to 12,516 ft / 3,815 m" },
+    { icon: "Snowflake", text: "Must be comfortable with cold and snow conditions" },
+    { icon: "Stethoscope", text: "Participants should be medically fit for high-altitude trekking" }
+  ];
+
+  /** Set against this trek's own day lengths, which run longer than Kedarkantha's. */
+  TREKS[kuariPassIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 6–8 km comfortably on uneven ground" },
+    { icon: "TrendingUp", text: "Able to sustain a 5–7 hour walking day, and 8–9 hours on summit day" },
+    { icon: "Dumbbell", text: "Good stamina and leg strength for continuous ascent and descent" },
+    { icon: "Backpack", text: "Comfortable carrying a light daypack" },
+    { icon: "Activity", text: "Regular walking, jogging or stair training for 4–6 weeks before the trek is recommended" }
+  ];
+
+  TREKS[kuariPassIndex].howToReach = {
+    intro: "The Kuari Pass Trek starts from the Joshimath–Dhak/Tugasi region of Chamoli, Uttarakhand. For Trip My Soul, the most convenient meeting point is Dehradun, from where trekkers travel by road to Joshimath.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "From the airport, travel by taxi or cab to Joshimath — roughly 260–280 km depending on the route, and about 9–11 hours on the road depending on traffic and conditions. From Joshimath, continue by local vehicle towards Dhak/Tugasi, the trek starting area. Recommended for travellers coming from Delhi, Mumbai, Bengaluru and other cities with flight connectivity to Dehradun."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Rishikesh Railway Station",
+      detail: "From Rishikesh, travel by bus, shared taxi or private cab towards Joshimath — about 9–11 hours by road — then take a local taxi to Dhak/Tugasi, the trek starting point. Haridwar Railway Station is also a convenient railhead with good connectivity, followed by the same road journey to Joshimath."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Dehradun to Joshimath via Rudraprayag and Karnaprayag",
+      detail: "Joshimath is well connected by road with Dehradun, Rishikesh and Haridwar. From Joshimath, drive towards Dhak/Tugasi Village, where the trekking route begins.",
+      route: ["Dehradun", "Rishikesh", "Devprayag", "Srinagar", "Rudraprayag", "Karnaprayag", "Nandaprayag", "Chamoli", "Joshimath"],
+      facts: [
+        { label: "Distance", value: "~280 km" },
+        { label: "Drive", value: "~9–11 hours" },
+        { label: "Options", value: "Bus / Shared Taxi / Private Cab / Tempo Traveller" }
+      ]
+    },
+    pickup: {
+      point: "Dehradun",
+      time: "Morning of Day 1",
+      dropPoint: "Dehradun",
+      dropTime: "Evening of Day 6",
+      note: "Route for TMS trekkers: Dehradun → Joshimath → Tugasi/Dhak → Gulling → Khullara → Kuari Pass."
+    }
+  };
+
+  TREKS[kuariPassIndex].bookingAdvance = 2000;
+
+  TREKS[kuariPassIndex].bookingTerms = [
+    { title: "Trek Price", description: "₹7,999 per person." },
+    { title: "Booking Amount", description: "₹2,000 per person to confirm your seat." },
+    { title: "Balance Payment", description: "Remaining amount to be paid before the departure." },
+    { title: "Confirmation", description: "Booking is confirmed after payment of the required booking amount." },
+    { title: "ID Proof", description: "Valid government-issued ID is mandatory for all trekkers." },
+    { title: "Fitness & Medical", description: "Trekkers must meet the required fitness and medical criteria." },
+    { title: "Itinerary Changes", description: "The itinerary may be modified due to weather, snowfall, road conditions, trail conditions or safety requirements." },
+    { title: "Unforeseen Expenses", description: "Any additional expenses caused by unforeseen circumstances will be borne by the trekker." },
+    { title: "On-Trail Instructions", description: "Trekkers must follow the instructions of the Trek Leader and support staff." },
+    { title: "Conduct on the Trail", description: "Littering, alcohol, drugs and unsafe behaviour are strictly prohibited during the trek." },
+    { title: "Right to Modify", description: "Trip My Soul reserves the right to cancel, modify or change the itinerary whenever required for trekker safety." },
+    { title: "Personal Belongings", description: "Personal belongings are the responsibility of the trekker." },
+    { title: "Policies", description: "By booking the trek, participants agree to Trip My Soul’s applicable booking, cancellation and safety policies." }
+  ];
+
+  TREKS[kuariPassIndex].inclusions = [
+    { title: "Transportation", description: "Dehradun → Joshimath → Dehradun, and Joshimath → Tugasi Village → Joshimath." },
+    { title: "Accommodation in Joshimath", description: "Twin/triple sharing." },
+    { title: "Camping accommodation", description: "Tents at the campsites during the trek." },
+    { title: "Meals", description: "All meals during the trek as mentioned in the itinerary." },
+    { title: "Trek Leader", description: "Experienced Trek Leader for the batch." },
+    { title: "Local Trek Guide", description: "Local guide familiar with the Kuari Pass route." },
+    { title: "Support Staff", description: "Professional trek support staff." },
+    { title: "Camping Equipment", description: "Camping tents, sleeping bags and sleeping mats." },
+    { title: "Dining & Kitchen Setup", description: "Dining and kitchen tent setup at the campsites." },
+    { title: "Toilet Tent", description: "Toilet tent at camping sites, wherever required." },
+    { title: "First Aid", description: "First-aid medical kit and basic emergency support." },
+    { title: "Permits", description: "Forest entry fees and applicable permits." },
+    { title: "Operational Charges", description: "All applicable trek-related operational charges mentioned in the itinerary." }
+  ];
+
+  TREKS[kuariPassIndex].exclusions = [
+    { title: "Flights / train tickets", description: "Travel to and from Dehradun." },
+    { title: "Personal expenses", description: "Anything of a personal nature during the trip." },
+    { title: "Personal trekking equipment", description: "Trekking shoes, jackets, poles and other rental equipment." },
+    { title: "Offloading & porters", description: "Backpack offloading charges, and porter or mule charges for personal luggage." },
+    { title: "Insurance", description: "Travel insurance." },
+    { title: "Medical expenses", description: "Medical expenses and personal medicines." },
+    { title: "Emergency evacuation", description: "Evacuation / rescue charges, if required." },
+    { title: "Bottled water & drinks", description: "Bottled water and packaged drinks." },
+    { title: "Extra meals & stay", description: "Extra meals or accommodation outside the planned itinerary." },
+    { title: "Tips & gratuities", description: "Tips and gratuities for the trek staff." },
+    { title: "Weather & roadblocks", description: "Expenses caused by bad weather, landslides, roadblocks or other unforeseen circumstances." },
+    { title: "Anything not listed", description: "Any service or expense not specifically mentioned under Inclusions." }
+  ];
+
+  TREKS[kuariPassIndex].batches = {
+    years: {
+      "2026": {
+        months: [
+          {
+            month: "Nov",
+            year: "2026",
+            trips: [
+              { startDate: "01 Nov", endDate: "06 Nov", status: "Open" },
+              { startDate: "02 Nov", endDate: "07 Nov", status: "Open" },
+              { startDate: "03 Nov", endDate: "08 Nov", status: "Open" },
+              { startDate: "04 Nov", endDate: "09 Nov", status: "Open" },
+              { startDate: "05 Nov", endDate: "10 Nov", status: "Open" },
+              { startDate: "06 Nov", endDate: "11 Nov", status: "Open" },
+              { startDate: "07 Nov", endDate: "12 Nov", status: "Open" },
+              { startDate: "08 Nov", endDate: "13 Nov", status: "Open" },
+              { startDate: "09 Nov", endDate: "14 Nov", status: "Open" },
+              { startDate: "10 Nov", endDate: "15 Nov", status: "Open" },
+              { startDate: "11 Nov", endDate: "16 Nov", status: "Open" },
+              { startDate: "12 Nov", endDate: "17 Nov", status: "Open" },
+              { startDate: "13 Nov", endDate: "18 Nov", status: "Open" },
+              { startDate: "14 Nov", endDate: "19 Nov", status: "Open" },
+              { startDate: "15 Nov", endDate: "20 Nov", status: "Open" },
+              { startDate: "16 Nov", endDate: "21 Nov", status: "Open" },
+              { startDate: "17 Nov", endDate: "22 Nov", status: "Open" },
+              { startDate: "18 Nov", endDate: "23 Nov", status: "Open" },
+              { startDate: "19 Nov", endDate: "24 Nov", status: "Open" },
+              { startDate: "20 Nov", endDate: "25 Nov", status: "Open" },
+              { startDate: "21 Nov", endDate: "26 Nov", status: "Open" },
+              { startDate: "22 Nov", endDate: "27 Nov", status: "Open" },
+              { startDate: "23 Nov", endDate: "28 Nov", status: "Open" },
+              { startDate: "24 Nov", endDate: "29 Nov", status: "Open" },
+              { startDate: "25 Nov", endDate: "30 Nov", status: "Open" },
+              { startDate: "26 Nov", endDate: "01 Dec", status: "Open" },
+              { startDate: "27 Nov", endDate: "02 Dec", status: "Open" },
+              { startDate: "28 Nov", endDate: "03 Dec", status: "Open" },
+              { startDate: "29 Nov", endDate: "04 Dec", status: "Open" },
+              { startDate: "30 Nov", endDate: "05 Dec", status: "Open" }
+            ]
+          },
+          {
+            month: "Dec",
+            year: "2026",
+            trips: [
+              { startDate: "01 Dec", endDate: "06 Dec", status: "Open" },
+              { startDate: "02 Dec", endDate: "07 Dec", status: "Open" },
+              { startDate: "03 Dec", endDate: "08 Dec", status: "Open" },
+              { startDate: "04 Dec", endDate: "09 Dec", status: "Open" },
+              { startDate: "05 Dec", endDate: "10 Dec", status: "Open" },
+              { startDate: "06 Dec", endDate: "11 Dec", status: "Open" },
+              { startDate: "07 Dec", endDate: "12 Dec", status: "Open" },
+              { startDate: "08 Dec", endDate: "13 Dec", status: "Open" },
+              { startDate: "09 Dec", endDate: "14 Dec", status: "Open" },
+              { startDate: "10 Dec", endDate: "15 Dec", status: "Open" },
+              { startDate: "11 Dec", endDate: "16 Dec", status: "Open" },
+              { startDate: "12 Dec", endDate: "17 Dec", status: "Open" },
+              { startDate: "13 Dec", endDate: "18 Dec", status: "Open" },
+              { startDate: "14 Dec", endDate: "19 Dec", status: "Open" },
+              { startDate: "15 Dec", endDate: "20 Dec", status: "Open" },
+              { startDate: "16 Dec", endDate: "21 Dec", status: "Open" },
+              { startDate: "17 Dec", endDate: "22 Dec", status: "Open" },
+              { startDate: "18 Dec", endDate: "23 Dec", status: "Open" },
+              { startDate: "19 Dec", endDate: "24 Dec", status: "Open" },
+              { startDate: "20 Dec", endDate: "25 Dec", status: "Open" },
+              { startDate: "21 Dec", endDate: "26 Dec", status: "Open" },
+              { startDate: "22 Dec", endDate: "27 Dec", status: "Open" },
+              { startDate: "23 Dec", endDate: "28 Dec", status: "Open" },
+              { startDate: "24 Dec", endDate: "29 Dec", status: "Open" },
+              { startDate: "25 Dec", endDate: "30 Dec", status: "Open" },
+              { startDate: "26 Dec", endDate: "31 Dec", status: "Open" },
+              { startDate: "27 Dec", endDate: "01 Jan", status: "Open" },
+              { startDate: "28 Dec", endDate: "02 Jan", status: "Open" },
+              { startDate: "29 Dec", endDate: "03 Jan", status: "Open" },
+              { startDate: "30 Dec", endDate: "04 Jan", status: "Open" },
+              { startDate: "31 Dec", endDate: "05 Jan", status: "Open" }
+            ]
+          }
+        ]
+      },
+      "2027": {
+        months: [
+          {
+            month: "Jan",
+            year: "2027",
+            trips: [
+              { startDate: "01 Jan", endDate: "06 Jan", status: "Open" },
+              { startDate: "02 Jan", endDate: "07 Jan", status: "Open" },
+              { startDate: "03 Jan", endDate: "08 Jan", status: "Open" },
+              { startDate: "04 Jan", endDate: "09 Jan", status: "Open" },
+              { startDate: "05 Jan", endDate: "10 Jan", status: "Open" },
+              { startDate: "06 Jan", endDate: "11 Jan", status: "Open" },
+              { startDate: "07 Jan", endDate: "12 Jan", status: "Open" },
+              { startDate: "08 Jan", endDate: "13 Jan", status: "Open" },
+              { startDate: "09 Jan", endDate: "14 Jan", status: "Open" },
+              { startDate: "10 Jan", endDate: "15 Jan", status: "Open" },
+              { startDate: "11 Jan", endDate: "16 Jan", status: "Open" },
+              { startDate: "12 Jan", endDate: "17 Jan", status: "Open" },
+              { startDate: "13 Jan", endDate: "18 Jan", status: "Open" },
+              { startDate: "14 Jan", endDate: "19 Jan", status: "Open" },
+              { startDate: "15 Jan", endDate: "20 Jan", status: "Open" },
+              { startDate: "16 Jan", endDate: "21 Jan", status: "Open" },
+              { startDate: "17 Jan", endDate: "22 Jan", status: "Open" },
+              { startDate: "18 Jan", endDate: "23 Jan", status: "Open" },
+              { startDate: "19 Jan", endDate: "24 Jan", status: "Open" },
+              { startDate: "20 Jan", endDate: "25 Jan", status: "Open" },
+              { startDate: "21 Jan", endDate: "26 Jan", status: "Open" },
+              { startDate: "22 Jan", endDate: "27 Jan", status: "Open" },
+              { startDate: "23 Jan", endDate: "28 Jan", status: "Open" },
+              { startDate: "24 Jan", endDate: "29 Jan", status: "Open" },
+              { startDate: "25 Jan", endDate: "30 Jan", status: "Open" },
+              { startDate: "26 Jan", endDate: "31 Jan", status: "Open" },
+              { startDate: "27 Jan", endDate: "01 Feb", status: "Open" },
+              { startDate: "28 Jan", endDate: "02 Feb", status: "Open" },
+              { startDate: "29 Jan", endDate: "03 Feb", status: "Open" },
+              { startDate: "30 Jan", endDate: "04 Feb", status: "Open" },
+              { startDate: "31 Jan", endDate: "05 Feb", status: "Open" }
+            ]
+          },
+          {
+            month: "Feb",
+            year: "2027",
+            trips: [
+              { startDate: "01 Feb", endDate: "06 Feb", status: "Open" },
+              { startDate: "02 Feb", endDate: "07 Feb", status: "Open" },
+              { startDate: "03 Feb", endDate: "08 Feb", status: "Open" },
+              { startDate: "04 Feb", endDate: "09 Feb", status: "Open" },
+              { startDate: "05 Feb", endDate: "10 Feb", status: "Open" },
+              { startDate: "06 Feb", endDate: "11 Feb", status: "Open" },
+              { startDate: "07 Feb", endDate: "12 Feb", status: "Open" },
+              { startDate: "08 Feb", endDate: "13 Feb", status: "Open" },
+              { startDate: "09 Feb", endDate: "14 Feb", status: "Open" },
+              { startDate: "10 Feb", endDate: "15 Feb", status: "Open" },
+              { startDate: "11 Feb", endDate: "16 Feb", status: "Open" },
+              { startDate: "12 Feb", endDate: "17 Feb", status: "Open" },
+              { startDate: "13 Feb", endDate: "18 Feb", status: "Open" },
+              { startDate: "14 Feb", endDate: "19 Feb", status: "Open" },
+              { startDate: "15 Feb", endDate: "20 Feb", status: "Open" },
+              { startDate: "16 Feb", endDate: "21 Feb", status: "Open" },
+              { startDate: "17 Feb", endDate: "22 Feb", status: "Open" },
+              { startDate: "18 Feb", endDate: "23 Feb", status: "Open" },
+              { startDate: "19 Feb", endDate: "24 Feb", status: "Open" },
+              { startDate: "20 Feb", endDate: "25 Feb", status: "Open" },
+              { startDate: "21 Feb", endDate: "26 Feb", status: "Open" },
+              { startDate: "22 Feb", endDate: "27 Feb", status: "Open" },
+              { startDate: "23 Feb", endDate: "28 Feb", status: "Open" },
+              { startDate: "24 Feb", endDate: "01 Mar", status: "Open" },
+              { startDate: "25 Feb", endDate: "02 Mar", status: "Open" },
+              { startDate: "26 Feb", endDate: "03 Mar", status: "Open" },
+              { startDate: "27 Feb", endDate: "04 Mar", status: "Open" },
+              { startDate: "28 Feb", endDate: "05 Mar", status: "Open" }
+            ]
+          },
+          {
+            month: "Mar",
+            year: "2027",
+            trips: [
+              { startDate: "01 Mar", endDate: "06 Mar", status: "Open" },
+              { startDate: "02 Mar", endDate: "07 Mar", status: "Open" },
+              { startDate: "03 Mar", endDate: "08 Mar", status: "Open" },
+              { startDate: "04 Mar", endDate: "09 Mar", status: "Open" },
+              { startDate: "05 Mar", endDate: "10 Mar", status: "Open" },
+              { startDate: "06 Mar", endDate: "11 Mar", status: "Open" },
+              { startDate: "07 Mar", endDate: "12 Mar", status: "Open" },
+              { startDate: "08 Mar", endDate: "13 Mar", status: "Open" },
+              { startDate: "09 Mar", endDate: "14 Mar", status: "Open" },
+              { startDate: "10 Mar", endDate: "15 Mar", status: "Open" },
+              { startDate: "11 Mar", endDate: "16 Mar", status: "Open" },
+              { startDate: "12 Mar", endDate: "17 Mar", status: "Open" },
+              { startDate: "13 Mar", endDate: "18 Mar", status: "Open" },
+              { startDate: "14 Mar", endDate: "19 Mar", status: "Open" },
+              { startDate: "15 Mar", endDate: "20 Mar", status: "Open" },
+              { startDate: "16 Mar", endDate: "21 Mar", status: "Open" },
+              { startDate: "17 Mar", endDate: "22 Mar", status: "Open" },
+              { startDate: "18 Mar", endDate: "23 Mar", status: "Open" },
+              { startDate: "19 Mar", endDate: "24 Mar", status: "Open" },
+              { startDate: "20 Mar", endDate: "25 Mar", status: "Open" },
+              { startDate: "21 Mar", endDate: "26 Mar", status: "Open" },
+              { startDate: "22 Mar", endDate: "27 Mar", status: "Open" },
+              { startDate: "23 Mar", endDate: "28 Mar", status: "Open" },
+              { startDate: "24 Mar", endDate: "29 Mar", status: "Open" },
+              { startDate: "25 Mar", endDate: "30 Mar", status: "Open" },
+              { startDate: "26 Mar", endDate: "31 Mar", status: "Open" },
+              { startDate: "27 Mar", endDate: "01 Apr", status: "Open" },
+              { startDate: "28 Mar", endDate: "02 Apr", status: "Open" },
+              { startDate: "29 Mar", endDate: "03 Apr", status: "Open" },
+              { startDate: "30 Mar", endDate: "04 Apr", status: "Open" },
+              { startDate: "31 Mar", endDate: "05 Apr", status: "Open" }
+            ]
+          },
+          {
+            month: "Apr",
+            year: "2027",
+            trips: [
+              { startDate: "01 Apr", endDate: "06 Apr", status: "Open" },
+              { startDate: "02 Apr", endDate: "07 Apr", status: "Open" },
+              { startDate: "03 Apr", endDate: "08 Apr", status: "Open" },
+              { startDate: "04 Apr", endDate: "09 Apr", status: "Open" },
+              { startDate: "05 Apr", endDate: "10 Apr", status: "Open" },
+              { startDate: "06 Apr", endDate: "11 Apr", status: "Open" },
+              { startDate: "07 Apr", endDate: "12 Apr", status: "Open" },
+              { startDate: "08 Apr", endDate: "13 Apr", status: "Open" },
+              { startDate: "09 Apr", endDate: "14 Apr", status: "Open" },
+              { startDate: "10 Apr", endDate: "15 Apr", status: "Open" },
+              { startDate: "11 Apr", endDate: "16 Apr", status: "Open" },
+              { startDate: "12 Apr", endDate: "17 Apr", status: "Open" },
+              { startDate: "13 Apr", endDate: "18 Apr", status: "Open" },
+              { startDate: "14 Apr", endDate: "19 Apr", status: "Open" },
+              { startDate: "15 Apr", endDate: "20 Apr", status: "Open" },
+              { startDate: "16 Apr", endDate: "21 Apr", status: "Open" },
+              { startDate: "17 Apr", endDate: "22 Apr", status: "Open" },
+              { startDate: "18 Apr", endDate: "23 Apr", status: "Open" },
+              { startDate: "19 Apr", endDate: "24 Apr", status: "Open" },
+              { startDate: "20 Apr", endDate: "25 Apr", status: "Open" },
+              { startDate: "21 Apr", endDate: "26 Apr", status: "Open" },
+              { startDate: "22 Apr", endDate: "27 Apr", status: "Open" },
+              { startDate: "23 Apr", endDate: "28 Apr", status: "Open" },
+              { startDate: "24 Apr", endDate: "29 Apr", status: "Open" },
+              { startDate: "25 Apr", endDate: "30 Apr", status: "Open" },
+              { startDate: "26 Apr", endDate: "01 May", status: "Open" },
+              { startDate: "27 Apr", endDate: "02 May", status: "Open" },
+              { startDate: "28 Apr", endDate: "03 May", status: "Open" },
+              { startDate: "29 Apr", endDate: "04 May", status: "Open" },
+              { startDate: "30 Apr", endDate: "05 May", status: "Open" }
+            ]
+          }
+        ]
+      }
+    }
+  };
 }

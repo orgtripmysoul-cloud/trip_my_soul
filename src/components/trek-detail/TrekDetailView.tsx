@@ -297,7 +297,12 @@ export default function TrekDetailView({
           )}
 
           <section id="trek-article" className={`${CARD} space-y-6`}>
-            <TrekArticle trekName={trek.name} noun={noun} />
+            <TrekArticle
+              trekName={trek.name}
+              noun={noun}
+              article={detail.article}
+              heroImage={detail.heroImage}
+            />
           </section>
 
           {/* Social proof reads better before we point at other departures. */}

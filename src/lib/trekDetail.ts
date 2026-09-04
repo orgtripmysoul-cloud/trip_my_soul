@@ -362,6 +362,8 @@ export function resolveTrekDetail(trek: Trek) {
     externalReviews: trek.externalReviews ?? [],
     reviewVideos: trek.reviewVideos ?? [],
     relatedArticles: trek.relatedArticles ?? [],
+    /** Undefined where no guide is published — the Article section shows its teaser instead. */
+    article: trek.article,
     reviews: buildDefaultReviews(trek.name),
     trailVideos: buildDefaultTrailVideos(trek.name),
     aboutParagraphs:
