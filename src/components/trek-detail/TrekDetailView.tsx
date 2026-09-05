@@ -16,7 +16,6 @@ import TrekEligibility from "./TrekEligibility";
 import TrekPhotoAlbum from "./TrekPhotoAlbum";
 import TrekHowToReach from "./TrekHowToReach";
 import TrekInclusions from "./TrekInclusions";
-import TrekCostSummary from "./TrekCostSummary";
 import TrekPricing from "./TrekPricing";
 import TrekDepartures from "./TrekDepartures";
 import TrekEssentials from "./TrekEssentials";
@@ -35,9 +34,8 @@ import TrekCallbackBar from "./TrekCallbackBar";
 const CARD = "bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm scroll-mt-40";
 
 /**
- * Mobile pulls Cost & Terms up to sit right under the overview; every other
- * section trails behind it in DOM order. From `lg` the ordering is dropped and
- * the column reads top to bottom as written.
+ * Ordering hook kept on the sections that follow the overview. Nothing is
+ * pulled out of DOM order today, so the column reads top to bottom as written.
  */
 const REST = "order-3 lg:order-none";
 
@@ -219,33 +217,7 @@ export default function TrekDetailView({
             />
           </section>
 
-          {/* The fare and its terms first, then what the fare covers. */}
-          <section id="cost-terms" className={`${CARD} space-y-8 order-2 lg:order-none`}>
-            <TrekCostSummary
-              detail={detail}
-              noun={noun}
-              price={activePrice}
-              onBookNow={handleBookNow}
-              mobileFareCard={
-                <TrekBookingSidebar
-                  detail={detail}
-                  noun={noun}
-                  price={activePrice}
-                  selectedBatch={selectedBatch}
-                  selectedPackageLabel={selectedPackage?.label ?? null}
-                  onBookNow={handleBookNow}
-                />
-              }
-            />
-            <TrekPricing
-              packages={detail.packages}
-              priceNote={detail.priceNote}
-              selectedPackageId={selectedPackageId}
-              onSelectPackage={setSelectedPackageId}
-            />
-          </section>
-
-          {/* Dates sit between the fare and what it covers, right before booking. */}
+          {/* Dates, and — where a listing is sold at more than one rate — the rate card. */}
           <section id="departures" className={`${CARD} space-y-6 ${REST}`}>
             <TrekDepartures
               batchMonths={detail.batchMonths}
@@ -256,6 +228,12 @@ export default function TrekDetailView({
               onBookBatch={goToCheckout}
               trekName={trek.name}
               durationDays={trek.days}
+            />
+            <TrekPricing
+              packages={detail.packages}
+              priceNote={detail.priceNote}
+              selectedPackageId={selectedPackageId}
+              onSelectPackage={setSelectedPackageId}
             />
           </section>
 
@@ -311,7 +289,7 @@ export default function TrekDetailView({
           </section>
         </div>
 
-        {/* Right Column (Booking Widget Card) — below `lg` this card lives in Cost & Terms. */}
+        {/* Right Column (Booking Widget Card) — below `lg` the sticky mobile bar takes over. */}
         <div className="hidden lg:block w-full lg:w-1/3">
           <TrekBookingSidebar
             detail={detail}
