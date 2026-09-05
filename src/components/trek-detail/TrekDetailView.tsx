@@ -189,6 +189,19 @@ export default function TrekDetailView({
             />
           </section>
 
+          {/* Same booking card as the sidebar, inline for the single-column
+              layout where the sticky right rail is hidden. */}
+          <div className="order-2 lg:hidden">
+            <TrekBookingSidebar
+              detail={detail}
+              noun={noun}
+              price={activePrice}
+              selectedBatch={selectedBatch}
+              selectedPackageLabel={selectedPackage?.label ?? null}
+              onBookNow={handleBookNow}
+            />
+          </div>
+
           <section id="about-trek" className={`${CARD} space-y-4 ${REST}`}>
             <TrekAbout detail={detail} noun={noun} />
           </section>
