@@ -353,6 +353,11 @@ export interface Trek {
 
   // Header
   heroImage?: string;
+  /**
+   * Extra hero photos. When two or more are set, the detail-page hero runs them
+   * as a slideshow; otherwise `heroImage` is shown on its own.
+   */
+  heroImages?: string[];
   /** Canonical URL for this listing, e.g. `/trips/weekend/munnar`. Defaults to `/treks/{slug}`. */
   detailsPath?: string;
   tripCode?: string;
@@ -2719,7 +2724,13 @@ if (kedarkanthaIndex !== -1) {
   ];
 
   TREKS[kedarkanthaIndex].heroImage =
-    "https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1920&q=80";
+    "/Trips_gallery/Kedarkantha/IMG_4120.JPG.jpeg";
+
+  TREKS[kedarkanthaIndex].heroImages = [
+    "/Trips_gallery/Kedarkantha/IMG_4130.JPG.jpeg",
+    "/Trips_gallery/Kedarkantha/IMG_4138.JPG.jpeg",
+    "/Trips_gallery/Kedarkantha/IMG_4139.JPG.jpeg"
+  ];
 
   TREKS[kedarkanthaIndex].aboutParagraphs = [
     "Kedarkantha is a summit trek in the Garhwal Himalayas, in the Uttarkashi district of Uttarakhand. The trail starts from the base village of Sankri and climbs to the Kedarkantha peak at 12,500 ft (3,810 m), covering roughly 20–24 km over 5 days and 4 nights. Graded easy to moderate, it is the route most first-time Himalayan trekkers are pointed to.",

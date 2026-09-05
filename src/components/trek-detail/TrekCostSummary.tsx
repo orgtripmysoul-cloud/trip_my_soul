@@ -11,6 +11,8 @@ interface TrekCostSummaryProps {
   /** Fare of the chosen package, else the listing's own rate. `null` = on request. */
   price: number | null;
   onBookNow: () => void;
+  /** Stands in for the dark fare card below `lg`, where the sidebar has no column. */
+  mobileFareCard?: React.ReactNode;
 }
 
 /**
@@ -20,7 +22,13 @@ interface TrekCostSummaryProps {
  * accordion so the section stays short. Nothing is shown that the listing does
  * not publish — a listing with no terms renders the price block alone.
  */
-export default function TrekCostSummary({ detail, noun, price, onBookNow }: TrekCostSummaryProps) {
+export default function TrekCostSummary({
+  detail,
+  noun,
+  price,
+  onBookNow,
+  mobileFareCard,
+}: TrekCostSummaryProps) {
   const { bookingAdvancePct, bookingAdvance, bookingTerms } = detail;
   const [termsOpen, setTermsOpen] = useState(false);
 
@@ -40,8 +48,17 @@ export default function TrekCostSummary({ detail, noun, price, onBookNow }: Trek
         </p>
       </div>
 
+      {/* Below `lg` the booking card carries the fare instead — it has no column of its own there. */}
+      {mobileFareCard && <div className="lg:hidden">{mobileFareCard}</div>}
+
       {/* Headline fare */}
-      <div className="bg-[#0B2545] text-white rounded-3xl p-5 md:p-6 border border-white/10 shadow-md flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+      <div
+        className={`bg-[#0B2545] text-white rounded-3xl p-5 md:p-6 border border-white/10 shadow-md gap-5 ${
+          mobileFareCard
+            ? "hidden lg:flex lg:flex-row lg:items-center lg:justify-between"
+            : "flex flex-col md:flex-row md:items-center md:justify-between"
+        }`}
+      >
         <div className="space-y-2 min-w-0">
           <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-dusk-orange block">
             {noun} Cost
@@ -121,7 +138,7 @@ export default function TrekCostSummary({ detail, noun, price, onBookNow }: Trek
 
       {/* The asterisk belongs to the GST line beside the fare, so it only shows with one. */}
       {price !== null && (
-        <p className="text-[10px] text-gray-400 font-medium">
+        <p className={`text-[10px] text-gray-400 font-medium ${mobileFareCard ? "hidden lg:block" : ""}`}>
           * GST applicable as per package/booking terms.
         </p>
       )}

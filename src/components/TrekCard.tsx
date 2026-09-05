@@ -51,7 +51,7 @@ export default function TrekCard({ trek, detailsHref, imageUrl, description }: T
       <div className="relative aspect-[4/3] overflow-hidden bg-gray-100 shrink-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={imageUrl ?? getPlaceholderImage(trek.slug)}
+          src={imageUrl ?? trek.heroImage ?? getPlaceholderImage(trek.slug)}
           alt={trek.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
           loading="lazy"

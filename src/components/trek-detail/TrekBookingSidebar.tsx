@@ -15,6 +15,8 @@ interface TrekBookingSidebarProps {
   selectedBatch: string | null;
   selectedPackageLabel: string | null;
   onBookNow: () => void;
+  /** Extra classes for the card shell, so the same card can sit in either column. */
+  className?: string;
 }
 
 /** Bullets shown in the card itself; the rest live behind "View Highlights". */
@@ -27,6 +29,7 @@ export default function TrekBookingSidebar({
   selectedBatch,
   selectedPackageLabel,
   onBookNow,
+  className = "",
 }: TrekBookingSidebarProps) {
   const { originalPrice, tripCode } = detail;
 
@@ -37,7 +40,9 @@ export default function TrekBookingSidebar({
   const hiddenCount = highlightLines.length - previewLines.length;
 
   return (
-    <div className="glass-card rounded-3xl p-6 md:p-8 border border-white/30 shadow-xl sticky top-28 space-y-6 bg-white/60">
+    <div
+      className={`glass-card rounded-3xl p-6 md:p-8 border border-white/30 shadow-xl lg:sticky lg:top-28 space-y-6 bg-white/60 ${className}`}
+    >
       <div className="pb-4 border-b border-gray-100 space-y-1">
         <div className="flex items-center justify-between gap-2">
           <span className="text-[10px] text-gray-400 font-extrabold uppercase tracking-wider block">

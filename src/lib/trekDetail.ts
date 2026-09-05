@@ -286,6 +286,11 @@ export function resolveTrekDetail(trek: Trek) {
     price: trek.price ?? (fb ? DEFAULT_PRICE : null),
     originalPrice: trek.originalPrice,
     heroImage: trek.heroImage ?? HERO_IMAGE,
+    /** Hero slideshow frames; a single entry renders as a still image. */
+    heroImages:
+      trek.heroImages && trek.heroImages.length > 0
+        ? trek.heroImages
+        : [trek.heroImage ?? HERO_IMAGE],
     detailsPath: trek.detailsPath ?? `/treks/${trek.slug}`,
 
     // Derived overview facts

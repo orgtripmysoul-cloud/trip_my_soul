@@ -52,7 +52,7 @@ const HERO_ANNOUNCEMENT = {
   treks: [
     { label: "Kedarkantha Trek", slug: "kedarkantha-trek" },
     { label: "Har Ki Dun Trek", slug: "har-ki-dun-trek" },
-    { label: "Roopkund Yatra", slug: "roopkund-yatra" },
+    { label: "Kedarnath Darshan & Chopta Tungnath Trek", slug: "kedarnath-and-tungnath-yatra" },
   ],
 } as const;
 

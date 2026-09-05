@@ -226,6 +226,16 @@ export default function TrekDetailView({
               noun={noun}
               price={activePrice}
               onBookNow={handleBookNow}
+              mobileFareCard={
+                <TrekBookingSidebar
+                  detail={detail}
+                  noun={noun}
+                  price={activePrice}
+                  selectedBatch={selectedBatch}
+                  selectedPackageLabel={selectedPackage?.label ?? null}
+                  onBookNow={handleBookNow}
+                />
+              }
             />
             <TrekPricing
               packages={detail.packages}
@@ -301,8 +311,8 @@ export default function TrekDetailView({
           </section>
         </div>
 
-        {/* Right Column (Booking Widget Card) */}
-        <div className="w-full lg:w-1/3">
+        {/* Right Column (Booking Widget Card) — below `lg` this card lives in Cost & Terms. */}
+        <div className="hidden lg:block w-full lg:w-1/3">
           <TrekBookingSidebar
             detail={detail}
             noun={noun}
