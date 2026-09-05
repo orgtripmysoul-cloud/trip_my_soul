@@ -17,9 +17,19 @@ export default function TrekDetailPage() {
 
   const trek = useMemo(() => catalogue.find((t) => t.slug === slug) || null, [catalogue, slug]);
 
-  // Similar Treks calculation
+  // Similar Treks: an editorial list where the listing names one, otherwise the
+  // automatic match on region or difficulty.
   const similarTreks = useMemo(() => {
     if (!trek) return [];
+
+    if (trek.similarTreks?.length) {
+      const picked = trek.similarTreks
+        .filter((s) => s !== trek.slug)
+        .map((s) => catalogue.find((t) => t.slug === s))
+        .filter((t) => t !== undefined);
+      if (picked.length > 0) return picked.slice(0, 4);
+    }
+
     const matches = catalogue.filter(
       (t) => t.slug !== trek.slug && (t.region === trek.region || t.difficulty === trek.difficulty)
     );

@@ -145,7 +145,7 @@ export default function TrekReviews({
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {externalReviews.map((review, idx) => (
               <li
-                key={review.url}
+                key={review.url ?? `${review.author ?? review.subject}-${idx}`}
                 className="p-5 rounded-2xl border border-gray-150 bg-white shadow-xs space-y-3 text-xs transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-brand-forest/30"
               >
                 <div className="flex items-center gap-2.5">
@@ -154,35 +154,58 @@ export default function TrekReviews({
                   </span>
                   <span className="min-w-0">
                     <span className="font-extrabold text-brand-dark-text block truncate">
-                      {review.subject}
+                      {review.author ?? review.subject}
                     </span>
                     <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">
-                      {review.source} Review
+                      {review.source} Review{review.date ? ` • ${review.date}` : ""}
                     </span>
                   </span>
                 </div>
 
-                {/* Star treatment only — the rating itself is shown on the platform */}
-                <span className="flex items-center gap-1 text-gray-300" aria-hidden="true">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5" />
-                  ))}
-                </span>
+                {/* Filled stars where the rating is known; outlines where it stays on the platform */}
+                {review.rating ? (
+                  <span
+                    className="flex items-center gap-1 text-amber-400"
+                    aria-label={`Rated ${review.rating} out of 5`}
+                  >
+                    {Array.from({ length: review.rating }).map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                    ))}
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-1 text-gray-300" aria-hidden="true">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5" />
+                    ))}
+                  </span>
+                )}
 
-                <p className="text-[11px] text-gray-650 leading-relaxed font-medium">
-                  Read the rating and the trekker&apos;s own words on {review.source}.
-                </p>
+                {review.text ? (
+                  <blockquote className="text-[11px] text-gray-650 leading-relaxed font-medium space-y-2">
+                    {review.text.map((para, i) => (
+                      <p key={i}>
+                        {para}
+                      </p>
+                    ))}
+                  </blockquote>
+                ) : (
+                  <p className="text-[11px] text-gray-650 leading-relaxed font-medium">
+                    Read the rating and the trekker&apos;s own words on {review.source}.
+                  </p>
+                )}
 
-                <a
-                  href={review.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`View ${review.subject} ${review.source} review ${idx + 1} of ${externalReviews.length} (opens in a new tab)`}
-                  className="inline-flex items-center gap-1.5 min-h-[44px] text-[11px] font-extrabold text-brand-forest hover:text-brand-dusk-orange transition"
-                >
-                  <span>View Review</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
+                {review.url && (
+                  <a
+                    href={review.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${review.author ?? review.subject} ${review.source} review ${idx + 1} of ${externalReviews.length} (opens in a new tab)`}
+                    className="inline-flex items-center gap-1.5 min-h-[44px] text-[11px] font-extrabold text-brand-forest hover:text-brand-dusk-orange transition"
+                  >
+                    <span>View Review</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
               </li>
             ))}
           </ul>

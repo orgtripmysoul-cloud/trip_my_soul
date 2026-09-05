@@ -143,16 +143,26 @@ export interface HealthCheckItem {
 /**
  * A review published on another platform.
  *
- * Only the link and where it lives are stored: the rating, wording and author
- * stay on the platform, so the card links out rather than restating anything
- * this codebase cannot verify.
+ * Two shapes are supported. A link-only entry stores just `url` and where it
+ * lives, leaving the rating, wording and author on the platform. An entry that
+ * also carries `text` reproduces the review here, transcribed from the
+ * published original — quote it verbatim and keep the author's own name on it.
  */
 export interface ExternalReview {
   /** Platform the review sits on, e.g. "Google". */
   source: string;
   /** Who or what the review is about, e.g. "Trip My Soul". */
   subject: string;
-  url: string;
+  /** Link to the review on its platform. Omitted where there is no share link. */
+  url?: string;
+  /** Reviewer's display name on the platform, e.g. "Niha B". */
+  author?: string;
+  /** Star rating out of 5, as published. */
+  rating?: number;
+  /** Age as the platform words it, e.g. "a year ago". */
+  date?: string;
+  /** The review verbatim, one entry per paragraph. */
+  text?: string[];
 }
 
 export interface VideoTestimonial {
@@ -321,6 +331,12 @@ export interface Trek {
   externalReviews?: ExternalReview[];
   /** YouTube review videos, as watch/Shorts URLs. */
   reviewVideos?: string[];
+  /**
+   * Slugs to show under "Similar …", in this order. Set it where the pairing is
+   * an editorial call; leave it unset to fall back to the automatic match on
+   * region and difficulty. Slugs that resolve to nothing are skipped.
+   */
+  similarTreks?: string[];
   relatedArticles?: RelatedArticle[];
   /** Long-form written guide for this listing, shown in the Article section. */
   article?: ArticleContent;
@@ -933,24 +949,25 @@ export const TREKS: Trek[] = [
   {
     "slug": "brahmatal-trek",
     "name": "Brahmatal Trek",
-    "price": 7999,
+    "tagline": "Five days from Rishikesh through the oak forests above Lohajung to the frozen Brahmatal Lake and a 12,200 ft ridge facing Trishul and Nanda Ghunti.",
+    "price": 6499,
     "days": 5,
     "nights": 4,
     "region": "Uttarakhand",
     "category": "Upcoming Winter Treks",
     "startLocation": "Rishikesh To Rishikesh",
-    "difficulty": "Moderate",
+    "endLocation": "Rishikesh",
+    "difficulty": "Easy to Moderate",
+    "maxAltitude": "12,200 ft / 3,719 m",
+    "totalDistance": "22–24 Kilometers",
+    "availability": "November – April",
     "months": [
-      "Oct",
       "Nov",
       "Dec",
       "Jan",
       "Feb",
       "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul"
+      "Apr"
     ],
     "themes": [
       "Snow",
@@ -2764,57 +2781,57 @@ if (kedarkanthaIndex !== -1) {
     "Winter temperatures on this route fall well below 0°C at night, and fresh snow can change the trail at any point between November and April. Carry the full winter layering list, and expect the summit-day start time to move earlier or later on your guide's call.";
 
   TREKS[kedarkanthaIndex].gallery = [
-    { url: "/Kedarkantha/IMG_4120.JPG.jpeg", caption: "Snowbound pine forest above Sankri" },
-    { url: "/Kedarkantha/IMG_4121.JPG.jpeg", caption: "On the trail to Juda Ka Talab" },
-    { url: "/Kedarkantha/IMG_4122.JPG.jpeg", caption: "Camp pitched under the pines" },
-    { url: "/Kedarkantha/IMG_4123.JPG.jpeg", caption: "Climbing towards Kedarkantha base camp" },
-    { url: "/Kedarkantha/IMG_4124.JPG.jpeg", caption: "Open snow slopes below the summit ridge" },
-    { url: "/Kedarkantha/IMG_4125.JPG.jpeg", caption: "Summit morning on Kedarkantha" },
-    { url: "/Kedarkantha/IMG_4126.JPG.jpeg", caption: "Himalayan panorama from the top" },
-    { url: "/Kedarkantha/IMG_4127.JPG.jpeg", caption: "Warming up at the campsite" },
-    { url: "/Kedarkantha/IMG_4128.JPG.jpeg", caption: "The team on the trail" },
-    { url: "/Kedarkantha/IMG_4129.JPG.jpeg", caption: "Descending towards Hargaon" },
-    { url: "/Kedarkantha/IMG_4130.JPG.jpeg", caption: "Snowbound pine forest above Sankri" },
-    { url: "/Kedarkantha/IMG_4131.JPG.jpeg", caption: "On the trail to Juda Ka Talab" },
-    { url: "/Kedarkantha/IMG_4132.JPG.jpeg", caption: "Camp pitched under the pines" },
-    { url: "/Kedarkantha/IMG_4133.JPG.jpeg", caption: "Climbing towards Kedarkantha base camp" },
-    { url: "/Kedarkantha/IMG_4134.JPG.jpeg", caption: "Open snow slopes below the summit ridge" },
-    { url: "/Kedarkantha/IMG_4135.JPG.jpeg", caption: "Summit morning on Kedarkantha" },
-    { url: "/Kedarkantha/IMG_4137.JPG.jpeg", caption: "Himalayan panorama from the top" },
-    { url: "/Kedarkantha/IMG_4138.JPG.jpeg", caption: "Warming up at the campsite" },
-    { url: "/Kedarkantha/IMG_4139.JPG.jpeg", caption: "The team on the trail" },
-    { url: "/Kedarkantha/IMG_4140.JPG.jpeg", caption: "Descending towards Hargaon" },
-    { url: "/Kedarkantha/IMG_4141.JPG.jpeg", caption: "Snowbound pine forest above Sankri" },
-    { url: "/Kedarkantha/IMG_4142.JPG.jpeg", caption: "On the trail to Juda Ka Talab" },
-    { url: "/Kedarkantha/IMG_4143.JPG.jpeg", caption: "Camp pitched under the pines" },
-    { url: "/Kedarkantha/IMG_4144.JPG.jpeg", caption: "Climbing towards Kedarkantha base camp" },
-    { url: "/Kedarkantha/IMG_4145.JPG.jpeg", caption: "Open snow slopes below the summit ridge" },
-    { url: "/Kedarkantha/IMG_4146.JPG.jpeg", caption: "Summit morning on Kedarkantha" },
-    { url: "/Kedarkantha/IMG_4147.JPG.jpeg", caption: "Himalayan panorama from the top" },
-    { url: "/Kedarkantha/IMG_4148.JPG.jpeg", caption: "Warming up at the campsite" },
-    { url: "/Kedarkantha/IMG_4149.JPG.jpeg", caption: "The team on the trail" },
-    { url: "/Kedarkantha/IMG_4150.JPG.jpeg", caption: "Descending towards Hargaon" },
-    { url: "/Kedarkantha/IMG_4153.JPG.jpeg", caption: "Snowbound pine forest above Sankri" },
-    { url: "/Kedarkantha/IMG_4154.JPG.jpeg", caption: "On the trail to Juda Ka Talab" },
-    { url: "/Kedarkantha/IMG_4155.JPG.jpeg", caption: "Camp pitched under the pines" },
-    { url: "/Kedarkantha/IMG_4156.JPG.jpeg", caption: "Climbing towards Kedarkantha base camp" },
-    { url: "/Kedarkantha/IMG_4157.JPG.jpeg", caption: "Open snow slopes below the summit ridge" },
-    { url: "/Kedarkantha/IMG_4158.JPG.jpeg", caption: "Summit morning on Kedarkantha" },
-    { url: "/Kedarkantha/IMG_4160.JPG.jpeg", caption: "Himalayan panorama from the top" },
-    { url: "/Kedarkantha/IMG_4161.JPG.jpeg", caption: "Warming up at the campsite" },
-    { url: "/Kedarkantha/IMG_4162.JPG.jpeg", caption: "The team on the trail" },
-    { url: "/Kedarkantha/IMG_4163.JPG.jpeg", caption: "Descending towards Hargaon" },
-    { url: "/Kedarkantha/IMG_4164.JPG.jpeg", caption: "Snowbound pine forest above Sankri" },
-    { url: "/Kedarkantha/IMG_4165.JPG.jpeg", caption: "On the trail to Juda Ka Talab" },
-    { url: "/Kedarkantha/IMG_4166.JPG.jpeg", caption: "Camp pitched under the pines" },
-    { url: "/Kedarkantha/IMG_4167.JPG.jpeg", caption: "Climbing towards Kedarkantha base camp" },
-    { url: "/Kedarkantha/IMG_4168.JPG.jpeg", caption: "Open snow slopes below the summit ridge" },
-    { url: "/Kedarkantha/IMG_4172.JPG.jpeg", caption: "Summit morning on Kedarkantha" },
-    { url: "/Kedarkantha/IMG_4173.JPG.jpeg", caption: "Himalayan panorama from the top" },
-    { url: "/Kedarkantha/IMG_4174.JPG.jpeg", caption: "Warming up at the campsite" },
-    { url: "/Kedarkantha/IMG_4175.JPG.jpeg", caption: "The team on the trail" },
-    { url: "/Kedarkantha/IMG_4176.JPG.jpeg", caption: "Descending towards Hargaon" },
-    { url: "/Kedarkantha/IMG_4178.JPG.jpeg", caption: "Snowbound pine forest above Sankri" }
+    { url: "/Trips_gallery/Kedarkantha/IMG_4120.JPG.jpeg", caption: "Snowbound pine forest above Sankri" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4121.JPG.jpeg", caption: "On the trail to Juda Ka Talab" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4122.JPG.jpeg", caption: "Camp pitched under the pines" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4123.JPG.jpeg", caption: "Climbing towards Kedarkantha base camp" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4124.JPG.jpeg", caption: "Open snow slopes below the summit ridge" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4125.JPG.jpeg", caption: "Summit morning on Kedarkantha" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4126.JPG.jpeg", caption: "Himalayan panorama from the top" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4127.JPG.jpeg", caption: "Warming up at the campsite" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4128.JPG.jpeg", caption: "The team on the trail" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4129.JPG.jpeg", caption: "Descending towards Hargaon" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4130.JPG.jpeg", caption: "Snowbound pine forest above Sankri" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4131.JPG.jpeg", caption: "On the trail to Juda Ka Talab" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4132.JPG.jpeg", caption: "Camp pitched under the pines" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4133.JPG.jpeg", caption: "Climbing towards Kedarkantha base camp" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4134.JPG.jpeg", caption: "Open snow slopes below the summit ridge" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4135.JPG.jpeg", caption: "Summit morning on Kedarkantha" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4137.JPG.jpeg", caption: "Himalayan panorama from the top" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4138.JPG.jpeg", caption: "Warming up at the campsite" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4139.JPG.jpeg", caption: "The team on the trail" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4140.JPG.jpeg", caption: "Descending towards Hargaon" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4141.JPG.jpeg", caption: "Snowbound pine forest above Sankri" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4142.JPG.jpeg", caption: "On the trail to Juda Ka Talab" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4143.JPG.jpeg", caption: "Camp pitched under the pines" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4144.JPG.jpeg", caption: "Climbing towards Kedarkantha base camp" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4145.JPG.jpeg", caption: "Open snow slopes below the summit ridge" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4146.JPG.jpeg", caption: "Summit morning on Kedarkantha" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4147.JPG.jpeg", caption: "Himalayan panorama from the top" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4148.JPG.jpeg", caption: "Warming up at the campsite" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4149.JPG.jpeg", caption: "The team on the trail" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4150.JPG.jpeg", caption: "Descending towards Hargaon" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4153.JPG.jpeg", caption: "Snowbound pine forest above Sankri" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4154.JPG.jpeg", caption: "On the trail to Juda Ka Talab" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4155.JPG.jpeg", caption: "Camp pitched under the pines" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4156.JPG.jpeg", caption: "Climbing towards Kedarkantha base camp" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4157.JPG.jpeg", caption: "Open snow slopes below the summit ridge" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4158.JPG.jpeg", caption: "Summit morning on Kedarkantha" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4160.JPG.jpeg", caption: "Himalayan panorama from the top" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4161.JPG.jpeg", caption: "Warming up at the campsite" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4162.JPG.jpeg", caption: "The team on the trail" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4163.JPG.jpeg", caption: "Descending towards Hargaon" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4164.JPG.jpeg", caption: "Snowbound pine forest above Sankri" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4165.JPG.jpeg", caption: "On the trail to Juda Ka Talab" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4166.JPG.jpeg", caption: "Camp pitched under the pines" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4167.JPG.jpeg", caption: "Climbing towards Kedarkantha base camp" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4168.JPG.jpeg", caption: "Open snow slopes below the summit ridge" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4172.JPG.jpeg", caption: "Summit morning on Kedarkantha" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4173.JPG.jpeg", caption: "Himalayan panorama from the top" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4174.JPG.jpeg", caption: "Warming up at the campsite" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4175.JPG.jpeg", caption: "The team on the trail" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4176.JPG.jpeg", caption: "Descending towards Hargaon" },
+    { url: "/Trips_gallery/Kedarkantha/IMG_4178.JPG.jpeg", caption: "Snowbound pine forest above Sankri" }
   ];
 
   TREKS[kedarkanthaIndex].itinerary = [
@@ -3359,11 +3376,87 @@ if (kuariPassIndex !== -1) {
     "Known as: the Lord Curzon Trail, popularised in 1905"
   ];
 
+  // Transcribed verbatim from the Google reviews on the Trip My Soul profile.
+  TREKS[kuariPassIndex].externalReviews = [
+    {
+      source: "Google",
+      subject: "Trip My Soul",
+      author: "Piyush Udaipur",
+      rating: 5,
+      date: "3 months ago",
+      text: [
+        "I had one of the best travel experiences with Trip My Soul! From the very beginning, everything was well organized and professionally managed. The trek was absolutely amazing, with breathtaking views, great planning, and a perfect balance of adventure and fun.",
+        "A special thanks to the trek leaders and coordinators who were supportive, friendly, and always ensured everyone's safety and comfort. The accommodation, food, transportation, and overall arrangements exceeded my expectations.",
+        "What made this trip truly memorable was the positive atmosphere and the wonderful people I met along the way. Every moment felt special, and I came back with unforgettable memories.",
+        "I highly recommend Trip My Soul to anyone looking for a well-organized, exciting, and memorable trekking experience. Looking forward to joining many more trips with them in the future! Trek leader shishpal panwar amazing leadership, very helpful, there nature was very amazing and he his very sweet with us."
+      ]
+    },
+    {
+      source: "Google",
+      subject: "Trip My Soul",
+      author: "Niha B",
+      rating: 5,
+      date: "a year ago",
+      text: [
+        "I completed my first winter trek with the Trip My Soul team, who provided amazing support and delicious food throughout the journey. They were there for me physically and mentally, helping me reach the summit of Kuari Pass. A special thanks to Amit Bhai, whose guidance and support were instrumental in helping me achieve this incredible feat."
+      ]
+    },
+    {
+      source: "Google",
+      subject: "Trip My Soul",
+      author: "Pinku Boro",
+      rating: 5,
+      date: "a year ago",
+      text: [
+        "One of the best experience I had so far, it was my first winter trek and the situation I have been through was very bad, I was suffering from fever, headache and AMS at the day of summit but thanks to our track leader sandeep bhaiya aka sandy for motivating me and taking care of me throughout the trip.",
+        "Thank you trip my soul, next trip is also with you guys for sure."
+      ]
+    }
+  ];
+
+  TREKS[kuariPassIndex].reviewVideos = [
+    "https://youtube.com/shorts/Ki_DVHtDHY8",
+    "https://youtube.com/shorts/2jsnSO2jAME",
+    "https://youtube.com/shorts/iTXj6Jk_Lf8"
+  ];
+
+  TREKS[kuariPassIndex].similarTreks = [
+    "dayara-bugyal-trek",
+    "brahmatal-trek",
+    "chopta-tungnath-trek",
+    "kedarkantha-trek"
+  ];
+
   TREKS[kuariPassIndex].idealFor =
     "First-time trekkers with good fitness, experienced trekkers, snow-trek and mountain-photography enthusiasts.";
 
   TREKS[kuariPassIndex].importantNote =
     "Between December and March the route above Gulling is snowbound and the grade rises from moderate to moderate–challenging; gaiters and microspikes may be required on summit day, and your guide will call the start time on the conditions. The panorama from the pass depends entirely on the weather, so treat a clear morning as a bonus rather than a guarantee.";
+
+  TREKS[kuariPassIndex].gallery = [
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4235.JPG.jpeg", caption: "On the Lord Curzon Trail above Joshimath" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4236.JPG.jpeg", caption: "Oak and rhododendron forest below Gulling" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4239.JPG.jpeg", caption: "Camp at Gulling" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4240.JPG.jpeg", caption: "Climbing from Gulling to Khullara" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4241.JPG.jpeg", caption: "The meadow campsite at Khullara" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4242.JPG.jpeg", caption: "Snow slopes on the way to the pass" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4243.JPG.jpeg", caption: "Kuari Pass at 12,516 ft" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4244.JPG.jpeg", caption: "Nanda Devi and Dronagiri from the pass" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4249.JPG.jpeg", caption: "Kamet and Chaukhamba on a clear morning" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4250.JPG.jpeg", caption: "Ridge walk above the treeline" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4256.JPG.jpeg", caption: "The team on the trail" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4257.JPG.jpeg", caption: "On the Lord Curzon Trail above Joshimath" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4260.JPG.jpeg", caption: "Oak and rhododendron forest below Gulling" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4261.JPG.jpeg", caption: "Camp at Gulling" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4262.JPG.jpeg", caption: "Climbing from Gulling to Khullara" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4269.JPG.jpeg", caption: "The meadow campsite at Khullara" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4270.JPG.jpeg", caption: "Snow slopes on the way to the pass" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4272.JPG.jpeg", caption: "Kuari Pass at 12,516 ft" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4274.JPG.jpeg", caption: "Nanda Devi and Dronagiri from the pass" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4275.JPG.jpeg", caption: "Kamet and Chaukhamba on a clear morning" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4276.JPG.jpeg", caption: "Ridge walk above the treeline" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4279.JPG.jpeg", caption: "The team on the trail" }
+  ];
 
   TREKS[kuariPassIndex].itinerary = [
     {
@@ -4058,6 +4151,764 @@ if (kuariPassIndex !== -1) {
               { startDate: "28 Apr", endDate: "03 May", status: "Open" },
               { startDate: "29 Apr", endDate: "04 May", status: "Open" },
               { startDate: "30 Apr", endDate: "05 May", status: "Open" }
+            ]
+          }
+        ]
+      }
+    }
+  };
+}
+
+// Trek essentials (packing list) and the cancellation policy are deliberately
+// left unset: Brahmatal publishes neither, so both sections render the same
+// shared copy Kedarkantha does, from `trekDefaults.ts` / `TrekCancellation`.
+const brahmatalIndex = TREKS.findIndex(t => t.slug === 'brahmatal-trek');
+if (brahmatalIndex !== -1) {
+  TREKS[brahmatalIndex].aboutParagraphs = [
+    "The Brahmatal Trek is a breathtaking Himalayan adventure nestled in the Garhwal region of Uttarakhand. Known for its pristine snow-covered landscapes, dense oak and rhododendron forests, beautiful alpine meadows and magnificent Himalayan views, Brahmatal is one of the most captivating winter treks in India.",
+    "The journey begins from Lohajung, a picturesque mountain village surrounded by towering Himalayan peaks. As the trail climbs higher, the landscape gradually transforms from dense forests into open meadows and snowy ridges. During winter, fresh snow covers the trail, the trees and the campsites, creating a magical white landscape.",
+    "One of the most beautiful highlights of the trek is Brahmatal Lake, a serene high-altitude lake surrounded by mountains. The trail further leads towards the higher ridges and the summit, where trekkers are rewarded with spectacular panoramic views of Mt. Trishul, Nanda Ghunti and other Himalayan peaks.",
+    "What makes the Brahmatal Trek in Uttarakhand special is the variety of landscapes packed into a relatively short Himalayan journey. From peaceful forests and frozen lakes to wide-open ridgelines and dramatic mountain views, every section of the trail offers something different.",
+    "The trek is generally considered easy to moderate and is suitable for beginners with good physical fitness as well as experienced trekkers. However, winter conditions, snow and altitude make proper preparation essential.",
+    "For those looking for a beautiful snow trek in Uttarakhand, Brahmatal offers the perfect combination of adventure, wilderness, Himalayan scenery and the quiet beauty of the mountains."
+  ];
+
+  TREKS[brahmatalIndex].highlights = [
+    "Brahmatal Lake at ~10,400 ft",
+    "Brahmatal Top at ~12,200 ft",
+    "Jatropani Peak",
+    "Mt. Trishul & Nanda Ghunti views",
+    "Winter snow trails",
+    "Bekaltal Lake",
+    "Oak & rhododendron forests",
+    "Open ridge walks",
+    "Himalayan camping"
+  ];
+
+  TREKS[brahmatalIndex].usps = [
+    {
+      title: "Base village: Lohajung",
+      description: "The trek runs out of Lohajung at 7,662 ft in Chamoli district, reached on a 250 km drive from Rishikesh or Dehradun \u2014 the same base village that serves Roopkund and Ali Bedni Bugyal."
+    },
+    {
+      title: "Two high-altitude lakes on one trail",
+      description: "Bekaltal on day two and Brahmatal on day three, both set in forest and meadow and both frozen over through the depths of winter."
+    },
+    {
+      title: "Trishul and Nanda Ghunti at close range",
+      description: "The ridge above Brahmatal faces Mt. Trishul and Nanda Ghunti head-on, with Jatropani Peak and the wider Garhwal range filling out the panorama on a clear morning."
+    },
+    {
+      title: "A short trek with four distinct landscapes",
+      description: "Oak and rhododendron forest, open meadow, high ridgeline and snow \u2014 all inside 22\u201324 km and five days, which is what makes Brahmatal such a complete first Himalayan winter trek."
+    },
+    {
+      title: "A genuine snow trek from December to March",
+      description: "Through the winter months the trail, the lakes and the campsites lie under fresh snow, and the grade rises accordingly \u2014 the reason most trekkers pick these four months for Brahmatal."
+    }
+  ];
+
+  TREKS[brahmatalIndex].destinationHighlights = [
+    { name: "Lohajung", blurb: "The base village at 7,662 ft in Chamoli, ringed by Himalayan peaks and the starting point for the trek." },
+    { name: "Bekaltal", blurb: "The first campsite at about 9,950 ft, beside a quiet lake reached through oak and rhododendron forest." },
+    { name: "Brahmatal Lake", blurb: "The serene high-altitude lake at roughly 10,400 ft that gives the trek its name, frozen through the winter months." },
+    { name: "Brahmatal Top", blurb: "The 12,200 ft high point of the route, with a panorama that takes in Mt. Trishul, Nanda Ghunti and Jatropani Peak." },
+    { name: "Daldam", blurb: "The final campsite, reached on the long descent from the ridge on day four." }
+  ];
+
+  TREKS[brahmatalIndex].differentiators = [
+    "Region: Garhwal Himalayas, Chamoli district, Uttarakhand",
+    "Trek type: winter snow trek to a high ridge, with Brahmatal Top at ~12,200 ft as the high point",
+    "Terrain: forests, alpine meadows, open ridges and snow",
+    "Best season: December to March, when the trail and both lakes lie under snow"
+  ];
+
+  TREKS[brahmatalIndex].similarTreks = [
+    "kedarkantha-trek",
+    "dayara-bugyal-trek",
+    "kuari-pass-trek",
+    "chopta-tungnath-trek"
+  ];
+
+  TREKS[brahmatalIndex].idealFor =
+    "Beginners with basic fitness, first-time winter trekkers, experienced trekkers looking for a short snow trail, and mountain-photography enthusiasts.";
+
+  TREKS[brahmatalIndex].importantNote =
+    "Between December and March the trail is snowbound and the grade sits at the upper end of easy\u2013moderate; gaiters and microspikes may be needed depending on conditions, and your trek leader will set the summit-day start time accordingly. Views of Trishul and Nanda Ghunti depend entirely on the weather, so treat a clear morning on the ridge as a bonus rather than a guarantee.";
+
+  TREKS[brahmatalIndex].gallery = [
+    { url: "/Trips_gallery/Brahmatal/IMG_4214.JPG.jpeg", caption: "Oak and rhododendron forest above Lohajung" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4215.JPG.jpeg", caption: "Bekaltal, frozen over in the forest" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4216.JPG.jpeg", caption: "Brahmatal Lake under snow" }
+  ];
+
+  TREKS[brahmatalIndex].itinerary = [
+    {
+      day: 1,
+      title: "Dehradun / Rishikesh to Lohajung",
+      driveDistance: "250 km",
+      drivingTime: "10-12 Hours",
+      pickupPoint: "Rishikesh / Dehradun",
+      altitudePoints: [
+        { location: "Rishikesh", m: 372, ft: 1220 },
+        { location: "Lohajung", m: 2335, ft: 7662 }
+      ],
+      altitudeGain: { m: 1963, ft: 6442 },
+      description: "A scenic mountain drive to Lohajung, the base village of the Brahmatal Trek.",
+      detailedParagraphs: [
+        "Your Brahmatal adventure begins early in the morning from Rishikesh or Dehradun. The road follows the Alaknanda valley deep into Chamoli district, towards the base village of Lohajung.",
+        "The drive passes through Devprayag, Srinagar, Rudraprayag and Karnaprayag, where the rivers of the Garhwal meet, before turning off towards Tharali and Debal on the last stretch into the mountains.",
+        "As the road climbs, the river valleys give way to forested slopes and the first of the high Himalayan peaks appear on the skyline.",
+        "On arrival at Lohajung, check into the hotel or guesthouse and meet your trek leader and the rest of the group. The team runs a trek briefing and an equipment check, and explains the plan for the days ahead."
+      ],
+      highlights: ["Alaknanda Valley Drive", "River Confluences", "Lohajung Base Village", "Trek Briefing"],
+      meals: "Dinner",
+      stayType: "Hotel / Guesthouse in Lohajung"
+    },
+    {
+      day: 2,
+      title: "Lohajung to Bekaltal",
+      trekDistance: "6 km",
+      trekDuration: "5-6 Hours",
+      altitudePoints: [
+        { location: "Lohajung", m: 2335, ft: 7662 },
+        { location: "Bekaltal", m: 3033, ft: 9950 }
+      ],
+      altitudeGain: { m: 698, ft: 2288 },
+      description: "The trail passes through beautiful oak and rhododendron forests before reaching the peaceful Bekaltal campsite.",
+      detailedParagraphs: [
+        "After breakfast at Lohajung, the trekking begins. The trail leaves the village and enters dense oak and rhododendron forest almost immediately.",
+        "The climb is steady rather than steep, and the forest stays with you for most of the day — moss on the trunks, light coming through the canopy and occasional clearings that open onto the valley below.",
+        "In winter the whole of this section carries snow, and the forest floor, the branches and the trail itself turn white.",
+        "By afternoon you reach Bekaltal, a quiet lake set among the trees, and the campsite for the night. Settle into your tent, eat a warm meal and let your body begin adjusting to the altitude."
+      ],
+      highlights: ["Oak & Rhododendron Forest", "Bekaltal Lake", "Snow Trail", "First Camp"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Bekaltal campsite — twin sharing"
+    },
+    {
+      day: 3,
+      title: "Bekaltal to Brahmatal",
+      trekDistance: "7 km",
+      trekDuration: "6-7 Hours",
+      altitudePoints: [
+        { location: "Bekaltal", m: 3033, ft: 9950 },
+        { location: "Brahmatal", m: 3185, ft: 10450 }
+      ],
+      altitudeGain: { m: 152, ft: 500 },
+      description: "Trek through forests, meadows and scenic ridges towards the beautiful Brahmatal Lake.",
+      detailedParagraphs: [
+        "Wake to mountain views and, weather permitting, a Himalayan sunrise over the forest.",
+        "The trail climbs out of the trees and onto open ground. Forest gives way to alpine meadow, and the meadow to a series of scenic ridges where the view finally opens out in every direction.",
+        "The altitude gain on paper is modest, but the day is a long one and the walking is continuous — hold a comfortable pace, take regular breaks and keep drinking water.",
+        "Ahead of you lies Brahmatal Lake, the serene high-altitude lake that gives the trek its name, frozen solid through the winter months. Camp is nearby, with Trishul and Nanda Ghunti standing over the ridge behind."
+      ],
+      highlights: ["Alpine Meadows", "Ridge Walk", "Brahmatal Lake", "Trishul & Nanda Ghunti"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Brahmatal campsite — twin sharing"
+    },
+    {
+      day: 4,
+      title: "Brahmatal to Brahmatal Top, descend to Daldam",
+      trekDistance: "12 km",
+      trekDuration: "8-10 Hours",
+      timeNote: { label: "Summit start", value: "Early morning" },
+      altitudePoints: [
+        { location: "Brahmatal", m: 3185, ft: 10450 },
+        { location: "Brahmatal Top", m: 3719, ft: 12200 }
+      ],
+      altitudeGain: { m: 534, ft: 1750 },
+      description: "The most exciting day of the trek. Ascend towards Brahmatal Top and enjoy magnificent Himalayan views before descending towards Daldam.",
+      detailedParagraphs: [
+        "This is the longest and most rewarding day of the Brahmatal Trek.",
+        "Start early from camp. The trail climbs onto the ridgeline and stays there, gaining height across open snow slopes with the drop of the valley on either side.",
+        "In winter this section can be genuinely demanding — snow depth and wind decide the pace, and gaiters or microspikes may be needed depending on conditions.",
+        "At roughly 12,200 ft you reach Brahmatal Top, the high point of the trek. On a clear day the panorama takes in Mt. Trishul and Nanda Ghunti directly ahead, Jatropani Peak alongside, and the ranges of the Garhwal Himalayas laid out behind them. Take the time to enjoy it, and to photograph it.",
+        "From the top, begin the long descent towards Daldam. The way down is easier on the lungs but hard on the legs after a full day out — reach camp by evening for a warm dinner and a well-earned rest."
+      ],
+      highlights: [
+        "Brahmatal Top at ~12,200 ft",
+        "Panoramic Himalayan Views",
+        "Mt. Trishul & Nanda Ghunti",
+        "Jatropani Peak",
+        "High Ridge Walk"
+      ],
+      meals: "Breakfast, Packed Lunch & Dinner",
+      stayType: "Daldam campsite — twin sharing"
+    },
+    {
+      day: 5,
+      title: "Daldam to Lohajung, drive to Rishikesh / Dehradun",
+      trekDistance: "4 km",
+      trekDuration: "4-5 Hours",
+      driveDistance: "250 km",
+      drivingTime: "10-12 Hours",
+      timeNote: { label: "Drop-off", value: "Rishikesh / Dehradun" },
+      altitudePoints: [
+        { location: "Lohajung", m: 2335, ft: 7662 },
+        { location: "Rishikesh", m: 372, ft: 1220 }
+      ],
+      altitudeGain: null,
+      description: "Descend through the mountain trail to Lohajung, followed by the drive back to Rishikesh or Dehradun.",
+      detailedParagraphs: [
+        "After breakfast, begin the final descent from Daldam towards Lohajung.",
+        "The trail drops back through forest and mountain slopes, and after several days at altitude the walk down feels easy as the air warms around you.",
+        "At Lohajung the trekking section comes to an end. Board the vehicle for the long drive back down the valley, retracing the route through Karnaprayag, Rudraprayag, Srinagar and Devprayag.",
+        "The Brahmatal Trek concludes on arrival in Rishikesh or Dehradun — with photographs, and with the memory of frozen lakes, snow-covered forest and the ridge that faces Trishul."
+      ],
+      highlights: ["Forest Descent", "Trek Ends at Lohajung", "Alaknanda Valley", "Journey Ends"],
+      meals: "Breakfast",
+      // The trek ends on this day; an empty stay keeps the generic
+      // "Hotel / Homestay" fallback out of the day quick-info line.
+      stayType: ""
+    }
+  ];
+
+  /**
+   * The source listing and its own itinerary disagree on the total distance, so
+   * both are recorded as published rather than quietly reconciled: the route
+   * summary gives 22-24 km, while the per-day figures (6 + 7 + 12 + 4) total
+   * 29 km. The listing also publishes no altitude for the Daldam campsite, so
+   * day 4 charts the climb to Brahmatal Top only.
+   */
+  TREKS[brahmatalIndex].sourceCaveat =
+    "The published route gives a headline distance of 22–24 km, while the day-by-day trek distances total about 29 km. Both are listed here as published — your trek leader will confirm the exact route and daily distances on your departure.";
+
+  TREKS[brahmatalIndex].article = {
+    title: "Brahmatal Trek – Where the Mountains Teach You to Slow Down",
+    standfirst:
+      "Ancient forests, frozen lakes, snow-covered meadows and a ridge at 12,250 ft facing Trishul and Nanda Ghunti — the trail above Lohajung, told the way it is felt.",
+    readMinutes: 8,
+    sections: [
+      {
+        paragraphs: [
+          "There are journeys where you simply travel from one place to another. And then there are journeys that quietly change something inside you.",
+          "Brahmatal Trek is one such journey.",
+          "Hidden in the magnificent Garhwal Himalayas of Uttarakhand, Brahmatal takes you away from the noise of everyday life and into a world of ancient forests, snow-covered meadows, high mountain ridges and peaceful alpine lakes. The trek begins from Lohajung in Chamoli district and climbs gradually into the Himalayan wilderness.",
+          "What makes the Brahmatal Trek in Uttarakhand special is the incredible variety packed into a single journey. One moment you are walking beneath tall oak and rhododendron forests; a few hours later, the trees begin to disappear and the landscape opens into vast mountain ridges covered in snow.",
+          "And ahead of you are the Himalayas."
+        ]
+      },
+      {
+        heading: "A Journey Into the Snow",
+        paragraphs: [
+          "Brahmatal is particularly famous as a winter snow trek in Uttarakhand. During the colder months, snow transforms the trail, forests and meadows into a completely different landscape. The region around Brahmatal Lake can become covered in snow and ice, creating the magical Himalayan experience that many trekkers dream of.",
+          "But the real beauty isn’t just the snow.",
+          "It is the silence.",
+          "The sound of your boots pressing into fresh snow.",
+          "The cold mountain wind against your face.",
+          "The warm cup of tea waiting at camp.",
+          "And the feeling of looking around and realising that, for a little while, you have left the ordinary world far behind."
+        ]
+      },
+      {
+        heading: "From Lohajung to the Heart of the Himalayas",
+        paragraphs: [
+          "The adventure begins at Lohajung, the traditional base village for the Brahmatal Trek.",
+          "From here, the trail gradually climbs through beautiful Himalayan forests. Oak and rhododendron trees create a natural corridor around the trail, while occasional openings reveal glimpses of the mountains beyond.",
+          "As you gain altitude, the landscape begins to change.",
+          "The forest becomes thinner.",
+          "The trail becomes more open.",
+          "The horizon becomes wider.",
+          "And eventually, you find yourself walking across beautiful alpine terrain with enormous Himalayan peaks rising in the distance.",
+          "The journey itself becomes the destination."
+        ]
+      },
+      {
+        heading: "Bekaltal – The First Beautiful Surprise",
+        paragraphs: [
+          "One of the early highlights of the trek is Bekaltal, a peaceful high-altitude lake surrounded by forest.",
+          "Reaching Bekaltal after the day’s climb feels rewarding. In winter, snow can cover the surrounding landscape, creating a quiet and almost dreamlike atmosphere.",
+          "This is where you begin to understand the rhythm of Himalayan trekking.",
+          "Walk.",
+          "Breathe.",
+          "Rest.",
+          "Look around.",
+          "Then take another step."
+        ]
+      },
+      {
+        heading: "Brahmatal Lake – Where Silence Feels Different",
+        paragraphs: [
+          "Eventually, the trail leads towards Brahmatal Lake, the natural heart of the trek.",
+          "Surrounded by mountains and open Himalayan landscapes, the lake offers a peaceful setting unlike anything found in the cities below.",
+          "In winter, the lake and its surroundings can freeze and become covered with snow, making the experience particularly spectacular.",
+          "Standing beside Brahmatal Lake, there is very little to hear.",
+          "No traffic.",
+          "No horns.",
+          "No constant notifications.",
+          "Just the wind, the mountains and your own thoughts.",
+          "Perhaps that is why moments like these stay with trekkers long after they return home."
+        ]
+      },
+      {
+        heading: "Brahmatal Top – When the Mountains Open Up",
+        paragraphs: [
+          "The biggest reward comes as the trail climbs towards Brahmatal Top, reaching approximately 12,250 ft.",
+          "From the higher ridge, the landscape opens dramatically, offering panoramic Himalayan views. On clear days, the magnificent Mt. Trishul and Nanda Ghunti dominate the skyline, with other Himalayan peaks visible across the horizon.",
+          "You may have walked for hours to reach this point.",
+          "Your legs may be tired.",
+          "The cold may be intense.",
+          "But then you look up.",
+          "And suddenly, everything becomes quiet.",
+          "The mountains don’t ask you how fast you reached.",
+          "They simply remind you that you made it."
+        ]
+      },
+      {
+        heading: "The Beauty of a Himalayan Sunrise",
+        paragraphs: [
+          "There are sunsets you photograph.",
+          "And then there are sunrises you simply watch.",
+          "On Brahmatal, early mornings can bring incredible views as the first sunlight touches the Himalayan peaks.",
+          "The snow changes colour.",
+          "The mountains slowly glow.",
+          "The sky begins to brighten.",
+          "For a few moments, the entire landscape feels alive.",
+          "It is one of those experiences that a camera can capture, but never completely explain."
+        ]
+      },
+      {
+        heading: "More Than Just a Winter Trek",
+        paragraphs: [
+          "The Brahmatal Trek is often chosen by trekkers looking for an accessible introduction to high-altitude Himalayan trekking. It is generally graded easy to moderate, although winter snow, cold temperatures and altitude can make the trail considerably more demanding.",
+          "But trekking is never only about difficulty.",
+          "It is about discovering what you are capable of.",
+          "There will be moments when the climb feels long.",
+          "There will be moments when you wonder how much farther you have to go.",
+          "But slowly, step by step, you move forward.",
+          "And that is perhaps the greatest lesson the mountains teach us:",
+          "You don’t have to conquer the mountain. You only have to keep walking."
+        ]
+      },
+      {
+        heading: "A Few Days Away From Everything",
+        paragraphs: [
+          "Modern life moves quickly.",
+          "Messages keep coming.",
+          "Phones keep ringing.",
+          "Schedules keep changing.",
+          "The Brahmatal Trek gives you something rare — time.",
+          "Time to walk without looking at a clock.",
+          "Time to sit beside your trekking companions and talk.",
+          "Time to watch clouds move across distant peaks.",
+          "Time to look at a sky full of stars.",
+          "And time to hear your own thoughts again.",
+          "This is why people return from the mountains with more than photographs.",
+          "They return with memories."
+        ]
+      },
+      {
+        heading: "Why Brahmatal Trek Belongs on Your Himalayan Bucket List",
+        paragraphs: [
+          "If you are looking for a snow trek in Uttarakhand, Brahmatal brings together many of the experiences trekkers love about the Himalayas:",
+          "• Snow-covered trails during winter",
+          "• Ancient oak and rhododendron forests",
+          "• Bekaltal and Brahmatal Lake",
+          "• Beautiful alpine meadows",
+          "• High-altitude mountain ridges",
+          "• Brahmatal Top at around 12,250 ft",
+          "• Panoramic views of Trishul and Nanda Ghunti",
+          "• Himalayan sunsets and sunrises",
+          "• Peaceful campsites beneath the mountain sky",
+          "But the most beautiful part cannot be listed.",
+          "It is the feeling you get when you finally stand on a mountain ridge after walking for hours and realise that you left for the trek as one person and are returning as someone slightly different."
+        ]
+      },
+      {
+        heading: "Brahmatal Is Waiting",
+        paragraphs: [
+          "Maybe you are looking for snow.",
+          "Maybe you are looking for adventure.",
+          "Maybe you want to escape the city for a few days.",
+          "Or maybe you simply want to feel something that everyday life has made you forget.",
+          "Whatever brings you to Brahmatal, the mountains have their own way of giving you something more.",
+          "A sunrise.",
+          "A frozen lake.",
+          "A difficult climb.",
+          "A stranger who becomes a friend.",
+          "A silent moment on a ridge.",
+          "A memory that stays with you long after the trek is over.",
+          "Brahmatal Trek is not just a journey to 12,250 feet.",
+          "It is a journey into the quietest part of yourself.",
+          "So pack your backpack.",
+          "Tie your laces.",
+          "Take a deep breath.",
+          "And start walking.",
+          "Because somewhere beyond Lohajung, beyond the forests and above the clouds, the Himalayas are waiting for you."
+        ]
+      }
+    ],
+    signoff: "Brahmatal Trek with Trip My Soul."
+  };
+
+  TREKS[brahmatalIndex].faqs = [
+    {
+      title: "Where is the Brahmatal Trek located?",
+      description: "Brahmatal Trek is located in the Garhwal Himalayas of Uttarakhand, with Lohajung serving as the base camp."
+    },
+    {
+      title: "What is the highest altitude of the Brahmatal Trek?",
+      description: "The trek reaches approximately 12,200 ft at Brahmatal Top."
+    },
+    {
+      title: "How difficult is the Brahmatal Trek?",
+      description: "Brahmatal is generally considered an easy to moderate trek. Basic fitness and the ability to walk for several hours are recommended."
+    },
+    {
+      title: "How many days are required for the Brahmatal Trek?",
+      description: "The standard Trip My Soul itinerary is 5 Days / 4 Nights, including the journey to and from Lohajung."
+    },
+    {
+      title: "What is the best time for the Brahmatal Trek?",
+      description: "December to March is the most popular period for experiencing snow. Spring and autumn offer greener landscapes and clearer mountain views."
+    },
+    {
+      title: "Can beginners do the Brahmatal Trek?",
+      description: "Yes. Beginners with good physical fitness can undertake the Brahmatal Trek. Proper preparation is especially important during winter."
+    },
+    {
+      title: "How much distance is covered on the Brahmatal Trek?",
+      description: "The trekking route covers approximately 29 km, depending on the exact trail and conditions."
+    },
+    {
+      title: "Will we get snowfall on the Brahmatal Trek?",
+      description: "Snowfall is not guaranteed, as it depends on weather conditions. During the peak winter season, trekkers can usually expect snow-covered sections of the trail."
+    },
+    {
+      title: "What are the major highlights of the Brahmatal Trek?",
+      description: "Major highlights include Brahmatal Lake, Brahmatal Top, snow-covered forests, alpine meadows, Himalayan ridges and panoramic views of Mt. Trishul and Nanda Ghunti."
+    },
+    {
+      title: "What should I carry for the Brahmatal Trek?",
+      description: "Essential items include good trekking shoes, warm layers, a waterproof jacket, gloves, a woollen cap, sunglasses, sunscreen, a water bottle, personal medicines, a headlamp and a small backpack."
+    }
+  ];
+
+  TREKS[brahmatalIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: 10–60 years recommended" },
+    { icon: "Footprints", text: "Experience: No prior trekking experience required" },
+    { icon: "Dumbbell", text: "Fitness: Basic to moderate fitness required" },
+    { icon: "Mountain", text: "Altitude: Up to 12,200 ft / 3,719 m" },
+    { icon: "Snowflake", text: "Must be comfortable with cold and snow conditions" },
+    { icon: "Stethoscope", text: "Participants should be medically fit for high-altitude trekking" }
+  ];
+
+  /** Set against this trek's own day lengths — four trekking days of 4–10 hours. */
+  TREKS[brahmatalIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 5–6 km comfortably on uneven ground" },
+    { icon: "TrendingUp", text: "Able to sustain a 5–7 hour walking day, and 8–10 hours on summit day" },
+    { icon: "Dumbbell", text: "Good stamina and leg strength for continuous ascent and descent" },
+    { icon: "Backpack", text: "Comfortable carrying a light daypack" },
+    { icon: "Activity", text: "Regular walking, jogging or stair training for 3–4 weeks before the trek is recommended" }
+  ];
+
+  TREKS[brahmatalIndex].howToReach = {
+    intro: "The Brahmatal Trek starts from Lohajung in Chamoli district, Uttarakhand. For Trip My Soul, the meeting point is Rishikesh or Dehradun, from where trekkers travel by road to Lohajung.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "From the airport, travel by taxi or cab to Lohajung — roughly 250 km, and about 10–12 hours on the road depending on traffic and conditions. Recommended for travellers coming from Delhi, Mumbai, Bengaluru and other cities with flight connectivity to Dehradun."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Stations",
+      summary: "Dehradun and Kathgodam",
+      detail: "Dehradun is about 250 km from Lohajung by road and Kathgodam about 210–220 km, at roughly 8–10 hours from Kathgodam. From either station, hire a private vehicle or join a shared/group transfer to Lohajung. Rishikesh and Haridwar are convenient alternative railheads, followed by the same road journey."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Rishikesh to Lohajung via Rudraprayag, Karnaprayag and Tharali",
+      detail: "Lohajung is well connected by road with the major cities of Uttarakhand: Rishikesh–Lohajung is about 250 km and 9–11 hours, Dehradun–Lohajung about 250 km and 10–12 hours, and Kathgodam–Lohajung about 210–220 km and 8–10 hours. By bus, take a service from Dehradun or Rishikesh to Karnaprayag or a nearby town and continue towards Lohajung by local or shared transport — for trekkers, a pre-arranged vehicle is generally more convenient. The last stretch beyond Tharali and Debal is a narrow mountain road, and travel times rise sharply after snowfall.",
+      route: ["Rishikesh", "Devprayag", "Srinagar", "Rudraprayag", "Karnaprayag", "Tharali", "Debal", "Mundoli", "Lohajung"],
+      facts: [
+        { label: "Distance", value: "~250 km" },
+        { label: "Drive", value: "~10–12 hours" },
+        { label: "Options", value: "Bus / Shared Taxi / Private Cab / Tempo Traveller" }
+      ]
+    },
+    pickup: {
+      point: "Rishikesh / Dehradun",
+      time: "Morning of Day 1",
+      dropPoint: "Rishikesh / Dehradun",
+      dropTime: "Late evening of Day 5",
+      note: "Route for TMS trekkers: Rishikesh/Dehradun → Lohajung → Bekaltal → Brahmatal → Brahmatal Top → Daldam → Lohajung."
+    }
+  };
+
+  TREKS[brahmatalIndex].bookingAdvance = 2000;
+
+  /** Company-wide terms, as carried on the other Garhwal treks. */
+  TREKS[brahmatalIndex].bookingTerms = [
+    { title: "Trek Price", description: "₹6,499 per person." },
+    { title: "Booking Amount", description: "₹2,000 per person to confirm your seat." },
+    { title: "Balance Payment", description: "The remaining balance must be paid before the trek starts." },
+    { title: "Confirmation", description: "Booking is confirmed after payment of the required booking amount." },
+    { title: "ID Proof", description: "Valid government-issued ID is mandatory for all trekkers." },
+    { title: "Fitness & Medical", description: "Trekkers must meet the required fitness and medical criteria." },
+    { title: "Itinerary Changes", description: "The itinerary may be modified due to weather, snowfall, road conditions, trail conditions or safety requirements." },
+    { title: "Snow & Weather", description: "No guarantee can be given regarding snowfall or weather conditions." },
+    { title: "Unforeseen Expenses", description: "Any additional cost arising due to natural calamities, roadblocks, government restrictions or emergency situations will be borne by the trekker." },
+    { title: "On-Trail Instructions", description: "Trekkers must follow the instructions of the Trek Leader and support staff." },
+    { title: "Conduct on the Trail", description: "Littering, alcohol, drugs and unsafe behaviour are strictly prohibited during the trek." },
+    { title: "Right to Modify", description: "In case of adverse weather or unforeseen circumstances, Trip My Soul may modify or cancel the itinerary for trekker safety." },
+    { title: "Personal Belongings", description: "Personal belongings are the responsibility of the trekker." },
+    { title: "Policies", description: "By booking the trek, participants agree to Trip My Soul's applicable booking, cancellation and safety policies." }
+  ];
+
+  TREKS[brahmatalIndex].inclusions = [
+    { title: "Accommodation", description: "Triple/quad sharing basis as per the itinerary." },
+    { title: "Stay at Lohajung", description: "Hotel or guesthouse accommodation at Lohajung." },
+    { title: "Camping accommodation", description: "Tented accommodation during the trek." },
+    { title: "Meals", description: "All meals during the trek — breakfast, lunch & dinner." },
+    { title: "Trek Leader / Guide", description: "Experienced Trek Leader/Guide for the batch." },
+    { title: "Support Staff", description: "Professional support staff and local ground team." },
+    { title: "Camping Equipment", description: "Camping equipment for the duration of the trek." },
+    { title: "Sleeping Gear", description: "Sleeping bags and mattresses." },
+    { title: "Tents", description: "Tents and common camping equipment." },
+    { title: "Permits", description: "Forest permits and applicable entry charges." },
+    { title: "First Aid", description: "First-aid kit and basic medical support." },
+    { title: "Trekking Equipment", description: "Trekking equipment required by the operator." },
+    { title: "Transportation", description: "All transportation mentioned in the itinerary." },
+    { title: "Local Transfers", description: "Lohajung → trek starting/ending point transfers, wherever applicable." }
+  ];
+
+  TREKS[brahmatalIndex].exclusions = [
+    { title: "Personal expenses", description: "Snacks, beverages and laundry." },
+    { title: "Personal trekking equipment", description: "Personal trekking equipment and clothing." },
+    { title: "Offloading & porters", description: "Backpack offloading / porter charges." },
+    { title: "Insurance", description: "Travel insurance." },
+    { title: "Personal medicines", description: "Personal medicines." },
+    { title: "Emergency evacuation", description: "Emergency evacuation / rescue expenses." },
+    { title: "Additional transportation", description: "Additional transportation due to unforeseen circumstances." },
+    { title: "Extra stay & meals", description: "Additional hotel stays or meals outside the itinerary." },
+    { title: "Weather & roadblocks", description: "Any cost arising due to weather, landslides, roadblocks or natural calamities." },
+    { title: "Anything not listed", description: "Any activity or service not specifically mentioned under inclusions." },
+    { title: "GST", description: "GST, if applicable." }
+  ];
+
+  TREKS[brahmatalIndex].batches = {
+    years: {
+      "2026": {
+        months: [
+          {
+            month: "Nov",
+            year: "2026",
+            trips: [
+              { startDate: "01 Nov", endDate: "05 Nov", status: "Open" },
+              { startDate: "02 Nov", endDate: "06 Nov", status: "Open" },
+              { startDate: "03 Nov", endDate: "07 Nov", status: "Open" },
+              { startDate: "04 Nov", endDate: "08 Nov", status: "Open" },
+              { startDate: "05 Nov", endDate: "09 Nov", status: "Open" },
+              { startDate: "06 Nov", endDate: "10 Nov", status: "Open" },
+              { startDate: "07 Nov", endDate: "11 Nov", status: "Open" },
+              { startDate: "08 Nov", endDate: "12 Nov", status: "Open" },
+              { startDate: "09 Nov", endDate: "13 Nov", status: "Open" },
+              { startDate: "10 Nov", endDate: "14 Nov", status: "Open" },
+              { startDate: "11 Nov", endDate: "15 Nov", status: "Open" },
+              { startDate: "12 Nov", endDate: "16 Nov", status: "Open" },
+              { startDate: "13 Nov", endDate: "17 Nov", status: "Open" },
+              { startDate: "14 Nov", endDate: "18 Nov", status: "Open" },
+              { startDate: "15 Nov", endDate: "19 Nov", status: "Open" },
+              { startDate: "16 Nov", endDate: "20 Nov", status: "Open" },
+              { startDate: "17 Nov", endDate: "21 Nov", status: "Open" },
+              { startDate: "18 Nov", endDate: "22 Nov", status: "Open" },
+              { startDate: "19 Nov", endDate: "23 Nov", status: "Open" },
+              { startDate: "20 Nov", endDate: "24 Nov", status: "Open" },
+              { startDate: "21 Nov", endDate: "25 Nov", status: "Open" },
+              { startDate: "22 Nov", endDate: "26 Nov", status: "Open" },
+              { startDate: "23 Nov", endDate: "27 Nov", status: "Open" },
+              { startDate: "24 Nov", endDate: "28 Nov", status: "Open" },
+              { startDate: "25 Nov", endDate: "29 Nov", status: "Open" },
+              { startDate: "26 Nov", endDate: "30 Nov", status: "Open" },
+              { startDate: "27 Nov", endDate: "01 Dec", status: "Open" },
+              { startDate: "28 Nov", endDate: "02 Dec", status: "Open" },
+              { startDate: "29 Nov", endDate: "03 Dec", status: "Open" },
+              { startDate: "30 Nov", endDate: "04 Dec", status: "Open" }
+            ]
+          },
+          {
+            month: "Dec",
+            year: "2026",
+            trips: [
+              { startDate: "01 Dec", endDate: "05 Dec", status: "Open" },
+              { startDate: "02 Dec", endDate: "06 Dec", status: "Open" },
+              { startDate: "03 Dec", endDate: "07 Dec", status: "Open" },
+              { startDate: "04 Dec", endDate: "08 Dec", status: "Open" },
+              { startDate: "05 Dec", endDate: "09 Dec", status: "Open" },
+              { startDate: "06 Dec", endDate: "10 Dec", status: "Open" },
+              { startDate: "07 Dec", endDate: "11 Dec", status: "Open" },
+              { startDate: "08 Dec", endDate: "12 Dec", status: "Open" },
+              { startDate: "09 Dec", endDate: "13 Dec", status: "Open" },
+              { startDate: "10 Dec", endDate: "14 Dec", status: "Open" },
+              { startDate: "11 Dec", endDate: "15 Dec", status: "Open" },
+              { startDate: "12 Dec", endDate: "16 Dec", status: "Open" },
+              { startDate: "13 Dec", endDate: "17 Dec", status: "Open" },
+              { startDate: "14 Dec", endDate: "18 Dec", status: "Open" },
+              { startDate: "15 Dec", endDate: "19 Dec", status: "Open" },
+              { startDate: "16 Dec", endDate: "20 Dec", status: "Open" },
+              { startDate: "17 Dec", endDate: "21 Dec", status: "Open" },
+              { startDate: "18 Dec", endDate: "22 Dec", status: "Open" },
+              { startDate: "19 Dec", endDate: "23 Dec", status: "Open" },
+              { startDate: "20 Dec", endDate: "24 Dec", status: "Open" },
+              { startDate: "21 Dec", endDate: "25 Dec", status: "Open" },
+              { startDate: "22 Dec", endDate: "26 Dec", status: "Open" },
+              { startDate: "23 Dec", endDate: "27 Dec", status: "Open" },
+              { startDate: "24 Dec", endDate: "28 Dec", status: "Open" },
+              { startDate: "25 Dec", endDate: "29 Dec", status: "Open" },
+              { startDate: "26 Dec", endDate: "30 Dec", status: "Open" },
+              { startDate: "27 Dec", endDate: "31 Dec", status: "Open" },
+              { startDate: "28 Dec", endDate: "01 Jan", status: "Open" },
+              { startDate: "29 Dec", endDate: "02 Jan", status: "Open" },
+              { startDate: "30 Dec", endDate: "03 Jan", status: "Open" },
+              { startDate: "31 Dec", endDate: "04 Jan", status: "Open" }
+            ]
+          }
+        ]
+      },
+      "2027": {
+        months: [
+          {
+            month: "Jan",
+            year: "2027",
+            trips: [
+              { startDate: "01 Jan", endDate: "05 Jan", status: "Open" },
+              { startDate: "02 Jan", endDate: "06 Jan", status: "Open" },
+              { startDate: "03 Jan", endDate: "07 Jan", status: "Open" },
+              { startDate: "04 Jan", endDate: "08 Jan", status: "Open" },
+              { startDate: "05 Jan", endDate: "09 Jan", status: "Open" },
+              { startDate: "06 Jan", endDate: "10 Jan", status: "Open" },
+              { startDate: "07 Jan", endDate: "11 Jan", status: "Open" },
+              { startDate: "08 Jan", endDate: "12 Jan", status: "Open" },
+              { startDate: "09 Jan", endDate: "13 Jan", status: "Open" },
+              { startDate: "10 Jan", endDate: "14 Jan", status: "Open" },
+              { startDate: "11 Jan", endDate: "15 Jan", status: "Open" },
+              { startDate: "12 Jan", endDate: "16 Jan", status: "Open" },
+              { startDate: "13 Jan", endDate: "17 Jan", status: "Open" },
+              { startDate: "14 Jan", endDate: "18 Jan", status: "Open" },
+              { startDate: "15 Jan", endDate: "19 Jan", status: "Open" },
+              { startDate: "16 Jan", endDate: "20 Jan", status: "Open" },
+              { startDate: "17 Jan", endDate: "21 Jan", status: "Open" },
+              { startDate: "18 Jan", endDate: "22 Jan", status: "Open" },
+              { startDate: "19 Jan", endDate: "23 Jan", status: "Open" },
+              { startDate: "20 Jan", endDate: "24 Jan", status: "Open" },
+              { startDate: "21 Jan", endDate: "25 Jan", status: "Open" },
+              { startDate: "22 Jan", endDate: "26 Jan", status: "Open" },
+              { startDate: "23 Jan", endDate: "27 Jan", status: "Open" },
+              { startDate: "24 Jan", endDate: "28 Jan", status: "Open" },
+              { startDate: "25 Jan", endDate: "29 Jan", status: "Open" },
+              { startDate: "26 Jan", endDate: "30 Jan", status: "Open" },
+              { startDate: "27 Jan", endDate: "31 Jan", status: "Open" },
+              { startDate: "28 Jan", endDate: "01 Feb", status: "Open" },
+              { startDate: "29 Jan", endDate: "02 Feb", status: "Open" },
+              { startDate: "30 Jan", endDate: "03 Feb", status: "Open" },
+              { startDate: "31 Jan", endDate: "04 Feb", status: "Open" }
+            ]
+          },
+          {
+            month: "Feb",
+            year: "2027",
+            trips: [
+              { startDate: "01 Feb", endDate: "05 Feb", status: "Open" },
+              { startDate: "02 Feb", endDate: "06 Feb", status: "Open" },
+              { startDate: "03 Feb", endDate: "07 Feb", status: "Open" },
+              { startDate: "04 Feb", endDate: "08 Feb", status: "Open" },
+              { startDate: "05 Feb", endDate: "09 Feb", status: "Open" },
+              { startDate: "06 Feb", endDate: "10 Feb", status: "Open" },
+              { startDate: "07 Feb", endDate: "11 Feb", status: "Open" },
+              { startDate: "08 Feb", endDate: "12 Feb", status: "Open" },
+              { startDate: "09 Feb", endDate: "13 Feb", status: "Open" },
+              { startDate: "10 Feb", endDate: "14 Feb", status: "Open" },
+              { startDate: "11 Feb", endDate: "15 Feb", status: "Open" },
+              { startDate: "12 Feb", endDate: "16 Feb", status: "Open" },
+              { startDate: "13 Feb", endDate: "17 Feb", status: "Open" },
+              { startDate: "14 Feb", endDate: "18 Feb", status: "Open" },
+              { startDate: "15 Feb", endDate: "19 Feb", status: "Open" },
+              { startDate: "16 Feb", endDate: "20 Feb", status: "Open" },
+              { startDate: "17 Feb", endDate: "21 Feb", status: "Open" },
+              { startDate: "18 Feb", endDate: "22 Feb", status: "Open" },
+              { startDate: "19 Feb", endDate: "23 Feb", status: "Open" },
+              { startDate: "20 Feb", endDate: "24 Feb", status: "Open" },
+              { startDate: "21 Feb", endDate: "25 Feb", status: "Open" },
+              { startDate: "22 Feb", endDate: "26 Feb", status: "Open" },
+              { startDate: "23 Feb", endDate: "27 Feb", status: "Open" },
+              { startDate: "24 Feb", endDate: "28 Feb", status: "Open" },
+              { startDate: "25 Feb", endDate: "01 Mar", status: "Open" },
+              { startDate: "26 Feb", endDate: "02 Mar", status: "Open" },
+              { startDate: "27 Feb", endDate: "03 Mar", status: "Open" },
+              { startDate: "28 Feb", endDate: "04 Mar", status: "Open" }
+            ]
+          },
+          {
+            month: "Mar",
+            year: "2027",
+            trips: [
+              { startDate: "01 Mar", endDate: "05 Mar", status: "Open" },
+              { startDate: "02 Mar", endDate: "06 Mar", status: "Open" },
+              { startDate: "03 Mar", endDate: "07 Mar", status: "Open" },
+              { startDate: "04 Mar", endDate: "08 Mar", status: "Open" },
+              { startDate: "05 Mar", endDate: "09 Mar", status: "Open" },
+              { startDate: "06 Mar", endDate: "10 Mar", status: "Open" },
+              { startDate: "07 Mar", endDate: "11 Mar", status: "Open" },
+              { startDate: "08 Mar", endDate: "12 Mar", status: "Open" },
+              { startDate: "09 Mar", endDate: "13 Mar", status: "Open" },
+              { startDate: "10 Mar", endDate: "14 Mar", status: "Open" },
+              { startDate: "11 Mar", endDate: "15 Mar", status: "Open" },
+              { startDate: "12 Mar", endDate: "16 Mar", status: "Open" },
+              { startDate: "13 Mar", endDate: "17 Mar", status: "Open" },
+              { startDate: "14 Mar", endDate: "18 Mar", status: "Open" },
+              { startDate: "15 Mar", endDate: "19 Mar", status: "Open" },
+              { startDate: "16 Mar", endDate: "20 Mar", status: "Open" },
+              { startDate: "17 Mar", endDate: "21 Mar", status: "Open" },
+              { startDate: "18 Mar", endDate: "22 Mar", status: "Open" },
+              { startDate: "19 Mar", endDate: "23 Mar", status: "Open" },
+              { startDate: "20 Mar", endDate: "24 Mar", status: "Open" },
+              { startDate: "21 Mar", endDate: "25 Mar", status: "Open" },
+              { startDate: "22 Mar", endDate: "26 Mar", status: "Open" },
+              { startDate: "23 Mar", endDate: "27 Mar", status: "Open" },
+              { startDate: "24 Mar", endDate: "28 Mar", status: "Open" },
+              { startDate: "25 Mar", endDate: "29 Mar", status: "Open" },
+              { startDate: "26 Mar", endDate: "30 Mar", status: "Open" },
+              { startDate: "27 Mar", endDate: "31 Mar", status: "Open" },
+              { startDate: "28 Mar", endDate: "01 Apr", status: "Open" },
+              { startDate: "29 Mar", endDate: "02 Apr", status: "Open" },
+              { startDate: "30 Mar", endDate: "03 Apr", status: "Open" },
+              { startDate: "31 Mar", endDate: "04 Apr", status: "Open" }
+            ]
+          },
+          {
+            month: "Apr",
+            year: "2027",
+            trips: [
+              { startDate: "01 Apr", endDate: "05 Apr", status: "Open" },
+              { startDate: "02 Apr", endDate: "06 Apr", status: "Open" },
+              { startDate: "03 Apr", endDate: "07 Apr", status: "Open" },
+              { startDate: "04 Apr", endDate: "08 Apr", status: "Open" },
+              { startDate: "05 Apr", endDate: "09 Apr", status: "Open" },
+              { startDate: "06 Apr", endDate: "10 Apr", status: "Open" },
+              { startDate: "07 Apr", endDate: "11 Apr", status: "Open" },
+              { startDate: "08 Apr", endDate: "12 Apr", status: "Open" },
+              { startDate: "09 Apr", endDate: "13 Apr", status: "Open" },
+              { startDate: "10 Apr", endDate: "14 Apr", status: "Open" },
+              { startDate: "11 Apr", endDate: "15 Apr", status: "Open" },
+              { startDate: "12 Apr", endDate: "16 Apr", status: "Open" },
+              { startDate: "13 Apr", endDate: "17 Apr", status: "Open" },
+              { startDate: "14 Apr", endDate: "18 Apr", status: "Open" },
+              { startDate: "15 Apr", endDate: "19 Apr", status: "Open" },
+              { startDate: "16 Apr", endDate: "20 Apr", status: "Open" },
+              { startDate: "17 Apr", endDate: "21 Apr", status: "Open" },
+              { startDate: "18 Apr", endDate: "22 Apr", status: "Open" },
+              { startDate: "19 Apr", endDate: "23 Apr", status: "Open" },
+              { startDate: "20 Apr", endDate: "24 Apr", status: "Open" },
+              { startDate: "21 Apr", endDate: "25 Apr", status: "Open" },
+              { startDate: "22 Apr", endDate: "26 Apr", status: "Open" },
+              { startDate: "23 Apr", endDate: "27 Apr", status: "Open" },
+              { startDate: "24 Apr", endDate: "28 Apr", status: "Open" },
+              { startDate: "25 Apr", endDate: "29 Apr", status: "Open" },
+              { startDate: "26 Apr", endDate: "30 Apr", status: "Open" },
+              { startDate: "27 Apr", endDate: "01 May", status: "Open" },
+              { startDate: "28 Apr", endDate: "02 May", status: "Open" },
+              { startDate: "29 Apr", endDate: "03 May", status: "Open" },
+              { startDate: "30 Apr", endDate: "04 May", status: "Open" }
             ]
           }
         ]
