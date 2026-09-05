@@ -37,7 +37,6 @@ export function buildSectionTabs(noun: string = "Trek") {
     { id: "inclusions", label: "Inclusions" },
     { id: "trek-essentials", label: `${noun} Essentials` },
     { id: "cancellation", label: "Cancellation Policy" },
-    { id: "imp-links", label: "Imp. Links" },
     { id: "faqs", label: "FAQs" },
     { id: "trek-article", label: "Article" },
     { id: "trek-reviews", label: "Reviews & Videos" },

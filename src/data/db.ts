@@ -2973,6 +2973,143 @@ if (kedarkanthaIndex !== -1) {
     { title: "Where does the trek start?", description: "At Sankri, the base village in Uttarkashi district. Pickup is at 6:00 AM on Day 1 from Dehradun Railway Station, followed by a 190 km, 8-10 hour drive to Sankri." }
   ];
 
+  TREKS[kedarkanthaIndex].article = {
+    title: "Kedarkantha Trek: Where Winter Turns Into a Memory",
+    standfirst:
+      "Silent pine forests, snow-covered trails, star-filled nights and a summit sunrise over the Garhwal Himalayas — the classic winter trek, told the way it is felt.",
+    readMinutes: 7,
+    sections: [
+      {
+        paragraphs: [
+          "There are some journeys you take for adventure.",
+          "And then there are journeys that stay with you long after you return home.",
+          "Kedarkantha Trek is one of them.",
+          "Hidden deep in the Garhwal Himalayas of Uttarakhand, Kedarkantha is more than a winter trek. It is a journey through silent pine forests, snow-covered trails, frozen landscapes, star-filled nights and finally, a summit where the first rays of the sun touch the Himalayan peaks.",
+          "If you have ever dreamed of waking up surrounded by snow, walking through a forest that feels untouched by time, and standing on a Himalayan summit watching the mountains turn golden at sunrise — Kedarkantha is calling."
+        ]
+      },
+      {
+        heading: "Why Kedarkantha Is So Special",
+        paragraphs: [
+          "The magic of Kedarkantha begins long before you reach the summit.",
+          "Your journey takes you from Dehradun to Sankri, a beautiful mountain village and the gateway to the trek. As the road climbs deeper into the Himalayas, the landscape slowly changes. Cities disappear, forests become denser and the mountains begin to feel closer.",
+          "Then comes the walk.",
+          "Pine and oak forests surround the trail. In winter, snow slowly takes over the landscape. Every step feels different. Every turn opens another beautiful view.",
+          "And at night, when the camp becomes quiet, you look up.",
+          "Thousands of stars fill the Himalayan sky.",
+          "For many trekkers, that moment becomes one of the most unforgettable memories of the entire journey."
+        ]
+      },
+      {
+        heading: "The Journey Through Snow",
+        paragraphs: [
+          "Kedarkantha is famous for its beautiful campsites, especially Juda Ka Talab.",
+          "Walking towards Juda Ka Talab in winter feels almost unreal. Tall trees covered with snow stand quietly around the trail, while your footsteps create the only sound in the forest.",
+          "There is no rush.",
+          "You simply walk, breathe and take it all in.",
+          "The cold may challenge you, but the beauty keeps pulling you forward.",
+          "As you gain altitude, the forest slowly opens into wider landscapes. Snow-covered slopes replace dense trees, and the mighty Himalayan peaks begin appearing in the distance."
+        ]
+      },
+      {
+        heading: "The Summit Morning",
+        paragraphs: [
+          "And then comes the moment everyone has been waiting for.",
+          "Summit Day.",
+          "The alarm rings in the middle of the night. It is cold, dark and sometimes difficult to leave the warmth of your sleeping bag.",
+          "But you get up.",
+          "Headlamps light the trail as you begin climbing towards the summit.",
+          "Every step becomes a conversation between your body and your mind.",
+          "“Bas thoda aur…”",
+          "The climb can be challenging, but eventually the darkness begins to disappear.",
+          "The horizon starts changing colour.",
+          "And then the sun rises.",
+          "Standing at around 12,500 feet, watching the first sunlight fall across the Himalayan ranges, you suddenly understand why people fall in love with the mountains.",
+          "You forget the cold.",
+          "You forget the tired legs.",
+          "You forget the difficult climb.",
+          "For a few moments, there is only you, the mountains and the sunrise."
+        ]
+      },
+      {
+        heading: "A Trek That Changes You",
+        paragraphs: [
+          "Kedarkantha doesn’t promise luxury.",
+          "It gives you something better.",
+          "Perspective.",
+          "In the mountains, you realise how little you actually need.",
+          "A warm jacket.",
+          "A pair of trekking shoes.",
+          "A hot meal.",
+          "A tent.",
+          "A few good people beside you.",
+          "And a sky full of stars.",
+          "The mountains slow everything down.",
+          "There are no endless notifications. No traffic. No deadlines.",
+          "Just the sound of your footsteps and the wind moving through the trees.",
+          "And somewhere between the first step and the summit, you may discover a quieter version of yourself."
+        ]
+      },
+      {
+        heading: "Is Kedarkantha Good for Beginners?",
+        paragraphs: [
+          "Yes.",
+          "Kedarkantha is widely considered one of the classic Himalayan winter treks and can be a great introduction to snow trekking for people with reasonable fitness.",
+          "You don’t need to be an experienced mountaineer.",
+          "But you do need preparation.",
+          "Regular walking, jogging, stair climbing and basic strength training before the trek can make a significant difference.",
+          "Because the mountains don’t ask you to be the strongest.",
+          "They simply ask you to keep going."
+        ]
+      },
+      {
+        heading: "Best Time to Do the Kedarkantha Trek",
+        paragraphs: [
+          "Kedarkantha is especially popular during the winter months when the landscape transforms into a snow-covered wonderland.",
+          "The typical snow season is December to April, although actual snow conditions vary from year to year.",
+          "If snow is the dream, winter is the season to experience Kedarkantha at its most magical."
+        ]
+      },
+      {
+        heading: "What Makes the Trek Memorable?",
+        paragraphs: [
+          "It isn’t just the summit.",
+          "It is the entire journey.",
+          "The first glimpse of snow.",
+          "The laughter inside the tent.",
+          "The hot cup of tea after a long climb.",
+          "The person you met on the trail who somehow becomes a friend.",
+          "The silence of the forest.",
+          "The stars you rarely see from the city.",
+          "And that feeling when you finally stand on the summit and realise:",
+          "You actually made it."
+        ]
+      },
+      {
+        heading: "Leave With Memories, Not Just Photographs",
+        paragraphs: [
+          "Kedarkantha is not just a destination to tick off your travel list.",
+          "It is a story you carry back.",
+          "A story of cold mornings, tired feet, warm friendships, snowy trails and a sunrise that made every difficult step worth it.",
+          "Maybe that is why people return to the Himalayas again and again.",
+          "Because once the mountains become a part of your soul, home never feels quite the same."
+        ]
+      },
+      {
+        heading: "Come Walk With Us",
+        paragraphs: [
+          "At Trip My Soul, we believe a trek should be more than reaching a destination.",
+          "It should be about the people you meet, the stories you create and the moments you carry home.",
+          "Kedarkantha is waiting.",
+          "The trail is calling.",
+          "Pack your courage. Leave the ordinary behind.",
+          "And come find your moment in the mountains."
+        ]
+      }
+    ],
+    signoff: "Trip My Soul — Travel Far. Feel More."
+  };
+
   TREKS[kedarkanthaIndex].batches = {
     years: {
       "2026": {
@@ -3434,6 +3571,9 @@ if (kuariPassIndex !== -1) {
     "Between December and March the route above Gulling is snowbound and the grade rises from moderate to moderate–challenging; gaiters and microspikes may be required on summit day, and your guide will call the start time on the conditions. The panorama from the pass depends entirely on the weather, so treat a clear morning as a bonus rather than a guarantee.";
 
   TREKS[kuariPassIndex].gallery = [
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4214.JPG.jpeg", caption: "Oak and rhododendron forest on the way up" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4215.JPG.jpeg", caption: "Above the treeline on the Curzon Trail" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4216.JPG.jpeg", caption: "Snow on the trail below the pass" },
     { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4235.JPG.jpeg", caption: "On the Lord Curzon Trail above Joshimath" },
     { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4236.JPG.jpeg", caption: "Oak and rhododendron forest below Gulling" },
     { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4239.JPG.jpeg", caption: "Camp at Gulling" },
@@ -4235,12 +4375,6 @@ if (brahmatalIndex !== -1) {
 
   TREKS[brahmatalIndex].importantNote =
     "Between December and March the trail is snowbound and the grade sits at the upper end of easy\u2013moderate; gaiters and microspikes may be needed depending on conditions, and your trek leader will set the summit-day start time accordingly. Views of Trishul and Nanda Ghunti depend entirely on the weather, so treat a clear morning on the ridge as a bonus rather than a guarantee.";
-
-  TREKS[brahmatalIndex].gallery = [
-    { url: "/Trips_gallery/Brahmatal/IMG_4214.JPG.jpeg", caption: "Oak and rhododendron forest above Lohajung" },
-    { url: "/Trips_gallery/Brahmatal/IMG_4215.JPG.jpeg", caption: "Bekaltal, frozen over in the forest" },
-    { url: "/Trips_gallery/Brahmatal/IMG_4216.JPG.jpeg", caption: "Brahmatal Lake under snow" }
-  ];
 
   TREKS[brahmatalIndex].itinerary = [
     {

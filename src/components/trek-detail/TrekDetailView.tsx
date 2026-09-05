@@ -10,9 +10,7 @@ import TrekHeroGallery from "./TrekHeroGallery";
 import TrekSectionNav from "./TrekSectionNav";
 import TrekFloatingActions from "./TrekFloatingActions";
 import TrekOverviewFacts from "./TrekOverviewFacts";
-import TrekQuickItinerary from "./TrekQuickItinerary";
 import TrekAbout from "./TrekAbout";
-import TrekCompleteInformation from "./TrekCompleteInformation";
 import TrekItinerary from "./TrekItinerary";
 import TrekEligibility from "./TrekEligibility";
 import TrekPhotoAlbum from "./TrekPhotoAlbum";
@@ -21,10 +19,8 @@ import TrekInclusions from "./TrekInclusions";
 import TrekCostSummary from "./TrekCostSummary";
 import TrekPricing from "./TrekPricing";
 import TrekDepartures from "./TrekDepartures";
-import TrekBookingTerms from "./TrekBookingTerms";
 import TrekEssentials from "./TrekEssentials";
 import TrekCancellation from "./TrekCancellation";
-import TrekImportantLinks from "./TrekImportantLinks";
 import TrekFaqs from "./TrekFaqs";
 import TrekArticle from "./TrekArticle";
 import TrekSimilar from "./TrekSimilar";
@@ -37,6 +33,13 @@ import TrekCallbackBar from "./TrekCallbackBar";
 
 /** Shared white card shell used by every content section. */
 const CARD = "bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm scroll-mt-40";
+
+/**
+ * Mobile pulls Cost & Terms up to sit right under the overview; every other
+ * section trails behind it in DOM order. From `lg` the ordering is dropped and
+ * the column reads top to bottom as written.
+ */
+const REST = "order-3 lg:order-none";
 
 interface TrekDetailViewProps {
   /** The listing to render. Trips arrive here through `tripToTrek`. */
@@ -158,13 +161,6 @@ export default function TrekDetailView({
   };
 
   // Sections that would otherwise render an empty card.
-  const showCompleteInfo =
-    detail.useTrekFallbacks ||
-    detail.thingsToRemember.length > 0 ||
-    detail.transportModes.length > 0 ||
-    !!detail.kidsPolicy ||
-    detail.contactNumbers.length > 0 ||
-    !!detail.contactPhone;
   const showFaqs = detail.faqs.length > 0;
 
   return (
@@ -186,8 +182,8 @@ export default function TrekDetailView({
       {/* Main Content Layout */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col lg:flex-row gap-8">
         {/* Left Column (Content Areas) */}
-        <div className="w-full lg:w-2/3 space-y-10">
-          <section id="overview" className="space-y-6 scroll-mt-40">
+        <div className="w-full lg:w-2/3 flex flex-col gap-10">
+          <section id="overview" className="space-y-6 scroll-mt-40 order-1 lg:order-none">
             <TrekOverviewFacts
               detail={detail}
               noun={noun}
@@ -195,21 +191,11 @@ export default function TrekDetailView({
             />
           </section>
 
-          <section className={`${CARD} space-y-6`}>
-            <TrekQuickItinerary trekName={trek.name} noun={noun} itinerary={detail.quickItinerary} />
-          </section>
-
-          <section id="about-trek" className={`${CARD} space-y-4`}>
+          <section id="about-trek" className={`${CARD} space-y-4 ${REST}`}>
             <TrekAbout detail={detail} noun={noun} />
           </section>
 
-          {showCompleteInfo && (
-            <section id="complete-trek-information" className={`${CARD} space-y-6`}>
-              <TrekCompleteInformation detail={detail} noun={noun} />
-            </section>
-          )}
-
-          <section id="itinerary" className={`${CARD} space-y-6`}>
+          <section id="itinerary" className={`${CARD} space-y-6 ${REST}`}>
             <TrekItinerary
               itinerary={detail.normalizedItinerary}
               noun={noun}
@@ -217,15 +203,15 @@ export default function TrekDetailView({
             />
           </section>
 
-          <section id="eligibility" className={`${CARD} space-y-6`}>
+          <section id="eligibility" className={`${CARD} space-y-6 ${REST}`}>
             <TrekEligibility detail={detail} noun={noun} />
           </section>
 
-          <section id="photos" className={`${CARD} space-y-5`}>
+          <section id="photos" className={`${CARD} space-y-5 ${REST}`}>
             <TrekPhotoAlbum detail={detail} noun={noun} />
           </section>
 
-          <section id="how-to-reach" className={`${CARD} space-y-6`}>
+          <section id="how-to-reach" className={`${CARD} space-y-6 ${REST}`}>
             <TrekHowToReach
               transport={detail.transport}
               howToReach={detail.howToReach}
@@ -234,7 +220,7 @@ export default function TrekDetailView({
           </section>
 
           {/* The fare and its terms first, then what the fare covers. */}
-          <section id="cost-terms" className={`${CARD} space-y-8`}>
+          <section id="cost-terms" className={`${CARD} space-y-8 order-2 lg:order-none`}>
             <TrekCostSummary
               detail={detail}
               noun={noun}
@@ -247,11 +233,10 @@ export default function TrekDetailView({
               selectedPackageId={selectedPackageId}
               onSelectPackage={setSelectedPackageId}
             />
-            <TrekBookingTerms detail={detail} />
           </section>
 
           {/* Dates sit between the fare and what it covers, right before booking. */}
-          <section id="departures" className={`${CARD} space-y-6`}>
+          <section id="departures" className={`${CARD} space-y-6 ${REST}`}>
             <TrekDepartures
               batchMonths={detail.batchMonths}
               year={detail.batchYear}
@@ -264,11 +249,11 @@ export default function TrekDetailView({
             />
           </section>
 
-          <section id="inclusions" className={`${CARD} space-y-6`}>
+          <section id="inclusions" className={`${CARD} space-y-6 ${REST}`}>
             <TrekInclusions inclusions={detail.inclusions} exclusions={detail.exclusions} />
           </section>
 
-          <section id="trek-essentials" className={`${CARD} space-y-6`}>
+          <section id="trek-essentials" className={`${CARD} space-y-6 ${REST}`}>
             <TrekEssentials
               packingList={detail.packingList}
               rentalGear={detail.rentalGear}
@@ -276,27 +261,17 @@ export default function TrekDetailView({
             />
           </section>
 
-          <section id="cancellation" className={`${CARD} space-y-4`}>
+          <section id="cancellation" className={`${CARD} space-y-4 ${REST}`}>
             <TrekCancellation policy={detail.cancellationPolicyText} />
           </section>
 
-          <section id="imp-links" className={`${CARD} space-y-4`}>
-            <TrekImportantLinks
-              contactNumbers={
-                detail.contactPhone
-                  ? [...new Set([detail.contactPhone, ...detail.contactNumbers])]
-                  : detail.contactNumbers
-              }
-            />
-          </section>
-
           {showFaqs && (
-            <section id="faqs" className={`${CARD} space-y-6`}>
+            <section id="faqs" className={`${CARD} space-y-6 ${REST}`}>
               <TrekFaqs faqs={detail.faqs} />
             </section>
           )}
 
-          <section id="trek-article" className={`${CARD} space-y-6`}>
+          <section id="trek-article" className={`${CARD} space-y-6 ${REST}`}>
             <TrekArticle
               trekName={trek.name}
               noun={noun}
@@ -306,7 +281,7 @@ export default function TrekDetailView({
           </section>
 
           {/* Social proof reads better before we point at other departures. */}
-          <section id="trek-reviews" className={`${CARD} space-y-8`}>
+          <section id="trek-reviews" className={`${CARD} space-y-8 ${REST}`}>
             <TrekReviews
               reviews={detail.reviews}
               trailVideos={detail.trailVideos}
@@ -316,7 +291,7 @@ export default function TrekDetailView({
             />
           </section>
 
-          <section id="similar-treks" className={`${CARD} space-y-6`}>
+          <section id="similar-treks" className={`${CARD} space-y-6 ${REST}`}>
             <TrekSimilar
               similarTreks={similar}
               totalTrekCount={totalCount}
