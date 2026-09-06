@@ -891,13 +891,17 @@ export const TREKS: Trek[] = [
   {
     "slug": "dayara-bugyal-trek",
     "name": "Dayara Bugyal Trek",
+    "tagline": "Four days from Dehradun to one of India's largest alpine meadows, at 12,000 ft above the base village of Raithal.",
     "price": 6499,
     "days": 4,
     "nights": 3,
     "region": "Uttarakhand",
     "category": "Upcoming Winter Treks",
-    "startLocation": "Dehradun to Dehradun",
-    "difficulty": "Moderate",
+    "startLocation": "Raithal",
+    "difficulty": "Easy to Moderate",
+    "maxAltitude": "12,000 ft / 3,658 m",
+    "totalDistance": "20–25 Kilometers",
+    "availability": "September – June",
     "months": [
       "Oct",
       "Nov",
@@ -1150,17 +1154,16 @@ export const TREKS: Trek[] = [
     "category": "Trending Treks",
     "startLocation": "Dehradun to Dehradun",
     "difficulty": "Moderate",
+    "availability": "September – December & March – June",
     "months": [
+      "Sep",
       "Oct",
       "Nov",
       "Dec",
-      "Jan",
-      "Feb",
       "Mar",
       "Apr",
       "May",
-      "Jun",
-      "Jul"
+      "Jun"
     ],
     "themes": [
       "Snow",
@@ -3467,6 +3470,612 @@ if (kedarkanthaIndex !== -1) {
   }
 }
 
+// Static details for Dayara Bugyal Trek (uid: dayara-bugyal-trek), the Raithal
+// meadow trail. Eligibility, fitness and the departure calendar mirror
+// Kedarkantha, as do trek essentials (packing list) and the cancellation
+// policy — both are deliberately left unset so this listing renders the same
+// shared copy from `trekDefaults.ts` / `TrekCancellation`.
+const dayaraBugyalIndex = TREKS.findIndex(t => t.slug === 'dayara-bugyal-trek');
+if (dayaraBugyalIndex !== -1) {
+  TREKS[dayaraBugyalIndex].inclusions = [
+    { title: "Accommodation", description: "1 night in Raithal + 2 nights in camps." },
+    { title: "Meals", description: "Breakfast, lunch & dinner during the trek." },
+    { title: "Transportation", description: "Dehradun → Raithal → Dehradun." },
+    { title: "Trek Support", description: "Experienced trek leader & support staff." },
+    { title: "Camping", description: "Tents, sleeping bags & camping equipment." },
+    { title: "Permits", description: "Forest/trek permits & applicable entry charges." },
+    { title: "Kitchen & Cooking Team", description: "Dedicated trek kitchen staff." },
+    { title: "First Aid", description: "Basic first-aid kit & emergency support." },
+    { title: "Drinking Water", description: "Access to safe drinking water during the trek." },
+    { title: "Gear Support", description: "Common camping and technical equipment as required." },
+    { title: "Trek Briefing", description: "Pre-trek briefing and route guidance." }
+  ];
+
+  TREKS[dayaraBugyalIndex].exclusions = [
+    { title: "Airfare / train tickets", description: "Travel to and from Dehradun." },
+    { title: "Dehradun stay", description: "Accommodation & meals in Dehradun before/after the trek." },
+    { title: "Personal expenses", description: "Snacks, beverages, laundry, etc." },
+    { title: "Personal trekking gear", description: "Shoes, jackets, backpack, trekking poles, etc." },
+    { title: "Personal medication", description: "Personal medication & medical expenses." },
+    { title: "Emergency evacuation", description: "Evacuation / rescue costs, if required." },
+    { title: "Insurance", description: "Travel & trekking insurance." },
+    { title: "Additional transportation", description: "Transport needed due to route changes, delays or personal reasons." },
+    { title: "Weather & roadblocks", description: "Expenses arising from bad weather, roadblocks or natural circumstances." },
+    { title: "Anything not listed", description: "Any service not specifically mentioned under “Inclusions”." },
+    { title: "Tips & porters", description: "Tips, porter charges for personal luggage and other optional services." },
+    { title: "GST & taxes", description: "GST or applicable taxes, if not included in the advertised trek price." }
+  ];
+
+  // The criteria Kedarkantha publishes, with the altitude row set to this
+  // trek's own high point.
+  TREKS[dayaraBugyalIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: 10–60 years recommended" },
+    { icon: "Footprints", text: "Experience: No prior trekking experience required" },
+    { icon: "Dumbbell", text: "Fitness: Basic to moderate fitness required" },
+    { icon: "Mountain", text: "Altitude: Up to 12,000 ft / 3,658 m" },
+    { icon: "Snowflake", text: "Must be comfortable with cold and snow conditions" },
+    { icon: "Stethoscope", text: "Participants should be medically fit for high-altitude trekking" }
+  ];
+
+  TREKS[dayaraBugyalIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 5–6 km comfortably" },
+    { icon: "TrendingUp", text: "Able to climb 4–5 floors without excessive breathlessness" },
+    { icon: "Dumbbell", text: "Good stamina and leg strength recommended" },
+    { icon: "Backpack", text: "Comfortable carrying a light daypack" },
+    { icon: "Activity", text: "Regular walking, jogging or stair training for 3–4 weeks before the trek is recommended" }
+  ];
+
+  TREKS[dayaraBugyalIndex].howToReach = {
+    intro: "Dayara Bugyal Trek starts from Raithal Village in Uttarkashi, and the most convenient gateway is Dehradun.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "The nearest airport is Jolly Grant Airport, Dehradun, approximately 190–200 km from Raithal. From the airport, you can hire a taxi or take the planned transport towards Raithal."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Dehradun Railway Station",
+      detail: "The nearest major railway station is Dehradun Railway Station. Dehradun is well connected with major cities including Delhi. From Dehradun, continue by road towards Raithal. Regular buses and shared vehicles also run from Dehradun to Uttarkashi, from where a local taxi or shared vehicle continues towards Raithal."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Dehradun to Raithal via Uttarkashi and Bhatwari",
+      route: ["Dehradun", "Uttarkashi", "Bhatwari", "Raithal"],
+      facts: [
+        { label: "Distance", value: "~190–200 km" },
+        { label: "Drive", value: "~7–9 hours" },
+        { label: "Options", value: "Bus / Shared Taxi / Private Cab / Tempo Traveller" }
+      ]
+    },
+    pickup: {
+      point: "Dehradun Railway Station",
+      time: "6:00 AM on Day 1",
+      dropPoint: "Dehradun",
+      dropTime: "Evening of Day 4",
+      note: "For TMS departures the trek starts with a pickup from Dehradun, followed by the drive to Raithal Village, the base village for the Dayara Bugyal Trek."
+    }
+  };
+
+  TREKS[dayaraBugyalIndex].bookingAdvancePct = 20;
+
+  TREKS[dayaraBugyalIndex].bookingTerms = [
+    { title: "Trek Cost", description: "₹6,499 + 5% GST* per selected package/departure date." },
+    { title: "Booking Amount", description: "20% advance payment required to confirm your seat." },
+    { title: "Balance Payment", description: "Payable before/at the start of the trek as per booking terms." },
+    { title: "Transportation", description: "Dehradun–Raithal–Dehradun as per the selected package." },
+    { title: "Inclusions", description: "Accommodation, meals, trek permits/forest charges, trek guide & support staff as mentioned in the package." },
+    { title: "Exclusions", description: "Personal expenses, insurance, emergency evacuation, additional transport and anything not specifically mentioned under inclusions." },
+    { title: "GST", description: "Applicable as per package/booking terms." },
+    { title: "Cancellation", description: "Cancellation and refund will be governed by Trip My Soul’s cancellation policy." },
+    { title: "Weather & Route", description: "Itinerary may change due to weather, government/forest restrictions or safety conditions." },
+    { title: "Personal Expenses", description: "Any expenses arising due to personal reasons will be borne by the participant." },
+    { title: "ID Proof", description: "Valid government-issued ID is required at the time of booking/check-in." }
+  ];
+
+  TREKS[dayaraBugyalIndex].aboutParagraphs = [
+    "Dayara Bugyal is a high-altitude alpine meadow trek in the Garhwal Himalayas, in the Uttarkashi district of Uttarakhand. The trail starts from the base village of Raithal and climbs to the Dayara meadows at roughly 12,000 ft (3,658 m), covering about 20–25 km over 4 days and 3 nights. Graded easy to moderate, it is one of the gentler routes into the high Himalaya and suits a first-time trekker with reasonable fitness.",
+    "From Raithal the trail rises through dense oak and rhododendron forest to the campsite at Gui, then opens out onto the bugyal itself — one of the largest alpine meadows in the country, rolling across the mountainside with the high Garhwal peaks standing behind it. Day three is spent walking across the meadow and back down to Gui, and the final day descends the same forest trail to Raithal for the drive back to Dehradun.",
+    "The route runs through most of the year. March to June and September to December give green meadows and the clearest mountain views; December to February turns the whole bugyal white, with snow deep enough to change the character of the trek entirely. Snow conditions vary from year to year."
+  ];
+
+  TREKS[dayaraBugyalIndex].highlights = [
+    "One of India’s largest alpine meadows",
+    "Oak & rhododendron forests above Raithal",
+    "Panoramic Garhwal Himalayan views",
+    "Camping at the Gui campsite",
+    "Winter snow across the meadows",
+    "Himalayan sunsets and starry nights"
+  ];
+
+  TREKS[dayaraBugyalIndex].usps = [
+    {
+      title: "Base village: Raithal",
+      description: "The trek starts and ends at Raithal in Uttarkashi district, reached on a 190–200 km drive from Dehradun — the nearest major city, railhead and airport."
+    },
+    {
+      title: "The bugyal itself",
+      description: "Day three crosses the open meadows of Dayara Bugyal at roughly 12,000 ft, with the Garhwal Himalaya along the skyline and no summit push to rush you across it."
+    },
+    {
+      title: "Two nights at the Gui campsite",
+      description: "Camp is pitched at Gui, a clearing in the forest above Raithal, and stays there for both trekking nights — so the meadow day is walked with a light daypack."
+    },
+    {
+      title: "4–6 hours of walking a day",
+      description: "20–25 km across three trekking days, over forest trails, open meadows and, in winter, snow."
+    },
+    {
+      title: "A short trek that still reaches 12,000 ft",
+      description: "4 days and 3 nights from Dehradun and back, gradual enough for a first Himalayan trek but high enough to feel like one."
+    }
+  ];
+
+  TREKS[dayaraBugyalIndex].destinationHighlights = [
+    { name: "Raithal", blurb: "The Garhwal base village above the Bhagirathi valley, and the road head for the trek." },
+    { name: "Gui Campsite", blurb: "A forest clearing at about 9,700 ft, reached through oak and rhododendron, and the campsite for both trek nights." },
+    { name: "Dayara Bugyal", blurb: "The meadow the trek is named for — open grassland at roughly 12,000 ft, under snow through the winter months." },
+    { name: "Bhatwari", blurb: "The last town on the drive in, on the Uttarkashi–Gangotri road below Raithal." }
+  ];
+
+  TREKS[dayaraBugyalIndex].differentiators = [
+    "Region: Garhwal Himalayas, Uttarkashi district, Uttarakhand",
+    "Trek type: alpine meadow trek — Dayara Bugyal at ~12,000 ft is the high point of the route",
+    "Terrain: forest trails, open meadows and, in winter, snow",
+    "Best experience: vast bugyals, wide Himalayan views and an unhurried pace"
+  ];
+
+  TREKS[dayaraBugyalIndex].similarTreks = [
+    "kedarkantha-trek",
+    "brahmatal-trek",
+    "phulara-ridge-trek",
+    "kuari-pass-trek"
+  ];
+
+  TREKS[dayaraBugyalIndex].idealFor =
+    "First-time trekkers, travellers who want the Himalaya without a summit push, families and groups looking for a short high-altitude trail.";
+
+  TREKS[dayaraBugyalIndex].importantNote =
+    "Between December and February the meadows lie under snow and night temperatures at Gui fall below 0°C, so carry the full winter layering list. Snow cover varies from year to year, and the itinerary may be adjusted by your trek leader on weather, forest-department or safety grounds.";
+
+  TREKS[dayaraBugyalIndex].itinerary = [
+    {
+      day: 1,
+      title: "Dehradun to Raithal",
+      driveDistance: "190–200 km",
+      drivingTime: "7-9 Hours",
+      pickupPoint: "Dehradun Railway Station",
+      pickupTime: "6:00 AM",
+      altitudePoints: [
+        { location: "Dehradun", m: 640, ft: 2100 },
+        { location: "Raithal", m: 2300, ft: 7545 }
+      ],
+      altitudeGain: { m: 1660, ft: 5445 },
+      description: "A scenic Himalayan drive to Raithal, the base village of the Dayara Bugyal Trek.",
+      detailedParagraphs: [
+        "Your Himalayan journey begins early morning from Dehradun. Meet our team at the designated pickup point and begin the drive towards Raithal.",
+        "The road follows the Bhagirathi valley through Uttarkashi and Bhatwari, passing rivers, forests and Garhwali villages. As the road climbs, the mountains grow taller and the familiar world slowly disappears behind you.",
+        "Reach Raithal by evening and check into your guesthouse or homestay. Take some time to relax, walk through the village and prepare for the trek ahead.",
+        "Enjoy dinner and an overnight stay in Raithal."
+      ],
+      highlights: ["Bhagirathi Valley Drive", "Uttarkashi & Bhatwari", "Raithal Village", "Trek Briefing"],
+      meals: "Snacks & Dinner",
+      stayType: "Guesthouse / Homestay"
+    },
+    {
+      day: 2,
+      title: "Raithal to Gui Campsite",
+      trekDistance: "6 km",
+      trekDuration: "4-5 Hours",
+      altitudePoints: [
+        { location: "Raithal", m: 2300, ft: 7545 },
+        { location: "Gui", m: 2957, ft: 9700 }
+      ],
+      altitudeGain: { m: 657, ft: 2155 },
+      description: "Climb out of Raithal through oak and rhododendron forest to the Gui campsite.",
+      detailedParagraphs: [
+        "After breakfast the trek begins. The trail leaves Raithal and enters dense oak and rhododendron forest almost immediately.",
+        "The climb is steady rather than steep, and the forest stays with you for most of the day. You may find yourself slowing down without realising it — there is no hurry here, and the mountains have their own pace.",
+        "In winter this whole section carries snow, on the trail, the branches and the forest floor.",
+        "By afternoon you reach the Gui campsite, a clearing in the forest above the village. Settle into your tent, eat a warm meal and let your body begin adjusting to the altitude.",
+        "Overnight stay in tents at Gui."
+      ],
+      highlights: ["Oak & Rhododendron Forest", "Gui Campsite", "Himalayan Camping", "Starry Night"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Gui campsite — twin sharing"
+    },
+    {
+      day: 3,
+      title: "Gui to Dayara Bugyal and back to Gui",
+      trekDistance: "8 km",
+      trekDuration: "6-7 Hours",
+      altitudePoints: [
+        { location: "Gui", m: 2957, ft: 9700 },
+        { location: "Dayara Bugyal", m: 3658, ft: 12000 },
+        { location: "Gui", m: 2957, ft: 9700 }
+      ],
+      altitudeGain: { m: 701, ft: 2300 },
+      description: "The highlight of the trek — the forest opens into the vast meadows of Dayara Bugyal at 12,000 ft.",
+      detailedParagraphs: [
+        "Leave camp after breakfast with a light daypack. The trail climbs steadily through the last of the forest.",
+        "And then the forest ends. The landscape opens into the magnificent Dayara Bugyal — endless meadows stretched across the mountainside like a green carpet, with the Himalaya standing quietly in the distance. In winter, the same meadows lie under snow.",
+        "Take your time here. Walk across the open grassland, sit down, look at the clouds and listen to the wind moving across the meadow. Sometimes, doing nothing in the mountains is exactly what the heart needs.",
+        "After exploring the bugyal, retrace the trail back down to Gui, carrying photographs on your camera and rather more than that in your head.",
+        "Watch the sun go down behind the mountains from the campsite, and spend a second night in tents at Gui."
+      ],
+      highlights: ["Dayara Bugyal Meadows", "12,000 ft", "Panoramic Himalayan Views", "Himalayan Sunset"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Gui campsite — twin sharing"
+    },
+    {
+      day: 4,
+      title: "Gui to Raithal to Dehradun",
+      trekDistance: "6 km",
+      trekDuration: "3-4 Hours",
+      driveDistance: "190–200 km",
+      drivingTime: "7-9 Hours",
+      altitudePoints: [
+        { location: "Gui", m: 2957, ft: 9700 },
+        { location: "Raithal", m: 2300, ft: 7545 },
+        { location: "Dehradun", m: 640, ft: 2100 }
+      ],
+      altitudeGain: null,
+      description: "Descend the forest trail to Raithal and drive back to Dehradun as the journey ends.",
+      detailedParagraphs: [
+        "Wake up at the campsite and enjoy your final Himalayan breakfast.",
+        "The descent from Gui to Raithal follows the same trail you climbed two days ago — but it no longer feels unfamiliar. You remember the bends, the trees, the campsite and the people you walked with.",
+        "Arrive in Raithal and board the vehicle for the return journey to Dehradun.",
+        "Enjoy the last scenic drive back down the Bhagirathi valley, reaching Dehradun in the evening with the meadows still fresh in your memory."
+      ],
+      highlights: ["Forest Descent", "Raithal", "Scenic Drive", "Journey Ends"],
+      meals: "Breakfast",
+      // The trek ends on this day; an empty stay keeps the generic
+      // "Hotel / Homestay" fallback out of the day's quick-info line.
+      stayType: ""
+    }
+  ];
+
+  TREKS[dayaraBugyalIndex].faqs = [
+    { title: "What is the Dayara Bugyal Trek?", description: "Dayara Bugyal is a beautiful high-altitude alpine meadow trek in Uttarkashi, Uttarakhand, famous for its vast meadows, oak and rhododendron forests and spectacular Himalayan views." },
+    { title: "How many days is the Dayara Bugyal Trek?", description: "The trek is a 4 Days / 3 Nights adventure following the route Raithal → Gui → Dayara Bugyal → Gui → Raithal." },
+    { title: "What is the difficulty level of Dayara Bugyal Trek?", description: "It is generally rated Easy to Moderate and is suitable for beginners with reasonable fitness." },
+    { title: "What is the highest altitude of the trek?", description: "The trek reaches approximately 12,000 ft, depending on the exact route and viewpoints covered." },
+    { title: "What is the total trekking distance?", description: "The complete trekking distance is approximately 20–25 km, depending on the trail and exploration on Day 3." },
+    { title: "What is the best time to do Dayara Bugyal Trek?", description: "The best seasons are March to June and September to December. For snow, December to February is generally preferred, subject to weather and trail conditions." },
+    { title: "Where does the Dayara Bugyal Trek start?", description: "The trek starts from Raithal Village, Uttarkashi, which is the base village for this itinerary." },
+    { title: "Is Dayara Bugyal suitable for first-time trekkers?", description: "Yes. The gradual ascent and moderate trail make it a good option for first-time trekkers, provided they are physically prepared for high-altitude trekking." },
+    { title: "How can I reach Raithal?", description: "Raithal can be reached by road from Dehradun via Rishikesh, Chamba, Uttarkashi and Bhatwari. TMS departures can include transportation from Dehradun." },
+    { title: "Is Dayara Bugyal covered with snow in winter?", description: "Yes. During the winter months, Dayara Bugyal can receive significant snowfall and the meadows can transform into a beautiful snow-covered Himalayan landscape. Snow conditions vary each year." }
+  ];
+
+  TREKS[dayaraBugyalIndex].article = {
+    title: "Dayara Bugyal Trek: Where the Mountains Teach You to Breathe Again",
+    standfirst:
+      "Oak forests above Raithal, a campsite at Gui and one of the largest alpine meadows in the country — a four-day Himalayan walk with enough room in it to actually stop and look around.",
+    readMinutes: 6,
+    sections: [
+      {
+        paragraphs: [
+          "Some journeys are measured in kilometres.",
+          "Some are measured in memories.",
+          "The Dayara Bugyal Trek is one of those rare journeys where every step takes you a little further away from the noise of everyday life and a little closer to yourself.",
+          "Starting from the beautiful Raithal Village in Uttarakhand, the journey begins quietly. The roads become narrower, the mountains become taller, and the familiar world slowly disappears behind you. Soon, there is nothing but pine and oak forests, mountain air and the sound of your own footsteps.",
+          "The trail from Raithal to Gui Campsite is where the real adventure begins. Walking through the forest, you may find yourself slowing down without even realising it. There is no hurry here. The mountains have their own pace.",
+          "And then comes the moment you’ve been walking for."
+        ]
+      },
+      {
+        heading: "When the Forest Opens",
+        paragraphs: [
+          "As you leave the forest behind, the landscape suddenly opens into the magnificent Dayara Bugyal.",
+          "Endless meadows stretch across the mountains like a green carpet, with the mighty Himalayas standing quietly in the distance. For a moment, you simply stop.",
+          "You look around.",
+          "And you realise why people travel so far to walk through these mountains.",
+          "The wind feels different here.",
+          "The sky feels bigger.",
+          "And somehow, your worries feel smaller."
+        ]
+      },
+      {
+        heading: "A Day in the Meadows",
+        paragraphs: [
+          "The journey from Gui to Dayara Bugyal is the highlight of the trek. Walking across the open meadows, surrounded by Himalayan peaks, feels less like trekking and more like stepping into another world.",
+          "Take your time.",
+          "Sit on the grass.",
+          "Look at the clouds.",
+          "Listen to the wind moving across the meadow.",
+          "You don’t have to do anything.",
+          "Sometimes, doing nothing in the mountains is exactly what the heart needs.",
+          "After spending time exploring Dayara Bugyal, you return to Gui, carrying photographs on your camera — but much more importantly, carrying moments in your heart."
+        ]
+      },
+      {
+        heading: "When the Sun Goes Down",
+        paragraphs: [
+          "There is something magical about a Himalayan sunset.",
+          "As the sun begins to disappear behind the mountains, the sky slowly changes its colours. The conversations around the campsite become quieter. Someone makes tea. Someone looks at the mountains. Someone simply sits there, lost in thought.",
+          "And for a few minutes, nobody checks their phone.",
+          "Nobody thinks about work.",
+          "Nobody worries about tomorrow.",
+          "You are simply there.",
+          "Present."
+        ]
+      },
+      {
+        heading: "The Journey Back",
+        paragraphs: [
+          "The final descent from Gui to Raithal can feel surprisingly emotional.",
+          "The same trail that felt unfamiliar a few days ago now feels like something you know. You remember the bends, the trees, the campsite and the people you walked with.",
+          "And somewhere along the way, you realise that the trek wasn’t really about reaching Dayara Bugyal.",
+          "It was about everything that happened while you were getting there.",
+          "The tired legs.",
+          "The laughter.",
+          "The quiet moments.",
+          "The unexpected friendships.",
+          "The first view of the meadow.",
+          "The sunrise you woke up early for.",
+          "And the night you looked up and saw a sky full of stars."
+        ]
+      },
+      {
+        heading: "Why Dayara Bugyal?",
+        paragraphs: [
+          "The Dayara Bugyal Trek from Raithal is perfect for travellers who want to experience the Himalayas without rushing through them. The 4 Days / 3 Nights journey takes you through forests, mountain trails and vast alpine meadows, with enough time to actually pause and enjoy the surroundings.",
+          "It is a trek for the first-time trekker.",
+          "For the tired traveller.",
+          "For the person looking for a little peace.",
+          "And perhaps, for anyone who simply wants to disconnect from the world for a few days."
+        ]
+      },
+      {
+        heading: "Come Back With More Than Memories",
+        paragraphs: [
+          "You may forget the exact distance you walked.",
+          "You may forget how many hours you trekked.",
+          "But you probably won’t forget the first time you stood in the middle of Dayara Bugyal and saw the Himalayas stretching endlessly before you.",
+          "Because some places don’t just become photographs.",
+          "They become a part of you.",
+          "Dayara Bugyal is not just a trek.",
+          "It is a pause from life.",
+          "A breath of fresh mountain air.",
+          "A journey through the Himalayas.",
+          "And a reminder that sometimes, the best way to find yourself is to simply walk away from everything for a while."
+        ]
+      }
+    ],
+    signoff: "Trip My Soul — Travel Far. Feel More."
+  };
+
+  TREKS[dayaraBugyalIndex].batches = {
+    years: {
+      "2026": {
+        months: [
+          {
+            month: "Nov",
+            year: "2026",
+            trips: [
+              { startDate: "01 Nov", endDate: "04 Nov", status: "Open" },
+              { startDate: "02 Nov", endDate: "05 Nov", status: "Open" },
+              { startDate: "03 Nov", endDate: "06 Nov", status: "Open" },
+              { startDate: "04 Nov", endDate: "07 Nov", status: "Open" },
+              { startDate: "05 Nov", endDate: "08 Nov", status: "Open" },
+              { startDate: "06 Nov", endDate: "09 Nov", status: "Open" },
+              { startDate: "07 Nov", endDate: "10 Nov", status: "Open" },
+              { startDate: "08 Nov", endDate: "11 Nov", status: "Open" },
+              { startDate: "09 Nov", endDate: "12 Nov", status: "Open" },
+              { startDate: "10 Nov", endDate: "13 Nov", status: "Open" },
+              { startDate: "11 Nov", endDate: "14 Nov", status: "Open" },
+              { startDate: "12 Nov", endDate: "15 Nov", status: "Open" },
+              { startDate: "13 Nov", endDate: "16 Nov", status: "Open" },
+              { startDate: "14 Nov", endDate: "17 Nov", status: "Open" },
+              { startDate: "15 Nov", endDate: "18 Nov", status: "Open" },
+              { startDate: "16 Nov", endDate: "19 Nov", status: "Open" },
+              { startDate: "17 Nov", endDate: "20 Nov", status: "Open" },
+              { startDate: "18 Nov", endDate: "21 Nov", status: "Open" },
+              { startDate: "19 Nov", endDate: "22 Nov", status: "Open" },
+              { startDate: "20 Nov", endDate: "23 Nov", status: "Open" },
+              { startDate: "21 Nov", endDate: "24 Nov", status: "Open" },
+              { startDate: "22 Nov", endDate: "25 Nov", status: "Open" },
+              { startDate: "23 Nov", endDate: "26 Nov", status: "Open" },
+              { startDate: "24 Nov", endDate: "27 Nov", status: "Open" },
+              { startDate: "25 Nov", endDate: "28 Nov", status: "Open" },
+              { startDate: "26 Nov", endDate: "29 Nov", status: "Open" },
+              { startDate: "27 Nov", endDate: "30 Nov", status: "Open" },
+              { startDate: "28 Nov", endDate: "01 Dec", status: "Open" },
+              { startDate: "29 Nov", endDate: "02 Dec", status: "Open" },
+              { startDate: "30 Nov", endDate: "03 Dec", status: "Open" }
+            ]
+          },
+          {
+            month: "Dec",
+            year: "2026",
+            trips: [
+              { startDate: "01 Dec", endDate: "04 Dec", status: "Open" },
+              { startDate: "02 Dec", endDate: "05 Dec", status: "Open" },
+              { startDate: "03 Dec", endDate: "06 Dec", status: "Open" },
+              { startDate: "04 Dec", endDate: "07 Dec", status: "Open" },
+              { startDate: "05 Dec", endDate: "08 Dec", status: "Open" },
+              { startDate: "06 Dec", endDate: "09 Dec", status: "Open" },
+              { startDate: "07 Dec", endDate: "10 Dec", status: "Open" },
+              { startDate: "08 Dec", endDate: "11 Dec", status: "Open" },
+              { startDate: "09 Dec", endDate: "12 Dec", status: "Open" },
+              { startDate: "10 Dec", endDate: "13 Dec", status: "Open" },
+              { startDate: "11 Dec", endDate: "14 Dec", status: "Open" },
+              { startDate: "12 Dec", endDate: "15 Dec", status: "Open" },
+              { startDate: "13 Dec", endDate: "16 Dec", status: "Open" },
+              { startDate: "14 Dec", endDate: "17 Dec", status: "Open" },
+              { startDate: "15 Dec", endDate: "18 Dec", status: "Open" },
+              { startDate: "16 Dec", endDate: "19 Dec", status: "Open" },
+              { startDate: "17 Dec", endDate: "20 Dec", status: "Open" },
+              { startDate: "18 Dec", endDate: "21 Dec", status: "Open" },
+              { startDate: "19 Dec", endDate: "22 Dec", status: "Open" },
+              { startDate: "20 Dec", endDate: "23 Dec", status: "Open" },
+              { startDate: "21 Dec", endDate: "24 Dec", status: "Open" },
+              { startDate: "22 Dec", endDate: "25 Dec", status: "Open" },
+              { startDate: "23 Dec", endDate: "26 Dec", status: "Open" },
+              { startDate: "24 Dec", endDate: "27 Dec", status: "Open" },
+              { startDate: "25 Dec", endDate: "28 Dec", status: "Open" },
+              { startDate: "26 Dec", endDate: "29 Dec", status: "Open" },
+              { startDate: "27 Dec", endDate: "30 Dec", status: "Open" },
+              { startDate: "28 Dec", endDate: "31 Dec", status: "Open" },
+              { startDate: "29 Dec", endDate: "01 Jan", status: "Open" },
+              { startDate: "30 Dec", endDate: "02 Jan", status: "Open" },
+              { startDate: "31 Dec", endDate: "03 Jan", status: "Open" }
+            ]
+          }
+        ]
+      },
+      "2027": {
+        months: [
+          {
+            month: "Jan",
+            year: "2027",
+            trips: [
+              { startDate: "01 Jan", endDate: "04 Jan", status: "Open" },
+              { startDate: "02 Jan", endDate: "05 Jan", status: "Open" },
+              { startDate: "03 Jan", endDate: "06 Jan", status: "Open" },
+              { startDate: "04 Jan", endDate: "07 Jan", status: "Open" },
+              { startDate: "05 Jan", endDate: "08 Jan", status: "Open" },
+              { startDate: "06 Jan", endDate: "09 Jan", status: "Open" },
+              { startDate: "07 Jan", endDate: "10 Jan", status: "Open" },
+              { startDate: "08 Jan", endDate: "11 Jan", status: "Open" },
+              { startDate: "09 Jan", endDate: "12 Jan", status: "Open" },
+              { startDate: "10 Jan", endDate: "13 Jan", status: "Open" },
+              { startDate: "11 Jan", endDate: "14 Jan", status: "Open" },
+              { startDate: "12 Jan", endDate: "15 Jan", status: "Open" },
+              { startDate: "13 Jan", endDate: "16 Jan", status: "Open" },
+              { startDate: "14 Jan", endDate: "17 Jan", status: "Open" },
+              { startDate: "15 Jan", endDate: "18 Jan", status: "Open" },
+              { startDate: "16 Jan", endDate: "19 Jan", status: "Open" },
+              { startDate: "17 Jan", endDate: "20 Jan", status: "Open" },
+              { startDate: "18 Jan", endDate: "21 Jan", status: "Open" },
+              { startDate: "19 Jan", endDate: "22 Jan", status: "Open" },
+              { startDate: "20 Jan", endDate: "23 Jan", status: "Open" },
+              { startDate: "21 Jan", endDate: "24 Jan", status: "Open" },
+              { startDate: "22 Jan", endDate: "25 Jan", status: "Open" },
+              { startDate: "23 Jan", endDate: "26 Jan", status: "Open" },
+              { startDate: "24 Jan", endDate: "27 Jan", status: "Open" },
+              { startDate: "25 Jan", endDate: "28 Jan", status: "Open" },
+              { startDate: "26 Jan", endDate: "29 Jan", status: "Open" },
+              { startDate: "27 Jan", endDate: "30 Jan", status: "Open" },
+              { startDate: "28 Jan", endDate: "31 Jan", status: "Open" },
+              { startDate: "29 Jan", endDate: "01 Feb", status: "Open" },
+              { startDate: "30 Jan", endDate: "02 Feb", status: "Open" },
+              { startDate: "31 Jan", endDate: "03 Feb", status: "Open" }
+            ]
+          },
+          {
+            month: "Feb",
+            year: "2027",
+            trips: [
+              { startDate: "01 Feb", endDate: "04 Feb", status: "Open" },
+              { startDate: "02 Feb", endDate: "05 Feb", status: "Open" },
+              { startDate: "03 Feb", endDate: "06 Feb", status: "Open" },
+              { startDate: "04 Feb", endDate: "07 Feb", status: "Open" },
+              { startDate: "05 Feb", endDate: "08 Feb", status: "Open" },
+              { startDate: "06 Feb", endDate: "09 Feb", status: "Open" },
+              { startDate: "07 Feb", endDate: "10 Feb", status: "Open" },
+              { startDate: "08 Feb", endDate: "11 Feb", status: "Open" },
+              { startDate: "09 Feb", endDate: "12 Feb", status: "Open" },
+              { startDate: "10 Feb", endDate: "13 Feb", status: "Open" },
+              { startDate: "11 Feb", endDate: "14 Feb", status: "Open" },
+              { startDate: "12 Feb", endDate: "15 Feb", status: "Open" },
+              { startDate: "13 Feb", endDate: "16 Feb", status: "Open" },
+              { startDate: "14 Feb", endDate: "17 Feb", status: "Open" },
+              { startDate: "15 Feb", endDate: "18 Feb", status: "Open" },
+              { startDate: "16 Feb", endDate: "19 Feb", status: "Open" },
+              { startDate: "17 Feb", endDate: "20 Feb", status: "Open" },
+              { startDate: "18 Feb", endDate: "21 Feb", status: "Open" },
+              { startDate: "19 Feb", endDate: "22 Feb", status: "Open" },
+              { startDate: "20 Feb", endDate: "23 Feb", status: "Open" },
+              { startDate: "21 Feb", endDate: "24 Feb", status: "Open" },
+              { startDate: "22 Feb", endDate: "25 Feb", status: "Open" },
+              { startDate: "23 Feb", endDate: "26 Feb", status: "Open" },
+              { startDate: "24 Feb", endDate: "27 Feb", status: "Open" },
+              { startDate: "25 Feb", endDate: "28 Feb", status: "Open" },
+              { startDate: "26 Feb", endDate: "01 Mar", status: "Open" },
+              { startDate: "27 Feb", endDate: "02 Mar", status: "Open" },
+              { startDate: "28 Feb", endDate: "03 Mar", status: "Open" }
+            ]
+          },
+          {
+            month: "Mar",
+            year: "2027",
+            trips: [
+              { startDate: "01 Mar", endDate: "04 Mar", status: "Open" },
+              { startDate: "02 Mar", endDate: "05 Mar", status: "Open" },
+              { startDate: "03 Mar", endDate: "06 Mar", status: "Open" },
+              { startDate: "04 Mar", endDate: "07 Mar", status: "Open" },
+              { startDate: "05 Mar", endDate: "08 Mar", status: "Open" },
+              { startDate: "06 Mar", endDate: "09 Mar", status: "Open" },
+              { startDate: "07 Mar", endDate: "10 Mar", status: "Open" },
+              { startDate: "08 Mar", endDate: "11 Mar", status: "Open" },
+              { startDate: "09 Mar", endDate: "12 Mar", status: "Open" },
+              { startDate: "10 Mar", endDate: "13 Mar", status: "Open" },
+              { startDate: "11 Mar", endDate: "14 Mar", status: "Open" },
+              { startDate: "12 Mar", endDate: "15 Mar", status: "Open" },
+              { startDate: "13 Mar", endDate: "16 Mar", status: "Open" },
+              { startDate: "14 Mar", endDate: "17 Mar", status: "Open" },
+              { startDate: "15 Mar", endDate: "18 Mar", status: "Open" },
+              { startDate: "16 Mar", endDate: "19 Mar", status: "Open" },
+              { startDate: "17 Mar", endDate: "20 Mar", status: "Open" },
+              { startDate: "18 Mar", endDate: "21 Mar", status: "Open" },
+              { startDate: "19 Mar", endDate: "22 Mar", status: "Open" },
+              { startDate: "20 Mar", endDate: "23 Mar", status: "Open" },
+              { startDate: "21 Mar", endDate: "24 Mar", status: "Open" },
+              { startDate: "22 Mar", endDate: "25 Mar", status: "Open" },
+              { startDate: "23 Mar", endDate: "26 Mar", status: "Open" },
+              { startDate: "24 Mar", endDate: "27 Mar", status: "Open" },
+              { startDate: "25 Mar", endDate: "28 Mar", status: "Open" },
+              { startDate: "26 Mar", endDate: "29 Mar", status: "Open" },
+              { startDate: "27 Mar", endDate: "30 Mar", status: "Open" },
+              { startDate: "28 Mar", endDate: "31 Mar", status: "Open" },
+              { startDate: "29 Mar", endDate: "01 Apr", status: "Open" },
+              { startDate: "30 Mar", endDate: "02 Apr", status: "Open" },
+              { startDate: "31 Mar", endDate: "03 Apr", status: "Open" }
+            ]
+          },
+          {
+            month: "Apr",
+            year: "2027",
+            trips: [
+              { startDate: "01 Apr", endDate: "04 Apr", status: "Open" },
+              { startDate: "02 Apr", endDate: "05 Apr", status: "Open" },
+              { startDate: "03 Apr", endDate: "06 Apr", status: "Open" },
+              { startDate: "04 Apr", endDate: "07 Apr", status: "Open" },
+              { startDate: "05 Apr", endDate: "08 Apr", status: "Open" },
+              { startDate: "06 Apr", endDate: "09 Apr", status: "Open" },
+              { startDate: "07 Apr", endDate: "10 Apr", status: "Open" },
+              { startDate: "08 Apr", endDate: "11 Apr", status: "Open" },
+              { startDate: "09 Apr", endDate: "12 Apr", status: "Open" },
+              { startDate: "10 Apr", endDate: "13 Apr", status: "Open" },
+              { startDate: "11 Apr", endDate: "14 Apr", status: "Open" },
+              { startDate: "12 Apr", endDate: "15 Apr", status: "Open" },
+              { startDate: "13 Apr", endDate: "16 Apr", status: "Open" },
+              { startDate: "14 Apr", endDate: "17 Apr", status: "Open" },
+              { startDate: "15 Apr", endDate: "18 Apr", status: "Open" },
+              { startDate: "16 Apr", endDate: "19 Apr", status: "Open" },
+              { startDate: "17 Apr", endDate: "20 Apr", status: "Open" },
+              { startDate: "18 Apr", endDate: "21 Apr", status: "Open" },
+              { startDate: "19 Apr", endDate: "22 Apr", status: "Open" },
+              { startDate: "20 Apr", endDate: "23 Apr", status: "Open" },
+              { startDate: "21 Apr", endDate: "24 Apr", status: "Open" },
+              { startDate: "22 Apr", endDate: "25 Apr", status: "Open" },
+              { startDate: "23 Apr", endDate: "26 Apr", status: "Open" },
+              { startDate: "24 Apr", endDate: "27 Apr", status: "Open" },
+              { startDate: "25 Apr", endDate: "28 Apr", status: "Open" },
+              { startDate: "26 Apr", endDate: "29 Apr", status: "Open" },
+              { startDate: "27 Apr", endDate: "30 Apr", status: "Open" },
+              { startDate: "28 Apr", endDate: "01 May", status: "Open" },
+              { startDate: "29 Apr", endDate: "02 May", status: "Open" },
+              { startDate: "30 Apr", endDate: "03 May", status: "Open" }
+            ]
+          }
+        ]
+      }
+    }
+  };
+}
+
 // Static details for Kuari Pass Trek (uid: kuari-pass-trek), the Lord Curzon Trail.
 // Trek essentials (packing list) and the cancellation policy are deliberately
 // left unset: Kedarkantha publishes neither either, so both listings render the
@@ -5112,6 +5721,727 @@ if (brahmatalIndex !== -1) {
     { url: "/Trips_gallery/Brahmatal/IMG_4322.JPG.jpeg", caption: "The last of the snow on the way down" },
     { url: "/Trips_gallery/Brahmatal/IMG_4323.JPG.jpeg", caption: "Valley views on the walk out" }
   ];
+}
+
+// Static details for the Har Ki Dun Trek (uid: har-ki-dun-trek), the valley
+// route out of Sankri. The itinerary is the only section without published
+// copy, so it still renders from `trekDefaults.ts`. The cancellation
+// policy is deliberately left unset: this listing runs the same terms as
+// Kedarkantha, which publishes none of its own, so both render the shared copy
+// from `trekDefaults.ts` / `TrekCancellation`.
+const harKiDunIndex = TREKS.findIndex(t => t.slug === 'har-ki-dun-trek');
+if (harKiDunIndex !== -1) {
+  TREKS[harKiDunIndex].inclusions = [
+    { title: "Transportation", description: "Dehradun to Sankri and return transportation as per the itinerary." },
+    { title: "Stay at Sankri", description: "Accommodation at Sankri as per the itinerary." },
+    { title: "Accommodation", description: "Guesthouses, homestays and camps during the trek." },
+    { title: "Meals", description: "All meals during the trek — breakfast, lunch, evening snacks and dinner." },
+    { title: "Tea & Coffee", description: "Tea/coffee through the trek." },
+    { title: "Trek Leader", description: "Experienced Trek Leader and local trekking staff." },
+    { title: "Support Staff", description: "Cook and support staff." },
+    { title: "Camping Equipment", description: "Common technical and camping equipment." },
+    { title: "Tents & Sleeping Bags", description: "Tents and sleeping bags for the duration of the trek." },
+    { title: "Campsite Setup", description: "Camping mattresses, toilet tents and dining setup." },
+    { title: "First Aid", description: "Basic first-aid kit and medical assistance." },
+    { title: "Permits", description: "Forest/trek permits and entry charges." },
+    { title: "Porter & Mule Support", description: "Porter/mule support for common trek equipment." },
+    { title: "Trek Support", description: "Basic trek support and safety assistance." }
+  ];
+
+  TREKS[harKiDunIndex].exclusions = [
+    { title: "Personal expenses", description: "Personal expenses, snacks and beverages other than those mentioned." },
+    { title: "Personal porter", description: "Personal porter/mule for carrying your own backpack." },
+    { title: "Personal gear", description: "Trekking shoes, jackets, rainwear, trekking poles and other personal gear." },
+    { title: "Emergency evacuation", description: "Any emergency evacuation/rescue cost due to medical or personal reasons." },
+    { title: "Medical expenses", description: "Medical expenses beyond basic first aid." },
+    { title: "Extra stay & meals", description: "Any additional accommodation or meals due to bad weather, roadblocks or unforeseen circumstances." },
+    { title: "Insurance", description: "Travel insurance." },
+    { title: "Additional transportation", description: "Any additional transportation caused by route diversion, road closure or government restrictions." },
+    { title: "GST", description: "GST, if applicable." },
+    { title: "Anything not listed", description: "Anything not specifically mentioned under Inclusions." }
+  ];
+
+  TREKS[harKiDunIndex].minAge = 12;
+  TREKS[harKiDunIndex].maxAge = 55;
+  TREKS[harKiDunIndex].minAgeWithGuardian = 12;
+  TREKS[harKiDunIndex].soloAgeMin = 18;
+
+  TREKS[harKiDunIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: 12–55 years, subject to fitness and medical suitability" },
+    { icon: "Footprints", text: "Experience: Previous trekking experience helps but is not mandatory for reasonably fit beginners" },
+    { icon: "Mountain", text: "Altitude: Be prepared for high-altitude conditions and significant elevation gain" },
+    { icon: "ShieldCheck", text: "Children below 18 must be accompanied by a parent or guardian" },
+    { icon: "Stethoscope", text: "Above 55 years may join after medical clearance and a fitness assessment" },
+    { icon: "Snowflake", text: "Must be comfortable with cold weather, basic mountain accommodation and changing conditions" }
+  ];
+
+  /** Moderate grade, on 5–7 hour walking days over uneven mountain terrain. */
+  TREKS[harKiDunIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 6–8 km comfortably, building up to 10–12 km" },
+    { icon: "TrendingUp", text: "Comfortable walking 5–7 hours a day on uneven mountain terrain" },
+    { icon: "Dumbbell", text: "Reasonable stamina and leg strength for sustained ascent and descent" },
+    { icon: "Backpack", text: "Comfortable carrying a light daypack" },
+    { icon: "Activity", text: "Not recommended with an uncontrolled medical condition, or without preparation for prolonged uphill/downhill walking" }
+  ];
+
+  // Transcribed verbatim from the Google reviews on the Trip My Soul profile.
+  TREKS[harKiDunIndex].externalReviews = [
+    {
+      source: "Google",
+      subject: "Trip My Soul",
+      author: "Abhijeet Shaw",
+      rating: 5,
+      date: "9 months ago",
+      text: [
+        "Recently I visit Har Ki Doon with Trip My Soul.",
+        "Their behaviour is very kind, humble and sweet.",
+        "Their food quality is very good.",
+        "Overall if i plan any trip in future I will definetly choose this Agency Trip My Soul."
+      ]
+    },
+    {
+      source: "Google",
+      subject: "Trip My Soul",
+      author: "Dilbagh singh",
+      rating: 5,
+      date: "6 months ago",
+      text: [
+        "I had an incredible experience with this trekking company! Everything was very well managed from beginning to end. The food was absolutely amazing — fresh, delicious, and perfectly prepared even in the mountains. It truly exceeded my expectations.",
+        "A special thanks to Rakesh Negi and Shishpal Panwar for being such outstanding guides. They were extremely supportive, knowledgeable, and friendly throughout the trek. They kept us motivated, ensured our safety at every step, and made the whole journey fun and memorable.",
+        "Their dedication and positive attitude made the experience even more special. I highly recommend this company to anyone looking for a safe, well-organized, and unforgettable trekking adventure!"
+      ]
+    },
+    {
+      source: "Google",
+      subject: "Trip My Soul",
+      author: "Arnab Halder",
+      rating: 5,
+      date: "9 months ago",
+      text: [
+        "After saying \"Goodbye Mountain\", I can say, I experienced my frist trekk Har ki dun like a \"family tour\" with \"Trip my Soul\". With friend like trekk Guide , food like own home , I just love the 7 days with You guys. Planning for the next trip soon."
+      ]
+    }
+  ];
+
+  TREKS[harKiDunIndex].reviewVideos = [
+    "https://youtube.com/shorts/FS6NI7Nf8Ks",
+    "https://youtube.com/shorts/sDK2x-oeUZU"
+  ];
+
+  TREKS[harKiDunIndex].howToReach = {
+    intro: "The Har Ki Dun Trek starts from Sankri, a village in the Uttarkashi district of Uttarakhand, and the most convenient gateway is Dehradun.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "From the airport, reach Dehradun and continue by road to Sankri."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Dehradun Railway Station",
+      detail: "Dehradun is the nearest major railhead. From the station, continue to Sankri by bus, shared taxi or private cab."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Dehradun to Sankri via Purola and Mori",
+      detail: "Dehradun is the most convenient starting point. Reach Sankri by shared or private taxi, or by bus. From Sankri the trek begins with a drive to Taluka, followed by the walk towards the Har Ki Dun valley via villages such as Gangad and Osla, depending on the itinerary.",
+      route: ["Dehradun", "Mussoorie", "Naugaon", "Purola", "Mori", "Netwar", "Sankri"],
+      facts: [
+        { label: "Distance", value: "~190–200 km" },
+        { label: "Drive", value: "~8–10 hours" },
+        { label: "Options", value: "Bus / Shared Taxi / Private Cab" }
+      ]
+    },
+    pickup: {
+      point: "Dehradun Railway Station",
+      time: "6:00 AM on Day 1",
+      dropPoint: "Dehradun",
+      dropTime: "Evening of Day 7",
+      note: "Reach Dehradun a day before the trek so the drive to Sankri can start early the next morning."
+    }
+  };
+
+  TREKS[harKiDunIndex].maxAltitude = "11,000 ft / 3,500 m";
+
+  TREKS[harKiDunIndex].similarTreks = [
+    "kedarkantha-trek",
+    "phulara-ridge-trek",
+    "ali-bedni-bugyal-trek",
+    "brahmatal-trek",
+    "kuari-pass-trek"
+  ];
+
+  TREKS[harKiDunIndex].heroImage =
+    "/Trips_gallery/Har_Ki_Dun/IMG_4389.JPG.jpeg";
+
+  TREKS[harKiDunIndex].heroImages = [
+    "/Trips_gallery/Har_Ki_Dun/IMG_4395.JPG.jpeg",
+    "/Trips_gallery/Har_Ki_Dun/IMG_4402.JPG.jpeg",
+    "/Trips_gallery/Har_Ki_Dun/IMG_4410.JPG.jpeg"
+  ];
+
+  TREKS[harKiDunIndex].gallery = [
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4389.JPG.jpeg", caption: "The road from Dehradun climbing towards Sankri" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4390.JPG.jpeg", caption: "Sankri, the base village for Har Ki Dun" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4391.JPG.jpeg", caption: "Setting off from Taluka into the Supin valley" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4392.JPG.jpeg", caption: "Pine, oak and deodar on the forest trail" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4393.JPG.jpeg", caption: "A mountain bridge over the Supin" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4394.JPG.jpeg", caption: "The river alongside the trail" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4395.JPG.jpeg", caption: "Open meadows on the way to Osla" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4396.JPG.jpeg", caption: "Wooden houses in the village of Osla" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4397.JPG.jpeg", caption: "Stone pathways through the old village" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4398.JPG.jpeg", caption: "Climbing towards the Har Ki Dun valley" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4399.JPG.jpeg", caption: "The valley opening up below the peaks" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4400.JPG.jpeg", caption: "Camp in the Har Ki Dun valley" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4401.JPG.jpeg", caption: "Himalayan peaks around the valley" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4402.JPG.jpeg", caption: "Morning light on the ridgeline" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4403.JPG.jpeg", caption: "The team on the trail" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4404.JPG.jpeg", caption: "The road from Dehradun climbing towards Sankri" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4405.JPG.jpeg", caption: "Sankri, the base village for Har Ki Dun" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4406.JPG.jpeg", caption: "Setting off from Taluka into the Supin valley" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4407.JPG.jpeg", caption: "Pine, oak and deodar on the forest trail" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4408.JPG.jpeg", caption: "A mountain bridge over the Supin" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4409.JPG.jpeg", caption: "The river alongside the trail" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4410.JPG.jpeg", caption: "Open meadows on the way to Osla" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4411.JPG.jpeg", caption: "Wooden houses in the village of Osla" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4412.JPG.jpeg", caption: "Stone pathways through the old village" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4413.JPG.jpeg", caption: "Climbing towards the Har Ki Dun valley" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4414.JPG.jpeg", caption: "The valley opening up below the peaks" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4415.JPG.jpeg", caption: "Camp in the Har Ki Dun valley" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4416.JPG.jpeg", caption: "Himalayan peaks around the valley" },
+    { url: "/Trips_gallery/Har_Ki_Dun/IMG_4417.JPG.jpeg", caption: "Morning light on the ridgeline" },
+    { url: "/Trips_gallery/Har_Ki_Dun/HKD_group_river.jpeg", caption: "Beside the Supin river" },
+    { url: "/Trips_gallery/Har_Ki_Dun/HKD_river_pines.jpeg", caption: "The river running through the pines" },
+    { url: "/Trips_gallery/Har_Ki_Dun/HKD_group_meadow.jpeg", caption: "The group crossing an open meadow" },
+    { url: "/Trips_gallery/Har_Ki_Dun/HKD_camp_tents.jpeg", caption: "Camp pitched in the valley" },
+    { url: "/Trips_gallery/Har_Ki_Dun/HKD_flag_shrine.jpeg", caption: "Prayer flags at a valley shrine" },
+    { url: "/Trips_gallery/Har_Ki_Dun/HKD_swargarohini.jpeg", caption: "Swargarohini standing over the valley" },
+    { url: "/Trips_gallery/Har_Ki_Dun/HKD_summit_banner.jpeg", caption: "The team in the Har Ki Dun valley" },
+  ];
+
+  TREKS[harKiDunIndex].article = {
+    title: "Har Ki Dun Trek: A Journey to the Valley That Feels Like Home",
+    standfirst:
+      "Ancient villages, wooden houses, rushing rivers, dense forests and snow-covered peaks — a Garhwal valley where life still moves at the pace of nature.",
+    readMinutes: 7,
+    sections: [
+      {
+        paragraphs: [
+          "There are mountains you climb for the view, and then there are mountains you walk through to find something within yourself.",
+          "The Har Ki Dun Trek is one of those journeys.",
+          "Hidden deep in the Garhwal Himalayas of Uttarakhand, Har Ki Dun is not just a trekking destination. It is a valley of ancient villages, wooden houses, rushing rivers, dense forests and snow-covered peaks — a place where life still moves at the pace of nature.",
+          "As the trail slowly takes you away from roads, traffic and city noise, something changes. Your phone becomes less important. Your footsteps become more meaningful. And the mountains begin to speak."
+        ]
+      },
+      {
+        heading: "The Journey Begins in Sankri",
+        paragraphs: [
+          "The journey to Har Ki Dun begins from Sankri, a small mountain village surrounded by towering Himalayan peaks.",
+          "The road from Dehradun to Sankri is itself an experience. As you leave the city behind, the landscape changes from busy roads to quiet mountain valleys. Rivers begin to accompany you, forests become denser and the air feels noticeably different.",
+          "By the time you reach Sankri, you know that the real journey is about to begin.",
+          "The next morning, you leave the comfort of the road behind.",
+          "And you start walking."
+        ]
+      },
+      {
+        heading: "From Taluka to the Heart of the Himalayas",
+        paragraphs: [
+          "The trail begins around Taluka and gradually enters the beautiful Supin River valley.",
+          "Every turn brings something different.",
+          "Sometimes the trail passes through thick forests of pine, oak and deodar. Sometimes it opens into green meadows. At other times, the sound of the river becomes your only companion.",
+          "The trail may test your legs, but it constantly rewards your eyes.",
+          "Mountain bridges sway above rushing streams. Birds disappear into the forest. Waterfalls appear unexpectedly beside the trail.",
+          "And somewhere between the tired legs and the beautiful views, you realize that you have stopped asking, “How far is left?”",
+          "You simply want to keep walking."
+        ]
+      },
+      {
+        heading: "Osla – A Village Frozen in Time",
+        paragraphs: [
+          "One of the most memorable parts of the Har Ki Dun Trek is walking through the traditional Himalayan villages of the valley.",
+          "Osla is particularly special.",
+          "The wooden houses, stone pathways, traditional architecture and simple mountain lifestyle tell stories that photographs can never completely capture.",
+          "Here, people still wake up with the mountains and end their day with the fading light of the sun.",
+          "You may see villagers working in their fields, children walking through narrow paths and animals grazing around traditional homes.",
+          "There is something deeply beautiful about this simplicity.",
+          "In a world where everything is becoming faster, places like Osla remind us that a slower life can also be a richer life."
+        ]
+      },
+      {
+        heading: "The Forests That Make You Feel Alive",
+        paragraphs: [
+          "The forests on the Har Ki Dun trail are not just scenery.",
+          "They are part of the experience.",
+          "Walking beneath tall trees, listening to the wind moving through the branches and hearing the river somewhere below creates a silence that feels completely different from the silence of a city.",
+          "There is no traffic.",
+          "No horns.",
+          "No constant notifications.",
+          "Just footsteps.",
+          "And breathing.",
+          "And mountains.",
+          "Sometimes, that is all we need."
+        ]
+      },
+      {
+        heading: "And Then Comes Har Ki Dun",
+        paragraphs: [
+          "After days of walking, the trail finally opens into the magnificent Har Ki Dun Valley.",
+          "Surrounded by dramatic Himalayan peaks and vast alpine landscapes, the valley feels almost unreal.",
+          "The mountains stand quietly around you while the valley stretches into the distance.",
+          "You may have seen hundreds of photographs of Har Ki Dun before coming here.",
+          "But photographs cannot capture the feeling of actually standing there.",
+          "The cold wind on your face.",
+          "The silence around you.",
+          "The mountains above you.",
+          "And the realization that you walked all the way here.",
+          "That moment stays with you."
+        ]
+      },
+      {
+        heading: "Har Ki Dun Is More Than a Trek",
+        paragraphs: [
+          "The biggest lesson of Har Ki Dun is that the destination is not everything.",
+          "The real story lies in the journey.",
+          "It is in the conversations around a campfire.",
+          "It is in sharing a smile with a fellow trekker.",
+          "It is in the first sip of hot tea after a long day’s walk.",
+          "It is in watching the stars appear above the mountains.",
+          "It is in waking up early and seeing the first sunlight touch the Himalayan peaks.",
+          "These are the moments that become memories."
+        ]
+      },
+      {
+        heading: "A Trek That Brings You Back to Yourself",
+        paragraphs: [
+          "Modern life teaches us to constantly move faster.",
+          "Har Ki Dun teaches us something different.",
+          "Walk slowly.",
+          "Look around.",
+          "Listen.",
+          "Breathe.",
+          "Appreciate the little things.",
+          "A warm cup of tea suddenly feels special.",
+          "A simple meal tastes better.",
+          "A conversation becomes deeper.",
+          "And a sunrise becomes something worth waking up early for.",
+          "Perhaps that is why people return from the mountains with a different kind of smile.",
+          "They may have tired legs.",
+          "They may have dusty shoes.",
+          "But somewhere along the trail, they have found a little more peace."
+        ]
+      },
+      {
+        heading: "Why You Should Experience Har Ki Dun",
+        paragraphs: [
+          "If you are looking for a Himalayan trek that combines beautiful landscapes, traditional villages, forests, rivers, meadows and an unforgettable mountain experience, Har Ki Dun deserves a place on your list.",
+          "It is a trek for people who want more than just reaching a summit.",
+          "There is no race here.",
+          "There is no need to conquer the mountains.",
+          "You simply walk with them.",
+          "And perhaps that is the most beautiful thing about Har Ki Dun.",
+          "Come for the mountains.",
+          "Stay for the memories.",
+          "Return with a story you will carry for the rest of your life.",
+          "Har Ki Dun is not just a destination you visit. It is a journey you remember."
+        ]
+      }
+    ],
+    signoff: "Har Ki Dun Trek with Trip My Soul."
+  };
+
+  TREKS[harKiDunIndex].faqs = [
+    {
+      title: "What is the Har Ki Dun Trek?",
+      description: "Har Ki Dun is a beautiful Himalayan valley trek in Uttarakhand, known for its ancient villages, dense forests, alpine meadows, rivers and spectacular views of the surrounding Himalayan peaks."
+    },
+    {
+      title: "Where does the Har Ki Dun Trek start?",
+      description: "The trek generally starts from Sankri, which is approximately 190–200 km from Dehradun. The trekking route begins around Taluka."
+    },
+    {
+      title: "How difficult is the Har Ki Dun Trek?",
+      description: "Har Ki Dun is considered a moderate-level trek. It is suitable for fit beginners as well as experienced trekkers."
+    },
+    {
+      title: "What is the best time for the Har Ki Dun Trek?",
+      description: "The best seasons are generally April to June and September to November. Each season offers a different experience, from spring greenery to autumn mountain views and winter landscapes."
+    },
+    {
+      title: "How many days are required for the Har Ki Dun Trek?",
+      description: "A typical Har Ki Dun trek takes around 6–7 days, including travel from Dehradun to Sankri and back, depending on the itinerary."
+    },
+    {
+      title: "What is the maximum altitude of Har Ki Dun?",
+      description: "Har Ki Dun Valley is situated at approximately 11,000 ft (3,500 m) above sea level."
+    },
+    {
+      title: "Is Har Ki Dun suitable for beginners?",
+      description: "Yes. Beginners with good physical fitness can undertake the trek. Regular walking, jogging, stair climbing and basic endurance training before the trek are recommended."
+    },
+    {
+      title: "What kind of accommodation is available?",
+      description: "Accommodation is generally provided in guesthouses/homestays and camps, depending on the location and itinerary. Basic mountain facilities should be expected."
+    },
+    {
+      title: "What should I carry for the Har Ki Dun Trek?",
+      description: "Essential items include good trekking shoes, warm layers, rainwear, backpack, water bottle, trekking pole, sunglasses, sunscreen, personal medicines, headlamp and basic toiletries."
+    },
+    {
+      title: "How can I reach Sankri for the Har Ki Dun Trek?",
+      description: "The most convenient route is Dehradun → Mussoorie → Purola → Mori → Netwar → Sankri by road. You can reach Dehradun by train or flight and continue to Sankri by taxi or bus."
+    }
+  ];
+
+  // The published essentials list, grouped for the three-column packing table.
+  TREKS[harKiDunIndex].packingList = [
+    {
+      category: "Clothing & Layers",
+      items: [
+        "Warm jacket / fleece",
+        "Thermal innerwear (1–2 pairs)",
+        "Quick-dry T-shirts & trekking pants",
+        "Waterproof rain jacket & rain pants",
+        "Warm cap, sun cap & gloves",
+        "Woollen socks (2–3 pairs)"
+      ]
+    },
+    {
+      category: "Footwear & Gear",
+      items: [
+        "Good-quality trekking shoes with proper grip",
+        "Backpack (40–50 L) with rain cover",
+        "Walking / trekking pole",
+        "Headlamp or torch with spare batteries",
+        "Personal water bottle / hydration flask",
+        "Dry bags or plastic bags to protect clothes and electronics"
+      ]
+    },
+    {
+      category: "Sun, Health & Documents",
+      items: [
+        "Sunglasses with UV protection",
+        "Sunscreen SPF 30+ & lip balm",
+        "Personal medicines & basic toiletries",
+        "Small personal first-aid kit",
+        "Power bank & charging cable",
+        "ID proof and required documents"
+      ]
+    },
+    {
+      category: "Personal Hygiene",
+      items: [
+        "Toothbrush & toothpaste",
+        "Hand sanitizer",
+        "Wet wipes & tissues",
+        "Biodegradable soap",
+        "Quick-dry towel",
+        "Toilet paper"
+      ]
+    }
+  ];
+
+  TREKS[harKiDunIndex].thingsToRemember = [
+    "Pack light and smart — you will be walking mountain trails for several hours each day, so avoid unnecessary luggage.",
+    "Keep important documents, medicines, electronics and valuables in a waterproof pouch.",
+    "Reach Dehradun one day before the trek so you can start the drive to Sankri early the next morning."
+  ];
+
+  TREKS[harKiDunIndex].batches = {
+    years: {
+      "2026": {
+        months: [
+          {
+            month: "Sep",
+            year: "2026",
+            trips: [
+              { startDate: "08 Sep", endDate: "14 Sep", status: "Open" },
+              { startDate: "09 Sep", endDate: "15 Sep", status: "Open" },
+              { startDate: "10 Sep", endDate: "16 Sep", status: "Open" },
+              { startDate: "11 Sep", endDate: "17 Sep", status: "Open" },
+              { startDate: "12 Sep", endDate: "18 Sep", status: "Open" },
+              { startDate: "13 Sep", endDate: "19 Sep", status: "Open" },
+              { startDate: "14 Sep", endDate: "20 Sep", status: "Open" },
+              { startDate: "15 Sep", endDate: "21 Sep", status: "Open" },
+              { startDate: "16 Sep", endDate: "22 Sep", status: "Open" },
+              { startDate: "17 Sep", endDate: "23 Sep", status: "Open" },
+              { startDate: "18 Sep", endDate: "24 Sep", status: "Open" },
+              { startDate: "19 Sep", endDate: "25 Sep", status: "Open" },
+              { startDate: "20 Sep", endDate: "26 Sep", status: "Open" },
+              { startDate: "21 Sep", endDate: "27 Sep", status: "Open" },
+              { startDate: "22 Sep", endDate: "28 Sep", status: "Open" },
+              { startDate: "23 Sep", endDate: "29 Sep", status: "Open" },
+              { startDate: "24 Sep", endDate: "30 Sep", status: "Open" },
+              { startDate: "25 Sep", endDate: "01 Oct", status: "Open" },
+              { startDate: "26 Sep", endDate: "02 Oct", status: "Open" },
+              { startDate: "27 Sep", endDate: "03 Oct", status: "Open" },
+              { startDate: "28 Sep", endDate: "04 Oct", status: "Open" },
+              { startDate: "29 Sep", endDate: "05 Oct", status: "Open" },
+              { startDate: "30 Sep", endDate: "06 Oct", status: "Open" }
+            ]
+          },
+          {
+            month: "Oct",
+            year: "2026",
+            trips: [
+              { startDate: "01 Oct", endDate: "07 Oct", status: "Open" },
+              { startDate: "02 Oct", endDate: "08 Oct", status: "Open" },
+              { startDate: "03 Oct", endDate: "09 Oct", status: "Open" },
+              { startDate: "04 Oct", endDate: "10 Oct", status: "Open" },
+              { startDate: "05 Oct", endDate: "11 Oct", status: "Open" },
+              { startDate: "06 Oct", endDate: "12 Oct", status: "Open" },
+              { startDate: "07 Oct", endDate: "13 Oct", status: "Open" },
+              { startDate: "08 Oct", endDate: "14 Oct", status: "Open" },
+              { startDate: "09 Oct", endDate: "15 Oct", status: "Open" },
+              { startDate: "10 Oct", endDate: "16 Oct", status: "Open" },
+              { startDate: "11 Oct", endDate: "17 Oct", status: "Open" },
+              { startDate: "12 Oct", endDate: "18 Oct", status: "Open" },
+              { startDate: "13 Oct", endDate: "19 Oct", status: "Open" },
+              { startDate: "14 Oct", endDate: "20 Oct", status: "Open" },
+              { startDate: "15 Oct", endDate: "21 Oct", status: "Open" },
+              { startDate: "16 Oct", endDate: "22 Oct", status: "Open" },
+              { startDate: "17 Oct", endDate: "23 Oct", status: "Open" },
+              { startDate: "18 Oct", endDate: "24 Oct", status: "Open" },
+              { startDate: "19 Oct", endDate: "25 Oct", status: "Open" },
+              { startDate: "20 Oct", endDate: "26 Oct", status: "Open" },
+              { startDate: "21 Oct", endDate: "27 Oct", status: "Open" },
+              { startDate: "22 Oct", endDate: "28 Oct", status: "Open" },
+              { startDate: "23 Oct", endDate: "29 Oct", status: "Open" },
+              { startDate: "24 Oct", endDate: "30 Oct", status: "Open" },
+              { startDate: "25 Oct", endDate: "31 Oct", status: "Open" },
+              { startDate: "26 Oct", endDate: "01 Nov", status: "Open" },
+              { startDate: "27 Oct", endDate: "02 Nov", status: "Open" },
+              { startDate: "28 Oct", endDate: "03 Nov", status: "Open" },
+              { startDate: "29 Oct", endDate: "04 Nov", status: "Open" },
+              { startDate: "30 Oct", endDate: "05 Nov", status: "Open" },
+              { startDate: "31 Oct", endDate: "06 Nov", status: "Open" }
+            ]
+          },
+          {
+            month: "Nov",
+            year: "2026",
+            trips: [
+              { startDate: "01 Nov", endDate: "07 Nov", status: "Open" },
+              { startDate: "02 Nov", endDate: "08 Nov", status: "Open" },
+              { startDate: "03 Nov", endDate: "09 Nov", status: "Open" },
+              { startDate: "04 Nov", endDate: "10 Nov", status: "Open" },
+              { startDate: "05 Nov", endDate: "11 Nov", status: "Open" },
+              { startDate: "06 Nov", endDate: "12 Nov", status: "Open" },
+              { startDate: "07 Nov", endDate: "13 Nov", status: "Open" },
+              { startDate: "08 Nov", endDate: "14 Nov", status: "Open" },
+              { startDate: "09 Nov", endDate: "15 Nov", status: "Open" },
+              { startDate: "10 Nov", endDate: "16 Nov", status: "Open" },
+              { startDate: "11 Nov", endDate: "17 Nov", status: "Open" },
+              { startDate: "12 Nov", endDate: "18 Nov", status: "Open" },
+              { startDate: "13 Nov", endDate: "19 Nov", status: "Open" },
+              { startDate: "14 Nov", endDate: "20 Nov", status: "Open" },
+              { startDate: "15 Nov", endDate: "21 Nov", status: "Open" },
+              { startDate: "16 Nov", endDate: "22 Nov", status: "Open" },
+              { startDate: "17 Nov", endDate: "23 Nov", status: "Open" },
+              { startDate: "18 Nov", endDate: "24 Nov", status: "Open" },
+              { startDate: "19 Nov", endDate: "25 Nov", status: "Open" },
+              { startDate: "20 Nov", endDate: "26 Nov", status: "Open" },
+              { startDate: "21 Nov", endDate: "27 Nov", status: "Open" },
+              { startDate: "22 Nov", endDate: "28 Nov", status: "Open" },
+              { startDate: "23 Nov", endDate: "29 Nov", status: "Open" },
+              { startDate: "24 Nov", endDate: "30 Nov", status: "Open" },
+              { startDate: "25 Nov", endDate: "01 Dec", status: "Open" },
+              { startDate: "26 Nov", endDate: "02 Dec", status: "Open" },
+              { startDate: "27 Nov", endDate: "03 Dec", status: "Open" },
+              { startDate: "28 Nov", endDate: "04 Dec", status: "Open" },
+              { startDate: "29 Nov", endDate: "05 Dec", status: "Open" },
+              { startDate: "30 Nov", endDate: "06 Dec", status: "Open" }
+            ]
+          },
+          {
+            month: "Dec",
+            year: "2026",
+            trips: [
+              { startDate: "01 Dec", endDate: "07 Dec", status: "Open" },
+              { startDate: "02 Dec", endDate: "08 Dec", status: "Open" },
+              { startDate: "03 Dec", endDate: "09 Dec", status: "Open" },
+              { startDate: "04 Dec", endDate: "10 Dec", status: "Open" },
+              { startDate: "05 Dec", endDate: "11 Dec", status: "Open" },
+              { startDate: "06 Dec", endDate: "12 Dec", status: "Open" },
+              { startDate: "07 Dec", endDate: "13 Dec", status: "Open" },
+              { startDate: "08 Dec", endDate: "14 Dec", status: "Open" },
+              { startDate: "09 Dec", endDate: "15 Dec", status: "Open" },
+              { startDate: "10 Dec", endDate: "16 Dec", status: "Open" },
+              { startDate: "11 Dec", endDate: "17 Dec", status: "Open" },
+              { startDate: "12 Dec", endDate: "18 Dec", status: "Open" },
+              { startDate: "13 Dec", endDate: "19 Dec", status: "Open" },
+              { startDate: "14 Dec", endDate: "20 Dec", status: "Open" },
+              { startDate: "15 Dec", endDate: "21 Dec", status: "Open" },
+              { startDate: "16 Dec", endDate: "22 Dec", status: "Open" },
+              { startDate: "17 Dec", endDate: "23 Dec", status: "Open" },
+              { startDate: "18 Dec", endDate: "24 Dec", status: "Open" },
+              { startDate: "19 Dec", endDate: "25 Dec", status: "Open" },
+              { startDate: "20 Dec", endDate: "26 Dec", status: "Open" },
+              { startDate: "21 Dec", endDate: "27 Dec", status: "Open" },
+              { startDate: "22 Dec", endDate: "28 Dec", status: "Open" },
+              { startDate: "23 Dec", endDate: "29 Dec", status: "Open" },
+              { startDate: "24 Dec", endDate: "30 Dec", status: "Open" },
+              { startDate: "25 Dec", endDate: "31 Dec", status: "Open" },
+              { startDate: "26 Dec", endDate: "01 Jan", status: "Open" },
+              { startDate: "27 Dec", endDate: "02 Jan", status: "Open" },
+              { startDate: "28 Dec", endDate: "03 Jan", status: "Open" },
+              { startDate: "29 Dec", endDate: "04 Jan", status: "Open" },
+              { startDate: "30 Dec", endDate: "05 Jan", status: "Open" },
+              { startDate: "31 Dec", endDate: "06 Jan", status: "Open" }
+            ]
+          }
+        ]
+      },
+      "2027": {
+        months: [
+          {
+            month: "Mar",
+            year: "2027",
+            trips: [
+              { startDate: "01 Mar", endDate: "07 Mar", status: "Open" },
+              { startDate: "02 Mar", endDate: "08 Mar", status: "Open" },
+              { startDate: "03 Mar", endDate: "09 Mar", status: "Open" },
+              { startDate: "04 Mar", endDate: "10 Mar", status: "Open" },
+              { startDate: "05 Mar", endDate: "11 Mar", status: "Open" },
+              { startDate: "06 Mar", endDate: "12 Mar", status: "Open" },
+              { startDate: "07 Mar", endDate: "13 Mar", status: "Open" },
+              { startDate: "08 Mar", endDate: "14 Mar", status: "Open" },
+              { startDate: "09 Mar", endDate: "15 Mar", status: "Open" },
+              { startDate: "10 Mar", endDate: "16 Mar", status: "Open" },
+              { startDate: "11 Mar", endDate: "17 Mar", status: "Open" },
+              { startDate: "12 Mar", endDate: "18 Mar", status: "Open" },
+              { startDate: "13 Mar", endDate: "19 Mar", status: "Open" },
+              { startDate: "14 Mar", endDate: "20 Mar", status: "Open" },
+              { startDate: "15 Mar", endDate: "21 Mar", status: "Open" },
+              { startDate: "16 Mar", endDate: "22 Mar", status: "Open" },
+              { startDate: "17 Mar", endDate: "23 Mar", status: "Open" },
+              { startDate: "18 Mar", endDate: "24 Mar", status: "Open" },
+              { startDate: "19 Mar", endDate: "25 Mar", status: "Open" },
+              { startDate: "20 Mar", endDate: "26 Mar", status: "Open" },
+              { startDate: "21 Mar", endDate: "27 Mar", status: "Open" },
+              { startDate: "22 Mar", endDate: "28 Mar", status: "Open" },
+              { startDate: "23 Mar", endDate: "29 Mar", status: "Open" },
+              { startDate: "24 Mar", endDate: "30 Mar", status: "Open" },
+              { startDate: "25 Mar", endDate: "31 Mar", status: "Open" },
+              { startDate: "26 Mar", endDate: "01 Apr", status: "Open" },
+              { startDate: "27 Mar", endDate: "02 Apr", status: "Open" },
+              { startDate: "28 Mar", endDate: "03 Apr", status: "Open" },
+              { startDate: "29 Mar", endDate: "04 Apr", status: "Open" },
+              { startDate: "30 Mar", endDate: "05 Apr", status: "Open" },
+              { startDate: "31 Mar", endDate: "06 Apr", status: "Open" }
+            ]
+          },
+          {
+            month: "Apr",
+            year: "2027",
+            trips: [
+              { startDate: "01 Apr", endDate: "07 Apr", status: "Open" },
+              { startDate: "02 Apr", endDate: "08 Apr", status: "Open" },
+              { startDate: "03 Apr", endDate: "09 Apr", status: "Open" },
+              { startDate: "04 Apr", endDate: "10 Apr", status: "Open" },
+              { startDate: "05 Apr", endDate: "11 Apr", status: "Open" },
+              { startDate: "06 Apr", endDate: "12 Apr", status: "Open" },
+              { startDate: "07 Apr", endDate: "13 Apr", status: "Open" },
+              { startDate: "08 Apr", endDate: "14 Apr", status: "Open" },
+              { startDate: "09 Apr", endDate: "15 Apr", status: "Open" },
+              { startDate: "10 Apr", endDate: "16 Apr", status: "Open" },
+              { startDate: "11 Apr", endDate: "17 Apr", status: "Open" },
+              { startDate: "12 Apr", endDate: "18 Apr", status: "Open" },
+              { startDate: "13 Apr", endDate: "19 Apr", status: "Open" },
+              { startDate: "14 Apr", endDate: "20 Apr", status: "Open" },
+              { startDate: "15 Apr", endDate: "21 Apr", status: "Open" },
+              { startDate: "16 Apr", endDate: "22 Apr", status: "Open" },
+              { startDate: "17 Apr", endDate: "23 Apr", status: "Open" },
+              { startDate: "18 Apr", endDate: "24 Apr", status: "Open" },
+              { startDate: "19 Apr", endDate: "25 Apr", status: "Open" },
+              { startDate: "20 Apr", endDate: "26 Apr", status: "Open" },
+              { startDate: "21 Apr", endDate: "27 Apr", status: "Open" },
+              { startDate: "22 Apr", endDate: "28 Apr", status: "Open" },
+              { startDate: "23 Apr", endDate: "29 Apr", status: "Open" },
+              { startDate: "24 Apr", endDate: "30 Apr", status: "Open" },
+              { startDate: "25 Apr", endDate: "01 May", status: "Open" },
+              { startDate: "26 Apr", endDate: "02 May", status: "Open" },
+              { startDate: "27 Apr", endDate: "03 May", status: "Open" },
+              { startDate: "28 Apr", endDate: "04 May", status: "Open" },
+              { startDate: "29 Apr", endDate: "05 May", status: "Open" },
+              { startDate: "30 Apr", endDate: "06 May", status: "Open" }
+            ]
+          },
+          {
+            month: "May",
+            year: "2027",
+            trips: [
+              { startDate: "01 May", endDate: "07 May", status: "Open" },
+              { startDate: "02 May", endDate: "08 May", status: "Open" },
+              { startDate: "03 May", endDate: "09 May", status: "Open" },
+              { startDate: "04 May", endDate: "10 May", status: "Open" },
+              { startDate: "05 May", endDate: "11 May", status: "Open" },
+              { startDate: "06 May", endDate: "12 May", status: "Open" },
+              { startDate: "07 May", endDate: "13 May", status: "Open" },
+              { startDate: "08 May", endDate: "14 May", status: "Open" },
+              { startDate: "09 May", endDate: "15 May", status: "Open" },
+              { startDate: "10 May", endDate: "16 May", status: "Open" },
+              { startDate: "11 May", endDate: "17 May", status: "Open" },
+              { startDate: "12 May", endDate: "18 May", status: "Open" },
+              { startDate: "13 May", endDate: "19 May", status: "Open" },
+              { startDate: "14 May", endDate: "20 May", status: "Open" },
+              { startDate: "15 May", endDate: "21 May", status: "Open" },
+              { startDate: "16 May", endDate: "22 May", status: "Open" },
+              { startDate: "17 May", endDate: "23 May", status: "Open" },
+              { startDate: "18 May", endDate: "24 May", status: "Open" },
+              { startDate: "19 May", endDate: "25 May", status: "Open" },
+              { startDate: "20 May", endDate: "26 May", status: "Open" },
+              { startDate: "21 May", endDate: "27 May", status: "Open" },
+              { startDate: "22 May", endDate: "28 May", status: "Open" },
+              { startDate: "23 May", endDate: "29 May", status: "Open" },
+              { startDate: "24 May", endDate: "30 May", status: "Open" },
+              { startDate: "25 May", endDate: "31 May", status: "Open" },
+              { startDate: "26 May", endDate: "01 Jun", status: "Open" },
+              { startDate: "27 May", endDate: "02 Jun", status: "Open" },
+              { startDate: "28 May", endDate: "03 Jun", status: "Open" },
+              { startDate: "29 May", endDate: "04 Jun", status: "Open" },
+              { startDate: "30 May", endDate: "05 Jun", status: "Open" },
+              { startDate: "31 May", endDate: "06 Jun", status: "Open" }
+            ]
+          },
+          {
+            month: "Jun",
+            year: "2027",
+            trips: [
+              { startDate: "01 Jun", endDate: "07 Jun", status: "Open" },
+              { startDate: "02 Jun", endDate: "08 Jun", status: "Open" },
+              { startDate: "03 Jun", endDate: "09 Jun", status: "Open" },
+              { startDate: "04 Jun", endDate: "10 Jun", status: "Open" },
+              { startDate: "05 Jun", endDate: "11 Jun", status: "Open" },
+              { startDate: "06 Jun", endDate: "12 Jun", status: "Open" },
+              { startDate: "07 Jun", endDate: "13 Jun", status: "Open" },
+              { startDate: "08 Jun", endDate: "14 Jun", status: "Open" },
+              { startDate: "09 Jun", endDate: "15 Jun", status: "Open" },
+              { startDate: "10 Jun", endDate: "16 Jun", status: "Open" },
+              { startDate: "11 Jun", endDate: "17 Jun", status: "Open" },
+              { startDate: "12 Jun", endDate: "18 Jun", status: "Open" },
+              { startDate: "13 Jun", endDate: "19 Jun", status: "Open" },
+              { startDate: "14 Jun", endDate: "20 Jun", status: "Open" },
+              { startDate: "15 Jun", endDate: "21 Jun", status: "Open" },
+              { startDate: "16 Jun", endDate: "22 Jun", status: "Open" },
+              { startDate: "17 Jun", endDate: "23 Jun", status: "Open" },
+              { startDate: "18 Jun", endDate: "24 Jun", status: "Open" },
+              { startDate: "19 Jun", endDate: "25 Jun", status: "Open" },
+              { startDate: "20 Jun", endDate: "26 Jun", status: "Open" },
+              { startDate: "21 Jun", endDate: "27 Jun", status: "Open" },
+              { startDate: "22 Jun", endDate: "28 Jun", status: "Open" },
+              { startDate: "23 Jun", endDate: "29 Jun", status: "Open" },
+              { startDate: "24 Jun", endDate: "30 Jun", status: "Open" },
+              { startDate: "25 Jun", endDate: "01 Jul", status: "Open" },
+              { startDate: "26 Jun", endDate: "02 Jul", status: "Open" },
+              { startDate: "27 Jun", endDate: "03 Jul", status: "Open" },
+              { startDate: "28 Jun", endDate: "04 Jul", status: "Open" },
+              { startDate: "29 Jun", endDate: "05 Jul", status: "Open" },
+              { startDate: "30 Jun", endDate: "06 Jul", status: "Open" }
+            ]
+          }
+        ]
+      }
+    }
+  };
 }
 
 // Static details for the Chopta Tungnath Chandrashila Trek (uid:
