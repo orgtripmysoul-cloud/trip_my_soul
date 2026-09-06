@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Search, SlidersHorizontal, ArrowUpDown } from "lucide-react";
 import { TREKS } from "@/data/db";
 import { departsWithinWindow } from "@/lib/upcoming";
+import { featuredRank } from "@/lib/featured";
 import TrekCard from "@/components/TrekCard";
 import FilterPanel, { FilterState } from "@/components/FilterPanel";
 
@@ -146,6 +147,10 @@ function TreksList() {
   const sortedTreks = useMemo(() => {
     const treksCopy = [...filteredTreks];
     return treksCopy.sort((a, b) => {
+      // Fully written-up treks lead the list, whatever sort is selected.
+      const featured = featuredRank(a.slug) - featuredRank(b.slug);
+      if (featured !== 0) return featured;
+
       const priceA = a.price || 0;
       const priceB = b.price || 0;
       const daysA = typeof a.days === "number" ? a.days : parseInt(a.days || "0");

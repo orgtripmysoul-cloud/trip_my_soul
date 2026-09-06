@@ -4331,6 +4331,15 @@ if (kuariPassIndex !== -1) {
 // shared copy Kedarkantha does, from `trekDefaults.ts` / `TrekCancellation`.
 const brahmatalIndex = TREKS.findIndex(t => t.slug === 'brahmatal-trek');
 if (brahmatalIndex !== -1) {
+  TREKS[brahmatalIndex].heroImage =
+    "/Trips_gallery/Brahmatal/IMG_4313.JPG.jpeg";
+
+  TREKS[brahmatalIndex].heroImages = [
+    "/Trips_gallery/Brahmatal/IMG_4308.JPG.jpeg",
+    "/Trips_gallery/Brahmatal/IMG_4307.JPG.jpeg",
+    "/Trips_gallery/Brahmatal/IMG_4310.JPG.jpeg"
+  ];
+
   TREKS[brahmatalIndex].aboutParagraphs = [
     "The Brahmatal Trek is a breathtaking Himalayan adventure nestled in the Garhwal region of Uttarakhand. Known for its pristine snow-covered landscapes, dense oak and rhododendron forests, beautiful alpine meadows and magnificent Himalayan views, Brahmatal is one of the most captivating winter treks in India.",
     "The journey begins from Lohajung, a picturesque mountain village surrounded by towering Himalayan peaks. As the trail climbs higher, the landscape gradually transforms from dense forests into open meadows and snowy ridges. During winter, fresh snow covers the trail, the trees and the campsites, creating a magical white landscape.",

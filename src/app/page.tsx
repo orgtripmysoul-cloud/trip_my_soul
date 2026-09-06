@@ -22,6 +22,7 @@ import {
   tripToTrek,
 } from "@/data/trips";
 import { departsWithinWindow } from "@/lib/upcoming";
+import { featuredRank } from "@/lib/featured";
 
 const initialFilters: FilterState = {
   region: [],
@@ -480,6 +481,10 @@ export default function Home() {
   const sortedEntries = useMemo(() => {
     const entriesCopy = [...filteredEntries];
     return entriesCopy.sort(({ trek: a }, { trek: b }) => {
+      // Fully written-up treks lead the list, whatever sort is selected.
+      const featured = featuredRank(a.slug) - featuredRank(b.slug);
+      if (featured !== 0) return featured;
+
       const priceA = a.price || 0;
       const priceB = b.price || 0;
       const daysA = typeof a.days === "number" ? a.days : parseInt(a.days || "0");
