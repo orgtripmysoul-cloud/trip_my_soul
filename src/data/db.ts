@@ -1955,16 +1955,22 @@ export const TREKS: Trek[] = [
 export const YATRAS: Trek[] = [
   {
     "slug": "chopta-tungnath-trek",
-    "name": "Chopta Tungnath Trek",
-    "tagline": "Tungnath — the world's highest Shiva temple — plus the Chandrashila summit and Deoria Tal, in three days from Rishikesh.",
+    "name": "Chopta Tungnath Chandrashila Trek",
+    "tagline": "Tungnath — the world's highest Shiva temple — the 4,000 m Chandrashila summit and Deoriatal, in three days from Rishikesh.",
     "price": 4999,
     "days": 3,
     "nights": 2,
     "region": "Uttarakhand",
     "category": "Spiritual Journey",
     "startLocation": "Rishikesh To Rishikesh",
-    "difficulty": "Moderate",
+    "endLocation": "Rishikesh",
+    "difficulty": "Easy to Moderate",
+    "maxAltitude": "13,123 ft / 4,000 m",
+    "totalDistance": "15–17 Kilometers",
+    "availability": "April – June & September – November; winter departures December – March, snow permitting",
+    // July and August are left out: the trail runs through the Garhwal monsoon.
     "months": [
+      "Sep",
       "Oct",
       "Nov",
       "Dec",
@@ -1973,14 +1979,14 @@ export const YATRAS: Trek[] = [
       "Mar",
       "Apr",
       "May",
-      "Jun",
-      "Jul"
+      "Jun"
     ],
     "themes": [
       "Snow",
       "Meadow",
       "Forest",
-      "Pass Crossing"
+      "Summit",
+      "Pilgrimage"
     ]
   },
   {
@@ -3581,6 +3587,16 @@ if (kuariPassIndex !== -1) {
   TREKS[kuariPassIndex].importantNote =
     "Between December and March the route above Gulling is snowbound and the grade rises from moderate to moderate–challenging; gaiters and microspikes may be required on summit day, and your guide will call the start time on the conditions. The panorama from the pass depends entirely on the weather, so treat a clear morning as a bonus rather than a guarantee.";
 
+  TREKS[kuariPassIndex].heroImage =
+    "/Trips_gallery/Kuari%20Pass%20trek/IMG_4242.JPG.jpeg";
+
+  TREKS[kuariPassIndex].heroImages = [
+    "/Trips_gallery/Kuari%20Pass%20trek/IMG_4214.JPG.jpeg",
+    "/Trips_gallery/Kuari%20Pass%20trek/IMG_4239.JPG.jpeg",
+    "/Trips_gallery/Kuari%20Pass%20trek/IMG_4240.JPG.jpeg",
+    "/Trips_gallery/Kuari%20Pass%20trek/IMG_4262.JPG.jpeg"
+  ];
+
   TREKS[kuariPassIndex].gallery = [
     { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4214.JPG.jpeg", caption: "Oak and rhododendron forest on the way up" },
     { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4215.JPG.jpeg", caption: "Above the treeline on the Curzon Trail" },
@@ -5054,6 +5070,967 @@ if (brahmatalIndex !== -1) {
               { startDate: "28 Apr", endDate: "02 May", status: "Open" },
               { startDate: "29 Apr", endDate: "03 May", status: "Open" },
               { startDate: "30 Apr", endDate: "04 May", status: "Open" }
+            ]
+          }
+        ]
+      }
+    }
+  };
+
+  TREKS[brahmatalIndex].gallery = [
+    { url: "/Trips_gallery/Brahmatal/IMG_4207.JPG.jpeg", caption: "Setting off from Lohajung" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4217.JPG.jpeg", caption: "Into the oak and rhododendron forest" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4226.JPG.jpeg", caption: "Snow on the forest trail" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4230.JPG.jpeg", caption: "The lake at Bekaltal" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4233.JPG.jpeg", caption: "First camp among the trees" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4251.JPG.jpeg", caption: "Climbing out of the forest" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4265.JPG.jpeg", caption: "Open meadow above the treeline" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4266.JPG.jpeg", caption: "Ridge walk towards Brahmatal" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4307.JPG.jpeg", caption: "Brahmatal Lake, frozen over in winter" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4308.JPG.jpeg", caption: "Camp beside the lake" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4309.JPG.jpeg", caption: "Morning light on the ridge" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4310.JPG.jpeg", caption: "The climb to Brahmatal Top" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4312.JPG.jpeg", caption: "Snow slopes below the summit" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4313.JPG.jpeg", caption: "Brahmatal Top at 12,200 ft" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4314.JPG.jpeg", caption: "Mt. Trishul and Nanda Ghunti from the ridge" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4315.JPG.jpeg", caption: "Garhwal panorama on a clear morning" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4316.JPG.jpeg", caption: "The team on the summit ridge" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4317.JPG.jpeg", caption: "Jatropani Peak across the valley" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4318.JPG.jpeg", caption: "The long descent towards Daldam" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4319.JPG.jpeg", caption: "Winter light over the campsite" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4320.JPG.jpeg", caption: "Warming up between sections" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4321.JPG.jpeg", caption: "Back down through the rhododendrons" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4322.JPG.jpeg", caption: "The last of the snow on the way down" },
+    { url: "/Trips_gallery/Brahmatal/IMG_4323.JPG.jpeg", caption: "Valley views on the walk out" }
+  ];
+}
+
+// Static details for the Chopta Tungnath Chandrashila Trek (uid:
+// chopta-tungnath-trek). This listing lives in `YATRAS`, not `TREKS`, so the
+// assignments below index that array — /treks/[slug] resolves against both.
+// Trek essentials (packing list) and the cancellation policy are deliberately
+// left unset: Kedarkantha publishes neither, so both sections render the same
+// shared copy from `trekDefaults.ts` / `TrekCancellation`.
+const choptaTungnathIndex = YATRAS.findIndex(t => t.slug === 'chopta-tungnath-trek');
+if (choptaTungnathIndex !== -1) {
+  // All five as published; /treks/[slug] renders the first four.
+  YATRAS[choptaTungnathIndex].similarTreks = [
+    "kedarkantha-trek",
+    "brahmatal-trek",
+    "kuari-pass-trek",
+    "dayara-bugyal-trek",
+    "nagtibba-trek"
+  ];
+
+  YATRAS[choptaTungnathIndex].faqs = [
+    {
+      title: "What is the Chopta Tungnath Chandrashila Trek?",
+      description: "It is a scenic Himalayan trek covering Chopta, Tungnath Temple and Chandrashila Summit, with Deoriatal included in this itinerary."
+    },
+    {
+      title: "How difficult is the Chopta Tungnath Trek?",
+      description: "The trek is considered Easy to Moderate and is suitable for beginners with basic fitness."
+    },
+    {
+      title: "How many days are required for the trek?",
+      description: "Our itinerary is a 3 Days / 2 Nights trip covering Tungnath, Chandrashila and Deoriatal."
+    },
+    {
+      title: "What is the altitude of Chandrashila?",
+      description: "Chandrashila Summit is approximately 4,000 metres (13,123 ft) above sea level."
+    },
+    {
+      title: "What is the best time to do the Chopta Tungnath Chandrashila Trek?",
+      description: "The best seasons are generally April to June and September to November. Winter offers a different experience with snow, subject to weather and road conditions."
+    },
+    {
+      title: "Can beginners do this trek?",
+      description: "Yes. Beginners can do this trek with reasonable fitness, proper pacing and suitable trekking shoes."
+    },
+    {
+      title: "Is Tungnath Temple open throughout the year?",
+      description: "No. Tungnath Temple follows its seasonal opening and closing schedule. During the winter closure, the temple area may remain inaccessible depending on conditions."
+    },
+    {
+      title: "How far is Chandrashila from Chopta?",
+      description: "The trekking route from Chopta to Chandrashila is approximately 5 km one way, depending on the exact route and conditions."
+    },
+    {
+      title: "Where does the trek start and where do we stay?",
+      description: "The trip accommodation is in Sari Village. The Tungnath–Chandrashila trek starts from Chopta, which is reached by road from Sari."
+    },
+    {
+      title: "What should I carry for the Chopta Tungnath Trek?",
+      description: "Carry good trekking shoes, warm layers, rain protection, water bottle, sunglasses, sunscreen, personal medicines, a small backpack and basic toiletries."
+    }
+  ];
+
+  YATRAS[choptaTungnathIndex].article = {
+    title: "Chopta Tungnath Chandrashila Trek: Where the Mountains Meet Your Soul",
+    standfirst:
+      "Green meadows above Sari, the world's highest Shiva temple, a 4,000 m summit and the still water of Deoriatal — the Mini Switzerland of Uttarakhand, told the way it is felt.",
+    readMinutes: 6,
+    sections: [
+      {
+        paragraphs: [
+          "Some journeys are not meant to be completed just for the destination.",
+          "They are meant to be felt.",
+          "The Chopta Tungnath Chandrashila Trek is one such journey — where every step takes you a little farther from the noise of everyday life and a little closer to yourself.",
+          "Tucked away in the beautiful mountains of Uttarakhand, Chopta is often called the “Mini Switzerland of Uttarakhand.” Surrounded by green meadows, dense forests and magnificent Himalayan peaks, it is a place where the air feels different and the silence speaks.",
+          "But the real journey begins when you leave the road behind and start walking."
+        ]
+      },
+      {
+        heading: "A Journey That Begins in Sari",
+        paragraphs: [
+          "Our journey begins at Sari Village, a peaceful Himalayan settlement surrounded by mountains and forests.",
+          "As the evening settles over the village, the pace of life naturally slows down. There are no crowded streets, no traffic horns and no city rush — only mountain air, simple village life and a sky filled with stars.",
+          "This is where you prepare yourself for the adventure waiting the next morning."
+        ]
+      },
+      {
+        heading: "Walking Towards Tungnath",
+        paragraphs: [
+          "The next morning, the journey takes you towards Chopta, the starting point of the trek to Tungnath and Chandrashila.",
+          "The trail gradually climbs through beautiful Himalayan landscapes. With every turn, the scenery changes. Forests open up to mountain views, clouds drift across the peaks and the sound of the wind becomes your constant companion.",
+          "And then comes Tungnath.",
+          "Standing at a high altitude amidst the Himalayas, Tungnath is not just a temple — it is an experience of faith, silence and nature coming together.",
+          "For many trekkers, reaching Tungnath feels like more than simply completing a trail.",
+          "It feels like arriving somewhere they had been searching for without knowing it."
+        ]
+      },
+      {
+        heading: "The Final Climb to Chandrashila",
+        paragraphs: [
+          "From Tungnath, the trail becomes steeper as you make your way towards Chandrashila Summit.",
+          "The climb may test your legs, but the mountains keep giving you reasons to continue.",
+          "And when you finally reach the summit, everything suddenly feels worth it.",
+          "Standing at Chandrashila, with the vast Himalayan ranges stretching endlessly before you, you realise how small our worries can feel when viewed from the mountains.",
+          "On a clear day, the majestic Chaukhamba range and other Himalayan peaks create a breathtaking panorama.",
+          "You don’t need a perfect photograph at that moment.",
+          "You simply need to stand there and take it all in."
+        ]
+      },
+      {
+        heading: "Deoriatal – A Quiet Ending to a Beautiful Journey",
+        paragraphs: [
+          "The adventure continues towards Deoriatal, a serene lake surrounded by forests and magnificent Himalayan views.",
+          "The peaceful trail from Sari to Deoriatal offers a completely different experience from the Chandrashila climb.",
+          "Here, there is no rush.",
+          "Just trees, birds, mountain air and the beautiful silence of the Himalayas.",
+          "On a clear day, the reflection of the mountains in the calm waters of Deoriatal creates a picture that stays in your memory long after you leave."
+        ]
+      },
+      {
+        heading: "More Than Just a Trek",
+        paragraphs: [
+          "The Chopta Tungnath Chandrashila Trek is often described as an easy-to-moderate Himalayan trek, making it a wonderful choice for beginners and first-time trekkers.",
+          "But its beauty is not measured by difficulty.",
+          "It is measured by the moments you collect along the way.",
+          "A sunrise over the mountains.",
+          "A quiet conversation on the trail.",
+          "A cup of tea in a Himalayan village.",
+          "The first sight of Tungnath.",
+          "The feeling of reaching Chandrashila.",
+          "The silence of Deoriatal.",
+          "These are the moments that turn a trek into a memory."
+        ]
+      },
+      {
+        heading: "Come for the Mountains, Return with a Story",
+        paragraphs: [
+          "You may begin this journey thinking that you are going to explore the Himalayas.",
+          "But somewhere between Sari and Chandrashila, you may realise that the mountains have also given you the chance to explore yourself.",
+          "So pack your backpack, leave the city behind and take that first step.",
+          "Chopta is waiting.",
+          "Tungnath is calling.",
+          "Chandrashila is waiting for your footsteps.",
+          "And perhaps, somewhere along the trail, you will find a version of yourself that the noise of the city made you forget.",
+          "Your mountains. Your journey. Your story."
+        ]
+      }
+    ],
+    signoff: "Travel with Trip My Soul."
+  };
+}
+
+const choptaIndex = YATRAS.findIndex(y => y.slug === 'chopta-tungnath-trek');
+if (choptaIndex !== -1) {
+  YATRAS[choptaIndex].maxAltitude = "13,123 ft / 4,000 m";
+  YATRAS[choptaIndex].totalDistance = "15–17 Kilometers";
+  YATRAS[choptaIndex].availability = "October – July";
+
+  YATRAS[choptaIndex].aboutParagraphs = [
+    "The Chopta Tungnath Chandrashila Trek is one of Uttarakhand's most rewarding Himalayan treks, combining spiritual significance, beautiful alpine landscapes and spectacular mountain views. The trail begins from the picturesque meadows of Chopta and climbs through dense rhododendron and oak forests towards Tungnath Temple, one of the highest Shiva temples in the world.",
+    "From Tungnath, the trail becomes steeper as it leads to the Chandrashila Summit at around 4,000 metres. The summit offers a breathtaking 360-degree panorama of the Himalayan ranges, including Chaukhamba, Kedarnath Dome, Neelkanth and Nanda Devi.",
+    "The trek can also be extended to Deoriatal, a beautiful high-altitude lake surrounded by forest and mountain scenery. The combination of the sacred Tungnath Temple, the final climb to Chandrashila, peaceful forests and spectacular Himalayan views makes this trek ideal for both first-time trekkers and experienced mountain lovers.",
+    "Reaching Chandrashila before sunrise and watching the first rays of sunlight light up the Himalayan peaks is an experience that stays with you long after the trek ends."
+  ];
+
+  YATRAS[choptaIndex].highlights = [
+    "Chandrashila Summit at ~13,123 ft",
+    "Tungnath Temple at ~12,073 ft",
+    "Chandrashila sunrise over the Himalaya",
+    "Deoriatal Lake",
+    "Rhododendron & oak forests",
+    "Chaukhamba, Kedarnath Dome & Neelkanth views",
+    "Nanda Devi on the eastern skyline",
+    "Chopta meadows",
+    "Devprayag Sangam & Dhari Devi on the drive"
+  ];
+
+  YATRAS[choptaIndex].usps = [
+    {
+      title: "Base village: Sari",
+      description: "The trek runs out of Sari Village in Rudraprayag district, reached on a 7–9 hour drive from Rishikesh or Dehradun — the same village that serves as the roadhead for Deoriatal."
+    },
+    {
+      title: "The world's highest Shiva temple",
+      description: "Tungnath sits at roughly 3,680 m / 12,073 ft, the highest of the Panch Kedar shrines and the highest Shiva temple anywhere — reached on foot from Chopta through rhododendron and oak forest."
+    },
+    {
+      title: "A genuine 4,000 m summit inside three days",
+      description: "Chandrashila stands about 320 m above the temple at roughly 4,000 m / 13,123 ft, and the climb to it is the steepest section of the route. Few Himalayan summits of that height sit inside a weekend itinerary."
+    },
+    {
+      title: "A 360-degree Garhwal panorama",
+      description: "Chaukhamba, Kedarnath Dome, Neelkanth and Nanda Devi are all visible from the summit on a clear morning, with the wider Himalayan ranges filling out the horizon behind them."
+    },
+    {
+      title: "Two trails, one base",
+      description: "Chandrashila on day two and Deoriatal on day three run from the same village, which is what lets a three-day itinerary cover both a summit and a high-altitude lake."
+    },
+    {
+      title: "Open through most of the year",
+      description: "April to June and September to November give the clearest mountain views; December to March turns the same trail into a snow walk, with the grade rising accordingly."
+    }
+  ];
+
+  YATRAS[choptaIndex].destinationHighlights = [
+    { name: "Sari Village", blurb: "The base village in Rudraprayag district at roughly 6,300 ft, and the roadhead for both the Chopta drive and the Deoriatal trail." },
+    { name: "Chopta", blurb: "The meadow at about 8,790 ft where the walking starts, known as the mini-Switzerland of Uttarakhand." },
+    { name: "Tungnath Temple", blurb: "The highest Shiva temple in the world at roughly 12,073 ft, third of the five Panch Kedar shrines." },
+    { name: "Chandrashila Summit", blurb: "The 13,123 ft high point of the route, with a full 360-degree view of the Garhwal and Kumaon Himalaya." },
+    { name: "Deoriatal", blurb: "A quiet high-altitude lake above Sari, best known for the reflection of Chaukhamba in still water." },
+    { name: "Devprayag & Dhari Devi", blurb: "The Alaknanda–Bhagirathi confluence and the riverside shrine, both passed on the drive up from Rishikesh." }
+  ];
+
+  YATRAS[choptaIndex].differentiators = [
+    "Region: Garhwal Himalayas, Rudraprayag district, Uttarakhand",
+    "Trek type: short summit and pilgrimage trail, with Chandrashila at ~4,000 m as the high point",
+    "Terrain: rhododendron and oak forest, open meadow, a steep summit ridge and a forest lake trail",
+    "Best season: April to June and September to November; December to March for snow"
+  ];
+
+  YATRAS[choptaIndex].similarTreks = [
+    "deoriatal-chopta-trek",
+    "kedarnath-and-tungnath-yatra",
+    "kartik-swami-trek",
+    "brahmatal-trek"
+  ];
+
+  // Transcribed verbatim from the Google reviews on the Trip My Soul profile.
+  YATRAS[choptaIndex].externalReviews = [
+    {
+      source: "Google",
+      subject: "Trip My Soul",
+      rating: 5,
+      date: "5 months ago",
+      text: [
+        "Review of Tungnath–Chandrashila Trek",
+        "I usually don't write reviews, but this one I had to.",
+        "The trek was beautiful, and the best part was our trek leader Himanshu bhaiya - a huge shoutout to him. I was trekking at a slow tortoise pace, but he was so kind, calm and patient the whole way. He never rushed me and kept encouraging me as well as guiding me, which made the trek feel easy, comfortable and enjoyable.",
+        "The stay was neat and peaceful with lovely views, though basic toiletries would have helped, but understandable since it's a remote place. It is a pretty offbeat place to stay.",
+        "Also, thanks to Rohit Bhaiya who drove us safely to and fro throughout this whole trip.",
+        "Overall, the trek was amazing, and Himanshu bhaiya's patience and kindness made it even more special.",
+        "In case, you are planning your trek with TMS do ask for this trek leader."
+      ]
+    },
+    {
+      source: "Google",
+      subject: "Trip My Soul",
+      author: "Shailly Sharma",
+      rating: 5,
+      date: "2 months ago",
+      text: [
+        "Amazing Kedarnath & Tungnath Experience!",
+        "I recently traveled to Kedarnath and Tungnath with this trip my soul, and the entire experience was fantastic from start to finish. Everything was well-organized, including transportation, and itinerary planning, which made the trip completely stress-free and enjoyable.",
+        "Although at Sonparyag the stay and food was average.",
+        "A special shoutout to Vicky, Arun Bhaiya and Mamchand for their exceptional support throughout the journey. They were incredibly helpful, approachable, and always ensured that everyone in the group was comfortable and safe. Their positive attitude, local knowledge, and willingness to help made the trip even more memorable.",
+        "I highly recommend this travel company to anyone planning a spiritual or trekking trip to the Himalayas. Thank you for creating such wonderful memories—I look forward to traveling with you again! 🙏🏔️"
+      ]
+    },
+    {
+      source: "Google",
+      subject: "Trip My Soul",
+      author: "Parag Dubey",
+      rating: 5,
+      date: "a year ago",
+      text: [
+        "It was our first trek & literally I had to say it was my best experience to feel nature and mountains.",
+        "Had an amazing experience with Trip My Soul on the chandrashila trek! Everything was well-organized, and our trek lead, himanshu bhai was incredibly supportive and knowledgeable. The views were breathtaking, the campsites clean, and the food delicious. Highly recommend them for a hassle-free and memorable trekking adventure …"
+      ]
+    }
+  ];
+
+  YATRAS[choptaIndex].reviewVideos = [
+    "https://youtube.com/shorts/Q235DetUukc",
+    "https://youtube.com/shorts/pJ9esoHTl7g",
+    "https://youtube.com/shorts/YtTT7-Ru9bA",
+    "https://youtube.com/shorts/9Y2YYU6cz5s"
+  ];
+
+  YATRAS[choptaIndex].idealFor =
+    "Beginners, families with reasonable fitness, first-time trekkers and adventure travellers looking for a genuine Himalayan summit inside a short itinerary.";
+
+  YATRAS[choptaIndex].importantNote =
+    "Local forest and administrative regulations apply on this route and can change seasonally — your trek leader will confirm the permits in force on your departure. Between December and March the trail carries snow and the grade sits at the upper end of easy–moderate; the summit-day start time is set accordingly. Views from Chandrashila depend entirely on the weather, so treat a clear morning as a bonus rather than a guarantee.";
+
+  /**
+   * Day 2 walks out and back from Chopta, so its altitude points chart the
+   * climb from the roadhead rather than from the previous night's stay.
+   * Figures for Sari, Chopta and Deoriatal are the standard published
+   * altitudes; the source sheet prints only Tungnath and Chandrashila.
+   */
+  YATRAS[choptaIndex].itinerary = [
+    {
+      day: 1,
+      title: "Dehradun / Rishikesh to Sari Village",
+      driveDistance: "Rishikesh → Sari",
+      drivingTime: "7-9 Hours",
+      pickupPoint: "Rishikesh / Dehradun",
+      altitudePoints: [
+        { location: "Rishikesh", m: 372, ft: 1220 },
+        { location: "Sari Village", m: 1920, ft: 6300 }
+      ],
+      altitudeGain: { m: 1548, ft: 5080 },
+      description: "A scenic mountain drive up the Alaknanda valley to Sari, the base village of the Chopta Tungnath Chandrashila Trek.",
+      detailedParagraphs: [
+        "The journey begins early from Dehradun or Rishikesh and follows the road up the Alaknanda valley into Rudraprayag district.",
+        "The route runs through Devprayag, where the Bhagirathi and the Alaknanda meet to become the Ganga, past the riverside shrine of Dhari Devi and on through Rudraprayag, with Himalayan valleys opening out on either side as the road climbs.",
+        "The last stretch turns off the main highway and climbs towards Sari, a small village set among terraced fields and forest.",
+        "On arrival, check into the homestay, guesthouse or Swiss camp and meet your trek leader and the rest of the group. The team runs a briefing for the days ahead over dinner."
+      ],
+      highlights: ["Devprayag Sangam", "Dhari Devi", "Rudraprayag", "Himalayan Valleys", "Sari Village"],
+      meals: "Dinner",
+      stayType: "Sari Village — homestay / guesthouse / Swiss camp"
+    },
+    {
+      day: 2,
+      title: "Sari to Chopta, trek to Tungnath and Chandrashila, return to Sari",
+      trekDistance: "10-12 km",
+      trekDuration: "6-8 Hours",
+      driveDistance: "Sari ↔ Chopta",
+      drivingTime: "1-1.5 Hours each way",
+      timeNote: { label: "Summit start", value: "Early morning" },
+      altitudePoints: [
+        { location: "Chopta", m: 2680, ft: 8792 },
+        { location: "Tungnath", m: 3680, ft: 12073 },
+        { location: "Chandrashila", m: 4000, ft: 13123 }
+      ],
+      altitudeGain: { m: 1320, ft: 4331 },
+      description: "The main day of the trek — the climb from Chopta to Tungnath Temple and on to the Chandrashila Summit, then back down to Sari.",
+      detailedParagraphs: [
+        "An early drive of an hour to an hour and a half takes you from Sari to Chopta, the meadow where the walking starts.",
+        "The trail leaves Chopta and climbs steadily through dense rhododendron and oak forest. It is a well-laid stone path for most of its length, and roughly 3.5 km of continuous ascent brings you out at Tungnath Temple — the highest Shiva temple in the world, at around 3,680 m.",
+        "Above the temple the trail steepens noticeably for the final 1.5 km to Chandrashila. This is the hardest section of the route and the one where altitude begins to tell, so hold a comfortable pace and take regular breaks.",
+        "At roughly 4,000 m you reach the summit. On a clear morning the panorama runs the full 360 degrees — Chaukhamba and Kedarnath Dome to the west, Neelkanth to the north, and Nanda Devi and the Kumaon ranges to the east.",
+        "Retrace the route down through the forest to Chopta and drive back to Sari for the night. In winter this whole section carries snow, and the descent takes longer than the map suggests."
+      ],
+      highlights: [
+        "Tungnath Temple at ~12,073 ft",
+        "Chandrashila Summit at ~13,123 ft",
+        "360° Himalayan Panorama",
+        "Chaukhamba & Kedarnath Dome",
+        "Nanda Devi & Neelkanth",
+        "Rhododendron Forest"
+      ],
+      meals: "Breakfast & Dinner",
+      stayType: "Sari Village — homestay / guesthouse / Swiss camp"
+    },
+    {
+      day: 3,
+      title: "Sari to Deoriatal and back, drive to Rishikesh / Dehradun",
+      trekDistance: "5 km",
+      trekDuration: "3 Hours",
+      driveDistance: "Sari → Rishikesh / Dehradun",
+      drivingTime: "7-9 Hours",
+      timeNote: { label: "Drop-off", value: "Rishikesh / Dehradun" },
+      altitudePoints: [
+        { location: "Sari Village", m: 1920, ft: 6300 },
+        { location: "Deoriatal", m: 2438, ft: 8000 }
+      ],
+      altitudeGain: { m: 518, ft: 1700 },
+      description: "A short forest walk up to the Deoriatal Lake and back, followed by the drive down to Rishikesh or Dehradun.",
+      detailedParagraphs: [
+        "After breakfast, walk out of Sari on the forest trail that climbs to Deoriatal — about 2.5 km up, and roughly three hours for the round trip.",
+        "The path runs through forest for most of the way before opening out at the lake, a quiet stretch of water ringed by trees with Chaukhamba standing behind it. On a still morning the peaks reflect off the surface, which is what the lake is best known for.",
+        "Walk back down to Sari, collect your bags and begin the long drive back down the valley, retracing the route through Rudraprayag and Devprayag.",
+        "The trek concludes on arrival in Rishikesh or Dehradun in the evening."
+      ],
+      highlights: ["Deoriatal Lake", "Chaukhamba Reflection", "Forest Trail", "Journey Ends"],
+      meals: "Breakfast",
+      // The trek ends on this day; an empty stay keeps the generic
+      // "Hotel / Homestay" fallback out of the day quick-info line.
+      stayType: ""
+    }
+  ];
+
+  /**
+   * The source sheet gives the trek distance as "approx. 5 km one way to
+   * Chandrashila from Chopta" while the day pages total 15-17 km across the two
+   * walking days. Both are recorded as published rather than reconciled.
+   */
+  YATRAS[choptaIndex].sourceCaveat =
+    "The published route quotes about 5 km one way from Chopta to Chandrashila, while the day-by-day figures total 15–17 km across both trekking days — the headline figure covers the Chandrashila climb only, not the Deoriatal walk or the return legs. Both are listed here as published, and your trek leader will confirm the exact route on your departure.";
+
+  YATRAS[choptaIndex].inclusions = [
+    { title: "Accommodation", description: "2 nights in Sari Village in a homestay, guesthouse or Swiss camp, on triple/quad sharing basis." },
+    { title: "Meals", description: "Meals as per itinerary — 2 breakfasts & 2 dinners." },
+    { title: "Transportation", description: "Dehradun/Rishikesh to Sari and back, as per the itinerary." },
+    { title: "Trek Leader / Guide", description: "Experienced trek leader or local guide for the Tungnath–Chandrashila and Deoriatal treks." },
+    { title: "Driver & Road Charges", description: "All applicable driver allowances, fuel, toll taxes and parking charges." },
+    { title: "First Aid", description: "Basic first-aid kit and emergency medical support during the trek." },
+    { title: "Trek Support", description: "Trekking support and assistance throughout the trip." }
+  ];
+
+  YATRAS[choptaIndex].exclusions = [
+    { title: "Forest permit", description: "Forest permit / forest entry fee." },
+    { title: "Personal expenses", description: "Snacks, beverages, tips and laundry." },
+    { title: "Additional transportation", description: "Any extra transportation or taxi charges due to bad weather, snowfall, landslide or road blockage." },
+    { title: "Sari–Chopta road block", description: "If the Sari–Chopta road is blocked, the additional local taxi charge is payable by the guest." },
+    { title: "Trekking equipment", description: "Personal gear such as shoes, jackets and rainwear." },
+    { title: "Medical & evacuation", description: "Any medical expenses or emergency evacuation." },
+    { title: "Anything not listed", description: "Anything not specifically mentioned under inclusions." }
+  ];
+
+  /**
+   * As briefed, the same criteria Kedarkantha carries, with the altitude row
+   * set against Chandrashila rather than the Kedarkantha summit.
+   */
+  YATRAS[choptaIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: 10–60 years recommended" },
+    { icon: "Footprints", text: "Experience: No prior trekking experience required" },
+    { icon: "Dumbbell", text: "Fitness: Basic to moderate fitness required" },
+    { icon: "Mountain", text: "Altitude: Up to 13,123 ft / 4,000 m" },
+    { icon: "Snowflake", text: "Must be comfortable with cold and snow conditions" },
+    { icon: "Stethoscope", text: "Participants should be medically fit for high-altitude trekking" }
+  ];
+
+  /** Set against this trek's own day lengths — one long summit day, one short. */
+  YATRAS[choptaIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 5–6 km comfortably on uneven ground" },
+    { icon: "TrendingUp", text: "Able to sustain a 6–8 hour walking day on summit day" },
+    { icon: "Dumbbell", text: "Leg strength for a continuous stone-paved ascent and a steep final climb" },
+    { icon: "Backpack", text: "Comfortable carrying a light daypack" },
+    { icon: "Activity", text: "Regular walking or stair training for 3–4 weeks before the trek is recommended" }
+  ];
+
+  YATRAS[choptaIndex].howToReach = {
+    intro: "The Chopta Tungnath Chandrashila Trek runs out of Sari Village in Rudraprayag district, Uttarakhand. For Trip My Soul, the meeting point is Rishikesh or Dehradun, from where trekkers travel by road to Sari.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "From the airport, travel by taxi or cab to Sari Village — roughly 220–240 km depending on the route, and about 8–10 hours on the road. From Sari, a further hour to an hour and a half by vehicle reaches Chopta, where the trekking route begins. Recommended for travellers coming from Delhi, Mumbai, Bengaluru and other cities with flight connectivity to Dehradun."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Rishikesh Railway Station",
+      detail: "From Rishikesh, travel by bus, shared taxi or private cab towards Sari Village — about 7–9 hours by road. Haridwar Railway Station is also a convenient railhead with good connectivity, followed by the same road journey."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Rishikesh to Sari via Devprayag and Rudraprayag",
+      detail: "Sari is connected by road with Rishikesh, Haridwar and Dehradun. From Sari, drive on to Chopta, where the trek to Tungnath and Chandrashila begins.",
+      route: ["Dehradun / Rishikesh", "Devprayag", "Srinagar", "Dhari Devi", "Rudraprayag", "Ukhimath", "Sari Village"],
+      facts: [
+        { label: "Distance", value: "~200 km from Rishikesh" },
+        { label: "Drive", value: "~7–9 hours" },
+        { label: "Options", value: "Bus / Shared Taxi / Private Cab / Tempo Traveller" }
+      ]
+    },
+    pickup: {
+      point: "Rishikesh / Dehradun",
+      time: "Early morning of Day 1",
+      dropPoint: "Rishikesh / Dehradun",
+      dropTime: "Evening of Day 3",
+      note: "Route for TMS trekkers: Rishikesh → Sari → Chopta → Tungnath → Chandrashila, with Deoriatal from Sari on the final morning."
+    }
+  };
+
+  YATRAS[choptaIndex].faqs = [
+    {
+      title: "What is the Chopta Tungnath Chandrashila Trek?",
+      description: "It is a short Himalayan trek in Rudraprayag district, Uttarakhand, that climbs from the meadows of Chopta through rhododendron and oak forest to Tungnath — the highest Shiva temple in the world — and on to the Chandrashila Summit at roughly 4,000 m, with an optional walk to the Deoriatal Lake."
+    },
+    {
+      title: "How difficult is the trek?",
+      description: "It is rated Easy to Moderate. The climb from Chopta to Tungnath is a steady ascent on a stone-paved trail, and the final 1.5 km to Chandrashila is noticeably steeper. During winter, snow and icy sections make the same route harder."
+    },
+    {
+      title: "What is the maximum altitude?",
+      description: "Chandrashila Summit reaches approximately 4,000 m / 13,123 ft. Tungnath Temple, below it, sits at about 3,680 m / 12,073 ft."
+    },
+    {
+      title: "How many days are required?",
+      description: "The standard Trip My Soul itinerary is 3 Days / 2 Nights, including transport from Rishikesh or Dehradun, the Chandrashila climb, the Deoriatal walk and the return drive."
+    },
+    {
+      title: "What is the best time for the trek?",
+      description: "April to June and September to November are the best windows, with clear mountain views and rhododendron in bloom through spring. December to March turns it into a snow trek, depending on conditions that year. July and August fall in the monsoon and are avoided."
+    },
+    {
+      title: "Is it suitable for beginners and families?",
+      description: "Yes. It is one of the most accessible Himalayan treks in Uttarakhand and suits beginners, first-time trekkers and families with reasonable fitness. You should be comfortable walking about 5 km and climbing continuously for a few hours."
+    },
+    {
+      title: "Where does the trek start?",
+      description: "The base village is Sari, in Rudraprayag district. From Sari it is an hour to an hour and a half by vehicle to Chopta, where the walk to Tungnath and Chandrashila begins."
+    },
+    {
+      title: "Why do people climb Chandrashila before sunrise?",
+      description: "The first light of the day on the Himalayan peaks is the single best view on the trek, and mornings are generally clearer than afternoons. Your trek leader sets the start time based on the season and the conditions on the trail."
+    },
+    {
+      title: "Which peaks are visible from the summit?",
+      description: "On a clear day the panorama takes in Chaukhamba, Kedarnath Dome, Neelkanth and Nanda Devi, along with the wider Garhwal and Kumaon ranges."
+    },
+    {
+      title: "Are permits required?",
+      description: "Local forest and administrative regulations apply on this route and can change seasonally. Trip My Soul handles the applicable permits, and your trek leader will confirm what is in force on your departure."
+    },
+    {
+      title: "What accommodation is provided?",
+      description: "Both nights are at Sari Village, in a homestay, guesthouse or Swiss camp depending on the departure and availability."
+    },
+    {
+      title: "What should I carry?",
+      description: "Good trekking shoes, warm layers, a waterproof jacket, thermal wear, gloves, a woollen cap, sunglasses, sunscreen, water bottles, personal medicines, a headlamp and a trekking daypack. On winter departures, gaiters and microspikes may be needed depending on snow conditions."
+    }
+  ];
+
+  YATRAS[choptaIndex].heroImage =
+    "/Trips_gallery/Tungnath_chandrashila/IMG_4346.JPG.jpeg";
+
+  YATRAS[choptaIndex].heroImages = [
+    "/Trips_gallery/Tungnath_chandrashila/IMG_4346.JPG.jpeg",
+    "/Trips_gallery/Tungnath_chandrashila/IMG_4359.JPG.jpeg",
+    "/Trips_gallery/Tungnath_chandrashila/IMG_4348.JPG.jpeg"
+  ];
+
+  // Shot on past Chopta–Tungnath–Chandrashila batches. The folder also holds
+  // four .HEIC originals, left out because browsers other than Safari will not
+  // render them in an <img>.
+  YATRAS[choptaIndex].gallery = [
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4227.JPG.jpeg", caption: "The road up to Sari Village" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4228.JPG.jpeg", caption: "Garhwal valleys on the drive in" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4229.JPG.jpeg", caption: "Sari Village, the base for both nights" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4231.JPG.jpeg", caption: "Evening in the village" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4232.JPG.jpeg", caption: "Setting off from Chopta" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4237.JPG.jpeg", caption: "The stone-paved trail out of Chopta" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4246.JPG.jpeg", caption: "Rhododendron forest below the meadows" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4247.JPG.jpeg", caption: "Open bugyal on the way up" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4259.JPG.jpeg", caption: "Climbing towards the temple" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4267.JPG.jpeg", caption: "First sight of Tungnath" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4268.JPG.jpeg", caption: "Tungnath — the world's highest Shiva temple" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4277.JPG.jpeg", caption: "The temple courtyard at 12,073 ft" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4278.JPG.jpeg", caption: "Prayer flags above the shrine" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4342.JPG.jpeg", caption: "The steeper climb beyond Tungnath" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4343.JPG.jpeg", caption: "On the ridge to Chandrashila" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4345.JPG.jpeg", caption: "Last stretch to the summit" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4346.JPG.jpeg", caption: "Chandrashila summit at 13,123 ft" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4347.JPG.jpeg", caption: "Chaukhamba across the valley" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4348.JPG.jpeg", caption: "Kedarnath Dome and Neelkanth from the top" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4349.JPG.jpeg", caption: "360° Garhwal panorama" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4350.JPG.jpeg", caption: "Nanda Devi on a clear morning" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4351.JPG.jpeg", caption: "The team on the summit" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4352.JPG.jpeg", caption: "Summit morning light" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4353.JPG.jpeg", caption: "Looking down the Chandrashila ridge" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4355.JPG.jpeg", caption: "Starting the descent to Chopta" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4357.JPG.jpeg", caption: "Meadows on the way down" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4358.JPG.jpeg", caption: "Back through the rhododendrons" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4359.JPG.jpeg", caption: "The walk in to Deoriatal" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4361.JPG.jpeg", caption: "Deoriatal, reached from Sari" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4364.JPG.jpeg", caption: "Chaukhamba reflected in the lake" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4365.JPG.jpeg", caption: "Forest trail back to Sari" },
+    { url: "/Trips_gallery/Tungnath_chandrashila/IMG_4367.JPG.jpeg", caption: "Last of the mountains on the drive out" }
+  ];
+
+  /**
+   * Daily departures through the October-July season, matching the way
+   * Kedarkantha publishes its grid. Each batch is the 3-day trip, so the end
+   * date is the start plus two days.
+   */
+  YATRAS[choptaIndex].batches = {
+    years: {
+      "2026": {
+        months: [
+          {
+            month: "Oct",
+            year: "2026",
+            trips: [
+              { startDate: "01 Oct", endDate: "03 Oct", status: "Open" },
+              { startDate: "02 Oct", endDate: "04 Oct", status: "Open" },
+              { startDate: "03 Oct", endDate: "05 Oct", status: "Open" },
+              { startDate: "04 Oct", endDate: "06 Oct", status: "Open" },
+              { startDate: "05 Oct", endDate: "07 Oct", status: "Open" },
+              { startDate: "06 Oct", endDate: "08 Oct", status: "Open" },
+              { startDate: "07 Oct", endDate: "09 Oct", status: "Open" },
+              { startDate: "08 Oct", endDate: "10 Oct", status: "Open" },
+              { startDate: "09 Oct", endDate: "11 Oct", status: "Open" },
+              { startDate: "10 Oct", endDate: "12 Oct", status: "Open" },
+              { startDate: "11 Oct", endDate: "13 Oct", status: "Open" },
+              { startDate: "12 Oct", endDate: "14 Oct", status: "Open" },
+              { startDate: "13 Oct", endDate: "15 Oct", status: "Open" },
+              { startDate: "14 Oct", endDate: "16 Oct", status: "Open" },
+              { startDate: "15 Oct", endDate: "17 Oct", status: "Open" },
+              { startDate: "16 Oct", endDate: "18 Oct", status: "Open" },
+              { startDate: "17 Oct", endDate: "19 Oct", status: "Open" },
+              { startDate: "18 Oct", endDate: "20 Oct", status: "Open" },
+              { startDate: "19 Oct", endDate: "21 Oct", status: "Open" },
+              { startDate: "20 Oct", endDate: "22 Oct", status: "Open" },
+              { startDate: "21 Oct", endDate: "23 Oct", status: "Open" },
+              { startDate: "22 Oct", endDate: "24 Oct", status: "Open" },
+              { startDate: "23 Oct", endDate: "25 Oct", status: "Open" },
+              { startDate: "24 Oct", endDate: "26 Oct", status: "Open" },
+              { startDate: "25 Oct", endDate: "27 Oct", status: "Open" },
+              { startDate: "26 Oct", endDate: "28 Oct", status: "Open" },
+              { startDate: "27 Oct", endDate: "29 Oct", status: "Open" },
+              { startDate: "28 Oct", endDate: "30 Oct", status: "Open" },
+              { startDate: "29 Oct", endDate: "31 Oct", status: "Open" },
+              { startDate: "30 Oct", endDate: "01 Nov", status: "Open" },
+              { startDate: "31 Oct", endDate: "02 Nov", status: "Open" }
+            ]
+          },
+          {
+            month: "Nov",
+            year: "2026",
+            trips: [
+              { startDate: "01 Nov", endDate: "03 Nov", status: "Open" },
+              { startDate: "02 Nov", endDate: "04 Nov", status: "Open" },
+              { startDate: "03 Nov", endDate: "05 Nov", status: "Open" },
+              { startDate: "04 Nov", endDate: "06 Nov", status: "Open" },
+              { startDate: "05 Nov", endDate: "07 Nov", status: "Open" },
+              { startDate: "06 Nov", endDate: "08 Nov", status: "Open" },
+              { startDate: "07 Nov", endDate: "09 Nov", status: "Open" },
+              { startDate: "08 Nov", endDate: "10 Nov", status: "Open" },
+              { startDate: "09 Nov", endDate: "11 Nov", status: "Open" },
+              { startDate: "10 Nov", endDate: "12 Nov", status: "Open" },
+              { startDate: "11 Nov", endDate: "13 Nov", status: "Open" },
+              { startDate: "12 Nov", endDate: "14 Nov", status: "Open" },
+              { startDate: "13 Nov", endDate: "15 Nov", status: "Open" },
+              { startDate: "14 Nov", endDate: "16 Nov", status: "Open" },
+              { startDate: "15 Nov", endDate: "17 Nov", status: "Open" },
+              { startDate: "16 Nov", endDate: "18 Nov", status: "Open" },
+              { startDate: "17 Nov", endDate: "19 Nov", status: "Open" },
+              { startDate: "18 Nov", endDate: "20 Nov", status: "Open" },
+              { startDate: "19 Nov", endDate: "21 Nov", status: "Open" },
+              { startDate: "20 Nov", endDate: "22 Nov", status: "Open" },
+              { startDate: "21 Nov", endDate: "23 Nov", status: "Open" },
+              { startDate: "22 Nov", endDate: "24 Nov", status: "Open" },
+              { startDate: "23 Nov", endDate: "25 Nov", status: "Open" },
+              { startDate: "24 Nov", endDate: "26 Nov", status: "Open" },
+              { startDate: "25 Nov", endDate: "27 Nov", status: "Open" },
+              { startDate: "26 Nov", endDate: "28 Nov", status: "Open" },
+              { startDate: "27 Nov", endDate: "29 Nov", status: "Open" },
+              { startDate: "28 Nov", endDate: "30 Nov", status: "Open" },
+              { startDate: "29 Nov", endDate: "01 Dec", status: "Open" },
+              { startDate: "30 Nov", endDate: "02 Dec", status: "Open" }
+            ]
+          },
+          {
+            month: "Dec",
+            year: "2026",
+            trips: [
+              { startDate: "01 Dec", endDate: "03 Dec", status: "Open" },
+              { startDate: "02 Dec", endDate: "04 Dec", status: "Open" },
+              { startDate: "03 Dec", endDate: "05 Dec", status: "Open" },
+              { startDate: "04 Dec", endDate: "06 Dec", status: "Open" },
+              { startDate: "05 Dec", endDate: "07 Dec", status: "Open" },
+              { startDate: "06 Dec", endDate: "08 Dec", status: "Open" },
+              { startDate: "07 Dec", endDate: "09 Dec", status: "Open" },
+              { startDate: "08 Dec", endDate: "10 Dec", status: "Open" },
+              { startDate: "09 Dec", endDate: "11 Dec", status: "Open" },
+              { startDate: "10 Dec", endDate: "12 Dec", status: "Open" },
+              { startDate: "11 Dec", endDate: "13 Dec", status: "Open" },
+              { startDate: "12 Dec", endDate: "14 Dec", status: "Open" },
+              { startDate: "13 Dec", endDate: "15 Dec", status: "Open" },
+              { startDate: "14 Dec", endDate: "16 Dec", status: "Open" },
+              { startDate: "15 Dec", endDate: "17 Dec", status: "Open" },
+              { startDate: "16 Dec", endDate: "18 Dec", status: "Open" },
+              { startDate: "17 Dec", endDate: "19 Dec", status: "Open" },
+              { startDate: "18 Dec", endDate: "20 Dec", status: "Open" },
+              { startDate: "19 Dec", endDate: "21 Dec", status: "Open" },
+              { startDate: "20 Dec", endDate: "22 Dec", status: "Open" },
+              { startDate: "21 Dec", endDate: "23 Dec", status: "Open" },
+              { startDate: "22 Dec", endDate: "24 Dec", status: "Open" },
+              { startDate: "23 Dec", endDate: "25 Dec", status: "Open" },
+              { startDate: "24 Dec", endDate: "26 Dec", status: "Open" },
+              { startDate: "25 Dec", endDate: "27 Dec", status: "Open" },
+              { startDate: "26 Dec", endDate: "28 Dec", status: "Open" },
+              { startDate: "27 Dec", endDate: "29 Dec", status: "Open" },
+              { startDate: "28 Dec", endDate: "30 Dec", status: "Open" },
+              { startDate: "29 Dec", endDate: "31 Dec", status: "Open" },
+              { startDate: "30 Dec", endDate: "01 Jan", status: "Open" },
+              { startDate: "31 Dec", endDate: "02 Jan", status: "Open" }
+            ]
+          }
+        ]
+      },
+      "2027": {
+        months: [
+          {
+            month: "Jan",
+            year: "2027",
+            trips: [
+              { startDate: "01 Jan", endDate: "03 Jan", status: "Open" },
+              { startDate: "02 Jan", endDate: "04 Jan", status: "Open" },
+              { startDate: "03 Jan", endDate: "05 Jan", status: "Open" },
+              { startDate: "04 Jan", endDate: "06 Jan", status: "Open" },
+              { startDate: "05 Jan", endDate: "07 Jan", status: "Open" },
+              { startDate: "06 Jan", endDate: "08 Jan", status: "Open" },
+              { startDate: "07 Jan", endDate: "09 Jan", status: "Open" },
+              { startDate: "08 Jan", endDate: "10 Jan", status: "Open" },
+              { startDate: "09 Jan", endDate: "11 Jan", status: "Open" },
+              { startDate: "10 Jan", endDate: "12 Jan", status: "Open" },
+              { startDate: "11 Jan", endDate: "13 Jan", status: "Open" },
+              { startDate: "12 Jan", endDate: "14 Jan", status: "Open" },
+              { startDate: "13 Jan", endDate: "15 Jan", status: "Open" },
+              { startDate: "14 Jan", endDate: "16 Jan", status: "Open" },
+              { startDate: "15 Jan", endDate: "17 Jan", status: "Open" },
+              { startDate: "16 Jan", endDate: "18 Jan", status: "Open" },
+              { startDate: "17 Jan", endDate: "19 Jan", status: "Open" },
+              { startDate: "18 Jan", endDate: "20 Jan", status: "Open" },
+              { startDate: "19 Jan", endDate: "21 Jan", status: "Open" },
+              { startDate: "20 Jan", endDate: "22 Jan", status: "Open" },
+              { startDate: "21 Jan", endDate: "23 Jan", status: "Open" },
+              { startDate: "22 Jan", endDate: "24 Jan", status: "Open" },
+              { startDate: "23 Jan", endDate: "25 Jan", status: "Open" },
+              { startDate: "24 Jan", endDate: "26 Jan", status: "Open" },
+              { startDate: "25 Jan", endDate: "27 Jan", status: "Open" },
+              { startDate: "26 Jan", endDate: "28 Jan", status: "Open" },
+              { startDate: "27 Jan", endDate: "29 Jan", status: "Open" },
+              { startDate: "28 Jan", endDate: "30 Jan", status: "Open" },
+              { startDate: "29 Jan", endDate: "31 Jan", status: "Open" },
+              { startDate: "30 Jan", endDate: "01 Feb", status: "Open" },
+              { startDate: "31 Jan", endDate: "02 Feb", status: "Open" }
+            ]
+          },
+          {
+            month: "Feb",
+            year: "2027",
+            trips: [
+              { startDate: "01 Feb", endDate: "03 Feb", status: "Open" },
+              { startDate: "02 Feb", endDate: "04 Feb", status: "Open" },
+              { startDate: "03 Feb", endDate: "05 Feb", status: "Open" },
+              { startDate: "04 Feb", endDate: "06 Feb", status: "Open" },
+              { startDate: "05 Feb", endDate: "07 Feb", status: "Open" },
+              { startDate: "06 Feb", endDate: "08 Feb", status: "Open" },
+              { startDate: "07 Feb", endDate: "09 Feb", status: "Open" },
+              { startDate: "08 Feb", endDate: "10 Feb", status: "Open" },
+              { startDate: "09 Feb", endDate: "11 Feb", status: "Open" },
+              { startDate: "10 Feb", endDate: "12 Feb", status: "Open" },
+              { startDate: "11 Feb", endDate: "13 Feb", status: "Open" },
+              { startDate: "12 Feb", endDate: "14 Feb", status: "Open" },
+              { startDate: "13 Feb", endDate: "15 Feb", status: "Open" },
+              { startDate: "14 Feb", endDate: "16 Feb", status: "Open" },
+              { startDate: "15 Feb", endDate: "17 Feb", status: "Open" },
+              { startDate: "16 Feb", endDate: "18 Feb", status: "Open" },
+              { startDate: "17 Feb", endDate: "19 Feb", status: "Open" },
+              { startDate: "18 Feb", endDate: "20 Feb", status: "Open" },
+              { startDate: "19 Feb", endDate: "21 Feb", status: "Open" },
+              { startDate: "20 Feb", endDate: "22 Feb", status: "Open" },
+              { startDate: "21 Feb", endDate: "23 Feb", status: "Open" },
+              { startDate: "22 Feb", endDate: "24 Feb", status: "Open" },
+              { startDate: "23 Feb", endDate: "25 Feb", status: "Open" },
+              { startDate: "24 Feb", endDate: "26 Feb", status: "Open" },
+              { startDate: "25 Feb", endDate: "27 Feb", status: "Open" },
+              { startDate: "26 Feb", endDate: "28 Feb", status: "Open" },
+              { startDate: "27 Feb", endDate: "01 Mar", status: "Open" },
+              { startDate: "28 Feb", endDate: "02 Mar", status: "Open" }
+            ]
+          },
+          {
+            month: "Mar",
+            year: "2027",
+            trips: [
+              { startDate: "01 Mar", endDate: "03 Mar", status: "Open" },
+              { startDate: "02 Mar", endDate: "04 Mar", status: "Open" },
+              { startDate: "03 Mar", endDate: "05 Mar", status: "Open" },
+              { startDate: "04 Mar", endDate: "06 Mar", status: "Open" },
+              { startDate: "05 Mar", endDate: "07 Mar", status: "Open" },
+              { startDate: "06 Mar", endDate: "08 Mar", status: "Open" },
+              { startDate: "07 Mar", endDate: "09 Mar", status: "Open" },
+              { startDate: "08 Mar", endDate: "10 Mar", status: "Open" },
+              { startDate: "09 Mar", endDate: "11 Mar", status: "Open" },
+              { startDate: "10 Mar", endDate: "12 Mar", status: "Open" },
+              { startDate: "11 Mar", endDate: "13 Mar", status: "Open" },
+              { startDate: "12 Mar", endDate: "14 Mar", status: "Open" },
+              { startDate: "13 Mar", endDate: "15 Mar", status: "Open" },
+              { startDate: "14 Mar", endDate: "16 Mar", status: "Open" },
+              { startDate: "15 Mar", endDate: "17 Mar", status: "Open" },
+              { startDate: "16 Mar", endDate: "18 Mar", status: "Open" },
+              { startDate: "17 Mar", endDate: "19 Mar", status: "Open" },
+              { startDate: "18 Mar", endDate: "20 Mar", status: "Open" },
+              { startDate: "19 Mar", endDate: "21 Mar", status: "Open" },
+              { startDate: "20 Mar", endDate: "22 Mar", status: "Open" },
+              { startDate: "21 Mar", endDate: "23 Mar", status: "Open" },
+              { startDate: "22 Mar", endDate: "24 Mar", status: "Open" },
+              { startDate: "23 Mar", endDate: "25 Mar", status: "Open" },
+              { startDate: "24 Mar", endDate: "26 Mar", status: "Open" },
+              { startDate: "25 Mar", endDate: "27 Mar", status: "Open" },
+              { startDate: "26 Mar", endDate: "28 Mar", status: "Open" },
+              { startDate: "27 Mar", endDate: "29 Mar", status: "Open" },
+              { startDate: "28 Mar", endDate: "30 Mar", status: "Open" },
+              { startDate: "29 Mar", endDate: "31 Mar", status: "Open" },
+              { startDate: "30 Mar", endDate: "01 Apr", status: "Open" },
+              { startDate: "31 Mar", endDate: "02 Apr", status: "Open" }
+            ]
+          },
+          {
+            month: "Apr",
+            year: "2027",
+            trips: [
+              { startDate: "01 Apr", endDate: "03 Apr", status: "Open" },
+              { startDate: "02 Apr", endDate: "04 Apr", status: "Open" },
+              { startDate: "03 Apr", endDate: "05 Apr", status: "Open" },
+              { startDate: "04 Apr", endDate: "06 Apr", status: "Open" },
+              { startDate: "05 Apr", endDate: "07 Apr", status: "Open" },
+              { startDate: "06 Apr", endDate: "08 Apr", status: "Open" },
+              { startDate: "07 Apr", endDate: "09 Apr", status: "Open" },
+              { startDate: "08 Apr", endDate: "10 Apr", status: "Open" },
+              { startDate: "09 Apr", endDate: "11 Apr", status: "Open" },
+              { startDate: "10 Apr", endDate: "12 Apr", status: "Open" },
+              { startDate: "11 Apr", endDate: "13 Apr", status: "Open" },
+              { startDate: "12 Apr", endDate: "14 Apr", status: "Open" },
+              { startDate: "13 Apr", endDate: "15 Apr", status: "Open" },
+              { startDate: "14 Apr", endDate: "16 Apr", status: "Open" },
+              { startDate: "15 Apr", endDate: "17 Apr", status: "Open" },
+              { startDate: "16 Apr", endDate: "18 Apr", status: "Open" },
+              { startDate: "17 Apr", endDate: "19 Apr", status: "Open" },
+              { startDate: "18 Apr", endDate: "20 Apr", status: "Open" },
+              { startDate: "19 Apr", endDate: "21 Apr", status: "Open" },
+              { startDate: "20 Apr", endDate: "22 Apr", status: "Open" },
+              { startDate: "21 Apr", endDate: "23 Apr", status: "Open" },
+              { startDate: "22 Apr", endDate: "24 Apr", status: "Open" },
+              { startDate: "23 Apr", endDate: "25 Apr", status: "Open" },
+              { startDate: "24 Apr", endDate: "26 Apr", status: "Open" },
+              { startDate: "25 Apr", endDate: "27 Apr", status: "Open" },
+              { startDate: "26 Apr", endDate: "28 Apr", status: "Open" },
+              { startDate: "27 Apr", endDate: "29 Apr", status: "Open" },
+              { startDate: "28 Apr", endDate: "30 Apr", status: "Open" },
+              { startDate: "29 Apr", endDate: "01 May", status: "Open" },
+              { startDate: "30 Apr", endDate: "02 May", status: "Open" }
+            ]
+          },
+          {
+            month: "May",
+            year: "2027",
+            trips: [
+              { startDate: "01 May", endDate: "03 May", status: "Open" },
+              { startDate: "02 May", endDate: "04 May", status: "Open" },
+              { startDate: "03 May", endDate: "05 May", status: "Open" },
+              { startDate: "04 May", endDate: "06 May", status: "Open" },
+              { startDate: "05 May", endDate: "07 May", status: "Open" },
+              { startDate: "06 May", endDate: "08 May", status: "Open" },
+              { startDate: "07 May", endDate: "09 May", status: "Open" },
+              { startDate: "08 May", endDate: "10 May", status: "Open" },
+              { startDate: "09 May", endDate: "11 May", status: "Open" },
+              { startDate: "10 May", endDate: "12 May", status: "Open" },
+              { startDate: "11 May", endDate: "13 May", status: "Open" },
+              { startDate: "12 May", endDate: "14 May", status: "Open" },
+              { startDate: "13 May", endDate: "15 May", status: "Open" },
+              { startDate: "14 May", endDate: "16 May", status: "Open" },
+              { startDate: "15 May", endDate: "17 May", status: "Open" },
+              { startDate: "16 May", endDate: "18 May", status: "Open" },
+              { startDate: "17 May", endDate: "19 May", status: "Open" },
+              { startDate: "18 May", endDate: "20 May", status: "Open" },
+              { startDate: "19 May", endDate: "21 May", status: "Open" },
+              { startDate: "20 May", endDate: "22 May", status: "Open" },
+              { startDate: "21 May", endDate: "23 May", status: "Open" },
+              { startDate: "22 May", endDate: "24 May", status: "Open" },
+              { startDate: "23 May", endDate: "25 May", status: "Open" },
+              { startDate: "24 May", endDate: "26 May", status: "Open" },
+              { startDate: "25 May", endDate: "27 May", status: "Open" },
+              { startDate: "26 May", endDate: "28 May", status: "Open" },
+              { startDate: "27 May", endDate: "29 May", status: "Open" },
+              { startDate: "28 May", endDate: "30 May", status: "Open" },
+              { startDate: "29 May", endDate: "31 May", status: "Open" },
+              { startDate: "30 May", endDate: "01 Jun", status: "Open" },
+              { startDate: "31 May", endDate: "02 Jun", status: "Open" }
+            ]
+          },
+          {
+            month: "Jun",
+            year: "2027",
+            trips: [
+              { startDate: "01 Jun", endDate: "03 Jun", status: "Open" },
+              { startDate: "02 Jun", endDate: "04 Jun", status: "Open" },
+              { startDate: "03 Jun", endDate: "05 Jun", status: "Open" },
+              { startDate: "04 Jun", endDate: "06 Jun", status: "Open" },
+              { startDate: "05 Jun", endDate: "07 Jun", status: "Open" },
+              { startDate: "06 Jun", endDate: "08 Jun", status: "Open" },
+              { startDate: "07 Jun", endDate: "09 Jun", status: "Open" },
+              { startDate: "08 Jun", endDate: "10 Jun", status: "Open" },
+              { startDate: "09 Jun", endDate: "11 Jun", status: "Open" },
+              { startDate: "10 Jun", endDate: "12 Jun", status: "Open" },
+              { startDate: "11 Jun", endDate: "13 Jun", status: "Open" },
+              { startDate: "12 Jun", endDate: "14 Jun", status: "Open" },
+              { startDate: "13 Jun", endDate: "15 Jun", status: "Open" },
+              { startDate: "14 Jun", endDate: "16 Jun", status: "Open" },
+              { startDate: "15 Jun", endDate: "17 Jun", status: "Open" },
+              { startDate: "16 Jun", endDate: "18 Jun", status: "Open" },
+              { startDate: "17 Jun", endDate: "19 Jun", status: "Open" },
+              { startDate: "18 Jun", endDate: "20 Jun", status: "Open" },
+              { startDate: "19 Jun", endDate: "21 Jun", status: "Open" },
+              { startDate: "20 Jun", endDate: "22 Jun", status: "Open" },
+              { startDate: "21 Jun", endDate: "23 Jun", status: "Open" },
+              { startDate: "22 Jun", endDate: "24 Jun", status: "Open" },
+              { startDate: "23 Jun", endDate: "25 Jun", status: "Open" },
+              { startDate: "24 Jun", endDate: "26 Jun", status: "Open" },
+              { startDate: "25 Jun", endDate: "27 Jun", status: "Open" },
+              { startDate: "26 Jun", endDate: "28 Jun", status: "Open" },
+              { startDate: "27 Jun", endDate: "29 Jun", status: "Open" },
+              { startDate: "28 Jun", endDate: "30 Jun", status: "Open" },
+              { startDate: "29 Jun", endDate: "01 Jul", status: "Open" },
+              { startDate: "30 Jun", endDate: "02 Jul", status: "Open" }
+            ]
+          },
+          {
+            month: "Jul",
+            year: "2027",
+            trips: [
+              { startDate: "01 Jul", endDate: "03 Jul", status: "Open" },
+              { startDate: "02 Jul", endDate: "04 Jul", status: "Open" },
+              { startDate: "03 Jul", endDate: "05 Jul", status: "Open" },
+              { startDate: "04 Jul", endDate: "06 Jul", status: "Open" },
+              { startDate: "05 Jul", endDate: "07 Jul", status: "Open" },
+              { startDate: "06 Jul", endDate: "08 Jul", status: "Open" },
+              { startDate: "07 Jul", endDate: "09 Jul", status: "Open" },
+              { startDate: "08 Jul", endDate: "10 Jul", status: "Open" },
+              { startDate: "09 Jul", endDate: "11 Jul", status: "Open" },
+              { startDate: "10 Jul", endDate: "12 Jul", status: "Open" },
+              { startDate: "11 Jul", endDate: "13 Jul", status: "Open" },
+              { startDate: "12 Jul", endDate: "14 Jul", status: "Open" },
+              { startDate: "13 Jul", endDate: "15 Jul", status: "Open" },
+              { startDate: "14 Jul", endDate: "16 Jul", status: "Open" },
+              { startDate: "15 Jul", endDate: "17 Jul", status: "Open" },
+              { startDate: "16 Jul", endDate: "18 Jul", status: "Open" },
+              { startDate: "17 Jul", endDate: "19 Jul", status: "Open" },
+              { startDate: "18 Jul", endDate: "20 Jul", status: "Open" },
+              { startDate: "19 Jul", endDate: "21 Jul", status: "Open" },
+              { startDate: "20 Jul", endDate: "22 Jul", status: "Open" },
+              { startDate: "21 Jul", endDate: "23 Jul", status: "Open" },
+              { startDate: "22 Jul", endDate: "24 Jul", status: "Open" },
+              { startDate: "23 Jul", endDate: "25 Jul", status: "Open" },
+              { startDate: "24 Jul", endDate: "26 Jul", status: "Open" },
+              { startDate: "25 Jul", endDate: "27 Jul", status: "Open" },
+              { startDate: "26 Jul", endDate: "28 Jul", status: "Open" },
+              { startDate: "27 Jul", endDate: "29 Jul", status: "Open" },
+              { startDate: "28 Jul", endDate: "30 Jul", status: "Open" },
+              { startDate: "29 Jul", endDate: "31 Jul", status: "Open" },
+              { startDate: "30 Jul", endDate: "01 Aug", status: "Open" },
+              { startDate: "31 Jul", endDate: "02 Aug", status: "Open" }
             ]
           }
         ]

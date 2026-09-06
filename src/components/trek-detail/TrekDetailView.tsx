@@ -214,20 +214,12 @@ export default function TrekDetailView({
             />
           </section>
 
+          <section id="inclusions" className={`${CARD} space-y-6 ${REST}`}>
+            <TrekInclusions inclusions={detail.inclusions} exclusions={detail.exclusions} />
+          </section>
+
           <section id="eligibility" className={`${CARD} space-y-6 ${REST}`}>
             <TrekEligibility detail={detail} noun={noun} />
-          </section>
-
-          <section id="photos" className={`${CARD} space-y-5 ${REST}`}>
-            <TrekPhotoAlbum detail={detail} noun={noun} />
-          </section>
-
-          <section id="how-to-reach" className={`${CARD} space-y-6 ${REST}`}>
-            <TrekHowToReach
-              transport={detail.transport}
-              howToReach={detail.howToReach}
-              trekName={trek.name}
-            />
           </section>
 
           {/* Dates, and — where a listing is sold at more than one rate — the rate card. */}
@@ -250,8 +242,12 @@ export default function TrekDetailView({
             />
           </section>
 
-          <section id="inclusions" className={`${CARD} space-y-6 ${REST}`}>
-            <TrekInclusions inclusions={detail.inclusions} exclusions={detail.exclusions} />
+          <section id="how-to-reach" className={`${CARD} space-y-6 ${REST}`}>
+            <TrekHowToReach
+              transport={detail.transport}
+              howToReach={detail.howToReach}
+              trekName={trek.name}
+            />
           </section>
 
           <section id="trek-essentials" className={`${CARD} space-y-6 ${REST}`}>
@@ -262,15 +258,24 @@ export default function TrekDetailView({
             />
           </section>
 
+          <section id="photos" className={`${CARD} space-y-5 ${REST}`}>
+            <TrekPhotoAlbum detail={detail} noun={noun} />
+          </section>
+
           <section id="cancellation" className={`${CARD} space-y-4 ${REST}`}>
             <TrekCancellation policy={detail.cancellationPolicyText} />
           </section>
 
-          {showFaqs && (
-            <section id="faqs" className={`${CARD} space-y-6 ${REST}`}>
-              <TrekFaqs faqs={detail.faqs} />
-            </section>
-          )}
+          {/* Social proof reads before the long-form article and the FAQ. */}
+          <section id="trek-reviews" className={`${CARD} space-y-8 ${REST}`}>
+            <TrekReviews
+              reviews={detail.reviews}
+              trailVideos={detail.trailVideos}
+              externalReviews={detail.externalReviews}
+              reviewVideos={detail.reviewVideos}
+              trekName={trek.name}
+            />
+          </section>
 
           <section id="trek-article" className={`${CARD} space-y-6 ${REST}`}>
             <TrekArticle
@@ -281,16 +286,11 @@ export default function TrekDetailView({
             />
           </section>
 
-          {/* Social proof reads better before we point at other departures. */}
-          <section id="trek-reviews" className={`${CARD} space-y-8 ${REST}`}>
-            <TrekReviews
-              reviews={detail.reviews}
-              trailVideos={detail.trailVideos}
-              externalReviews={detail.externalReviews}
-              reviewVideos={detail.reviewVideos}
-              trekName={trek.name}
-            />
-          </section>
+          {showFaqs && (
+            <section id="faqs" className={`${CARD} space-y-6 ${REST}`}>
+              <TrekFaqs faqs={detail.faqs} />
+            </section>
+          )}
 
           <section id="similar-treks" className={`${CARD} space-y-6 ${REST}`}>
             <TrekSimilar
