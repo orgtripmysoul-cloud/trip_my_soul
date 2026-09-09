@@ -1117,14 +1117,19 @@ export const TREKS: Trek[] = [
   },
   {
     "slug": "nagtibba-trek",
-    "name": "Nagtibba",
+    "name": "Nag Tibba Trek",
+    "tagline": "Two days from Dehradun through the oak forests above Pantwari to the 9,915 ft Nag Tibba summit.",
     "price": 3499,
     "days": 2,
     "nights": 1,
     "region": "Uttarakhand",
     "category": "Upcoming Winter Treks",
     "startLocation": "Dehradun To Dehradun",
-    "difficulty": "Moderate",
+    "endLocation": "Dehradun",
+    "difficulty": "Easy to Moderate",
+    "maxAltitude": "9,915 ft / 3,022 m",
+    "totalDistance": "15–16 Kilometers",
+    "availability": "October – June",
     "months": [
       "Oct",
       "Nov",
@@ -1134,14 +1139,13 @@ export const TREKS: Trek[] = [
       "Mar",
       "Apr",
       "May",
-      "Jun",
-      "Jul"
+      "Jun"
     ],
     "themes": [
       "Snow",
       "Meadow",
       "Forest",
-      "Pass Crossing"
+      "Summit"
     ]
   },
   {
@@ -6444,6 +6448,616 @@ if (harKiDunIndex !== -1) {
   };
 }
 
+// Static details for the Nag Tibba Trek (uid: nagtibba-trek), the two-day
+// summit route out of Pantwari in Tehri Garhwal. Trek essentials (packing list)
+// and the cancellation policy are deliberately left unset: Kedarkantha
+// publishes neither, so both sections render the same shared copy from
+// `trekDefaults.ts` / `TrekCancellation`. The base campsite is published as a
+// range (8,500–9,000 ft) rather than a figure, so the altitude charts use its
+// midpoint. `maxAltitude`, `totalDistance`, `availability` and the corrected
+// `difficulty` live on the catalogue entry itself.
+const nagTibbaIndex = TREKS.findIndex(t => t.slug === 'nagtibba-trek');
+if (nagTibbaIndex !== -1) {
+  TREKS[nagTibbaIndex].aboutParagraphs = [
+    "Nag Tibba Trek is one of Uttarakhand's most popular short Himalayan treks, perfect for beginners who want to experience mountain trekking without committing to a long or highly demanding expedition. Located in the Tehri Garhwal region, the trek takes you through beautiful oak and rhododendron forests, open meadows and peaceful mountain landscapes.",
+    "The trek begins from Pantwari Village and leads towards the Nag Tibba summit at approximately 9,915 ft (3,022 m). From the summit, on a clear day, trekkers can enjoy impressive views of the surrounding Himalayan ranges, including peaks such as Bandarpoonch and Swargarohini.",
+    "What makes Nag Tibba special is its accessibility. The trek can generally be completed in 2 days and 1 night, making it an excellent weekend escape from Dehradun, Mussoorie and Rishikesh. During winter, the trail can receive snowfall, transforming the forest and meadows into a beautiful snow-covered landscape.",
+    "Whether you are attempting your first Himalayan trek, planning a weekend adventure with friends, or simply looking for a peaceful escape into the mountains, Nag Tibba offers a perfect introduction to Himalayan trekking."
+  ];
+
+  TREKS[nagTibbaIndex].highlights = [
+    "Nag Tibba Summit at 9,915 ft",
+    "Panoramic Himalayan views",
+    "Dense oak & rhododendron forest",
+    "Open mountain meadows",
+    "Sunrise & sunset from the ridge",
+    "Bandarpoonch & Swargarohini views",
+    "Gangotri & Kedarnath ranges",
+    "Doon Valley views",
+    "Camping at the Nag Tibba base campsite"
+  ];
+
+  TREKS[nagTibbaIndex].usps = [
+    {
+      title: "Base village: Pantwari",
+      description: "The trek runs out of Pantwari in Tehri Garhwal district, reached on an 85–100 km drive of about 4–5 hours from Dehradun, with Mussoorie as the nearest hill town."
+    },
+    {
+      title: "A Himalayan summit inside a weekend",
+      description: "Two days and one night over roughly 15–16 km round trip — short enough to be a genuine weekend escape from Dehradun, Mussoorie or Rishikesh, and still a summit at 9,915 ft."
+    },
+    {
+      title: "Built for a first trek",
+      description: "Graded easy to moderate on a forest and meadow trail with no technical sections, which is why Nag Tibba is the route most often walked by beginners, families and first-time trekkers."
+    },
+    {
+      title: "A genuine snow trek from December to March",
+      description: "Through those months the forest, the meadows and the campsite can lie under fresh snow, and the grade rises accordingly — the reason December–March is the most popular window on this trail."
+    },
+    {
+      title: "Four ranges from one summit",
+      description: "On a clear day the top looks out over Bandarpoonch, Swargarohini, the Gangotri and Kedarnath ranges and the Doon Valley — visibility depends entirely on the weather."
+    }
+  ];
+
+  TREKS[nagTibbaIndex].destinationHighlights = [
+    { name: "Pantwari", blurb: "The base village in Tehri Garhwal where the road ends and the walking begins, about 4–5 hours by road from Dehradun." },
+    { name: "Nag Tibba Base Camp", blurb: "The campsite for the night at roughly 8,500–9,000 ft, set among forest and open meadow below the summit ridge." },
+    { name: "Nag Tibba Summit", blurb: "The 9,915 ft high point of the trek and of the Nag Tibba range, with the Himalayan panorama on one side and the Doon Valley on the other." }
+  ];
+
+  TREKS[nagTibbaIndex].differentiators = [
+    "Region: Tehri Garhwal, Uttarakhand",
+    "Trek type: short beginner-friendly Himalayan trek to a 9,915 ft summit",
+    "Terrain: oak and rhododendron forest, open meadows, and snow through the winter",
+    "Best season: October to June, with December to March for snow",
+    "Monsoon: July to September brings rain, slippery trails and possible road disruption"
+  ];
+
+  TREKS[nagTibbaIndex].similarTreks = [
+    "kedarkantha-trek",
+    "dayara-bugyal-trek",
+    "brahmatal-trek",
+    "chopta-tungnath-trek"
+  ];
+
+  TREKS[nagTibbaIndex].idealFor =
+    "Beginners, families, first-time trekkers and weekend groups.";
+
+  TREKS[nagTibbaIndex].importantNote =
+    "Nag Tibba runs from October to June. December to March is the popular window for snow, when the grade sits at the upper end of easy–moderate and warm layers matter; July to September is monsoon on this trail, bringing rain, slippery ground and occasional disruption on the Dehradun–Pantwari road. Summit views of Bandarpoonch, Swargarohini and the Gangotri and Kedarnath ranges depend entirely on the weather, so treat a clear morning as a bonus rather than a guarantee.";
+
+  TREKS[nagTibbaIndex].itinerary = [
+    {
+      day: 1,
+      title: "Dehradun to Pantwari to Nag Tibba Base Camp",
+      driveDistance: "85-100 km",
+      drivingTime: "4-5 Hours",
+      trekDistance: "5-6 km",
+      trekDuration: "4-5 Hours",
+      pickupPoint: "Dehradun",
+      pickupTime: "Early morning",
+      altitudePoints: [
+        { location: "Dehradun", m: 640, ft: 2100 },
+        { location: "Pantwari", m: 1370, ft: 4500 },
+        { location: "Nag Tibba Base Camp", m: 2670, ft: 8750 }
+      ],
+      altitudeGain: { m: 1300, ft: 4250 },
+      description: "Drive through the Himalayan foothills to Pantwari, then trek through mountain villages and oak forest to the Nag Tibba Base Camp.",
+      detailedParagraphs: [
+        "Your Nag Tibba adventure begins early morning from Dehradun. Drive through the beautiful Himalayan foothills towards Pantwari Village, the starting point of the trek.",
+        "After breakfast/lunch at Pantwari, begin your trek. The trail gradually climbs through traditional mountain villages, oak and rhododendron forests and open stretches with beautiful valley views.",
+        "As you gain altitude, the landscape becomes quieter and more scenic. After several hours of trekking, reach the Nag Tibba Base Camp, where the team will set up your campsite.",
+        "Spend the evening relaxing around the campsite and enjoying the mountain atmosphere. If the weather is clear, the evening sky offers beautiful sunset and stargazing opportunities.",
+        "Overnight stay at Nag Tibba Base Camp."
+      ],
+      highlights: ["Himalayan Foothills Drive", "Pantwari Village", "Oak & Rhododendron Forest", "Valley Views", "Sunset & Stargazing"],
+      meals: "Breakfast / Lunch & Dinner",
+      stayType: "Camp"
+    },
+    {
+      day: 2,
+      title: "Nag Tibba Base Camp to Summit to Pantwari to Dehradun",
+      trekDistance: "9-10 km",
+      trekDuration: "5-6 Hours",
+      driveDistance: "85-100 km",
+      drivingTime: "4-5 Hours",
+      timeNote: { label: "Summit start", value: "After breakfast" },
+      altitudePoints: [
+        { location: "Nag Tibba Base Camp", m: 2670, ft: 8750 },
+        { location: "Nag Tibba Summit", m: 3022, ft: 9915 },
+        { location: "Pantwari", m: 1370, ft: 4500 },
+        { location: "Dehradun", m: 640, ft: 2100 }
+      ],
+      altitudeGain: { m: 352, ft: 1165 },
+      description: "Climb to the 9,915 ft Nag Tibba Summit for the Himalayan panorama, then descend to Pantwari and drive back to Dehradun.",
+      detailedParagraphs: [
+        "Wake up early and prepare for the summit climb. After breakfast, start walking towards Nag Tibba Summit.",
+        "The trail passes through dense forest before opening up near the summit. The final section involves a gradual climb to the summit, where you can enjoy spectacular Himalayan views on a clear day.",
+        "Nag Tibba Summit stands at 9,915 ft — the highest point of the trek.",
+        "Spend some time at the summit, capture photographs and enjoy the panoramic mountain scenery. Afterward, begin your descent towards the campsite/base area and continue down to Pantwari Village.",
+        "Once you reach Pantwari, board the vehicle and begin your return journey to Dehradun.",
+        "Your Nag Tibba adventure ends with beautiful memories of the Himalayan trails, forests and summit views."
+      ],
+      highlights: ["9,915 ft Summit", "Panoramic Himalayan Views", "Dense Forest Trail", "Descent to Pantwari", "Scenic Drive Back"],
+      meals: "Breakfast",
+      // The trek ends on this day; an empty stay keeps the generic
+      // "Hotel / Homestay" fallback out of the day's quick-info line.
+      stayType: ""
+    }
+  ];
+
+  TREKS[nagTibbaIndex].article = {
+    title: "Nag Tibba Trek: A Short Journey to the Heart of the Himalayas",
+    standfirst:
+      "Forest trails above Pantwari, a night under the Himalayan sky and a 9,915 ft summit at sunrise — two days in the Garhwal, told the way they are felt.",
+    readMinutes: 7,
+    sections: [
+      {
+        paragraphs: [
+          "There are journeys that take you far away from home, and then there are journeys that bring you closer to yourself.",
+          "The Nag Tibba Trek is one such journey.",
+          "Hidden in the beautiful mountains of Uttarakhand, Nag Tibba is a perfect escape for anyone who wants to leave behind the noise of everyday life and spend a little time walking through forests, watching the mountains and breathing in the silence of the Himalayas.",
+          "At an altitude of approximately 9,915 ft, Nag Tibba offers the experience of reaching a Himalayan summit without requiring a long expedition. This makes it one of the best choices for beginners, first-time trekkers, weekend adventurers and anyone looking for a quick mountain escape."
+        ]
+      },
+      {
+        heading: "Where the Journey Begins",
+        paragraphs: [
+          "The adventure begins at Pantwari Village, a peaceful mountain village surrounded by the Garhwal Himalayas.",
+          "As you leave the road behind and start walking, something slowly changes.",
+          "The sound of vehicles disappears.",
+          "The air becomes cooler.",
+          "The forest becomes quieter.",
+          "And with every step, the mountains seem to come a little closer.",
+          "The trail takes you through beautiful forests and open mountain sections, where the simple beauty of Uttarakhand reminds you that sometimes you don’t need much to feel happy.",
+          "Just a trail.",
+          "A backpack.",
+          "And mountains in front of you."
+        ]
+      },
+      {
+        heading: "Walking Through the Himalayan Forests",
+        paragraphs: [
+          "The trail towards Nag Tibba passes through beautiful forest landscapes, including oak and rhododendron-covered sections.",
+          "The sunlight filtering through the trees, the sound of leaves beneath your feet and the occasional glimpse of distant mountains make the journey as memorable as the destination itself.",
+          "Nag Tibba isn’t about rushing.",
+          "It is about walking slowly enough to notice the mountains.",
+          "Along the way, you’ll meet fellow trekkers, local villagers and perhaps even discover a quieter version of yourself."
+        ]
+      },
+      {
+        heading: "The Magic of Nag Tibba Campsite",
+        paragraphs: [
+          "After hours of walking, reaching the campsite feels special.",
+          "Your tired legs suddenly don’t matter as much.",
+          "The backpack comes off, tea tastes better than ever, and the mountains become your evening view.",
+          "As the sun begins to disappear behind the mountains, the sky changes colours and the temperature drops.",
+          "Later, when darkness covers the valleys, look up.",
+          "Far away from city lights, the Himalayan night sky can feel endless.",
+          "Sitting around the campsite with a warm cup of tea, sharing stories with fellow trekkers and looking at the stars — these are the moments that stay with you long after the trek is over."
+        ]
+      },
+      {
+        heading: "The Summit Morning",
+        paragraphs: [
+          "The most beautiful part of the Nag Tibba Trek begins early in the morning.",
+          "With your headlamp on and the sky still dark, you start walking towards the summit.",
+          "The trail becomes quieter.",
+          "Your breathing becomes heavier.",
+          "But every step takes you closer to the top.",
+          "And then, finally, you reach Nag Tibba Summit at approximately 9,915 ft.",
+          "For a moment, you forget how tired you are.",
+          "You simply stand there.",
+          "In front of you are the vast Himalayan landscapes, and behind you is the trail that brought you here.",
+          "You realise that the summit isn’t just a point on a map.",
+          "It is every step you took to reach it."
+        ]
+      },
+      {
+        heading: "More Than Just a Trek",
+        paragraphs: [
+          "Nag Tibba may be a short trek, but the memories it creates can last much longer.",
+          "For some, it is their first Himalayan summit.",
+          "For others, it is a much-needed break from work, phones and city life.",
+          "For friends, it becomes a story they will tell for years.",
+          "And for many first-time trekkers, Nag Tibba becomes the beginning of a much bigger love for the mountains.",
+          "Because once you’ve experienced the feeling of standing above the clouds, listening to the silence of the mountains and watching the sunrise from a Himalayan summit, you start wanting to come back."
+        ]
+      },
+      {
+        heading: "Why Choose Nag Tibba Trek?",
+        paragraphs: [
+          "🏔️ Beginner-friendly Himalayan summit experience",
+          "🌲 Beautiful forest trails and mountain landscapes",
+          "🌅 Stunning sunrise and sunset opportunities",
+          "❄️ Possibility of snow during winter",
+          "🏕️ Memorable overnight camping experience",
+          "📍 Easily accessible from Dehradun and Mussoorie",
+          "🎒 Perfect for a short weekend adventure",
+          "❤️ Ideal for first-time Himalayan trekkers"
+        ]
+      },
+      {
+        heading: "When Should You Do the Nag Tibba Trek?",
+        paragraphs: [
+          "Nag Tibba can be explored in different seasons, and each season brings its own character.",
+          "Winter can transform the trail into a beautiful snow-covered landscape.",
+          "Spring brings pleasant weather and fresh mountain greenery.",
+          "Summer offers comfortable trekking conditions and clear mountain landscapes.",
+          "The monsoon season can bring rain, slippery trails and unpredictable road conditions, so weather and local conditions should always be checked before departure."
+        ]
+      },
+      {
+        heading: "Your Mountain Story Starts Here",
+        paragraphs: [
+          "You don’t always need a week-long holiday to feel alive again.",
+          "Sometimes, two days in the mountains are enough.",
+          "Enough to wake up early.",
+          "Enough to walk until your legs are tired.",
+          "Enough to sit quietly and watch the clouds move across the valleys.",
+          "Enough to remember that life is not only about deadlines, meetings and busy streets.",
+          "Sometimes, life is also about standing on a mountain and saying:",
+          "“I made it.”",
+          "The Nag Tibba Trek is more than a weekend trip.",
+          "It is a small escape, a Himalayan adventure and perhaps the beginning of your lifelong love affair with the mountains.",
+          "Pack your backpack. Leave the noise behind. The mountains are waiting.",
+          "Let Trip My Soul take care of the journey while you focus on what truly matters — the trail, the mountains and the memories you create along the way."
+        ]
+      }
+    ],
+    signoff: "Trek Nag Tibba with Trip My Soul."
+  };
+
+  TREKS[nagTibbaIndex].faqs = [
+    {
+      title: "Where is Nag Tibba Trek located?",
+      description: "Nag Tibba Trek is located in the Tehri Garhwal region of Uttarakhand. The trek starts from Pantwari Village."
+    },
+    {
+      title: "What is the altitude of Nag Tibba?",
+      description: "The Nag Tibba Summit is approximately 9,915 ft (3,022 m) above sea level."
+    },
+    {
+      title: "How difficult is the Nag Tibba Trek?",
+      description: "Nag Tibba is generally considered an easy to moderate trek and is suitable for beginners with basic fitness."
+    },
+    {
+      title: "How long is the Nag Tibba Trek?",
+      description: "The complete trek is approximately 15–16 km, depending on the campsite and route followed."
+    },
+    {
+      title: "How many days are required for Nag Tibba Trek?",
+      description: "The standard Nag Tibba Trek can be completed in 2 days and 1 night, making it ideal for a weekend getaway."
+    },
+    {
+      title: "What is the best time to do the Nag Tibba Trek?",
+      description: "October to June is generally a good period. Winter is especially popular among trekkers looking for a snow experience. Monsoon conditions can make the trail slippery and roads unpredictable."
+    },
+    {
+      title: "Is Nag Tibba suitable for beginners?",
+      description: "Yes. Nag Tibba is one of the better options for first-time trekkers because of its relatively short duration and moderate altitude."
+    },
+    {
+      title: "Is there snow on the Nag Tibba Trek?",
+      description: "Snowfall is possible during winter, particularly around December to February, but the amount varies every year depending on weather conditions."
+    },
+    {
+      title: "How do I reach the Nag Tibba Trek starting point?",
+      description: "The trek starts from Pantwari Village. You can first reach Dehradun by road, train or flight and then travel by road to Pantwari."
+    },
+    {
+      title: "What should I carry for the Nag Tibba Trek?",
+      description: "Essential items include good trekking shoes, warm layers, rain protection, a backpack, water bottle, personal medicines, sunglasses, sunscreen, headlamp and basic toiletries."
+    }
+  ];
+
+  // Eligibility and fitness follow the Kedarkantha criteria; only the altitude
+  // row is restated, for the 9,915 ft summit.
+  TREKS[nagTibbaIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: 10–60 years recommended" },
+    { icon: "Footprints", text: "Experience: No prior trekking experience required" },
+    { icon: "Dumbbell", text: "Fitness: Basic to moderate fitness required" },
+    { icon: "Mountain", text: "Altitude: Up to 9,915 ft / 3,022 m" },
+    { icon: "Snowflake", text: "Must be comfortable with cold and snow conditions" },
+    { icon: "Stethoscope", text: "Participants should be medically fit for high-altitude trekking" }
+  ];
+
+  TREKS[nagTibbaIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 5–6 km comfortably" },
+    { icon: "TrendingUp", text: "Able to climb 4–5 floors without excessive breathlessness" },
+    { icon: "Dumbbell", text: "Good stamina and leg strength recommended" },
+    { icon: "Backpack", text: "Comfortable carrying a light daypack" },
+    { icon: "Activity", text: "Regular walking, jogging or stair training for 3–4 weeks before the trek is recommended" }
+  ];
+
+  TREKS[nagTibbaIndex].howToReach = {
+    intro: "Nag Tibba Trek starts from Pantwari Village, and the most convenient gateway is Dehradun. Reaching Dehradun a day before the trek is recommended, especially if you are coming from another city.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "The airport is roughly 30 km from Dehradun. From Dehradun, continue by road to Pantwari Village."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Dehradun Railway Station",
+      detail: "Dehradun has good rail connectivity with Delhi and other major cities. From the railway station, take a taxi or local transport towards Pantwari."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Dehradun to Pantwari via Mussoorie and Nainbagh",
+      route: ["Dehradun", "Mussoorie", "Nainbagh", "Pantwari"],
+      facts: [
+        { label: "Distance", value: "~85–100 km" },
+        { label: "Drive", value: "~4–5 hours" },
+        { label: "Options", value: "Private Taxi / Shared or Local Transport" },
+        { label: "Starting Point", value: "Pantwari → Base Camp → Summit" }
+      ]
+    },
+    pickup: {
+      point: "Dehradun",
+      time: "Early morning on Day 1",
+      dropPoint: "Dehradun",
+      dropTime: "Evening of Day 2",
+      note: "From Pantwari, the trek begins on foot."
+    }
+  };
+
+  TREKS[nagTibbaIndex].inclusions = [
+    { title: "Transportation", description: "Dehradun → Pantwari → Dehradun." },
+    { title: "Trek Support", description: "Trek support from Pantwari to Nag Tibba and back." },
+    { title: "Camping", description: "1 night camping on quad/triple sharing basis." },
+    { title: "Meals", description: "Breakfast, lunch & dinner during the trek as per the itinerary." },
+    { title: "Tea & Snacks", description: "Tea and snacks during the trek." },
+    { title: "Trek Leader", description: "Experienced trek leader/guide." },
+    { title: "Kitchen & Support Staff", description: "Dedicated kitchen and support staff." },
+    { title: "Camping Equipment", description: "Tents, sleeping bags, mattresses & common equipment." },
+    { title: "First Aid", description: "First-aid kit & basic medical support." },
+    { title: "Permits", description: "Forest/trek permits & applicable entry charges." }
+  ];
+
+  TREKS[nagTibbaIndex].exclusions = [
+    { title: "Travel to Dehradun", description: "Travel to and from Dehradun from your hometown." },
+    { title: "Meals off the itinerary", description: "Meals during the journey that are not mentioned in the itinerary." },
+    { title: "Personal expenses", description: "Bottled water, soft drinks, snacks and similar personal expenses." },
+    { title: "Personal trekking gear", description: "Personal trekking equipment, clothing and footwear." },
+    { title: "Emergency evacuation", description: "Emergency evacuation or medical expenses beyond basic first aid." },
+    { title: "Mule & porter charges", description: "Mule/porter charges for personal luggage, if required." },
+    { title: "Weather & roadblocks", description: "Any additional transportation or accommodation caused by bad weather, roadblocks or natural circumstances." },
+    { title: "Anything not listed", description: "Any expense not specifically mentioned under Inclusions." }
+  ];
+
+  TREKS[nagTibbaIndex].batches = {
+    years: {
+      "2026": {
+        months: [
+          {
+            month: "Nov",
+            year: "2026",
+            trips: [
+              { startDate: "01 Nov", endDate: "02 Nov", status: "Open" },
+              { startDate: "02 Nov", endDate: "03 Nov", status: "Open" },
+              { startDate: "03 Nov", endDate: "04 Nov", status: "Open" },
+              { startDate: "04 Nov", endDate: "05 Nov", status: "Open" },
+              { startDate: "05 Nov", endDate: "06 Nov", status: "Open" },
+              { startDate: "06 Nov", endDate: "07 Nov", status: "Open" },
+              { startDate: "07 Nov", endDate: "08 Nov", status: "Open" },
+              { startDate: "08 Nov", endDate: "09 Nov", status: "Open" },
+              { startDate: "09 Nov", endDate: "10 Nov", status: "Open" },
+              { startDate: "10 Nov", endDate: "11 Nov", status: "Open" },
+              { startDate: "11 Nov", endDate: "12 Nov", status: "Open" },
+              { startDate: "12 Nov", endDate: "13 Nov", status: "Open" },
+              { startDate: "13 Nov", endDate: "14 Nov", status: "Open" },
+              { startDate: "14 Nov", endDate: "15 Nov", status: "Open" },
+              { startDate: "15 Nov", endDate: "16 Nov", status: "Open" },
+              { startDate: "16 Nov", endDate: "17 Nov", status: "Open" },
+              { startDate: "17 Nov", endDate: "18 Nov", status: "Open" },
+              { startDate: "18 Nov", endDate: "19 Nov", status: "Open" },
+              { startDate: "19 Nov", endDate: "20 Nov", status: "Open" },
+              { startDate: "20 Nov", endDate: "21 Nov", status: "Open" },
+              { startDate: "21 Nov", endDate: "22 Nov", status: "Open" },
+              { startDate: "22 Nov", endDate: "23 Nov", status: "Open" },
+              { startDate: "23 Nov", endDate: "24 Nov", status: "Open" },
+              { startDate: "24 Nov", endDate: "25 Nov", status: "Open" },
+              { startDate: "25 Nov", endDate: "26 Nov", status: "Open" },
+              { startDate: "26 Nov", endDate: "27 Nov", status: "Open" },
+              { startDate: "27 Nov", endDate: "28 Nov", status: "Open" },
+              { startDate: "28 Nov", endDate: "29 Nov", status: "Open" },
+              { startDate: "29 Nov", endDate: "30 Nov", status: "Open" },
+              { startDate: "30 Nov", endDate: "01 Dec", status: "Open" }
+            ]
+          },
+          {
+            month: "Dec",
+            year: "2026",
+            trips: [
+              { startDate: "01 Dec", endDate: "02 Dec", status: "Open" },
+              { startDate: "02 Dec", endDate: "03 Dec", status: "Open" },
+              { startDate: "03 Dec", endDate: "04 Dec", status: "Open" },
+              { startDate: "04 Dec", endDate: "05 Dec", status: "Open" },
+              { startDate: "05 Dec", endDate: "06 Dec", status: "Open" },
+              { startDate: "06 Dec", endDate: "07 Dec", status: "Open" },
+              { startDate: "07 Dec", endDate: "08 Dec", status: "Open" },
+              { startDate: "08 Dec", endDate: "09 Dec", status: "Open" },
+              { startDate: "09 Dec", endDate: "10 Dec", status: "Open" },
+              { startDate: "10 Dec", endDate: "11 Dec", status: "Open" },
+              { startDate: "11 Dec", endDate: "12 Dec", status: "Open" },
+              { startDate: "12 Dec", endDate: "13 Dec", status: "Open" },
+              { startDate: "13 Dec", endDate: "14 Dec", status: "Open" },
+              { startDate: "14 Dec", endDate: "15 Dec", status: "Open" },
+              { startDate: "15 Dec", endDate: "16 Dec", status: "Open" },
+              { startDate: "16 Dec", endDate: "17 Dec", status: "Open" },
+              { startDate: "17 Dec", endDate: "18 Dec", status: "Open" },
+              { startDate: "18 Dec", endDate: "19 Dec", status: "Open" },
+              { startDate: "19 Dec", endDate: "20 Dec", status: "Open" },
+              { startDate: "20 Dec", endDate: "21 Dec", status: "Open" },
+              { startDate: "21 Dec", endDate: "22 Dec", status: "Open" },
+              { startDate: "22 Dec", endDate: "23 Dec", status: "Open" },
+              { startDate: "23 Dec", endDate: "24 Dec", status: "Open" },
+              { startDate: "24 Dec", endDate: "25 Dec", status: "Open" },
+              { startDate: "25 Dec", endDate: "26 Dec", status: "Open" },
+              { startDate: "26 Dec", endDate: "27 Dec", status: "Open" },
+              { startDate: "27 Dec", endDate: "28 Dec", status: "Open" },
+              { startDate: "28 Dec", endDate: "29 Dec", status: "Open" },
+              { startDate: "29 Dec", endDate: "30 Dec", status: "Open" },
+              { startDate: "30 Dec", endDate: "31 Dec", status: "Open" },
+              { startDate: "31 Dec", endDate: "01 Jan", status: "Open" }
+            ]
+          }
+        ]
+      },
+      "2027": {
+        months: [
+          {
+            month: "Jan",
+            year: "2027",
+            trips: [
+              { startDate: "01 Jan", endDate: "02 Jan", status: "Open" },
+              { startDate: "02 Jan", endDate: "03 Jan", status: "Open" },
+              { startDate: "03 Jan", endDate: "04 Jan", status: "Open" },
+              { startDate: "04 Jan", endDate: "05 Jan", status: "Open" },
+              { startDate: "05 Jan", endDate: "06 Jan", status: "Open" },
+              { startDate: "06 Jan", endDate: "07 Jan", status: "Open" },
+              { startDate: "07 Jan", endDate: "08 Jan", status: "Open" },
+              { startDate: "08 Jan", endDate: "09 Jan", status: "Open" },
+              { startDate: "09 Jan", endDate: "10 Jan", status: "Open" },
+              { startDate: "10 Jan", endDate: "11 Jan", status: "Open" },
+              { startDate: "11 Jan", endDate: "12 Jan", status: "Open" },
+              { startDate: "12 Jan", endDate: "13 Jan", status: "Open" },
+              { startDate: "13 Jan", endDate: "14 Jan", status: "Open" },
+              { startDate: "14 Jan", endDate: "15 Jan", status: "Open" },
+              { startDate: "15 Jan", endDate: "16 Jan", status: "Open" },
+              { startDate: "16 Jan", endDate: "17 Jan", status: "Open" },
+              { startDate: "17 Jan", endDate: "18 Jan", status: "Open" },
+              { startDate: "18 Jan", endDate: "19 Jan", status: "Open" },
+              { startDate: "19 Jan", endDate: "20 Jan", status: "Open" },
+              { startDate: "20 Jan", endDate: "21 Jan", status: "Open" },
+              { startDate: "21 Jan", endDate: "22 Jan", status: "Open" },
+              { startDate: "22 Jan", endDate: "23 Jan", status: "Open" },
+              { startDate: "23 Jan", endDate: "24 Jan", status: "Open" },
+              { startDate: "24 Jan", endDate: "25 Jan", status: "Open" },
+              { startDate: "25 Jan", endDate: "26 Jan", status: "Open" },
+              { startDate: "26 Jan", endDate: "27 Jan", status: "Open" },
+              { startDate: "27 Jan", endDate: "28 Jan", status: "Open" },
+              { startDate: "28 Jan", endDate: "29 Jan", status: "Open" },
+              { startDate: "29 Jan", endDate: "30 Jan", status: "Open" },
+              { startDate: "30 Jan", endDate: "31 Jan", status: "Open" },
+              { startDate: "31 Jan", endDate: "01 Feb", status: "Open" }
+            ]
+          },
+          {
+            month: "Feb",
+            year: "2027",
+            trips: [
+              { startDate: "01 Feb", endDate: "02 Feb", status: "Open" },
+              { startDate: "02 Feb", endDate: "03 Feb", status: "Open" },
+              { startDate: "03 Feb", endDate: "04 Feb", status: "Open" },
+              { startDate: "04 Feb", endDate: "05 Feb", status: "Open" },
+              { startDate: "05 Feb", endDate: "06 Feb", status: "Open" },
+              { startDate: "06 Feb", endDate: "07 Feb", status: "Open" },
+              { startDate: "07 Feb", endDate: "08 Feb", status: "Open" },
+              { startDate: "08 Feb", endDate: "09 Feb", status: "Open" },
+              { startDate: "09 Feb", endDate: "10 Feb", status: "Open" },
+              { startDate: "10 Feb", endDate: "11 Feb", status: "Open" },
+              { startDate: "11 Feb", endDate: "12 Feb", status: "Open" },
+              { startDate: "12 Feb", endDate: "13 Feb", status: "Open" },
+              { startDate: "13 Feb", endDate: "14 Feb", status: "Open" },
+              { startDate: "14 Feb", endDate: "15 Feb", status: "Open" },
+              { startDate: "15 Feb", endDate: "16 Feb", status: "Open" },
+              { startDate: "16 Feb", endDate: "17 Feb", status: "Open" },
+              { startDate: "17 Feb", endDate: "18 Feb", status: "Open" },
+              { startDate: "18 Feb", endDate: "19 Feb", status: "Open" },
+              { startDate: "19 Feb", endDate: "20 Feb", status: "Open" },
+              { startDate: "20 Feb", endDate: "21 Feb", status: "Open" },
+              { startDate: "21 Feb", endDate: "22 Feb", status: "Open" },
+              { startDate: "22 Feb", endDate: "23 Feb", status: "Open" },
+              { startDate: "23 Feb", endDate: "24 Feb", status: "Open" },
+              { startDate: "24 Feb", endDate: "25 Feb", status: "Open" },
+              { startDate: "25 Feb", endDate: "26 Feb", status: "Open" },
+              { startDate: "26 Feb", endDate: "27 Feb", status: "Open" },
+              { startDate: "27 Feb", endDate: "28 Feb", status: "Open" },
+              { startDate: "28 Feb", endDate: "01 Mar", status: "Open" }
+            ]
+          },
+          {
+            month: "Mar",
+            year: "2027",
+            trips: [
+              { startDate: "01 Mar", endDate: "02 Mar", status: "Open" },
+              { startDate: "02 Mar", endDate: "03 Mar", status: "Open" },
+              { startDate: "03 Mar", endDate: "04 Mar", status: "Open" },
+              { startDate: "04 Mar", endDate: "05 Mar", status: "Open" },
+              { startDate: "05 Mar", endDate: "06 Mar", status: "Open" },
+              { startDate: "06 Mar", endDate: "07 Mar", status: "Open" },
+              { startDate: "07 Mar", endDate: "08 Mar", status: "Open" },
+              { startDate: "08 Mar", endDate: "09 Mar", status: "Open" },
+              { startDate: "09 Mar", endDate: "10 Mar", status: "Open" },
+              { startDate: "10 Mar", endDate: "11 Mar", status: "Open" },
+              { startDate: "11 Mar", endDate: "12 Mar", status: "Open" },
+              { startDate: "12 Mar", endDate: "13 Mar", status: "Open" },
+              { startDate: "13 Mar", endDate: "14 Mar", status: "Open" },
+              { startDate: "14 Mar", endDate: "15 Mar", status: "Open" },
+              { startDate: "15 Mar", endDate: "16 Mar", status: "Open" },
+              { startDate: "16 Mar", endDate: "17 Mar", status: "Open" },
+              { startDate: "17 Mar", endDate: "18 Mar", status: "Open" },
+              { startDate: "18 Mar", endDate: "19 Mar", status: "Open" },
+              { startDate: "19 Mar", endDate: "20 Mar", status: "Open" },
+              { startDate: "20 Mar", endDate: "21 Mar", status: "Open" },
+              { startDate: "21 Mar", endDate: "22 Mar", status: "Open" },
+              { startDate: "22 Mar", endDate: "23 Mar", status: "Open" },
+              { startDate: "23 Mar", endDate: "24 Mar", status: "Open" },
+              { startDate: "24 Mar", endDate: "25 Mar", status: "Open" },
+              { startDate: "25 Mar", endDate: "26 Mar", status: "Open" },
+              { startDate: "26 Mar", endDate: "27 Mar", status: "Open" },
+              { startDate: "27 Mar", endDate: "28 Mar", status: "Open" },
+              { startDate: "28 Mar", endDate: "29 Mar", status: "Open" },
+              { startDate: "29 Mar", endDate: "30 Mar", status: "Open" },
+              { startDate: "30 Mar", endDate: "31 Mar", status: "Open" },
+              { startDate: "31 Mar", endDate: "01 Apr", status: "Open" }
+            ]
+          },
+          {
+            month: "Apr",
+            year: "2027",
+            trips: [
+              { startDate: "01 Apr", endDate: "02 Apr", status: "Open" },
+              { startDate: "02 Apr", endDate: "03 Apr", status: "Open" },
+              { startDate: "03 Apr", endDate: "04 Apr", status: "Open" },
+              { startDate: "04 Apr", endDate: "05 Apr", status: "Open" },
+              { startDate: "05 Apr", endDate: "06 Apr", status: "Open" },
+              { startDate: "06 Apr", endDate: "07 Apr", status: "Open" },
+              { startDate: "07 Apr", endDate: "08 Apr", status: "Open" },
+              { startDate: "08 Apr", endDate: "09 Apr", status: "Open" },
+              { startDate: "09 Apr", endDate: "10 Apr", status: "Open" },
+              { startDate: "10 Apr", endDate: "11 Apr", status: "Open" },
+              { startDate: "11 Apr", endDate: "12 Apr", status: "Open" },
+              { startDate: "12 Apr", endDate: "13 Apr", status: "Open" },
+              { startDate: "13 Apr", endDate: "14 Apr", status: "Open" },
+              { startDate: "14 Apr", endDate: "15 Apr", status: "Open" },
+              { startDate: "15 Apr", endDate: "16 Apr", status: "Open" },
+              { startDate: "16 Apr", endDate: "17 Apr", status: "Open" },
+              { startDate: "17 Apr", endDate: "18 Apr", status: "Open" },
+              { startDate: "18 Apr", endDate: "19 Apr", status: "Open" },
+              { startDate: "19 Apr", endDate: "20 Apr", status: "Open" },
+              { startDate: "20 Apr", endDate: "21 Apr", status: "Open" },
+              { startDate: "21 Apr", endDate: "22 Apr", status: "Open" },
+              { startDate: "22 Apr", endDate: "23 Apr", status: "Open" },
+              { startDate: "23 Apr", endDate: "24 Apr", status: "Open" },
+              { startDate: "24 Apr", endDate: "25 Apr", status: "Open" },
+              { startDate: "25 Apr", endDate: "26 Apr", status: "Open" },
+              { startDate: "26 Apr", endDate: "27 Apr", status: "Open" },
+              { startDate: "27 Apr", endDate: "28 Apr", status: "Open" },
+              { startDate: "28 Apr", endDate: "29 Apr", status: "Open" },
+              { startDate: "29 Apr", endDate: "30 Apr", status: "Open" },
+              { startDate: "30 Apr", endDate: "01 May", status: "Open" }
+            ]
+          }
+        ]
+      }
+    }
+  };
+}
+
 // Static details for the Chopta Tungnath Chandrashila Trek (uid:
 // chopta-tungnath-trek). This listing lives in `YATRAS`, not `TREKS`, so the
 // assignments below index that array — /treks/[slug] resolves against both.
@@ -6943,6 +7557,22 @@ if (choptaIndex !== -1) {
       description: "Both nights are at Sari Village, in a homestay, guesthouse or Swiss camp depending on the departure and availability."
     },
     {
+  TREKS[nagtibbaIndex].availability = "October – June";
+
+  /**
+   * The listing card carried "Moderate", while the published guide and its FAQ
+   * both give easy to moderate, so the fact strip, the eligibility copy and the
+   * FAQ answer now agree.
+   */
+  TREKS[nagtibbaIndex].difficulty = "Easy to Moderate";
+
+  // As published in the guide, in this order.
+  TREKS[nagtibbaIndex].similarTreks = [
+    "chopta-tungnath-trek",
+    "kedarkantha-trek",
+    "brahmatal-trek",
+    "dayara-bugyal-trek"
+  ];
       title: "What should I carry?",
       description: "Good trekking shoes, warm layers, a waterproof jacket, thermal wear, gloves, a woollen cap, sunglasses, sunscreen, water bottles, personal medicines, a headlamp and a trekking daypack. On winter departures, gaiters and microspikes may be needed depending on snow conditions."
     }
@@ -7308,72 +7938,175 @@ if (choptaIndex !== -1) {
               { startDate: "03 Jun", endDate: "05 Jun", status: "Open" },
               { startDate: "04 Jun", endDate: "06 Jun", status: "Open" },
               { startDate: "05 Jun", endDate: "07 Jun", status: "Open" },
-              { startDate: "06 Jun", endDate: "08 Jun", status: "Open" },
-              { startDate: "07 Jun", endDate: "09 Jun", status: "Open" },
-              { startDate: "08 Jun", endDate: "10 Jun", status: "Open" },
-              { startDate: "09 Jun", endDate: "11 Jun", status: "Open" },
-              { startDate: "10 Jun", endDate: "12 Jun", status: "Open" },
-              { startDate: "11 Jun", endDate: "13 Jun", status: "Open" },
-              { startDate: "12 Jun", endDate: "14 Jun", status: "Open" },
-              { startDate: "13 Jun", endDate: "15 Jun", status: "Open" },
-              { startDate: "14 Jun", endDate: "16 Jun", status: "Open" },
-              { startDate: "15 Jun", endDate: "17 Jun", status: "Open" },
-              { startDate: "16 Jun", endDate: "18 Jun", status: "Open" },
-              { startDate: "17 Jun", endDate: "19 Jun", status: "Open" },
-              { startDate: "18 Jun", endDate: "20 Jun", status: "Open" },
-              { startDate: "19 Jun", endDate: "21 Jun", status: "Open" },
-              { startDate: "20 Jun", endDate: "22 Jun", status: "Open" },
-              { startDate: "21 Jun", endDate: "23 Jun", status: "Open" },
-              { startDate: "22 Jun", endDate: "24 Jun", status: "Open" },
-              { startDate: "23 Jun", endDate: "25 Jun", status: "Open" },
-              { startDate: "24 Jun", endDate: "26 Jun", status: "Open" },
-              { startDate: "25 Jun", endDate: "27 Jun", status: "Open" },
-              { startDate: "26 Jun", endDate: "28 Jun", status: "Open" },
-              { startDate: "27 Jun", endDate: "29 Jun", status: "Open" },
-              { startDate: "28 Jun", endDate: "30 Jun", status: "Open" },
-              { startDate: "29 Jun", endDate: "01 Jul", status: "Open" },
-              { startDate: "30 Jun", endDate: "02 Jul", status: "Open" }
-            ]
-          },
-          {
-            month: "Jul",
-            year: "2027",
-            trips: [
-              { startDate: "01 Jul", endDate: "03 Jul", status: "Open" },
-              { startDate: "02 Jul", endDate: "04 Jul", status: "Open" },
-              { startDate: "03 Jul", endDate: "05 Jul", status: "Open" },
-              { startDate: "04 Jul", endDate: "06 Jul", status: "Open" },
-              { startDate: "05 Jul", endDate: "07 Jul", status: "Open" },
-              { startDate: "06 Jul", endDate: "08 Jul", status: "Open" },
-              { startDate: "07 Jul", endDate: "09 Jul", status: "Open" },
-              { startDate: "08 Jul", endDate: "10 Jul", status: "Open" },
-              { startDate: "09 Jul", endDate: "11 Jul", status: "Open" },
-              { startDate: "10 Jul", endDate: "12 Jul", status: "Open" },
-              { startDate: "11 Jul", endDate: "13 Jul", status: "Open" },
-              { startDate: "12 Jul", endDate: "14 Jul", status: "Open" },
-              { startDate: "13 Jul", endDate: "15 Jul", status: "Open" },
-              { startDate: "14 Jul", endDate: "16 Jul", status: "Open" },
-              { startDate: "15 Jul", endDate: "17 Jul", status: "Open" },
-              { startDate: "16 Jul", endDate: "18 Jul", status: "Open" },
-              { startDate: "17 Jul", endDate: "19 Jul", status: "Open" },
-              { startDate: "18 Jul", endDate: "20 Jul", status: "Open" },
-              { startDate: "19 Jul", endDate: "21 Jul", status: "Open" },
-              { startDate: "20 Jul", endDate: "22 Jul", status: "Open" },
-              { startDate: "21 Jul", endDate: "23 Jul", status: "Open" },
-              { startDate: "22 Jul", endDate: "24 Jul", status: "Open" },
-              { startDate: "23 Jul", endDate: "25 Jul", status: "Open" },
-              { startDate: "24 Jul", endDate: "26 Jul", status: "Open" },
-              { startDate: "25 Jul", endDate: "27 Jul", status: "Open" },
-              { startDate: "26 Jul", endDate: "28 Jul", status: "Open" },
-              { startDate: "27 Jul", endDate: "29 Jul", status: "Open" },
-              { startDate: "28 Jul", endDate: "30 Jul", status: "Open" },
-              { startDate: "29 Jul", endDate: "31 Jul", status: "Open" },
-              { startDate: "30 Jul", endDate: "01 Aug", status: "Open" },
-              { startDate: "31 Jul", endDate: "02 Aug", status: "Open" }
-            ]
-          }
+
+  TREKS[nagtibbaIndex].article = {
+    title: "Nag Tibba Trek: A Short Journey to the Heart of the Himalayas",
+    standfirst:
+      "Forest trails above Pantwari, a night under the Himalayan sky and a 9,915 ft summit in the morning — two days in the Garhwal, told the way they are felt.",
+    readMinutes: 7,
+    sections: [
+      {
+        paragraphs: [
+          "There are journeys that take you far away from home, and then there are journeys that bring you closer to yourself.",
+          "The Nag Tibba Trek is one such journey.",
+          "Hidden in the beautiful mountains of Uttarakhand, Nag Tibba is a perfect escape for anyone who wants to leave behind the noise of everyday life and spend a little time walking through forests, watching the mountains and breathing in the silence of the Himalayas.",
+          "At an altitude of approximately 9,915 ft, Nag Tibba offers the experience of reaching a Himalayan summit without requiring a long expedition. This makes it one of the best choices for beginners, first-time trekkers, weekend adventurers and anyone looking for a quick mountain escape."
+        ]
+      },
+      {
+        heading: "Where the Journey Begins",
+        paragraphs: [
+          "The adventure begins at Pantwari Village, a peaceful mountain village surrounded by the Garhwal Himalayas.",
+          "As you leave the road behind and start walking, something slowly changes.",
+          "The sound of vehicles disappears.",
+          "The air becomes cooler.",
+          "The forest becomes quieter.",
+          "And with every step, the mountains seem to come a little closer.",
+          "The trail takes you through beautiful forests and open mountain sections, where the simple beauty of Uttarakhand reminds you that sometimes you don’t need much to feel happy.",
+          "Just a trail.",
+          "A backpack.",
+          "And mountains in front of you."
+        ]
+      },
+      {
+        heading: "Walking Through the Himalayan Forests",
+        paragraphs: [
+          "The trail towards Nag Tibba passes through beautiful forest landscapes, including oak and rhododendron-covered sections.",
+          "The sunlight filtering through the trees, the sound of leaves beneath your feet and the occasional glimpse of distant mountains make the journey as memorable as the destination itself.",
+          "Nag Tibba isn’t about rushing.",
+          "It is about walking slowly enough to notice the mountains.",
+          "Along the way, you’ll meet fellow trekkers, local villagers and perhaps even discover a quieter version of yourself."
+        ]
+      },
+      {
+        heading: "The Magic of Nag Tibba Campsite",
+        paragraphs: [
+          "After hours of walking, reaching the campsite feels special.",
+          "Your tired legs suddenly don’t matter as much.",
+          "The backpack comes off, tea tastes better than ever, and the mountains become your evening view.",
+          "As the sun begins to disappear behind the mountains, the sky changes colours and the temperature drops.",
+          "Later, when darkness covers the valleys, look up.",
+          "Far away from city lights, the Himalayan night sky can feel endless.",
+          "Sitting around the campsite with a warm cup of tea, sharing stories with fellow trekkers and looking at the stars — these are the moments that stay with you long after the trek is over."
+        ]
+      },
+      {
+        heading: "The Summit Morning",
+        paragraphs: [
+          "The most beautiful part of the Nag Tibba Trek begins early in the morning.",
+          "With your headlamp on and the sky still dark, you start walking towards the summit.",
+          "The trail becomes quieter.",
+          "Your breathing becomes heavier.",
+          "But every step takes you closer to the top.",
+          "And then, finally, you reach Nag Tibba Summit at approximately 9,915 ft.",
+          "For a moment, you forget how tired you are.",
+          "You simply stand there.",
+          "In front of you are the vast Himalayan landscapes, and behind you is the trail that brought you here.",
+          "You realise that the summit isn’t just a point on a map.",
+          "It is every step you took to reach it."
+        ]
+      },
+      {
+        heading: "More Than Just a Trek",
+        paragraphs: [
+          "Nag Tibba may be a short trek, but the memories it creates can last much longer.",
+          "For some, it is their first Himalayan summit.",
+          "For others, it is a much-needed break from work, phones and city life.",
+          "For friends, it becomes a story they will tell for years.",
+          "And for many first-time trekkers, Nag Tibba becomes the beginning of a much bigger love for the mountains.",
+          "Because once you’ve experienced the feeling of standing above the clouds, listening to the silence of the mountains and watching the sunrise from a Himalayan summit, you start wanting to come back."
+        ]
+      },
+      {
+        heading: "Why Choose Nag Tibba Trek?",
+        paragraphs: [
+          "🏔️ Beginner-friendly Himalayan summit experience",
+          "🌲 Beautiful forest trails and mountain landscapes",
+          "🌅 Stunning sunrise and sunset opportunities",
+          "❄️ Possibility of snow during winter",
+          "🏕️ Memorable overnight camping experience",
+          "📍 Easily accessible from Dehradun and Mussoorie",
+          "🎒 Perfect for a short weekend adventure",
+          "❤️ Ideal for first-time Himalayan trekkers"
+        ]
+      },
+      {
+        heading: "When Should You Do the Nag Tibba Trek?",
+        paragraphs: [
+          "Nag Tibba can be explored in different seasons, and each season brings its own character.",
+          "Winter can transform the trail into a beautiful snow-covered landscape.",
+          "Spring brings pleasant weather and fresh mountain greenery.",
+          "Summer offers comfortable trekking conditions and clear mountain landscapes.",
+          "The monsoon season can bring rain, slippery trails and unpredictable road conditions, so weather and local conditions should always be checked before departure."
+        ]
+      },
+      {
+        heading: "Your Mountain Story Starts Here",
+        paragraphs: [
+          "You don’t always need a week-long holiday to feel alive again.",
+          "Sometimes, two days in the mountains are enough.",
+          "Enough to wake up early.",
+          "Enough to walk until your legs are tired.",
+          "Enough to sit quietly and watch the clouds move across the valleys.",
+          "Enough to remember that life is not only about deadlines, meetings and busy streets.",
+          "Sometimes, life is also about standing on a mountain and saying:",
+          "“I made it.”",
+          "The Nag Tibba Trek is more than a weekend trip.",
+          "It is a small escape, a Himalayan adventure and perhaps the beginning of your lifelong love affair with the mountains.",
+          "Pack your backpack. Leave the noise behind. The mountains are waiting.",
+          "Let Trip My Soul take care of the journey while you focus on what truly matters — the trail, the mountains and the memories you create along the way."
         ]
       }
-    }
+    ],
+    signoff: "Trek Nag Tibba with Trip My Soul."
   };
-}
+
+  /**
+   * As published in the guide. The distance answer gives 15–16 km against the
+   * 14–16 km on the fact strip, which is what the day-by-day figures above add
+   * up to; both are kept as published rather than quietly reconciled, since the
+   * guide itself qualifies the figure by campsite and route.
+   */
+  TREKS[nagtibbaIndex].faqs = [
+    {
+      title: "Where is Nag Tibba Trek located?",
+      description: "Nag Tibba Trek is located in the Tehri Garhwal region of Uttarakhand. The trek starts from Pantwari Village."
+    },
+    {
+      title: "What is the altitude of Nag Tibba?",
+      description: "The Nag Tibba Summit is approximately 9,915 ft (3,022 m) above sea level."
+    },
+    {
+      title: "How difficult is the Nag Tibba Trek?",
+      description: "Nag Tibba is generally considered an easy to moderate trek and is suitable for beginners with basic fitness."
+    },
+    {
+      title: "How long is the Nag Tibba Trek?",
+      description: "The complete trek is approximately 15–16 km, depending on the campsite and route followed."
+    },
+    {
+      title: "How many days are required for Nag Tibba Trek?",
+      description: "The standard Nag Tibba Trek can be completed in 2 days and 1 night, making it ideal for a weekend getaway."
+    },
+    {
+      title: "What is the best time to do the Nag Tibba Trek?",
+      description: "October to June is generally a good period. Winter is especially popular among trekkers looking for a snow experience. Monsoon conditions can make the trail slippery and roads unpredictable."
+    },
+    {
+      title: "Is Nag Tibba suitable for beginners?",
+      description: "Yes. Nag Tibba is one of the better options for first-time trekkers because of its relatively short duration and moderate altitude."
+    },
+    {
+      title: "Is there snow on the Nag Tibba Trek?",
+      description: "Snowfall is possible during winter, particularly around December to February, but the amount varies every year depending on weather conditions."
+    },
+    {
+      title: "How do I reach the Nag Tibba Trek starting point?",
+      description: "The trek starts from Pantwari Village. You can first reach Dehradun by road, train or flight and then travel by road to Pantwari."
+    },
+    {
+      title: "What should I carry for the Nag Tibba Trek?",
+      description: "Essential items include good trekking shoes, warm layers, rain protection, a backpack, water bottle, personal medicines, sunglasses, sunscreen, headlamp and basic toiletries."
+    }
+  ];
+              { startDate: "06 Jun", endDate: "08 Jun", status: "Open" },
