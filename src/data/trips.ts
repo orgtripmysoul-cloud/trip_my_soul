@@ -1,4 +1,4 @@
-import type { EquipmentGroup, ItineraryDay, Trek } from "@/data/db";
+import type { EquipmentGroup, HowToReach, IconBullet, ItineraryDay, Trek } from "@/data/db";
 import {
   CONFIRMATION_POLICY,
   HIMALAYAN_TREK_EXCLUSIONS,
@@ -115,6 +115,12 @@ export interface TripListingItem extends TripNavItem {
   costIncludes?: string[];
   costExcludes?: string[];
 
+  // Eligibility & travel info
+  eligibilityCriteria?: IconBullet[];
+  fitnessCriteria?: IconBullet[];
+  howToReach?: HowToReach;
+  faqs?: { title: string; description: string }[];
+
   // Other info
   cancellationPolicy?: string;
   thingsToCarry?: string[];
@@ -141,6 +147,7 @@ export interface TripListingItem extends TripNavItem {
   /** Caveat shown above the pricing table, e.g. what the fare excludes. */
   priceNote?: string;
   bookingAdvance?: number;
+  bookingAdvancePct?: number;
   balanceDueDays?: number;
   kidsPolicy?: string;
 }
@@ -850,65 +857,111 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
   ),
   toListingItem(
     {
-      name: "Backpacking Trip Kerala",
+      name: "Kerala – God's Own Country Tour",
       slug: "kerala-thekkady",
       duration: "4N/5D",
       // NB: photo-1602216050166 (used by the older "kerala" entry) now 404s on Unsplash.
       heroImage: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1920&q=80",
-      tagline: "A Kochi round trip through Munnar's tea slopes, Thekkady's spice hills and the Alleppey backwaters.",
+      tagline: "Munnar's tea hills, Thekkady's wildlife and a night on a Deluxe Houseboat in the Alleppey backwaters — Kochi to Kochi in 5 days.",
     },
     {
       region: "Kerala",
       startLocation: "Kochi",
       endLocation: "Kochi",
       difficulty: "Easy",
-      // No rates in the source PDF — renders as "Price on request" until supplied.
-      price: null,
+      price: 9300,
       months: ["Sep", "Oct", "Nov", "Mar"],
-      themes: ["Lakes", "Couples", "Family with Kids"],
+      themes: ["Lakes", "Waterfall", "Couples", "Family with Kids"],
       category: "Backpacking Trip",
       detailsPath: "/trips/backpacking/kerala-thekkady",
 
-      contactPhone: "+91 7337475300",
-      minAge: 5,
+      // Other names this same circuit has been catalogued/sold under, so
+      // search still finds it under the prior listing name.
+      alternateNames: ["Backpacking Trip Kerala", "Kerala Thekkady Backpacking Trip"],
+
+      contactPhone: "+91 9121343330",
+      contactNumbers: ["+91 7337475300"],
+      minAge: 2,
       intro:
-        "A round-trip backpacking circuit from Kochi covering Munnar's tea hills, Thekkady's spice hills and Periyar wildlife area, and an overnight houseboat stay in the Alleppey backwaters, before returning to Kochi.",
+        "A 5-day Kerala journey covering the scenic hill station of Munnar, the wildlife destination Thekkady and the tranquil backwaters of Alleppey, with a premium houseboat experience. This itinerary combines relaxation and exploration through waterfalls, misty tea gardens, wildlife experiences, spice plantations, chocolate-making and a premium houseboat cruise through the Alleppey backwaters, before returning to Kochi.",
       highlights: [
         "Valara & Cheeyappara Waterfalls",
+        "Spice Plantation",
+        "Munnar Tea Gardens",
         "Eravikulam National Park",
-        "Mattupetty Dam & Lake",
-        "Echo Point",
+        "Mattupetty Dam & Echo Point",
         "Rajamalai Garden",
-        "Tata Tea Gardens",
         "Chocolate Factory",
         "Periyar National Park (Thekkady)",
-        "Spice plantation tour",
-        "Houseboat stay",
-        "Optional Kathakali / Kalaripattu show",
+        "Deluxe Houseboat Cruise",
+        "Alleppey Backwaters",
+      ],
+      usps: [
+        {
+          title: "A night on a Deluxe Houseboat",
+          description: "One full night anchored in the Alleppey backwaters aboard a Sharing Deluxe Houseboat, with a traditional Kerala lunch, dinner, evening snacks and tea/coffee all served on board.",
+        },
+        {
+          title: "Munnar and Thekkady in one trip",
+          description: "Tea-garden hill views and Periyar wildlife country are covered back to back on the same Kochi-to-Kochi circuit, without adding extra days.",
+        },
+        {
+          title: "Priced by group size",
+          description: "Per-person pricing drops as the group grows — from ₹12,500 for 2 travellers down to ₹9,300 for a group of 10.",
+        },
+        {
+          title: "Honeymoon-ready",
+          description: "A Honeymoon Inclusions upgrade is available for an additional ₹500 per couple.",
+        },
+      ],
+      idealFor: "Families, groups, couples and honeymooners.",
+      differentiators: [
+        "Route: Kochi → Munnar → Thekkady → Alleppey → Kochi",
+        "Duration: 5 Days / 4 Nights",
+        "Stay: Premium 3-star hotels in Munnar and Thekkady, Sharing Deluxe Houseboat in Alleppey",
+        "Tour type: Nature, sightseeing, wildlife and backwaters",
+      ],
+      importantNote:
+        "Prices are per person, Kochi to Kochi, and vary by group size — see the pricing tiers below. A Honeymoon Inclusions upgrade is available for an additional ₹500 per couple, and 5% GST is charged extra. Weather conditions may lead to changes in the itinerary, route or sightseeing order. For queries, contact the trips desk on +91 9121343330 / +91 7337475300 or southbookings@tripmysoul.in.",
+      destinationHighlights: [
+        {
+          name: "Munnar",
+          blurb: "Rolling tea plantations, misty hills and the Eravikulam National Park, home to the endangered Nilgiri Tahr — plus a hands-on chocolate factory visit and Mattupetty Dam & Echo Point.",
+        },
+        {
+          name: "Thekkady",
+          blurb: "Kerala's wildlife heartland around Periyar National Park, with an optional spice plantation tour and an evening Kathakali or Kalaripayattu show.",
+        },
+        {
+          name: "Alleppey",
+          blurb: "A night aboard a Sharing Deluxe Houseboat, cruising palm-fringed canals, paddy fields and lakeside villages through Kerala's famous backwaters.",
+        },
       ],
       priceNote:
-        "No rates are published in the source itinerary. Contact the trips desk on +91 7337475300 for current pricing.",
+        "Per-person price, Kochi to Kochi, based on group size (see the tiers below). Add ₹500 per couple for Honeymoon Inclusions. 5% GST is charged extra.",
 
       itinerary: [
         {
           day: 1,
           title: "Kochi to Munnar",
           entries: [
-            { text: "Arrive in Kochi and drive up to Munnar." },
-            { text: "Stop at Valara and Cheeyappara Waterfalls." },
-            { text: "Visit a spice plantation." },
-            { text: "Optional Kathakali and Kalaripattu performance." },
-            { text: "Overnight in Munnar." },
+            { text: "Kochi Airport / Railway Station pickup." },
+            { text: "Scenic drive towards the misty green hills of Munnar." },
+            { text: "Enroute: Valara Waterfalls and Cheeyappara Waterfalls." },
+            { text: "Visit an authentic Kerala spice plantation." },
+            { text: "Check in to your premium Munnar accommodation and relax for the evening." },
           ],
         },
         {
           day: 2,
-          title: "Munnar",
+          title: "Munnar Sightseeing",
           entries: [
-            { text: "Eravikulam National Park — home of the Nilgiri Tahr." },
-            { text: "Boat ride at Mattupetty Dam, then Echo Point." },
-            { text: "Rajamalai Garden and a Tata Tea Gardens tour." },
-            { text: "Chocolate factory visit." },
+            { text: "Full-day Munnar sightseeing after breakfast." },
+            { text: "Eravikulam National Park, home of the Nilgiri Tahr." },
+            { text: "Mattupetty Dam & Lake, with an optional boat ride." },
+            { text: "Echo Point and the Rajamalai Garden." },
+            { text: "Tata Tea Gardens — the journey of tea from leaf to cup." },
+            { text: "Local chocolate factory visit." },
             { text: "Overnight in Munnar." },
           ],
         },
@@ -916,9 +969,11 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
           day: 3,
           title: "Munnar to Thekkady",
           entries: [
-            { text: "Drive to Thekkady and check in." },
-            { text: "Periyar National Park area — wildlife spotting, elephant rides available." },
-            { text: "Afternoon spice plantation tour (optional, surcharge applies)." },
+            { text: "Check out from Munnar after breakfast and drive to Thekkady." },
+            { text: "Check in to your Thekkady hotel." },
+            { text: "Optional guided spice plantation tour — tea, cardamom, vanilla, coffee, pepper, cinnamon and ginger." },
+            { text: "Periyar National Park — wildlife spotting, with an optional elephant ride." },
+            { text: "Optional evening Kathakali or Kalaripayattu cultural show." },
             { text: "Overnight in Thekkady." },
           ],
         },
@@ -926,45 +981,212 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
           day: 4,
           title: "Thekkady to Alleppey",
           entries: [
-            { text: "Drive to Alleppey and check in to the houseboat." },
-            { text: "Cruise the backwaters." },
-            { text: "Kerala lunch served on board." },
-            { text: "Dinner and overnight on the houseboat." },
+            { text: "Check out after breakfast and drive to Alleppey." },
+            { text: "Check in to your Sharing Deluxe Houseboat by noon." },
+            { text: "Backwater cruise through palm-fringed canals, paddy fields and lakeside villages." },
+            { text: "Traditional Kerala-style lunch served on board." },
+            { text: "Relax on deck as the houseboat cruises the backwaters." },
+            { text: "Overnight anchored in the Alleppey backwaters — dinner, evening snacks and tea/coffee included." },
           ],
         },
         {
           day: 5,
-          title: "Back to Kochi",
+          title: "Alleppey to Kochi",
           entries: [
-            { text: "Breakfast on the houseboat." },
-            { text: "Drive back to Kochi." },
-            { text: "Drop at Kochi airport." },
+            { text: "Wake up to a peaceful morning on the water." },
+            { text: "Breakfast on the houseboat deck." },
+            { text: "Check out from the houseboat and drive back to Kochi." },
+            { text: "Drop at Kochi Airport / designated departure point." },
           ],
         },
       ],
 
       costIncludes: [
-        "Private vehicle for all 5 days",
-        "4 nights accommodation — 1 night houseboat, 3 nights hotel",
-        "4 breakfasts, 1 lunch and 1 dinner",
-        "Trip captain for group departures",
-        "Tolls, parking, guide charges and state permits",
-        "Basic first aid",
+        "Airport / Railway Station pickup and drop",
+        "All ground transfers across the Kochi–Munnar–Thekkady–Alleppey circuit",
+        "2 nights accommodation in Munnar (Premium 3-Star)",
+        "1 night accommodation in Thekkady (Premium 3-Star)",
+        "1 night in a Sharing Deluxe Houseboat in Alleppey",
+        "Breakfast from Day 2 to Day 5",
+        "Houseboat meals — lunch, dinner and evening snacks",
+        "Tea/coffee on the houseboat",
+        "Professional driver throughout",
+        "Vehicle costs — fuel, toll and parking",
+        "Road entry taxes",
+        "All sightseeing listed in the itinerary",
       ],
       costExcludes: [
-        "Meals not listed above",
-        "Transport beyond the stated itinerary",
-        "Boating and elephant ride charges",
+        "Daily lunch and dinner — included only on the houseboat",
+        "Entry and activity tickets at sightseeing locations",
+        "Airfare",
+        "Main train fare",
+        "Travel insurance",
         "Personal expenses",
-        "Costs arising from natural calamities or events beyond our control",
+        "Laundry and tips",
+        "Optional tours, such as the afternoon spice plantation tour",
         "5% GST",
       ],
 
+      eligibilityCriteria: [
+        { icon: "User", text: "Minimum age: 2+ years — no maximum age restriction" },
+        { icon: "Activity", text: "Participants should be reasonably fit for sightseeing, short walks and a houseboat cruise" },
+        { icon: "Footprints", text: "No trekking experience required — this is a sightseeing, wildlife and backwaters tour" },
+        { icon: "Stethoscope", text: "Inform the team of any medical condition in advance and carry personal medication" },
+      ],
+      fitnessCriteria: [
+        { icon: "Footprints", text: "Comfortable with a full day of sightseeing and short walks at each stop" },
+        { icon: "Activity", text: "No special fitness or trekking experience required" },
+        { icon: "Backpack", text: "Comfortable carrying a small daypack for day trips" },
+      ],
+      howToReach: {
+        intro: "The tour starts and ends in Kochi, with pickup and drop at Kochi Airport or the city's railway stations.",
+        air: {
+          summaryLabel: "Nearest Airport",
+          summary: "Cochin International Airport (COK)",
+          detail: "Well connected to major Indian cities and several international hubs. Pickup and drop for the tour are arranged directly from the airport.",
+        },
+        train: {
+          summaryLabel: "Nearest Railway Station",
+          summary: "Ernakulam Junction / Ernakulam Town",
+          detail: "Kochi's railway stations have good connectivity with major Indian cities. Pickup and drop can be arranged from either station.",
+        },
+        road: {
+          summaryLabel: "Route",
+          summary: "Kochi to Munnar to Thekkady to Alleppey and back to Kochi",
+          detail: "The entire circuit is run by private vehicle, so no further travel arrangements are needed once the tour begins.",
+          route: ["Kochi", "Munnar", "Thekkady", "Alleppey", "Kochi"],
+          facts: [
+            { label: "Duration", value: "5 Days / 4 Nights" },
+            { label: "Transport", value: "Private vehicle throughout" },
+          ],
+        },
+        pickup: {
+          point: "Kochi Airport / Railway Station",
+          time: "Day 1, on arrival",
+          dropPoint: "Kochi Airport / designated departure point",
+          dropTime: "Day 5, after breakfast",
+          note: "A Hyderabad-to-Hyderabad package by sleeper-class train is also available separately — contact the trips desk for pricing and booking, ideally at least 45 days before travel to help secure a sleeping berth.",
+        },
+      },
+
+      faqs: [
+        {
+          title: "What is the duration of the Kerala tour?",
+          description: "The tour is for 5 Days / 4 Nights, covering Kochi, Munnar, Thekkady and Alleppey.",
+        },
+        {
+          title: "What is the tour route?",
+          description: "Kochi → Munnar → Thekkady → Alleppey → Kochi.",
+        },
+        {
+          title: "What is the starting price of the tour?",
+          description: "The Kochi-to-Kochi package starts from ₹9,300/- per person for a group of 10 members. Prices vary according to group size.",
+        },
+        {
+          title: "Is airport pickup and drop included?",
+          description: "Yes. Airport/railway station pickup and drop are included in the package.",
+        },
+        {
+          title: "Which places are covered in the tour?",
+          description: "The tour covers Kochi, Munnar, Thekkady and Alleppey.",
+        },
+        {
+          title: "What are the main attractions in Munnar?",
+          description: "The itinerary includes Eravikulam National Park, Mattupetty Dam & Lake, Echo Point, Rajamalai Garden, Tata Tea Gardens and a chocolate factory.",
+        },
+        {
+          title: "Is the houseboat stay included?",
+          description: "Yes. The package includes 1 night in a Sharing Deluxe Houseboat in Alleppey.",
+        },
+        {
+          title: "What meals are included on the houseboat?",
+          description: "Houseboat meals include breakfast, lunch, evening snacks, tea/coffee and dinner.",
+        },
+        {
+          title: "Are meals included throughout the tour?",
+          description: "Breakfast is included from Day 2 to Day 5. Lunch and dinner are included on the houseboat, while daily lunch and dinner on other days are excluded.",
+        },
+        {
+          title: "What type of accommodation is provided?",
+          description: "Munnar and Thekkady have Premium 3-Star accommodation, while Alleppey includes a Deluxe Houseboat.",
+        },
+        {
+          title: "Is this tour suitable for families?",
+          description: "Yes. The itinerary is built around sightseeing, nature, wildlife and a houseboat experience, and can be offered as a family or group tour.",
+        },
+        {
+          title: "Is this tour suitable for couples and honeymooners?",
+          description: "Yes. A special Honeymoon Inclusions upgrade is available for an additional ₹500.",
+        },
+        {
+          title: "Is the tour suitable for senior citizens?",
+          description: "There is no separate senior-citizen category. There is no maximum age restriction, but participants should be reasonably fit.",
+        },
+        {
+          title: "What is the minimum age for the tour?",
+          description: "The minimum age requirement is 18 years.",
+        },
+        {
+          title: "Are sightseeing entry tickets included?",
+          description: "No. Entry/monument tickets and activity fees at sightseeing locations are excluded.",
+        },
+        {
+          title: "Are optional activities included?",
+          description: "No. Optional activities, such as the afternoon spice plantation tour, are charged separately.",
+        },
+        {
+          title: "Is travel insurance included?",
+          description: "No. Personal travel insurance is excluded from the package.",
+        },
+        {
+          title: "How much advance is required to confirm the booking?",
+          description: "A minimum 25% advance payment is required for booking confirmation.",
+        },
+        {
+          title: "What is the cancellation policy?",
+          description: "Bookings are strictly non-refundable and non-transferable. A refund is issued only if Trip My Soul cancels the event.",
+        },
+        {
+          title: "Can I reschedule my trip?",
+          description: "Yes, one complimentary rescheduling is allowed when requested more than 30 days before departure. Rescheduling is not possible less than 15 days before departure.",
+        },
+        {
+          title: "Can the itinerary change due to weather?",
+          description: "Yes. In case of sudden extreme weather, Trip My Soul may adjust the itinerary, change routes or safely retreat where necessary.",
+        },
+        {
+          title: "Is there a Hyderabad-to-Hyderabad option?",
+          description: "Yes. A separate Hyderabad-to-Hyderabad package by sleeper-class train is available at different group-based prices.",
+        },
+        {
+          title: "How early should I book the Hyderabad train package?",
+          description: "It is recommended to book at least 45 days before travel to help secure a sleeping berth. Closer bookings may be in RAC status.",
+        },
+        {
+          title: "Is GST included in the package price?",
+          description: "No. 5% GST is applicable separately.",
+        },
+      ],
+
+      // Per-person rates by group size, Kochi to Kochi.
+      packages: [
+        { id: "pax-10", label: "Full Payment", paxLabel: "10 Members", price: 9300 },
+        { id: "pax-8", label: "Full Payment", paxLabel: "8 Members", price: 9750 },
+        { id: "pax-6", label: "Full Payment", paxLabel: "6 Members", price: 9750 },
+        { id: "pax-4", label: "Full Payment", paxLabel: "4 Members", price: 10200 },
+        { id: "pax-2", label: "Full Payment", paxLabel: "2 Members", price: 12500 },
+      ],
+      bookingAdvancePct: 25,
+      confirmationPolicy:
+        "Your seat is confirmed once the 25% advance is received. 50% of the total is due 30-45 days before departure, and the remaining balance is due 15-30 days before departure.",
+
       thingsToCarry: TROPICAL_PACKING_LIST.flatMap((g) => g.items),
       thingsToRemember: TRIP_GROUND_RULES,
-      cancellationPolicy: TRIP_CANCELLATION_POLICY,
-      bookingAdvance: TRIP_BOOKING_TERMS.advancePerPerson,
-      balanceDueDays: TRIP_BOOKING_TERMS.balanceDueDays,
+      // Source policy differs from the generic short-trip terms: non-refundable
+      // and non-transferable, with a one-time complimentary reschedule instead
+      // of a sliding refund scale.
+      cancellationPolicy:
+        "Cancellations are non-refundable and non-transferable — a refund is issued only if Trip My Soul cancels the trip. One complimentary rescheduling is allowed if requested more than 30 days before departure; rescheduling is not possible within 15 days of departure.",
       relatedSlugs: ["kerala-special", "kerala"],
     }
   ),
@@ -1550,6 +1772,12 @@ export function tripToTrek(trip: TripListingItem): Trek {
     // Itinerary
     itinerary: trip.itinerary ? toItineraryDays(trip.itinerary) : undefined,
 
+    // Eligibility & travel info
+    eligibilityCriteria: trip.eligibilityCriteria,
+    fitnessCriteria: trip.fitnessCriteria,
+    howToReach: trip.howToReach,
+    faqs: trip.faqs,
+
     // Cost terms
     originalPrice: trip.originalPrice,
     inclusions: trip.costIncludes?.map(toCostItem),
@@ -1558,6 +1786,7 @@ export function tripToTrek(trip: TripListingItem): Trek {
     packages: trip.packages,
     priceNote: trip.priceNote,
     bookingAdvance: trip.bookingAdvance,
+    bookingAdvancePct: trip.bookingAdvancePct,
     balanceDueDays: trip.balanceDueDays,
     kidsPolicy: trip.kidsPolicy,
     confirmationPolicy: trip.confirmationPolicy,
