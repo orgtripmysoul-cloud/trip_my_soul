@@ -2006,25 +2006,26 @@ export const YATRAS: Trek[] = [
     "region": "Uttarakhand",
     "category": "yatra",
     "startLocation": "Haridwar To Haridwar",
-    "difficulty": "Moderate",
+    "endLocation": "Haridwar",
+    "difficulty": "Moderate to Difficult",
+    "maxAltitude": "11,755 ft / 3,583 m",
+    "totalDistance": "32 Kilometers",
+    "availability": "May – November",
     "months": [
-      "Oct",
-      "Nov",
-      "Mar",
-      "Apr",
       "May",
       "Jun",
-      "Jul"
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov"
     ],
     "themes": [
-      "Snow",
-      "Meadow",
+      "Pilgrimage",
       "Forest",
-      "Pass Crossing"
-    ],
-    // TODO(content): seeded departure so this yatra qualifies for the
-    // 60-day "Upcoming" filter. Replace with the real batch grid.
-    "batchDates": ["2026-09-08"]
+      "River",
+      "Temple"
+    ]
   },
   {
     "slug": "badrinath-kedarnath-yatra",
@@ -7557,22 +7558,6 @@ if (choptaIndex !== -1) {
       description: "Both nights are at Sari Village, in a homestay, guesthouse or Swiss camp depending on the departure and availability."
     },
     {
-  TREKS[nagtibbaIndex].availability = "October – June";
-
-  /**
-   * The listing card carried "Moderate", while the published guide and its FAQ
-   * both give easy to moderate, so the fact strip, the eligibility copy and the
-   * FAQ answer now agree.
-   */
-  TREKS[nagtibbaIndex].difficulty = "Easy to Moderate";
-
-  // As published in the guide, in this order.
-  TREKS[nagtibbaIndex].similarTreks = [
-    "chopta-tungnath-trek",
-    "kedarkantha-trek",
-    "brahmatal-trek",
-    "dayara-bugyal-trek"
-  ];
       title: "What should I carry?",
       description: "Good trekking shoes, warm layers, a waterproof jacket, thermal wear, gloves, a woollen cap, sunglasses, sunscreen, water bottles, personal medicines, a headlamp and a trekking daypack. On winter departures, gaiters and microspikes may be needed depending on snow conditions."
     }
@@ -7938,175 +7923,513 @@ if (choptaIndex !== -1) {
               { startDate: "03 Jun", endDate: "05 Jun", status: "Open" },
               { startDate: "04 Jun", endDate: "06 Jun", status: "Open" },
               { startDate: "05 Jun", endDate: "07 Jun", status: "Open" },
+              { startDate: "06 Jun", endDate: "08 Jun", status: "Open" },
+              { startDate: "07 Jun", endDate: "09 Jun", status: "Open" },
+              { startDate: "08 Jun", endDate: "10 Jun", status: "Open" },
+              { startDate: "09 Jun", endDate: "11 Jun", status: "Open" },
+              { startDate: "10 Jun", endDate: "12 Jun", status: "Open" },
+              { startDate: "11 Jun", endDate: "13 Jun", status: "Open" },
+              { startDate: "12 Jun", endDate: "14 Jun", status: "Open" },
+              { startDate: "13 Jun", endDate: "15 Jun", status: "Open" },
+              { startDate: "14 Jun", endDate: "16 Jun", status: "Open" },
+              { startDate: "15 Jun", endDate: "17 Jun", status: "Open" },
+              { startDate: "16 Jun", endDate: "18 Jun", status: "Open" },
+              { startDate: "17 Jun", endDate: "19 Jun", status: "Open" },
+              { startDate: "18 Jun", endDate: "20 Jun", status: "Open" },
+              { startDate: "19 Jun", endDate: "21 Jun", status: "Open" },
+              { startDate: "20 Jun", endDate: "22 Jun", status: "Open" },
+              { startDate: "21 Jun", endDate: "23 Jun", status: "Open" },
+              { startDate: "22 Jun", endDate: "24 Jun", status: "Open" },
+              { startDate: "23 Jun", endDate: "25 Jun", status: "Open" },
+              { startDate: "24 Jun", endDate: "26 Jun", status: "Open" },
+              { startDate: "25 Jun", endDate: "27 Jun", status: "Open" },
+              { startDate: "26 Jun", endDate: "28 Jun", status: "Open" },
+              { startDate: "27 Jun", endDate: "29 Jun", status: "Open" },
+              { startDate: "28 Jun", endDate: "30 Jun", status: "Open" },
+              { startDate: "29 Jun", endDate: "01 Jul", status: "Open" },
+              { startDate: "30 Jun", endDate: "02 Jul", status: "Open" }
+            ]
+          },
+          {
+            month: "Jul",
+            year: "2027",
+            trips: [
+              { startDate: "01 Jul", endDate: "03 Jul", status: "Open" },
+              { startDate: "02 Jul", endDate: "04 Jul", status: "Open" },
+              { startDate: "03 Jul", endDate: "05 Jul", status: "Open" },
+              { startDate: "04 Jul", endDate: "06 Jul", status: "Open" },
+              { startDate: "05 Jul", endDate: "07 Jul", status: "Open" },
+              { startDate: "06 Jul", endDate: "08 Jul", status: "Open" },
+              { startDate: "07 Jul", endDate: "09 Jul", status: "Open" },
+              { startDate: "08 Jul", endDate: "10 Jul", status: "Open" },
+              { startDate: "09 Jul", endDate: "11 Jul", status: "Open" },
+              { startDate: "10 Jul", endDate: "12 Jul", status: "Open" },
+              { startDate: "11 Jul", endDate: "13 Jul", status: "Open" },
+              { startDate: "12 Jul", endDate: "14 Jul", status: "Open" },
+              { startDate: "13 Jul", endDate: "15 Jul", status: "Open" },
+              { startDate: "14 Jul", endDate: "16 Jul", status: "Open" },
+              { startDate: "15 Jul", endDate: "17 Jul", status: "Open" },
+              { startDate: "16 Jul", endDate: "18 Jul", status: "Open" },
+              { startDate: "17 Jul", endDate: "19 Jul", status: "Open" },
+              { startDate: "18 Jul", endDate: "20 Jul", status: "Open" },
+              { startDate: "19 Jul", endDate: "21 Jul", status: "Open" },
+              { startDate: "20 Jul", endDate: "22 Jul", status: "Open" },
+              { startDate: "21 Jul", endDate: "23 Jul", status: "Open" },
+              { startDate: "22 Jul", endDate: "24 Jul", status: "Open" },
+              { startDate: "23 Jul", endDate: "25 Jul", status: "Open" },
+              { startDate: "24 Jul", endDate: "26 Jul", status: "Open" },
+              { startDate: "25 Jul", endDate: "27 Jul", status: "Open" },
+              { startDate: "26 Jul", endDate: "28 Jul", status: "Open" },
+              { startDate: "27 Jul", endDate: "29 Jul", status: "Open" },
+              { startDate: "28 Jul", endDate: "30 Jul", status: "Open" },
+              { startDate: "29 Jul", endDate: "31 Jul", status: "Open" },
+              { startDate: "30 Jul", endDate: "01 Aug", status: "Open" },
+              { startDate: "31 Jul", endDate: "02 Aug", status: "Open" }
+            ]
+          }
+        ]
+      }
+    }
+  };
+}
 
-  TREKS[nagtibbaIndex].article = {
-    title: "Nag Tibba Trek: A Short Journey to the Heart of the Himalayas",
+// Static details for the Kedarnath Yatra (uid: kedarnath-yatra), the 4-day
+// pilgrimage out of Haridwar/Rishikesh to the Kedarnath Temple at 11,755 ft.
+// Trek essentials (packing list) and the cancellation policy are deliberately
+// left unset, same as Nag Tibba and Chopta, so both sections render the
+// shared copy from `trekDefaults.ts` / `TrekCancellation`. `maxAltitude`,
+// `totalDistance`, `availability`, `endLocation` and `difficulty` live on the
+// catalogue entry itself.
+const kedarnathIndex = YATRAS.findIndex(y => y.slug === 'kedarnath-yatra');
+if (kedarnathIndex !== -1) {
+  YATRAS[kedarnathIndex].aboutParagraphs = [
+    "Kedarnath is one of the most sacred pilgrimage destinations in India and one of the most important temples of Lord Shiva. Located in the Rudraprayag district of Uttarakhand, the temple sits at an altitude of approximately 11,755 ft (3,583 m) at the head of the Mandakini River, surrounded by snow-covered Himalayan peaks.",
+    "The trek begins from Gaurikund and leads to the Kedarnath Temple through a well-paved 16 km trail. The route passes through Jungle Chatti, Bheembali and Linchauli, offering views of waterfalls, forests and Himalayan ranges. The temple itself is believed to have been built by the Pandavas and revived by Adi Shankaracharya, and is known as the first among the 12 Jyotirlingas and the Panch Kedar.",
+    "What makes Kedarnath special is its unique combination of spirituality and adventure. It remains open from May to November and is closed during winter due to heavy snowfall, when the idol is shifted to Ukhimath. Whether you are a devotee on the Char Dham Yatra or a trekker looking for a meaningful Himalayan journey, Kedarnath offers a powerful experience of faith, endurance and mountain beauty."
+  ];
+
+  YATRAS[kedarnathIndex].highlights = [
+    "12 Jyotirlinga Darshan",
+    "Mandakini River",
+    "Chorabari Glacier",
+    "Adi Shankaracharya Samadhi",
+    "Bhairavnath Temple",
+    "Shayan Aarti",
+    "Kedarnath & Kedar Dome Views",
+    "Chaukhamba Range",
+    "GMVN Tents & Lodges at Kedarnath Base"
+  ];
+
+  YATRAS[kedarnathIndex].usps = [
+    {
+      title: "Base village: Sonprayag / Gaurikund",
+      description: "Sonprayag is the last motorable point for private vehicles; a 5 km shared jeep ride from there reaches Gaurikund, where the 16 km trek to Kedarnath begins."
+    },
+    {
+      title: "First among the 12 Jyotirlingas",
+      description: "Kedarnath is the highest and northernmost of the 12 Jyotirlingas, the first of the Panch Kedar, and one of the four shrines on the Char Dham Yatra."
+    },
+    {
+      title: "A trek built for pilgrims",
+      description: "The 16 km trail from Gaurikund is fully paved with railings, and lined with tea stalls, medical camps and pony stands the entire way up."
+    },
+    {
+      title: "Open only six months a year",
+      description: "The temple opens in late April or early May and closes around Bhai Dooj in November, when the idol is carried down to Omkareshwar Temple in Ukhimath for the winter."
+    },
+    {
+      title: "Four ways to the temple",
+      description: "Beyond Gaurikund, pilgrims can walk, ride a pony or palki, or fly in by helicopter from Phata, Sersi or Sitapur — a 7-8 minute flight to Kedarnath."
+    }
+  ];
+
+  YATRAS[kedarnathIndex].destinationHighlights = [
+    { name: "Sonprayag / Gaurikund", blurb: "The last motorable point on the route; Sonprayag holds the mandatory Yatra Registration checkpoint, and a 5 km jeep ride away, Gaurikund is where the 16 km trek to Kedarnath begins." },
+    { name: "Kedarnath Temple", blurb: "The shrine itself at 11,755 ft, at the head of the Mandakini River — the first of the 12 Jyotirlingas and the Panch Kedar, believed built by the Pandavas and revived by Adi Shankaracharya." },
+    { name: "Bhairavnath Temple", blurb: "A steep 0.5 km climb above the main temple, believed to protect Kedarnath through the winter months and to offer the best sunrise view of Kedarnath Peak." }
+  ];
+
+  YATRAS[kedarnathIndex].differentiators = [
+    "Region: Rudraprayag district, Uttarakhand",
+    "Trek type: paved pilgrimage trek to the Kedarnath Jyotirlinga at 11,755 ft",
+    "Terrain: paved Himalayan trail through Jungle Chatti, Bheembali and Linchauli, with tea stalls and medical camps throughout",
+    "Best season: May–June and September–October",
+    "Monsoon: July–August brings landslide and slippery-trail risk and is best avoided",
+    "Winter: closed November to April, when the idol is shifted to Ukhimath"
+  ];
+
+  YATRAS[kedarnathIndex].similarTreks = [
+    "badrinath-kedarnath-yatra",
+    "chopta-tungnath-trek",
+    "rudranath-yatra",
+    "madmaheshwar-yatra"
+  ];
+
+  YATRAS[kedarnathIndex].idealFor =
+    "Pilgrims, Lord Shiva devotees, fit beginners and groups on the Char Dham Yatra.";
+
+  YATRAS[kedarnathIndex].importantNote =
+    "Kedarnath Temple is open only from May to November; it is closed through winter due to heavy snowfall, when the idol is shifted to Ukhimath's Omkareshwar Temple. May–June and September–October are the best windows; July–August falls in the monsoon and carries a real risk of landslides, heavy rain and a slippery trail, so it is best avoided. Online Uttarakhand Yatra Registration at registrationandtouristcare.uk.gov.in is mandatory for every pilgrim, and network and ATMs stop working beyond Sonprayag, so carry cash and inform family in advance.";
+
+  YATRAS[kedarnathIndex].itinerary = [
+    {
+      day: 1,
+      title: "Haridwar / Rishikesh to Sonprayag",
+      driveDistance: "220 km",
+      drivingTime: "9-10 Hours",
+      pickupPoint: "Haridwar / Rishikesh",
+      pickupTime: "5:00 AM",
+      altitudePoints: [
+        { location: "Haridwar / Rishikesh", m: 350, ft: 1150 },
+        { location: "Sonprayag", m: 1829, ft: 6001 }
+      ],
+      altitudeGain: { m: 1479, ft: 4851 },
+      description: "Drive from Haridwar/Rishikesh via Devprayag, Srinagar, Rudraprayag and Guptkashi to Sonprayag, with stops at Devprayag Sangam and Dhari Devi Temple along the way.",
+      detailedParagraphs: [
+        "Pickup at 5:00 AM from Haridwar Railway Station or Rishikesh ISBT, with breakfast enroute at Srinagar and lunch at Rudraprayag.",
+        "En route, stop at the Devprayag Sangam — the confluence of the Alaknanda and Bhagirathi rivers that forms the Ganga — and at the Dhari Devi Temple, built mid-river on the Alaknanda.",
+        "Reach Guptkashi/Sonprayag by around 4:30 PM and complete the mandatory Yatra Registration check at the Sonprayag checkpoint.",
+        "Check in to your hotel in the evening; the local market is free to explore, and pony or palki can be arranged here if needed.",
+        "Overnight stay at a hotel in Sonprayag / Sitapur. The last ATM is at Guptkashi — withdraw cash here, as network and ATMs stop working beyond Sonprayag."
+      ],
+      highlights: ["Devprayag Sangam", "Dhari Devi Temple", "Yatra Registration Check", "Sonprayag / Sitapur Stay"],
+      meals: "Dinner",
+      stayType: "Hotel"
+    },
+    {
+      day: 2,
+      title: "Sonprayag to Kedarnath Temple",
+      driveDistance: "5 km",
+      drivingTime: "30 Mins",
+      trekDistance: "16 km",
+      trekDuration: "7-9 Hours",
+      altitudePoints: [
+        { location: "Sonprayag", m: 1829, ft: 6001 },
+        { location: "Gaurikund", m: 1982, ft: 6500 },
+        { location: "Kedarnath", m: 3583, ft: 11755 }
+      ],
+      altitudeGain: { m: 1754, ft: 5754 },
+      description: "Take a shared jeep from Sonprayag to Gaurikund, the last motorable point, then trek 16 km via Jungle Chatti, Bheembali and Linchauli to reach Kedarnath by evening.",
+      detailedParagraphs: [
+        "Early wake-up at 4:00 AM; take a government shared jeep from Sonprayag to Gaurikund, the last motorable point on the route.",
+        "Start the 16 km trek from Gaurikund around 5:00 AM. A walking stick is available at the start for a small charge.",
+        "The trail passes Jungle Chatti (4 km) — the first tea-break point where the climb turns moderate — Bheembali (7 km), a medical and food point, and Linchauli (11 km), the last big halt before a steep final ascent.",
+        "By 15 km the horse stand ends and it is a flat 1 km walk to the temple. Reach Kedarnath between 1:00–3:00 PM and check in to your tent, dormitory or lodge.",
+        "In the evening, attend darshan and the Shayan Aarti at 7:30 PM — one of the most moving moments of the yatra.",
+        "Overnight stay at Kedarnath in a basic tent or lodge with shared washrooms — there is no luxury accommodation at the top."
+      ],
+      highlights: ["Gaurikund Jeep Ride", "Jungle Chatti", "Bheembali", "Linchauli", "Shayan Aarti"],
+      meals: "Breakfast & Dinner",
+      stayType: "Tent / Dorm / Lodge"
+    },
+    {
+      day: 3,
+      title: "Kedarnath Darshan to Sonprayag",
+      trekDistance: "16 km",
+      trekDuration: "5-6 Hours",
+      driveDistance: "5 km",
+      drivingTime: "30 Mins",
+      timeNote: { label: "Morning darshan", value: "4:00 AM" },
+      altitudePoints: [
+        { location: "Kedarnath", m: 3583, ft: 11755 },
+        { location: "Gaurikund", m: 1982, ft: 6500 },
+        { location: "Sonprayag", m: 1829, ft: 6001 }
+      ],
+      altitudeGain: null,
+      description: "Morning darshan and Abhishek at Kedarnath, a visit to Bhairavnath Temple and Adi Shankaracharya's Samadhi, then descend 16 km to Gaurikund and drive to Sonprayag.",
+      detailedParagraphs: [
+        "Morning Aarti and Abhishek darshan at 4:00 AM, with far fewer crowds than later in the day.",
+        "Walk up to Bhairavnath Temple, a steep 0.5 km climb above Kedarnath, believed to protect the temple through the winter — it offers a striking sunrise view of Kedarnath Peak.",
+        "After breakfast, visit the Samadhi of Adi Shankaracharya just behind the main temple.",
+        "Begin the descent to Gaurikund around 8:30 AM; the down trek is easier and takes 5-6 hours.",
+        "From Gaurikund, take a shared jeep back to Sonprayag, reaching by early evening for a hot tea and rest.",
+        "Overnight stay at a hotel in Sonprayag / Sitapur."
+      ],
+      highlights: ["Morning Abhishek Darshan", "Bhairavnath Temple", "Adi Shankaracharya Samadhi", "Descent to Gaurikund"],
+      meals: "Breakfast & Dinner",
+      stayType: "Hotel"
+    },
+    {
+      day: 4,
+      title: "Sonprayag to Haridwar / Rishikesh",
+      driveDistance: "220 km",
+      drivingTime: "9-10 Hours",
+      altitudePoints: [
+        { location: "Sonprayag", m: 1829, ft: 6001 },
+        { location: "Haridwar / Rishikesh", m: 350, ft: 1150 }
+      ],
+      altitudeGain: null,
+      description: "Drive back to Haridwar/Rishikesh via the same route, with a stop for lunch, arriving by evening as the yatra concludes.",
+      detailedParagraphs: [
+        "After breakfast, drive back to Haridwar / Rishikesh via the same route, with a stop for lunch along the way.",
+        "Reach Haridwar / Rishikesh between 6:00–8:00 PM. The yatra ends with the blessings of Mahadev."
+      ],
+      highlights: ["Return Drive", "Lunch Stop", "Yatra Concludes"],
+      meals: "Breakfast",
+      // The yatra ends on this day; an empty stay keeps the generic
+      // "Hotel / Homestay" fallback out of the day's quick-info line.
+      stayType: ""
+    }
+  ];
+
+  YATRAS[kedarnathIndex].article = {
+    title: "Kedarnath Yatra: A Complete Guide to the Abode of Lord Shiva",
     standfirst:
-      "Forest trails above Pantwari, a night under the Himalayan sky and a 9,915 ft summit in the morning — two days in the Garhwal, told the way they are felt.",
+      "Nestled in the Garhwal Himalayas at 11,755 ft, Kedarnath Temple is not just a pilgrimage but an emotion for crores of devotees — the story of its myth, its miracle and its 16 km trail.",
     readMinutes: 7,
     sections: [
       {
         paragraphs: [
-          "There are journeys that take you far away from home, and then there are journeys that bring you closer to yourself.",
-          "The Nag Tibba Trek is one such journey.",
-          "Hidden in the beautiful mountains of Uttarakhand, Nag Tibba is a perfect escape for anyone who wants to leave behind the noise of everyday life and spend a little time walking through forests, watching the mountains and breathing in the silence of the Himalayas.",
-          "At an altitude of approximately 9,915 ft, Nag Tibba offers the experience of reaching a Himalayan summit without requiring a long expedition. This makes it one of the best choices for beginners, first-time trekkers, weekend adventurers and anyone looking for a quick mountain escape."
+          "Nestled in the lap of the Garhwal Himalayas at an altitude of 11,755 ft, Kedarnath Temple is not just a pilgrimage, but an emotion for crores of devotees. Located in the Rudraprayag district of Uttarakhand, on the banks of the Mandakini River, Kedarnath is one of the 12 Jyotirlingas and the most important of the Panch Kedar."
         ]
       },
       {
-        heading: "Where the Journey Begins",
+        heading: "Mythology and History",
         paragraphs: [
-          "The adventure begins at Pantwari Village, a peaceful mountain village surrounded by the Garhwal Himalayas.",
-          "As you leave the road behind and start walking, something slowly changes.",
-          "The sound of vehicles disappears.",
-          "The air becomes cooler.",
-          "The forest becomes quieter.",
-          "And with every step, the mountains seem to come a little closer.",
-          "The trail takes you through beautiful forests and open mountain sections, where the simple beauty of Uttarakhand reminds you that sometimes you don’t need much to feel happy.",
-          "Just a trail.",
-          "A backpack.",
-          "And mountains in front of you."
+          "The history of Kedarnath is deeply linked to the Mahabharata. After the Kurukshetra war, the Pandavas wanted forgiveness from Lord Shiva for killing their own cousins. Lord Shiva avoided them and took the form of a bull in Guptakashi. When the Pandavas found him, Shiva dived into the ground. His hump appeared in Kedarnath, arms in Tungnath, face in Rudranath, navel in Madhmaheshwar and hair in Kalpeshwar. These five places together are called Panch Kedar.",
+          "It is said the original temple was built by the Pandavas and later restored by Adi Shankaracharya in the 8th century. Behind the temple, you can still see the Samadhi of Adi Shankaracharya, who is believed to have attained Moksha here."
         ]
       },
       {
-        heading: "Walking Through the Himalayan Forests",
+        heading: "The Sacred Trek of 16 Km",
         paragraphs: [
-          "The trail towards Nag Tibba passes through beautiful forest landscapes, including oak and rhododendron-covered sections.",
-          "The sunlight filtering through the trees, the sound of leaves beneath your feet and the occasional glimpse of distant mountains make the journey as memorable as the destination itself.",
-          "Nag Tibba isn’t about rushing.",
-          "It is about walking slowly enough to notice the mountains.",
-          "Along the way, you’ll meet fellow trekkers, local villagers and perhaps even discover a quieter version of yourself."
+          "Unlike other Dhams, Kedarnath cannot be reached directly by vehicle. The last motorable point is Sonprayag. From there, a local jeep takes you to Gaurikund, and the real journey begins.",
+          "The 16 km trek from Gaurikund to Kedarnath passes through Jungle Chatti, Bheembali and Linchauli. The trail is fully paved with railings and lined with tea stalls, medical camps and pony stands. What makes this trek special is that every step chants \"Har Har Mahadev\" — you meet sadhus, families, and solo travellers all walking with one purpose.",
+          "For those who cannot trek, options like pony, palki, pitthu and helicopter services from Phata, Sersi and Sitapur are available."
         ]
       },
       {
-        heading: "The Magic of Nag Tibba Campsite",
+        heading: "The Miracle of 2013",
         paragraphs: [
-          "After hours of walking, reaching the campsite feels special.",
-          "Your tired legs suddenly don’t matter as much.",
-          "The backpack comes off, tea tastes better than ever, and the mountains become your evening view.",
-          "As the sun begins to disappear behind the mountains, the sky changes colours and the temperature drops.",
-          "Later, when darkness covers the valleys, look up.",
-          "Far away from city lights, the Himalayan night sky can feel endless.",
-          "Sitting around the campsite with a warm cup of tea, sharing stories with fellow trekkers and looking at the stars — these are the moments that stay with you long after the trek is over."
+          "In June 2013, a massive cloudburst and flood destroyed everything around Kedarnath. The entire town, shops and hotels were washed away. But the temple stood untouched, with a huge rock (now called Bhim Shila) behind it that diverted the flood water. This is considered a divine miracle by devotees and is a symbol of faith that even nature cannot shake."
         ]
       },
       {
-        heading: "The Summit Morning",
+        heading: "Best Time to Visit",
         paragraphs: [
-          "The most beautiful part of the Nag Tibba Trek begins early in the morning.",
-          "With your headlamp on and the sky still dark, you start walking towards the summit.",
-          "The trail becomes quieter.",
-          "Your breathing becomes heavier.",
-          "But every step takes you closer to the top.",
-          "And then, finally, you reach Nag Tibba Summit at approximately 9,915 ft.",
-          "For a moment, you forget how tired you are.",
-          "You simply stand there.",
-          "In front of you are the vast Himalayan landscapes, and behind you is the trail that brought you here.",
-          "You realise that the summit isn’t just a point on a map.",
-          "It is every step you took to reach it."
+          "Kedarnath Temple opens in late April / early May and closes around Bhai Dooj in November. The best time is May-June and September-October. July-August is monsoon, with risk of landslides. In winter, the area gets 10-15 feet of snow and the idol is shifted to Ukhimath's Omkareshwar Temple, where winter puja is performed for 6 months."
         ]
       },
       {
-        heading: "More Than Just a Trek",
+        heading: "More Than Just a Temple",
         paragraphs: [
-          "Nag Tibba may be a short trek, but the memories it creates can last much longer.",
-          "For some, it is their first Himalayan summit.",
-          "For others, it is a much-needed break from work, phones and city life.",
-          "For friends, it becomes a story they will tell for years.",
-          "And for many first-time trekkers, Nag Tibba becomes the beginning of a much bigger love for the mountains.",
-          "Because once you’ve experienced the feeling of standing above the clouds, listening to the silence of the mountains and watching the sunrise from a Himalayan summit, you start wanting to come back."
-        ]
-      },
-      {
-        heading: "Why Choose Nag Tibba Trek?",
-        paragraphs: [
-          "🏔️ Beginner-friendly Himalayan summit experience",
-          "🌲 Beautiful forest trails and mountain landscapes",
-          "🌅 Stunning sunrise and sunset opportunities",
-          "❄️ Possibility of snow during winter",
-          "🏕️ Memorable overnight camping experience",
-          "📍 Easily accessible from Dehradun and Mussoorie",
-          "🎒 Perfect for a short weekend adventure",
-          "❤️ Ideal for first-time Himalayan trekkers"
-        ]
-      },
-      {
-        heading: "When Should You Do the Nag Tibba Trek?",
-        paragraphs: [
-          "Nag Tibba can be explored in different seasons, and each season brings its own character.",
-          "Winter can transform the trail into a beautiful snow-covered landscape.",
-          "Spring brings pleasant weather and fresh mountain greenery.",
-          "Summer offers comfortable trekking conditions and clear mountain landscapes.",
-          "The monsoon season can bring rain, slippery trails and unpredictable road conditions, so weather and local conditions should always be checked before departure."
-        ]
-      },
-      {
-        heading: "Your Mountain Story Starts Here",
-        paragraphs: [
-          "You don’t always need a week-long holiday to feel alive again.",
-          "Sometimes, two days in the mountains are enough.",
-          "Enough to wake up early.",
-          "Enough to walk until your legs are tired.",
-          "Enough to sit quietly and watch the clouds move across the valleys.",
-          "Enough to remember that life is not only about deadlines, meetings and busy streets.",
-          "Sometimes, life is also about standing on a mountain and saying:",
-          "“I made it.”",
-          "The Nag Tibba Trek is more than a weekend trip.",
-          "It is a small escape, a Himalayan adventure and perhaps the beginning of your lifelong love affair with the mountains.",
-          "Pack your backpack. Leave the noise behind. The mountains are waiting.",
-          "Let Trip My Soul take care of the journey while you focus on what truly matters — the trail, the mountains and the memories you create along the way."
+          "A visit to Kedarnath is a test of both devotion and endurance. The cold, the low oxygen, the steep climb — everything pushes your limits. But the moment you see the temple standing tall in front of the snow-clad Kedarnath Peak, with the sound of the temple bells and chants, all tiredness disappears.",
+          "If you are planning your Char Dham Yatra, start your spiritual journey from Kedarnath. Har Har Mahadev!"
         ]
       }
     ],
-    signoff: "Trek Nag Tibba with Trip My Soul."
+    signoff: "Trek Kedarnath with Trip My Soul."
   };
 
-  /**
-   * As published in the guide. The distance answer gives 15–16 km against the
-   * 14–16 km on the fact strip, which is what the day-by-day figures above add
-   * up to; both are kept as published rather than quietly reconciled, since the
-   * guide itself qualifies the figure by campsite and route.
-   */
-  TREKS[nagtibbaIndex].faqs = [
+  YATRAS[kedarnathIndex].faqs = [
     {
-      title: "Where is Nag Tibba Trek located?",
-      description: "Nag Tibba Trek is located in the Tehri Garhwal region of Uttarakhand. The trek starts from Pantwari Village."
+      title: "What is the total trek distance of Kedarnath?",
+      description: "The total trek is 16 km one side from Gaurikund to Kedarnath Temple, plus a 5 km local jeep ride from Sonprayag to Gaurikund."
     },
     {
-      title: "What is the altitude of Nag Tibba?",
-      description: "The Nag Tibba Summit is approximately 9,915 ft (3,022 m) above sea level."
+      title: "How many days are required for Kedarnath Yatra from Haridwar?",
+      description: "A minimum of 4 Days / 3 Nights from Haridwar/Rishikesh is required — 1 day going, 1 day trekking up, 1 day trekking down, and 1 day returning."
     },
     {
-      title: "How difficult is the Nag Tibba Trek?",
-      description: "Nag Tibba is generally considered an easy to moderate trek and is suitable for beginners with basic fitness."
+      title: "Is the Kedarnath trek difficult?",
+      description: "It is a moderate to difficult trek. It is fully paved but steep. Any healthy person who can walk 5-6 km daily can complete it. Elders are advised to take a pony or helicopter."
     },
     {
-      title: "How long is the Nag Tibba Trek?",
-      description: "The complete trek is approximately 15–16 km, depending on the campsite and route followed."
+      title: "How do I book a Helicopter for Kedarnath?",
+      description: "Helicopter booking is only done through the IRCTC Heli Yatra website — heliyatra.irctc.co.in."
     },
     {
-      title: "How many days are required for Nag Tibba Trek?",
-      description: "The standard Nag Tibba Trek can be completed in 2 days and 1 night, making it ideal for a weekend getaway."
+      title: "Is Yatra Registration mandatory?",
+      description: "Yes, Uttarakhand Govt. Yatra Registration is mandatory for every pilgrim. Register for free at registrationandtouristcare.uk.gov.in."
     },
     {
-      title: "What is the best time to do the Nag Tibba Trek?",
-      description: "October to June is generally a good period. Winter is especially popular among trekkers looking for a snow experience. Monsoon conditions can make the trail slippery and roads unpredictable."
+      title: "What is the best time to visit Kedarnath?",
+      description: "May to June and September to October are best. July-August is monsoon and risky due to landslides. The temple opens in May and closes in November on Bhai Dooj."
     },
     {
-      title: "Is Nag Tibba suitable for beginners?",
-      description: "Yes. Nag Tibba is one of the better options for first-time trekkers because of its relatively short duration and moderate altitude."
+      title: "Where to stay in Kedarnath?",
+      description: "At Sonprayag, good hotels with attached washrooms are available. At Kedarnath, only basic tents, dorms and GMVN guest houses with shared washrooms and blankets are available — there is no luxury accommodation at the top."
     },
     {
-      title: "Is there snow on the Nag Tibba Trek?",
-      description: "Snowfall is possible during winter, particularly around December to February, but the amount varies every year depending on weather conditions."
+      title: "Is there network / ATM at Kedarnath?",
+      description: "Only Jio and BSNL work till Sonprayag, with low speed. There is no network on the Kedarnath trek or at the temple. The last ATM is at Guptkashi/Sonprayag, so carry cash."
     },
     {
-      title: "How do I reach the Nag Tibba Trek starting point?",
-      description: "The trek starts from Pantwari Village. You can first reach Dehradun by road, train or flight and then travel by road to Pantwari."
+      title: "Can we do Kedarnath in one day?",
+      description: "No, you need to stay one night at Kedarnath. Helicopter passengers can do a same-day return, but this is not recommended due to weather dependency."
     },
     {
-      title: "What should I carry for the Nag Tibba Trek?",
-      description: "Essential items include good trekking shoes, warm layers, rain protection, a backpack, water bottle, personal medicines, sunglasses, sunscreen, headlamp and basic toiletries."
+      title: "What should I carry for the Kedarnath trek?",
+      description: "A heavy woollen jacket, gloves, cap, thermal wear, raincoat, trekking shoes, torch, power bank, personal medicines, dry fruits, a water bottle and your Aadhaar Card."
+    },
+    {
+      title: "Is VIP Darshan available?",
+      description: "There is no official VIP darshan system currently. For special pooja, you can take a slip from the temple committee office at the temple."
+    },
+    {
+      title: "What is the age limit for the Kedarnath Yatra?",
+      description: "There is no official age limit, but it is recommended for those aged 10 to 65 years. Children and senior citizens should take a helicopter or pony and carry a medical certificate."
     }
   ];
-              { startDate: "06 Jun", endDate: "08 Jun", status: "Open" },
+
+  YATRAS[kedarnathIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: 10–65 years recommended (no official age limit)" },
+    { icon: "Footprints", text: "Experience: No prior trekking experience required" },
+    { icon: "Dumbbell", text: "Fitness: Basic to moderate — able to walk 16 km on a steep, paved incline in a day" },
+    { icon: "Mountain", text: "Altitude: Up to 11,755 ft / 3,583 m" },
+    { icon: "FileText", text: "Documents: Aadhaar Card / Passport and Uttarakhand Yatra Registration mandatory for every pilgrim" },
+    { icon: "Stethoscope", text: "Not recommended for severe heart disease, high BP, severe asthma or knee problems without medical clearance" }
+  ];
+
+  YATRAS[kedarnathIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 5 km in about 1 hour on normal ground" },
+    { icon: "TrendingUp", text: "Able to walk 16 km on a steep, paved incline in a single day" },
+    { icon: "Activity", text: "Start walking 4–5 km daily and practise stairs for 2 weeks before the yatra" },
+    { icon: "Backpack", text: "Comfortable carrying a light daypack for the full trek day" },
+    { icon: "Ban", text: "Avoid smoking and alcohol during the yatra due to low oxygen levels" }
+  ];
+
+  YATRAS[kedarnathIndex].howToReach = {
+    intro: "Kedarnath is accessible only for about 6 months a year (May to November). The last motorable point is Sonprayag / Gaurikund, from where the temple is reached on foot, by pony, palki or helicopter.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "From the airport, Sonprayag is roughly 240–245 km away, about 9-10 hours by road. Recommended for travellers flying in from Delhi, Mumbai, Bengaluru and other cities with connectivity to Dehradun."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Haridwar Railway Station",
+      detail: "Haridwar is about 220 km from Sonprayag, and Rishikesh about 200 km. Both have daily trains from Delhi (4-6 hours) and good onward road connectivity to Sonprayag."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Haridwar / Rishikesh to Sonprayag via Devprayag, Srinagar, Rudraprayag and Guptkashi",
+      detail: "This is the standard route for the yatra. From Sonprayag, a local shared jeep covers the final 5 km to Gaurikund, and the last 16 km to Kedarnath are covered on foot, by pony, palki or helicopter.",
+      route: ["Haridwar / Rishikesh", "Devprayag", "Srinagar", "Rudraprayag", "Guptkashi", "Sonprayag", "Gaurikund (5 km jeep)", "Kedarnath (16 km trek)"],
+      facts: [
+        { label: "Distance", value: "~220–225 km from Haridwar/Rishikesh" },
+        { label: "Drive", value: "~9-10 hours" },
+        { label: "Options", value: "Shared Taxi / Bus / Private Car / Tempo Traveller" }
+      ]
+    },
+    pickup: {
+      point: "Haridwar Railway Station / Rishikesh ISBT",
+      time: "5:00 AM on Day 1",
+      dropPoint: "Haridwar / Rishikesh",
+      dropTime: "Evening of Day 4",
+      note: "Online Uttarakhand Yatra Registration at registrationandtouristcare.uk.gov.in is mandatory for every pilgrim before travelling."
+    }
+  };
+
+  YATRAS[kedarnathIndex].inclusions = [
+    { title: "Transportation", description: "Haridwar to Haridwar by Tempo Traveller / Ertiga / Dzire as per group size." },
+    { title: "Accommodation", description: "2 nights at Sonprayag/Sitapur in a hotel with attached washroom, plus 1 night at Kedarnath in a tent / dorm / guest house (basic, sharing)." },
+    { title: "Meal Plan", description: "MAP plan — 3 breakfasts and 3 dinners (veg only), from Day 1 dinner to Day 4 breakfast." },
+    { title: "Driver Allowance & Charges", description: "Driver allowance, toll, parking and fuel charges." },
+    { title: "Yatra Support Staff", description: "Kedarnath Yatra support staff in stays." },
+    { title: "First Aid", description: "First-aid kit." }
+  ];
+
+  YATRAS[kedarnathIndex].exclusions = [
+    { title: "Yatra Registration", description: "Must be done online by yourself — it is free." },
+    { title: "Local Jeep", description: "Govt. local jeep, Sonprayag to Gaurikund and back — Rs 50-60 per side per person, shared." },
+    { title: "Pony / Palki / Helicopter", description: "Pony, palki, pitthu or helicopter tickets, as per actual cost at the spot." },
+    { title: "Special Darshan", description: "VIP darshan, pooja samagri and any special darshan tickets." },
+    { title: "Personal expenses", description: "Lunch, personal expenses, tea, snacks and mineral water." },
+    { title: "Room Heater", description: "Room heater if required — Rs 300-500 per night, extra." },
+    { title: "Anything not listed", description: "Any expense not specifically mentioned under Inclusions." },
+    { title: "GST", description: "5% GST, extra." }
+  ];
+
+  // Daily departures from 10 Sep through 10 Nov 2026, the last window before
+  // the temple closes for winter around Bhai Dooj. Each batch is the 4-day
+  // yatra, so the end date is the start plus three days.
+  YATRAS[kedarnathIndex].batches = {
+    years: {
+      "2026": {
+        months: [
+          {
+            month: "Sep",
+            year: "2026",
+            trips: [
+              { startDate: "10 Sep", endDate: "13 Sep", status: "Open" },
+              { startDate: "11 Sep", endDate: "14 Sep", status: "Open" },
+              { startDate: "12 Sep", endDate: "15 Sep", status: "Open" },
+              { startDate: "13 Sep", endDate: "16 Sep", status: "Open" },
+              { startDate: "14 Sep", endDate: "17 Sep", status: "Open" },
+              { startDate: "15 Sep", endDate: "18 Sep", status: "Open" },
+              { startDate: "16 Sep", endDate: "19 Sep", status: "Open" },
+              { startDate: "17 Sep", endDate: "20 Sep", status: "Open" },
+              { startDate: "18 Sep", endDate: "21 Sep", status: "Open" },
+              { startDate: "19 Sep", endDate: "22 Sep", status: "Open" },
+              { startDate: "20 Sep", endDate: "23 Sep", status: "Open" },
+              { startDate: "21 Sep", endDate: "24 Sep", status: "Open" },
+              { startDate: "22 Sep", endDate: "25 Sep", status: "Open" },
+              { startDate: "23 Sep", endDate: "26 Sep", status: "Open" },
+              { startDate: "24 Sep", endDate: "27 Sep", status: "Open" },
+              { startDate: "25 Sep", endDate: "28 Sep", status: "Open" },
+              { startDate: "26 Sep", endDate: "29 Sep", status: "Open" },
+              { startDate: "27 Sep", endDate: "30 Sep", status: "Open" },
+              { startDate: "28 Sep", endDate: "01 Oct", status: "Open" },
+              { startDate: "29 Sep", endDate: "02 Oct", status: "Open" },
+              { startDate: "30 Sep", endDate: "03 Oct", status: "Open" }
+            ]
+          },
+          {
+            month: "Oct",
+            year: "2026",
+            trips: [
+              { startDate: "01 Oct", endDate: "04 Oct", status: "Open" },
+              { startDate: "02 Oct", endDate: "05 Oct", status: "Open" },
+              { startDate: "03 Oct", endDate: "06 Oct", status: "Open" },
+              { startDate: "04 Oct", endDate: "07 Oct", status: "Open" },
+              { startDate: "05 Oct", endDate: "08 Oct", status: "Open" },
+              { startDate: "06 Oct", endDate: "09 Oct", status: "Open" },
+              { startDate: "07 Oct", endDate: "10 Oct", status: "Open" },
+              { startDate: "08 Oct", endDate: "11 Oct", status: "Open" },
+              { startDate: "09 Oct", endDate: "12 Oct", status: "Open" },
+              { startDate: "10 Oct", endDate: "13 Oct", status: "Open" },
+              { startDate: "11 Oct", endDate: "14 Oct", status: "Open" },
+              { startDate: "12 Oct", endDate: "15 Oct", status: "Open" },
+              { startDate: "13 Oct", endDate: "16 Oct", status: "Open" },
+              { startDate: "14 Oct", endDate: "17 Oct", status: "Open" },
+              { startDate: "15 Oct", endDate: "18 Oct", status: "Open" },
+              { startDate: "16 Oct", endDate: "19 Oct", status: "Open" },
+              { startDate: "17 Oct", endDate: "20 Oct", status: "Open" },
+              { startDate: "18 Oct", endDate: "21 Oct", status: "Open" },
+              { startDate: "19 Oct", endDate: "22 Oct", status: "Open" },
+              { startDate: "20 Oct", endDate: "23 Oct", status: "Open" },
+              { startDate: "21 Oct", endDate: "24 Oct", status: "Open" },
+              { startDate: "22 Oct", endDate: "25 Oct", status: "Open" },
+              { startDate: "23 Oct", endDate: "26 Oct", status: "Open" },
+              { startDate: "24 Oct", endDate: "27 Oct", status: "Open" },
+              { startDate: "25 Oct", endDate: "28 Oct", status: "Open" },
+              { startDate: "26 Oct", endDate: "29 Oct", status: "Open" },
+              { startDate: "27 Oct", endDate: "30 Oct", status: "Open" },
+              { startDate: "28 Oct", endDate: "31 Oct", status: "Open" },
+              { startDate: "29 Oct", endDate: "01 Nov", status: "Open" },
+              { startDate: "30 Oct", endDate: "02 Nov", status: "Open" },
+              { startDate: "31 Oct", endDate: "03 Nov", status: "Open" }
+            ]
+          },
+          {
+            month: "Nov",
+            year: "2026",
+            trips: [
+              { startDate: "01 Nov", endDate: "04 Nov", status: "Open" },
+              { startDate: "02 Nov", endDate: "05 Nov", status: "Open" },
+              { startDate: "03 Nov", endDate: "06 Nov", status: "Open" },
+              { startDate: "04 Nov", endDate: "07 Nov", status: "Open" },
+              { startDate: "05 Nov", endDate: "08 Nov", status: "Open" },
+              { startDate: "06 Nov", endDate: "09 Nov", status: "Open" },
+              { startDate: "07 Nov", endDate: "10 Nov", status: "Open" },
+              { startDate: "08 Nov", endDate: "11 Nov", status: "Open" },
+              { startDate: "09 Nov", endDate: "12 Nov", status: "Open" },
+              { startDate: "10 Nov", endDate: "13 Nov", status: "Open" }
+            ]
+          }
+        ]
+      }
+    }
+  };
+}
