@@ -2085,22 +2085,20 @@ export const YATRAS: Trek[] = [
   {
     "slug": "chardham-yatra",
     "name": "Chardham Trek",
-    "tagline": "Yamunotri, Gangotri, Kedarnath and Badrinath across ten days from Haridwar or Rishikesh.",
+    "tagline": "Yamunotri, Gangotri, Kedarnath and Badrinath in 8 Nights / 9 Days from Haridwar.",
     "price": 24999,
-    "days": 10,
-    "nights": 9,
+    "days": 9,
+    "nights": 8,
     "region": "Uttarakhand",
     "category": "Spiritual Journey",
     "startLocation": "Haridwar To Haridwar",
     "difficulty": "Moderate",
     "months": [
-      "Oct",
-      "Nov",
-      "Mar",
-      "Apr",
       "May",
       "Jun",
-      "Jul"
+      "Sep",
+      "Oct",
+      "Nov"
     ],
     "themes": [
       "Snow",
