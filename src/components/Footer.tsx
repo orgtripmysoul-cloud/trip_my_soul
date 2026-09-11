@@ -103,10 +103,10 @@ export default function Footer() {
                 <MapPin className="w-4 h-4 text-brand-dusk-orange shrink-0 mt-1" />
                 <div className="min-w-0">
                   <span className="font-semibold block text-xs text-white">Hyderabad Office:</span>
-                  <span className="text-xs block break-words">Sai Baba Nagar Colony, Kukatpally, Hyderabad, Telangana - 500072</span>
-                  <a href="tel:+918178613438" className="mt-1 flex items-center gap-2 min-h-[44px] text-xs hover:text-white transition">
+                  <span className="text-xs block break-words">1-2-32/GS/S-2/NR, Jai Bharat Nagar, Hyder Nagar, RamNaresh Nagar, Kukatpally, Hyderabad, Telangana - 500085</span>
+                  <a href="tel:+919121343330" className="mt-1 flex items-center gap-2 min-h-[44px] text-xs hover:text-white transition">
                     <Phone className="w-3.5 h-3.5 text-brand-dusk-orange shrink-0" />
-                    <span>091213 43330, +91 99599 09204</span>
+                    <span>+91 9121343330, +91 7337475300</span>
                   </a>
                 </div>
               </div>
