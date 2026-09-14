@@ -637,26 +637,8 @@ export default function Home() {
     duration: string;
     views: string;
     image: string;
-    videoId?: string;
+    videoId: string;
   }[] = [
-    {
-      title: "Buran Ghati Pass Crossing & Ice Slide Guide",
-      duration: "8:45 mins",
-      views: "24K views",
-      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-      title: "Kedarkantha Summit Walkthrough & Packing Tips",
-      duration: "12:10 mins",
-      views: "45K views",
-      image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-      title: "How to Pack a 60L Rucksack for High Altitude",
-      duration: "6:30 mins",
-      views: "18K views",
-      image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80"
-    },
     {
       title: "Valley Of Flowers With Hemkund Sahib Trek | 6 Days 5 Nights Detailed Itinerary",
       duration: "2:53 mins",
@@ -1193,7 +1175,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 text-left animate-fade-in">
               {informativeVideosData.map((vid, idx) => (
                 <div key={idx} className="bg-white border border-gray-150 rounded-3xl overflow-hidden shadow-xs space-y-3 p-4 min-w-0">
-                  {vid.videoId && playingVideoId === vid.videoId ? (
+                  {playingVideoId === vid.videoId ? (
                     <div className="aspect-video rounded-2xl overflow-hidden bg-gray-900">
                       <iframe
                         src={`https://www.youtube.com/embed/${vid.videoId}?autoplay=1&rel=0`}
@@ -1206,7 +1188,7 @@ export default function Home() {
                   ) : (
                   <div
                     className="aspect-video rounded-2xl overflow-hidden bg-gray-900 relative group cursor-pointer"
-                    onClick={() => (vid.videoId ? setPlayingVideoId(vid.videoId) : alert(`Playing ${vid.title}...`))}
+                    onClick={() => setPlayingVideoId(vid.videoId)}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={vid.image} alt={vid.title} className="w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
