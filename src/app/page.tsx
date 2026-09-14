@@ -357,6 +357,7 @@ export default function Home() {
   // Tab states for Social Proof & Stay Informed sections
   const [activeTrustTab, setActiveTrustTab] = useState<"trusted" | "reviews" | "youtube" | "awards">("trusted");
   const [activeInformedTab, setActiveInformedTab] = useState<"updates" | "articles" | "videos">("updates");
+  const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
 
   // Fullscreen lightbox for the traveller video reviews (null = closed)
   const [activeShortIndex, setActiveShortIndex] = useState<number | null>(null);
@@ -631,7 +632,13 @@ export default function Home() {
     }
   ];
 
-  const informativeVideosData = [
+  const informativeVideosData: {
+    title: string;
+    duration: string;
+    views: string;
+    image: string;
+    videoId?: string;
+  }[] = [
     {
       title: "Buran Ghati Pass Crossing & Ice Slide Guide",
       duration: "8:45 mins",
@@ -649,6 +656,27 @@ export default function Home() {
       duration: "6:30 mins",
       views: "18K views",
       image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80"
+    },
+    {
+      title: "Valley Of Flowers With Hemkund Sahib Trek | 6 Days 5 Nights Detailed Itinerary",
+      duration: "2:53 mins",
+      views: "849 views",
+      videoId: "qMuG9sUjyqc",
+      image: "https://i.ytimg.com/vi/qMuG9sUjyqc/hqdefault.jpg"
+    },
+    {
+      title: "A Himalayan Journey to Chopta, Tungnath & Chandrashila",
+      duration: "4:00 mins",
+      views: "1.1K views",
+      videoId: "Oqd8vtV5GNM",
+      image: "https://i.ytimg.com/vi/Oqd8vtV5GNM/hqdefault.jpg"
+    },
+    {
+      title: "Adi Kailash & Om Parvat Yatra | A Spiritual Expedition",
+      duration: "4:21 mins",
+      views: "182 views",
+      videoId: "ECUitM9_TXs",
+      image: "https://i.ytimg.com/vi/ECUitM9_TXs/hqdefault.jpg"
     }
   ];
 
@@ -1165,7 +1193,21 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 text-left animate-fade-in">
               {informativeVideosData.map((vid, idx) => (
                 <div key={idx} className="bg-white border border-gray-150 rounded-3xl overflow-hidden shadow-xs space-y-3 p-4 min-w-0">
-                  <div className="aspect-video rounded-2xl overflow-hidden bg-gray-900 relative group cursor-pointer" onClick={() => alert(`Playing ${vid.title}...`)}>
+                  {vid.videoId && playingVideoId === vid.videoId ? (
+                    <div className="aspect-video rounded-2xl overflow-hidden bg-gray-900">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${vid.videoId}?autoplay=1&rel=0`}
+                        title={vid.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full"
+                      />
+                    </div>
+                  ) : (
+                  <div
+                    className="aspect-video rounded-2xl overflow-hidden bg-gray-900 relative group cursor-pointer"
+                    onClick={() => (vid.videoId ? setPlayingVideoId(vid.videoId) : alert(`Playing ${vid.title}...`))}
+                  >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={vid.image} alt={vid.title} className="w-full h-full object-cover opacity-75 group-hover:scale-105 transition duration-500" />
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -1177,6 +1219,7 @@ export default function Home() {
                       {vid.duration}
                     </span>
                   </div>
+                  )}
                   <div className="space-y-1 min-w-0">
                     <span className="text-xs font-bold text-brand-dark-text block line-clamp-2">{vid.title}</span>
                     <span className="text-[10px] text-gray-400 font-semibold block truncate">{vid.views}</span>
