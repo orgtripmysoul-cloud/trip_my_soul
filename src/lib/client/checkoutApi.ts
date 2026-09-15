@@ -31,6 +31,7 @@ export const ERROR_MESSAGES: Record<string, string> = {
   SERVICE_UNAVAILABLE: "This service is temporarily unavailable. Please try again shortly.",
   EMAIL_NOT_VERIFIED: "Please verify your email before booking.",
   RATE_LIMITED: "Too many requests. Please try again shortly.",
+  EMAIL_SEND_FAILED: "Couldn't send the verification code. Please try again in a moment.",
 };
 
 async function postJson<T>(url: string, body: unknown, idempotencyKey?: string): Promise<T> {

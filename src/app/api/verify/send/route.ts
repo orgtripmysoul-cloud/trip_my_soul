@@ -9,10 +9,9 @@ import { getClientIp } from "@/lib/server/requestIp";
 export const dynamic = "force-dynamic";
 
 /**
- * Always responds with the same generic shape on success (whether or not the
- * email has been seen/verified before) so this endpoint can't be used to
- * enumerate customers. Rate limiting (429) is the one deliberate exception —
- * that's abuse throttling, not an enumeration signal.
+ * There's no account-existence check here — every email gets a fresh code —
+ * so there's nothing to enumerate by reporting a real send failure. Only the
+ * generated code itself must stay out of the response and out of logs.
  */
 export async function POST(request: NextRequest) {
   let rawBody: unknown;
@@ -42,12 +41,17 @@ export async function POST(request: NextRequest) {
   try {
     const code = await createEmailVerificationCode(email);
     const { subject, html, text } = await renderVerifyEmail(code);
-    await sendEmail(email, subject, html, text);
+    const messageId = await sendEmail(email, subject, html, text);
+    console.info("[verify/send] OTP email accepted by provider", { email, messageId });
   } catch (err) {
-    console.error("[verify/send] failed to send OTP email", err);
-    // Still return the generic success shape — the attempt was recorded and
-    // the client should proceed to the "enter code" step either way; a
-    // transient Resend failure shouldn't leak as a distinguishable response.
+    console.error("[verify/send] failed to send OTP email", {
+      email,
+      error: err instanceof Error ? err.message : String(err),
+    });
+    return NextResponse.json(
+      { code: "EMAIL_SEND_FAILED", message: "Couldn't send the verification code. Please try again in a moment." },
+      { status: 502 }
+    );
   }
 
   return NextResponse.json({ ok: true, expiresInMinutes: OTP_CODE_TTL_MINUTES }, { status: 200 });
