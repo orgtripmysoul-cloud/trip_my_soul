@@ -86,13 +86,15 @@ See `.env.example`. Required: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`,
 ## 6. Known limitation: cron cadence
 
 Seat holds need sweeping and failed emails need retrying on a schedule.
-`vercel.json` wires `/api/internal/cron` as a Vercel Cron job — but **Vercel's
-Hobby plan only runs crons once a day**, which is far too infrequent for a
-15-minute hold. Options: upgrade to a paid Vercel plan (crons can run every
-minute), or point an external scheduler (e.g. cron-job.org) at
-`POST /api/internal/cron` with header `x-internal-secret: $CRON_SECRET` every
-1-2 minutes. Either way, this is a deploy-time configuration step, not
-something the code can resolve on its own.
+`vercel.json` wires `/api/internal/cron` as a Vercel Cron job, but **Vercel's
+Hobby plan only runs crons once a day**, so it's set to `0 3 * * *` (03:00
+daily) purely as a backstop — that's far too infrequent for a 15-minute hold.
+The real cadence has to come from an external scheduler (e.g. cron-job.org)
+hitting `POST /api/internal/cron` with header `x-internal-secret:
+$CRON_SECRET` every 1-2 minutes. (If you later move to a paid Vercel plan,
+you can drop the external scheduler and tighten `vercel.json`'s schedule
+instead — crons on paid plans can run every minute.) This is a deploy-time
+configuration step, not something the code can resolve on its own.
 
 ## 7. Setup
 
