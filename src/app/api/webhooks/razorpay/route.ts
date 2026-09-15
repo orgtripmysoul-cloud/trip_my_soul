@@ -3,6 +3,9 @@ import "server-only";
 import { verifyWebhookSignature } from "@/lib/server/razorpay";
 import { supabaseAdmin } from "@/lib/server/supabase";
 import { dispatchPendingNotifications } from "@/lib/server/notifications";
+import { sendEmail } from "@/lib/server/resend";
+import { renderBookingInternalNotificationEmail, type BookingConfirmationVars } from "@/lib/server/email-templates/bookingConfirmation";
+import { env } from "@/lib/server/env";
 
 export const dynamic = "force-dynamic";
 
@@ -109,7 +112,7 @@ async function processEvent(db: ReturnType<typeof supabaseAdmin>, body: Razorpay
   switch (body.event) {
     case "payment.captured": {
       if (!payment) throw new Error("payment.captured event missing payment entity");
-      const { error } = await db.rpc("capture_payment", {
+      const { data, error } = await db.rpc("capture_payment", {
         p_gateway_order_id: payment.order_id as string,
         p_gateway_payment_id: payment.id as string,
         p_method: (payment.method as string) ?? null,
@@ -120,6 +123,17 @@ async function processEvent(db: ReturnType<typeof supabaseAdmin>, body: Razorpay
         p_captured_at: new Date((body.created_at ?? Date.now() / 1000) * 1000).toISOString(),
       });
       if (error) throw new Error(error.message);
+
+      // Internal ops copy — best-effort, never affects the booking/payment
+      // state committed above or the webhook's 200 response. Skipped on a
+      // duplicate/retried delivery (no `vars` — capture_payment only builds
+      // them the first time a payment is actually captured).
+      const vars = (data as { vars?: BookingConfirmationVars } | null)?.vars;
+      if (vars) {
+        sendInternalBookingNotification(vars).catch((err) =>
+          console.error("[razorpay-webhook] internal notification email failed", err)
+        );
+      }
       return;
     }
     case "payment.authorized": {
@@ -154,6 +168,11 @@ async function processEvent(db: ReturnType<typeof supabaseAdmin>, body: Razorpay
       // inserted above), intentionally not processed further this phase.
       return;
   }
+}
+
+async function sendInternalBookingNotification(vars: BookingConfirmationVars): Promise<void> {
+  const { subject, html, text } = await renderBookingInternalNotificationEmail(vars);
+  await sendEmail(env.resendBookingsInbox, subject, html, text);
 }
 
 function pickMethodDetail(payment: Record<string, unknown>): Record<string, unknown> {

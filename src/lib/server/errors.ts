@@ -9,6 +9,8 @@ export const ERROR_CODES = [
   "NOT_FOUND",
   "INTERNAL_ERROR",
   "SERVICE_UNAVAILABLE",
+  "EMAIL_NOT_VERIFIED",
+  "RATE_LIMITED",
 ] as const;
 
 export type ErrorCode = (typeof ERROR_CODES)[number];
@@ -24,6 +26,8 @@ const STATUS_BY_CODE: Record<ErrorCode, number> = {
   NOT_FOUND: 404,
   INTERNAL_ERROR: 500,
   SERVICE_UNAVAILABLE: 503,
+  EMAIL_NOT_VERIFIED: 403,
+  RATE_LIMITED: 429,
 };
 
 /** Thrown by route handlers; never leaks stack traces or secrets to the client. */

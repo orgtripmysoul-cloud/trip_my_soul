@@ -8,6 +8,7 @@ import { claimIdempotencyKey, completeIdempotencyKey, releaseIdempotencyKey } fr
 import { AppError, errorResponseBody, statusForError, fromPostgresError } from "@/lib/server/errors";
 import { isValidInrAmount, isValidPax, toPaise } from "@/lib/money";
 import { env } from "@/lib/server/env";
+import { verifyVerificationToken } from "@/lib/server/verificationToken";
 import type { CreateBookingRequest, CreateBookingResponse } from "@/lib/types/booking";
 import { TREK_ADD_ON_KEYS } from "@/data/addOns";
 
@@ -33,6 +34,9 @@ function validate(body: Partial<CreateBookingRequest>): CreateBookingRequest {
   const customer = body.customer;
   if (!customer?.name?.trim() || !customer?.email || !isEmail(customer.email) || !customer?.phone?.trim()) {
     throw new AppError("VALIDATION_FAILED", "Please provide a valid name, email and phone number.");
+  }
+  if (!verifyVerificationToken(body.verificationToken, customer.email)) {
+    throw new AppError("EMAIL_NOT_VERIFIED", "Please verify your email before booking.");
   }
   if (!Array.isArray(body.travellers) || body.travellers.length !== body.pax) {
     throw new AppError("VALIDATION_FAILED", "Traveller details do not match the number of travellers.");
@@ -93,6 +97,8 @@ export async function POST(request: NextRequest) {
       p_seed_price: trek.price,
       p_seed_total_seats: DEFAULT_TOTAL_SEATS,
       p_duration_days: trek.durationDays,
+      p_region: trek.region,
+      p_difficulty: trek.difficulty,
     });
     if (depError) throw fromPostgresError(depError);
 

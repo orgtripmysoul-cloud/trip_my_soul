@@ -18,6 +18,8 @@ export interface CreateBookingRequest {
   customer: { name: string; email: string; phone: string };
   travellers: CreateBookingTraveller[];
   couponCode?: string;
+  /** Issued by POST /api/verify/confirm after the primary booker's email is OTP-verified. */
+  verificationToken: string;
 }
 
 export interface CreateBookingResponse {

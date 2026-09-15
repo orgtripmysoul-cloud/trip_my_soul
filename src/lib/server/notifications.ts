@@ -1,7 +1,7 @@
 import "server-only";
 import { supabaseAdmin } from "./supabase";
 import { sendEmail } from "./resend";
-import { renderBookingPaymentSuccessEmail, type BookingPaymentSuccessVars } from "./email-templates/bookingPaymentSuccess";
+import { renderBookingConfirmationEmail, type BookingConfirmationVars } from "./email-templates/bookingConfirmation";
 
 const MAX_ATTEMPTS = 8;
 /** Exponential backoff in minutes: 1, 2, 4, 8, 16, 32, 64, 128. */
@@ -43,8 +43,8 @@ export async function dispatchPendingNotifications(limit = 25): Promise<{ sent: 
       if (row.channel !== "email") {
         throw new Error(`Unsupported channel: ${row.channel}`);
       }
-      const { subject, html } = renderTemplate(row.template_code, row.vars);
-      const providerMessageId = await sendEmail(row.recipient, subject, html);
+      const { subject, html, text } = await renderTemplate(row.template_code, row.vars);
+      const providerMessageId = await sendEmail(row.recipient, subject, html, text);
       await db
         .from("notification_outbox")
         .update({ status: "sent", provider: "resend", provider_message_id: providerMessageId, sent_at: new Date().toISOString() })
@@ -69,10 +69,10 @@ export async function dispatchPendingNotifications(limit = 25): Promise<{ sent: 
   return { sent, failed };
 }
 
-function renderTemplate(templateCode: string, vars: Record<string, unknown>): { subject: string; html: string } {
+function renderTemplate(templateCode: string, vars: Record<string, unknown>): Promise<{ subject: string; html: string; text: string }> {
   switch (templateCode) {
     case "booking.payment_success":
-      return renderBookingPaymentSuccessEmail(vars as unknown as BookingPaymentSuccessVars);
+      return renderBookingConfirmationEmail(vars as unknown as BookingConfirmationVars);
     default:
       throw new Error(`Unknown notification template: ${templateCode}`);
   }

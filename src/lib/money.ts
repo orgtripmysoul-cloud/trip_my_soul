@@ -26,3 +26,8 @@ export function toPaise(inrAmount: number): number {
 export function isValidPax(pax: number): boolean {
   return Number.isInteger(pax) && pax >= 1 && pax <= 60;
 }
+
+/** ₹ with Indian digit grouping, e.g. formatInr(185000) === "₹1,85,000". */
+export function formatInr(amount: number): string {
+  return `₹${amount.toLocaleString("en-IN", { maximumFractionDigits: 0 })}`;
+}

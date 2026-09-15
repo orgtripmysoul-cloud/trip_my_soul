@@ -29,6 +29,8 @@ export const ERROR_MESSAGES: Record<string, string> = {
   NOT_FOUND: "We couldn't find that booking.",
   INTERNAL_ERROR: "Something went wrong. Please try again.",
   SERVICE_UNAVAILABLE: "This service is temporarily unavailable. Please try again shortly.",
+  EMAIL_NOT_VERIFIED: "Please verify your email before booking.",
+  RATE_LIMITED: "Too many requests. Please try again shortly.",
 };
 
 async function postJson<T>(url: string, body: unknown, idempotencyKey?: string): Promise<T> {
@@ -42,9 +44,42 @@ async function postJson<T>(url: string, body: unknown, idempotencyKey?: string):
   });
   const data = await res.json();
   if (!res.ok) {
+    if (res.status === 429) {
+      throw new ApiError(data.code ?? "RATE_LIMITED", data.message ?? "Too many requests. Please try again shortly.");
+    }
     throw new ApiError(data.code ?? "INTERNAL_ERROR", data.message ?? "Something went wrong.");
   }
   return data as T;
+}
+
+export interface SendOtpResponse {
+  ok: boolean;
+  expiresInMinutes: number;
+}
+
+export interface ConfirmOtpResponse {
+  verified: boolean;
+  token?: string;
+  message?: string;
+  expiresInMinutes?: number;
+}
+
+export function sendVerificationOtp(email: string): Promise<SendOtpResponse> {
+  return postJson("/api/verify/send", { email });
+}
+
+/** Does not throw on an incorrect/expired code (`verified: false` with `message`) — only on network/validation failure. */
+export async function confirmVerificationOtp(email: string, code: string): Promise<ConfirmOtpResponse> {
+  const res = await fetch("/api/verify/confirm", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, code }),
+  });
+  const data = await res.json();
+  if (res.status === 429) {
+    throw new ApiError("RATE_LIMITED", data.message ?? "Too many requests. Please try again shortly.");
+  }
+  return data as ConfirmOtpResponse;
 }
 
 export function newIdempotencyKey(): string {

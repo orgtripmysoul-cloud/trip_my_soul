@@ -9,6 +9,8 @@ export interface ResolvedCatalogTrek {
   /** Authoritative per-person price, in INR rupees. `null` = "on request" (not payable online yet). */
   price: number | null;
   durationDays: number;
+  region: string;
+  difficulty: string;
 }
 
 /**
@@ -30,5 +32,12 @@ export function resolveCatalogTrek(slug: string): ResolvedCatalogTrek {
 
   const days = typeof trek.days === "number" ? trek.days : parseInt(String(trek.days ?? "5"), 10) || 5;
 
-  return { slug: trek.slug, name: trek.name, price: trek.price, durationDays: days };
+  return {
+    slug: trek.slug,
+    name: trek.name,
+    price: trek.price,
+    durationDays: days,
+    region: trek.region,
+    difficulty: trek.difficulty,
+  };
 }

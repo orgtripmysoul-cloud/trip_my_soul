@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useRef, useCallback, Suspense } from "react";
+import React, { useState, useMemo, useRef, useCallback, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { TREKS, WILDLIFE, YATRAS } from "@/data/db";
@@ -14,11 +14,13 @@ import SeatHoldCountdown from "@/components/checkout/SeatHoldCountdown";
 import {
   ApiError,
   ERROR_MESSAGES,
+  confirmVerificationOtp,
   createBooking,
   createPaymentIntent,
   loadRazorpayScript,
   lookupBooking,
   newIdempotencyKey,
+  sendVerificationOtp,
   verifyPayment,
 } from "@/lib/client/checkoutApi";
 import type { BookingLookupResponse, CreateBookingRequest, CreateBookingResponse } from "@/lib/types/booking";
@@ -60,6 +62,67 @@ function CheckoutContent() {
   const [primaryName, setPrimaryName] = useState("");
   const [primaryEmail, setPrimaryEmail] = useState("");
   const [primaryPhone, setPrimaryPhone] = useState("");
+
+  // Email OTP verification — required before a booking can be submitted.
+  // `verifiedEmail`/`verificationToken` only count as valid for the exact
+  // email they were issued for, so editing the email after verifying
+  // requires re-verifying (see `isEmailVerified` below).
+  type OtpStatus = "idle" | "sending" | "sent" | "verifying" | "error";
+  const [otpStatus, setOtpStatus] = useState<OtpStatus>("idle");
+  const [otpError, setOtpError] = useState<string | null>(null);
+  const [otpCode, setOtpCode] = useState("");
+  const [verifiedEmail, setVerifiedEmail] = useState<string | null>(null);
+  const [verificationToken, setVerificationToken] = useState<string | null>(null);
+  const [resendCooldown, setResendCooldown] = useState(0);
+
+  const normalizedPrimaryEmail = primaryEmail.trim().toLowerCase();
+  const isEmailVerified = verificationToken !== null && verifiedEmail === normalizedPrimaryEmail;
+
+  useEffect(() => {
+    if (resendCooldown <= 0) return;
+    const timer = setInterval(() => setResendCooldown((s) => Math.max(0, s - 1)), 1000);
+    return () => clearInterval(timer);
+  }, [resendCooldown]);
+
+  const handleSendOtp = async () => {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedPrimaryEmail)) {
+      setOtpError("Enter a valid email address first.");
+      return;
+    }
+    setOtpError(null);
+    setOtpStatus("sending");
+    try {
+      await sendVerificationOtp(normalizedPrimaryEmail);
+      setOtpStatus("sent");
+      setResendCooldown(60);
+    } catch (err) {
+      setOtpStatus("error");
+      setOtpError(err instanceof ApiError ? err.message : "Could not send code. Please try again.");
+    }
+  };
+
+  const handleVerifyOtp = async () => {
+    if (!/^\d{6}$/.test(otpCode.trim())) {
+      setOtpError("Enter the 6-digit code.");
+      return;
+    }
+    setOtpError(null);
+    setOtpStatus("verifying");
+    try {
+      const result = await confirmVerificationOtp(normalizedPrimaryEmail, otpCode.trim());
+      if (result.verified && result.token) {
+        setVerificationToken(result.token);
+        setVerifiedEmail(normalizedPrimaryEmail);
+        setOtpCode("");
+      } else {
+        setOtpStatus("sent");
+        setOtpError(result.message ?? "Incorrect code.");
+      }
+    } catch (err) {
+      setOtpStatus("sent");
+      setOtpError(err instanceof ApiError ? err.message : "Could not verify code. Please try again.");
+    }
+  };
 
   // Co-participants state
   const [coParticipantEmail, setCoParticipantEmail] = useState("");
@@ -274,6 +337,11 @@ function CheckoutContent() {
       setFlowState("failure");
       return;
     }
+    if (!isEmailVerified || !verificationToken) {
+      setFlowError("Please verify your email before booking.");
+      setFlowState("failure");
+      return;
+    }
 
     setFlowError(null);
 
@@ -314,6 +382,7 @@ function CheckoutContent() {
         addOns: (Object.keys(p.addOns) as TrekAddOnKey[]).filter((key) => p.addOns[key]),
       })),
       couponCode: appliedCouponCode || undefined,
+      verificationToken,
     };
 
     try {
@@ -461,6 +530,68 @@ function CheckoutContent() {
               <p className="text-[10px] text-gray-400">
                 Your booking confirmation and payment receipt are sent to this email.
               </p>
+
+              {/* Email OTP verification — gates the Pay Now button below */}
+              <div className="pt-1">
+                {isEmailVerified ? (
+                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-700">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Email verified</span>
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    {otpStatus === "idle" || otpStatus === "sending" || otpStatus === "error" ? (
+                      <button
+                        type="button"
+                        onClick={handleSendOtp}
+                        disabled={otpStatus === "sending" || !normalizedPrimaryEmail}
+                        className="px-4 py-2.5 min-h-[44px] inline-flex items-center justify-center gap-1.5 rounded-2xl border border-brand-forest/30 text-brand-forest font-bold text-xs hover:bg-brand-forest/5 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <ShieldCheck className="w-3.5 h-3.5" />
+                        {otpStatus === "sending" ? "Sending code..." : "Verify email to continue"}
+                      </button>
+                    ) : (
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <input
+                          type="text"
+                          inputMode="numeric"
+                          maxLength={6}
+                          placeholder="6-digit code"
+                          value={otpCode}
+                          onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                          className="p-3 min-h-[44px] rounded-2xl border border-gray-200 text-base lg:text-xs w-full sm:w-40 tracking-widest text-center focus:outline-none focus:border-brand-dusk"
+                          aria-label="Verification code"
+                        />
+                        <button
+                          type="button"
+                          onClick={handleVerifyOtp}
+                          disabled={otpStatus === "verifying" || otpCode.length !== 6}
+                          className="px-5 py-3 min-h-[44px] inline-flex items-center justify-center bg-brand-forest hover:bg-brand-forest/90 text-white font-bold text-xs rounded-2xl transition disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
+                        >
+                          {otpStatus === "verifying" ? "Verifying..." : "Verify Code"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleSendOtp}
+                          disabled={resendCooldown > 0}
+                          className="px-3 py-2.5 min-h-[44px] text-[11px] font-bold text-gray-500 hover:text-brand-forest disabled:opacity-50 disabled:cursor-not-allowed shrink-0 whitespace-nowrap"
+                        >
+                          {resendCooldown > 0 ? `Resend in ${resendCooldown}s` : "Resend code"}
+                        </button>
+                      </div>
+                    )}
+                    {otpStatus === "sent" && !otpError && (
+                      <p className="text-[10px] text-gray-400">Code sent to {normalizedPrimaryEmail}. It expires in 10 minutes.</p>
+                    )}
+                    {otpError && (
+                      <p role="alert" className="flex items-center gap-1.5 text-[11px] font-bold text-red-600">
+                        <XCircle className="w-3 h-3 shrink-0" />
+                        {otpError}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* 1. Add Co-Participants Box */}
@@ -692,10 +823,12 @@ function CheckoutContent() {
               ) : (
                 <button
                   onClick={handlePayNow}
-                  disabled={!acceptedTerms || flowState === "creating_booking" || flowState === "awaiting_payment" || flowState === "processing"}
+                  disabled={
+                    !acceptedTerms || !isEmailVerified || flowState === "creating_booking" || flowState === "awaiting_payment" || flowState === "processing"
+                  }
                   aria-live="polite"
                   className={`w-full py-4 rounded-2xl font-extrabold text-sm uppercase tracking-wider text-white transition shadow-lg ${
-                    acceptedTerms && flowState !== "creating_booking" && flowState !== "awaiting_payment" && flowState !== "processing"
+                    acceptedTerms && isEmailVerified && flowState !== "creating_booking" && flowState !== "awaiting_payment" && flowState !== "processing"
                       ? "bg-[#E84855] hover:bg-[#d63b48] cursor-pointer"
                       : "bg-gray-300 cursor-not-allowed"
                   }`}
@@ -710,6 +843,12 @@ function CheckoutContent() {
                     ? `Retry Payment (${displayPrice(grossTotalINR)})`
                     : `Pay Now (${displayPrice(grossTotalINR)})`}
                 </button>
+              )}
+
+              {!isEmailVerified && flowState === "form" && (
+                <p className="text-center text-[11px] font-semibold text-gray-400">
+                  Verify your email above to enable payment.
+                </p>
               )}
 
               <div className="flex items-center justify-center gap-1.5 text-[10px] text-gray-400 text-center">

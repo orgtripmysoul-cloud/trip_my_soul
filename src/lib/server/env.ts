@@ -34,6 +34,12 @@ export const env = {
   get resendFromEmail() {
     return required("RESEND_FROM_EMAIL");
   },
+  get resendBookingsInbox() {
+    return required("RESEND_BOOKINGS_INBOX");
+  },
+  get emailVerificationSecret() {
+    return required("EMAIL_VERIFICATION_SECRET");
+  },
   /** Also the exact name Vercel Cron looks for to auto-add the Authorization header. */
   get internalCronSecret() {
     return required("CRON_SECRET");
