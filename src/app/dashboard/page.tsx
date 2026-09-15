@@ -6,10 +6,12 @@ import {
   Calendar, ShieldCheck, MapPin, User, LogOut, CheckCircle, FileText, Upload,
   Download, ArrowRight, Star, Clock, AlertTriangle, Compass, XCircle, X, AlertCircle, RotateCcw
 } from "lucide-react";
+import { supabaseBrowser } from "@/lib/supabase/client";
 
 export default function DashboardPage() {
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
   const [activeTab, setActiveTab] = useState<"bookings" | "documents" | "history">("bookings");
   const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
   const [feedbackSuccess, setFeedbackSuccess] = useState(false);
@@ -26,17 +28,31 @@ export default function DashboardPage() {
   // Fix server-client mismatch
   useEffect(() => {
     setIsClient(true);
-    const loggedIn = localStorage.getItem("userLoggedIn");
-    if (!loggedIn) {
-      router.push("/login");
-    }
+    const supabase = supabaseBrowser();
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
+        router.push("/login");
+        return;
+      }
+      setUserEmail(session.user.email ?? "");
+    });
+
+    const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) {
+        router.push("/login");
+        return;
+      }
+      setUserEmail(session.user.email ?? "");
+    });
+
+    return () => subscription.subscription.unsubscribe();
   }, [router]);
 
   if (!isClient) return null;
 
-  const handleLogout = () => {
-    localStorage.removeItem("userLoggedIn");
-    localStorage.removeItem("userEmail");
+  const handleLogout = async () => {
+    await supabaseBrowser().auth.signOut();
     router.push("/login");
   };
 
@@ -75,7 +91,7 @@ export default function DashboardPage() {
               Premium Trekker Club
             </span>
             <h1 className="text-2xl md:text-3xl font-extrabold font-serif">Welcome Back, Rahul!</h1>
-            <p className="text-xs text-sky-200">Email: {typeof window !== "undefined" ? localStorage.getItem("userEmail") : "trekker@tripmysoul.com"}</p>
+            <p className="text-xs text-sky-200">Email: {userEmail}</p>
           </div>
 
           <button

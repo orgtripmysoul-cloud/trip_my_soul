@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LogIn, Eye, EyeOff, ShieldAlert, KeyRound, Mail } from "lucide-react";
+import { supabaseBrowser } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -12,29 +14,23 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
 
-    // Mock Authentication
-    setTimeout(() => {
-      if (email === "trekker@tripmysoul.com" && password === "password123") {
-        // Mock successful login
-        localStorage.setItem("userLoggedIn", "true");
-        localStorage.setItem("userEmail", email);
-        router.push("/dashboard");
-      } else {
-        setError("Invalid email or password. Use mock credentials shown below.");
-        setIsLoading(false);
-      }
-    }, 800);
-  };
+    const { error: signInError } = await supabaseBrowser().auth.signInWithPassword({
+      email,
+      password,
+    });
 
-  const handleFillMockCredentials = () => {
-    setEmail("trekker@tripmysoul.com");
-    setPassword("password123");
-    setError("");
+    if (signInError) {
+      setError(signInError.message);
+      setIsLoading(false);
+      return;
+    }
+
+    router.push("/dashboard");
   };
 
   return (
@@ -107,22 +103,12 @@ export default function LoginPage() {
           </button>
         </form>
 
-        {/* Mock Credentials Sandbox callout */}
-        <div className="p-4 bg-brand-warm-bg border border-gray-150 rounded-2xl space-y-2 text-xs">
-          <div className="flex justify-between items-center">
-            <span className="font-bold text-brand-forest">Demo/Test Credentials:</span>
-            <button
-              onClick={handleFillMockCredentials}
-              className="text-[10px] text-brand-dusk-orange font-bold uppercase tracking-wider inline-flex items-center min-h-[44px] px-1 hover:underline"
-            >
-              Auto-Fill
-            </button>
-          </div>
-          <div className="space-y-1 text-gray-500 font-medium font-mono text-[11px]">
-            <p>Email: <code className="bg-white px-1.5 py-0.5 rounded border border-gray-200 font-bold">trekker@tripmysoul.com</code></p>
-            <p>Password: <code className="bg-white px-1.5 py-0.5 rounded border border-gray-200 font-bold">password123</code></p>
-          </div>
-        </div>
+        <p className="text-center text-xs text-gray-400">
+          New to TripMySoul?{" "}
+          <Link href="/signup" className="text-brand-forest font-bold hover:underline">
+            Create an account
+          </Link>
+        </p>
       </div>
     </div>
   );
