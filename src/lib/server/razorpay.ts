@@ -28,7 +28,8 @@ export async function createRazorpayOrder(params: CreateOrderParams) {
       receipt: params.receipt,
       notes: params.notes,
     });
-  } catch {
+  } catch (err) {
+    console.error("Razorpay createOrder failed:", err);
     throw new AppError("GATEWAY_UNAVAILABLE", "Payment service is temporarily unavailable. Please try again.");
   }
 }
