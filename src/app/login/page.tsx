@@ -14,12 +14,17 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const supabase = supabaseBrowser();
+  const isConfigured = supabase !== null;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!supabase) return;
+
     setError("");
     setIsLoading(true);
 
-    const { error: signInError } = await supabaseBrowser().auth.signInWithPassword({
+    const { error: signInError } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -45,6 +50,14 @@ export default function LoginPage() {
           <p className="text-xs text-gray-400">Log in to manage your treks, upload medical sheets, and download invoices.</p>
         </div>
 
+        {/* Config Missing Alert */}
+        {!isConfigured && (
+          <div className="p-3 bg-amber-500/10 border border-amber-500/20 text-amber-700 rounded-2xl flex items-start gap-2 text-xs font-semibold">
+            <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5" />
+            <span>Authentication is not configured. This deployment is missing its Supabase environment variables — please contact the site admin.</span>
+          </div>
+        )}
+
         {/* Error Alert */}
         {error && (
           <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-600 rounded-2xl flex items-start gap-2 text-xs font-semibold">
@@ -54,6 +67,7 @@ export default function LoginPage() {
         )}
 
         {/* Login Form */}
+        <fieldset disabled={!isConfigured} className="disabled:opacity-60">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1">
             <label className="text-[10px] uppercase tracking-wider font-extrabold text-gray-400 pl-1">Email Address</label>
@@ -95,13 +109,14 @@ export default function LoginPage() {
           {/* Submit */}
           <button
             type="submit"
-            disabled={isLoading}
+            disabled={isLoading || !isConfigured}
             className="w-full bg-brand-forest hover:bg-brand-forest-light text-white py-3.5 rounded-full font-bold shadow-lg transition flex items-center justify-center gap-2 hover:-translate-y-0.5 transform duration-200 disabled:opacity-50"
           >
             <LogIn className="w-4 h-4" />
             <span>{isLoading ? "Authenticating..." : "Login to Portal"}</span>
           </button>
         </form>
+        </fieldset>
 
         <p className="text-center text-xs text-gray-400">
           New to TripMySoul?{" "}

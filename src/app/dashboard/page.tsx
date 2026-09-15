@@ -29,6 +29,12 @@ export default function DashboardPage() {
   useEffect(() => {
     setIsClient(true);
     const supabase = supabaseBrowser();
+    if (!supabase) {
+      // Auth isn't configured on this deployment — send to /login, which
+      // renders the "not configured" message instead of a blank dashboard.
+      router.push("/login");
+      return;
+    }
 
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!session) {
@@ -52,7 +58,7 @@ export default function DashboardPage() {
   if (!isClient) return null;
 
   const handleLogout = async () => {
-    await supabaseBrowser().auth.signOut();
+    await supabaseBrowser()?.auth.signOut();
     router.push("/login");
   };
 
