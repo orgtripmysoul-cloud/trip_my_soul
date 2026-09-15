@@ -37,3 +37,5 @@ export const TREK_ADD_ONS: TrekAddOn[] = [
     price: 3400,
   },
 ];
+
+export const TREK_ADD_ON_KEYS: TrekAddOnKey[] = TREK_ADD_ONS.map((a) => a.key);

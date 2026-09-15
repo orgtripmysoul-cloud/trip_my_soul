@@ -1,15 +1,37 @@
 "use client";
 
-import React, { useState, useMemo, Suspense } from "react";
+import React, { useState, useMemo, useRef, useCallback, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { TREKS, WILDLIFE, YATRAS } from "@/data/db";
 import { ALL_TRIPS, tripToTrek } from "@/data/trips";
-import { TREK_ADD_ONS } from "@/data/addOns";
+import { TREK_ADD_ONS, type TrekAddOnKey } from "@/data/addOns";
 import {
-  Calendar, Check, X, Shield, Plus, Info, ArrowLeft, ArrowRight,
-  DollarSign, CheckCircle2, User, HelpCircle, Lock, ShieldCheck
+  Calendar, Info, ArrowLeft,
+  CheckCircle2, XCircle, User, HelpCircle, Lock, ShieldCheck, Phone, Mail, AlertTriangle, Clock
 } from "lucide-react";
+import SeatHoldCountdown from "@/components/checkout/SeatHoldCountdown";
+import {
+  ApiError,
+  ERROR_MESSAGES,
+  createBooking,
+  createPaymentIntent,
+  loadRazorpayScript,
+  lookupBooking,
+  newIdempotencyKey,
+  verifyPayment,
+} from "@/lib/client/checkoutApi";
+import type { BookingLookupResponse, CreateBookingRequest, CreateBookingResponse } from "@/lib/types/booking";
+
+type FlowState =
+  | "form"
+  | "creating_booking"
+  | "awaiting_payment"
+  | "processing"
+  | "waiting_confirmation"
+  | "success"
+  | "failure"
+  | "expired";
 
 function CheckoutContent() {
   const searchParams = useSearchParams();
@@ -33,33 +55,44 @@ function CheckoutContent() {
   const [currency, setCurrency] = useState<"INR" | "USD">("INR");
   const conversionRate = 0.012; // 1 INR = 0.012 USD approx
 
+  // Primary booker details — collected here, sent to the server as the
+  // authoritative customer record. Phone is required for the booking API.
+  const [primaryName, setPrimaryName] = useState("");
+  const [primaryEmail, setPrimaryEmail] = useState("");
+  const [primaryPhone, setPrimaryPhone] = useState("");
+
   // Co-participants state
   const [coParticipantEmail, setCoParticipantEmail] = useState("");
   const [participants, setParticipants] = useState([
     {
       id: 1,
-      name: "Srishti Rana",
-      email: "srishtirana28@gmail.com",
+      name: "",
+      email: "",
       isPrimary: true,
       addOns: {
         insurance: true,
         offload: false,
         transport: false
-      }
+      } as Record<TrekAddOnKey, boolean>
     }
   ]);
 
   // Coupon / Voucher state
   const [couponCode, setCouponCode] = useState("");
   const [discountPercent, setDiscountPercent] = useState(0);
+  const [appliedCouponCode, setAppliedCouponCode] = useState("");
   const [couponAppliedMsg, setCouponAppliedMsg] = useState("");
 
   // T&C Acceptance
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
-  // Payment Processing Modal
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  // Real payment/booking flow state (server is authoritative for all of it).
+  const [flowState, setFlowState] = useState<FlowState>("form");
+  const [flowError, setFlowError] = useState<string | null>(null);
+  const [booking, setBooking] = useState<CreateBookingResponse | null>(null);
+  const [lookupResult, setLookupResult] = useState<BookingLookupResponse | null>(null);
+  const bookingIdempotencyKey = useRef<string | null>(null);
+  const pollTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Price calculations
   const basePricePerPerson = priceParam ?? trek?.price ?? 0;
@@ -133,27 +166,173 @@ function CheckoutContent() {
 
   const handleApplyCoupon = (e: React.FormEvent) => {
     e.preventDefault();
-    if (couponCode.trim().toUpperCase() === "TRIPMYSOUL10") {
+    const code = couponCode.trim().toUpperCase();
+    if (code === "TRIPMYSOUL10") {
       setDiscountPercent(10);
+      setAppliedCouponCode(code);
       setCouponAppliedMsg("10% Special Discount Applied!");
-    } else if (couponCode.trim().toUpperCase() === "HIMALAYA5") {
+    } else if (code === "HIMALAYA5") {
       setDiscountPercent(5);
+      setAppliedCouponCode(code);
       setCouponAppliedMsg("5% Special Trek Discount Applied!");
     } else {
       alert("Invalid Promo Code. Try 'TRIPMYSOUL10' for 10% Off!");
     }
   };
 
-  const handlePayNow = () => {
+  const clearPollTimer = useCallback(() => {
+    if (pollTimer.current) {
+      clearTimeout(pollTimer.current);
+      pollTimer.current = null;
+    }
+  }, []);
+
+  const pollBookingStatus = useCallback(async (bookingNo: string, email: string) => {
+    const MAX_POLL_MS = 60_000;
+    const startedAt = Date.now();
+
+    while (Date.now() - startedAt < MAX_POLL_MS) {
+      try {
+        const result = await lookupBooking(bookingNo, email);
+        setLookupResult(result);
+        if (result.status === "confirmed" || result.status === "partially_paid") {
+          setFlowState("success");
+          return;
+        }
+      } catch {
+        // transient lookup failure — keep polling until the timeout
+      }
+      await new Promise<void>((resolve) => {
+        pollTimer.current = setTimeout(resolve, 2500);
+      });
+    }
+
+    setFlowState("waiting_confirmation");
+  }, []);
+
+  const openRazorpayCheckout = useCallback(
+    async (order: { razorpayKeyId: string; razorpayOrderId: string; totalAmount: number; currency: string; bookingNo: string }) => {
+      try {
+        await loadRazorpayScript();
+      } catch {
+        setFlowState("failure");
+        setFlowError(ERROR_MESSAGES.GATEWAY_UNAVAILABLE);
+        return;
+      }
+
+      if (!window.Razorpay) {
+        setFlowState("failure");
+        setFlowError(ERROR_MESSAGES.GATEWAY_UNAVAILABLE);
+        return;
+      }
+
+      setFlowState("awaiting_payment");
+      const rzp = new window.Razorpay({
+        key: order.razorpayKeyId,
+        amount: Math.round(order.totalAmount * 100),
+        currency: order.currency,
+        name: "TripMySoul",
+        description: `${trek?.name ?? "TripMySoul Booking"} — ${batchParam}`,
+        order_id: order.razorpayOrderId,
+        prefill: { name: primaryName, email: primaryEmail, contact: primaryPhone },
+        theme: { color: "#0B2545" },
+        handler: (response) => {
+          // Advisory only — the booking is confirmed by the server webhook,
+          // never by this callback. See PAYMENT_FLOW notes in the API routes.
+          verifyPayment(response).catch(() => {});
+          setFlowState("processing");
+          void pollBookingStatus(order.bookingNo, primaryEmail);
+        },
+        modal: {
+          ondismiss: () => {
+            setFlowState("form");
+          },
+        },
+      });
+      rzp.on("payment.failed", (resp) => {
+        setFlowState("failure");
+        setFlowError(resp.error?.description || "Payment failed. Please try again.");
+      });
+      rzp.open();
+    },
+    [primaryName, primaryEmail, primaryPhone, trek?.name, batchParam, pollBookingStatus]
+  );
+
+  const handleHoldExpired = useCallback(() => {
+    clearPollTimer();
+    setFlowState("expired");
+  }, [clearPollTimer]);
+
+  const handlePayNow = async () => {
+    if (!trek) return;
     if (!acceptedTerms) {
       alert("Please accept the Terms and Conditions to proceed with booking.");
       return;
     }
-    setIsProcessing(true);
-    setTimeout(() => {
-      setIsProcessing(false);
-      setPaymentSuccess(true);
-    }, 2000);
+    if (!primaryName.trim() || !primaryEmail.trim() || !primaryPhone.trim()) {
+      setFlowError("Please fill in your name, email and phone number.");
+      setFlowState("failure");
+      return;
+    }
+
+    setFlowError(null);
+
+    // Seat hold from an earlier attempt is still live (e.g. the Razorpay
+    // modal was dismissed) — reuse the same booking rather than creating a
+    // second one.
+    if (booking && flowState !== "expired") {
+      setFlowState("creating_booking");
+      try {
+        const intent = await createPaymentIntent(booking.bookingNo, newIdempotencyKey());
+        setBooking((prev) => (prev ? { ...prev, ...intent } : prev));
+        await openRazorpayCheckout(intent);
+      } catch (err) {
+        if (err instanceof ApiError && err.code === "HOLD_EXPIRED") {
+          setFlowState("expired");
+        } else {
+          setFlowState("failure");
+          setFlowError(err instanceof ApiError ? ERROR_MESSAGES[err.code] ?? err.message : "Something went wrong.");
+        }
+      }
+      return;
+    }
+
+    setFlowState("creating_booking");
+    if (!bookingIdempotencyKey.current) {
+      bookingIdempotencyKey.current = newIdempotencyKey();
+    }
+
+    const requestBody: CreateBookingRequest = {
+      trekSlug: trek.slug,
+      batchLabel: batchParam,
+      pax: participants.length,
+      customer: { name: primaryName.trim(), email: primaryEmail.trim().toLowerCase(), phone: primaryPhone.trim() },
+      travellers: participants.map((p) => ({
+        fullName: p.isPrimary ? primaryName.trim() : p.name,
+        email: p.isPrimary ? primaryEmail.trim().toLowerCase() : p.email,
+        isPrimary: p.isPrimary,
+        addOns: (Object.keys(p.addOns) as TrekAddOnKey[]).filter((key) => p.addOns[key]),
+      })),
+      couponCode: appliedCouponCode || undefined,
+    };
+
+    try {
+      const created = await createBooking(requestBody, bookingIdempotencyKey.current);
+      setBooking(created);
+      await openRazorpayCheckout(created);
+    } catch (err) {
+      bookingIdempotencyKey.current = null;
+      setFlowState("failure");
+      setFlowError(err instanceof ApiError ? ERROR_MESSAGES[err.code] ?? err.message : "Something went wrong.");
+    }
+  };
+
+  const handleRetryAfterExpiry = () => {
+    clearPollTimer();
+    bookingIdempotencyKey.current = null;
+    setBooking(null);
+    setLookupResult(null);
+    setFlowState("form");
   };
 
   if (!trek) {
@@ -240,7 +419,50 @@ function CheckoutContent() {
 
           {/* Left Column: Participant Details & Add-Ons */}
           <div className="lg:col-span-2 space-y-6 order-last lg:order-first">
-            
+
+            {/* 0. Primary Booker Details */}
+            <div className="bg-white border border-gray-150 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
+              <div className="flex items-center gap-2">
+                <User className="w-5 h-5 text-brand-dusk-orange" />
+                <h2 className="text-lg font-bold text-brand-dark-text">Your Details</h2>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  type="text"
+                  placeholder="Full name"
+                  value={primaryName}
+                  onChange={(e) => setPrimaryName(e.target.value)}
+                  className="p-3 min-h-[44px] rounded-2xl border border-gray-200 text-base lg:text-xs focus:outline-none focus:border-brand-dusk sm:col-span-2"
+                  aria-label="Your full name"
+                />
+                <div className="relative">
+                  <Mail className="w-3.5 h-3.5 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    value={primaryEmail}
+                    onChange={(e) => setPrimaryEmail(e.target.value)}
+                    className="p-3 pl-9 min-h-[44px] rounded-2xl border border-gray-200 text-base lg:text-xs w-full focus:outline-none focus:border-brand-dusk"
+                    aria-label="Your email address"
+                  />
+                </div>
+                <div className="relative">
+                  <Phone className="w-3.5 h-3.5 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="tel"
+                    placeholder="Phone number"
+                    value={primaryPhone}
+                    onChange={(e) => setPrimaryPhone(e.target.value)}
+                    className="p-3 pl-9 min-h-[44px] rounded-2xl border border-gray-200 text-base lg:text-xs w-full focus:outline-none focus:border-brand-dusk"
+                    aria-label="Your phone number"
+                  />
+                </div>
+              </div>
+              <p className="text-[10px] text-gray-400">
+                Your booking confirmation and payment receipt are sent to this email.
+              </p>
+            </div>
+
             {/* 1. Add Co-Participants Box */}
             <div className="bg-white border border-gray-150 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
               <div className="flex items-center gap-2">
@@ -271,7 +493,7 @@ function CheckoutContent() {
                 Participant Details ({participants.length} Person{participants.length > 1 ? "s" : ""})
               </span>
 
-              {participants.map((p, idx) => (
+              {participants.map((p) => (
                 <div
                   key={p.id}
                   className="bg-white border-2 border-brand-forest/20 rounded-3xl p-6 shadow-sm space-y-4 relative"
@@ -284,14 +506,18 @@ function CheckoutContent() {
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <h3 className="font-extrabold text-sm text-brand-dark-text">{p.name}</h3>
+                          <h3 className="font-extrabold text-sm text-brand-dark-text">
+                            {p.isPrimary ? primaryName || "You" : p.name}
+                          </h3>
                           {p.isPrimary && (
                             <span className="text-[9px] bg-brand-forest/10 text-brand-forest font-extrabold px-2 py-0.5 rounded-full uppercase">
                               Primary Booker
                             </span>
                           )}
                         </div>
-                        <span className="text-xs text-gray-400 block">{p.email}</span>
+                        <span className="text-xs text-gray-400 block">
+                          {p.isPrimary ? primaryEmail || "Add your email above" : p.email}
+                        </span>
                       </div>
                     </div>
 
@@ -436,22 +662,59 @@ function CheckoutContent() {
                 </label>
               </div>
 
-              {/* Pay Now Button */}
-              <button
-                onClick={handlePayNow}
-                disabled={!acceptedTerms}
-                className={`w-full py-4 rounded-2xl font-extrabold text-sm uppercase tracking-wider text-white transition shadow-lg ${
-                  acceptedTerms
-                    ? "bg-[#E84855] hover:bg-[#d63b48] cursor-pointer"
-                    : "bg-gray-300 cursor-not-allowed"
-                }`}
-              >
-                Pay Now ({displayPrice(grossTotalINR)})
-              </button>
+              {/* Seat hold countdown, once a booking + hold exist */}
+              {booking && (flowState === "form" || flowState === "awaiting_payment") && (
+                <SeatHoldCountdown expiresAt={booking.holdExpiresAt} onExpire={handleHoldExpired} />
+              )}
 
-              <div className="text-[10px] text-gray-400 text-center space-y-1">
-                <p>➔ Current Page Instructions</p>
-                <p>➔ After clicking &quot;Pay Now&quot;: Outcome?</p>
+              {flowState === "expired" && (
+                <div role="alert" className="flex items-start gap-2 p-3 rounded-xl bg-red-50 border border-red-150 text-xs text-red-700 font-semibold">
+                  <AlertTriangle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                  <span>Your seat reservation expired. Please check availability again to continue.</span>
+                </div>
+              )}
+
+              {flowError && (flowState === "failure" || flowState === "form") && (
+                <div role="alert" aria-live="assertive" className="flex items-start gap-2 p-3 rounded-xl bg-red-50 border border-red-150 text-xs text-red-700 font-semibold">
+                  <XCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                  <span>{flowError}</span>
+                </div>
+              )}
+
+              {/* Pay Now Button */}
+              {flowState === "expired" ? (
+                <button
+                  onClick={handleRetryAfterExpiry}
+                  className="w-full py-4 rounded-2xl font-extrabold text-sm uppercase tracking-wider text-white transition shadow-lg bg-[#0B2545] hover:bg-brand-dusk-orange"
+                >
+                  Check Availability Again
+                </button>
+              ) : (
+                <button
+                  onClick={handlePayNow}
+                  disabled={!acceptedTerms || flowState === "creating_booking" || flowState === "awaiting_payment" || flowState === "processing"}
+                  aria-live="polite"
+                  className={`w-full py-4 rounded-2xl font-extrabold text-sm uppercase tracking-wider text-white transition shadow-lg ${
+                    acceptedTerms && flowState !== "creating_booking" && flowState !== "awaiting_payment" && flowState !== "processing"
+                      ? "bg-[#E84855] hover:bg-[#d63b48] cursor-pointer"
+                      : "bg-gray-300 cursor-not-allowed"
+                  }`}
+                >
+                  {flowState === "creating_booking"
+                    ? "Preparing secure payment..."
+                    : flowState === "awaiting_payment"
+                    ? "Waiting for payment..."
+                    : flowState === "processing"
+                    ? "Confirming your booking..."
+                    : booking
+                    ? `Retry Payment (${displayPrice(grossTotalINR)})`
+                    : `Pay Now (${displayPrice(grossTotalINR)})`}
+                </button>
+              )}
+
+              <div className="flex items-center justify-center gap-1.5 text-[10px] text-gray-400 text-center">
+                <ShieldCheck className="w-3 h-3 text-emerald-600 shrink-0" />
+                <span>Payments are processed securely by Razorpay. We never see your card details.</span>
               </div>
             </div>
           </div>
@@ -460,20 +723,67 @@ function CheckoutContent() {
 
       </div>
 
-      {/* Processing Payment Overlay */}
-      {isProcessing && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
+      {/* Processing / Confirming Overlay */}
+      {(flowState === "creating_booking" || flowState === "processing") && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4" role="status" aria-live="polite">
           <div className="bg-white rounded-3xl p-8 max-w-sm w-full text-center space-y-4 shadow-2xl">
             <div className="w-12 h-12 border-4 border-[#E84855] border-t-transparent rounded-full animate-spin mx-auto" />
-            <h3 className="text-lg font-bold text-brand-dark-text">Processing Payment...</h3>
-            <p className="text-xs text-gray-500">Connecting to secure banking gateway. Please do not refresh.</p>
+            <h3 className="text-lg font-bold text-brand-dark-text">
+              {flowState === "creating_booking" ? "Preparing secure payment..." : "Confirming your booking..."}
+            </h3>
+            <p className="text-xs text-gray-500">
+              {flowState === "creating_booking"
+                ? "Reserving your seats and connecting to the secure payment gateway."
+                : "Your payment was received. We are confirming your booking — please don't close this tab."}
+            </p>
           </div>
         </div>
       )}
 
-      {/* Payment Success Modal */}
-      {paymentSuccess && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
+      {/* Still waiting on the webhook past the poll window */}
+      {flowState === "waiting_confirmation" && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4" role="status" aria-live="polite">
+          <div className="bg-white rounded-3xl p-8 max-w-md w-full text-center space-y-5 shadow-2xl">
+            <div className="w-16 h-16 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mx-auto shadow-md">
+              <Clock className="w-9 h-9" />
+            </div>
+            <h3 className="text-xl font-extrabold text-brand-dark-text font-serif">Confirming your booking</h3>
+            <p className="text-xs text-gray-500">
+              Your payment was received. We are still confirming your booking — this can take a minute. Booking
+              reference: <strong className="font-mono">{booking?.bookingNo}</strong>.
+            </p>
+            <button
+              onClick={() => booking && pollBookingStatus(booking.bookingNo, primaryEmail)}
+              className="w-full py-3 rounded-full border border-gray-200 text-brand-dark-text font-bold text-xs hover:bg-gray-50 transition"
+            >
+              Refresh Status
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Payment Failed */}
+      {flowState === "failure" && flowError && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4" role="alertdialog" aria-live="assertive">
+          <div className="bg-white rounded-3xl p-8 max-w-md w-full text-center space-y-5 shadow-2xl">
+            <div className="w-16 h-16 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto shadow-md">
+              <XCircle className="w-9 h-9" />
+            </div>
+            <h3 className="text-xl font-extrabold text-brand-dark-text font-serif">Payment Failed</h3>
+            <p className="text-xs text-gray-500">{flowError}</p>
+            <button
+              onClick={() => setFlowState("form")}
+              className="w-full py-3.5 rounded-full bg-[#E84855] hover:bg-[#d63b48] text-white font-bold text-xs uppercase tracking-wider transition shadow-md"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Payment Success Modal — only shown once the server (webhook-confirmed) status says so */}
+      {flowState === "success" && booking && lookupResult && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4" role="status" aria-live="polite">
           <div className="bg-white rounded-3xl p-8 max-w-md w-full text-center space-y-6 shadow-2xl relative font-sans">
             <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-md">
               <CheckCircle2 className="w-10 h-10" />
@@ -482,18 +792,28 @@ function CheckoutContent() {
             <div className="space-y-2">
               <h3 className="text-2xl font-extrabold text-brand-dark-text font-serif">Booking Confirmed!</h3>
               <p className="text-xs text-gray-500">
-                Your expedition registration for <strong>{trek.name}</strong> ({batchParam}) for {participants.length} participant(s) is successful.
+                Your expedition registration for <strong>{lookupResult.trekName || trek.name}</strong> ({lookupResult.batchLabel || batchParam}) for {lookupResult.pax} participant(s) is successful.
               </p>
             </div>
 
             <div className="bg-brand-warm-bg p-4 rounded-2xl border border-gray-150 text-xs text-left space-y-2">
               <div className="flex justify-between">
                 <span className="text-gray-400">Total Paid:</span>
-                <span className="font-extrabold text-emerald-700">{displayPrice(grossTotalINR)}</span>
+                <span className="font-extrabold text-emerald-700">{displayPrice(lookupResult.paidAmount)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Transaction ID:</span>
-                <span className="font-mono font-bold text-gray-700">TMS-2026-99481</span>
+                <span className="text-gray-400">Booking Reference:</span>
+                <span className="font-mono font-bold text-gray-700">{lookupResult.bookingNo}</span>
+              </div>
+              {lookupResult.latestPaymentId && (
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Payment ID:</span>
+                  <span className="font-mono font-bold text-gray-700">{lookupResult.latestPaymentId}</span>
+                </div>
+              )}
+              <div className="flex justify-between">
+                <span className="text-gray-400">Confirmation Email:</span>
+                <span className="font-bold text-gray-700">Sent to {primaryEmail}</span>
               </div>
             </div>
 

@@ -1,0 +1,4 @@
+-- 0006: platform (staff, roles, admin surfaces)
+--
+-- Intentionally deferred — no admin panel, no staff/sales functionality in
+-- this phase. Number reserved so a future platform migration slots in here.

@@ -1,0 +1,6 @@
+-- 0004: CRM
+--
+-- Intentionally deferred. This phase implements payment + booking persistence
+-- only, per explicit scope instructions: no CRM, no lead/sales pipeline, no
+-- staff assignment. This number is reserved so a future CRM migration slots
+-- in here without renumbering 0005+.
