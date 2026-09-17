@@ -8,6 +8,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 
 export default function SignupPage() {
   const router = useRouter();
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -39,6 +40,9 @@ export default function SignupPage() {
     const { data, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        data: { full_name: fullName },
+      },
     });
 
     if (signUpError) {
@@ -92,6 +96,21 @@ export default function SignupPage() {
 
             <fieldset disabled={!isConfigured} className="disabled:opacity-60">
             <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-1">
+                <label className="text-[10px] uppercase tracking-wider font-extrabold text-gray-400 pl-1">Full Name</label>
+                <div className="flex items-center gap-2 px-3 py-2.5 bg-brand-warm-bg border border-gray-150 rounded-xl">
+                  <UserPlus className="w-4 h-4 text-gray-400" />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Your full name"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    className="bg-transparent border-0 text-base lg:text-sm focus:outline-none w-full min-w-0 text-brand-dark-text self-stretch py-3 -my-3"
+                  />
+                </div>
+              </div>
+
               <div className="space-y-1">
                 <label className="text-[10px] uppercase tracking-wider font-extrabold text-gray-400 pl-1">Email Address</label>
                 <div className="flex items-center gap-2 px-3 py-2.5 bg-brand-warm-bg border border-gray-150 rounded-xl">

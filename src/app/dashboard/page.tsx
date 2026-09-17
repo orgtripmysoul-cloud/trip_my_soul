@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
-  Calendar, ShieldCheck, MapPin, User, LogOut, CheckCircle, FileText, Upload,
+  Calendar, ShieldCheck, MapPin, User, LogOut, CheckCircle, FileText,
   Download, ArrowRight, Star, Clock, AlertTriangle, Compass, XCircle, X, AlertCircle, RotateCcw
 } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
@@ -12,8 +12,8 @@ export default function DashboardPage() {
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
   const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [activeTab, setActiveTab] = useState<"bookings" | "documents" | "history">("bookings");
-  const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
   const [feedbackSuccess, setFeedbackSuccess] = useState(false);
   const [selectedStars, setSelectedStars] = useState(5);
   const [reviewText, setReviewText] = useState("");
@@ -42,6 +42,7 @@ export default function DashboardPage() {
         return;
       }
       setUserEmail(session.user.email ?? "");
+      setUserName(session.user.user_metadata?.full_name ?? "");
     });
 
     const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -50,6 +51,7 @@ export default function DashboardPage() {
         return;
       }
       setUserEmail(session.user.email ?? "");
+      setUserName(session.user.user_metadata?.full_name ?? "");
     });
 
     return () => subscription.subscription.unsubscribe();
@@ -60,19 +62,6 @@ export default function DashboardPage() {
   const handleLogout = async () => {
     await supabaseBrowser()?.auth.signOut();
     router.push("/login");
-  };
-
-  const simulateUpload = (docId: string) => {
-    setUploadProgress((prev) => ({ ...prev, [docId]: 1 }));
-    let progress = 1;
-    const interval = setInterval(() => {
-      progress += 15;
-      if (progress >= 100) {
-        progress = 100;
-        clearInterval(interval);
-      }
-      setUploadProgress((prev) => ({ ...prev, [docId]: progress }));
-    }, 150);
   };
 
   const handleFeedbackSubmit = (e: React.FormEvent) => {
@@ -96,7 +85,9 @@ export default function DashboardPage() {
             <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-dusk-orange bg-white/10 px-3 py-1 rounded-full border border-white/10 inline-block">
               Premium Trekker Club
             </span>
-            <h1 className="text-2xl md:text-3xl font-extrabold font-serif">Welcome Back, Rahul!</h1>
+            <h1 className="text-2xl md:text-3xl font-extrabold font-serif">
+              Welcome Back{(userName || userEmail.split("@")[0]) && `, ${userName || userEmail.split("@")[0]}`}!
+            </h1>
             <p className="text-xs text-sky-200">Email: {userEmail}</p>
           </div>
 
@@ -288,26 +279,20 @@ export default function DashboardPage() {
                       <p className="text-[10px] text-gray-400 pl-6">Must be signed by a registered MBBS physician.</p>
                     </div>
 
-                    <div className="flex items-center gap-4 shrink-0 w-full sm:w-auto">
-                      {uploadProgress["med"] !== undefined ? (
-                        <div className="w-full sm:w-36 space-y-1">
-                          <div className="flex justify-between text-[9px] font-bold">
-                            <span>{uploadProgress["med"] === 100 ? "Uploaded" : "Uploading..."}</span>
-                            <span>{uploadProgress["med"]}%</span>
-                          </div>
-                          <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
-                            <div className="h-full bg-green-500 rounded-full transition-all" style={{ width: `${uploadProgress["med"]}%` }} />
-                          </div>
-                        </div>
-                      ) : (
-                        <button
-                          onClick={() => simulateUpload("med")}
-                          className="flex items-center justify-center gap-1.5 px-4 py-2 bg-brand-forest hover:bg-brand-forest-light text-white rounded-full text-[10px] font-bold shadow-xs transition w-full sm:w-auto"
-                        >
-                          <Upload className="w-3.5 h-3.5" />
-                          <span>Upload PDF</span>
-                        </button>
-                      )}
+                    <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-green-600">
+                        <CheckCircle className="w-3.5 h-3.5" />
+                        <span>Uploaded</span>
+                      </div>
+                      <a
+                        href="/Documents/Trip_My_Soul_Medical_Fitness_Declaration.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-1.5 px-4 py-2 bg-brand-forest hover:bg-brand-forest-light text-white rounded-full text-[10px] font-bold shadow-xs transition w-full sm:w-auto"
+                      >
+                        <Download className="w-3.5 h-3.5" />
+                        <span>View</span>
+                      </a>
                     </div>
                   </div>
 
@@ -321,26 +306,20 @@ export default function DashboardPage() {
                       <p className="text-[10px] text-gray-400 pl-6">Aadhaar card, Passport, or Voter ID copy.</p>
                     </div>
 
-                    <div className="flex items-center gap-4 shrink-0 w-full sm:w-auto">
-                      {uploadProgress["id"] !== undefined ? (
-                        <div className="w-full sm:w-36 space-y-1">
-                          <div className="flex justify-between text-[9px] font-bold">
-                            <span>{uploadProgress["id"] === 100 ? "Uploaded" : "Uploading..."}</span>
-                            <span>{uploadProgress["id"]}%</span>
-                          </div>
-                          <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
-                            <div className="h-full bg-green-500 rounded-full transition-all" style={{ width: `${uploadProgress["id"]}%` }} />
-                          </div>
-                        </div>
-                      ) : (
-                        <button
-                          onClick={() => simulateUpload("id")}
-                          className="flex items-center justify-center gap-1.5 px-4 py-2 bg-brand-forest hover:bg-brand-forest-light text-white rounded-full text-[10px] font-bold shadow-xs transition w-full sm:w-auto"
-                        >
-                          <Upload className="w-3.5 h-3.5" />
-                          <span>Upload File</span>
-                        </button>
-                      )}
+                    <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-green-600">
+                        <CheckCircle className="w-3.5 h-3.5" />
+                        <span>Uploaded</span>
+                      </div>
+                      <a
+                        href="/Documents/Trip_My_Soul_Govt_ID_Photo_Upload_Slip.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-1.5 px-4 py-2 bg-brand-forest hover:bg-brand-forest-light text-white rounded-full text-[10px] font-bold shadow-xs transition w-full sm:w-auto"
+                      >
+                        <Download className="w-3.5 h-3.5" />
+                        <span>View</span>
+                      </a>
                     </div>
                   </div>
                 </div>

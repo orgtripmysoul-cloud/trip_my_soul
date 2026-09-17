@@ -37,10 +37,9 @@ function Fact({ icon: Icon, label, value, valueClassName = "" }: FactProps) {
 interface TrekOverviewFactsProps {
   detail: ResolvedTrekDetail;
   noun: string;
-  onViewDepartures: () => void;
 }
 
-export default function TrekOverviewFacts({ detail, noun, onViewDepartures }: TrekOverviewFactsProps) {
+export default function TrekOverviewFacts({ detail, noun }: TrekOverviewFactsProps) {
   const {
     trek, seasons, trailType, transport, country, maxAltitude, totalDistance,
     cateringFood, campStay, maxGroupSize, endLocation,
@@ -84,14 +83,7 @@ export default function TrekOverviewFacts({ detail, noun, onViewDepartures }: Tr
         </div>
       </div>
 
-      {/* View Departure Dates button */}
       <div className="flex flex-col items-center justify-center pt-4 border-t border-gray-100 gap-3">
-        <button
-          onClick={onViewDepartures}
-          className="bg-brand-dusk hover:bg-brand-dusk-orange text-white font-extrabold min-h-[44px] inline-flex items-center justify-center px-8 py-3.5 rounded-full shadow-lg transition-transform hover:-translate-y-0.5"
-        >
-          View Departure Dates
-        </button>
         <div className="flex items-center gap-1.5 text-xs text-brand-forest font-bold">
           <ShieldCheck className="w-4 h-4 text-brand-dusk-orange" />
           <span>Free rescheduling up to 15 days before batch start</span>

@@ -185,7 +185,6 @@ export default function TrekDetailView({
             <TrekOverviewFacts
               detail={detail}
               noun={noun}
-              onViewDepartures={openDepartures}
             />
           </section>
 
