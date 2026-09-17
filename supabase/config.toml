@@ -1,0 +1,20 @@
+[auth]
+site_url = "https://tripmysoul.in"
+additional_redirect_urls = ["https://tripmysoul.in/", "http://localhost:3000/"]
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+
+[auth.email.smtp]
+enabled = true
+host = "smtp.resend.com"
+port = 465
+user = "resend"
+pass = "env(RESEND_API_KEY)"
+admin_email = "no-reply@tripmysoul.in"
+sender_name = "TripMySoul"
+
+[auth.email.template.confirmation]
+subject = "Confirm your TripMySoul email"
+content_path = "./supabase/templates/confirmation.html"
