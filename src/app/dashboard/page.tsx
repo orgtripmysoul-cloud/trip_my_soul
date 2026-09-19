@@ -7,6 +7,27 @@ import {
   Download, ArrowRight, Star, Clock, AlertTriangle, Compass, XCircle, X, AlertCircle, RotateCcw
 } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { TREKS, WILDLIFE, YATRAS } from "@/data/db";
+import type { MyBookingSummary, MyBookingsResponse } from "@/lib/types/booking";
+
+const FALLBACK_TREK_IMAGE =
+  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=350&q=85";
+
+function catalogueImageFor(slug: string): string {
+  const trek = [...TREKS, ...YATRAS, ...WILDLIFE].find((t) => t.slug === slug);
+  return trek?.heroImage ?? trek?.gallery?.[0]?.url ?? FALLBACK_TREK_IMAGE;
+}
+
+function formatDate(iso: string | null): string {
+  if (!iso) return "Date TBD";
+  return new Date(iso).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+}
+
+function daysUntil(iso: string | null): number | null {
+  if (!iso) return null;
+  const diffMs = new Date(iso).setHours(0, 0, 0, 0) - new Date().setHours(0, 0, 0, 0);
+  return Math.round(diffMs / (1000 * 60 * 60 * 24));
+}
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -18,9 +39,14 @@ export default function DashboardPage() {
   const [selectedStars, setSelectedStars] = useState(5);
   const [reviewText, setReviewText] = useState("");
 
+  // Bookings for the logged-in traveller, fetched from the server — never hardcoded.
+  const [bookings, setBookings] = useState<MyBookingSummary[]>([]);
+  const [bookingsLoading, setBookingsLoading] = useState(true);
+  const [bookingsError, setBookingsError] = useState(false);
+
   // Cancellation State
-  const [isCancelled, setIsCancelled] = useState(false);
-  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [locallyCancelled, setLocallyCancelled] = useState<Set<string>>(new Set());
+  const [cancelTarget, setCancelTarget] = useState<MyBookingSummary | null>(null);
   const [cancelReason, setCancelReason] = useState("Schedule Conflict");
   const [cancelNotes, setCancelNotes] = useState("");
   const [cancelSuccessMsg, setCancelSuccessMsg] = useState(false);
@@ -36,6 +62,24 @@ export default function DashboardPage() {
       return;
     }
 
+    const loadBookings = async (accessToken: string) => {
+      setBookingsLoading(true);
+      setBookingsError(false);
+      try {
+        const res = await fetch("/api/v1/public/bookings/mine", {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+        if (!res.ok) throw new Error("Failed to load bookings");
+        const body: MyBookingsResponse = await res.json();
+        setBookings(body.bookings);
+      } catch {
+        setBookingsError(true);
+        setBookings([]);
+      } finally {
+        setBookingsLoading(false);
+      }
+    };
+
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!session) {
         router.push("/login");
@@ -43,6 +87,7 @@ export default function DashboardPage() {
       }
       setUserEmail(session.user.email ?? "");
       setUserName(session.user.user_metadata?.full_name ?? "");
+      loadBookings(session.access_token);
     });
 
     const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -52,10 +97,25 @@ export default function DashboardPage() {
       }
       setUserEmail(session.user.email ?? "");
       setUserName(session.user.user_metadata?.full_name ?? "");
+      loadBookings(session.access_token);
     });
 
     return () => subscription.subscription.unsubscribe();
   }, [router]);
+
+  const today = new Date();
+  const upcomingBookings = bookings.filter(
+    (b) =>
+      !["cancelled", "completed", "no_show"].includes(b.status) &&
+      (!b.endDate || new Date(b.endDate) >= today)
+  );
+  const pastBookings = bookings.filter(
+    (b) => b.status === "completed" || (b.endDate && new Date(b.endDate) < today && b.status !== "cancelled")
+  );
+  const nextTripDays = upcomingBookings
+    .map((b) => daysUntil(b.startDate))
+    .filter((d): d is number => d !== null && d >= 0)
+    .sort((a, b) => a - b)[0];
 
   if (!isClient) return null;
 
@@ -137,126 +197,169 @@ export default function DashboardPage() {
             {/* TAB 1: BOOKINGS */}
             {activeTab === "bookings" && (
               <div className="space-y-6">
-                <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
-                  <div className="flex justify-between items-center border-b border-gray-100 pb-4">
-                    <div>
-                      <h2 className="text-lg font-extrabold text-brand-dark-text font-serif">Active Registrations</h2>
-                      <p className="text-[10px] text-gray-400">1 Upcoming Himalayan trek found</p>
+                {cancelSuccessMsg && (
+                  <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-2xl text-xs font-semibold flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span>Booking Cancelled. Your refund has been initiated to your source account.</span>
                     </div>
-                    {isCancelled ? (
-                      <span className="text-[9px] bg-red-500/10 text-red-600 font-bold border border-red-500/20 px-3 py-1 rounded-full uppercase tracking-wider">
-                        Cancelled
-                      </span>
-                    ) : (
-                      <span className="text-[9px] bg-green-500/10 text-green-600 font-bold border border-green-500/20 px-3 py-1 rounded-full uppercase tracking-wider">
-                        Confirmed
-                      </span>
-                    )}
+                    <button onClick={() => setCancelSuccessMsg(false)} className="text-emerald-700 hover:text-emerald-900">
+                      <X className="w-4 h-4" />
+                    </button>
                   </div>
+                )}
 
-                  {cancelSuccessMsg && (
-                    <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-2xl text-xs font-semibold flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
-                        <span>Booking Cancelled. Your full refund of ₹7,500 has been initiated to your source account.</span>
-                      </div>
-                      <button onClick={() => setCancelSuccessMsg(false)} className="text-emerald-700 hover:text-emerald-900">
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-                  )}
+                {bookingsLoading && (
+                  <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm text-center text-xs text-gray-400 font-semibold">
+                    Loading your registrations…
+                  </div>
+                )}
 
-                  <div className="flex flex-col md:flex-row gap-6 items-start">
-                    <div className="w-full md:w-1/3 aspect-video sm:aspect-square bg-gray-100 rounded-2xl overflow-hidden relative shrink-0">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=350&q=85"
-                        alt="Kedarkantha Trek"
-                        className={`w-full h-full object-cover ${isCancelled ? "grayscale" : ""}`}
-                      />
-                    </div>
+                {!bookingsLoading && bookingsError && (
+                  <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm text-center text-xs text-red-500 font-semibold">
+                    Couldn&apos;t load your bookings right now. Please refresh the page.
+                  </div>
+                )}
 
-                    <div className="flex-grow space-y-4 text-xs text-gray-500">
-                      <h3 className="text-base font-extrabold text-brand-dark-text font-serif">
-                        Kedarkantha Winter Summit {isCancelled && <span className="text-xs text-red-500 font-sans font-bold">(Cancelled)</span>}
-                      </h3>
-                      
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-1">
-                          <span className="text-[9px] uppercase tracking-wider block text-gray-400">Departure Batch</span>
-                          <span className="font-extrabold text-brand-forest block">10 Dec - 15 Dec 2026</span>
+                {!bookingsLoading && !bookingsError && upcomingBookings.length === 0 && (
+                  <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm text-center space-y-2">
+                    <h2 className="text-lg font-extrabold text-brand-dark-text font-serif">No Active Registrations</h2>
+                    <p className="text-xs text-gray-400">You don&apos;t have any upcoming treks booked yet.</p>
+                    <button
+                      onClick={() => router.push("/treks")}
+                      className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 bg-brand-forest text-white rounded-full hover:bg-brand-forest-light font-bold transition text-[11px] shadow-xs"
+                    >
+                      <span>Browse Treks</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                )}
+
+                {upcomingBookings.map((booking) => {
+                  const cancelled = booking.status === "cancelled" || locallyCancelled.has(booking.bookingNo);
+                  return (
+                    <div
+                      key={booking.bookingNo}
+                      className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm space-y-6"
+                    >
+                      <div className="flex justify-between items-center border-b border-gray-100 pb-4">
+                        <div>
+                          <h2 className="text-lg font-extrabold text-brand-dark-text font-serif">Active Registration</h2>
+                          <p className="text-[10px] text-gray-400">Booking #{booking.bookingNo}</p>
                         </div>
-                        <div className="space-y-1">
-                          <span className="text-[9px] uppercase tracking-wider block text-gray-400">Base Camp Town</span>
-                          <span className="font-extrabold text-brand-forest block">Sankri, Uttarakhand</span>
-                        </div>
-                        <div className="space-y-1">
-                          <span className="text-[9px] uppercase tracking-wider block text-gray-400">Group Size</span>
-                          <span className="font-extrabold text-brand-forest block">12 Trekkers</span>
-                        </div>
-                        <div className="space-y-1">
-                          <span className="text-[9px] uppercase tracking-wider block text-gray-400">Payment Status</span>
-                          <span className="font-extrabold block">
-                            {isCancelled ? (
-                              <span className="text-amber-600 font-bold flex items-center gap-1">
-                                <Clock className="w-3.5 h-3.5" />
-                                <span>Refund Initiated (₹7,500)</span>
-                              </span>
-                            ) : (
-                              <span className="text-brand-forest font-extrabold flex items-center gap-1">
-                                <CheckCircle className="w-3.5 h-3.5 text-green-600" />
-                                <span>Paid (₹7,500)</span>
-                              </span>
-                            )}
+                        {cancelled ? (
+                          <span className="text-[9px] bg-red-500/10 text-red-600 font-bold border border-red-500/20 px-3 py-1 rounded-full uppercase tracking-wider">
+                            Cancelled
                           </span>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-wrap gap-2.5 pt-2">
-                        <a
-                          href="#"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            alert("Downloading simulated PDF invoice folder...");
-                          }}
-                          className="flex items-center gap-1.5 px-3.5 py-1.5 border border-gray-150 rounded-full hover:bg-gray-50 font-bold transition text-[11px] text-brand-forest"
-                        >
-                          <Download className="w-3.5 h-3.5 text-brand-dusk-orange" />
-                          <span>Get PDF Invoice</span>
-                        </a>
-                        <button
-                          onClick={() => router.push("/treks/kedarkantha-trek")}
-                          className="flex items-center gap-1.5 px-3.5 py-1.5 bg-brand-forest text-white rounded-full hover:bg-brand-forest-light font-bold transition text-[11px] shadow-xs"
-                        >
-                          <span>Review Trail details</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </button>
-
-                        {/* CANCEL BOOKING BUTTON */}
-                        {!isCancelled ? (
-                          <button
-                            onClick={() => setIsCancelModalOpen(true)}
-                            className="flex items-center gap-1.5 px-3.5 py-1.5 border border-red-200 hover:bg-red-50 text-red-600 rounded-full font-bold transition text-[11px]"
-                          >
-                            <XCircle className="w-3.5 h-3.5" />
-                            <span>Cancel Booking</span>
-                          </button>
                         ) : (
-                          <button
-                            onClick={() => {
-                              setIsCancelled(false);
-                              setCancelSuccessMsg(false);
-                            }}
-                            className="flex items-center gap-1.5 px-3.5 py-1.5 border border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-full font-bold transition text-[11px]"
-                          >
-                            <RotateCcw className="w-3.5 h-3.5" />
-                            <span>Re-activate Booking</span>
-                          </button>
+                          <span className="text-[9px] bg-green-500/10 text-green-600 font-bold border border-green-500/20 px-3 py-1 rounded-full uppercase tracking-wider">
+                            {booking.status.replace(/_/g, " ")}
+                          </span>
                         )}
                       </div>
+
+                      <div className="flex flex-col md:flex-row gap-6 items-start">
+                        <div className="w-full md:w-1/3 aspect-video sm:aspect-square bg-gray-100 rounded-2xl overflow-hidden relative shrink-0">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={catalogueImageFor(booking.trekSlug)}
+                            alt={booking.trekName}
+                            className={`w-full h-full object-cover ${cancelled ? "grayscale" : ""}`}
+                          />
+                        </div>
+
+                        <div className="flex-grow space-y-4 text-xs text-gray-500">
+                          <h3 className="text-base font-extrabold text-brand-dark-text font-serif">
+                            {booking.trekName || booking.batchLabel}{" "}
+                            {cancelled && <span className="text-xs text-red-500 font-sans font-bold">(Cancelled)</span>}
+                          </h3>
+
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-1">
+                              <span className="text-[9px] uppercase tracking-wider block text-gray-400">Departure Batch</span>
+                              <span className="font-extrabold text-brand-forest block">
+                                {formatDate(booking.startDate)} - {formatDate(booking.endDate)}
+                              </span>
+                            </div>
+                            <div className="space-y-1">
+                              <span className="text-[9px] uppercase tracking-wider block text-gray-400">Region</span>
+                              <span className="font-extrabold text-brand-forest block">{booking.region ?? "—"}</span>
+                            </div>
+                            <div className="space-y-1">
+                              <span className="text-[9px] uppercase tracking-wider block text-gray-400">Trekkers</span>
+                              <span className="font-extrabold text-brand-forest block">{booking.pax}</span>
+                            </div>
+                            <div className="space-y-1">
+                              <span className="text-[9px] uppercase tracking-wider block text-gray-400">Payment Status</span>
+                              <span className="font-extrabold block">
+                                {cancelled ? (
+                                  <span className="text-amber-600 font-bold flex items-center gap-1">
+                                    <Clock className="w-3.5 h-3.5" />
+                                    <span>Refund Initiated (₹{booking.paidAmount.toLocaleString("en-IN")})</span>
+                                  </span>
+                                ) : (
+                                  <span className="text-brand-forest font-extrabold flex items-center gap-1">
+                                    <CheckCircle className="w-3.5 h-3.5 text-green-600" />
+                                    <span>
+                                      {booking.paymentState.replace(/_/g, " ")} (₹{booking.paidAmount.toLocaleString("en-IN")})
+                                    </span>
+                                  </span>
+                                )}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex flex-wrap gap-2.5 pt-2">
+                            <a
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                alert("Downloading simulated PDF invoice folder...");
+                              }}
+                              className="flex items-center gap-1.5 px-3.5 py-1.5 border border-gray-150 rounded-full hover:bg-gray-50 font-bold transition text-[11px] text-brand-forest"
+                            >
+                              <Download className="w-3.5 h-3.5 text-brand-dusk-orange" />
+                              <span>Get PDF Invoice</span>
+                            </a>
+                            <button
+                              onClick={() => router.push(`/treks/${booking.trekSlug}`)}
+                              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-brand-forest text-white rounded-full hover:bg-brand-forest-light font-bold transition text-[11px] shadow-xs"
+                            >
+                              <span>Review Trail details</span>
+                              <ArrowRight className="w-3.5 h-3.5" />
+                            </button>
+
+                            {/* CANCEL BOOKING BUTTON */}
+                            {!cancelled ? (
+                              <button
+                                onClick={() => setCancelTarget(booking)}
+                                className="flex items-center gap-1.5 px-3.5 py-1.5 border border-red-200 hover:bg-red-50 text-red-600 rounded-full font-bold transition text-[11px]"
+                              >
+                                <XCircle className="w-3.5 h-3.5" />
+                                <span>Cancel Booking</span>
+                              </button>
+                            ) : (
+                              <button
+                                onClick={() => {
+                                  setLocallyCancelled((prev) => {
+                                    const next = new Set(prev);
+                                    next.delete(booking.bookingNo);
+                                    return next;
+                                  });
+                                  setCancelSuccessMsg(false);
+                                }}
+                                className="flex items-center gap-1.5 px-3.5 py-1.5 border border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-full font-bold transition text-[11px]"
+                              >
+                                <RotateCcw className="w-3.5 h-3.5" />
+                                <span>Re-activate Booking</span>
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             )}
 
@@ -334,20 +437,33 @@ export default function DashboardPage() {
                   <div className="flex justify-between items-center border-b border-gray-100 pb-4">
                     <div>
                       <h2 className="text-lg font-extrabold text-brand-dark-text font-serif">Completed Journeys</h2>
-                      <p className="text-[10px] text-gray-400">1 past trek found</p>
+                      <p className="text-[10px] text-gray-400">
+                        {pastBookings.length} past trek{pastBookings.length === 1 ? "" : "s"} found
+                      </p>
                     </div>
                   </div>
 
-                  <div className="flex gap-4 items-start text-xs text-gray-500">
-                    <div className="w-16 h-16 bg-brand-warm-bg rounded-xl shrink-0 border border-gray-150 flex items-center justify-center text-brand-forest font-black uppercase text-[10px]">
-                      Valley
+                  {pastBookings.length === 0 ? (
+                    <p className="text-xs text-gray-400">No completed treks yet.</p>
+                  ) : (
+                    <div className="space-y-4">
+                      {pastBookings.map((booking) => (
+                        <div key={booking.bookingNo} className="flex gap-4 items-start text-xs text-gray-500">
+                          <div className="w-16 h-16 bg-brand-warm-bg rounded-xl shrink-0 border border-gray-150 flex items-center justify-center text-brand-forest font-black uppercase text-[10px] overflow-hidden">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={catalogueImageFor(booking.trekSlug)} alt={booking.trekName} className="w-full h-full object-cover" />
+                          </div>
+                          <div className="space-y-1 leading-none">
+                            <span className="font-extrabold text-brand-dark-text text-sm block">{booking.trekName || booking.batchLabel}</span>
+                            <span className="block text-[10px] text-gray-400 uppercase font-semibold">
+                              {booking.region ?? ""} • {formatDate(booking.endDate)}
+                            </span>
+                            <span className="block text-green-600 font-bold pt-1.5">Successfully Climbed 🌸</span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                    <div className="space-y-1 leading-none">
-                      <span className="font-extrabold text-brand-dark-text text-sm block">Valley of Flowers Trek</span>
-                      <span className="block text-[10px] text-gray-400 uppercase font-semibold">Uttarakhand • Aug 2025</span>
-                      <span className="block text-green-600 font-bold pt-1.5">Successfully Climbed 🌸</span>
-                    </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Review Form */}
@@ -412,8 +528,12 @@ export default function DashboardPage() {
               </h3>
               
               <div className="bg-brand-warm-bg rounded-2xl p-4 text-center border border-gray-150 space-y-1.5">
-                <span className="text-3xl font-extrabold font-serif text-brand-forest block">142</span>
-                <span className="text-[10px] font-extrabold text-gray-450 uppercase tracking-widest block">Days Remaining</span>
+                <span className="text-3xl font-extrabold font-serif text-brand-forest block">
+                  {nextTripDays ?? "—"}
+                </span>
+                <span className="text-[10px] font-extrabold text-gray-450 uppercase tracking-widest block">
+                  {nextTripDays !== undefined ? "Days Remaining" : "No Upcoming Trek"}
+                </span>
               </div>
 
               <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-2xl text-[10px] text-amber-700 leading-relaxed flex items-start gap-2 font-medium">
@@ -428,11 +548,11 @@ export default function DashboardPage() {
       </div>
 
       {/* Cancellation Confirmation Modal */}
-      {isCancelModalOpen && (
+      {cancelTarget && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
           <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 max-w-lg w-full space-y-6 shadow-2xl relative font-sans">
             <button
-              onClick={() => setIsCancelModalOpen(false)}
+              onClick={() => setCancelTarget(null)}
               className="absolute top-4 right-4 p-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
             >
               <X className="w-5 h-5" />
@@ -444,7 +564,9 @@ export default function DashboardPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-brand-dark-text font-serif">Cancel Registration</h3>
-                <p className="text-xs text-gray-500">Kedarkantha Winter Summit (10 Dec - 15 Dec 2026)</p>
+                <p className="text-xs text-gray-500">
+                  {cancelTarget.trekName || cancelTarget.batchLabel} ({formatDate(cancelTarget.startDate)} - {formatDate(cancelTarget.endDate)})
+                </p>
               </div>
             </div>
 
@@ -464,8 +586,8 @@ export default function DashboardPage() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                setIsCancelled(true);
-                setIsCancelModalOpen(false);
+                setLocallyCancelled((prev) => new Set(prev).add(cancelTarget.bookingNo));
+                setCancelTarget(null);
                 setCancelSuccessMsg(true);
               }}
               className="space-y-4 text-xs"
@@ -499,7 +621,7 @@ export default function DashboardPage() {
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <button
                   type="button"
-                  onClick={() => setIsCancelModalOpen(false)}
+                  onClick={() => setCancelTarget(null)}
                   className="w-full sm:w-1/2 py-3 rounded-full border border-gray-200 hover:bg-gray-50 text-gray-700 font-bold text-xs transition"
                 >
                   Keep My Booking

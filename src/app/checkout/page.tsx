@@ -134,8 +134,7 @@ function CheckoutContent() {
       isPrimary: true,
       addOns: {
         insurance: true,
-        offload: false,
-        transport: false
+        offload: false
       } as Record<TrekAddOnKey, boolean>
     }
   ]);
@@ -200,7 +199,7 @@ function CheckoutContent() {
         name: derivedName.charAt(0).toUpperCase() + derivedName.slice(1),
         email: emailStr,
         isPrimary: false,
-        addOns: { insurance: true, offload: false, transport: false }
+        addOns: { insurance: true, offload: false }
       }
     ]);
     setCoParticipantEmail("");
@@ -210,7 +209,7 @@ function CheckoutContent() {
     setParticipants(participants.filter((p) => p.id !== id || p.isPrimary));
   };
 
-  const toggleAddOn = (participantId: number, addOnKey: "insurance" | "offload" | "transport") => {
+  const toggleAddOn = (participantId: number, addOnKey: TrekAddOnKey) => {
     setParticipants(
       participants.map((p) => {
         if (p.id === participantId) {

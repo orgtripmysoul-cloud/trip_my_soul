@@ -65,6 +65,27 @@ export interface BookingLookupResponse {
   latestPaymentId: string | null;
 }
 
+export interface MyBookingSummary {
+  bookingNo: string;
+  status: string;
+  paymentState: string;
+  pax: number;
+  totalAmount: number;
+  paidAmount: number;
+  currency: string;
+  trekSlug: string;
+  trekName: string;
+  region: string | null;
+  batchLabel: string;
+  startDate: string | null;
+  endDate: string | null;
+  createdAt: string;
+}
+
+export interface MyBookingsResponse {
+  bookings: MyBookingSummary[];
+}
+
 export interface ApiErrorBody {
   code: string;
   message: string;

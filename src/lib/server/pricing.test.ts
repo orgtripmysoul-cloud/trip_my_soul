@@ -54,8 +54,8 @@ describe("computeBookingPricing", () => {
     // Same inputs, computed twice, must be deterministic and stable — this is
     // the guarantee that lets the API trust its own computed total instead of
     // whatever a client might have sent.
-    const a = computeBookingPricing(15999.99, [{ fullName: "A", isPrimary: true, addOns: ["offload", "transport"] }], "HIMALAYA5");
-    const b = computeBookingPricing(15999.99, [{ fullName: "A", isPrimary: true, addOns: ["offload", "transport"] }], "HIMALAYA5");
+    const a = computeBookingPricing(15999.99, [{ fullName: "A", isPrimary: true, addOns: ["offload", "insurance"] }], "HIMALAYA5");
+    const b = computeBookingPricing(15999.99, [{ fullName: "A", isPrimary: true, addOns: ["offload", "insurance"] }], "HIMALAYA5");
     expect(a).toEqual(b);
   });
 });
