@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import { Search, Compass } from "lucide-react";
 import { YATRAS } from "@/data/db";
 import TrekCard from "@/components/TrekCard";
+import { featuredRank } from "@/lib/featured";
 
 export default function YatraPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,7 +16,7 @@ export default function YatraPage() {
         yatra.region.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (yatra.startLocation && yatra.startLocation.toLowerCase().includes(searchQuery.toLowerCase()))
       );
-    });
+    }).sort((a, b) => featuredRank(a.slug) - featuredRank(b.slug));
   }, [searchQuery]);
 
   return (

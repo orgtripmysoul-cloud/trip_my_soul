@@ -12,6 +12,7 @@ import {
   deriveQuickFilters,
 } from "@/data/trips";
 import { departsWithinWindow } from "@/lib/upcoming";
+import { featuredRank } from "@/lib/featured";
 
 const initialFilters: FilterState = {
   region: [],
@@ -129,6 +130,10 @@ export default function TripCatalogPage({
 
   const sortedTrips = useMemo(() => {
     return [...filteredTrips].sort((a, b) => {
+      // Fully written-up trips lead the list, whatever sort is selected.
+      const featured = featuredRank(a.slug) - featuredRank(b.slug);
+      if (featured !== 0) return featured;
+
       const priceA = a.price || 0;
       const priceB = b.price || 0;
       const daysA = a.days;
