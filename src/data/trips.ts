@@ -1197,6 +1197,228 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
 
   toListingItem(
     {
+      name: "Auli Yatra",
+      slug: "auli-yatra",
+      duration: "2N/3D",
+      heroImage: "https://images.unsplash.com/photo-1551524559-8af4e6624178?auto=format&fit=crop&w=1920&q=80",
+      tagline: "Asia's 2nd longest cable car, ski slopes and Gorson Bugyal — Uttarakhand's Ski Capital in 3 days from Rishikesh.",
+    },
+    {
+      region: "Uttarakhand",
+      startLocation: "Rishikesh",
+      endLocation: "Rishikesh",
+      difficulty: "Very Easy",
+      price: null,
+      months: ["Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Sep", "Oct", "Nov"],
+      themes: ["Snow", "Family with Kids", "Couples", "Honeymoon", "Adventure"],
+      category: "Backpacking Trip",
+      detailsPath: "/trips/backpacking/auli-yatra",
+      alternateNames: ["Auli Tour", "Auli Skiing", "Auli Ski Trip", "Gorson Bugyal Trek", "Joshimath Auli"],
+      altitude: "9,200 ft (Auli) / 10,010 ft (Gorson Bugyal Top)",
+      minAge: 2,
+      intro:
+        "Auli is the most popular winter destination and Ski Capital of Uttarakhand, a perfect combination of snow adventure and Himalayan peace. Located in the Chamoli district of the Garhwal Himalayas, Auli is a high-altitude meadow at an average altitude of 9,200 to 10,010 ft, amidst oak forests, bugyal meadows and majestic snow-clad peaks.",
+      highlights: [
+        "Asia's 2nd longest cable car — 4.15 km, Joshimath to Auli",
+        "Ski slopes — 5 km long, Asia's longest",
+        "Gorson Bugyal trek — 360° Himalayan view at 10,010 ft",
+        "Auli Artificial Lake — world's highest man-made lake",
+        "Nanda Devi National Park view",
+        "5 Prayag Sangams enroute — Devprayag and Rudraprayag",
+      ],
+      usps: [
+        {
+          title: "Asia's 2nd longest cable car",
+          description: "A 4.15 km, 25-minute cable car ride from Joshimath to Auli over oak forests — no trek needed to reach the snow line.",
+        },
+        {
+          title: "Ski slopes and Artificial Lake",
+          description: "Asia's longest 5 km ski slope with skiing and trainer available in winter, alongside the Auli Artificial Lake, the world's highest man-made lake.",
+        },
+        {
+          title: "Gorson Bugyal at 10,010 ft",
+          description: "A short 3 km trek to a meadow with a 360° view of Nanda Devi (7,816m), Kamet, Mana Parbat and Trishul — no shop, no crowd, only Himalayas.",
+        },
+      ],
+      idealFor: "Family, couples, honeymoon, friends group, ski lovers, snow lovers and corporate trips.",
+      differentiators: [
+        "Route: Haridwar / Rishikesh → Joshimath → Auli",
+        "Total distance: ~300 km one side + 6 km trek (Auli to Gorson Bugyal and back)",
+        "Difficulty: Very Easy — suitable for all, by car and a 4.15 km cable car ride",
+        "Best season: Dec–Mar for snow and skiing, Apr–Jun for green bugyal and clear Himalayan views, Sep–Nov for clear sky",
+        "Winter (Dec–Mar): peak season, full snow cover, temperature -2°C to -8°C, skiing open",
+        "Major peaks visible: Nanda Devi (7,816m), Mana Parbat, Kamet, Trishul, Neelkanth, Dronagiri, Hathi Parbat, Chaukhamba",
+      ],
+      importantNote:
+        "July–August is monsoon season and best avoided — heavy rain and landslide risk on the Joshimath route, and no skiing. Cable car tickets (₹1,000 per person per side) and skiing (₹1,500–2,000 per person with trainer, available only Dec–March) are not included in the package and are payable directly.",
+      destinationHighlights: [
+        {
+          name: "The Cable Car",
+          blurb: "Asia's 2nd longest — 4.15 km, 25 minutes in the air over oak forests, from Joshimath to Auli. You leave the world behind and land in the Himalayas.",
+        },
+        {
+          name: "Ski Slope & Artificial Lake",
+          blurb: "A 5 km long ski slope, Asia's longest — 7 ft snow, skiing and snow fights in winter. The Auli Artificial Lake is the world's highest man-made lake, reflecting Nanda Devi.",
+        },
+        {
+          name: "Gorson Bugyal",
+          blurb: "A 3 km walk to 10,010 ft — a meadow with a 360° view of the Himalayas. No shop, no hotel, only wind, and 7 Himalayan giants including Nanda Devi (7,816m), Kamet and Trishul.",
+        },
+      ],
+      itinerary: [
+        {
+          day: 1,
+          title: "Rishikesh to Joshimath",
+          entries: [
+            { time: "6:00 AM", text: "Pickup from Rishikesh." },
+            { text: "Drive via Devprayag and Rudraprayag — visit 2 Prayag Sangams on the way." },
+            { text: "Scenic drive along the Alaknanda River, pine forests and mountains." },
+            { text: "Evening arrival at Joshimath (6,150 ft) — base town of Auli and Badrinath." },
+            { text: "Visit Narsingh Temple, the winter home of Badrinath." },
+            { text: "Dinner and overnight stay at Joshimath." },
+          ],
+        },
+        {
+          day: 2,
+          title: "Joshimath to Auli — Explore Auli",
+          entries: [
+            { text: "After breakfast, ride Asia's 2nd longest cable car (4.15 km) from Joshimath to Auli — ₹1,000 extra, per person, per side." },
+            { text: "Reach Auli (9,200 ft) and check in." },
+            { text: "Visit Auli Artificial Lake, the highest man-made lake, and the 5 km long ski slopes." },
+            { text: "In winter (Dec–Mar): skiing with a trainer — ₹1,500 per person." },
+            { text: "Afternoon trek to Gorson Bugyal (3 km) — a meadow with a 360° view of Nanda Devi, Kamet and Trishul peaks." },
+            { text: "Sunset view, dinner and overnight stay at Auli / Joshimath." },
+          ],
+        },
+        {
+          day: 3,
+          title: "Auli / Joshimath to Rishikesh",
+          entries: [
+            { text: "Early morning sunrise view over Nanda Devi peak — the golden Himalayas." },
+            { text: "After breakfast, cable car down to Joshimath and drive back towards Rishikesh." },
+            { text: "Lunch on the way." },
+            { time: "7:30 PM", text: "Drop at Rishikesh. Tour ends." },
+          ],
+        },
+      ],
+      costIncludes: [
+        "Transport — Rishikesh to Rishikesh by Swift Dzire / Innova / Tempo Traveller as per group size, including toll, parking and driver allowance",
+        "2 nights hotel / resort stay — 1N Joshimath, 1N Auli",
+        "2 breakfasts and 2 dinners, MAP plan, vegetarian",
+        "Sightseeing as per itinerary — Devprayag, Rudraprayag, Joshimath, Auli and the Gorson Bugyal trek",
+        "Driver cum guide assistance, 24x7 support",
+      ],
+      costExcludes: [
+        "Cable car ticket — ₹1,000 per person per side (Joshimath to Auli), payable directly",
+        "Chair lift — ₹500 per person (Auli, Gorson side)",
+        "Skiing kit — ₹1,500–2,000 per person with trainer, winter only (Dec–March)",
+        "Lunch on any day",
+        "5% GST extra on total billing",
+        "Personal expenses, heater charges (₹500 in winter), medicines and anything not mentioned under Inclusions",
+      ],
+      eligibilityCriteria: [
+        { icon: "User", text: "Minimum age: 2 years. No maximum age — even 75+ can go, as the cable car removes the need to walk much" },
+        { icon: "Footprints", text: "Very easy grade — only an optional 3 km trek to Gorson Bugyal, which can be skipped" },
+        { icon: "Mountain", text: "Only 9,200 ft altitude, much lower than Kedarnath at 11,700 ft — no altitude sickness risk" },
+        { icon: "Stethoscope", text: "Pregnant women should avoid Dec–March (snow, slippery); can go April–June till 6 months with doctor's advice. Heart/asthma patients should travel in summer (Apr–June) and avoid extreme winter" },
+      ],
+      fitnessCriteria: [
+        { icon: "Footprints", text: "If you can walk 500 metres, you can do Auli — the easiest Himalayan destination" },
+        { icon: "Activity", text: "No long trek required — only an optional 3 km walk to Gorson Bugyal" },
+        { icon: "TrendingUp", text: "Best for kids and senior citizens in April–June (pleasant) and late December (light snow); best for skiing in Jan–Mar; best for couples Dec–March" },
+      ],
+      howToReach: {
+        intro: "The Yatra starts and ends at Rishikesh / Haridwar, with pickup at 6 AM on Day 1. All travel is included in this 2N/3D package — you only need to reach Rishikesh or Haridwar.",
+        air: {
+          summaryLabel: "Nearest Airport",
+          summary: "Jolly Grant Airport, Dehradun (DED)",
+          detail: "Well connected to Delhi and Mumbai. From the airport, take a taxi or bus to Rishikesh/Haridwar, about 45 minutes to 1.5 hours.",
+        },
+        train: {
+          summaryLabel: "Nearest Railway Station",
+          summary: "Haridwar Junction (HW) / Rishikesh Station",
+          detail: "Haridwar is well connected to Delhi, Mumbai, Kolkata and Lucknow, with overnight trains from Delhi taking 6-7 hours. Rishikesh station is 25 km from Haridwar.",
+        },
+        road: {
+          summaryLabel: "Route",
+          summary: "Rishikesh / Haridwar to Joshimath via NH58",
+          detail: "About 275 km and 10 hours by road from Rishikesh, via Devprayag, Rudraprayag and Joshimath, along the Alaknanda River.",
+          route: ["Rishikesh / Haridwar", "Devprayag", "Rudraprayag", "Joshimath", "Auli (13 km + cable car)"],
+          facts: [
+            { label: "Total Distance", value: "~300 km one side + 6 km Gorson trek" },
+            { label: "Duration", value: "2 Nights / 3 Days" },
+          ],
+        },
+        pickup: {
+          point: "Rishikesh",
+          time: "6:00 AM, Day 1",
+          dropPoint: "Rishikesh",
+          dropTime: "7:30 PM, Day 3",
+          note: "Joshimath to Auli is 13 km, covered by Asia's 2nd longest cable car (4.15 km, ₹1,000 per person per side) or, if the cable car is closed due to snow/wind, by a 1-hour drive on the same road.",
+        },
+      },
+      faqs: [
+        {
+          title: "Is Auli safe for family with kids and senior citizens?",
+          description: "Yes, 100% safe. Auli is the easiest snow destination — no trek needed, reachable by cable car. Even 75+ age travellers go every year.",
+        },
+        {
+          title: "Will we get snow in Auli? When is snowfall?",
+          description: "Guaranteed snow in Jan, Feb and first week of March. December sees snow depending on weather, and April has snow on the side walls. For 100% snow, come in Jan-Feb.",
+        },
+        {
+          title: "What is the cable car cost and timing?",
+          description: "₹1,000 per person one side. Timing is 9 AM to 4:30 PM. It closes in heavy snow/wind for safety, in which case we go by road (13 km).",
+        },
+        {
+          title: "How cold is Auli? What should I carry?",
+          description: "Winter (Dec-Mar): -2°C to -8°C at night, 2°C to 8°C in the day — carry a heavy jacket, thermals, woollen cap, gloves, sunglasses, sunscreen and good shoes. Summer (Apr-June): 5°C to 18°C, pleasant — a light jacket is enough.",
+        },
+        {
+          title: "Is there network and electricity in Auli?",
+          description: "Joshimath has full Jio and Airtel 4G with electricity. Auli has patchy BSNL/Jio coverage and electricity that can go off in winter due to snow — resorts have backup, and there is no WiFi.",
+        },
+        {
+          title: "Can we do Auli in 2 days?",
+          description: "A Delhi to Delhi trip can be done in 4 days, and Rishikesh to Rishikesh is best in 3 days. 2 days is very hectic (same-day return); we recommend the 2N/3D package.",
+        },
+        {
+          title: "Is skiing included?",
+          description: "No. Skiing costs ₹1,500-2,000 per person with a trainer and equipment for 2 hours, available only in Dec-March when there is snow.",
+        },
+        {
+          title: "What if the cable car is closed due to snow or wind?",
+          description: "We take you by road (13 km) — about a 1-hour drive to Auli, safe even with chains used in heavy snowfall.",
+        },
+        {
+          title: "Is it better to stay in Auli or Joshimath?",
+          description: "Auli offers a Nanda Devi view, sunrise and stars, but has only 6-7 resorts that fill up fast and cost more. Joshimath has comfortable heated hotels, 30 minutes from Auli.",
+        },
+        {
+          title: "Is Auli better than Manali?",
+          description: "For snow and peace, yes — Manali is crowded with traffic and a mall road, while Auli is clean, silent and surrounded only by Himalayan peaks.",
+        },
+      ],
+      transportModes: TRANSPORT_BY_GROUP_SIZE,
+      cancellationPolicy: TIERED_CANCELLATION_POLICY,
+      confirmationPolicy: CONFIRMATION_POLICY,
+      contactNumbers: TRIP_CONTACT_NUMBERS,
+      thingsToCarry: [
+        "Heavy jacket, thermal inners and woollen cap for winter (Dec-Mar)",
+        "Light jacket for summer (Apr-June)",
+        "Gloves and UV-protected sunglasses",
+        "Sunscreen and lip balm",
+        "Good trekking / snow shoes",
+        "Personal medical kit",
+        "Aadhaar Card / photo ID for hotel check-in",
+      ],
+      thingsToRemember: TRIP_GROUND_RULES,
+      relatedSlugs: ["char-dham-yatra", "chopta-tungnath-trek", "kedarnath-yatra"],
+    }
+  ),
+
+  toListingItem(
+    {
       name: "Char Dham Yatra",
       slug: "char-dham-yatra",
       duration: "8N/9D",
@@ -1494,7 +1716,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
         "Aadhaar Card (mandatory for Char Dham registration)",
       ],
       thingsToRemember: TRIP_GROUND_RULES,
-      relatedSlugs: ["kedarnath-yatra", "kedarnath-badrinath-tungnath", "chopta-tungnath-trek", "panch-kedar-yatra"],
+      relatedSlugs: ["kedarnath-yatra", "kedarnath-badrinath", "chopta-tungnath-trek", "panch-kedar-yatra"],
     }
   ),
 
@@ -1504,55 +1726,340 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       slug: "panch-kedar-yatra",
       duration: "11N/12D",
       heroImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80",
-      tagline: "All five Panch Kedar shrines — Kedarnath, Madhyamaheshwar, Tungnath, Rudranath and Kalpeshwar.",
+      tagline: "All five Panch Kedar shrines — Kedarnath, Madhmaheshwar, Tungnath, Rudranath and Kalpeshwar — in one 12-day expedition.",
     },
     {
       region: "Uttarakhand",
-      startLocation: "Rishikesh",
-      endLocation: "Rishikesh",
+      startLocation: "Rishikesh / Haridwar",
+      endLocation: "Rishikesh / Haridwar",
       difficulty: "Difficult",
       price: 34999,
       months: ["May", "Jun", "Sep", "Oct"],
       themes: ["Pilgrimage", "Meadow", "Forest"],
       category: "Backpacking Trip",
       detailsPath: "/trips/backpacking/panch-kedar-yatra",
-      alternateNames: ["Panch Kedar", "Panch Kedar Trek", "Five Kedar", "Kedarnath", "Madhyamaheshwar", "Madmaheshwar", "Tungnath", "Rudranath", "Kalpeshwar", "Kedar"],
-      minAge: 15,
+      alternateNames: [
+        "Panch Kedar",
+        "Panch Kedar Trek",
+        "Five Kedar",
+        "Kedarnath",
+        "Madhyamaheshwar",
+        "Madmaheshwar",
+        "Tungnath",
+        "Chandrashila",
+        "Rudranath",
+        "Kalpeshwar",
+        "Panar Bugyal",
+        "Sagar Village",
+        "Urgam Village",
+        "Kedar",
+      ],
+      altitude: "7,200 ft to 12,800 ft (Tungnath, the highest of the five Kedars)",
+      minAge: 12,
+      maxAge: 58,
+      availability: "Batches from May–June and September–October, ex-Rishikesh / Haridwar",
       intro:
-        "There are few places where you can take in Himalayan peaks, sunrise and sunset like this and seek the blessings of Shiva at the same time. Twelve days from Rishikesh covering all five Panch Kedar shrines in one continuous circuit — Kedarnath at the head of the Mandakini, Madhyamaheshwar above Ransi, Tungnath at Chopta, Rudranath beyond Pannar Bugyal, and the Kalpeshwar cave temple at Urgam.",
+        "Panch Kedar are five sacred Shiva temples in the Garhwal Himalayas, where the body parts of Lord Shiva — in the form of a bull — reappeared after the Mahabharata. After the Kurukshetra war, the Pandavas sought forgiveness from Lord Shiva. He avoided them by taking the form of a bull and diving into the ground; his body parts then surfaced at five places. We are Uttarakhand's first Panch Kedar specialist team, taking you to all five shrines — Kedarnath, Madhmaheshwar, Tungnath, Rudranath and Kalpeshwar — in one continuous 12-day yatra from Rishikesh / Haridwar, in small batches of 8–12 with our own local team and stay on each Kedar. This is not a luxury tour — it's a pure Himalayan expedition, and only about 5% of devotees complete all five Kedars in one go.",
       highlights: [
-        "Kedarnath Temple — 21 km trek each way from Gaurikund",
-        "Madhyamaheshwar via Khatra, Nanu, Moukheem and Koon",
-        "Tungnath — the world's highest Shiva temple",
-        "Rudranath, reached over Pitradhar",
-        "Kalpeshwar cave temple at Urgam",
-        "Pannar Bugyal via Pung Bugyal, Mauli Karak and Luiti Bugyal",
+        "Kedarnath (Hump / पीठ) — 11,755 ft, 16 km trek from Gaurikund, one of the 12 Jyotirlingas",
+        "Madhmaheshwar (Navel / नाभि) — 11,473 ft, the most peaceful of the five, ringed by the Chaukhamba peaks",
+        "Tungnath (Arms / भुजाएं) — 12,800 ft, the world's highest Shiva temple, with Chandrashila peak just 1 km beyond",
+        "Rudranath (Face / मुख) — 11,800 ft, the toughest Kedar, a natural rock face of Shiva through dense forest and bugyals",
+        "Kalpeshwar (Hair / जटाएं) — 7,200 ft, a cave shrine and the only Panch Kedar open all year",
+        "Panar Bugyal and Deoria Tal en route — high-altitude meadows and lake views of the Garhwal Himalayas",
+      ],
+      usps: [
+        {
+          title: "We know the real trek, not Google Maps",
+          description: "Rudranath has 3 different routes and Madhmaheshwar has 2 — online maps will confuse you. We know which route has water, which village has a stay, where the network comes, and where a pony can and can't go. That knowledge only comes from living here.",
+        },
+        {
+          title: "Our own local team on each Kedar",
+          description: "Our homestay in Sari covers Madhmaheshwar and Tungnath, our hotel in Sagar covers Rudranath, and our hotel in Sonprayag covers Kedarnath. You are never left alone anywhere on the circuit.",
+        },
+        {
+          title: "Small batches, not a bus yatra",
+          description: "We take only 8–12 people per batch, with 1 guide and 1 porter, so everyone gets proper attention in the jungle and at high altitude.",
+        },
+        {
+          title: "Pure yatra, no luxury drama",
+          description: "We tell you honestly on Day 1 — you'll walk ~80 km, sleep in wooden rooms, eat dal-chawal, and go without phone network for 3–5 days. We don't sell fake luxury in the Himalayas.",
+        },
+      ],
+      idealFor: "Serious Shiv Bhakts and fit trekkers ready for a pure Himalayan expedition, not a luxury holiday — only about 5% of devotees complete all 5 Kedars in one go.",
+      differentiators: [
+        "Total duration: 12–14 days from Haridwar / Rishikesh",
+        "Best time: May–June and September–October",
+        "Total trek: ~80 km on foot across the five Kedars",
+        "Sequence: Kedarnath → Madhmaheshwar → Tungnath → Rudranath → Kalpeshwar (Badrinath can be added at the end)",
+        "Altitude range: 7,200 ft at Kalpeshwar to 12,800 ft at Tungnath",
+        "Batches of 8–12 people with 1 guide and 1 porter, and our own local team/stay on each Kedar",
+      ],
+      importantNote:
+        "This is not a luxury tour, it's a pure Himalayan expedition. You will walk close to 80 km, sleep in wooden rooms, tents and dharamshalas, eat simple dal-chawal meals, and have no phone network for 3–5 days at a stretch (Jio works till Sonprayag, Sari and Sagar Village; there is no network at Kedarnath base, Madhmaheshwar, Panar and Rudranath). Kalpeshwar is the only Kedar open all year — the other four are open only from May to November and close for winter due to snow.",
+      destinationHighlights: [
+        {
+          name: "Kedarnath — 1st Kedar (Hump)",
+          blurb: "The biggest and main temple, one of the 12 Jyotirlingas, at 11,755 ft — a 16 km trek from Gaurikund. Open May to November; the Bhairav Shila boulder is believed to protect the temple. Difficulty: Moderate–Difficult.",
+        },
+        {
+          name: "Madhmaheshwar — 2nd Kedar (Navel)",
+          blurb: "The most beautiful and peaceful Kedar, at 11,473 ft — an 18 km trek from Ransi Village near Ukhimath, surrounded by the Chaukhamba and Kedarnath peaks. Difficulty: Difficult.",
+        },
+        {
+          name: "Tungnath — 3rd Kedar (Arms)",
+          blurb: "The world's highest Shiva temple, at 12,800 ft — a short 3.5 km trek from Chopta and the easiest of the five. Chandrashila peak (4,000 m) is 1 km further, with a 360° Himalayan view. Difficulty: Easy.",
+        },
+        {
+          name: "Rudranath — 4th Kedar (Face)",
+          blurb: "The toughest and most remote Kedar, at 11,800 ft — a 22 km trek from Sagar Village through dense forest and bugyal meadows to a natural rock face of Shiva. Difficulty: Very Difficult.",
+        },
+        {
+          name: "Kalpeshwar — 5th Kedar (Hair)",
+          blurb: "The easiest and only Panch Kedar open throughout the year, at 7,200 ft — a 2 km trek from Urgam Village to a cave temple where Shiva's hair is worshipped. Difficulty: Very Easy.",
+        },
       ],
       priceNote: "₹34,999 per person, excluding GST. 5% GST applies on the invoice amount.",
-      sourceCaveat:
-        "Days 10 and 11 are inconsistent in the source itinerary. The Day 10 heading reads \"Rudranath — Sagar Village (trek back), Sagar Village — Urgam (drive 60 km / 2 hrs)\" but its body says the night is spent in Sagar; the Day 11 heading reads \"Sagar — Kalpeshwar\" while its body describes the 2 km walk starting from Urgam village. The plan below follows the headings. Confirm the Day 10 overnight with the trips desk.",
       itinerary: [
-        { day: 1, title: "Rishikesh to Guptkashi", entries: [{ text: "Drive 204 km, about 7 hours, via Devprayag and Rudraprayag." }, { text: "Overnight Guptkashi." }] },
-        { day: 2, title: "Kedarnath", entries: [{ text: "Trek 21 km one way. Overnight Kedarnath." }] },
-        { day: 3, title: "Back to Guptkashi", entries: [{ text: "Trek back down. Overnight Guptkashi." }] },
-        { day: 4, title: "Guptkashi to Ransi", entries: [{ text: "Easy descending walk. Overnight Ransi." }] },
-        { day: 5, title: "Madhyamaheshwar", entries: [{ text: "Trek 16 km via Khatra, Nanu, Moukheem and Koon." }, { text: "Overnight Madhyamaheshwar." }] },
-        { day: 6, title: "Madhyamaheshwar to Chopta", entries: [{ text: "Trek back to Sari, then drive 40 km, about 2 hours." }, { text: "Overnight Chopta." }] },
-        { day: 7, title: "Tungnath", entries: [{ text: "Trek 4 km up to Tungnath and back." }, { text: "Overnight Sari village." }] },
-        { day: 8, title: "Sari to Pannar Bugyal", entries: [{ text: "Trek 16 km via Sagar Village, Pung Bugyal, Mauli Karak and Luiti Bugyal." }, { text: "Overnight Pannar." }] },
-        { day: 9, title: "Rudranath", entries: [{ text: "Trek 8 km. Overnight near the temple." }] },
-        { day: 10, title: "Rudranath to Urgam", entries: [{ text: "Trek back to Sagar Village, then drive 60 km, about 2 hours." }, { text: "Overnight Sagar / Urgam." }] },
-        { day: 11, title: "Kalpeshwar", entries: [{ text: "Trek 2 km to Kalpeshwar and back. Overnight Urgam." }] },
-        { day: 12, title: "Return to Rishikesh", entries: [{ text: "Drive 250 km, 7–8 hours. Trip ends." }] },
+        {
+          day: 1,
+          title: "Rishikesh / Haridwar to Sonprayag",
+          entries: [
+            { text: "220 km / 9 hrs drive via Devprayag (Sangam of Alaknanda and Bhagirathi), Srinagar, Rudraprayag, Agastmuni and Guptkashi." },
+            { text: "5:30 AM pickup from Haridwar Railway Station / Rishikesh Bus Stand; breakfast en route at Srinagar." },
+            { text: "Evening check-in at Sonprayag; briefing for the Kedarnath trek — hand over your main bag and carry only a small bag for the next 2 days." },
+            { text: "Stay: Sonprayag Hotel. Meals: Dinner." },
+          ],
+        },
+        {
+          day: 2,
+          title: "Sonprayag to Kedarnath Dham — 1st Kedar",
+          entries: [
+            { text: "16 km trek. 4 AM start; shared jeep from Sonprayag to Gaurikund (5 km), then trek begins." },
+            { text: "Route: Jungle Chatti — Bheembali — Linchauli — Base Camp — Kedarnath (11,755 ft); reach by 12–1 PM." },
+            { text: "Evening darshan and Aarti at Kedarnath Temple — the Hump (Prishtha) of Lord Shiva is worshipped here." },
+            { text: "Stay: Kedarnath Tent / Dorm (sharing). Meals: Breakfast + Dinner." },
+          ],
+        },
+        {
+          day: 3,
+          title: "Kedarnath to Sonprayag",
+          entries: [
+            { text: "16 km trek down. 5 AM second darshan at the temple, then trek down to Sonprayag — about 6 hours." },
+            { text: "Reach Sonprayag by 2–3 PM; hot bath and rest in a proper hotel room after the basic Kedarnath stay." },
+            { text: "Stay: Sonprayag Hotel. Meals: Breakfast + Dinner." },
+          ],
+        },
+        {
+          day: 4,
+          title: "Sonprayag to Sari Village",
+          entries: [
+            { text: "45 km / 2 hrs drive. Relaxed 9 AM start after two days of trekking; drive via Ukhimath, the winter seat of Kedarnath." },
+            { text: "Reach Sari Village (2,000 m) by 11 AM; check in to a homestay with Chaukhamba Peak views." },
+            { text: "Evening free — optional trek to Deoria Tal Lake (2 km), known for its reflection of the Himalayas." },
+            { text: "Stay: Sari Village Homestay. Meals: Breakfast + Dinner." },
+          ],
+        },
+        {
+          day: 5,
+          title: "Sari Village to Madhmaheshwar — 2nd Kedar",
+          entries: [
+            { text: "16 km trek. 6 AM drive to Ransi Village (5 km), the last road head for Madhmaheshwar." },
+            { text: "Trek via Ransi — Gaundar Village — Bantoli — Madhmaheshwar, through dense forest and past waterfalls." },
+            { text: "Reach Madhmaheshwar Temple (3,497 m / 11,473 ft) by 3–4 PM — the Navel (Nabhi) of Lord Shiva is worshipped here." },
+            { text: "Stay: Madhmaheshwar Homestay / Temple Guest House. Meals: Breakfast + Dinner." },
+          ],
+        },
+        {
+          day: 6,
+          title: "Madhmaheshwar to Sari Village",
+          entries: [
+            { text: "16 km trek down + drive. Morning pooja at the temple, then trek down to Ransi Village, 5–6 hours." },
+            { text: "Pickup at Ransi and drive back to Sari Village by evening; rest and bonfire at the homestay." },
+            { text: "Stay: Sari Village Homestay. Meals: Breakfast + Dinner." },
+          ],
+        },
+        {
+          day: 7,
+          title: "Sari Village to Chopta – Tungnath — 3rd Kedar – Back to Sari",
+          entries: [
+            { text: "7 AM drive to Chopta (25 km / 1 hr) — Mini Switzerland." },
+            { text: "3.5 km / 1.5 hr trek to Tungnath Temple (3,680 m) — the highest Shiva temple in the world; the Arms (Bhuja) of Shiva are worshipped here." },
+            { text: "Further 1 km trek to Chandrashila Peak (4,000 m) for a 360° view of Nanda Devi, Trishul and Chaukhamba." },
+            { text: "After darshan, drive back to Sari Village for overnight stay." },
+            { text: "Stay: Sari Village Homestay. Meals: Breakfast + Dinner." },
+          ],
+        },
+        {
+          day: 8,
+          title: "Sari Village to Sagar Village to Panar Bugyal",
+          entries: [
+            { text: "6 AM start; long drive Sari to Sagar Village (50 km / 3 hrs) via Chopta–Mandal–Gopeshwar — the base for the 4th Kedar, Rudranath." },
+            { text: "Lunch at Sagar, then an 11 km / 5 hr trek through jungle and bugyal to Panar Bugyal (2,800 m)." },
+            { text: "Overnight in tents at Panar, a large meadow with no electricity." },
+            { text: "Stay: Panar Bugyal Tents. Meals: Breakfast + Dinner." },
+          ],
+        },
+        {
+          day: 9,
+          title: "Panar Bugyal to Rudranath Temple — 4th Kedar — Stay at Rudranath",
+          entries: [
+            { text: "5 km / 2–3 hr trek to Rudranath; reach by 9 AM." },
+            { text: "Rudranath (3,600 m) is the toughest and most beautiful Kedar — a temple in a natural cave surrounded by alpine meadows; the Face (Mukh) of Lord Shiva is worshipped here." },
+            { text: "Overnight at the temple; attend the evening Aarti in complete silence, with only 10–15 other yatris. Basic accommodation at the priest house / dharamshala." },
+            { text: "Stay: Rudranath Temple Dharamshala / Priest House (very basic). Meals: Breakfast + Dinner." },
+          ],
+        },
+        {
+          day: 10,
+          title: "Rudranath to Sagar Village",
+          entries: [
+            { text: "16 km trek down. Early morning darshan, then a long trek down via Panar (5 km) and Lyuti to Sagar (11 km) — 7–8 hours, direct downhill." },
+            { text: "Reach Sagar Village by evening — a proper hotel bed after two days of tent/dharamshala life." },
+            { text: "Stay: Sagar Village Hotel / Homestay. Meals: Breakfast + Dinner." },
+          ],
+        },
+        {
+          day: 11,
+          title: "Sagar Village to Urgam Village – Kalpeshwar — 5th Kedar",
+          entries: [
+            { text: "Drive Sagar to Helang (70 km / 3 hrs), then 12 km to Urgam Village / Devgram." },
+            { text: "Easy 2 km / 30 min trek to Kalpeshwar Temple — a cave shrine and the only Kedar open all 365 days; the Hair (Jata) of Lord Shiva is worshipped here." },
+            { text: "After darshan, back to Urgam Village — the last village of the Panch Kedar circuit." },
+            { text: "Stay: Urgam Village Homestay. Meals: Breakfast + Dinner." },
+          ],
+        },
+        {
+          day: 12,
+          title: "Urgam Village to Rishikesh / Haridwar",
+          entries: [
+            { text: "270 km / 10–11 hrs drive. 6 AM start via Helang, Joshimath, Chamoli, Rudraprayag and Srinagar." },
+            { text: "Evening 5–6 PM drop at Rishikesh / Haridwar. Yatra ends — Panch Kedar Parikrama completed." },
+            { text: "Meals: Breakfast." },
+          ],
+        },
       ],
       costIncludes: [
-        "11 nights accommodation, triple / quad sharing",
-        "All vegetarian meals from Day 1 dinner to Day 12 morning tea — Day 12 breakfast is not included",
-        "Surface transfer, Rishikesh to Rishikesh",
-        "Morning and evening tea or coffee with snacks",
-        "Qualified trek leader and support staff",
+        "Transport, Haridwar/Rishikesh to Haridwar/Rishikesh, by Bolero / Ertiga / Innova / Tempo Traveller as per group size",
+        "All driver allowance, toll, parking and fuel",
+        "11 nights accommodation — 2N Sonprayag Hotel, 3N Sari Village Homestay, 1N Kedarnath Tent/Dorm (sharing), 1N Madhmaheshwar Homestay/Temple Guest House, 1N Panar Bugyal Tent (sharing), 1N Rudranath Temple Dharamshala/Priest House (very basic), 1N Sagar Village Homestay/Hotel, 1N Urgam Village Homestay",
+        "11 Breakfasts + 11 Dinners (Veg), Day 1 dinner to Day 12 breakfast — hot homestay meals at Sari, Sonprayag, Sagar and Urgam",
+        "Experienced trek guide for the Madhmaheshwar and Rudranath treks",
+        "All forest and temple permits",
+        "First aid kit",
       ],
-      costExcludes: HIMALAYAN_TREK_EXCLUSIONS,
+      costExcludes: [
+        "Lunch on all 12 days (available at small trail shops, approx. ₹150–200 per meal)",
+        "Pony / palki / pitthu for Kedarnath or any other Kedar",
+        "Helicopter ticket for Kedarnath",
+        "Personal expenses, extra drinks, laundry and phone calls",
+        "Any extra night's stay due to landslide or weather",
+        "5% GST",
+        "Anything not mentioned under inclusions",
+      ],
+      eligibilityCriteria: [
+        { icon: "User", text: "Age limit: 12 to 58 years. Children below 12 are not permitted." },
+        { icon: "Stethoscope", text: "Travellers above 55 need a medical fitness certificate before joining." },
+        { icon: "Mountain", text: "Altitude ranges from 7,200 ft at Kalpeshwar to 12,800 ft at Tungnath." },
+        { icon: "Footprints", text: "~80 km of trekking across the 5 Kedars — pony is available only at Kedarnath; the other four Kedars can only be reached on foot." },
+      ],
+      fitnessCriteria: [
+        { icon: "Footprints", text: "Recommended: walk 5 km daily for 30 days before the yatra, and have completed at least one small trek before." },
+        { icon: "Activity", text: "Rudranath (16 km one way) and Madhmaheshwar (16 km round trip) are the toughest stretches — good stamina is essential." },
+        { icon: "Backpack", text: "Be ready to carry a daypack, sleep in basic wooden rooms/tents/dharamshalas, and go without phone network for 3–5 days." },
+      ],
+      howToReach: {
+        intro: "Panch Kedar Yatra starts and ends at Rishikesh / Haridwar, with pickup at 5:30 AM on Day 1.",
+        air: {
+          summaryLabel: "Nearest Airport",
+          summary: "Jolly Grant Airport, Dehradun (DED)",
+          detail: "About 35 km from Rishikesh, with daily flights from Delhi, Mumbai and Bangalore. From the airport, take a taxi to Rishikesh, about 1 hour.",
+        },
+        train: {
+          summaryLabel: "Nearest Railway Station",
+          summary: "Haridwar Junction (HW)",
+          detail: "Best-connected station on the circuit, with trains from Delhi (6 hrs), Mumbai, Kolkata and Lucknow. Haridwar to Rishikesh is 25 km by auto or bus.",
+        },
+        road: {
+          summaryLabel: "Route",
+          summary: "Rishikesh/Haridwar → Sonprayag → Sari Village → Chopta → Sagar Village → Urgam Village → Rishikesh/Haridwar",
+          detail: "Daily Volvo buses run from Delhi ISBT Kashmiri Gate to Rishikesh/Haridwar, 6–7 hours; overnight buses are also available.",
+          route: ["Rishikesh / Haridwar", "Sonprayag", "Sari Village", "Chopta", "Sagar Village", "Urgam Village", "Rishikesh / Haridwar"],
+          facts: [
+            { label: "Total Distance", value: "~500 km by road + ~80 km trek" },
+            { label: "Duration", value: "11 Nights / 12 Days" },
+          ],
+        },
+        pickup: {
+          point: "Haridwar Railway Station / Rishikesh Bus Stand",
+          time: "5:30 AM, Day 1",
+          dropPoint: "Rishikesh / Haridwar",
+          dropTime: "Evening, Day 12",
+          note: "Jio network works till Sonprayag, Sari and Sagar Village; there is no network at the Kedarnath base, Madhmaheshwar, Panar and Rudranath for 5–6 days.",
+        },
+      },
+      faqs: [
+        {
+          title: "What is Panch Kedar Yatra?",
+          description: "Panch Kedar is 5 temples of Lord Shiva in Uttarakhand — Kedarnath, Madhmaheshwar, Tungnath, Rudranath and Kalpeshwar — built where 5 body parts of Shiva appeared after he took the form of a bull.",
+        },
+        {
+          title: "How many days are required for Panch Kedar?",
+          description: "12 Days / 11 Nights from Haridwar to Haridwar is standard. Fast groups can do it in 11 days; a comfortable pace is 12–13 days.",
+        },
+        {
+          title: "How much trekking is there in Panch Kedar?",
+          description: "Total 75–80 km on foot: Kedarnath 32 km (16+16), Madhmaheshwar 32 km (16+16), Tungnath–Chandrashila 7 km (3.5+3.5), Rudranath 16 km (direct from Panar to Sagar via Rudranath) and Kalpeshwar 2 km.",
+        },
+        {
+          title: "What is the difficulty level?",
+          description: "Moderate to Difficult overall. Rudranath is the toughest, followed by Madhmaheshwar. Tungnath and Kalpeshwar are easy. Good fitness is required.",
+        },
+        {
+          title: "What is the best time for Panch Kedar Yatra?",
+          description: "May to June and September to October. July–August is monsoon, with landslide risk. Winter (November–April) all temples are closed except Kalpeshwar.",
+        },
+        {
+          title: "Which is the toughest Kedar among the 5?",
+          description: "Rudranath is the toughest — a 16 km long trek with a steep climb and no facilities. Madhmaheshwar is the second toughest.",
+        },
+        {
+          title: "Can we do Panch Kedar by helicopter?",
+          description: "No. Only Kedarnath has a helicopter option. The other 4 Kedars can only be reached by trekking; pony is available only for Kedarnath.",
+        },
+        {
+          title: "What is the age limit for Panch Kedar?",
+          description: "12 to 58 years. For travellers above 55, a medical fitness certificate is required. Children below 12 are not allowed.",
+        },
+        {
+          title: "What is included in the package cost?",
+          description: "Transport from Haridwar, 11 nights stay (hotel/homestay/tent), 11 breakfasts + 11 dinners, trek guide and permits. Lunch is not included.",
+        },
+        {
+          title: "What kind of stay will we get?",
+          description: "At Sonprayag & Sagar — hotel. At Sari & Urgam — homestay. At Kedarnath — tent/dorm. At Madhmaheshwar — homestay/temple guest house. At Panar & Rudranath — tents/dharamshala (very basic, no attached bathroom).",
+        },
+        {
+          title: "Is mobile network available on the Panch Kedar trek?",
+          description: "Jio works till Sonprayag, Sari and Sagar Village. There is no network at the Kedarnath base, Madhmaheshwar, Panar and Rudranath for 5–6 days.",
+        },
+        {
+          title: "Can beginners do Panch Kedar?",
+          description: "Yes, if you have good fitness. If you can walk 5 km daily for 30 days before the yatra and have done some small trek before, you can do it.",
+        },
+        {
+          title: "What should I pack for Panch Kedar?",
+          description: "Waterproof trekking shoes, 2 warm jackets, a raincoat, 3–4 T-shirts and tracks, a cap, torch, power bank, water bottle, personal medicines and a small backpack.",
+        },
+        {
+          title: "Which is better — Panch Kedar or Char Dham?",
+          description: "Char Dham is easier and mostly by road. Panch Kedar is pure trekking and spiritual. If you love trekking and Shiva, Panch Kedar is a lifetime experience.",
+        },
+        {
+          title: "Why is the Rudranath night stay at the temple itself?",
+          description: "Staying at Rudranath Temple is the main experience — very few people get the chance to sleep near Mahadev at 11,800 ft in complete silence. That's why we go Panar to Rudranath and stay overnight at Rudranath.",
+        },
+      ],
       transportModes: TRANSPORT_BY_GROUP_SIZE,
       cancellationPolicy: TIERED_CANCELLATION_POLICY,
       confirmationPolicy: CONFIRMATION_POLICY,
@@ -1560,7 +2067,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
       rentalGear: TREK_RENTAL_GEAR,
       thingsToRemember: TRIP_GROUND_RULES,
-      relatedSlugs: ["three-kedar-yatra", "rudranath-trek", "char-dham-yatra"],
+      relatedSlugs: ["three-kedar-yatra", "chopta-tungnath-trek", "kedarnath-badrinath", "char-dham-yatra"],
     }
   ),
 
@@ -1824,59 +2331,239 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
       rentalGear: TREK_RENTAL_GEAR,
       thingsToRemember: TRIP_GROUND_RULES,
-      relatedSlugs: ["kedarnath-badrinath-tungnath", "char-dham-yatra", "chopta-tungnath-trek"],
+      relatedSlugs: ["kedarnath-badrinath", "char-dham-yatra", "chopta-tungnath-trek"],
     }
   ),
 
   toListingItem(
     {
-      name: "Kedarnath, Badrinath & Tungnath Trek",
-      slug: "kedarnath-badrinath-tungnath",
-      duration: "5N/6D",
+      name: "Kedarnath Badrinath",
+      slug: "kedarnath-badrinath",
+      duration: "4N/5D",
       heroImage: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80",
-      tagline: "Two Dhams and the world's highest Shiva temple in six days from Haridwar.",
+      tagline: "Shiva & Vishnu — the Do Dham Yatra of Kedarnath and Badrinath in 5 Days / 4 Nights.",
     },
     {
-      region: "Uttarakhand",
-      startLocation: "Haridwar",
-      endLocation: "Haridwar",
+      region: "Rudraprayag & Chamoli District, Uttarakhand",
+      startLocation: "Haridwar / Rishikesh",
+      endLocation: "Haridwar / Rishikesh",
       difficulty: "Moderate",
       price: 14999,
       months: ["May", "Jun", "Sep", "Oct"],
       themes: ["Pilgrimage", "Snow", "Meadow"],
       category: "Backpacking Trip",
-      detailsPath: "/trips/backpacking/kedarnath-badrinath-tungnath",
-      alternateNames: ["Kedarnath Badrinath Tungnath", "Do Dham with Tungnath", "Kedarnath", "Badrinath", "Tungnath", "Chandrashila", "Chopta", "Kedar"],
-      minAge: 12,
+      detailsPath: "/trips/backpacking/kedarnath-badrinath",
+      alternateNames: ["Kedarnath Badrinath Yatra", "Do Dham Yatra", "Kedarnath", "Badrinath", "Kedar"],
+      altitude: "11,755 ft / 3,583 m (Kedarnath) & 10,279 ft / 3,133 m (Badrinath)",
+      minAge: 1,
       intro:
-        "Six days from Haridwar taking in Kedarnath, Tungnath — the highest Shiva temple in the world — and Badrinath.",
-      highlights: ["Kedarnath Temple", "Tungnath", "Chandrashila Peak", "Badrinath Temple", "Tapt Kund", "Mana Village", "Vyas Gufa"],
-      priceNote: "Starting ₹14,999 + 5% GST, ex-Rishikesh / Haridwar.",
+        "Kedarnath Badrinath together form the most sacred Do Dham Yatra of Uttarakhand and a major part of the Char Dham Yatra. Kedarnath is dedicated to Lord Shiva and sits at the head of the Mandakini River at 11,755 ft, reached by a 16 km trek each way from Gaurikund. Badrinath is dedicated to Lord Vishnu, on the banks of the Alaknanda River at 10,279 ft, between the Nar and Narayan peaks — reached by direct road with no trek. Together they represent the perfect balance of Shaiva and Vaishnava faith, over 5 Days / 4 Nights from Haridwar or Rishikesh.",
+      highlights: [
+        "12 Jyotirlinga Kedarnath darshan",
+        "Badrinath Dham (Char Dham)",
+        "Bhairav Temple",
+        "Bhim Shila",
+        "Mana — last village of India",
+        "Tapt Kund hot spring",
+        "Charan Paduka",
+      ],
+      usps: [
+        {
+          title: "Adventure and easy devotion, together",
+          description: "Kedarnath offers the thrill of a Himalayan trek and raw mountain beauty, while Badrinath offers peaceful darshan with the hot water Tapt Kund, Mana village and Himalayan views — one journey, two very different experiences.",
+        },
+        {
+          title: "The most sacred Do Dham of Uttarakhand",
+          description: "Shiva at Kedarnath and Vishnu at Badrinath — devotees believe darshan of Kedarnath must be followed by Badrinath to complete the yatra.",
+        },
+        {
+          title: "Suited to families and first-timers",
+          description: "Badrinath needs no trekking fitness at all, while Kedarnath's 16 km trail is fully paved with tea stalls and medical camps along the way, or covered by pony, palki or helicopter.",
+        },
+      ],
+      idealFor: "Do Dham yatris, Shiva & Vishnu devotees, family pilgrims and Himalayan travelers.",
+      differentiators: [
+        "Base village: Sonprayag / Gaurikund for Kedarnath, Mana Village for Badrinath",
+        "Trek distance: 32 km round trip for Kedarnath (16 km one side from Gaurikund); Badrinath has no trek — direct road till temple, just a 0.5 km walk",
+        "Highest point: Kedarnath Temple (11,755 ft) and Bhairavnath Temple (12,000 ft)",
+        "Best season: May–June and September–October",
+        "Winter: both temples closed November to April — Kedarnath idol shifts to Ukhimath Omkareshwar Temple, Badrinath idol shifts to Joshimath",
+        "Monsoon: July–August is open but risky, with landslides on both routes — avoid if possible",
+      ],
+      importantNote:
+        "Both temples remain open from May to November and close on Bhai Dooj in November due to heavy snowfall. In winter, both areas get 15–20 feet of snow — the Kedarnath idol is shifted to Ukhimath Omkareshwar Temple and the Badrinath idol to Joshimath Narsingh Temple, where winter puja continues for six months. Uttarakhand Yatra e-pass registration is mandatory for every pilgrim on both Dhams, and you must carry a valid Aadhaar Card or Passport.",
+      destinationHighlights: [
+        {
+          name: "Kedarnath",
+          blurb: "One of the 12 Jyotirlingas and first among the Panch Kedar, at 11,755 ft at the head of the Mandakini River. Believed to be built by the Pandavas and revived by Adi Shankaracharya, whose Samadhi sits behind the temple. In the 2013 flood, the temple stood untouched behind the Bhim Shila rock that diverted the water — considered a divine miracle.",
+        },
+        {
+          name: "Badrinath",
+          blurb: "One of the Char Dham, 108 Divya Desams and Panch Badri, at 10,279 ft on the banks of the Alaknanda River between the Nar and Narayan peaks. The black stone idol of Vishnu was found by Adi Shankaracharya in the Alaknanda and established here in the 8th century. Includes a holy dip in the Tapt Kund hot spring (45°C even in sub-zero cold) and a visit to Mana — the last village of India.",
+        },
+      ],
+      priceNote: "Starting ₹14,999 + 5% GST, ex-Haridwar / Rishikesh.",
       itinerary: [
-        { day: 1, title: "Haridwar to Guptkashi", entries: [{ text: "Drive 255 km via Devprayag Sangam, alongside the Mandakini river." }, { text: "Overnight Guptkashi." }] },
-        { day: 2, title: "Kedarnath", entries: [{ text: "Drive 30 km to Sonprayag, then trek 21 km — walk, horse, porter or palki." }, { text: "Evening aarti. Overnight Kedarnath." }, { text: "Carry personal medicines, heavy woollens and toiletries for the overnight halt." }] },
-        { day: 3, title: "Back to Guptkashi", entries: [{ text: "Trek down to Sonprayag, then drive. Overnight Guptkashi." }] },
-        { day: 4, title: "Chopta and Tungnath", entries: [{ text: "Drive 80 km to Chopta." }, { text: "Trek 4 km to Tungnath, the highest Shiva temple in the world." }, { text: "Optional 1 km further to Chandrashila Peak." }, { text: "Trek 4 km back down. Overnight Chopta." }] },
-        { day: 5, title: "Badrinath", entries: [{ text: "Drive 180 km, about 6 hours." }, { text: "Badrinath Temple darshan and a bath at Tapt Kund hot spring." }, { text: "Vyas Gufa, Mata Murti, Bhimkund and the Saraswati river origin, all within 3 km." }, { text: "Mana Village — the last Indian village before Tibet. Overnight Badrinath." }] },
-        { day: 6, title: "Return to Haridwar", entries: [{ text: "Drive 310 km via the Nandprayag, Karanprayag and Devprayag Sangams. Trip ends." }] },
+        {
+          day: 1,
+          title: "Haridwar / Rishikesh to Sonprayag / Guptakashi",
+          entries: [
+            { text: "220 km, 8-9 hrs. Morning 5 AM pickup from Haridwar / Rishikesh." },
+            { text: "Drive via Devprayag, Srinagar, Rudraprayag and Guptkashi." },
+            { text: "Evening reach Sonprayag. Dinner and overnight stay at hotel." },
+          ],
+        },
+        {
+          day: 2,
+          title: "Sonprayag to Kedarnath",
+          entries: [
+            { text: "5 km drive + 16 km trek. 4 AM wake up, take a local shared jeep to Gaurikund (5 km)." },
+            { text: "Start the 16 km trek from Gaurikund to Kedarnath (6-8 hrs)." },
+            { text: "Reach Kedarnath by evening, evening Aarti darshan." },
+            { text: "Overnight stay at Kedarnath — tent / lodge, sharing." },
+          ],
+        },
+        {
+          day: 3,
+          title: "Kedarnath to Badrinath / Joshimath",
+          entries: [
+            { text: "16 km trek down + 200 km drive. 4 AM morning darshan, Abhishek, and a visit to Bhairav Temple (0.5 km hike)." },
+            { text: "After breakfast, start the descent to Gaurikund (5-6 hrs)." },
+            { text: "Take a shared jeep to Sonprayag and pick up your luggage." },
+            { text: "Drive to Badrinath via the Chopta / Joshimath route (7-8 hrs drive)." },
+            { text: "Late night reach Pipalkoti / Joshimath / Badrinath. Dinner and overnight stay." },
+          ],
+        },
+        {
+          day: 4,
+          title: "Badrinath Darshan to Pipalkoti / Rudraprayag",
+          entries: [
+            { text: "160 km. Early morning Tapt Kund snan and Badrinath Dham darshan." },
+            { text: "Visit Mana Village — last village of India — Bhim Pul, Saraswati River and Vyas Gufa." },
+            { text: "After darshan, drive back to Pipalkoti / Pandukeshwar." },
+            { text: "Enroute visit Vishnuprayag Sangam and Narsingh Temple, Joshimath." },
+            { text: "Dinner and overnight stay at hotel." },
+          ],
+        },
+        {
+          day: 5,
+          title: "Pipalkoti / Pandukeshwar to Haridwar / Rishikesh",
+          entries: [
+            { text: "250 km, 9-10 hrs. After breakfast, drive back to Haridwar / Rishikesh." },
+            { text: "Enroute visit Karnaprayag, Nandprayag, Devprayag Sangam and Dhari Devi Temple." },
+            { text: "Reach Haridwar / Rishikesh by 7-8 PM. Tour ends with the blessings of Do Dham." },
+          ],
+        },
       ],
       costIncludes: [
-        "5 nights accommodation — standard hotel, homestay, guesthouse or camp, triple / quad sharing",
-        "Meals on MAP basis at Guptkashi, Kedarnath and Badrinath — basic Indian veg buffet, breakfast and dinner only",
-        "Private vehicle transport, Haridwar / Rishikesh round trip",
-        "All tolls, parking, fuel, green tax and driver allowance",
+        "Transportation: Haridwar to Haridwar by Tempo Traveller / Ertiga / Dzire as per group size — all transfers and sightseeing as per itinerary",
+        "Accommodation: 4 nights total — 2 nights Sonprayag / Sitapur, 1 night Badrinath / Joshimath / Pandukeshwar, 1 night Rudraprayag / Pandukeshwar, hotels with attached washroom (Kedarnath night is a tent / dormitory stay adjusted against the Sonprayag hotel)",
+        "Meal plan: MAP — 4 breakfasts and 4 dinners (veg only), Day 1 dinner to Day 5 breakfast; basic meals at Kedarnath top",
+        "Driver allowance, toll, parking and fuel charges, driver night charges",
+        "Kedarnath Badrinath Yatra support staff at stays",
+        "First aid kit and oxygen support at hotel",
       ],
       costExcludes: [
-        "5% GST",
-        "Travel and health insurance",
-        "Meals and snacks during the trip",
-        "Medical expenses",
-        "Airport pickup and drop, available at extra cost",
-        "Local taxi Sonprayag–Gaurikund–Sonprayag",
-        "Pony cost for the Kedarnath trek",
-        "Helicopter charges",
-        "Any rituals or pooja",
-        "Anything not listed under inclusions",
+        "Yatra registration — must be done online by yourself (free)",
+        "Govt. local jeep: Sonprayag to Gaurikund to Sonprayag, ₹50-60 per side per person (shared) — mandatory",
+        "Pony / palki / pitthu / helicopter tickets for Kedarnath — as per actual cost at spot",
+        "VIP darshan, pooja samagri and any special darshan tickets for Kedarnath and Badrinath Temple",
+        "Lunch, personal expenses, tea, snacks, mineral water and porter charges",
+        "Room heater if required at Badrinath / Joshimath (per night extra)",
+        "At Kedarnath top stay — if you take a helicopter same-day return, the top stay is unused and non-refundable",
+        "Anything not mentioned in inclusions",
+        "5% GST extra",
+      ],
+      eligibilityCriteria: [
+        { icon: "User", text: "No official age limit for either Dham. Recommended 10-65 years for Kedarnath trekking; Badrinath suits all ages, 1-80 years, as there is no trek" },
+        { icon: "Mountain", text: "Highest point: Kedarnath Temple at 11,755 ft; Badrinath at 10,279 ft with direct road access" },
+        { icon: "Footprints", text: "Children below 10 and elders above 65 are recommended pony or helicopter for Kedarnath; Badrinath can be done by car directly at any age" },
+        { icon: "Stethoscope", text: "Not recommended for the Kedarnath trek if you have severe heart disease, high asthma, severe knee problems or very high BP — consult a doctor and opt for helicopter" },
+      ],
+      fitnessCriteria: [
+        { icon: "Footprints", text: "For Kedarnath: able to walk 16 km in a day on a steep incline" },
+        { icon: "Activity", text: "For Badrinath: no walking fitness required — only a 500m walk from parking to temple" },
+        { icon: "TrendingUp", text: "Start preparing 2 weeks before the yatra for Kedarnath — walk 4-5 km daily and practice stairs; no special preparation is needed for Badrinath" },
+      ],
+      howToReach: {
+        intro: "The Yatra starts and ends at Haridwar / Rishikesh. Our pickup is from Haridwar / Rishikesh at 5:30 AM on Day 1.",
+        air: {
+          summaryLabel: "Nearest Airport",
+          summary: "Jolly Grant Airport, Dehradun (DED)",
+          detail: "35 km from Rishikesh with daily flights from Delhi, Mumbai and Bangalore. From the airport, take a taxi to Rishikesh, about 1 hour.",
+        },
+        train: {
+          summaryLabel: "Nearest Railway Station",
+          summary: "Haridwar Junction (HW)",
+          detail: "Well connected to Delhi (6 hrs), Mumbai, Kolkata and Lucknow. From Haridwar to Rishikesh is 25 km by auto or bus.",
+        },
+        road: {
+          summaryLabel: "Route",
+          summary: "Delhi to Haridwar / Rishikesh by NH334",
+          detail: "Daily Volvo buses run from Delhi ISBT Kashmiri Gate to Rishikesh / Haridwar, 6-7 hours, with overnight buses available.",
+          route: ["Haridwar / Rishikesh", "Sonprayag", "Gaurikund", "Kedarnath", "Badrinath / Joshimath", "Haridwar / Rishikesh"],
+          facts: [
+            { label: "Total Distance", value: "~600 km by road + 32 km trek (Kedarnath round trip)" },
+            { label: "Duration", value: "5 Days / 4 Nights" },
+          ],
+        },
+        pickup: {
+          point: "Haridwar / Rishikesh",
+          time: "5:30 AM, Day 1",
+          dropPoint: "Haridwar / Rishikesh",
+          dropTime: "7-8 PM, Day 5",
+          note: "Kedarnath: drive to Sonprayag (220 km), local jeep to Gaurikund (5 km), then a 16 km trek one side, or helicopter from Phata / Sersi / Sitapur. Badrinath: direct road till temple parking, only a 500m walk — no trek.",
+        },
+      },
+      faqs: [
+        {
+          title: "What is the total distance and trek for Kedarnath Badrinath?",
+          description: "Total driving is approx 600 km from Haridwar. The Kedarnath trek is 16 km one side from Gaurikund to the temple, plus a 5 km jeep ride Sonprayag to Gaurikund. Badrinath has direct road till the temple, only a 500m walk from parking.",
+        },
+        {
+          title: "How many days are required for Kedarnath Badrinath from Haridwar?",
+          description: "Minimum 5 Days / 4 Nights from Haridwar / Rishikesh is required — 4 days is very hectic. Day 1 Haridwar to Sonprayag, Day 2 trek to Kedarnath, Day 3 trek down and drive to Badrinath, Day 4 Badrinath darshan and return to Rudraprayag, Day 5 back to Haridwar.",
+        },
+        {
+          title: "Is the Kedarnath Badrinath trek difficult?",
+          description: "Kedarnath is moderate to difficult — fully paved but steep; any healthy person can do it. Badrinath is very easy, no trek, suitable for all ages, elders and children. Elders are advised to take pony or helicopter for Kedarnath.",
+        },
+        {
+          title: "How to book a helicopter for Kedarnath Badrinath?",
+          description: "Helicopter is only for Kedarnath, not Badrinath. Booking is only through the official IRCTC Heli Yatra website. Badrinath is by road only, no helicopter needed.",
+        },
+        {
+          title: "Is yatra registration mandatory for both?",
+          description: "Yes, Uttarakhand Govt. yatra registration is mandatory for every pilgrim for both Dhams. It's free to register, and the same registration works for Kedarnath and Badrinath.",
+        },
+        {
+          title: "What is the best time to visit Kedarnath Badrinath?",
+          description: "May to June and September to October are best for both. July-August is monsoon and risky due to landslides. Both temples open in May and close in November on Bhai Dooj.",
+        },
+        {
+          title: "Where to stay in Kedarnath Badrinath?",
+          description: "At Sonprayag / Pipalkoti / Joshimath — good hotels with attached washroom are available. At Kedarnath top — only basic tents / GMVN with shared washroom. At Badrinath — good hotels, GMVN and ashrams with attached washroom.",
+        },
+        {
+          title: "Is there network / ATM at Kedarnath Badrinath?",
+          description: "At Kedarnath, only Jio and BSNL work till Sonprayag, with no network on the trek or at the top. At Badrinath, Jio, BSNL and Airtel work well. Last ATM for Kedarnath is at Guptkashi / Sonprayag, and for Badrinath at Joshimath — carry cash for both.",
+        },
+        {
+          title: "Can we do Kedarnath Badrinath in one day?",
+          description: "No. Kedarnath itself needs a minimum of 2 days. Even by helicopter, the Do Dham needs a minimum of 3 days.",
+        },
+        {
+          title: "What to carry for Kedarnath Badrinath?",
+          description: "A heavy woollen jacket, gloves, cap, thermal, raincoat, trekking shoes, torch, power bank, personal medicines, dry fruits, water bottle, and a valid Aadhaar Card, mandatory for both Dhams.",
+        },
+        {
+          title: "Is VIP darshan available in Kedarnath Badrinath?",
+          description: "No official VIP darshan at Kedarnath — a special pooja slip can be taken from the temple committee. At Badrinath, VIP / special pooja tickets are available from the temple committee counter.",
+        },
+        {
+          title: "What is the age limit for Kedarnath Badrinath Yatra?",
+          description: "No official age limit. Kedarnath is recommended for 10 to 65 years. Badrinath suits all ages from 1 to 80 years. Children and senior citizens should take a helicopter or pony for Kedarnath.",
+        },
       ],
       transportModes: TRANSPORT_BY_GROUP_SIZE,
       cancellationPolicy: TIERED_CANCELLATION_POLICY,
@@ -1885,6 +2572,273 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
       thingsToRemember: TRIP_GROUND_RULES,
       relatedSlugs: ["kedarnath-yatra", "char-dham-yatra", "chopta-tungnath-trek"],
+    }
+  ),
+
+  toListingItem(
+    {
+      name: "Kedarnath Badrinath with Tungnath",
+      slug: "kedarnath-badrinath-tungnath",
+      duration: "5N/6D",
+      heroImage: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80",
+      tagline: "The complete Do Dham Yatra combined with Himalayan trekking — Kedarnath, Tungnath and Badrinath in one 6-day journey.",
+    },
+    {
+      region: "Rudraprayag & Chamoli District, Uttarakhand",
+      startLocation: "Haridwar / Rishikesh",
+      endLocation: "Haridwar / Rishikesh",
+      difficulty: "Moderate to Difficult",
+      price: null,
+      months: ["May", "Jun", "Sep", "Oct"],
+      themes: ["Pilgrimage", "Snow", "Meadow"],
+      category: "Backpacking Trip",
+      detailsPath: "/trips/backpacking/kedarnath-badrinath-tungnath",
+      alternateNames: [
+        "Kedarnath Badrinath Tungnath Yatra",
+        "Do Dham with Tungnath",
+        "Kedarnath Tungnath Badrinath",
+        "Panch Kedar Char Dham",
+        "Kedarnath",
+        "Badrinath",
+        "Tungnath",
+      ],
+      altitude: "11,755 ft / 3,583 m (Kedarnath), 12,073 ft / 3,680 m (Tungnath), 12,750 ft / 3,886 m (Chandrashila) & 10,279 ft / 3,133 m (Badrinath)",
+      minAge: 1,
+      intro:
+        "Kedarnath Badrinath with Tungnath is the most complete Do Dham Yatra combined with Himalayan trekking, covering 3 of the most sacred temples of Uttarakhand. Located in Rudraprayag and Chamoli districts, this yatra takes you from 11,755 ft Kedarnath — the head of the Mandakini River, to 12,073 ft Tungnath — the world's highest Shiva temple, to 10,279 ft Badrinath — on the banks of the Alaknanda River surrounded by the Nar-Narayan mountains, over 6 Days / 5 Nights from Haridwar or Rishikesh.",
+      highlights: [
+        "12 Jyotirlinga Kedarnath darshan",
+        "Highest Shiva Temple Tungnath (Panch Kedar)",
+        "Chandrashila Summit 360° Himalayan view",
+        "Badrinath Dham (Char Dham)",
+        "Bhairav Temple",
+        "Bhim Shila",
+        "Mana — last village of India",
+        "Tapt Kund hot spring",
+      ],
+      usps: [
+        {
+          title: "Three sacred journeys, one yatra",
+          description: "Adventure of the Kedarnath trek, the thrill of the Chandrashila summit, and the peace of Badrinath darshan — all in a single, well-paced 6-day circuit.",
+        },
+        {
+          title: "Higher than Kedarnath itself",
+          description: "Chandrashila Summit at 12,750 ft is the highest point of the entire yatra, rewarding you with a 360° view of Nanda Devi, Trishul, Chaukhamba and Kedar Dome.",
+        },
+        {
+          title: "Shiva and Vishnu, in full",
+          description: "Two of the Panch Kedar shrines (Kedarnath and Tungnath) plus one of the Char Dham (Badrinath) — the most complete Shaiva-Vaishnava circuit possible in one trip.",
+        },
+      ],
+      idealFor: "Do Dham yatris, Panch Kedar lovers, Shiva & Vishnu devotees, trekking lovers and Himalayan travelers.",
+      differentiators: [
+        "Base village: Sonprayag / Gaurikund for Kedarnath, Chopta for Tungnath, Mana for Badrinath",
+        "Trek distance: 32 km round trip for Kedarnath (16 km one side from Gaurikund) + 7 km round trip for Tungnath-Chandrashila (3.5 km one side from Chopta); Badrinath has no trek — just a 0.5 km walk",
+        "Highest point: Chandrashila Summit (12,750 ft) — higher than Kedarnath itself",
+        "Best season: May–June and September–October for the clearest views",
+        "Winter: Kedarnath and Badrinath closed November to April due to heavy snow; Tungnath closed with the idol shifted to Makku, though Chandrashila can be done as a snow trek in Jan–Feb with a guide",
+        "Monsoon: July–August is open but risky, with landslides on the Kedarnath route and heavy fog at Chopta — avoid if possible",
+      ],
+      importantNote:
+        "All three temples remain open from May to November and close around Bhai Dooj due to heavy snowfall. In winter, the Kedarnath idol is shifted to Ukhimath Omkareshwar Temple, the Tungnath idol to Makku, and the Badrinath idol to Joshimath Narsingh Temple, where winter puja continues for six months. Uttarakhand Yatra e-pass registration is mandatory for every pilgrim across all three Dhams — the same registration works for Kedarnath, Tungnath and Badrinath — and you must carry a valid Aadhaar Card or Passport.",
+      destinationHighlights: [
+        {
+          name: "Kedarnath",
+          blurb: "The first among the 12 Jyotirlingas and the Panch Kedar, at 11,755 ft at the head of the Mandakini River. Reached by a 16 km trek from Gaurikund through Jungle Chatti, Bheembali and Linchauli, past waterfalls and Himalayan ranges. Believed to be built by the Pandavas and revived by Adi Shankaracharya.",
+        },
+        {
+          name: "Tungnath & Chandrashila",
+          blurb: "Tungnath, at 12,073 ft, is the highest of the Panch Kedar and the world's highest Shiva temple, where Shiva's arms are worshipped — a short 3.5 km trek from Chopta, the 'Mini Switzerland of Uttarakhand'. An extra 1 km climb leads to Chandrashila Summit at 12,750 ft, with a 360° view of Nanda Devi, Trishul, Chaukhamba and Kedar Dome.",
+        },
+        {
+          name: "Badrinath",
+          blurb: "One of the Char Dham and 108 Divya Desams, at 10,279 ft on the banks of the Alaknanda River between the Nar and Narayan peaks. Direct road access till the temple parking, just a 500m walk. Includes a holy dip in the Tapt Kund hot spring and a visit to Mana — the last village of India, Bhim Pul and Vyas Gufa.",
+        },
+      ],
+      priceNote: "Ex-Haridwar / Rishikesh. Contact us for current batch pricing.",
+      itinerary: [
+        {
+          day: 1,
+          title: "Haridwar / Rishikesh to Sonprayag / Guptkashi",
+          entries: [
+            { text: "220 km, 8-9 hrs. Morning 5 AM pickup from Haridwar / Rishikesh." },
+            { text: "Drive via Devprayag, Srinagar, Rudraprayag and Guptkashi." },
+            { text: "Evening reach Sonprayag / Guptkashi. Dinner and overnight stay at hotel." },
+          ],
+        },
+        {
+          day: 2,
+          title: "Sonprayag to Kedarnath",
+          entries: [
+            { text: "5 km drive + 16 km trek. 4 AM wake up, take a local shared jeep to Gaurikund (5 km)." },
+            { text: "Start the 16 km trek from Gaurikund to Kedarnath (6-8 hrs)." },
+            { text: "Reach Kedarnath by evening, evening Aarti darshan." },
+            { text: "Overnight stay at Kedarnath — tent / lodge, sharing." },
+          ],
+        },
+        {
+          day: 3,
+          title: "Kedarnath to Chopta",
+          entries: [
+            { text: "16 km trek down + 75 km drive. 4 AM morning darshan, Abhishek, and a visit to Bhairav Temple (0.5 km hike)." },
+            { text: "After breakfast, descend to Gaurikund (5-6 hrs)." },
+            { text: "Take a shared jeep to Sonprayag and pick up your luggage." },
+            { text: "Drive to Chopta, the 'Mini Switzerland of Uttarakhand' (2.5-3 hrs)." },
+            { text: "Dinner and overnight stay at Sari — hotel / camp stay." },
+          ],
+        },
+        {
+          day: 4,
+          title: "Sari to Chopta – Tungnath – Chandrashila – Badrinath / Joshimath",
+          entries: [
+            { text: "Early morning 5 AM trek start — Chopta to Tungnath (3.5 km, 2 hrs)." },
+            { text: "Tungnath darshan — the world's highest Shiva temple, one of the Panch Kedar." },
+            { text: "Optional trek to Chandrashila Summit (1 km, 45 mins) — 360° view of Chaukhamba, Nanda Devi and Trishul." },
+            { text: "Trek down to Chopta and have breakfast." },
+            { text: "Drive to Badrinath via Gopeshwar and Joshimath (180 km, 7-8 hrs)." },
+            { text: "Evening reach Badrinath / Joshimath. Dinner and overnight stay." },
+          ],
+        },
+        {
+          day: 5,
+          title: "Badrinath Darshan to Rudraprayag / Pandukeshwar",
+          entries: [
+            { text: "160 km, 7-8 hrs. Early morning Tapt Kund snan and Badrinath Dham darshan." },
+            { text: "Visit Mana Village — last village of India — Bhim Pul, Saraswati River, Vyas Gufa and Ganesh Gufa." },
+            { text: "After darshan, drive to Rudraprayag / Srinagar." },
+            { text: "Enroute visit Vishnuprayag Sangam and Narsingh Temple, Joshimath." },
+            { text: "Dinner and overnight stay at Rudraprayag / Srinagar hotel." },
+          ],
+        },
+        {
+          day: 6,
+          title: "Rudraprayag / Pandukeshwar to Haridwar / Rishikesh",
+          entries: [
+            { text: "165 km, 6-7 hrs. After breakfast, drive back to Haridwar / Rishikesh." },
+            { text: "Enroute visit Karnaprayag, Nandprayag, Devprayag Sangam and Dhari Devi Temple." },
+            { text: "Reach Haridwar / Rishikesh by 5-6 PM. Tour ends with the blessings of Jai Badri Kedarnath." },
+          ],
+        },
+      ],
+      costIncludes: [
+        "Transportation: Haridwar / Rishikesh to Haridwar / Rishikesh by Tempo Traveller / Ertiga / Dzire / Innova as per group size",
+        "Accommodation: 5 nights total — 1 night Sonprayag (hotel with attached washroom), 1 night Kedarnath (tent / basic, sharing, no attached washroom at top), 1 night Sari (Swiss tent / cottage with attached washroom), 1 night Badrinath / Pandukeshwar (hotel with attached washroom), 1 night Rudraprayag / Pandukeshwar (hotel with attached washroom)",
+        "Meal plan: MAP — 5 breakfasts and 5 dinners (veg only), Day 1 dinner to Day 6 breakfast; lunch not included",
+        "Driver allowance, toll, parking and fuel charges, driver night stay",
+        "Kedarnath Badrinath Tungnath Yatra support team at all stays for guidance",
+        "First aid kit and oxygen can on demand in vehicle",
+      ],
+      costExcludes: [
+        "Yatra registration — must be done online by yourself (free)",
+        "Govt. local jeep: Sonprayag to Gaurikund to Sonprayag, ₹50-60 per side per person (shared) — mandatory",
+        "Pony / palki / pitthu / helicopter tickets for Kedarnath, and horse for Tungnath — as per actual cost at spot",
+        "VIP darshan, special pooja, Abhishek tickets and pooja samagri at Kedarnath and Badrinath",
+        "Lunch, personal expenses, tea, snacks, mineral water and beverages",
+        "Room heater if required at Sonprayag / Chopta / Joshimath",
+        "Cable car / chair car at Auli if added, and extra sightseeing",
+        "Anything not mentioned in inclusions",
+        "5% GST extra",
+      ],
+      eligibilityCriteria: [
+        { icon: "User", text: "No official age limit for any of the three Dhams. Badrinath suits all ages 1-80 years; Tungnath-Chandrashila is recommended 8-65 years; Kedarnath is recommended 10-65 years" },
+        { icon: "Mountain", text: "Chandrashila Summit at 12,750 ft is the highest point of the yatra — higher than Kedarnath itself" },
+        { icon: "Footprints", text: "Children below 10 and elders above 65 are recommended pony, pitthu or helicopter for Kedarnath, and horse or pitthu for Tungnath; Badrinath needs no assistance" },
+        { icon: "Stethoscope", text: "Not recommended for the Kedarnath trek if you have severe heart disease, high asthma, severe knee problems or very high BP — consult a doctor and opt for helicopter" },
+      ],
+      fitnessCriteria: [
+        { icon: "Footprints", text: "For Kedarnath: able to walk 16 km in a day on a steep incline" },
+        { icon: "Activity", text: "For Tungnath-Chandrashila: able to walk 3.5 km uphill; those with knee pain can take a horse or pitthu from Chopta" },
+        { icon: "TrendingUp", text: "For Badrinath: no fitness required — only a 500m walk from parking to temple" },
+        { icon: "Wind", text: "Start preparing 2 weeks before the yatra — walk 4-5 km daily, practice stairs, and avoid smoking and alcohol during the yatra due to low oxygen above 12,000 ft" },
+      ],
+      howToReach: {
+        intro: "The Yatra starts and ends at Haridwar / Rishikesh. Our pickup is from Haridwar / Rishikesh at 5:30 AM on Day 1.",
+        air: {
+          summaryLabel: "Nearest Airport",
+          summary: "Jolly Grant Airport, Dehradun (DED)",
+          detail: "35 km from Rishikesh, about 260 km from Badrinath, with daily flights from Delhi, Mumbai and Bangalore. From the airport, take a taxi to Rishikesh, about 1 hour.",
+        },
+        train: {
+          summaryLabel: "Nearest Railway Station",
+          summary: "Rishikesh (200 km) / Haridwar Junction (220 km)",
+          detail: "Haridwar is well connected to Delhi (6 hrs), Mumbai, Kolkata and Lucknow. From Haridwar to Rishikesh is 25 km by auto or bus.",
+        },
+        road: {
+          summaryLabel: "Route",
+          summary: "Delhi to Haridwar / Rishikesh by NH334",
+          detail: "Daily Volvo buses run from Delhi ISBT Kashmiri Gate to Rishikesh / Haridwar, 6-7 hours, with overnight buses available.",
+          route: ["Haridwar / Rishikesh", "Sonprayag", "Gaurikund", "Kedarnath", "Chopta", "Tungnath", "Badrinath / Joshimath", "Haridwar / Rishikesh"],
+          facts: [
+            { label: "Total Distance", value: "~1,000 km by road + 39 km trek (Kedarnath + Tungnath-Chandrashila round trips)" },
+            { label: "Duration", value: "6 Days / 5 Nights" },
+          ],
+        },
+        pickup: {
+          point: "Haridwar / Rishikesh",
+          time: "5:30 AM, Day 1",
+          dropPoint: "Haridwar / Rishikesh",
+          dropTime: "5-6 PM, Day 6",
+          note: "Kedarnath: drive to Sonprayag (220 km), local jeep to Gaurikund (5 km), then a 16 km trek one side, or helicopter from Phata / Sersi / Sitapur. Tungnath: 180 km drive to Chopta, then a 3.5 km trek one side (+1 km to Chandrashila). Badrinath: direct road till temple parking, only a 500m walk — no trek.",
+        },
+      },
+      faqs: [
+        {
+          title: "What is the total trek distance of this yatra?",
+          description: "Kedarnath: 16 km one side from Gaurikund plus a 5 km jeep ride Sonprayag to Gaurikund. Tungnath: 3.5 km one side from Chopta plus 1 km extra to Chandrashila. Badrinath: no trek, only a 0.5 km walk from parking. Total trekking across the trip is around 40 km.",
+        },
+        {
+          title: "How many days are required for Kedarnath Badrinath with Tungnath from Haridwar?",
+          description: "Minimum 6 Days / 5 Nights from Haridwar / Rishikesh is required — 1 day Haridwar to Sonprayag, 1 day Kedarnath trek up, 1 day trek down plus drive to Chopta, 1 day Tungnath trek plus drive to Badrinath, 1 day Badrinath darshan and drive to Pandukeshwar, 1 day return to Haridwar.",
+        },
+        {
+          title: "Is this yatra difficult?",
+          description: "Mixed difficulty. Badrinath is very easy with direct road access. Tungnath-Chandrashila is easy to moderate — 3.5 km steep but short. Kedarnath is moderate to difficult at 16 km one side. Elders can skip the Kedarnath trek and take a helicopter, and do Badrinath by car.",
+        },
+        {
+          title: "How to book a helicopter for Kedarnath?",
+          description: "Helicopter booking for Kedarnath is only done through the official IRCTC Heli Yatra website, opening 1 month before. No agent booking. Many people take the helicopter for Kedarnath only and do Tungnath and Badrinath by road.",
+        },
+        {
+          title: "Is yatra registration mandatory?",
+          description: "Yes, Uttarakhand Govt. Yatra registration is mandatory for every pilgrim, for all three Dhams. One registration is valid for Kedarnath, Tungnath and Badrinath.",
+        },
+        {
+          title: "What is the best time to visit Kedarnath Badrinath with Tungnath?",
+          description: "May to June and September to October are best for all three. July-August is monsoon — risky for landslides on the Kedarnath route, and Chopta becomes fully foggy with no views. Temples open in May and close in November on Bhai Dooj.",
+        },
+        {
+          title: "Where to stay in this yatra?",
+          description: "At Sonprayag: good hotels with attached washroom. At Kedarnath top: only basic tents / GMVN with shared washroom and blankets, no luxury. At Chopta: Swiss tents, cottages and homestays with good food. At Badrinath: good hotels, GMVN and budget dharamshalas. At Joshimath / Rudraprayag: decent hotels.",
+        },
+        {
+          title: "Is there network / ATM in this circuit?",
+          description: "Jio and BSNL work till Sonprayag, Chopta and Badrinath but with low speed. No network during the Kedarnath trek or at the temple top. Last good ATM is at Guptkashi, Ukhimath, Gopeshwar and Joshimath — carry ₹10,000-15,000 cash, as there's no UPI at Kedarnath top.",
+        },
+        {
+          title: "Can we do Kedarnath Badrinath Tungnath in 5 days?",
+          description: "It is possible in 5 days if you are fit and take a private car, but it will be very hectic. A 6 Days / 5 Nights itinerary is recommended for comfortable yatra with proper darshan and rest.",
+        },
+        {
+          title: "What to carry for this yatra?",
+          description: "A heavy woollen jacket, gloves, cap, thermal wear, raincoat, trekking shoes with grip, torch, power bank, personal medicines, Diamox for altitude, dry fruits, water bottle and a valid Aadhaar Card. For Chandrashila, carry a small stick — available at Chopta.",
+        },
+        {
+          title: "Is VIP darshan available at Kedarnath and Badrinath?",
+          description: "There is no official VIP darshan at either temple. For special pooja, you can take a slip from the temple committee office inside the temple premises. At Badrinath, morning Abhishek pooja tickets are available at the counter.",
+        },
+        {
+          title: "What is the age limit for this yatra?",
+          description: "No official age limit. Badrinath suits all ages, 1 to 80 years. Tungnath is recommended for 8 to 65 years. Kedarnath is recommended for 10 to 65 years. Children and senior citizens should take a helicopter or pony for Kedarnath, and a horse for Tungnath, and carry a medical certificate.",
+        },
+      ],
+      transportModes: TRANSPORT_BY_GROUP_SIZE,
+      cancellationPolicy: TIERED_CANCELLATION_POLICY,
+      confirmationPolicy: CONFIRMATION_POLICY,
+      contactNumbers: TRIP_CONTACT_NUMBERS,
+      thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
+      rentalGear: TREK_RENTAL_GEAR,
+      thingsToRemember: TRIP_GROUND_RULES,
+      relatedSlugs: ["kedarnath-badrinath", "chopta-tungnath-trek", "char-dham-yatra"],
     }
   ),
 ];

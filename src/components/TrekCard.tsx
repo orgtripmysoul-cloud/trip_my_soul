@@ -113,13 +113,6 @@ export default function TrekCard({ trek, detailsHref, imageUrl, description }: T
                 {trek.price ? `₹${trek.price.toLocaleString()}` : "TBD"}
               </span>
             </div>
-
-            <Link
-              href={`/checkout?slug=${trek.slug}`}
-              className="flex items-center min-h-[44px] text-xs font-extrabold text-brand-dusk-orange hover:underline shrink-0 whitespace-nowrap"
-            >
-              View Departure
-            </Link>
           </div>
 
           <Link

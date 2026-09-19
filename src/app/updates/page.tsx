@@ -1,13 +1,28 @@
 "use client";
 
 import React from "react";
-import { Compass, ShieldCheck, HelpCircle, Phone, ArrowRight, ShieldAlert, CheckCircle, Info, CloudSnow, Wind } from "lucide-react";
+import { Compass, ShieldCheck, HelpCircle, Phone, ArrowRight, ShieldAlert, CheckCircle, CloudSnow, Wind } from "lucide-react";
 
 export default function UpdatesPage() {
   const UPDATES = [
-    { date: "21 Jul 2026", type: "Weather Advisory", trek: "Buran Ghati Pass", status: "Active", details: "Heavy rain is reported along the lower sections of Buran Ghati. Batches are resting at intermediate basecamp until trail visibility clears. High wind speeds of up to 45 km/h predicted.", icon: Wind, severity: "moderate" },
-    { date: "18 Jul 2026", type: "Snow Conditions", trek: "Kedarkantha Winter", status: "Clear", details: "Current snow depth at Kedarkantha peak summit is 15cm. Trails are open with clear visibility. Trekkers are advised to wear microspikes on ridge walks.", icon: CloudSnow, severity: "info" },
-    { date: "15 Jul 2026", type: "Trail Advisory", trek: "Valley of Flowers", status: "Regulatory", details: "State forest department has restricted trek access beyond Ghangaria camp past 2:00 PM to protect local wildlife. Ensure early morning starts from base town.", icon: Info, severity: "moderate" }
+    {
+      date: "18 Sep 2026",
+      type: "Weather Advisory",
+      trek: "Brahmatal Trek",
+      status: "Weather-Dependent",
+      details: "🌧️ Weather Advisory: The Brahmatal region is in the post-monsoon transition. Rain/thundershower activity is still possible over the coming days, particularly around the Chamoli/Joshimath side. IMD has a yellow thunderstorm/lightning watch for Chamoli today (18 Sept), with isolated intense rain possible. For TMS departures, keep a close check on weather 24 hours before the trek, especially before entering the higher trail.\n\n❄️ Snow Conditions: No significant snow expected. Brahmatal's proper winter snow season develops later — the main snow period is generally December–February, with January–February offering established snow conditions and a frozen Brahmatal Lake in suitable years. For September/October departures, don't advertise guaranteed snow.\n\n🥾 Trail Advisory: Expect muddy/wet and slippery sections if there has been recent rain. Forest sections can retain moisture, and water crossings/stream flow can change after heavy rain. Avoid exposed ridge sections during active lightning/thunderstorms, and check the Lohajung approach road and local trail conditions before departure. September–November is typically the post-monsoon clarity period, while July–August is the more problematic monsoon period for slippery trails and unpredictable crossings. The immediate operational focus should be rain, slippery trail and thunderstorm/lightning rather than snow — conditions will change substantially once snowfall begins later in the season.",
+      icon: Wind,
+      severity: "moderate"
+    },
+    {
+      date: "18 Sep 2026",
+      type: "Weather Advisory",
+      trek: "Kuari Pass Trek",
+      status: "Weather-Dependent",
+      details: "🌧️ Weather Advisory: The Joshimath–Auli side is currently weather-sensitive, with IMD forecasting partly cloudy conditions and spells of rain/thunderstorms through the coming days. 18 September: thunderstorm and lightning activity is specifically flagged around Joshimath. From 19–22 September, rain/thunderstorm remains possible, although the IMD forecast does not currently show a warning for those days.\n\n❄️ Snow Conditions: No significant snow expected on the Kuari Pass trail. September is still essentially the post-monsoon transition period — proper snow conditions develop later in the season, generally from late November/December onward. Do not market Kuari Pass as a snow trek for current TMS departures.\n\n🥾 Trail Advisory: Expect wet and potentially slippery sections after rain, with muddy sections and reduced traction possible. Higher sections can become cloudy quickly, reducing visibility. Avoid exposed ridges and high points during active lightning/thunderstorms. Road access toward Joshimath/Auli should be checked immediately before departure; IMD currently reports light rain on the Rudraprayag–Joshimath and Joshimath–Badrinath/Hemkund sectors.",
+      icon: CloudSnow,
+      severity: "moderate"
+    }
   ];
 
   return (
@@ -54,7 +69,7 @@ export default function UpdatesPage() {
                 </div>
               </div>
 
-              <p className="text-xs text-gray-550 leading-relaxed font-medium pl-1">
+              <p className="text-xs text-gray-550 leading-relaxed font-medium pl-1 whitespace-pre-line">
                 {up.details}
               </p>
             </div>
