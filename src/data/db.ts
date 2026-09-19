@@ -7039,6 +7039,70 @@ if (harKiDunIndex !== -1) {
     { icon: "Activity", text: "Not recommended with an uncontrolled medical condition, or without preparation for prolonged uphill/downhill walking" }
   ];
 
+  TREKS[harKiDunIndex].aboutParagraphs = [
+    "The Har Ki Dun Trek is one of the most scenic and culturally rich Himalayan treks in Uttarakhand. Nestled in the Garhwal Himalayas, this beautiful valley trek takes you through dense forests, alpine meadows, traditional Himalayan villages and the spectacular landscapes of the Swargarohini mountain range.",
+    "Starting from Sankri, the trail gradually follows the Supin River through the remote Tons Valley. One of the biggest highlights of the trek is Osla Village, an ancient Himalayan settlement known for its traditional wooden houses and unique local culture. As you move deeper into the valley, the landscape opens into vast meadows surrounded by towering Himalayan peaks.",
+    "At around 11,500 ft, Har Ki Dun offers an incredible combination of mountain scenery, forests, rivers, meadows and village life. The trek also passes through the Govind Pashu Vihar National Park and Wildlife Sanctuary, making it a wonderful experience for nature and wildlife enthusiasts.",
+    "What makes Har Ki Dun Trek special is that it is not just a mountain trek — it is a journey through the living culture and landscapes of the Himalayas. The peaceful trails, ancient villages, flowing rivers and dramatic mountain views make it an ideal choice for trekkers looking for an authentic Himalayan experience."
+  ];
+
+  TREKS[harKiDunIndex].highlights = [
+    "Views of the Swargarohini range",
+    "Ancient Himalayan village of Osla",
+    "Pine, oak & deodar forests",
+    "The Supin River valley",
+    "Alpine meadows of Har Ki Dun",
+    "Govind Pashu Vihar National Park"
+  ];
+
+  TREKS[harKiDunIndex].usps = [
+    {
+      title: "Stunning views of the Swargarohini range",
+      description: "The valley sits directly beneath the Swargarohini massif, with the peaks visible for most of the walk from Osla onward."
+    },
+    {
+      title: "Ancient Himalayan villages like Osla",
+      description: "Traditional wooden houses, carved doorways and a way of life little changed for generations, on a route that still runs on foot and mule."
+    },
+    {
+      title: "Forests of pine, oak and deodar",
+      description: "The trail from Taluka to Gangar/Osla runs almost entirely under tree cover, alongside the Supin River."
+    },
+    {
+      title: "The Supin River and open alpine meadows",
+      description: "The valley trail follows the Supin upstream before opening into the wide meadows around Har Ki Dun itself, at roughly 11,500 ft."
+    },
+    {
+      title: "Govind Pashu Vihar National Park",
+      description: "The upper valley lies inside the national park and wildlife sanctuary, a bonus for anyone interested in Himalayan flora and fauna."
+    },
+    {
+      title: "A rewarding trek for beginners with good fitness",
+      description: "Graded easy to moderate, with 5–7 hours of walking a day, Har Ki Dun is an accessible introduction to a longer Himalayan valley trek."
+    }
+  ];
+
+  TREKS[harKiDunIndex].destinationHighlights = [
+    { name: "Sankri", blurb: "The trailhead village at about 6,400 ft, and the base camp for the trek." },
+    { name: "Osla / Gangar", blurb: "A pair of ancient Himalayan villages along the Supin River, known for traditional wooden architecture." },
+    { name: "Supin River Valley", blurb: "The river the trail follows for most of its length, through forest and open meadow." },
+    { name: "Har Ki Dun Valley", blurb: "The high alpine valley at roughly 11,500 ft, ringed by the Swargarohini range." },
+    { name: "Govind Pashu Vihar National Park", blurb: "The wildlife sanctuary the upper valley sits within, home to Himalayan flora and fauna." }
+  ];
+
+  TREKS[harKiDunIndex].differentiators = [
+    "Region: Garhwal Himalayas, Uttarkashi district, Uttarakhand",
+    "Trek type: valley trek — the destination is a high alpine valley, not a summit",
+    "Terrain: forest trails, riverside paths, ancient villages and open meadows",
+    "Best experience: Himalayan village culture alongside classic valley scenery"
+  ];
+
+  TREKS[harKiDunIndex].idealFor =
+    "Trekkers aged 12–55 with moderate fitness — comfortable walking 6–8 km and building up to 10–12 km over 5–7 hours a day — looking for an authentic mix of Himalayan village culture and valley scenery.";
+
+  TREKS[harKiDunIndex].importantNote =
+    "Har Ki Dun climbs to roughly 11,500 ft, so build up your walking fitness before the trek and allow your body time to acclimatise on the way in. Trekkers under 18 must be accompanied by a parent or guardian, and anyone above 55 should carry a medical clearance and fitness assessment.";
+
   // Transcribed verbatim from the Google reviews on the Trip My Soul profile.
   TREKS[harKiDunIndex].externalReviews = [
     {
@@ -7115,6 +7179,23 @@ if (harKiDunIndex !== -1) {
     }
   };
 
+  TREKS[harKiDunIndex].bookingAdvancePct = 20;
+
+  // Cancellation policy mirrors Kedarkantha's, verbatim (per the trek team).
+  TREKS[harKiDunIndex].bookingTerms = [
+    { title: "Trek Cost", description: "₹10,999 + 5% GST* per selected package/departure date." },
+    { title: "Booking Amount", description: "20% advance payment required to confirm your seat." },
+    { title: "Balance Payment", description: "Payable before/at the start of the trek as per booking terms." },
+    { title: "Transportation", description: "Dehradun–Sankri–Dehradun as per the selected package." },
+    { title: "Inclusions", description: "Accommodation, meals, trek permits/forest charges, trek guide & support staff as mentioned in the package." },
+    { title: "Exclusions", description: "Personal expenses, insurance, emergency evacuation, additional transport and anything not specifically mentioned under inclusions." },
+    { title: "GST", description: "Applicable as per package/booking terms." },
+    { title: "Cancellation", description: "Cancellation and refund will be governed by Trip My Soul’s cancellation policy." },
+    { title: "Weather & Route", description: "Itinerary may change due to weather, government/forest restrictions or safety conditions." },
+    { title: "Personal Expenses", description: "Any expenses arising due to personal reasons will be borne by the participant." },
+    { title: "ID Proof", description: "Valid government-issued ID is required at the time of booking/check-in." }
+  ];
+
   TREKS[harKiDunIndex].maxAltitude = "11,000 ft / 3,500 m";
 
   TREKS[harKiDunIndex].similarTreks = [
@@ -7171,6 +7252,158 @@ if (harKiDunIndex !== -1) {
     { url: "/Trips_gallery/Har_Ki_Dun/HKD_flag_shrine.jpeg", caption: "Prayer flags at a valley shrine" },
     { url: "/Trips_gallery/Har_Ki_Dun/HKD_swargarohini.jpeg", caption: "Swargarohini standing over the valley" },
     { url: "/Trips_gallery/Har_Ki_Dun/HKD_summit_banner.jpeg", caption: "The team in the Har Ki Dun valley" },
+  ];
+
+  TREKS[harKiDunIndex].itinerary = [
+    {
+      day: 1,
+      title: "Dehradun to Sankri",
+      driveDistance: "190-200 km",
+      drivingTime: "8-10 Hours",
+      pickupPoint: "Dehradun",
+      pickupTime: "6:00 AM",
+      altitudePoints: [
+        { location: "Dehradun", m: 640, ft: 2100 },
+        { location: "Sankri", m: 1950, ft: 6400 }
+      ],
+      altitudeGain: { m: 1310, ft: 4300 },
+      description: "An early morning drive from Dehradun to the base village of Sankri, along the Tons River valley.",
+      detailedParagraphs: [
+        "The trek begins with an early morning drive from Dehradun towards Sankri, covering roughly 190–200 km over 8–10 hours.",
+        "The route runs via Mussoorie, Nainbagh/Naugaon, Purola, Mori and Netwar, following the Tons River valley deeper into the Garhwal Himalayas as the road climbs.",
+        "On arrival, check into your hotel or homestay in Sankri, meet the rest of the trek team and get a briefing on the days ahead.",
+        "Overnight stay in Sankri, with dinner included."
+      ],
+      highlights: ["Scenic Tons Valley Drive", "Mussoorie & Purola", "Sankri Village", "Trek Briefing"],
+      meals: "Dinner",
+      stayType: "Hotel / Homestay"
+    },
+    {
+      day: 2,
+      title: "Sankri to Taluka to Gangar/Osla",
+      driveDistance: "12 km",
+      trekDistance: "10-12 km",
+      trekDuration: "5-6 Hours",
+      altitudePoints: [
+        { location: "Sankri", m: 1950, ft: 6400 },
+        { location: "Gangar / Osla", m: 2450, ft: 8000 }
+      ],
+      altitudeGain: { m: 500, ft: 1600 },
+      description: "Drive to the Taluka roadhead, then walk through forest along the Supin River to the ancient village of Gangar/Osla.",
+      detailedParagraphs: [
+        "After breakfast, drive from Sankri to Taluka, the roadhead where the trek on foot begins.",
+        "From Taluka, the trail follows the Supin River through forests of pine, oak and deodar, passing a few small Himalayan settlements along the way.",
+        "By the afternoon, reach the traditional village of Gangar/Osla, known for its wooden houses and centuries-old way of life.",
+        "Overnight stay at Gangar/Osla."
+      ],
+      highlights: ["Taluka Roadhead", "Supin River Trail", "Pine & Oak Forest", "Osla Village"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Camp / Homestay"
+    },
+    {
+      day: 3,
+      title: "Gangar/Osla to Har Ki Dun",
+      trekDistance: "10-11 km",
+      trekDuration: "6-7 Hours",
+      altitudePoints: [
+        { location: "Gangar / Osla", m: 2450, ft: 8000 },
+        { location: "Har Ki Dun", m: 3505, ft: 11500 }
+      ],
+      altitudeGain: { m: 1055, ft: 3500 },
+      description: "A long climb out of the forest into open meadows, with the Swargarohini range coming into view at the Har Ki Dun valley.",
+      detailedParagraphs: [
+        "Leave Gangar/Osla after breakfast and continue upstream along the Supin, with the trail gradually leaving the forest behind.",
+        "As you gain height, the valley opens into meadows and streams, and the Swargarohini range starts to dominate the skyline ahead.",
+        "Reach the Har Ki Dun campsite at around 11,500 ft by the evening, set right below the peaks.",
+        "Overnight stay in tents at Har Ki Dun."
+      ],
+      highlights: ["Alpine Meadows", "Swargarohini Views", "Har Ki Dun Valley", "Himalayan Camping"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Camp"
+    },
+    {
+      day: 4,
+      title: "Har Ki Dun Exploration Day",
+      trekDistance: "4-6 km",
+      trekDuration: "3-4 Hours",
+      altitudePoints: [
+        { location: "Har Ki Dun", m: 3505, ft: 11500 }
+      ],
+      altitudeGain: null,
+      description: "A full day to explore the valley, its viewpoints and the close-up views of the Swargarohini range.",
+      detailedParagraphs: [
+        "Spend the day exploring the Har Ki Dun valley at a relaxed pace, with no packing up or moving camp.",
+        "Walk up to the nearby viewpoints for closer views of the Swargarohini range and the surrounding peaks, with plenty of time for photography.",
+        "Rest and acclimatise at the campsite, taking in the meadows, streams and mountain views around you.",
+        "Overnight stay in tents at Har Ki Dun."
+      ],
+      highlights: ["Valley Viewpoints", "Swargarohini Close-Up", "Photography", "Rest & Acclimatisation"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Camp"
+    },
+    {
+      day: 5,
+      title: "Har Ki Dun to Gangar/Osla",
+      trekDistance: "10-11 km",
+      trekDuration: "5-6 Hours",
+      altitudePoints: [
+        { location: "Har Ki Dun", m: 3505, ft: 11500 },
+        { location: "Gangar / Osla", m: 2450, ft: 8000 }
+      ],
+      altitudeGain: null,
+      description: "Retrace the trail back down through meadows and forest along the Supin River to Gangar/Osla.",
+      detailedParagraphs: [
+        "After breakfast, begin the descent from Har Ki Dun, retracing the trail back through the open meadows.",
+        "The path drops back into the forest and follows the Supin River downstream towards Gangar/Osla.",
+        "Reach the village by the afternoon, with time to rest and enjoy the surroundings once again.",
+        "Overnight stay at Gangar/Osla."
+      ],
+      highlights: ["Descent Through Meadows", "Supin River", "Osla Village"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Camp / Homestay"
+    },
+    {
+      day: 6,
+      title: "Gangar/Osla to Taluka to Sankri",
+      trekDistance: "10-12 km",
+      trekDuration: "5-6 Hours",
+      driveDistance: "12 km",
+      altitudePoints: [
+        { location: "Gangar / Osla", m: 2450, ft: 8000 },
+        { location: "Sankri", m: 1950, ft: 6400 }
+      ],
+      altitudeGain: null,
+      description: "Complete the trek back to Taluka through the forest, then drive on to Sankri.",
+      detailedParagraphs: [
+        "Trek back from Gangar/Osla to the Taluka roadhead along the same forest trail beside the Supin River.",
+        "From Taluka, drive back to Sankri, arriving with the trek on foot behind you.",
+        "Spend the evening in Sankri, resting after six days on the trail.",
+        "Overnight stay in Sankri."
+      ],
+      highlights: ["Forest Trail", "Taluka Roadhead", "Back to Sankri"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Hotel / Homestay"
+    },
+    {
+      day: 7,
+      title: "Sankri to Dehradun",
+      driveDistance: "190-200 km",
+      drivingTime: "8-10 Hours",
+      altitudePoints: [
+        { location: "Sankri", m: 1950, ft: 6400 },
+        { location: "Dehradun", m: 640, ft: 2100 }
+      ],
+      altitudeGain: null,
+      description: "The return drive from Sankri to Dehradun, bringing the trip to a close.",
+      detailedParagraphs: [
+        "After an early breakfast, begin the drive back from Sankri to Dehradun.",
+        "Retrace the route through Netwar, Mori, Purola and Mussoorie, with the trek and its memories behind you.",
+        "The trip ends on arrival in Dehradun."
+      ],
+      highlights: ["Return Drive", "Trip Ends in Dehradun"],
+      meals: "Breakfast",
+      stayType: ""
+    }
   ];
 
   TREKS[harKiDunIndex].article = {
