@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { TREKS, YATRAS, WHY_CHOOSE_US, TRUST_STATS, Trek } from "@/data/db";
+import { blogArticles } from "@/data/blogArticles";
 import TrekCard from "@/components/TrekCard";
 import SwiperCarousel from "@/components/SwiperCarousel";
 import CategoryCarousel from "@/components/CategoryCarousel";
@@ -551,22 +552,10 @@ export default function Home() {
 
   const awardsData = [
     {
-      title: "National Responsible Tourism Award",
+      title: "National Responsible Tourism Award — Himalayan Tourism Samman",
       organization: "Himalayan Safety Council",
       year: "2025",
-      image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=400&q=80",
-    },
-    {
-      title: "Best High-Altitude Trek Operator",
-      organization: "India Adventure Summit",
-      year: "2024",
-      image: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=400&q=80",
-    },
-    {
-      title: "Eco-Friendly Mountain Trail Certified",
-      organization: "Green Himalaya Project",
-      year: "2025",
-      image: "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=400&q=80",
+      image: "/Awards.jpeg",
     },
   ];
 
@@ -613,22 +602,16 @@ export default function Home() {
 
   const latestUpdatesData = [
     {
-      date: "21 Jul 2026",
+      date: "18 Sep 2026",
       type: "Weather Advisory",
-      title: "Buran Ghati Pass Weather Update",
-      text: "Trails are clear with fresh snow on upper passes. Batches are proceeding with microspikes and certified safety leaders."
+      title: "Brahmatal Trek Live Trail Update",
+      text: "IMD flags a yellow thunderstorm watch for Chamoli today. No significant snow yet — expect muddy, weather-dependent trail sections."
     },
     {
-      date: "18 Jul 2026",
-      type: "Snow Conditions",
-      title: "Kedarkantha Winter Trail Status",
-      text: "Summit snow depth is 15cm. Clear sunny mornings with crisp summit views reported by ongoing batches."
-    },
-    {
-      date: "15 Jul 2026",
-      type: "Permit Update",
-      title: "Valley of Flowers Entry Timings",
-      text: "Forest department entry window opened at 6:00 AM. Medical declarations required at baseline registration."
+      date: "18 Sep 2026",
+      type: "Weather Advisory",
+      title: "Kuari Pass Live Trail Update",
+      text: "Thunderstorm and lightning activity flagged around Joshimath. Trail is weather-dependent with wet, slippery sections after rain."
     }
   ];
 
@@ -662,29 +645,7 @@ export default function Home() {
     }
   ];
 
-  const blogPosts = [
-    {
-      title: "Kedarkantha Trek in Winter: A Complete Prep Guide",
-      excerpt: "Essential gear, physical fitness routines, and itinerary breakdown for India's best winter peak trek.",
-      category: "Preparation Guide",
-      date: "July 15, 2026",
-      image: "https://images.unsplash.com/photo-1486916856992-e4db22c8df33?auto=format&fit=crop&w=500&q=80",
-    },
-    {
-      title: "Why Kashmir Great Lakes Should Be on Your Bucket List",
-      excerpt: "A detailed account of the magical landscapes, pristine lakes, and alpine flower valleys.",
-      category: "Trek Stories",
-      date: "June 28, 2026",
-      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=500&q=80",
-    },
-    {
-      title: "Sustainable Trekking: Leave No Trace in the Himalayas",
-      excerpt: "How TripMySoul aims to clean high-altitude garbage, reduce plastic, and support local mountain economies.",
-      category: "Sustainability",
-      date: "May 10, 2026",
-      image: "https://images.unsplash.com/photo-1533240332313-0db49b439ad3?auto=format&fit=crop&w=500&q=80",
-    },
-  ];
+  const blogPosts = blogArticles;
 
   const instagramPosts = [
     "/Instagram_stories/IMG_3927.JPG.jpeg",
@@ -781,7 +742,7 @@ export default function Home() {
             />
 
             {/* Treks Grid / Carousel */}
-            <div className="flex-grow min-w-0 w-full space-y-6 pb-24 lg:pb-0">
+            <div className="flex-grow min-w-0 w-full space-y-6 pb-8 lg:pb-0">
               <div className="flex justify-between items-center gap-3 text-xs font-black uppercase tracking-wider text-gray-400 font-sans pl-1">
                 <span className="shrink-0">SHOWING {sortedEntries.length} TREKS</span>
                 <span className="text-[10px] text-brand-forest font-semibold truncate text-right">
@@ -1055,9 +1016,9 @@ export default function Home() {
 
             {/* TAB 4: AWARDS */}
             {activeTrustTab === "awards" && (
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 animate-fade-in">
+              <div className="flex justify-center animate-fade-in">
                 {awardsData.map((award, idx) => (
-                  <div key={idx} className="bg-white border border-gray-150 rounded-3xl overflow-hidden shadow-xs hover:shadow-md transition text-center flex flex-col justify-between p-4 space-y-3 min-w-0">
+                  <div key={idx} className="bg-white border border-gray-150 rounded-3xl overflow-hidden shadow-xs hover:shadow-md transition text-center flex flex-col justify-between p-4 space-y-3 min-w-0 w-full max-w-xs">
                     <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 relative">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={award.image} alt={award.title} className="w-full h-full object-cover" />
@@ -1152,12 +1113,8 @@ export default function Home() {
           {/* TAB 2: TREKKING ARTICLES */}
           {activeInformedTab === "articles" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 text-left animate-fade-in">
-              {blogPosts.map((post, idx) => (
-                <Link key={idx} href="/blogs" className="group bg-white border border-gray-150 rounded-3xl overflow-hidden shadow-xs hover:shadow-md transition flex flex-col justify-between">
-                  <div className="aspect-[1.6] relative overflow-hidden bg-gray-100">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                  </div>
+              {blogPosts.map((post) => (
+                <Link key={post.slug} href={`/blogs/${post.slug}`} className="group bg-white border border-gray-150 rounded-3xl overflow-hidden shadow-xs hover:shadow-md transition flex flex-col justify-between">
                   <div className="p-4 sm:p-5 space-y-2 flex-grow flex flex-col justify-between min-w-0">
                     <div className="space-y-2">
                       <span className="inline-block max-w-full truncate text-[9px] font-extrabold text-brand-forest bg-brand-forest/5 px-2.5 py-0.5 rounded-full uppercase">{post.category}</span>

@@ -3,58 +3,14 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Search, Compass } from "lucide-react";
+import { blogArticles } from "@/data/blogArticles";
 
 export default function BlogGridPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const categories = ["All", "Preparation Guide", "Trek Stories", "Sustainability"];
 
-  const posts = [
-    {
-      title: "Kedarkantha Trek in Winter: A Complete Prep Guide",
-      excerpt: "Essential gear, physical fitness routines, and itinerary breakdown for India's best winter peak trek.",
-      category: "Preparation Guide",
-      date: "July 15, 2026",
-      image: "https://images.unsplash.com/photo-1486916856992-e4db22c8df33?auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      title: "Why Kashmir Great Lakes Should Be on Your Bucket List",
-      excerpt: "A detailed account of the magical landscapes, pristine lakes, and alpine flower valleys.",
-      category: "Trek Stories",
-      date: "June 28, 2026",
-      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      title: "Sustainable Trekking: Leave No Trace in the Himalayas",
-      excerpt: "How TripMySoul aims to clean high-altitude garbage, reduce plastic, and support local mountain economies.",
-      category: "Sustainability",
-      date: "May 10, 2026",
-      image: "https://images.unsplash.com/photo-1533240332313-0db49b439ad3?auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      title: "How to Choose Between Har Ki Dun and Kedarkantha",
-      excerpt: "A comprehensive comparison covering difficulty, terrain, local culture, and winter views.",
-      category: "Preparation Guide",
-      date: "April 05, 2026",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      title: "Crossing the Hampta Pass: A First-Hand Account",
-      excerpt: "Negotiating the snow bridge, walking alongside cascading streams, and descending to Chandratal Lake.",
-      category: "Trek Stories",
-      date: "March 22, 2026",
-      image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      title: "Mountain Sickness: Prevention and AMS Protocols",
-      excerpt: "Recognizing early symptoms of Acute Mountain Sickness and how our guides execute safety evacuations.",
-      category: "Preparation Guide",
-      date: "Feb 18, 2026",
-      image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80",
-    },
-  ];
-
-  const filteredPosts = posts.filter(
+  const filteredPosts = blogArticles.filter(
     (post) => selectedCategory === "All" || post.category === selectedCategory
   );
 
@@ -93,9 +49,10 @@ export default function BlogGridPage() {
       {/* Grid view */}
       {filteredPosts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.map((post, idx) => (
-            <div
-              key={idx}
+          {filteredPosts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blogs/${post.slug}`}
               className="group bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col h-full cursor-pointer"
             >
               <div className="aspect-[1.6] bg-gray-150 relative overflow-hidden shrink-0">
@@ -120,7 +77,7 @@ export default function BlogGridPage() {
                 </div>
                 <div className="text-[10px] text-gray-400 font-semibold">{post.date}</div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       ) : (

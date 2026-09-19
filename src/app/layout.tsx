@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const viewport = {
   width: "device-width",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-grow pt-[56px] lg:pt-[64px] min-w-0 overflow-x-clip">{children}</main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

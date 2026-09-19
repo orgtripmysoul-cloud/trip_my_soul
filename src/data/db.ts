@@ -987,81 +987,699 @@ export const TREKS: Trek[] = [
   },
   {
     "slug": "pangarchulla-trek",
-    "name": "Pangarchulla Trek",
+    "name": "Kuari Pass with Pangarchulla Peak",
+    "tagline": "Six days from Rishikesh on the Lord Curzon Trail, crossing Kuari Pass (12,516 ft) and summiting Pangarchulla Peak (15,069 ft) for a 180° view of 108 Himalayan peaks.",
     "price": 11000,
     "days": 6,
     "nights": 5,
     "region": "Uttarakhand",
     "category": "Trending Treks",
     "startLocation": "Rishikesh to Rishikesh",
-    "difficulty": "Moderate",
+    "endLocation": "Rishikesh",
+    "difficulty": "Moderate-Difficult",
+    "maxAltitude": "15,069 ft / 4,590 m",
+    "totalDistance": "Approx. 510 km by Road + 33 km Trek",
+    "availability": "December – March (Full Snow) & April – June / September – October (Clear Views)",
     "months": [
+      "Sep",
       "Oct",
       "Nov",
+      "Dec",
+      "Jan",
+      "Feb",
       "Mar",
       "Apr",
       "May",
-      "Jun",
-      "Jul"
+      "Jun"
     ],
     "themes": [
       "Snow",
       "Meadow",
       "Forest",
-      "Pass Crossing"
+      "Pass Crossing",
+      "Peak Summit"
     ]
   },
   {
     "slug": "bali-pass-trek",
     "name": "Bali Pass Trek",
+    "tagline": "Eight days from Dehradun crossing the 16,207 ft Bali Pass, linking Har Ki Dun Valley to Yamunotri over snow, ridge and glacial lake.",
     "price": 21999,
     "days": 8,
     "nights": 7,
     "region": "Uttarakhand",
     "category": "Trending Treks",
-    "startLocation": "Dheradun to Dehradun",
-    "difficulty": "Moderate",
+    "startLocation": "Dehradun to Dehradun",
+    "endLocation": "Dehradun",
+    "difficulty": "Difficult",
+    "maxAltitude": "16,207 ft / 4,950 m",
+    "totalDistance": "60 Kilometers",
+    "availability": "May – June & September – October",
     "months": [
-      "Oct",
-      "Nov",
-      "Mar",
-      "Apr",
       "May",
       "Jun",
-      "Jul"
+      "Sep",
+      "Oct"
     ],
     "themes": [
       "Snow",
       "Meadow",
       "Forest",
       "Pass Crossing"
-    ]
+    ],
+    intro:
+      "The Bali Pass Trek is a challenging and exciting trekking adventure in the Garhwal region of the Indian Himalayas. It is a high altitude trek that takes you through some of the most scenic and breathtaking landscapes with snow-capped peaks, lush forests, and glacial lakes.",
+    idealFor: "Experienced trekkers who have already completed at least one Himalayan trek above 4,000 m",
+    highlights: [
+      "Links Har Ki Dun Valley and Yamunotri Valley over a single high-altitude crossing",
+      "Crosses Bali Pass at 16,207 ft (4,950 m) with 360° views of Swargarohini and Kalanag",
+      "Camps beside the sacred glacial lake at Ruinsara Tal",
+      "Walks through the untouched alpine meadows of Devsu Thach",
+      "Ends with a dip in the Yamunotri hot springs and darshan at the shrine",
+    ],
+    aboutParagraphs: [
+      "This trek is not for the faint-hearted, as it requires good physical fitness, endurance and a strong sense of adventure. Yamunotri and Har Ki Dun Valley is linked by Bali Pass Trek. It's rare to find a trek that offers you the opportunity to experience the pure grandeur of crossing a Himalayan Pass.",
+      "It crosses the watershed between Tons and Ruinsara river, and enjoys the unspoilt alpine meadows at Devsu Thach. Soon, the greenery will open up to the snowfields of Bali Pass.",
+      "The Pass, at 16,207 feet, offers 360° panoramic views of the Swargarohini and Kalanag peaks. This trek is not for beginners and its highest point at a staggering 5,000 mtr elevation, is located in the Garhwal region. This stunning high altitude pass offers breathtaking views of Himalayan peaks like Swargarohini, Kala Nag and Bandarpoonch.",
+      "You will be able to relive your childhood memories with Bali Pass Trek's adventures and beautiful views. The trek begins at Sankri and ends at Jankichatti. This trek requires some trekking experience.",
+      "Bali Pass Trek is the most thrilling and adventurous crossover trek of Uttarakhand and the perfect combination of two sacred valleys in one journey. Located in Uttarkashi district of Garhwal Himalayas inside Govind Wildlife Sanctuary, the trek consists of crossing a high altitude pass at 16,207 ft, situated at an average altitude of approximately 11,500 to 16,200 ft, amidst snow-capped peaks, dense pine forests, untouched alpine meadows and glacial lakes.",
+      "The trek starts from Dehradun and covers a distance of approx. 480 km by road and 60 km by trek. The route passes through Sankri, Taluka, Seema, Ruinsara Tal and Devsu Thach, known as one of the most untouched meadows of Himalayas, offering views of Tons Valley, Ruinsara Valley, Swargarohini, Kala Nag and Bandarpoonch peaks. The two valleys represent two different worlds - Har Ki Dun as the Valley of Gods where Pandavas went to heaven and Yamunotri Valley as the source of Yamuna river, along with Ruinsara Tal glacial lake where the beauty reflects like a mirror.",
+      "What makes Bali Pass special is its unique combination of one green easy valley walk and one steep snow pass crossing in just 8 days. It remains open from May to June and September to October and is closed during monsoon and winter due to heavy snowfall and high risk of avalanches, when the entire pass is covered under 10-15 feet snow. Whether you are a group of friends seeking real adventure beyond Kedarkantha, experienced trekkers looking for a true Himalayan pass crossing, or nature lovers who want to experience untouched meadows, glacial lakes and 360° Himalayan view from 16,200 ft, Bali Pass Trek offers a powerful experience of valley crossing, lake camping and standing on top of a 5000 meter pass.",
+    ],
+    fitnessRequirement:
+      "This is not a beginner trek — you should be able to run/jog 5 Km in 35-40 minutes, do 30-40 squats and 20 lunges at a stretch, and walk with a 7-8 Kg backpack for 6-7 hours on a steep ascent/descent. Daily trek distance is 7-12 Km with 700-800 M altitude gain, and treadmill fitness is not counted.",
+    eligibilityCriteria: [
+      { icon: "User", text: "Age 16 to 55 years — 16-18 year olds need a parent/guardian consent form" },
+      { icon: "Mountain", text: "Bali Pass cannot be your first trek — requires at least one completed trek above 4,000 m, such as Kedarkantha, Brahmatal, Hampta Pass or Har Ki Dun" },
+      { icon: "Stethoscope", text: "Not open to trekkers with asthma, heart problems, high blood pressure, epilepsy, recent surgery in the last 12 months, or a BMI over 30" },
+      { icon: "FileText", text: "Mandatory medical fitness certificate (within 15 days of the trek), ID proof and a self-declaration form" },
+    ],
+    fitnessCriteria: [
+      { icon: "Footprints", text: "Run/jog 5 Km in 35-40 minutes continuously" },
+      { icon: "Activity", text: "30-40 squats plus 20 lunges at a stretch" },
+      { icon: "Backpack", text: "Walk with a 7-8 Kg backpack for 6-7 hours on steep ascent/descent" },
+      { icon: "TrendingUp", text: "Daily trek distance of 7-12 Km with 700-800 M altitude gain" },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Dehradun to Sankri (1,920 m) — Pickup Day",
+        description:
+          "Pickup: Dehradun Railway Station at 6:30 AM. Drive 195 Km (8-9 Hrs) via Mussoorie, Purola to Sankri. Overnight Guest House.",
+        detailedDescription:
+          "Pickup from Dehradun at 6:30 AM. Drive to Sankri via Mussoorie, Purola, Mori, Netwar. The drive is along Tons river with pine forests and apple orchards. Reach Sankri (1,920 m) by evening. Sankri is the last village and base camp of all Govind Wildlife Sanctuary treks. Evening briefing by Trek Leader, gear check and introduction. Overnight stay in Guest House / Homestay. Dinner included.",
+        pickupPoint: "Dehradun Railway Station / ISBT",
+        pickupTime: "6:30 AM",
+        driveDistance: "195 Km",
+        drivingTime: "8-9 Hrs",
+        stayType: "Guest House / Homestay",
+        meals: "Dinner",
+      },
+      {
+        day: 2,
+        title: "Sankri to Seema (2,560 m) via Taluka (2,107 m)",
+        description: "Drive 12 Km to Taluka + Trek 12 Km (6-7 Hrs) to Seema Camp along Supin River.",
+        detailedDescription:
+          "Early morning drive from Sankri to Taluka - last road head. Taluka is the starting point of our trek. After breakfast at Taluka, we start trekking with packed lunch for Seema Camp (2,560 m) through thick forests of chestnuts, walnuts, willows and conifer trees. Trail passes through Dhatmir & Gangaar villages. Reach Seema by late afternoon. Overnight stay in tents.",
+        driveDistance: "12 Km",
+        drivingTime: "1 Hour",
+        trekDistance: "12 Km",
+        trekDuration: "6-7 Hrs",
+        stayType: "Camp",
+        meals: "Breakfast, Lunch, Dinner",
+      },
+      {
+        day: 3,
+        title: "Seema (2,560 m) to Rainbasera (3,086 m)",
+        description: "Trek 9 Km (4-5 Hrs) via Debshu Bugyal with view of Kala Nag. Camp by river.",
+        detailedDescription:
+          "Today also, the trek is along the Supin river. First mile is Debshu Bugyal, from where we will get a magnificent view of Kala Nag or Black Peak. After crossing Debshu Bugyal we will descend through the forest with loose stones and sandy path to the river. Cross the Supin river through a bridge and again ascend with river on our right. Trek along the river until we reach our campsite by the side of the river. Overnight stay in camps.",
+        trekDistance: "9 Km",
+        trekDuration: "4-5 Hrs",
+        stayType: "Camp",
+        meals: "Breakfast, Lunch, Dinner",
+      },
+      {
+        day: 4,
+        title: "Rainbasera (3,086 m) to Ruinsara Tal (3,565 m)",
+        description: "Trek 7.5 Km (4-5 Hrs) to the sacred glacial lake Ruinsara Tal. View of Bandarpoonch.",
+        detailedDescription:
+          "Last day when we walk along the Supin river. Today we will reach Ruinsara Tal by afternoon. Ruinsara is a lovely glacial lake surrounded by meadows and rhododendrons. The campsite is beautiful and we will have a chance to stay in wooden huts instead of tents. On one side is Ruinsara Lake and on the other side is Supin River. Views of Banderpooch Peak (6,387 m), Dhumdhar Kandi (5,873 m), Kala Nag and White Peak are spectacular. Overnight stay in camps.",
+        trekDistance: "7.5 Km",
+        trekDuration: "4-5 Hrs",
+        stayType: "Camp / Wooden Huts",
+        meals: "Breakfast, Lunch, Dinner",
+      },
+      {
+        day: 5,
+        title: "Ruinsara Tal (3,565 m) to Odari (4,008 m)",
+        description: "Trek 4 Km (3 Hrs) via dense forest to Odari Rock Cave. Technical session.",
+        detailedDescription:
+          "Short and easy trek. Initially we will go down to Supin river through dense vegetation. Crossing the river through a bridge, we will then ascend to a small meadow and head south east along the river. Trail meanders towards south west to our campsite Odari. Odari means a naturally made rock cave. It is believed that Bali (Hanuman's brother) stayed in this cave for one night. Views of Swargarohini 1 & 2 from campsite. Afternoon technical session - how to use rope, ice axe and crampons for Bali Pass. Overnight stay in camps.",
+        trekDistance: "4 Km",
+        trekDuration: "3 Hrs",
+        stayType: "Camp",
+        meals: "Breakfast, Lunch, Dinner",
+        highlights: ["Technical session on rope, ice axe & crampons for the pass crossing"],
+      },
+      {
+        day: 6,
+        title: "Odari (4,008 m) to Base Camp (4,678 m)",
+        description: "Trek 3.25 Km (3 Hrs) - Short but steep 60-degree ridge, loose stones. Subzero camp.",
+        detailedDescription:
+          "Short hike south west to the base camp but not easy. We will walk on a mountain ridge with a 60 degree incline full of loose stones. This day is critical as we will be camping at 4,678 m. Keep yourself active & hydrated to avoid AMS. Temperature will drop to subzero levels. Acclimatisation takes longer at such height. Overnight stay in camps.",
+        trekDistance: "3.25 Km",
+        trekDuration: "3 Hrs",
+        stayType: "Camp",
+        meals: "Breakfast, Lunch, Dinner",
+        highlights: ["Subzero camp at 4,678 m — the final camp before the pass"],
+      },
+      {
+        day: 7,
+        title: "Base Camp (4,678 m) to Lower Dhamni (3,415 m) via Bali Pass (4,950 m) — Summit Day",
+        description:
+          "Summit Day - Trek 10 Km (8-10 Hrs). Cross Bali Pass at 16,207 Ft, 360° view of Swargarohini & Bandarpoonch. Steep descend to Lower Dhamni.",
+        detailedDescription:
+          "Today we cross Bali Pass (4,950 m). Start early at 6 AM. Trail up to pass remains full of snow which will require using techniques learnt earlier. 2-3 hours to reach the pass from base camp. Once we reach the pass, enjoy 360 degree view of Swargarohini, Banderpooch, Garhwal ranges and Yamunotri valley. After pass, steep descend through vertical path full of stones. Toughest 6-inch narrow ridge walk to Upper Dhamni. Rest at Upper Dhamni and resume trek to Lower Dhamni. Stay with trek leader as route is confusing. Overnight stay in camps at Lower Dhamni.",
+        trekDistance: "10 Km",
+        trekDuration: "8-10 Hrs",
+        stayType: "Camp",
+        meals: "Breakfast, Lunch, Dinner",
+        timeNote: { label: "Summit Start", value: "6:00 AM" },
+        highlights: ["Crosses Bali Pass at 16,207 ft with 360° views of Swargarohini and Bandarpoonch"],
+      },
+      {
+        day: 8,
+        title: "Lower Dhamni (3,415 m) to Dehradun via Yamunotri — Drop Day",
+        description:
+          "Trek 9.5 Km (5-6 Hrs) to Jaan Ki Chatti via Yamunotri Temple & hot springs. Drive 175 Km (7-8 Hrs) to Dehradun. Drop at Dehradun by 9-10 PM. Trek Ends.",
+        detailedDescription:
+          "Last day of trek. Initial trail through forest then merges into cemented path to Yamunotri (4.5 Km ascent). Reach Yamunotri in 1.5 hours. Take a dip in Sulphur hot water springs - it will take away all body pain. Darshan at Yamunotri Shrine. Then descend 5 Km to Jaan Ki Chatti via pilgrim route. Board our waiting vehicle from Jaan Ki Chatti and drive to Dehradun via Barkot. Drop at Dehradun Railway Station / ISBT by 9-10 PM. Trek Ends.",
+        trekDistance: "9.5 Km",
+        trekDuration: "5-6 Hrs",
+        driveDistance: "175 Km",
+        drivingTime: "7-8 Hrs",
+        stayType: "Trek Ends — Drop at Dehradun",
+        meals: "Breakfast",
+        timeNote: { label: "Drop", value: "9-10 PM at Dehradun" },
+      },
+    ],
+    inclusions: [
+      {
+        title: "Accommodation & Meals",
+        description: "Guest House or Home Stay accommodation plus all meals, starting Dinner on Day 1 till Breakfast on Day 8.",
+      },
+      {
+        title: "Permits",
+        description: "Forest permits, camping charges and trekking permits.",
+      },
+      {
+        title: "Camping Equipment",
+        description: "Tents on twin/triple sharing basis, sleeping bags, sleeping mats/mattresses.",
+      },
+      {
+        title: "Technical Gear",
+        description: "Micro-spikes, helmets, gaiters, crampons, ice axe and rope as required for the Bali Pass crossing.",
+      },
+      {
+        title: "Trek Staff",
+        description: "Experienced trek guide, cook and helpers, plus mules or porters for carrying common supplies & equipment.",
+      },
+      {
+        title: "Trek Leader",
+        description: "Mountaineering course certified Trek Leader with First Aid certification and special rescue course from NIM, Uttarkashi.",
+      },
+      {
+        title: "Sankri Stay",
+        description: "Guest House/Homestay in Sankri on Day 1 (and Day 8 if needed due to late arrival).",
+      },
+      {
+        title: "Transportation",
+        description: "Dehradun to Dehradun transport by Bolero/Ertiga/Tempo Traveller as per group size, with all toll, parking, driver charges and tax included.",
+      },
+    ],
+    exclusions: [
+      { title: "GST", description: "Mandatory GST of 5% on invoice amount." },
+      { title: "Travel/Health Insurance", description: "We strongly recommend each traveller carry their own travel/health insurance." },
+      { title: "Extra Meals & Beverages", description: "Any specific meals, snacks or beverages unless mentioned in the cost included section." },
+      { title: "Airfare/Train Fare", description: "Any cost of airfare or train fare to and from Dehradun." },
+      { title: "Medical Expenses", description: "Any kind of medical expenses incurred during the trek." },
+      { title: "Personal Expenses", description: "Tips, laundry, phone calls, liquor, mineral water, camera fee or any other personal nature expenses." },
+      { title: "Airport Transfers", description: "Airport pickup and drop services, available at additional cost." },
+      { title: "Anything Not Mentioned", description: "Any other fee/charge not mentioned in the cost included section." },
+      {
+        title: "Backpack Offloading",
+        description: "Offloading charges — the backpack should not weigh more than 9 Kg; suitcases, strollers and duffel bags are not allowed (subject to additional cost).",
+      },
+    ],
+    faqs: [
+      {
+        title: "What is the difficulty level of Bali Pass Trek?",
+        description: "Difficult / Expedition Grade. Bali Pass at 16,207 Ft (4,950 M) is not for beginners. You need 70-degree snow wall climbing, 6-inch narrow ridge walk, 8-10 hours summit day. Only for experienced trekkers.",
+      },
+      {
+        title: "Can a beginner do Bali Pass Trek?",
+        description: "No. This cannot be your first trek. You must have completed at least one 4,000 M+ trek like Kedarkantha, Brahmatal, Har Ki Dun, Hampta Pass etc. We will ask for proof.",
+      },
+      {
+        title: "What is the best time for Bali Pass?",
+        description: "May-June (full snow pass) and September-October (clear weather, less snow but more rocky). The most thrilling window is late May-June.",
+      },
+      {
+        title: "What is the pickup and drop point?",
+        description: "Pickup: Day 1 morning 6:30 AM from Dehradun Railway Station/ISBT. Drop: Day 8 night 9-10 PM at Dehradun Railway Station/ISBT. We provide Dehradun to Dehradun transport.",
+      },
+      {
+        title: "How much do we have to trek daily?",
+        description: "Average 7-10 Km daily, 5-7 hours walking. On summit day (Day 7) - 10 Km, 8-10 hours.",
+      },
+      {
+        title: "What is the accommodation?",
+        description: "Day 1 - Guest House/Homestay in Sankri (triple sharing). Day 2 to Day 7 - alpine tents on twin sharing plus sleeping bag and mattress. Wooden huts at Ruinsara Tal if available.",
+      },
+      {
+        title: "What about food?",
+        description: "Pure veg nutritious food from Day 1 dinner to Day 8 breakfast. Breakfast, pack lunch, evening snacks, dinner and tea. Our cook team goes with us.",
+      },
+      {
+        title: "Is there network/electricity on the trek?",
+        description: "No network after Purola (Day 1). No electricity after Sankri, and no charging points in tents — carry a power bank. Last ATM is at Purola, so carry cash.",
+      },
+      {
+        title: "What about washroom/toilet facility?",
+        description: "Guest houses have western toilets. On trek - dry toilet tents with a toilet seat are set up away from the campsite. No bath for 6 days; wet wipes recommended.",
+      },
+      {
+        title: "What if I get AMS (Altitude Sickness)?",
+        description: "Our NIM-certified trek leader carries a rescue course, oxygen cylinder and medical kit. If AMS symptoms are severe at Odari/Base Camp, you will be brought down to Sankri with staff. No summit push will be forced.",
+      },
+      {
+        title: "What is included in technical gear?",
+        description: "We provide micro-spikes, crampons, gaiters, helmet, ice axe and rope for summit day. You need to bring good trekking shoes with ankle support — most important.",
+      },
+      {
+        title: "Can I offload my backpack?",
+        description: "Yes, you can offload to a mule at ₹1,500-2,000 for the full trek (max 9 Kg). Suitcases/strollers are not allowed. You must carry a small daypack with water, jacket and lunch.",
+      },
+      {
+        title: "What is the age limit?",
+        description: "16 to 55 years. 16-18 year olds need a parent consent letter. BMI should be less than 30.",
+      },
+      {
+        title: "Do you provide a certificate?",
+        description: "Yes, a Bali Pass Trek Completion Certificate and badge.",
+      },
+      {
+        title: "What happens if the trek gets cancelled due to weather/landslide?",
+        description: "Bali Pass is weather dependent. If heavy snow/landslide blocks the pass, the trek leader will decide on an alternate route or an extra day. No refund, but we will try to complete the trek safely.",
+      },
+    ],
+    howToReach: {
+      intro: "Pickup and drop is Dehradun to Dehradun — no pickup from Haridwar or Rishikesh.",
+      air: {
+        summaryLabel: "Nearest Airport",
+        summary: "Jolly Grant Airport, Dehradun (DED) — 25 Km",
+        detail:
+          "Daily flights connect Delhi, Mumbai and Bangalore. From the airport, take a taxi to Dehradun Railway Station (₹800-1,000, 1 hour). Arrive a day early (Day 0) if coming by flight.",
+      },
+      train: {
+        summaryLabel: "Best Option",
+        summary: "Dehradun Railway Station",
+        detail:
+          "Well connected by overnight trains — Nanda Devi Express, Dehradun Shatabdi and Mussoorie Express from Delhi, plus direct trains from Mumbai, Kolkata and Lucknow. From Haridwar (50 Km), a bus or train runs every 30 minutes to Dehradun.",
+      },
+      road: {
+        summaryLabel: "By Bus / Overnight Volvo",
+        summary: "Delhi ISBT Kashmiri Gate to Dehradun",
+        detail:
+          "Government and private Volvo/AC buses run hourly (6-7 Hrs); the last bus at 11 PM reaches Dehradun by 5 AM, in time for the same-morning pickup. Direct buses also run from Chandigarh, Manali and Shimla.",
+        route: ["Dehradun", "Mussoorie", "Kempty Fall", "Purola", "Mori", "Netwar", "Sankri"],
+        facts: [
+          { label: "Distance", value: "195 Km" },
+          { label: "Duration", value: "8-9 Hours" },
+        ],
+      },
+      pickup: {
+        point: "Dehradun Railway Station / Prince Chowk",
+        time: "6:00 AM – 6:30 AM (Day 1)",
+        dropPoint: "Dehradun Railway Station / ISBT",
+        dropTime: "9:00 PM – 10:30 PM (Day 8)",
+        note: "No pickup from Haridwar or Rishikesh — only Dehradun. Book onward travel after 11 PM on Day 8, or the next morning.",
+      },
+    },
+    article: {
+      title: "Bali Pass: The Last Door Between Two Valleys, Where Only The Mountain Lets You Pass",
+      standfirst:
+        "If Har Ki Dun is a dream, Ruinsara is the secret inside that dream. And Bali Pass is the door that guards that secret.",
+      readMinutes: 6,
+      sections: [
+        {
+          paragraphs: [
+            "At 16,207 feet (4,950 M), standing on a knife-edge ridge where one side is Har Ki Dun Valley and the other side is Yamunotri Valley, you understand why trekkers call it the most thrilling pass crossing in India. It is not a trek. It is a test. Of your legs, your lungs, and your love for the Himalayas.",
+            "Bali Pass is not where tourists go. There is no chai shop, no horse, no crowd chanting. There is only snow, loose stones, a 70-degree snow wall, and a 6-inch narrow ridge where one wrong step is the end. That is why only a few people reach there. And those who reach, never come back the same.",
+            "The story says, Bali (brother of Lord Hanuman) stayed in a natural rock cave called Odari for one night on his way. That cave still exists at 13,150 feet. You will sleep just below it. And you will wonder, how did he cross this pass without shoes, without rope?",
+          ],
+        },
+        {
+          heading: "The Journey - One Valley To Another, One Life To Another",
+          paragraphs: [
+            "Bali Pass is not one day. It is eight days of slowly leaving the world behind.",
+            "It starts from Sankri (1,920 M), the last village of Govind Wildlife Sanctuary. The same Sankri from where Har Ki Dun, Kedarkantha starts. But after Taluka, everyone goes left to Har Ki Dun. You go right, with Supin River on your side. Through villages like Gangaar and Dhatmir, where people still live on wood and apple farming, where children still say namaste to strangers.",
+            "By Day 3 you reach Rainbasera (3,086 M), walking beside the Supin river. You cross Debshu Bugyal and for the first time you see Kala Nag (Black Peak) - 6,387 M, standing black and fearless.",
+            "Day 4 is Ruinsara Tal (3,565 M). This is the soul of this trek. A glacial lake surrounded by meadows and rhododendrons, on one side Bandarpoonch peak, on the other side Dhumdhar Kandi. There is no temple here, but the lake is more sacred than a temple. Locals say, Gods come to drink water here. You will camp on the banks, in wooden huts, and at night you will hear the sound of the lake freezing.",
+            "Day 5 is short - Ruinsara to Odari (4,008 M). 4 Km only. You descend to Supin river, cross it, and climb to a meadow where a giant rock stands - Odari cave. Here Bali stayed. From here you see Swargarohini I & II - the peaks that Pandavas used to go to heaven. Here your trek leader will teach you how to use ice axe, crampons and rope. Because tomorrow is not trekking, it is mountaineering.",
+            "Day 6 - Odari to Base Camp (4,678 M). Only 3.25 Km but the hardest 3 Km of your life. A 60-degree incline full of loose stones. Every step you go up, you slip half a step. At 15,300 feet, your breath finishes. Oxygen is 40% less. Water freezes inside the bottle. This night you will not sleep. You will keep checking your tent zip, your shoes, your head torch. Because at 4 AM next day, you have to cross the pass.",
+            "Day 7 - Summit Day - Base Camp to Lower Dhamni via Bali Pass (4,950 M). You start at 6 AM in dark, with head torch. First 2 hours on snow - white snow wall of 70 degrees. You have to kick your crampons hard, hold your ice axe. If you slip, rope will hold you. Slowly, slowly, you reach the top.",
+            "And then everything stops.",
+            "On Bali Pass, at 16,207 feet, you stand on a ridge that is just 1 foot wide. On your left is Ruinsara Valley, Har Ki Dun, Swargarohini. On your right is Yamunotri Valley, Bandarpoonch, Kala Nag. Behind you is the entire Garhwal Himalayas. In front of you is the sky. The wind is so strong you cannot stand without support. You have no words. You just sit.",
+            "Then the toughest part begins - descending. Steep loose rocks, vertical descent. The famous 6-inch ridge walk to Upper Dhamni where you can keep only one foot at a time. 5 hours of descent to reach Lower Dhamni (3,415 M). Your knees will shake, but your heart will be full.",
+            "Last day you trek to Yamunotri (3,293 M) - the first Dham of Char Dham. You take a dip in the hot sulphur spring that takes away all 7 days of body pain. You do darshan at Yamunotri shrine, then walk 5 Km down to Jaan Ki Chatti where your vehicle waits to take you back to Dehradun.",
+          ],
+        },
+        {
+          heading: "Why Bali Pass is Special?",
+          paragraphs: [
+            "Har Ki Dun can be done by anyone, Bali Pass can only be done by those whom the mountain allows.",
+            "It is one of the few treks in India where you start from one valley and end in a completely different valley. You start from the culture of Govind Sanctuary and end at the faith of Yamunotri.",
+            "It breaks your body on Day 6 and Day 7, but it makes your soul.",
+          ],
+        },
+      ],
+      signoff: "If Kedarkantha is introduction, and Har Ki Dun is story, then Bali Pass is the climax.",
+    },
+    similarTreks: ["har-ki-dun-trek", "pangarchulla-trek", "gaumukh-tapovan-trek", "roopkund-yatra", "rupin-pass-trek"],
   },
   {
     "slug": "phulara-ridge-trek",
     "name": "Phulara Ridge Trek",
+    "tagline": "Six days from Dehradun through Govind Wildlife Sanctuary to a 3 Km walk along the 12,150 ft Phulara Ridge, ending at the meadow campsite of Pushtara.",
     "price": 9999,
     "days": 6,
     "nights": 5,
     "region": "Uttarakhand",
     "category": "Uttarakhand",
     "startLocation": "Dehradun to Dehradun",
-    "difficulty": "Moderate",
+    "endLocation": "Dehradun",
+    "difficulty": "Easy to Moderate",
+    "maxAltitude": "12,150 ft / 3,703 m",
+    "totalDistance": "30 Kilometers",
+    "availability": "December – June & September – November",
     "months": [
-      "Oct",
-      "Nov",
+      "Dec",
+      "Jan",
+      "Feb",
       "Mar",
       "Apr",
       "May",
       "Jun",
-      "Jul"
+      "Sep",
+      "Oct",
+      "Nov"
     ],
     "themes": [
       "Snow",
       "Meadow",
       "Forest",
       "Pass Crossing"
-    ]
+    ],
+    intro:
+      "Phulara Ridge Trek is one of the most beautiful and unexplored ridge treks in Uttarakhand, located inside Govind Wildlife Sanctuary in Uttarkashi district. If Kedarkantha is famous for its summit, Phulara Ridge is famous for its ridge walk — nearly 3 Km on top of a narrow mountain edge with valleys thousands of feet deep on both sides and snow-capped Himalayan peaks in front.",
+    idealFor: "Beginners who want a less crowded, more scenic alternative to Kedarkantha, and anyone who has already done Kedarkantha or Dayara Bugyal and wants a new trail from the same region",
+    highlights: [
+      "A rare 2-3 Km continuous ridge walk at 12,150 ft with 360° Himalayan views on both sides",
+      "Same Sankri base as Kedarkantha, but a far less crowded trail after Sikolta",
+      "Camps at Pustara (Pushtara) Bugyal — one of the most beautiful meadow campsites in India",
+      "Views of Kedarkantha, Bandarpoonch, Swargarohini, Kalanag, Dhunda Top and Ranglana from the ridge top",
+      "Walks through thick, dark pine, oak and rhododendron forest dotted with naturally fallen, moss-covered trees",
+    ],
+    aboutParagraphs: [
+      "Phulara Ridge Trek is a hidden gem in the Uttarkashi district of Uttarakhand, inside Govind Wildlife Sanctuary. At a max altitude of 12,150 ft, it is considered the most beautiful ridge trek of India.",
+      "While Kedarkantha gives you a summit, Phulara Ridge gives you a ridge walk. For almost 3 Km, you walk on a narrow mountain ridge with valleys thousands of feet deep on both sides and snow-capped Himalayas in front. This kind of ridge walk is not available on any other easy-moderate trek in Uttarakhand.",
+      "Kedarkantha and Phulara Ridge both start from Sankri village and share the same base camp at Sikolta. But after Sikolta, the trails divide — Kedarkantha goes to the famous temple summit, which is very crowded in winter, while the Phulara Ridge trail heads towards Pustara Bugyal, a much wider, cleaner and less crowded meadow.",
+      "Pustara is the highlight of the trek — a huge golden meadow where you camp under thousands of stars with Kedarkantha peak right behind you. From Phulara Ridge Top you see Kedarkantha (12,500 ft), Bandarpoonch, Swargarohini, Kalanag (Black Peak), Dhunda Top and Ranglana.",
+      "The beauty of this trek is also its forest — thicker, darker and denser than Kedarkantha's, with Pine, Oak and Rhododendron trees. In many places you will see naturally fallen trees covered in moss, making for a very photogenic trail. In spring (March-April), the rhododendrons bloom red and pink.",
+      "It is perfect for beginners who want an easy-moderate trek with less crowd, for people who have already done Kedarkantha and want a new trail from the same region, for photographers and nature lovers drawn to the ridge walk and Pustara meadow, and for families, friends and college groups looking for a safe, easy trek.",
+    ],
+    fitnessRequirement:
+      "Beginner friendly — you should be able to walk 5-6 Km daily, jog 2 Km in 15-18 minutes without getting too tired, and climb 50 floors of stairs without high breathing difficulty. One month of daily exercise before the trek (walking, jogging, squats, stair climbing) is mandatory.",
+    eligibilityCriteria: [
+      { icon: "User", text: "Age 10 to 60 years — below 18 years with a parent/guardian, above 60 years need a medical fitness certificate and previous trek experience" },
+      { icon: "Footprints", text: "Beginner friendly trek — no previous trekking experience needed; perfect for first-time trekkers, families, kids and couples" },
+      { icon: "Stethoscope", text: "Not open to trekkers with severe heart disease, severe asthma, uncontrolled high blood pressure, epilepsy or severe knee injury; mild asthma/BP/diabetes must be declared in advance with medicine and a doctor's certificate" },
+      { icon: "FileText", text: "Original ID proof (Aadhar Card/Passport) for the forest permit, a medical fitness self-declaration form and 2 passport-size photos" },
+    ],
+    fitnessCriteria: [
+      { icon: "Footprints", text: "Walk 5-6 Km daily — the average daily trekking distance on this trek" },
+      { icon: "Activity", text: "Jog/run 2 Km in 15-18 minutes without getting too tired" },
+      { icon: "TrendingUp", text: "Climb 50 floors of stairs without high breathing difficulty" },
+      { icon: "Dumbbell", text: "One month of daily exercise before the trek — walking, jogging, squats and stair climbing" },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Dehradun to Sankri (6,400 ft) — Pickup Day",
+        description:
+          "Pickup from Dehradun. Drive 200 Km (8-9 Hrs) via Mussoorie, Purola and Mori to Sankri. Overnight Hotel/Homestay.",
+        detailedDescription:
+          "Pickup from Dehradun and a scenic drive via Mussoorie, Purola, Tons River and Govind National Park. Sankri (6,400 ft) is a beautiful village inside the sanctuary and the base for many treks, including Kedarkantha. Evening briefing by the Trek Leader and gear check. Overnight stay at a Hotel/Homestay in Sankri. Dinner included.",
+        pickupPoint: "Dehradun Railway Station / ISBT",
+        driveDistance: "200 Km",
+        drivingTime: "8-9 Hrs",
+        stayType: "Hotel / Homestay",
+        meals: "Dinner",
+      },
+      {
+        day: 2,
+        title: "Sankri to Sikolta (9,300 ft) — 6 Km Trek",
+        description:
+          "Trek 6 Km (4 Hrs) via Jainot Thatch and Marikoda through pine forest — first view of Dhunda & Phulara Ridge. Overnight in tents at Sikolta.",
+        detailedDescription:
+          "Start from Sankri base and cross a lovely pine forest, a small bridge and a few broken dhabas. Reach Jainot Thatch, then ascend to Marikoda for the first view of Dhunda Top and Phulara Ridge. Continue to the Sikolta meadow campsite (9,300 ft) — the same base camp shared with the Kedarkantha trail, before the routes divide. Overnight stay in tents.",
+        trekDistance: "6 Km",
+        trekDuration: "4 Hrs",
+        stayType: "Camp",
+        meals: "Breakfast, Lunch, Evening Snacks, Dinner",
+      },
+      {
+        day: 3,
+        title: "Sikolta to Bhoj Gadi via Karsu Thatch (9,300 ft to 11,155 ft)",
+        description:
+          "Trek 7 Km (4 Hrs) through dense forest to Karsu Thatch meadow, then on to Bhoj Gadi camp with views of Kedarkantha & Swargarohini.",
+        detailedDescription:
+          "A gradual ascent through dark, dense forest scattered with naturally fallen trees. Cross a stream near a small bridge and reach Karsu Thatch — a green meadow dotted with yellow flowers, where the tree line thins into Rhododendron and Bhoj trees. A further 30 minutes of ascent brings you to the Bhoj Gadi campsite (11,155 ft), with views of Kedarkantha and Swargarohini from camp. Overnight stay in tents.",
+        trekDistance: "7 Km",
+        trekDuration: "4 Hrs",
+        stayType: "Camp",
+        meals: "Breakfast, Lunch, Evening Snacks, Dinner",
+      },
+      {
+        day: 4,
+        title: "Bhoj Gadi to Pushtara via Phulara Ridge (11,155 ft to 12,127 ft to 9,500 ft) — Ridge Walk Day",
+        description:
+          "Trek 8 Km (6 Hrs). 1-hour climb to Phulara Ridge (12,150 Ft), a 2.5-hour ridge walk with 360° views, then descend to Pushtara Bugyal — the most beautiful meadow on the trek.",
+        detailedDescription:
+          "The main day of the trek. A 1-hour climb takes you to Phulara Ridge (12,150 ft), followed by a 2.5-hour ridge walk with 360° views on both sides — deep valleys on either flank and snow peaks all around. Peaks visible include Bandarpoonch, Kalanag, Swargarohini, Hanuman Top, Sarutal Top, DKD, Ranglana, Vijay Top, Kedarkantha and Devkyara. From the ridge you descend to Pushtara (Pustara) Bugyal (9,500 ft) — a wide, golden meadow camped under a full Himalayan skyline. Overnight stay in tents at Pushtara.",
+        trekDistance: "8 Km",
+        trekDuration: "6 Hrs",
+        stayType: "Camp",
+        meals: "Breakfast, Lunch, Evening Snacks, Dinner",
+        highlights: ["Crosses Phulara Ridge at 12,150 ft with a 2.5-hour, 360° ridge walk overlooking Kedarkantha, Swargarohini and Bandarpoonch"],
+      },
+      {
+        day: 5,
+        title: "Pushtara to Taluka — Drive to Sankri (9,500 ft to 7,953 ft)",
+        description:
+          "Trek 10 Km (5 Hrs) descent to Taluka village via Gujjar huts. Drive 12 Km (1 Hr) from Taluka to Sankri. Overnight Hotel/Homestay.",
+        detailedDescription:
+          "An easy-moderate descent from Pushtara. 30 minutes to the Gujjar huts, then a stream crossing before entering the forest. The trail continues through pine and oak forest scattered with broken trees down to Taluka village (7,953 ft). From Taluka, a 12 Km drive takes you back to Sankri. Overnight stay at a Hotel/Homestay in Sankri.",
+        trekDistance: "10 Km",
+        trekDuration: "5 Hrs",
+        driveDistance: "12 Km",
+        drivingTime: "1 Hr",
+        stayType: "Hotel / Homestay",
+        meals: "Breakfast, Lunch, Evening Snacks, Dinner",
+      },
+      {
+        day: 6,
+        title: "Departure — Sankri to Dehradun",
+        description:
+          "Drive 200 Km (8-9 Hrs) back to Dehradun via the same route. Drop by evening. Trek Ends.",
+        detailedDescription:
+          "Morning departure from Sankri, driving back to Dehradun via Mori, Purola and Mussoorie. Drop at Dehradun by evening (6-7 PM). Trek Ends.",
+        driveDistance: "200 Km",
+        drivingTime: "8-9 Hrs",
+        stayType: "Trek Ends — Drop at Dehradun",
+        meals: "Breakfast",
+        timeNote: { label: "Drop", value: "Evening at Dehradun" },
+      },
+    ],
+    inclusions: [
+      {
+        title: "Stay",
+        description: "2 Nights Hotel/Homestay in Sankri (Day 1 & Day 5) plus 3 Nights Camping in Tents at Sikolta, Bhoj Gadi and Pushtara — all on Triple Sharing, with a toilet tent during the trek.",
+      },
+      {
+        title: "Meals",
+        description: "All meals from Sankri to Sankri — Dinner on Day 1; Breakfast, Lunch, Evening Snacks and Dinner on Day 2-5; Breakfast on Day 6. Veg plus occasional egg, tea-coffee and soup.",
+      },
+      {
+        title: "Transportation",
+        description: "Dehradun to Sankri and Sankri to Dehradun by Sumo/Bolero/Tempo Traveller, plus the Taluka to Sankri transfer on Day 5 (sharing basis).",
+      },
+      {
+        title: "Trek Team",
+        description: "Certified Trek Leader, local guide, cook and porters/mules for common luggage.",
+      },
+      {
+        title: "Permits & Fees",
+        description: "Govind Wildlife Sanctuary permit, forest entry fee and camping charges.",
+      },
+      {
+        title: "Equipment & Safety",
+        description: "Tents, sleeping bags (-10°), mattress, kitchen/dining/toilet tents, gaiters and micro-spikes in snow (Dec-Mar), plus first aid kit, oxygen cylinder, oximeter, stretcher and rope.",
+      },
+    ],
+    exclusions: [
+      { title: "Personal Expenses", description: "Porters for personal luggage (₹1,500 for the full trek if needed), personal shopping and tips." },
+      { title: "Food & Water in Transit", description: "Any meal in Dehradun, food during the Day 1 & Day 6 drives, and bottled mineral water/cold drinks." },
+      { title: "Travel to Dehradun", description: "Transport to reach Dehradun from your city, and any extra travel apart from the included route." },
+      { title: "Insurance & Medical", description: "Personal travel/trek insurance, personal medical expenses, and any rescue/helicopter evacuation cost (covered by the government only if available)." },
+      { title: "Clothing & Gear", description: "Trekking shoes, jackets, trek pants, poncho, backpack (50-60L), torch etc. — bring your own (rental available in Sankri)." },
+      { title: "Natural Calamities", description: "Any cost due to natural calamity, landslide, roadblock or bad weather causing extra stay or transport, and anything not mentioned in the Inclusions." },
+      { title: "GST", description: "5% GST extra on the total cost." },
+    ],
+    faqs: [
+      {
+        title: "What is the difficulty level of Phulara Ridge Trek?",
+        description: "Easy to Moderate. 5-7 Km walking per day. First-time trekkers, families and kids (10+ yrs) can easily do it — no technical climbing.",
+      },
+      {
+        title: "What is the height of Phulara Ridge?",
+        description: "The highest point is Phulara Ridge Top — 12,150 Ft (3,703 M). Campsites: Bhoj Gadi — 11,155 Ft, Pushtara — 9,500 Ft, Sikolta — 9,300 Ft.",
+      },
+      {
+        title: "How long is the Phulara Ridge Trek distance?",
+        description: "Total trekking distance is 30-31 Km from Sankri to Taluka. Driving distance is Dehradun to Sankri, 200 Km one side.",
+      },
+      {
+        title: "Is Phulara Ridge Trek safe for beginners?",
+        description: "Yes, 100% safe for beginners — one of the best beginner ridge treks in Uttarakhand. A certified Trek Leader, Guide, and safety equipment (Oxygen Cylinder, Oximeter, First Aid) are always with you.",
+      },
+      {
+        title: "What is the best time for Phulara Ridge Trek?",
+        description: "December to April for snow and a winter experience, May-June for green meadows and flowers, September-November for golden meadows and the clearest views (best for photography).",
+      },
+      {
+        title: "What will the temperature be during the trek?",
+        description: "Winter (Dec-Mar) — Day 5°C to 10°C, Night -5°C to -2°C. Summer (May-June) — Day 12°C to 18°C, Night 2°C to 8°C. Autumn (Sept-Nov) — Day 10°C to 15°C, Night 0°C to 5°C.",
+      },
+      {
+        title: "What is included in transport?",
+        description: "Dehradun to Sankri and Sankri to Dehradun by Sumo/Bolero/Tempo Traveller (sharing basis), plus the Taluka to Sankri transfer on Day 5.",
+      },
+      {
+        title: "Is network available on Phulara Ridge Trek?",
+        description: "Jio works in Sankri village only. No network from Sikolta to Pushtara (3 days); BSNL sometimes works at Pushtara. Inform family in advance.",
+      },
+      {
+        title: "Can we get a stay on double sharing?",
+        description: "Our cost is on triple sharing — Hotel/Homestay in Sankri and Tents during the trek. Double sharing is available at an extra cost of ₹1,500 per person for the 2 nights in Sankri.",
+      },
+      {
+        title: "What about washroom/toilet during the trek?",
+        description: "In Sankri — Hotel with attached/common washroom and hot water. During the trek — dry toilet tents with a toilet seat, clean and set up away from the campsite.",
+      },
+      {
+        title: "What about food during the trek?",
+        description: "Veg plus occasional egg. Breakfast, Lunch, Evening Snacks and Dinner from Day 1 Dinner to Day 6 Breakfast — hot, fresh food cooked by our Cook. Jain food available on prior notice.",
+      },
+      {
+        title: "What should I carry for Phulara Ridge Trek?",
+        description: "Waterproof, high-ankle trekking shoes, 50-60L backpack, winter jackets, fleece, trek pants, woollens, poncho, gloves, woollen cap, sunglasses, power bank, water bottle and personal medicine. A full list is sent after booking.",
+      },
+      {
+        title: "Is there any age limit?",
+        description: "10 to 60 years can do this trek. Below 18 years need a guardian. Above 60 years need a medical certificate and fitness clearance.",
+      },
+      {
+        title: "What about personal luggage?",
+        description: "You carry your own backpack (7-8 Kg). If you don't want to carry it, it can be given to a mule/porter at an extra cost of ₹1,500 for the full trek for a 10 Kg bag.",
+      },
+      {
+        title: "Is alcohol/smoking allowed?",
+        description: "No alcohol/smoking during trek days (Sikolta to Pushtara). Allowed in Sankri market after the trek ends.",
+      },
+    ],
+    howToReach: {
+      intro: "Pickup and drop is Dehradun to Dehradun — Sankri is the base village, 200 Km from Dehradun.",
+      air: {
+        summaryLabel: "Nearest Airport",
+        summary: "Jolly Grant Airport, Dehradun (DED) — 25 Km",
+        detail:
+          "Daily flights connect Delhi, Mumbai and Bangalore. From the airport, take a taxi to Dehradun Railway Station (₹800-1,000, 1 hour). Arrive a day early (Day 0) if coming by flight.",
+      },
+      train: {
+        summaryLabel: "Best Option",
+        summary: "Dehradun Railway Station",
+        detail:
+          "Well connected by overnight trains — Nanda Devi Express, Dehradun Shatabdi and Mussoorie Express from Delhi, plus direct trains from Mumbai, Kolkata and Lucknow. From Haridwar (50 Km), a bus or train runs every 30 minutes to Dehradun.",
+      },
+      road: {
+        summaryLabel: "By Bus / Overnight Volvo",
+        summary: "Delhi ISBT Kashmiri Gate to Dehradun",
+        detail:
+          "Government and private Volvo/AC buses run hourly (6-7 Hrs); the last bus at 11 PM reaches Dehradun by 5 AM, in time for the same-morning pickup. Direct buses also run from Chandigarh, Manali and Shimla.",
+        route: ["Dehradun", "Mussoorie", "Purola", "Mori", "Netwar", "Sankri"],
+        facts: [
+          { label: "Distance", value: "200 Km" },
+          { label: "Duration", value: "8-9 Hours" },
+        ],
+      },
+      pickup: {
+        point: "Dehradun Railway Station / ISBT",
+        time: "Early Morning (Day 1)",
+        dropPoint: "Dehradun Railway Station / ISBT",
+        dropTime: "Evening, 6-7 PM (Day 6)",
+        note: "No pickup from Haridwar or Rishikesh — only Dehradun. Book onward travel for after 8 PM on Day 6, or the next morning.",
+      },
+    },
+    article: {
+      title: "Phulara Ridge: The Most Beautiful Ridge Walk in Uttarakhand",
+      standfirst:
+        "If Kedarkantha is famous for its summit, Phulara Ridge is famous for its walk — a 3 Km ridge in the sky, with almost no crowd for company.",
+      readMinutes: 5,
+      sections: [
+        {
+          paragraphs: [
+            "Phulara Ridge Trek is the most beautiful ridge trek in India. If Kedarkantha is famous for its summit, Phulara Ridge is famous for the walk on the ridge itself — the only trek in Uttarakhand where you walk for 2-3 Km continuously on a mountain ridge with 360° Himalayan views on both sides. On one side you see Kedarkantha, Bandarpoonch, Swargarohini and Kalanag; on the other, the deep valleys of Himachal.",
+            "The trek starts from Sankri — the same base as Kedarkantha — but after Sikolta the trail goes its own way, through thick, dark, dense forests of Pine, Oak and Rhododendron, past naturally fallen trees that make the forest feel wilder and more untouched.",
+          ],
+        },
+        {
+          heading: "Why Phulara Ridge Is Different From Kedarkantha",
+          paragraphs: [
+            "Kedarkantha and Phulara Ridge both start from Sankri village and share the same base camp at Sikolta. But after Sikolta, the trails divide — Kedarkantha climbs to its famous temple summit, crowded through the winter, while Phulara Ridge heads towards Pustara Bugyal, a much wider, cleaner and far less crowded meadow.",
+            "Kedarkantha sees around 200 trekkers a day; Phulara Ridge sees only 10-20. What you get in return is peace, silence and clean campsites, plus a fairy-tale stretch of forest at Karsu Thatch — moss-covered trees and yellow flowers — and a sunset view of Kedarkantha from the Bhoj Gadi campsite.",
+          ],
+        },
+        {
+          heading: "Pushtara Bugyal — The Hidden Meadow",
+          paragraphs: [
+            "Pustara (Pushtara) is the highlight of the trek — one of the most eye-catching, wide meadows in Uttarakhand, and the first place you get a big, open Himalayan view. The campsite here is considered one of the most beautiful in India: a golden meadow where you camp under thousands of stars with Kedarkantha peak right behind you.",
+            "From Phulara Ridge Top (12,150 ft) itself, you can clearly see Dhunda Top, Kedarkantha Peak, Swargarohini and the Bandarpoonch range — high enough to feel enclosed on all sides by the mountain range, true Himalayan beauty.",
+          ],
+        },
+        {
+          heading: "Why Phulara Ridge With Trip My Soul?",
+          paragraphs: [
+            "It's perfect for beginners who want less crowd than Kedarkantha, offering a ridge-walk experience you won't get on any other winter trek. December to March is the best window for a moderate-snow, easy-to-walk winter trek, and the same Sankri base makes it just as easy to reach from Dehradun. It's also 100% safe for girls, solo travellers and groups.",
+            "If you want the beauty of the Kedarkantha region but without the crowd, and with a better ridge experience — Phulara Ridge is for you.",
+          ],
+        },
+      ],
+      signoff: "If Kedarkantha is the King of winter treks, Phulara Ridge is the Queen — less crowd, more beauty, and a true ridge experience.",
+    },
+    similarTreks: ["kedarkantha-trek", "har-ki-dun-trek", "nagtibba-trek", "dayara-bugyal-trek"],
   },
   {
     "slug": "gaumukh-tapovan-trek",
@@ -1646,30 +2264,34 @@ export const TREKS: Trek[] = [
     // back to the default hero image while it is unset).
   },
   {
-    // TODO(content): winter catalogue stub for Chopta with Auli. Every value marked TODO
-    // below is a placeholder — ops to confirm before this listing goes live.
+    // Chopta with Auli — Rishikesh-to-Rishikesh circuit covering Auli's ski
+    // slopes, the Tungnath-Chandrashila trek and the Deoria Tal lake trek via
+    // Sari Village. Extended detail-page content lives further down this file,
+    // in the `choptaWithAuliIndex` block.
     "slug": "chopta-with-auli",
     "name": "Chopta with Auli",
+    "tagline": "Auli's ski slopes, the world's highest Shiva temple and a 13,000 ft summit in one trip",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
-    "days": 3, // TODO(content): real duration.
-    "nights": 2, // TODO(content): real duration.
+    "days": 4,
+    "nights": 3,
     "region": "Uttarakhand",
     "category": "Upcoming Winter Treks",
-    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
-    "startLocation": "",
-    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    "startLocation": "Rishikesh / Haridwar",
+    "difficulty": "Easy-Moderate",
     // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    // The published route is also good March-June; see `differentiators` below.
     "months": [
       "Dec",
       "Jan",
       "Feb"
     ],
     "themes": [
-      "Snow"
+      "Snow",
+      "Temple",
+      "Meadow"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // TODO(content): add `heroImage` — trekDetail.ts falls back to the default
+    // hero image while it is unset.
   },
   {
     // TODO(content): winter catalogue stub for Chopta Snow Trip. Every value marked TODO
@@ -1724,30 +2346,36 @@ export const TREKS: Trek[] = [
     // back to the default hero image while it is unset).
   },
   {
-    // TODO(content): winter catalogue stub for Kanatal Winter Trip. Every value marked TODO
-    // below is a placeholder — ops to confirm before this listing goes live.
+    // Full content sourced from the ops-supplied Kanatal write-up (overview,
+    // itinerary, eligibility, article, FAQs, how-to-reach and package terms);
+    // extended detail-page fields are assigned below via `kanatalIndex`.
+    // TODO(content): still no heroImage — trekDetail.ts falls back to the
+    // default hero image while it is unset, and no fixed package price is
+    // published in the source, so `price` stays null (see `priceNote`).
     "slug": "kanatal-winter-trip",
     "name": "Kanatal Winter Trip",
-    "price": null, // TODO(content): real price; the card shows "TBD" until set.
-    "days": 3, // TODO(content): real duration.
-    "nights": 2, // TODO(content): real duration.
+    "tagline": "A quiet pine-forest hill station near Mussoorie, with Surkanda Devi temple, forest treks and zip-lining over the valley",
+    "price": null,
+    "days": 3,
+    "nights": 2,
     "region": "Uttarakhand",
     "category": "Upcoming Winter Treks",
-    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
-    "startLocation": "",
-    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    "startLocation": "Dehradun",
+    "difficulty": "Easy-Moderate",
     // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    // The source describes this as an all-year destination — see
+    // `differentiators` below for the other three seasons.
     "months": [
       "Dec",
       "Jan",
       "Feb"
     ],
     "themes": [
-      "Snow"
+      "Snow",
+      "Forest",
+      "Temple",
+      "Adventure"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
   },
   {
     // TODO(content): winter catalogue stub for Dhanaulti Snow Trip. Every value marked TODO
@@ -1828,18 +2456,18 @@ export const TREKS: Trek[] = [
     // back to the default hero image while it is unset).
   },
   {
-    // TODO(content): winter catalogue stub for Nainital Winter Trip. Every value marked TODO
-    // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "nainital-winter-trip",
     "name": "Nainital Winter Trip",
+    "tagline": "The Lake City of Uttarakhand — Naini Lake boating, Mall Road evenings, Himalayan view points and the Bhimtal-Sattal-Naukuchiatal lake cluster, Kathgodam to Kathgodam.",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
-    "days": 3, // TODO(content): real duration.
-    "nights": 2, // TODO(content): real duration.
+    "days": 3,
+    "nights": 2,
     "region": "Uttarakhand",
     "category": "Upcoming Winter Treks",
-    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
-    "startLocation": "",
-    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    "startLocation": "Kathgodam",
+    "endLocation": "Kathgodam",
+    "difficulty": "Easy",
+    "availability": "Every Saturday from Kathgodam, open 365 days",
     // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
     "months": [
       "Dec",
@@ -1847,11 +2475,286 @@ export const TREKS: Trek[] = [
       "Feb"
     ],
     "themes": [
-      "Snow"
-    ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+      "Snow",
+      "Lakes",
+      "Family with Kids",
+      "Couples"
+    ],
+    intro:
+      "Nainital is the most famous and loved hill station of Kumaon Uttarakhand, also known as the City of Lakes. Located at an altitude of 6,837 ft around a beautiful pear-shaped Naini Lake, surrounded by 7 hills, Nainital is a perfect blend of natural beauty, mall road shopping, boating and colonial charm.",
+    idealFor:
+      "Families with kids, couples and first-time hill visitors who want a lively vacation — lake, market, view points, temples, cafes and adventure all in one place.",
+    highlights: [
+      "Naini Lake boating — pedal, row or Shikara",
+      "Naina Devi Temple, one of 51 Shakti Peethas",
+      "Mall Road — 1.5 km of shopping, woolens, candles and cafes",
+      "Tiffin Top (Dorothy's Seat) and Snow View Point via ropeway",
+      "Lover's Point & Suicide Point",
+      "Bhimtal, Sattal and Naukuchiatal lake cluster",
+      "Kainchi Dham — Neem Karoli Baba Ashram",
+      "Horse riding, ropeway and paragliding at Naukuchiatal",
+    ],
+    aboutParagraphs: [
+      "Nainital is a small but world-famous Himalayan town in the Kumaon region of Uttarakhand. Built around the sacred Naini Lake at an altitude of 2,084 meters (6,837 ft), it is surrounded by seven hills — Ayarpata, Deopata, Handi-Bandi, Cheena Peak, Alma, Laria Kanta and Sher Ka Danda — which is why it is also called the City of 7 Hills.",
+      "It was discovered by a British businessman P. Barron in 1841 and since then it has been the summer capital and favorite getaway for Britishers. That colonial charm is still alive in its old churches, schools like Sherwood & St. Joseph's, and heritage bungalows.",
+      "Unlike quiet hill stations like Kanatal or Dhanaulti, Nainital is full of life. It is where nature and town life co-exist. In the center lies the emerald green pear-shaped Naini Lake — 2 miles in circumference. On one side is Mallital (head of lake) and on other side is Tallital (foot of lake), connected by Mall Road, where the whole town comes alive in the evening.",
+      "According to mythology, Naini Lake is one of the 51 Shakti Peethas where the eye (Naina) of Goddess Sati fell, and the Naina Devi Temple on the lake bank is highly revered.",
+      "Nainital is not just one lake — it is a cluster of lakes. Within 15 km you have Bhimtal (largest lake with an island), Sattal (group of 7 lakes joined together — most clean & peaceful), Naukuchiatal (deepest lake with 9 corners — famous for paragliding), and Khurpatal. That is why the whole district is called the Lake District of India.",
+      "Nainital has no airport or direct railway line. The nearest Railway Station is Kathgodam (35 km, 1.5 hrs), connected to Delhi, Lucknow and Kolkata by daily trains. The nearest Airport is Pantnagar (65 km). From Kathgodam, a taxi or bus takes you to Nainital via a beautiful winding road.",
+    ],
+    destinationHighlights: [
+      {
+        name: "Bhimtal",
+        blurb: "Bigger than Naini Lake, with a small island in the centre holding an aquarium. Good for a relaxed boat ride.",
+      },
+      {
+        name: "Sattal",
+        blurb: "A group of 7 freshwater lakes joined together, untouched and peaceful — the best spot for bird watching and silence.",
+      },
+      {
+        name: "Naukuchiatal",
+        blurb: "The deepest lake in Nainital with 9 corners, famous for paragliding, boating and wish fulfilment.",
+      },
+      {
+        name: "Khurpatal",
+        blurb: "The cleanest water source for Nainital — hidden, green and rarely crowded.",
+      },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Nainital | Local Nainital Exploration",
+        description:
+          "Pickup from Kathgodam and drive to Nainital, Naina Devi Temple darshan, evening boating in Naini Lake and a Mall Road walk.",
+        detailedParagraphs: [
+          "Pickup from Kathgodam Railway Station (morning arrival trains work best) / Pantnagar Airport / Haldwani. Drive to Nainital (35 km, 1.5-2 hrs) — a beautiful uphill drive through pine forest, Kumaon hills and valley views, with a tea break at Kathgodam. Check in at your hotel (Mall Road / Lake View recommended for first timers) and freshen up.",
+          "Afternoon darshan at Naina Devi Temple, located at the north shore of Naini Lake — one of the 51 Shakti Peethas. Get blessings and enjoy the lake view from the temple courtyard, 30-45 minutes.",
+          "Evening boating in Naini Lake — Shikara, pedal boat or row boat, best at sunset when the lake lights come on. Follow it with a walking tour of Mall Road (1.5 km from Mallital to Tallital) — shopping for the famous Nainital candles, woolens, pinewood decor and handmade chocolates, and trying bun maska, hot momos and lakeside cafes. Dinner and overnight stay at Nainital.",
+        ],
+        pickupPoint: "Kathgodam Railway Station / Pantnagar Airport / Haldwani",
+        driveDistance: "35 Km",
+        drivingTime: "1.5-2 Hrs",
+        stayType: "Hotel (Mall Road / Lake View)",
+        meals: "Dinner",
+      },
+      {
+        day: 2,
+        title: "Himalayan View Points & Lake Cluster Tour",
+        description:
+          "Ropeway to Snow View Point, optional Tiffin Top, then a Bhimtal-Sattal-Naukuchiatal lake circuit.",
+        detailedParagraphs: [
+          "After breakfast, take the ropeway / cable car to Snow View Point — from 2,270 m, a clear view of Nanda Devi, Trishul and Nanda Kot peaks (best Sept-Nov & Mar-May). Also visit the Himalayan View Point and photo point. Optionally add Tiffin Top / Dorothy's Seat, the highest picnic point in Nainital with a 360° view.",
+          "Afternoon drive on the 3-lakes circuit (15-25 km loop): Bhimtal (22 km) — the largest lake with an island aquarium and boating; Sattal (5 km from Bhimtal) — a group of 7 lakes, very peaceful, good for bird watching; Naukuchiatal (10 km from Bhimtal) — the deepest lake with 9 corners, known for paragliding (optional, ₹1,500-2,000) and boating. Visit the Eco Cave Gardens (6 natural caves) and the High Altitude Zoo if time permits and kids are along.",
+          "Return to Nainital by 6 PM. Evening free for cafe hopping and sunset at Hanuman Garhi. Overnight at Nainital.",
+        ],
+        highlights: ["Ropeway to Snow View Point", "Bhimtal-Sattal-Naukuchiatal lake circuit"],
+        stayType: "Hotel (Mall Road / Lake View)",
+        meals: "Breakfast, Dinner",
+      },
+      {
+        day: 3,
+        title: "Kainchi Dham Darshan & Departure",
+        description:
+          "Morning darshan at Kainchi Dham, then drop at Kathgodam Railway Station.",
+        detailedParagraphs: [
+          "Early breakfast and check-out from the hotel. Drive to Kainchi Dham (20 km, 1 hr from Nainital) — the world-famous Neem Karoli Baba Ashram, for a peaceful darshan and time at the meditation hall, about an hour.",
+          "Continue the drive to Kathgodam Railway Station (60 km from Kainchi, 1.5 hrs) for the return train to Delhi. Tour ends with beautiful memories. Optional drop at Pantnagar Airport / Haldwani, or extend to Jim Corbett.",
+        ],
+        driveDistance: "20 Km to Kainchi Dham, 60 Km onward to Kathgodam",
+        drivingTime: "1 Hr + 1.5 Hrs",
+        stayType: "Trek Ends — Drop at Kathgodam",
+        meals: "Breakfast",
+      },
+    ],
+    inclusions: [
+      {
+        title: "Accommodation",
+        description: "2 nights stay in Nainital (Mall Road / Lake View / Bhimtal as per package), quad/triple sharing, room with attached washroom, TV and tea kettle. Categories: Standard, Deluxe (Lake View), Luxury.",
+      },
+      {
+        title: "Meals (MAP Plan)",
+        description: "2 breakfasts and 2 dinners at the hotel.",
+      },
+      {
+        title: "Transportation & Sightseeing",
+        description: "Pickup & drop from Kathgodam Railway Station / Pantnagar Airport / Haldwani ISBT, all transfers and sightseeing by private car (Swift Dzire/WagonR for 2-3 pax, Ertiga/Innova for 4-6 pax, Innova Crysta/Tempo Traveller for 7+ pax), with driver allowance, fuel, toll, parking, state tax and green tax included.",
+      },
+      {
+        title: "Sightseeing Covered",
+        description: "Nainital Local, Snow View Point (till ropeway point), Tiffin Top, Bhimtal, Sattal, Naukuchiatal, Kainchi Dham (on the way back).",
+      },
+      {
+        title: "Tour Support",
+        description: "24x7 tour support.",
+      },
+    ],
+    exclusions: [
+      { title: "Lunch", description: "Not included — available at Mall Road and en route." },
+      { title: "Boating in Naini Lake", description: "Charged separately for pedal/row boat or Shikara." },
+      { title: "Ropeway / Cable Car", description: "Snow View Point ropeway ticket, direct payment." },
+      { title: "Entry Tickets", description: "Eco Cave Garden ₹80, High Altitude Zoo ₹100, Bhimtal Aquarium — direct payment." },
+      { title: "Adventure Activities", description: "Paragliding at Naukuchiatal, horse riding at Tiffin Top, zip line etc — direct payment." },
+      { title: "Kainchi Dham Special Puja / Prasad", description: "Free entry, no charges — any special puja is optional and paid direct." },
+      { title: "Personal Expenses", description: "Mineral water, cold drinks, snacks, shopping, laundry, tips to driver." },
+      { title: "GST", description: "5% extra, if a bill is needed." },
+      { title: "Travel Insurance & Medical Expenses", description: "Not included." },
+      { title: "Anything Not Mentioned", description: "Anything not listed under inclusions." },
+    ],
+    eligibilityCriteria: [
+      { icon: "Users", text: "Open for all ages — kids (0-18), adults (18-60) and senior citizens (60-85+) are all suited to this trip" },
+      { icon: "Stethoscope", text: "Asthma, BP, sugar and heart patients can travel — altitude is only 6,800 ft; not recommended within 1 month of major surgery; pregnant women safe till 7 months (avoid ropeway & bumpy lake roads)" },
+      { icon: "IdCard", text: "Indian citizens need Aadhaar/Voter ID/Driving License for hotel check-in; foreign nationals need passport & visa copy — no permit or Yatra registration required" },
+      { icon: "Users2", text: "Solo travellers, couples, friends' groups and families are all welcome — Mall Road area is safe for solo women till 10 PM" },
+      { icon: "Calendar", text: "Open 365 days — no road blockage like the Char Dham route, even in monsoon or snowfall" },
+    ],
+    fitnessCriteria: [
+      { icon: "Footprints", text: "Easy grade — not a trek or Yatra; Mall Road, Naini Lake, Bhimtal, Sattal and Kainchi Dham are all plain drive and flat walk" },
+      { icon: "Mountain", text: "Only two spots need a short walk — Naina Devi Temple (about 100 steps) and Tiffin Top (optional jeep/horse available)" },
+      { icon: "FileText", text: "No fitness certificate needed — anyone who can travel by car and walk 200-300 metres is eligible" },
+    ],
+    faqs: [
+      {
+        title: "How to reach Nainital from Delhi/Dehradun?",
+        description: "From Delhi: 320 km, 7-8 hrs — take the Kathgodam Shatabdi / Ranikhet Express till Kathgodam (last station), then a 35 km taxi (1.5 hrs) to Nainital. Direct Volvo buses also run from Anand Vihar ISBT (overnight, 8 hrs). From Dehradun: 300 km, 8-9 hrs via Haridwar-Kathgodam. Nearest airport is Pantnagar, 65 km; Jolly Grant Dehradun is 300 km.",
+      },
+      {
+        title: "What is the best time to visit Nainital?",
+        description: "March-June — best for families, pleasant weather. July-September — green, less crowd, budget rates. October-November — clear Himalayan view of Nanda Devi. December-January — chance of snowfall at Snow View Point and Cheena Peak.",
+      },
+      {
+        title: "Is 2 days enough for Nainital?",
+        description: "Yes, 2 nights / 3 days is ideal — Day 1 local Nainital and Mall Road, Day 2 Bhimtal-Sattal-Naukuchiatal lake tour plus view points, Day 3 Kainchi Dham and departure. Add a night for Jim Corbett or Mukteshwar if you want to extend.",
+      },
+      {
+        title: "What are the main places to see in Nainital?",
+        description: "Naini Lake boating, Naina Devi Temple, Mall Road, Snow View Point (ropeway), Tiffin Top, Eco Cave Garden, High Altitude Zoo, Bhimtal, Sattal, Naukuchiatal and Kainchi Dham Ashram.",
+      },
+      {
+        title: "Does it snow in Nainital?",
+        description: "Yes, but not on Mall Road / Naini Lake every year. Snowfall happens from late December to January at upper points — Snow View, Cheena Peak, Tiffin Top. Mall Road gets light snowfall once or twice in January if lucky. For guaranteed snow, visit Auli or Chopta.",
+      },
+      {
+        title: "Is Nainital safe for family & solo female travellers?",
+        description: "Yes. The Mall Road area has tourist police and stays crowded till 10-10:30 PM. Hotels are on or near Mall Road with a family crowd, and solo female travellers regularly travel here.",
+      },
+      {
+        title: "What kind of hotels are there?",
+        description: "From budget at ₹3,000 to luxury at ₹10,000 per night. Mall Road hotels are premium and best for the lake view; lake view hotels at Bhimtal/Sattal are more peaceful and spacious.",
+      },
+      {
+        title: "Is Kainchi Dham open every day?",
+        description: "Yes, open 365 days from 6 AM to 6 PM. No ticket, free entry. Prasad is given inside the temple, so there is no need to buy it outside. Mobile phones are allowed but photography is not permitted inside the temple.",
+      },
+      {
+        title: "What should I pack for Nainital?",
+        description: "Summer: light woolens for evening, cap, sunscreen, comfortable walking shoes. Winter: heavy jackets, gloves, muffler, thermals. Carry regular medicines and a valid ID proof for hotel check-in.",
+      },
+      {
+        title: "Is any permit needed for Nainital?",
+        description: "No. No permit or Yatra registration is needed for Indian citizens. Foreign nationals just need a passport copy for the hotel.",
+      },
+      {
+        title: "Can we get vegetarian food easily?",
+        description: "Yes. Most restaurants are vegetarian — Kumaoni dishes, North Indian, momos and Chinese are easily available, and non-veg is available at a few restaurants too.",
+      },
+      {
+        title: "What is included in the Nainital package?",
+        description: "Stay (lake view / Mall Road), breakfast & dinner, private taxi ex-Kathgodam with all toll-parking-driver allowance, and sightseeing as per the itinerary.",
+      },
+    ],
+    howToReach: {
+      intro:
+        "Pickup and drop is Kathgodam to Kathgodam — the last railway station of the Kumaon region and the gateway for every Nainital, Bhimtal, Kainchi Dham, Mukteshwar and Almora trip. Kathgodam is 300 km from Delhi and 280 km from Dehradun, with the final 35 km to Nainital on a winding hill road.",
+      air: {
+        summaryLabel: "Nearest Airport",
+        summary: "Pantnagar Airport (PGH) — 35 Km from Kathgodam, 65 Km from Nainital",
+        detail:
+          "Daily flights from Delhi on Alliance Air / IndiGo, about 1 hour — seats are limited, so book early. A taxi from the airport to Nainital costs around ₹2,000. Dehradun Airport (DED) is a farther alternative at 300 km from Kathgodam, with flights from all metro cities; from Dehradun airport it is an 8-9 hr taxi to Kathgodam/Nainital.",
+      },
+      train: {
+        summaryLabel: "Nearest Railway Station",
+        summary: "Kathgodam Railway Station (KGM) — 35 Km, 1.5 Hrs from Nainital",
+        detail:
+          "The last railhead of the Kumaon region, well connected to Delhi, Lucknow, Kolkata and Agra. From Lucknow, the 15044 Lucknow Kathgodam Express runs daily overnight; from Kolkata/Howrah, the 13019 Bagh Express runs weekly. There is no direct train from Dehradun/Haridwar — break the journey at Moradabad/Delhi, or take a bus/taxi via Haridwar-Haldwani (8-9 hrs) instead. An auto/taxi stand for Nainital sits just outside the station.",
+        options: [
+          { from: "Lucknow", name: "15044 Lucknow Kathgodam Express", note: "Daily, overnight" },
+          { from: "Kolkata / Howrah", name: "13019 Bagh Express", note: "Weekly" },
+        ],
+      },
+      road: {
+        summaryLabel: "By Road from Delhi",
+        summary: "Delhi to Kathgodam/Haldwani — 310 Km, 7-8 Hrs",
+        detail:
+          "UPSRTC and Uttarakhand Roadways run Volvo, AC and ordinary buses from Anand Vihar ISBT every hour from 6 PM to 11 PM. From Dehradun ISBT it is 300 km, 8-9 hrs via Haridwar and Najibabad, with direct buses at 6:30 AM and 8:30 PM daily; a taxi (Swift Dzire class) also works. From Haridwar/Rishikesh it is 250 km, about 7 hrs, with direct buses available. The route runs on NH109, which is in very good condition till Haldwani — only the last 35 km into Nainital is hilly.",
+        route: ["Delhi", "Moradabad", "Rampur", "Haldwani", "Kathgodam", "Nainital"],
+        facts: [
+          { label: "Distance", value: "310-320 Km" },
+          { label: "Duration", value: "7-8 Hours" },
+        ],
+        options: [
+          { from: "Delhi (Anand Vihar ISBT)", name: "UPSRTC / Uttarakhand Roadways — Volvo, AC & ordinary", departure: "Every hour, 6 PM - 11 PM", note: "310 km, 7-8 hrs" },
+          { from: "Dehradun ISBT", name: "Direct bus via Haridwar, Najibabad, Ramnagar", departure: "6:30 AM & 8:30 PM daily", note: "300 km, 8-9 hrs" },
+          { from: "Haridwar / Rishikesh", name: "Direct buses to Kathgodam", note: "250 km, about 7 hrs" },
+        ],
+      },
+      pickup: {
+        point: "Kathgodam Railway Station / Pantnagar Airport / Haldwani ISBT",
+        time: "On arrival, Day 1",
+        dropPoint: "Kathgodam Railway Station",
+        dropTime: "Day 3, timed to the return train",
+        note: "Optional drop at Pantnagar Airport / Haldwani, or extend into a Jim Corbett add-on.",
+      },
+    },
+    article: {
+      title: "Nainital — The Lake City of Uttarakhand That Steals Your Heart",
+      standfirst:
+        "Nestled in the lap of the Kumaon Himalayas at 6,837 ft, Nainital is not just a hill station — it is an emotion.",
+      readMinutes: 5,
+      sections: [
+        {
+          paragraphs: [
+            "Built around a shimmering pear-shaped lake, surrounded by seven emerald hills, Nainital is where clouds come down to say hello, where boats look like they are floating in the sky, and where every evening on Mall Road feels like a festival.",
+          ],
+        },
+        {
+          heading: "The Soul of Nainital — Naini Lake",
+          paragraphs: [
+            "Everything in Nainital revolves around Naini Lake. Legend says it is one of the 51 Shakti Peethas where the eye (Naina) of Goddess Sati fell. On its northern bank stands the sacred Naina Devi Temple, where devotees come for blessings before they begin their day.",
+            "The lake itself is 2 miles in circumference, divided into Mallital and Tallital. In the morning it is calm and sacred, reflecting the hills. In the evening it turns golden with lights from Mall Road reflecting on the water. A boat ride here — a paddle boat with your kids or a romantic Shikara ride with your partner — is a must. It is not just boating, it is a memory for a lifetime.",
+          ],
+        },
+        {
+          heading: "Beyond One Lake — A District of Lakes",
+          paragraphs: [
+            "Nainital is called the Lake District of India for a reason. Within 25 km you have four different lakes, each with a different character: Bhimtal — bigger than Naini, with a small island in the centre holding an aquarium; Sattal — a group of 7 freshwater lakes joined together, untouched and peaceful, best for bird watching and silence; Naukuchiatal — the deepest lake in Nainital with 9 corners, famous for paragliding and wish fulfilment; and Khurpatal — the cleanest water source for Nainital, hidden and green.",
+          ],
+        },
+        {
+          heading: "Himalayan Views That Take Your Breath Away",
+          paragraphs: [
+            "A 5-minute ropeway ride from Mall Road takes you to Snow View Point at 2,270 m, and on a clear day you will see the mighty Nanda Devi (7,816 m), Trishul and Nanda Kot standing tall in white. Tiffin Top, also called Dorothy's Seat, gives a 360-degree view of Nainital town and valley — best reached by horse ride.",
+            "As the sun sets, all of Nainital comes to Mall Road. The 1.5 km road buzzes with woolen shops, the famous Nainital candles (made since 1911), pinewood crafts, Bal Mithai shops, cafes serving hot chocolate and bun maska, momos, and the sound of lake waves. No one goes back without buying a candle and a sweater.",
+          ],
+        },
+        {
+          heading: "Kainchi Dham — The Spiritual Magnet",
+          paragraphs: [
+            "Just 20 km from Nainital lies Kainchi Dham, the ashram of Neem Karoli Baba. The silence here, the chants and the Kosi river flowing by give a calmness you will not find elsewhere.",
+            "Nainital is a 365-day destination. Summer (Mar-Jun) is 15-25°C, full of life and best for a family holiday. Monsoon (Jul-Sep) is misty, green, with fewer crowds and the best rates. Autumn (Oct-Nov) brings the clearest Himalayan view. Winter (Dec-Jan) carries a chance of snowfall at the upper points.",
+          ],
+        },
+      ],
+      signoff:
+        "Nainital is for celebration — celebration of lakes, mountains, faith and life. Whether you are 5 or 75, whether you come with family, friends or as a couple, Nainital welcomes you with the same love, its lake reflecting your smile.",
+    },
+    thingsToRemember: [
+      "No fitness certificate needed — this is an easy-grade leisure trip, not a trek or Yatra.",
+      "ID proof (Aadhaar/Voter ID/Driving License for Indians, passport for foreign nationals) is mandatory for hotel check-in.",
+      "Lunch is not included on any day — budget separately for meals at Mall Road and en route.",
+      "Carry cash for entry tickets (Eco Cave Garden, zoo, aquarium) and optional activities like ropeway, paragliding and horse riding.",
+      "No photography allowed inside Kainchi Dham temple; free prasad is given inside, no need to buy outside.",
+    ],
+    similarTreks: ["mukteshwar-winter-trip", "kanatal-winter-trip", "auli-snow-trip"],
   },
   {
     // TODO(content): winter catalogue stub for Ranikhet Winter Trip. Every value marked TODO
@@ -2055,22 +2958,25 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "kedarnath-and-tungnath-yatra",
-    "name": "Kedarnath and Tungnath Trek",
+    "name": "Kedarnath Tungnath Yatra",
+    "tagline": "Two of the five Panch Kedar in 5 Days from Haridwar — the Kedarnath Jyotirlinga, the world's highest Shiva temple at Tungnath, and the Chandrashila summit.",
     "price": 10999,
     "days": 5,
     "nights": 4,
     "region": "Uttarakhand",
     "category": "Spirituals-Journey-101",
     "startLocation": "Haridwar To Haridwar",
-    "difficulty": "Moderate",
+    "endLocation": "Haridwar",
+    "difficulty": "Moderate to Difficult",
+    "maxAltitude": "13,000 ft / Chandrashila Peak",
+    "totalDistance": "~450 km by Road + 40 km Trek",
+    "availability": "May – June & September – October",
     "months": [
-      "Oct",
-      "Nov",
-      "Mar",
-      "Apr",
       "May",
       "Jun",
-      "Jul"
+      "Sep",
+      "Oct",
+      "Nov"
     ],
     "themes": [
       "Snow",
@@ -2078,9 +2984,16 @@ export const YATRAS: Trek[] = [
       "Forest",
       "Pass Crossing"
     ],
-    // TODO(content): seeded departure so this yatra qualifies for the
-    // 60-day "Upcoming" filter. Replace with the real batch grid.
-    "batchDates": ["2026-09-16"]
+    "batchDates": [
+      "2026-09-19",
+      "2026-09-26",
+      "2026-10-03",
+      "2026-10-10",
+      "2026-10-17",
+      "2026-10-24",
+      "2026-10-31",
+      "2026-11-07"
+    ]
   },
   {
     "slug": "chardham-yatra",
@@ -4938,6 +5851,345 @@ if (kuariPassIndex !== -1) {
   };
 }
 
+const pangarchullaIndex = TREKS.findIndex(t => t.slug === 'pangarchulla-trek');
+if (pangarchullaIndex !== -1) {
+  TREKS[pangarchullaIndex].aboutParagraphs = [
+    "Kuari Pass with Pangarchulla Peak sits inside the Nanda Devi Biosphere Reserve in Chamoli, Uttarakhand, on the historic Lord Curzon Trail. The route climbs from the roadhead at Karchi, near Joshimath, through oak and pine forest to the Khullara meadow campsite at 10,900 ft, then on to Kuari Pass at 12,516 ft and finally to the summit of Pangarchulla Peak at 15,069 ft — roughly 510 km by road plus 33 km on foot over 6 days and 5 nights, run from and back to Rishikesh.",
+    "Kuari Pass alone is a moderate, beginner-friendly balcony walk to a 180° view of 108 Himalayan peaks in one line — Nanda Devi, Dronagiri, Kamet, Chaukhamba, Neelkanth, Trishul and more. Pangarchulla Peak is the harder, technical half of the trip: a 70–75° snow and rock wall above 14,500 ft, climbed roped up with helmet, ice axe and micro-spikes, starting at 1 AM so the group summits for sunrise.",
+    "The trip runs the Kuari Pass day as an acclimatization day out of Khullara, with the Trek Leader checking fitness, oxygen levels and BP that evening before clearing anyone for the Pangarchulla summit attempt the next day. Trekkers who are not fit enough, or for whom the weather turns, rest at Khullara while the summit team goes up — safety decides who climbs, not the itinerary.",
+    "Best done December to March for full winter snow, or April to June and September to October for clear Himalayan views without the deep snow; the route is closed in July–August monsoon."
+  ];
+
+  TREKS[pangarchullaIndex].highlights = [
+    "180° view of 108 Himalayan peaks from Kuari Pass",
+    "Pangarchulla Peak summit at 15,069 ft (4,590 m)",
+    "The historic Lord Curzon Trail (1905)",
+    "Nanda Devi, Kamet, Dronagiri & Chaukhamba views",
+    "Pangarchulla's 70–75° snow wall climb",
+    "Khullara meadow campsite",
+    "Oak & pine forest of the Nanda Devi Biosphere Reserve",
+    "Sunrise summit over Nanda Devi"
+  ];
+
+  TREKS[pangarchullaIndex].idealFor =
+    "Trekkers with at least one Himalayan trek done, experienced trekkers, peak-summit and winter-snow lovers, and photography groups. Kuari Pass alone suits fit beginners.";
+
+  TREKS[pangarchullaIndex].importantNote =
+    "Pangarchulla Peak is a technical snow and rock climb above Khullara, not an extension of the Kuari Pass walk. Your Trek Leader checks fitness, oxygen level and BP at Khullara on the evening of Day 3 before clearing anyone for the Day 4 summit attempt; trekkers found unfit, or without a prior Himalayan trek, are kept back at Khullara for their own safety. Summit success also depends on weather and snow conditions and is never guaranteed.";
+
+  TREKS[pangarchullaIndex].destinationHighlights = [
+    { name: "Joshimath / Karchi", blurb: "Karchi, on the Auli road out of Joshimath, is the last road head — trekking starts and ends here." },
+    { name: "Khullara", blurb: "The meadow base camp at 10,900 ft, with Dronagiri and Hathi-Ghoda straight ahead, and the launch point for both Kuari Pass and Pangarchulla." },
+    { name: "Kuari Pass", blurb: "The 12,516 ft crossing on the Lord Curzon Trail, and the famous 180° balcony view of 108 Himalayan peaks." },
+    { name: "Pangarchulla Peak", blurb: "The 15,069 ft (4,590 m) summit above Khullara, reached via a roped 70–75° snow wall climbed before dawn." }
+  ];
+
+  TREKS[pangarchullaIndex].differentiators = [
+    "Region: Nanda Devi Biosphere Reserve, Chamoli district, Uttarakhand",
+    "Trek type: pass crossing (Kuari Pass) plus technical peak summit (Pangarchulla)",
+    "Terrain: oak & pine forest, alpine meadow, high ridge and, above 13,500 ft, snow and rock",
+    "Known as: the Lord Curzon Trail, walked by Viceroy Lord Curzon in 1905"
+  ];
+
+  TREKS[pangarchullaIndex].itinerary = [
+    {
+      day: 1,
+      title: "Rishikesh to Joshimath",
+      driveDistance: "255 km",
+      drivingTime: "10-11 Hours",
+      pickupPoint: "Rishikesh Tapovan",
+      pickupTime: "6:00 AM",
+      altitudePoints: [
+        { location: "Rishikesh", m: 372, ft: 1220 },
+        { location: "Joshimath", m: 1875, ft: 6150 }
+      ],
+      altitudeGain: { m: 1503, ft: 4930 },
+      description: "A long drive up the Alaknanda valley via Devprayag, Srinagar, Karnaprayag and Chamoli to Joshimath.",
+      detailedParagraphs: [
+        "Pickup at 6:00 AM from Rishikesh Tapovan. The drive runs via Devprayag (the Ganga–Alaknanda sangam), Srinagar, Karnaprayag and Chamoli to Joshimath — a long but scenic day along the Alaknanda River, with breakfast and lunch on the way.",
+        "Reach Joshimath by 5–6 PM. Check into the hotel or guest house, and go through a trek briefing and gear check with the Trek Leader.",
+        "Sleeping at 6,150 ft on the first night helps the body start acclimatizing before the trek proper begins."
+      ],
+      highlights: ["Alaknanda Valley Drive", "Devprayag Sangam", "Joshimath", "Trek Briefing"],
+      meals: "Dinner",
+      stayType: "Guest House / Hotel in Joshimath"
+    },
+    {
+      day: 2,
+      title: "Joshimath to Khullara",
+      driveDistance: "12 km",
+      drivingTime: "45 Minutes",
+      trekDistance: "6 km",
+      trekDuration: "5-6 Hours",
+      altitudePoints: [
+        { location: "Joshimath", m: 1875, ft: 6150 },
+        { location: "Karchi", m: 1935, ft: 6350 },
+        { location: "Khullara", m: 3322, ft: 10900 }
+      ],
+      altitudeGain: { m: 1447, ft: 4550 },
+      description: "A short drive to Karchi, the last road head, then a climb through Nanda Devi Biosphere Reserve forest to the Khullara meadow campsite.",
+      detailedParagraphs: [
+        "After breakfast, drive from Joshimath to Karchi Village on the Auli road — about 45 minutes and the last road head for the trip.",
+        "Start trekking at 9 AM. The trail runs through Nanda Devi Biosphere Reserve forest — golden oak, pine and rhododendron — with a steep first kilometre before easing into a gradual walk through meadows.",
+        "Reach Khullara Meadow by 2–3 PM. Khullara is a large bugyal with Mt Dronagiri (7,066 m) and Hathi-Ghoda directly in front. Hot lunch at camp, an evening acclimatization walk and sunset views close out the day."
+      ],
+      highlights: ["Nanda Devi Biosphere Reserve", "Oak & Pine Forest", "Dronagiri Views", "Khullara Meadow Camp"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Alpine Tents at Khullara"
+    },
+    {
+      day: 3,
+      title: "Khullara to Kuari Pass and back",
+      trekDistance: "7 km",
+      trekDuration: "6-7 Hours",
+      timeNote: { label: "Start", value: "8:00 AM" },
+      altitudePoints: [
+        { location: "Khullara", m: 3322, ft: 10900 },
+        { location: "Kuari Pass", m: 3815, ft: 12516 },
+        { location: "Khullara", m: 3322, ft: 10900 }
+      ],
+      altitudeGain: { m: 493, ft: 1616 },
+      description: "Acclimatization day on the Lord Curzon Trail — the 180° view of 108 Himalayan peaks from Kuari Pass — then back to Khullara for the Pangarchulla summit briefing.",
+      detailedParagraphs: [
+        "Acclimatization day. Start after breakfast at 8 AM on the Lord Curzon Trail (1905). As the trail crosses the tree line, the Himalayas open up.",
+        "By around 11:30 AM you're at Kuari Pass (12,516 ft) — the famous balcony view of 108 peaks across 180°, with Nanda Devi (7,816 m) at the centre alongside Kamet, Dronagiri, Chaukhamba, Neelkanth and Trishul.",
+        "Spend an hour at the top for packed lunch, hot tea and photos, then descend back to Khullara by 3 PM.",
+        "In the evening the Trek Leader runs a briefing and fitness check — oxygen level, BP and how the day's pace went — to decide who is cleared for the Pangarchulla Peak summit attempt. Early dinner and sleep by 7 PM, since the next day starts at 1 AM."
+      ],
+      highlights: ["Lord Curzon Trail", "108 Himalayan Peaks", "Nanda Devi View", "Summit Fitness Check"],
+      meals: "Breakfast, Packed Lunch & Dinner",
+      stayType: "Alpine Tents at Khullara"
+    },
+    {
+      day: 4,
+      title: "Khullara to Pangarchulla Peak summit and back",
+      trekDistance: "13 km",
+      trekDuration: "10-12 Hours",
+      timeNote: { label: "Wake-up call", value: "1:00 AM" },
+      altitudePoints: [
+        { location: "Khullara", m: 3322, ft: 10900 },
+        { location: "Pangarchulla Peak", m: 4590, ft: 15069 },
+        { location: "Khullara", m: 3322, ft: 10900 }
+      ],
+      altitudeGain: { m: 1268, ft: 4169 },
+      description: "Summit day — the toughest day of the trip. A 1 AM start, a roped climb up a 70–75° snow wall, and sunrise on the summit facing Nanda Devi.",
+      detailedParagraphs: [
+        "Summit day — the toughest day of the trek. Wake-up call at 1:00 AM for tea and a light breakfast, then start trekking at 2:00 AM with head torch, helmet, micro-spikes and gaiters.",
+        "The first two hours are in the dark through meadow, then a boulder zone, then snow past 13,500 ft. At 14,500 ft the technical section starts — a 70–75° snow and rock wall — and the team ropes up with an ice axe.",
+        "You summit between 6:00 and 7:00 AM for sunrise over Nanda Devi at 15,069 ft, with a 360° view — higher than any other winter trek in the region. 20–30 minutes are spent at the top.",
+        "Descend carefully back to Khullara by 11 AM–12 PM. Hot lunch and full rest afterward — body pain, but a summit certificate and a trek to remember."
+      ],
+      highlights: ["Pangarchulla Peak Summit (15,069 ft)", "70-75° Snow Wall Climb", "Sunrise over Nanda Devi", "360° Himalayan View"],
+      meals: "Breakfast, Packed Lunch & Dinner",
+      stayType: "Alpine Tents at Khullara"
+    },
+    {
+      day: 5,
+      title: "Khullara to Joshimath",
+      trekDistance: "6 km",
+      trekDuration: "3-4 Hours",
+      driveDistance: "12 km",
+      drivingTime: "45 Minutes",
+      altitudePoints: [
+        { location: "Khullara", m: 3322, ft: 10900 },
+        { location: "Karchi", m: 1935, ft: 6350 },
+        { location: "Joshimath", m: 1875, ft: 6150 }
+      ],
+      altitudeGain: null,
+      description: "An easy downhill trek back through forest to Karchi, then a short drive to Joshimath.",
+      detailedParagraphs: [
+        "Easy day. After breakfast, descend from Khullara to Karchi village — 3–4 hours downhill through the same forest.",
+        "Vehicles are waiting at Karchi for the drive back to Joshimath. Check into the hotel by 1–2 PM — a hot shower after three days of camping.",
+        "The evening is free to explore Joshimath market, Shankaracharya Temple and Narsingh Temple, followed by a farewell dinner."
+      ],
+      highlights: ["Forest Descent", "Trek Ends at Karchi", "Joshimath Market & Temples"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Guest House / Hotel in Joshimath"
+    },
+    {
+      day: 6,
+      title: "Joshimath to Rishikesh",
+      driveDistance: "255 km",
+      drivingTime: "9-10 Hours",
+      timeNote: { label: "Drop-off", value: "Rishikesh Tapovan, 7-8 PM" },
+      altitudePoints: [
+        { location: "Joshimath", m: 1875, ft: 6150 },
+        { location: "Rishikesh", m: 372, ft: 1220 }
+      ],
+      altitudeGain: null,
+      description: "The drive back down the Alaknanda valley to Rishikesh, where the trip ends.",
+      detailedParagraphs: [
+        "After breakfast at 7:30 AM, drive back to Rishikesh via the same route — Chamoli, Karnaprayag and Devprayag.",
+        "Reach Rishikesh Tapovan by 7–8 PM. The trip ends here, with Pangarchulla summit memories to carry home."
+      ],
+      highlights: ["Alaknanda Valley", "Trip Ends"],
+      meals: "Breakfast",
+      // The trip ends on this day; an empty stay keeps the generic
+      // "Hotel / Homestay" fallback out of the day's quick-info line.
+      stayType: ""
+    }
+  ];
+
+  /**
+   * In winter (Dec–Mar) the Karchi–Joshimath road can be snowbound, and the
+   * group stays at Karchi instead of Joshimath on Days 1 and 5; the itinerary
+   * above reflects the in-season plan published for the trek.
+   */
+  TREKS[pangarchullaIndex].sourceCaveat =
+    "In winter (December–March), the Karchi to Joshimath road can be blocked by snow, and the group stays at Karchi instead of Joshimath on Day 1 and Day 5. Outside winter, the group stays at Joshimath for better hotel facilities, as reflected in this itinerary.";
+
+  TREKS[pangarchullaIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: 14–55 years (14–17 with parents; above 45 needs fitness proof)" },
+    { icon: "Footprints", text: "Kuari Pass alone: beginners can do it" },
+    { icon: "Mountain", text: "Pangarchulla Peak summit: at least 1 Himalayan trek is mandatory" },
+    { icon: "Stethoscope", text: "Not permitted: severe asthma, heart disease, uncontrolled BP, epilepsy, severe joint pain, recent surgery, pregnancy" },
+    { icon: "FileText", text: "Govt ID proof and a medical self-declaration form are required" },
+    { icon: "ShieldAlert", text: "No alcohol, smoking or drugs during the trek" }
+  ];
+
+  /** Pangarchulla is a peak summit, not a pass walk — the bar sits above Kuari Pass alone. */
+  TREKS[pangarchullaIndex].fitnessCriteria = [
+    { icon: "Activity", text: "Able to jog/run 4–5 km in 35 minutes without stopping" },
+    { icon: "TrendingUp", text: "Able to climb 50 floors (1,000 stairs) without heavy breathing" },
+    { icon: "Dumbbell", text: "One month of daily exercise before the trek: 30–45 min walk/jog plus squats and lunges" },
+    { icon: "Footprints", text: "BMI below 28 — overweight trekkers are not allowed for the peak summit" },
+    { icon: "Backpack", text: "Able to carry a 60L backpack, or arrange a porter/mule at the base" }
+  ];
+
+  TREKS[pangarchullaIndex].faqs = [
+    {
+      title: "What is the height of Kuari Pass and Pangarchulla Peak?",
+      description: "Kuari Pass is 12,516 ft (3,815 m) and Pangarchulla Peak is 15,069 ft (4,590 m)."
+    },
+    {
+      title: "Is Kuari Pass with Pangarchulla difficult?",
+      description: "Kuari Pass is Moderate and beginner-friendly. Pangarchulla Peak is Moderate–Difficult: the last 500 ft is a 70–75° snow wall climb needing technical gear and good fitness. Beginners can do Kuari Pass, but the Pangarchulla summit needs previous trek experience."
+    },
+    {
+      title: "Can a beginner do Kuari Pass with Pangarchulla?",
+      description: "Yes for Kuari Pass. For the Pangarchulla summit we recommend at least one easier trek first — Kedarkantha, Brahmatal or Dayara Bugyal. A very fit beginner (able to run 5 km in 35 minutes) may be allowed directly for the peak."
+    },
+    {
+      title: "What is the best time for Kuari Pass with Pangarchulla?",
+      description: "December to March is best for snow, April to June and September to November for clear views and meadows. July–August is closed for monsoon."
+    },
+    {
+      title: "Is there snow on Kuari Pass and Pangarchulla?",
+      description: "Yes. In winter (December–March) there is 4–5 feet of snow from Khullara itself, and the Pangarchulla summit holds snow till late May."
+    },
+    {
+      title: "How cold does it get?",
+      description: "Daytime is 5–12°C. Khullara nights run -5 to -10°C. During the Pangarchulla summit push (1 AM–7 AM) it can be -12 to -18°C with wind chill."
+    },
+    {
+      title: "What is the starting and ending point?",
+      description: "The trip starts and ends at Rishikesh Tapovan — pickup at 6 AM on Day 1, drop-off at 7–8 PM on Day 6."
+    },
+    {
+      title: "Is Pangarchulla summit guaranteed?",
+      description: "No. Summiting depends on weather, your fitness as checked at Khullara, and snow conditions. If conditions or fitness aren't right, the Trek Leader keeps trekkers at Khullara camp for safety."
+    },
+    {
+      title: "What is the offload charge for a backpack?",
+      description: "₹1,200 per bag for the 3 days of trekking on the Khullara circuit, arranged in advance. A small daypack is still needed for water, jacket and lunch."
+    },
+    {
+      title: "What should I carry for this trek?",
+      description: "Waterproof high-ankle trek shoes, 3 quick-dry layers, a -10°C down jacket, 2 fleece layers, thermal inners, 2 trek pants, waterproof gloves, a woollen cap, sunglasses, a head torch and a 60L backpack. A full packing list is sent after booking."
+    }
+  ];
+
+  TREKS[pangarchullaIndex].article = {
+    title: "Kuari Pass with Pangarchulla Peak: The Curzon Trail Where You See 108 Himalayan Peaks Together",
+    standfirst:
+      "If Kedarkantha is for friends and Brahmatal is for beginners, Kuari Pass is where your Himalayan education starts — and Pangarchulla Peak is its final exam.",
+    readMinutes: 6,
+    sections: [
+      {
+        paragraphs: [
+          "Kuari Pass with Pangarchulla is not just a trek. It is the balcony of India.",
+          "It is the only trek in the country from where you can see 108 Himalayan peaks in a single 180-degree line — from Nanda Devi to Dronagiri, Kamet to Chaukhamba, Neelkanth to Hathi Ghoda. No other winter trek gives you this.",
+          "The trail was first explored in 1905 by Lord Curzon, Viceroy of India, when there was no road to Joshimath, no Auli ski resort, no tents. He rode a horse through oak and pine forest to reach Kuari Pass — which is why it is still called the Curzon Trail."
+        ]
+      },
+      {
+        heading: "Beyond the Pass",
+        paragraphs: [
+          "Today, most people only do Kuari Pass. They stop at 12,516 ft, take a photo and turn back.",
+          "The real story starts after Kuari Pass — one more mountain standing above Khullara like a white wall: Pangarchulla.",
+          "At 15,069 ft (4,590 m), Pangarchulla Peak is not a pass, it is a peak. A proper 75-degree snow wall where you need a helmet, rope, micro-spikes and a 1 AM start in the dark. Your legs will burn and your lungs will ask you to stop, but when you reach the top you see what even Kedarnath doesn't show you — Nanda Devi (7,816 m), India's highest peak within India, close enough to feel you could touch it."
+        ]
+      },
+      {
+        heading: "Why This Trek Is Special",
+        paragraphs: [
+          "A summit, not just a pass. Kuari is a crossing; Pangarchulla is a peak. At 15,069 ft, you become a peak summiter, not just a trekker — a real step up for anyone who has already done Kedarkantha, Brahmatal or Dayara Bugyal.",
+          "The view of 108 peaks. From Kuari Pass you see Nanda Devi, Dronagiri, Kamet (India's second highest), Chaukhamba, Neelkanth, Trishul, Hathi-Ghoda and Mana Peak, all in one line.",
+          "One of the best winter snow treks. From December to March, the whole Khullara meadow and the Pangarchulla wall carry 4–5 feet of snow.",
+          "Forest of the Nanda Devi Reserve. The trail runs through oak, pine and rhododendron forest, home to the Himalayan Monal, foxes and the occasional bear footprint."
+        ]
+      }
+    ],
+    signoff: "Trip My Soul — Travel Far. Feel More."
+  };
+
+  TREKS[pangarchullaIndex].howToReach = {
+    intro: "The trek starts from Karchi, near Joshimath, in Chamoli, Uttarakhand. For Trip My Soul, the meeting and drop point is Rishikesh Tapovan.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "From the airport, travel by taxi to Rishikesh (about 20–25 km) to join the group, or directly to Joshimath (about 250 km, 9–10 hours) if travelling independently."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Rishikesh / Haridwar Railway Station",
+      detail: "Rishikesh Tapovan is the group's pickup and drop point. From Haridwar, a short transfer reaches Rishikesh in about 45 minutes."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Rishikesh to Joshimath via Devprayag, Srinagar and Karnaprayag",
+      detail: "Joshimath and Karchi are reached from Rishikesh by road, following the Alaknanda River for most of the drive.",
+      route: ["Rishikesh", "Devprayag", "Srinagar", "Rudraprayag", "Karnaprayag", "Chamoli", "Joshimath", "Karchi"],
+      facts: [
+        { label: "Distance", value: "~255 km" },
+        { label: "Drive", value: "~10-11 hours" },
+        { label: "Options", value: "Tempo Traveller / Bolero (shared, as per group size)" }
+      ]
+    },
+    pickup: {
+      point: "Rishikesh Tapovan",
+      time: "6:00 AM, Day 1",
+      dropPoint: "Rishikesh Tapovan",
+      dropTime: "7-8 PM, Day 6",
+      note: "Route for TMS trekkers: Rishikesh → Joshimath → Karchi → Khullara → Kuari Pass → Pangarchulla Peak."
+    }
+  };
+
+  TREKS[pangarchullaIndex].bookingAdvance = 3000;
+
+  TREKS[pangarchullaIndex].inclusions = [
+    { title: "Transport", description: "Rishikesh to Joshimath and Joshimath to Rishikesh, plus Joshimath–Karchi transfers, by Tempo Traveller / Bolero (shared, as per group size)." },
+    { title: "Stay in Joshimath", description: "2 nights hotel/guest house (Day 1 & 5), triple/quad sharing." },
+    { title: "Alpine camping", description: "3 nights tents at Khullara (Day 2, 3, 4), triple sharing, with mattress, -10°C sleeping bag and pillow provided." },
+    { title: "Meals", description: "All veg meals from Day 1 dinner to Day 6 breakfast, including a 1 AM summit breakfast (tea, biscuits, chocolate) on Day 4." },
+    { title: "Permits & fees", description: "Forest entry permit, Nanda Devi Biosphere Reserve fees, camping fees and trek permits." },
+    { title: "Trek team", description: "Certified Trek Leader, local guide from Joshimath, cook and helpers." },
+    { title: "Porters / mules", description: "For carrying central luggage — tents, food and equipment." },
+    { title: "Technical equipment", description: "Micro-spikes/crampons, rope and ice axe (group use), gaiters on request, oxy-meter and first-aid kit at campsite." }
+  ];
+
+  TREKS[pangarchullaIndex].exclusions = [
+    { title: "Backpack offloading", description: "Personal backpack offload, if needed — ₹1,200–1,500 for the full trek." },
+    { title: "Personal expenses", description: "Hot water, bath and power-bank charging in Joshimath." },
+    { title: "Meals in Rishikesh & transit", description: "Any meals in Rishikesh and during the road journey (Day 1 & Day 6 lunch)." },
+    { title: "Personal gear", description: "Personal medicine, insurance, trek shoes, jackets and personal equipment." },
+    { title: "Natural calamity costs", description: "Any cost due to landslide, snowfall, road block or bad weather." },
+    { title: "Unscheduled stay", description: "Extra stay due to weather or health issues." },
+    { title: "GST", description: "5% GST, extra if a bill is needed." },
+    { title: "Anything not listed", description: "Anything not specifically mentioned under Inclusions." }
+  ];
+}
+
 // Trek essentials (packing list) and the cancellation policy are deliberately
 // left unset: Brahmatal publishes neither, so both sections render the same
 // shared copy Kedarkantha does, from `trekDefaults.ts` / `TrekCancellation`.
@@ -5787,6 +7039,70 @@ if (harKiDunIndex !== -1) {
     { icon: "Activity", text: "Not recommended with an uncontrolled medical condition, or without preparation for prolonged uphill/downhill walking" }
   ];
 
+  TREKS[harKiDunIndex].aboutParagraphs = [
+    "The Har Ki Dun Trek is one of the most scenic and culturally rich Himalayan treks in Uttarakhand. Nestled in the Garhwal Himalayas, this beautiful valley trek takes you through dense forests, alpine meadows, traditional Himalayan villages and the spectacular landscapes of the Swargarohini mountain range.",
+    "Starting from Sankri, the trail gradually follows the Supin River through the remote Tons Valley. One of the biggest highlights of the trek is Osla Village, an ancient Himalayan settlement known for its traditional wooden houses and unique local culture. As you move deeper into the valley, the landscape opens into vast meadows surrounded by towering Himalayan peaks.",
+    "At around 11,500 ft, Har Ki Dun offers an incredible combination of mountain scenery, forests, rivers, meadows and village life. The trek also passes through the Govind Pashu Vihar National Park and Wildlife Sanctuary, making it a wonderful experience for nature and wildlife enthusiasts.",
+    "What makes Har Ki Dun Trek special is that it is not just a mountain trek — it is a journey through the living culture and landscapes of the Himalayas. The peaceful trails, ancient villages, flowing rivers and dramatic mountain views make it an ideal choice for trekkers looking for an authentic Himalayan experience."
+  ];
+
+  TREKS[harKiDunIndex].highlights = [
+    "Views of the Swargarohini range",
+    "Ancient Himalayan village of Osla",
+    "Pine, oak & deodar forests",
+    "The Supin River valley",
+    "Alpine meadows of Har Ki Dun",
+    "Govind Pashu Vihar National Park"
+  ];
+
+  TREKS[harKiDunIndex].usps = [
+    {
+      title: "Stunning views of the Swargarohini range",
+      description: "The valley sits directly beneath the Swargarohini massif, with the peaks visible for most of the walk from Osla onward."
+    },
+    {
+      title: "Ancient Himalayan villages like Osla",
+      description: "Traditional wooden houses, carved doorways and a way of life little changed for generations, on a route that still runs on foot and mule."
+    },
+    {
+      title: "Forests of pine, oak and deodar",
+      description: "The trail from Taluka to Gangar/Osla runs almost entirely under tree cover, alongside the Supin River."
+    },
+    {
+      title: "The Supin River and open alpine meadows",
+      description: "The valley trail follows the Supin upstream before opening into the wide meadows around Har Ki Dun itself, at roughly 11,500 ft."
+    },
+    {
+      title: "Govind Pashu Vihar National Park",
+      description: "The upper valley lies inside the national park and wildlife sanctuary, a bonus for anyone interested in Himalayan flora and fauna."
+    },
+    {
+      title: "A rewarding trek for beginners with good fitness",
+      description: "Graded easy to moderate, with 5–7 hours of walking a day, Har Ki Dun is an accessible introduction to a longer Himalayan valley trek."
+    }
+  ];
+
+  TREKS[harKiDunIndex].destinationHighlights = [
+    { name: "Sankri", blurb: "The trailhead village at about 6,400 ft, and the base camp for the trek." },
+    { name: "Osla / Gangar", blurb: "A pair of ancient Himalayan villages along the Supin River, known for traditional wooden architecture." },
+    { name: "Supin River Valley", blurb: "The river the trail follows for most of its length, through forest and open meadow." },
+    { name: "Har Ki Dun Valley", blurb: "The high alpine valley at roughly 11,500 ft, ringed by the Swargarohini range." },
+    { name: "Govind Pashu Vihar National Park", blurb: "The wildlife sanctuary the upper valley sits within, home to Himalayan flora and fauna." }
+  ];
+
+  TREKS[harKiDunIndex].differentiators = [
+    "Region: Garhwal Himalayas, Uttarkashi district, Uttarakhand",
+    "Trek type: valley trek — the destination is a high alpine valley, not a summit",
+    "Terrain: forest trails, riverside paths, ancient villages and open meadows",
+    "Best experience: Himalayan village culture alongside classic valley scenery"
+  ];
+
+  TREKS[harKiDunIndex].idealFor =
+    "Trekkers aged 12–55 with moderate fitness — comfortable walking 6–8 km and building up to 10–12 km over 5–7 hours a day — looking for an authentic mix of Himalayan village culture and valley scenery.";
+
+  TREKS[harKiDunIndex].importantNote =
+    "Har Ki Dun climbs to roughly 11,500 ft, so build up your walking fitness before the trek and allow your body time to acclimatise on the way in. Trekkers under 18 must be accompanied by a parent or guardian, and anyone above 55 should carry a medical clearance and fitness assessment.";
+
   // Transcribed verbatim from the Google reviews on the Trip My Soul profile.
   TREKS[harKiDunIndex].externalReviews = [
     {
@@ -5863,6 +7179,23 @@ if (harKiDunIndex !== -1) {
     }
   };
 
+  TREKS[harKiDunIndex].bookingAdvancePct = 20;
+
+  // Cancellation policy mirrors Kedarkantha's, verbatim (per the trek team).
+  TREKS[harKiDunIndex].bookingTerms = [
+    { title: "Trek Cost", description: "₹10,999 + 5% GST* per selected package/departure date." },
+    { title: "Booking Amount", description: "20% advance payment required to confirm your seat." },
+    { title: "Balance Payment", description: "Payable before/at the start of the trek as per booking terms." },
+    { title: "Transportation", description: "Dehradun–Sankri–Dehradun as per the selected package." },
+    { title: "Inclusions", description: "Accommodation, meals, trek permits/forest charges, trek guide & support staff as mentioned in the package." },
+    { title: "Exclusions", description: "Personal expenses, insurance, emergency evacuation, additional transport and anything not specifically mentioned under inclusions." },
+    { title: "GST", description: "Applicable as per package/booking terms." },
+    { title: "Cancellation", description: "Cancellation and refund will be governed by Trip My Soul’s cancellation policy." },
+    { title: "Weather & Route", description: "Itinerary may change due to weather, government/forest restrictions or safety conditions." },
+    { title: "Personal Expenses", description: "Any expenses arising due to personal reasons will be borne by the participant." },
+    { title: "ID Proof", description: "Valid government-issued ID is required at the time of booking/check-in." }
+  ];
+
   TREKS[harKiDunIndex].maxAltitude = "11,000 ft / 3,500 m";
 
   TREKS[harKiDunIndex].similarTreks = [
@@ -5919,6 +7252,158 @@ if (harKiDunIndex !== -1) {
     { url: "/Trips_gallery/Har_Ki_Dun/HKD_flag_shrine.jpeg", caption: "Prayer flags at a valley shrine" },
     { url: "/Trips_gallery/Har_Ki_Dun/HKD_swargarohini.jpeg", caption: "Swargarohini standing over the valley" },
     { url: "/Trips_gallery/Har_Ki_Dun/HKD_summit_banner.jpeg", caption: "The team in the Har Ki Dun valley" },
+  ];
+
+  TREKS[harKiDunIndex].itinerary = [
+    {
+      day: 1,
+      title: "Dehradun to Sankri",
+      driveDistance: "190-200 km",
+      drivingTime: "8-10 Hours",
+      pickupPoint: "Dehradun",
+      pickupTime: "6:00 AM",
+      altitudePoints: [
+        { location: "Dehradun", m: 640, ft: 2100 },
+        { location: "Sankri", m: 1950, ft: 6400 }
+      ],
+      altitudeGain: { m: 1310, ft: 4300 },
+      description: "An early morning drive from Dehradun to the base village of Sankri, along the Tons River valley.",
+      detailedParagraphs: [
+        "The trek begins with an early morning drive from Dehradun towards Sankri, covering roughly 190–200 km over 8–10 hours.",
+        "The route runs via Mussoorie, Nainbagh/Naugaon, Purola, Mori and Netwar, following the Tons River valley deeper into the Garhwal Himalayas as the road climbs.",
+        "On arrival, check into your hotel or homestay in Sankri, meet the rest of the trek team and get a briefing on the days ahead.",
+        "Overnight stay in Sankri, with dinner included."
+      ],
+      highlights: ["Scenic Tons Valley Drive", "Mussoorie & Purola", "Sankri Village", "Trek Briefing"],
+      meals: "Dinner",
+      stayType: "Hotel / Homestay"
+    },
+    {
+      day: 2,
+      title: "Sankri to Taluka to Gangar/Osla",
+      driveDistance: "12 km",
+      trekDistance: "10-12 km",
+      trekDuration: "5-6 Hours",
+      altitudePoints: [
+        { location: "Sankri", m: 1950, ft: 6400 },
+        { location: "Gangar / Osla", m: 2450, ft: 8000 }
+      ],
+      altitudeGain: { m: 500, ft: 1600 },
+      description: "Drive to the Taluka roadhead, then walk through forest along the Supin River to the ancient village of Gangar/Osla.",
+      detailedParagraphs: [
+        "After breakfast, drive from Sankri to Taluka, the roadhead where the trek on foot begins.",
+        "From Taluka, the trail follows the Supin River through forests of pine, oak and deodar, passing a few small Himalayan settlements along the way.",
+        "By the afternoon, reach the traditional village of Gangar/Osla, known for its wooden houses and centuries-old way of life.",
+        "Overnight stay at Gangar/Osla."
+      ],
+      highlights: ["Taluka Roadhead", "Supin River Trail", "Pine & Oak Forest", "Osla Village"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Camp / Homestay"
+    },
+    {
+      day: 3,
+      title: "Gangar/Osla to Har Ki Dun",
+      trekDistance: "10-11 km",
+      trekDuration: "6-7 Hours",
+      altitudePoints: [
+        { location: "Gangar / Osla", m: 2450, ft: 8000 },
+        { location: "Har Ki Dun", m: 3505, ft: 11500 }
+      ],
+      altitudeGain: { m: 1055, ft: 3500 },
+      description: "A long climb out of the forest into open meadows, with the Swargarohini range coming into view at the Har Ki Dun valley.",
+      detailedParagraphs: [
+        "Leave Gangar/Osla after breakfast and continue upstream along the Supin, with the trail gradually leaving the forest behind.",
+        "As you gain height, the valley opens into meadows and streams, and the Swargarohini range starts to dominate the skyline ahead.",
+        "Reach the Har Ki Dun campsite at around 11,500 ft by the evening, set right below the peaks.",
+        "Overnight stay in tents at Har Ki Dun."
+      ],
+      highlights: ["Alpine Meadows", "Swargarohini Views", "Har Ki Dun Valley", "Himalayan Camping"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Camp"
+    },
+    {
+      day: 4,
+      title: "Har Ki Dun Exploration Day",
+      trekDistance: "4-6 km",
+      trekDuration: "3-4 Hours",
+      altitudePoints: [
+        { location: "Har Ki Dun", m: 3505, ft: 11500 }
+      ],
+      altitudeGain: null,
+      description: "A full day to explore the valley, its viewpoints and the close-up views of the Swargarohini range.",
+      detailedParagraphs: [
+        "Spend the day exploring the Har Ki Dun valley at a relaxed pace, with no packing up or moving camp.",
+        "Walk up to the nearby viewpoints for closer views of the Swargarohini range and the surrounding peaks, with plenty of time for photography.",
+        "Rest and acclimatise at the campsite, taking in the meadows, streams and mountain views around you.",
+        "Overnight stay in tents at Har Ki Dun."
+      ],
+      highlights: ["Valley Viewpoints", "Swargarohini Close-Up", "Photography", "Rest & Acclimatisation"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Camp"
+    },
+    {
+      day: 5,
+      title: "Har Ki Dun to Gangar/Osla",
+      trekDistance: "10-11 km",
+      trekDuration: "5-6 Hours",
+      altitudePoints: [
+        { location: "Har Ki Dun", m: 3505, ft: 11500 },
+        { location: "Gangar / Osla", m: 2450, ft: 8000 }
+      ],
+      altitudeGain: null,
+      description: "Retrace the trail back down through meadows and forest along the Supin River to Gangar/Osla.",
+      detailedParagraphs: [
+        "After breakfast, begin the descent from Har Ki Dun, retracing the trail back through the open meadows.",
+        "The path drops back into the forest and follows the Supin River downstream towards Gangar/Osla.",
+        "Reach the village by the afternoon, with time to rest and enjoy the surroundings once again.",
+        "Overnight stay at Gangar/Osla."
+      ],
+      highlights: ["Descent Through Meadows", "Supin River", "Osla Village"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Camp / Homestay"
+    },
+    {
+      day: 6,
+      title: "Gangar/Osla to Taluka to Sankri",
+      trekDistance: "10-12 km",
+      trekDuration: "5-6 Hours",
+      driveDistance: "12 km",
+      altitudePoints: [
+        { location: "Gangar / Osla", m: 2450, ft: 8000 },
+        { location: "Sankri", m: 1950, ft: 6400 }
+      ],
+      altitudeGain: null,
+      description: "Complete the trek back to Taluka through the forest, then drive on to Sankri.",
+      detailedParagraphs: [
+        "Trek back from Gangar/Osla to the Taluka roadhead along the same forest trail beside the Supin River.",
+        "From Taluka, drive back to Sankri, arriving with the trek on foot behind you.",
+        "Spend the evening in Sankri, resting after six days on the trail.",
+        "Overnight stay in Sankri."
+      ],
+      highlights: ["Forest Trail", "Taluka Roadhead", "Back to Sankri"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Hotel / Homestay"
+    },
+    {
+      day: 7,
+      title: "Sankri to Dehradun",
+      driveDistance: "190-200 km",
+      drivingTime: "8-10 Hours",
+      altitudePoints: [
+        { location: "Sankri", m: 1950, ft: 6400 },
+        { location: "Dehradun", m: 640, ft: 2100 }
+      ],
+      altitudeGain: null,
+      description: "The return drive from Sankri to Dehradun, bringing the trip to a close.",
+      detailedParagraphs: [
+        "After an early breakfast, begin the drive back from Sankri to Dehradun.",
+        "Retrace the route through Netwar, Mori, Purola and Mussoorie, with the trek and its memories behind you.",
+        "The trip ends on arrival in Dehradun."
+      ],
+      highlights: ["Return Drive", "Trip Ends in Dehradun"],
+      meals: "Breakfast",
+      stayType: ""
+    }
   ];
 
   TREKS[harKiDunIndex].article = {
@@ -7055,6 +8540,679 @@ if (nagTibbaIndex !== -1) {
       }
     }
   };
+}
+
+// Static details for Chopta with Auli (uid: chopta-with-auli), the 4-day
+// Rishikesh-to-Rishikesh circuit combining Auli's ski slopes, the
+// Tungnath-Chandrashila trek out of Chopta and the Deoria Tal lake trek, both
+// staged from Sari Village. The source itinerary quotes two different pickup
+// times (5:30 AM in "How to Reach", 6:30 AM on Day 1) and several overlapping
+// distance/altitude figures for the same points — both are kept as published,
+// flagged in `sourceCaveat`, and the driver confirms the exact pickup time.
+const choptaWithAuliIndex = TREKS.findIndex(t => t.slug === 'chopta-with-auli');
+if (choptaWithAuliIndex !== -1) {
+  TREKS[choptaWithAuliIndex].maxAltitude = "13,000 ft / 4,000 m (Chandrashila Summit)";
+  TREKS[choptaWithAuliIndex].totalDistance = "~16 km trekking (7 km Tungnath-Chandrashila, 4 km Deoria Tal, 3 km Gorson Bugyal in Auli, plus local walks)";
+  TREKS[choptaWithAuliIndex].endLocation = "Rishikesh / Haridwar";
+  TREKS[choptaWithAuliIndex].minAge = 7;
+  TREKS[choptaWithAuliIndex].maxAge = 65;
+
+  TREKS[choptaWithAuliIndex].aboutParagraphs = [
+    "Chopta is not a town but a small forest meadow on the road to Tungnath, tucked inside the Kedarnath Wildlife Sanctuary in Rudraprayag district — pine, deodar and rhododendron forest on every side, which is why it is often called the Mini Switzerland of India. Auli, 45 km away in Chamoli district, is the opposite kind of landscape: wide open Bugyal meadows with a 270-degree Himalayan wall, and India's best-known ski resort.",
+    "This 4-day, 3-night circuit runs Rishikesh to Auli/Joshimath to Sari Village to Chopta and back, so one day is spent walking to a Shiva temple and another walking on ski slopes. Tungnath, reached from Chopta, is the highest Shiva temple in the world at 3,680 m and one of the Panch Kedar — tradition holds that Lord Shiva's arms (bahu) appeared here after the Pandavas sought his forgiveness following the Mahabharata war, and that Lord Rama meditated at Chandrashila above it after defeating Ravana.",
+    "Deoria Tal, a short trek from Sari Village, is a small lake that mirrors the Chaukhamba massif on clear mornings and is said to have been a stopping point for the Pandavas. Auli's Gorson Bugyal walk is flat meadow with Nanda Devi in view, and its ropeway — Asia's second highest — runs 4 km between Joshimath and Auli.",
+    "This is a real Himalayan experience rather than a luxury tour: Chopta is a forest reserve with basic Swiss camps and dhabas, network is weak throughout (Jio works best), and Tungnath temple itself is closed November to April, though the trek stays open to the temple door for the winter snow trek."
+  ];
+
+  TREKS[choptaWithAuliIndex].highlights = [
+    "Tungnath — world's highest Shiva Temple, one of the Panch Kedar",
+    "Chandrashila 360° summit at 13,000 ft",
+    "Deoria Tal — mirror lake reflecting Chaukhamba",
+    "Auli's ski slopes & Asia's 2nd highest ropeway",
+    "Gorson Bugyal meadows",
+    "Ukhimath — the winter home of Kedarnath",
+    "Views of Chaukhamba, Nanda Devi, Trishul & Kedar Dome"
+  ];
+
+  TREKS[choptaWithAuliIndex].usps = [
+    {
+      title: "Two Himalayas in one trip",
+      description: "Chopta is forest and temple; Auli, 45 km away, is open Bugyal meadow with a 270-degree Himalayan wall — the itinerary gives you both landscapes across four days."
+    },
+    {
+      title: "Tungnath — the highest Shiva temple in the world",
+      description: "One of the Panch Kedar at 3,680 m (12,073 ft), reached on a 3.5 km paved trail from Chopta that most beginners complete in about two hours."
+    },
+    {
+      title: "Chandrashila summit at 13,000 ft",
+      description: "A further 1 km, steeper climb above Tungnath opens onto a 360-degree Himalayan panorama — Chaukhamba, Nanda Devi, Trishul, Kedar Dome, Bandarpoonch and more, weather permitting."
+    },
+    {
+      title: "Deoria Tal, the mirror lake",
+      description: "A 2 km trek from Sari Village to a small lake that reflects the Chaukhamba peak on clear mornings — a favourite for camping and photography."
+    },
+    {
+      title: "Auli's ski slopes & ropeway",
+      description: "Gorson Bugyal's flat meadow walk, an artificial high-altitude lake, and Asia's second-highest ropeway between Joshimath and Auli, best for skiing January-March."
+    }
+  ];
+
+  TREKS[choptaWithAuliIndex].destinationHighlights = [
+    { name: "Auli / Joshimath", blurb: "Chamoli district's ski resort at roughly 9,200 ft, with Gorson Bugyal meadows and a 4 km ropeway to Joshimath." },
+    { name: "Sari Village", blurb: "The base village for Deoria Tal and the roadhead for the Chopta drive, roughly 25-30 km from Chopta." },
+    { name: "Chopta", blurb: "The forest meadow at about 8,790 ft inside the Kedarnath Wildlife Sanctuary where the Tungnath trek begins." },
+    { name: "Tungnath Temple", blurb: "The world's highest Shiva temple, at 3,680 m / 12,073 ft — one of the Panch Kedar, closed for worship November-April but open to trek to." },
+    { name: "Chandrashila Summit", blurb: "The trip's highest point at roughly 13,000 ft / 4,000 m, with a 360-degree Himalayan panorama." },
+    { name: "Deoria Tal", blurb: "A mirror lake at about 7,999 ft near Sari Village, reflecting the Chaukhamba massif on clear mornings." }
+  ];
+
+  TREKS[choptaWithAuliIndex].differentiators = [
+    "Region: Rudraprayag & Chamoli districts, Uttarakhand — inside the Kedarnath Wildlife Sanctuary",
+    "Route type: road + trek circuit — Auli, Chopta-Tungnath-Chandrashila and Deoria Tal in one 4-day trip",
+    "Terrain: forest trails and stone-paved paths on the Tungnath climb, open Bugyal meadow at Auli",
+    "Best season: March-June for green meadows and clear Himalayan views, December-February for the snow trek and skiing",
+    "Monsoon: July-August is technically open but slippery, with leeches on the Deoria Tal trail and landslide risk on the Rishikesh-Chopta road — best avoided"
+  ];
+
+  TREKS[choptaWithAuliIndex].similarTreks = [
+    "chopta-tungnath-trek",
+    "deoriatal-chopta-trek",
+    "auli-weekend-tour",
+    "auli-snow-trip",
+    "chakrata-winter-trip"
+  ];
+
+  TREKS[choptaWithAuliIndex].idealFor =
+    "Weekend trekkers, beginners, couples, friends' groups, nature photographers, snow lovers and Shiva devotees (Tungnath is one of the Panch Kedar).";
+
+  TREKS[choptaWithAuliIndex].importantNote =
+    "There is no luxury on this route — Chopta is a forest reserve, and Swiss camps have attached washrooms but no heater. Network is weak throughout, with only Jio reliable at most points. Tungnath temple itself is closed November-April, though the trek to the temple door stays open and the winter snow trek is the main draw in that window. The Auli ropeway (~Rs 1,000 per person) is not included in the package and is bought directly on site, and is sometimes closed due to wind.";
+
+  TREKS[choptaWithAuliIndex].sourceCaveat =
+    "The published itinerary gives two different Day 1 pickup times from Rishikesh — 5:30 AM under \"How to Reach\" and 6:30 AM in the day-by-day plan — and lists overlapping figures for the same distances (e.g. Sari-Chopta as both 25 km and 30 km). Both are kept here as published; your trek leader will confirm the exact pickup time and route distances before departure.";
+
+  TREKS[choptaWithAuliIndex].eligibilityCriteria = [
+    { icon: "User", text: "Minimum age 7 (Deoria Tal & Auli; Tungnath-Chandrashila only if fit)" },
+    { icon: "Users", text: "Maximum age 60 for Tungnath-Chandrashila, 65 for Auli & Deoria Tal only" },
+    { icon: "Baby", text: "Children under 7 & adults above the age limit can still join for Chopta & Auli, staying at camp/hotel without trekking" },
+    { icon: "HeartPulse", text: "Should avoid: serious asthma, heart problems, knee surgery in the last 6 months, high blood pressure or a recent fracture" },
+    { icon: "ShieldAlert", text: "Pregnant women should avoid the steep final 1 km to the Chandrashila summit" }
+  ];
+
+  TREKS[choptaWithAuliIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 4-5 km continuously for about 2 hours without support" },
+    { icon: "TrendingUp", text: "Able to climb 3 floors of stairs without heavy breathing" },
+    { icon: "Mountain", text: "No mountaineering skills needed — the Tungnath trail is a paved stone path" },
+    { icon: "Stethoscope", text: "Diabetes, asthma, epilepsy or serious allergies should be shared with the team before booking — nearest hospitals are in Ukhimath (20 km) and Joshimath (45 km)" }
+  ];
+
+  TREKS[choptaWithAuliIndex].howToReach = {
+    intro: "Chopta with Auli starts and ends at Rishikesh / Haridwar, with pickup at 5:30-6:30 AM on Day 1.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "About 35 km from Rishikesh, with daily flights from Delhi, Mumbai and Bengaluru. From the airport, a taxi to Rishikesh takes around an hour."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Haridwar Junction (HW)",
+      detail: "The best-connected railhead, with trains from Delhi (about 6 hours), Mumbai, Kolkata and Lucknow. From Haridwar, Rishikesh is a further 25 km by auto or bus."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Rishikesh to Auli/Joshimath to Sari Village to Chopta and back",
+      route: ["Rishikesh", "Devprayag", "Srinagar", "Rudraprayag", "Karnprayag", "Joshimath / Auli", "Sari Village", "Chopta"],
+      facts: [
+        { label: "Rishikesh - Auli/Joshimath", value: "270 km / 10-11 hrs" },
+        { label: "Auli/Joshimath - Sari Village", value: "150 km / 6-7 hrs" },
+        { label: "Sari - Chopta (one way)", value: "25-30 km / 1.5 hrs" },
+        { label: "Sari - Rishikesh (return)", value: "220 km / 8-9 hrs" }
+      ],
+      options: [
+        { from: "Delhi ISBT Kashmiri Gate", name: "Volvo / overnight bus to Rishikesh / Haridwar", note: "6-7 hours, ~Rs 600-1200" }
+      ]
+    },
+    pickup: {
+      point: "Rishikesh (Tapovan / Laxman Jhula) & Haridwar Railway Station",
+      time: "5:30-6:30 AM on Day 1",
+      dropPoint: "Rishikesh / Haridwar",
+      dropTime: "6-8 PM on Day 4",
+      note: "Driver's number is shared one day before departure."
+    }
+  };
+
+  TREKS[choptaWithAuliIndex].inclusions = [
+    { title: "Transport", description: "Rishikesh to Rishikesh by car / Tempo Traveller, including toll, parking and driver charges." },
+    { title: "Stay", description: "3 nights — 1 night Joshimath/Auli + 2 nights Sari Village (hotel / homestay, triple / quad sharing)." },
+    { title: "Meals", description: "3 breakfasts + 3 dinners (vegetarian)." },
+    { title: "Trek support", description: "Guide for the Tungnath-Chandrashila and Deoria Tal treks, plus forest entry fees." },
+    { title: "Local support", description: "Local team based out of Ukhimath, with oxygen and first-aid carried in winter." }
+  ];
+
+  TREKS[choptaWithAuliIndex].exclusions = [
+    { title: "Lunch", description: "Lunch on all 4 days is on your own." },
+    { title: "Auli Ropeway & skiing", description: "Ropeway ticket (~Rs 1,000 per person) and skiing are paid directly on site." },
+    { title: "Horse / Pony / Porter", description: "Available locally at Chopta and Deoria Tal for an extra charge." },
+    { title: "Heater / hot water", description: "Room heater or hot water bucket, where available, is payable directly." },
+    { title: "GST", description: "5% GST as applicable." },
+    { title: "Bonfire", description: "Bonfire at the campsite, if arranged, is chargeable separately." }
+  ];
+
+  TREKS[choptaWithAuliIndex].itinerary = [
+    {
+      day: 1,
+      title: "Rishikesh to Auli / Joshimath",
+      driveDistance: "270 km",
+      drivingTime: "10-11 Hours",
+      pickupPoint: "Rishikesh / Haridwar",
+      pickupTime: "6:30 AM",
+      altitudePoints: [
+        { location: "Rishikesh", m: 372, ft: 1220 },
+        { location: "Joshimath", m: 1875, ft: 6150 },
+        { location: "Auli", m: 2800, ft: 9200 }
+      ],
+      altitudeGain: { m: 1500, ft: 5000 },
+      description: "The longest drive of the trip, along the Alaknanda river via Devprayag, Srinagar, Rudraprayag and Karnprayag to Joshimath / Auli.",
+      detailedParagraphs: [
+        "Pickup is at 6:30 AM from Rishikesh, with the driver also collecting trekkers from Tapovan and Haridwar Railway Station. Today is the longest drive of the trip, but also one of the most scenic — around 200 km of it runs alongside the Alaknanda river.",
+        "The route runs Rishikesh - Devprayag (the confluence of the Alaknanda and Bhagirathi) - Srinagar - Rudraprayag - Karnprayag - Chamoli - Joshimath, with a lunch break on your own around Srinagar or Rudraprayag.",
+        "You should reach Joshimath by around 5:00 PM. If time and weather allow, the Auli ropeway can be taken the same evening (last ropeway around 5:30 PM in summer, 4:30 PM in winter).",
+        "Overnight at a hotel in Joshimath / Auli — staying in Auli itself means a further short drive by small car from Joshimath."
+      ],
+      highlights: ["Alaknanda River Drive", "Devprayag Confluence", "Auli Ropeway (optional, evening)"],
+      meals: "Dinner",
+      stayType: "Hotel — Joshimath / Auli"
+    },
+    {
+      day: 2,
+      title: "Auli sightseeing, then drive to Sari Village",
+      trekDistance: "3 km",
+      trekDuration: "1-2 Hours",
+      driveDistance: "150 km",
+      drivingTime: "6-7 Hours",
+      altitudePoints: [
+        { location: "Auli", m: 2800, ft: 9200 },
+        { location: "Sari Village", m: 1920, ft: 6300 }
+      ],
+      altitudeGain: { m: -880, ft: -2900 },
+      description: "A sunrise on Nanda Devi, the Gorson Bugyal meadow walk and Auli's ropeway point, before the drive down to Sari Village via Ukhimath.",
+      detailedParagraphs: [
+        "An early wake-up for sunrise over Nanda Devi is the highlight of an Auli morning. From around 7:00 to 11:00 AM, explore the Gorson Bugyal trek — a 3 km round-trip flat meadow walk with Nanda Devi, Mana Parvat and Hathi Ghoda visible on a clear day — plus Auli's artificial high-altitude lake and the ropeway viewpoint.",
+        "The ropeway itself (4 km, Joshimath to Auli) is not included and costs around Rs 1,000 per person, paid directly at the counter.",
+        "Around 11:30 AM, drive from Auli / Joshimath to Sari Village via Chamoli, Gopeshwar and Ukhimath — the winter home of Kedarnath — reaching Sari by around 6:00 PM. Sari is a small village and the base for the Deoria Tal trek; network is weak, with only Jio working reliably.",
+        "Overnight at a homestay / hotel in Sari Village. Basing here for two nights avoids daily packing, since both Chopta and Deoria Tal are within reach from Sari."
+      ],
+      highlights: ["Nanda Devi Sunrise", "Gorson Bugyal Walk", "Auli Ropeway Point", "Ukhimath — Winter Home of Kedarnath"],
+      meals: "Breakfast, Dinner",
+      stayType: "Homestay / Hotel — Sari Village"
+    },
+    {
+      day: 3,
+      title: "Sari to Chopta, trek to Tungnath & Chandrashila, back to Sari",
+      driveDistance: "60 km (round trip)",
+      drivingTime: "3 Hours",
+      trekDistance: "7-9 km",
+      trekDuration: "5-6 Hours",
+      timeNote: { label: "Trek start", value: "6:30 AM" },
+      altitudePoints: [
+        { location: "Sari Village", m: 1920, ft: 6300 },
+        { location: "Chopta", m: 2680, ft: 8790 },
+        { location: "Tungnath Temple", m: 3680, ft: 12073 },
+        { location: "Chandrashila Summit", m: 4000, ft: 13000 }
+      ],
+      altitudeGain: { m: 2080, ft: 6700 },
+      description: "The main trek day — Chopta to Tungnath, the world's highest Shiva temple, and on to the Chandrashila summit at 13,000 ft, before returning to Sari.",
+      detailedParagraphs: [
+        "An early 5:00 AM start for the 25-30 km drive from Sari to Chopta (about 1.5 hours), the last stretch running through the Kedarnath Wildlife Sanctuary with no shops, only forest.",
+        "From Chopta (2,680 m), the 3.5 km trek to Tungnath Temple runs on a well-marked, mostly paved stone path — rhododendron forest in March-April, snow underfoot in December-February — and takes most trekkers about two hours. Tungnath (3,680 m) is the world's highest Shiva temple and one of the Panch Kedar; it is closed for worship November-April, but the trek stays open to the temple door.",
+        "A further 1 km, steeper 45-minute climb from Tungnath reaches the Chandrashila summit at roughly 4,000 m / 13,000 ft — the trip's highest point and its main viewpoint, with a 360-degree panorama of Chaukhamba, Nanda Devi, Trishul, Kedar Dome, Bandarpoonch and more on a clear day.",
+        "Retrace the route back down to Chopta for lunch on your own (Maggi, paratha available at the dhabas), then drive back to Sari Village by early afternoon. Overnight at the same homestay in Sari."
+      ],
+      highlights: ["Tungnath — World's Highest Shiva Temple", "Panch Kedar", "Chandrashila 360° Summit", "Chaukhamba & Nanda Devi Views"],
+      meals: "Breakfast, Dinner",
+      stayType: "Homestay / Hotel — Sari Village"
+    },
+    {
+      day: 4,
+      title: "Deoria Tal trek, then drive back to Rishikesh",
+      trekDistance: "4 km",
+      trekDuration: "1.5-2 Hours",
+      driveDistance: "220 km",
+      drivingTime: "8-9 Hours",
+      timeNote: { label: "Trek start", value: "6:00 AM" },
+      altitudePoints: [
+        { location: "Sari Village", m: 1920, ft: 6300 },
+        { location: "Deoria Tal", m: 2438, ft: 7999 },
+        { location: "Rishikesh", m: 372, ft: 1220 }
+      ],
+      altitudeGain: { m: 518, ft: 1700 },
+      description: "An early morning trek to Deoria Tal, the lake that mirrors Chaukhamba, before the long drive back to Rishikesh via Ukhimath, Rudraprayag, Srinagar and Devprayag.",
+      detailedParagraphs: [
+        "A 6:00 AM start for the 2 km, roughly 45-minute uphill trek from Sari to Deoria Tal (2,438 m) — mules and horses are available if needed. On clear mornings the lake reflects the Chaukhamba massif like a mirror; local tradition holds the Pandavas stopped here during their exile. Spend about an hour at the lake before the 2 km walk back down to Sari.",
+        "Breakfast at the homestay, then depart around 10:00 AM for Rishikesh, via Ukhimath, Rudraprayag, Srinagar and Devprayag, with a lunch break on your own around Srinagar.",
+        "Drop-off at Rishikesh / Haridwar is between 6:00 and 8:00 PM, where the tour ends."
+      ],
+      highlights: ["Deoria Tal Mirror Lake", "Chaukhamba Reflection", "Return Drive via Ukhimath"],
+      meals: "Breakfast",
+      stayType: "Tour ends — no overnight"
+    }
+  ];
+
+  TREKS[choptaWithAuliIndex].faqs = [
+    {
+      title: "What is the day-wise itinerary?",
+      description: "Day 1: Rishikesh to Joshimath/Auli. Day 2: Auli sightseeing, then drive to Sari Village. Day 3: Sari to Chopta, trek to Tungnath and Chandrashila, back to Sari. Day 4: Deoria Tal trek, then return to Rishikesh."
+    },
+    {
+      title: "What is the pickup and drop location?",
+      description: "Pickup is at 6 AM on Day 1 from Rishikesh (Tapovan / Laxman Jhula) and Haridwar Railway Station; drop is between 6 and 8 PM on Day 4 at the same points. The driver's number is shared a day before departure."
+    },
+    {
+      title: "How much is the distance covered?",
+      description: "Rishikesh to Auli is 270 km (10-11 hrs), Auli to Sari is 150 km (6-7 hrs), Sari to Chopta is 25-30 km (1.5 hrs), and Sari to Rishikesh on return is 220 km (8-9 hrs)."
+    },
+    {
+      title: "Is the Auli ropeway included?",
+      description: "No. It costs about Rs 1,000 per person, paid directly at the Joshimath ropeway counter, and can be closed due to wind. The road option by car is always available and included in the package."
+    },
+    {
+      title: "Is the Tungnath trek difficult?",
+      description: "No. The 3.5 km Chopta-to-Tungnath stretch is an easy, paved path (about 2 hours); the 1 km Tungnath-to-Chandrashila climb is steeper (about 45 minutes). Beginners, kids (8+ years) and seniors can generally manage it, and pony hire is available for roughly Rs 1,000-1,500."
+    },
+    {
+      title: "Can we do this trip in the December-January snow season?",
+      description: "Yes — it's a popular time for the snow trek, and the trip runs all year with gaiters provided. Tungnath temple is closed November-April, but the trek to the temple gate stays open, and Auli skiing is possible in January-February."
+    },
+    {
+      title: "What type of accommodation is provided?",
+      description: "A hotel with attached washroom in Joshimath, a resort / camp in Auli, and a homestay with attached washroom and home-cooked food in Sari. This is a forest area without luxury hotels — the stay is clean and comfortable rather than upscale."
+    },
+    {
+      title: "Will my mobile network work?",
+      description: "Only Jio is reliable across Auli, Sari and Chopta; Airtel/Vi work only in Joshimath. There is no network on the trek itself, so let family know in advance."
+    }
+  ];
+
+  TREKS[choptaWithAuliIndex].article = {
+    title: "Chopta Auli: Where a Forest Temple Meets a Ski Slope",
+    standfirst: "A 4-day circuit from Rishikesh covering Auli's meadows, the world's highest Shiva temple and a mirror lake that reflects the Chaukhamba massif.",
+    readMinutes: 7,
+    sections: [
+      {
+        paragraphs: [
+          "Chopta is not a town — it is a small forest meadow on the road to Tungnath, inside the Kedarnath Wildlife Sanctuary in Rudraprayag district, ringed by pine, deodar and rhododendron. Two kilometres in, you are deep in jungle; two kilometres further, you are on a Himalayan top. That contrast is why it is often called the Mini Switzerland of India.",
+          "Auli, 45 km away in Chamoli district, is a different kind of Himalaya — wide open Bugyal meadows under a 270-degree wall of peaks, and India's best-known ski resort. Together, Chopta and Auli make a natural 4-day trip: one day you trek to a Shiva temple, the next you walk on ski slopes."
+        ]
+      },
+      {
+        heading: "The mythology of Tungnath",
+        paragraphs: [
+          "Tungnath is the highest Shiva temple in the world, at 3,680 m, and one of the Panch Kedar. Tradition holds that after the Mahabharata war, the Pandavas sought Lord Shiva's forgiveness for killing their kin; Shiva evaded them by taking the form of a bull, and when finally caught, his body parts are said to have appeared at five different places. His arms (bahu) appeared at Tungnath — hence the name.",
+          "Chandrashila, the peak above Tungnath, is where Lord Rama is said to have meditated after defeating Ravana. On a clear day, the summit offers a view across much of Uttarakhand's Himalayan range."
+        ]
+      },
+      {
+        heading: "The forest at Chopta",
+        paragraphs: [
+          "Chopta has no market, no noise and very little network — just a handful of camps and dhabas inside the forest. In March-April the trail turns red with buransh (rhododendron) blooms; in December-January the same trail carries two to three feet of snow. The path is stone-laid and well marked, so there's little risk of losing the way."
+        ]
+      },
+      {
+        heading: "Tungnath and Chandrashila, on foot",
+        paragraphs: [
+          "The 3.5 km climb to Tungnath is paved and manageable for most beginners in around two hours. The final 1 km to Chandrashila is steeper, and this is where the view opens up — at 4,000 m you can see seven major peaks, including Chaukhamba, Nanda Devi (India's second-highest peak), Trishul and Kedar Dome."
+        ]
+      },
+      {
+        heading: "Deoria Tal, the mirror lake",
+        paragraphs: [
+          "A 2 km trek from Sari Village leads to Deoria Tal, a small lake that reflects the Chaukhamba peak almost perfectly on clear mornings. It is one of the best spots on the route for camping and photography, and local tradition places the Pandavas here during their exile."
+        ]
+      },
+      {
+        heading: "Auli, the meadow",
+        paragraphs: [
+          "Unlike forested Chopta, Auli is wide open. The Gorson Bugyal walk is 3 km of flat meadow with Nanda Devi visible straight ahead, and in winter (January-March) the same slopes become a ski run. Auli also has Asia's second-highest ropeway, a 4 km line connecting Joshimath and Auli."
+        ]
+      },
+      {
+        heading: "What to expect, honestly",
+        paragraphs: [
+          "There is no luxury here — this is a forest reserve, not a hill-station resort. Swiss camps at Chopta have attached washrooms but no heater, and network coverage is weak throughout, with only Jio reliable at most points.",
+          "Tungnath temple is closed to worship from November to April, though the trek stays open to the temple door and the winter snow trek is the main draw in that season. The Auli ropeway (around Rs 1,000 per person) is bought directly on site and is not part of any package, and it is sometimes closed due to wind.",
+          "Chopta Auli isn't a luxury tour — it's forest, trek, temple, meadow and lake, in that order."
+        ]
+      }
+    ]
+  };
+}
+
+// Static details for the Kanatal Winter Trip (uid: kanatal-winter-trip), a
+// 3-day, 2-night Dehradun-to-Dehradun circuit covering Kanatal itself,
+// Surkanda Devi temple, Kaudia forest, Dhanaulti and Tehri Lake. Sourced from
+// an ops-supplied write-up (overview, detailed itinerary, eligibility,
+// article, FAQs, how-to-reach and package terms). The source publishes no
+// fixed price, gives Tehri Lake's distance from Kanatal as both 35 km and
+// 40 km, and lists its "Similar" trips with a "Chopra with auli" entry that
+// evidently means the existing "Chopta with Auli" listing — all three are
+// flagged in `sourceCaveat` and resolved as noted there.
+const kanatalIndex = TREKS.findIndex(t => t.slug === 'kanatal-winter-trip');
+if (kanatalIndex !== -1) {
+  TREKS[kanatalIndex].maxAltitude = "9,000 ft / 2,743 m (Surkanda Devi Temple)";
+  TREKS[kanatalIndex].totalDistance = "~7 km walking (2 km Surkanda Devi trek, 5 km Kaudia Forest nature walk), both optional";
+  TREKS[kanatalIndex].endLocation = "Dehradun / Rishikesh / Haridwar";
+  TREKS[kanatalIndex].minAge = 1;
+  TREKS[kanatalIndex].maxAge = 75;
+  TREKS[kanatalIndex].availability = "Departs every Saturday from Dehradun; open all 12 months of the year.";
+
+  TREKS[kanatalIndex].intro =
+    "Kanatal is a small, offbeat hill station in the Tehri Garhwal district of Uttarakhand, at an altitude of approximately 8,500 ft (2,590 m). Situated 75 km from Dehradun and 38 km from Mussoorie on the Chamba-Mussoorie road, it is surrounded by dense oak, pine and deodar forests with views of snow-clad Himalayan ranges. Unlike Mussoorie or Nainital, Kanatal is not crowded — there are no malls or markets, only peace, forests, apple orchards and mountains, with Bandarpoonch, Srikantha and Jaonli peaks visible on a clear day.";
+
+  TREKS[kanatalIndex].aboutParagraphs = [
+    "Kanatal is one of the most peaceful and offbeat hill stations in Uttarakhand and one of the best weekend getaways from Dehradun and Delhi. It sits at roughly 8,500 ft (2,590 m) on the Mussoorie-Chamba road, surrounded by dense oak, pine and deodar forest with open views of Himalayan peaks. Just 38 km from Mussoorie and 75 km from Dehradun, it is nonetheless a different world from Mussoorie — no mall road, no crowd, no traffic, only forest camps, apple orchards, cottages and mountain silence. It was almost unknown until a few years ago, which is why it remains clean and untouched.",
+    "The drive in passes through the Kaudia forest, a 5 km stretch of thick pine and deodar ideal for jungle trekking and bird watching. Five kilometres further is Kaddukhal village, from where a 2 km steep trek climbs to Surkanda Devi Temple — one of the 51 Shakti Peethas of India, at 9,000 ft, with a 360-degree view of the Dehradun valley on one side and Bandarpoonch, Swargarohini and Srikantha peaks on the other.",
+    "Kanatal is also known as the adventure capital near Mussoorie. Almost every camp and resort here offers zip-lining, valley crossing, rock climbing, rappelling, Burma bridge, sky cycling and trekking, alongside nature walks and Himalayan sunrise views for families and couples.",
+    "It stays open all year, and each season has a different character: summer (March-June) for camping and adventure, monsoon (July-September) for greenery, winter (December-February) for 3-4 ft of snowfall that turns Kanatal into a mini Kashmir perfect for snow camping, and autumn (September-November) for the clearest Himalayan views."
+  ];
+
+  TREKS[kanatalIndex].highlights = [
+    "Surkanda Devi Temple — one of 51 Shakti Peethas at 9,000 ft, 360° Himalayan view",
+    "Kaudia Forest — 5 km jungle trek, bird watching",
+    "Adventure camps — zip-lining, valley crossing, rock climbing, rappelling, sky bridge",
+    "Tehri Lake — Asia's largest dam, water sports 35-40 km away",
+    "Dhanaulti Eco Park — deodar forest trails, 13 km from Kanatal",
+    "Winter snowfall of 3-4 ft, turning Kanatal into a mini Kashmir"
+  ];
+
+  TREKS[kanatalIndex].usps = [
+    {
+      title: "Offbeat, not crowded",
+      description: "38 km from Mussoorie but a different world — no mall road, no traffic, just forest camps, apple orchards and mountain silence."
+    },
+    {
+      title: "Surkanda Devi Temple",
+      description: "A 2 km trek (or ropeway) from Kaddukhal to one of the 51 Shakti Peethas at 9,000 ft, with a 360° view spanning the Dehradun valley and the Bandarpoonch, Swargarohini and Srikantha peaks."
+    },
+    {
+      title: "Adventure capital near Mussoorie",
+      description: "Zip-lining, valley crossing, rock climbing, rappelling, Burma bridge and sky cycling are on offer at almost every camp here."
+    },
+    {
+      title: "Tehri Lake combination",
+      description: "Just 35-40 km away, one of Asia's largest dams adds jet skiing, banana boat rides and paramotoring to a trip that starts in pine forest."
+    },
+    {
+      title: "Open all year, differently each season",
+      description: "Pleasant camping weather March-June, greenery in the monsoon, clear Himalayan views September-November, and 3-4 ft of snow December-February."
+    }
+  ];
+
+  TREKS[kanatalIndex].destinationHighlights = [
+    { name: "Kanatal", blurb: "The hill station itself, at roughly 8,500 ft on the Mussoorie-Chamba road, ringed by oak, pine and deodar forest." },
+    { name: "Kaudia Forest", blurb: "A 5 km stretch of dense pine and deodar forest en route, best for a nature walk, bird watching or a Gypsy safari." },
+    { name: "Surkanda Devi Temple", blurb: "One of the 51 Shakti Peethas of India at 9,000 ft (2,743 m), reached by a 2 km trek or ropeway from Kaddukhal village." },
+    { name: "Dhanaulti Eco Park", blurb: "13 km from Kanatal — two parks (Amber and Dhara) with manicured deodar trails and paid adventure activities." },
+    { name: "Tehri Lake", blurb: "35-40 km from Kanatal, built around one of Asia's largest dams, with boating and water-sports activities on direct payment." }
+  ];
+
+  TREKS[kanatalIndex].differentiators = [
+    "Region: Tehri Garhwal district, Uttarakhand, on the Chamba-Mussoorie road at ~8,500 ft (2,590 m)",
+    "Route type: road trip with two short optional treks — Surkanda Devi (2 km) and Kaudia Forest (5 km)",
+    "Terrain: oak, pine and deodar forest throughout; no technical trekking anywhere on the route",
+    "Best season: open all year — March-June for camping, September-November for clear views, December-February for snow",
+    "Not for shopping or nightlife: no mall road or big market; the nearest shopping is in Mussoorie"
+  ];
+
+  TREKS[kanatalIndex].idealFor =
+    "Couples wanting a quiet stay away from the Mussoorie crowd, families with kids on a weekend getaway, corporate groups and students on camping and adventure trips, and friends' groups after a bonfire plus Tehri Lake water sports.";
+
+  TREKS[kanatalIndex].importantNote =
+    "Kanatal has no mall road or market — only small tea shops and Maggi points — so it suits peace lovers rather than shoppers or nightlife seekers; for shopping, Mussoorie is the nearest option. Jio, Airtel and BSNL all work well (4G), but there is no large ATM nearby (the nearest is at Chamba/Mussoorie), so carry cash. In peak winter (December-January) temperatures fall to -2 to 3°C with heavy snow, which can be difficult for anyone with severe breathing issues, and the Surkanda Devi trek (though not the resort stay) is not suited to wheelchair users.";
+
+  TREKS[kanatalIndex].sourceCaveat =
+    "The source write-up gives Tehri Lake's distance from Kanatal as both 35 km (in the overview) and 40 km (elsewhere) — both figures are kept as published. It publishes no fixed package price, so none is shown here; contact the trips desk for current rates. Its list of similar trips includes an entry reproduced verbatim as \"Chopra with auli\", which is treated here as referring to the existing Chopta with Auli listing.";
+
+  TREKS[kanatalIndex].eligibilityCriteria = [
+    { icon: "User", text: "No official age limit — suitable from 1 to 75+ years" },
+    { icon: "Baby", text: "Very safe for kids; adventure activities are available from age 6+" },
+    { icon: "Users", text: "Senior citizens can visit comfortably — no compulsory long walking, and the Surkanda Devi trek can be swapped for the ropeway" },
+    { icon: "HeartPulse", text: "Zero to minimal fitness required — Kanatal itself demands no trekking fitness" },
+    { icon: "ShieldAlert", text: "Not ideal for wheelchair users on the Surkanda Devi trek, though the resort stay itself is fine" },
+    { icon: "IdCard", text: "No permit or Yatra registration needed — just an Aadhaar card or ID for hotel check-in" }
+  ];
+
+  TREKS[kanatalIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Normal walking only for the Kanatal stay and Dhanaulti Eco Park" },
+    { icon: "TrendingUp", text: "Kaudia Forest's 5 km nature walk is optional and can be skipped" },
+    { icon: "Mountain", text: "Surkanda Devi's 2 km steep trek is optional — a ropeway/cable car covers the same climb" },
+    { icon: "Waves", text: "Tehri Lake activities are boat-based, with no trekking involved" }
+  ];
+
+  TREKS[kanatalIndex].howToReach = {
+    intro: "Kanatal starts and ends at Dehradun, about 75-80 km / 2.5-3 hours away by road.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "About 25 km from Dehradun city and roughly 70 km / 2 hours direct from Kanatal, with daily flights from Delhi (50 min), Mumbai, Bengaluru, Hyderabad, Kolkata, Chennai, Jaipur, Ahmedabad, Lucknow and Pune. From the airport, a taxi to the city costs about Rs 800-1,200."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Dehradun Railway Station / Dehradun Junction (DDN)",
+      detail: "Connected to major cities across India. Autos, Vikrams and taxis run from the station to the city centre and to ISBT."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Dehradun to Kanatal via Mussoorie, Kempty Fall and Suakholi",
+      route: ["Dehradun", "Mussoorie", "Kempty Fall", "Suakholi", "Kanatal"],
+      facts: [
+        { label: "Delhi - Dehradun", value: "250 km / 6-7 hrs" },
+        { label: "Dehradun - Kanatal", value: "75-80 km / 2.5-3 hrs" },
+        { label: "Chandigarh - Dehradun", value: "170 km / 4-5 hrs" },
+        { label: "Haridwar / Rishikesh - Dehradun", value: "55 km / 45 km, ~1.5 hrs" }
+      ],
+      options: [
+        { from: "Delhi Kashmere Gate ISBT / Anand Vihar / Noida", name: "Govt. (Uttarakhand Roadways, UPSRTC) and private AC / Volvo / sleeper buses to Dehradun ISBT", note: "6-7 hours; night Volvos (10:30 PM-5:00 AM) are the most popular" }
+      ]
+    },
+    pickup: {
+      point: "Dehradun Airport / Railway Station / ISBT",
+      time: "9:00 AM on Day 1",
+      dropPoint: "Dehradun / Rishikesh / Haridwar",
+      dropTime: "5:00-6:00 PM on Day 3",
+      note: "The return route on Day 3 runs via Tehri Lake."
+    }
+  };
+
+  TREKS[kanatalIndex].inclusions = [
+    { title: "Stay", description: "2 nights in Kanatal — eco-resort / Swiss tent camp / cottage, on triple / quad sharing, with attached washroom and mountain view." },
+    { title: "Transport", description: "Pick-up and drop from Dehradun Airport / Railway Station / ISBT; all transfers and sightseeing by private car (sedan for 2-3 pax, Innova/Ertiga for 4-6 pax, Tempo Traveller for 7+ pax), including driver allowance, toll, parking, fuel and state taxes." },
+    { title: "Meals", description: "2 breakfasts and 2 dinners at the hotel/camp (vegetarian, North Indian) on the MAP plan." },
+    { title: "Sightseeing", description: "Kanatal village and apple-orchard walk, Surkanda Devi Temple (drive to Kaddukhal), Kaudia Forest nature walk, Dhanaulti Eco Park and Kempty Falls en route, plus the Tehri Lake viewpoint." }
+  ];
+
+  TREKS[kanatalIndex].exclusions = [
+    { title: "Lunch", description: "Lunch on all days is on your own." },
+    { title: "Surkanda Devi Ropeway", description: "Ropeway/cable car ticket, if taken instead of the trek, is paid directly." },
+    { title: "Dhanaulti Eco Park entry", description: "Rs 25 per person, paid at the gate." },
+    { title: "Adventure activities", description: "Zip-lining, sky cycling, valley crossing and similar activities are paid directly at the camp/resort." },
+    { title: "Tehri Lake water sports", description: "Jet ski, banana boat, speed boat and paramotoring are booked and paid directly at the lake counter." },
+    { title: "Kaudia Forest Jeep safari", description: "Rs 1,500-2,000 per jeep (4-5 pax), if opted for instead of the walking nature trail." },
+    { title: "Personal expenses", description: "Mineral water, cold drinks, snacks, laundry and tips." },
+    { title: "Insurance & anything unmentioned", description: "Travel insurance, medical expenses, and anything not specifically listed under inclusions." }
+  ];
+
+  TREKS[kanatalIndex].itinerary = [
+    {
+      day: 1,
+      title: "Arrival & mountain serenity — Dehradun to Kanatal",
+      driveDistance: "80 km",
+      drivingTime: "2.5-3 Hours",
+      pickupPoint: "Dehradun Airport / Railway Station / ISBT",
+      pickupTime: "9:00 AM",
+      altitudePoints: [
+        { location: "Dehradun", m: 435, ft: 1427 },
+        { location: "Kanatal", m: 2590, ft: 8500 }
+      ],
+      altitudeGain: { m: 2155, ft: 7073 },
+      description: "A scenic drive from Dehradun via Mussoorie, Kempty Fall and Suakholi into pine forest, followed by check-in, a village walk and dinner under the stars.",
+      detailedParagraphs: [
+        "Pickup from Dehradun Airport / Railway Station / ISBT is at 9:00 AM. The drive to Kanatal runs via Mussoorie, Kempty Fall and Suakholi — through pine forest, with the temperature visibly dropping as the road climbs. The 80 km stretch takes about 2.5 to 3 hours.",
+        "Check in to your eco-resort / Swiss tent camp / hotel / homestay in the afternoon, with a welcome drink and hot snacks, then rest for a while and take in the Himalayan view from the balcony.",
+        "In the late afternoon, take a slow, self-guided stroll on quiet village trails behind the property, through apple orchards and pine forest, or explore Kanatal's small market of Maggi points and tea stalls — a good window for sunset photography.",
+        "Dinner is at the cozy campsite under a starlit sky, with light snacks around 8:00 PM and dinner following around 8:30 PM. Overnight stay in Kanatal."
+      ],
+      highlights: ["Mussoorie - Kempty Fall - Suakholi Scenic Drive", "Village Walk & Apple Orchards", "Bonfire Under a Starlit Sky"],
+      meals: "Dinner",
+      stayType: "Eco-Resort / Swiss Tent Camp / Hotel / Homestay — Kanatal"
+    },
+    {
+      day: 2,
+      title: "Panoramic views & forest safari — Kanatal local sightseeing",
+      driveDistance: "~40 km (round trip)",
+      drivingTime: "2-3 Hours",
+      trekDistance: "2 km (Surkanda Devi, optional) + 5 km (Kaudia Forest, optional)",
+      trekDuration: "45 min (Surkanda Devi) + 1.5 hrs (Kaudia Forest)",
+      timeNote: { label: "Start", value: "8:00 AM" },
+      altitudePoints: [
+        { location: "Kanatal", m: 2590, ft: 8500 },
+        { location: "Surkanda Devi Temple", m: 2743, ft: 9000 }
+      ],
+      altitudeGain: { m: 153, ft: 500 },
+      description: "Surkanda Devi Temple by trek or ropeway, a Kaudia Forest nature walk or jeep safari, and adventure activities at Dhanaulti Eco Park, before returning to Kanatal.",
+      detailedParagraphs: [
+        "After breakfast, drive 5 km to Kaddukhal (about 15 minutes). From there, reach Surkanda Devi Temple at 9,000 ft either by a 2 km uphill trek (about 45 minutes, moderate) or by ropeway / cable car. The temple, one of the 51 Shakti Peethas, offers a 360-degree panoramic view — Bandarpoonch, Swargarohini and the Gangotri range on one side, the Dehradun valley on the other. Darshan and a tea break follow at the top.",
+        "Drive down about 10 minutes to the Kaudia Forest entry, a dense, pristine stretch of pine and deodar. Choose between a 5 km guided nature walk (about 1.5 hours, good for bird watching, barking deer and wild orchids) or an open 4x4 Gypsy safari through the same forest.",
+        "Drive a further 30 minutes to Dhanaulti (13 km) and visit Dhanaulti Eco Park — two parks, Amber and Dhara, with manicured trails through deodar trees. Adventure activities are available here at your own cost, including a 400 m zipline, sky cycling, valley crossing, Burma bridge and rock climbing.",
+        "Return to your Kanatal stay in the evening to relax over another dinner. Overnight stay in Kanatal."
+      ],
+      highlights: ["Surkanda Devi Temple — 51 Shakti Peethas", "Kaudia Forest Nature Walk / Jeep Safari", "Dhanaulti Eco Park Adventure Zone"],
+      meals: "Breakfast, Dinner",
+      stayType: "Eco-Resort / Swiss Tent Camp / Hotel / Homestay — Kanatal"
+    },
+    {
+      day: 3,
+      title: "Tehri Dam adventure & departure — Kanatal to Dehradun via Tehri Lake",
+      driveDistance: "120 km",
+      drivingTime: "4-5 Hours",
+      altitudePoints: [
+        { location: "Kanatal", m: 2590, ft: 8500 },
+        { location: "Tehri Lake", m: 775, ft: 2543 },
+        { location: "Dehradun", m: 435, ft: 1427 }
+      ],
+      altitudeGain: { m: -2155, ft: -7073 },
+      description: "Check-out and a drive to Tehri Lake for optional water sports at one of Asia's largest dams, before the return drive to Dehradun, Rishikesh or Haridwar.",
+      detailedParagraphs: [
+        "After breakfast, check out and drive to Tehri Lake, passing one of Asia's largest dams — the Tehri Dam.",
+        "At the Tehri Lake Adventure Zone, book activities directly at the government counters on site: mild options include a scenic boat ride, pontoon float or houseboat, while the more adventurous can try jet skiing, speed boating, banana boat rides and paramotoring.",
+        "Have lunch at a lakeside cafe — the Tehri trout fish or a veg thali are the local favourites — before starting the return journey to Dehradun (70 km, about 2.5 hours), Rishikesh (90 km, about 3.5 hours) or Haridwar, with drop-off around 5:00-6:00 PM."
+      ],
+      highlights: ["Tehri Dam — One of Asia's Largest Dams", "Water Sports at Tehri Lake", "Lakeside Cafe — Tehri Trout Fish"],
+      meals: "Breakfast",
+      stayType: "Tour ends — no overnight"
+    }
+  ];
+
+  TREKS[kanatalIndex].faqs = [
+    {
+      title: "Where is Kanatal located and how far is it from Dehradun?",
+      description: "Kanatal is in the Tehri Garhwal district of Uttarakhand at 8,500 ft altitude on the Mussoorie-Chamba road. It is 75 km from Dehradun (2.5-3 hrs), 38 km from Mussoorie (1.5 hrs), 32 km from Dhanaulti and 300 km from Delhi (8-9 hrs)."
+    },
+    {
+      title: "How many days are required for a Kanatal trip?",
+      description: "1 night / 2 days is enough for Kanatal, Surkanda Devi and Dhanaulti. Adding Tehri Lake water sports takes it to 2 nights / 3 days — the best weekend getaway from Dehradun or Delhi."
+    },
+    {
+      title: "Is the Kanatal trek difficult? Is it suitable for kids and senior citizens?",
+      description: "No — Kanatal is one of the easiest hill stations, with no trek compulsory and a direct road to the hotel/camp. Surkanda Devi has a 2 km trek, but a ropeway is available, making it 100% suitable for kids (1+ years) and senior citizens (75+ years)."
+    },
+    {
+      title: "What is the best time to visit Kanatal?",
+      description: "It is open all year. March-June is pleasant (15-25°C) and best for camping and adventure; July-September is green and misty with fewer crowds; September-November has the clearest Himalayan views; and December-February brings 3-4 ft of snowfall, best for snow camping and a snow trek."
+    },
+    {
+      title: "Does it snow in Kanatal?",
+      description: "Yes — heavy snowfall from late December to February covers Kanatal in 2-4 ft of snow. It is the nearest snow destination from Dehradun / Mussoorie reachable by road, and Surkanda Devi looks magical under snow."
+    },
+    {
+      title: "What are the main places to see in Kanatal?",
+      description: "Surkanda Devi Temple (9,000 ft, a 51 Shakti Peetha, 2 km trek or ropeway), Kaudia Forest (5 km nature walk / bird watching), Dhanaulti Eco Park (13 km, deodar forest park), Tehri Lake (35-40 km, water sports like jet ski, banana boat and paramotoring), and Kempty Falls en route."
+    },
+    {
+      title: "Where to stay in Kanatal?",
+      description: "There are no 5-star hotels — mainly eco-resorts, Swiss tents, cottages and adventure camps with attached washrooms and mountain views, suited to couples, families and groups. Luxury options are available at Dhanaulti."
+    },
+    {
+      title: "Is there network / ATM / market in Kanatal?",
+      description: "Jio, Airtel and BSNL all work well (4G). There is no big ATM — the last one is at Chamba/Mussoorie, so carry cash. There is no mall road or big market, only small tea shops and Maggi points; for shopping, go to Mussoorie."
+    },
+    {
+      title: "What adventure activities can we do in Kanatal?",
+      description: "Zipline (300-400 m), valley crossing, sky cycling, rock climbing, rappelling, Burma bridge, jungle trekking, camping and a bonfire — and at Tehri Lake, jet ski, speed boat, banana boat, pontoon boat and paramotoring."
+    },
+    {
+      title: "What should I carry for a Kanatal trip?",
+      description: "A woollen jacket (nights are cold even in summer, 10-12°C), trekking shoes for Surkanda Devi, a cap, sunscreen, a power bank, a torch, personal medicines and cash. In winter, add heavy jackets, gloves, a cap and thermal wear."
+    },
+    {
+      title: "Is Kanatal safe?",
+      description: "Very safe — a peaceful village with low crime, family- and couple-friendly, with adventure activities run using safety gear and trained instructors."
+    },
+    {
+      title: "Do we need any permit or Yatra registration for Kanatal?",
+      description: "No permit or Yatra registration is needed — just carry an Aadhaar card for hotel check-in."
+    }
+  ];
+
+  TREKS[kanatalIndex].article = {
+    title: "Kanatal: The Quiet Himalayan Escape That Mussoorie Forgot to Keep",
+    standfirst: "Just 38 km ahead of crowded Mussoorie, at 8,500 ft, lies a tiny hamlet in Tehri Garhwal that is still untouched — pine forests, apple orchards and silence you can actually hear.",
+    readMinutes: 6,
+    sections: [
+      {
+        paragraphs: [
+          "Just 38 km ahead of crowded Mussoorie, at an altitude of 8,500 ft, lies Kanatal — a tiny hamlet in Tehri Garhwal that is still untouched. No mall road, no traffic jam, no honking — only pine forests, apple orchards, snow-capped peaks and silence that you can actually hear.",
+          "Located on the Chamba-Mussoorie road, Kanatal is surrounded by dense oak and deodar forests with open views of Bandarpoonch, Srikantha and Jaonli peaks. On a clear winter morning, you can see the entire Garhwal Himalayan range turning golden from your tent itself."
+        ]
+      },
+      {
+        heading: "Not just a hill station, an experience",
+        paragraphs: [
+          "Kanatal was almost unknown a few years ago, which is its biggest blessing. It is not a typical sightseeing place where you run from one point to another — it is a place where you slow down.",
+          "Morning starts with a Himalayan sunrise and birds chirping inside Kaudia Forest, a 5 km stretch of pristine pine forest famous for nature walks and bird watching. In the afternoon, a 5 km drive to Kaddukhal is followed by a 2 km trek or a 5-minute ropeway ride to Surkanda Devi Temple at 9,000 ft — one of the 51 Shakti Peethas of India, with a 360-degree view no camera can capture: the Dehradun valley on one side, snow peaks on the other, clouds below your feet.",
+          "By evening, Dhanaulti Eco Park (13 km away) offers manicured deodar trails, and as the sun sets, the campsite in Kanatal lights up with a bonfire, light music, snacks and stories under a sky full of stars you never see in cities."
+        ]
+      },
+      {
+        heading: "The adventure capital near Dehradun",
+        paragraphs: [
+          "What makes Kanatal different from any other quiet hill station is adventure — it is called the adventure hub of Uttarakhand near Dehradun.",
+          "Every camp here offers zip-lining over valleys (400 m long), valley crossing, sky cycling, rock climbing, rappelling and Burma bridges. Kids, couples and corporate groups all find something thrilling, run safely with trained instructors.",
+          "Just 35-40 km away is Tehri Lake, one of Asia's largest dams. Where else can you trek in the Himalayas in the morning and go jet skiing, banana boating and paramotoring on the same trip? The Kanatal-to-Tehri combination makes it the only hill station plus lake adventure circuit near Dehradun."
+        ]
+      },
+      {
+        heading: "Every season has a different colour",
+        paragraphs: [
+          "Kanatal is open 365 days and never disappoints. Summer (March-June) is pleasant at 15-25°C, best for camping, adventure and forest walks. Monsoon (July-September) turns it into a green paradise with misty forests. Autumn (September-November) gives crystal-clear Himalayan views. And winter (December-February) turns Kanatal into a mini Kashmir with 3-4 feet of snow — snow camping, a snow trek to Surkanda and snowball fights make it the nearest snow destination from Delhi you can drive to."
+        ]
+      },
+      {
+        heading: "More than just a weekend",
+        paragraphs: [
+          "Kanatal is not for those who want shopping and nightlife — it is for those who want to pause. Whether you are a couple looking for a romantic stay away from the Mussoorie crowd, a family looking for a safe adventure getaway for kids, or a group of friends on a 1 night / 2 days adventure trip from Dehradun, Kanatal is that one place where you can sit idle in front of a pine forest and still feel you have done everything.",
+          "Sometimes the best travel plan is to do nothing in the mountains. Kanatal lets you do exactly that."
+        ]
+      }
+    ]
+  };
+
+  TREKS[kanatalIndex].similarTreks = [
+    "mussoorie-winter-escape",
+    "nainital-winter-trip",
+    "mukteshwar-winter-trip",
+    "auli-snow-trip",
+    "chopta-with-auli"
+  ];
 }
 
 // Static details for the Chopta Tungnath Chandrashila Trek (uid:
@@ -8429,5 +10587,323 @@ if (kedarnathIndex !== -1) {
         ]
       }
     }
+  };
+}
+
+// Kedarnath Tungnath Yatra — the 5 Day / 4 Night "Do Kedar" circuit combining
+// the Kedarnath Jyotirlinga trek with the easier Chopta–Tungnath–Chandrashila
+// walk. Distinct from the standalone `kedarnath-yatra` and `chopta-tungnath-trek`
+// entries above; this one packages both into a single Haridwar-to-Haridwar trip.
+const kedarnathTungnathIndex = YATRAS.findIndex(y => y.slug === 'kedarnath-and-tungnath-yatra');
+if (kedarnathTungnathIndex !== -1) {
+  YATRAS[kedarnathTungnathIndex].aboutParagraphs = [
+    "Kedarnath Tungnath Yatra is the most popular short pilgrimage circuit of Uttarakhand and the perfect combination of devotion and Himalayan adventure. Located in Rudraprayag district of Garhwal Himalayas, the yatra consists of two holy shrines — Kedarnath and Tungnath — situated at an average altitude of approximately 11,700 to 12,800 ft, amidst the majestic Himalayan ranges, alpine meadows and ancient temples.",
+    "The yatra starts from Haridwar and covers a distance of approx. 450 km by road and 40 km by trek. The route passes through Sonprayag, Guptkashi and Chopta, known as the Mini Switzerland of India, offering views of the Mandakini valley, rhododendron forests, Deoria Tal and snow-clad peaks like Kedar Dome, Chaukhamba and Trishul. The two temples represent two forms of Lord Shiva — the hump at Kedarnath as the 12th Jyotirlinga and the arms at Tungnath as the world's highest Shiva temple, along with the Chandrashila summit where Lord Rama is said to have meditated.",
+    "What makes Kedarnath Tungnath special is its unique combination of one tough devotional trek and one easy, beautiful trek in just 5 days. It remains open from May to November and is closed during winter due to heavy snowfall, when the idols are shifted to their winter abodes at Ukhimath and Maku Math. Whether you are a group of friends seeking adventure with blessings, couples looking for a short spiritual getaway, or devotees who want to experience the Panch Kedar feeling in limited time, Kedarnath Tungnath Yatra offers a powerful experience of Jyotirlinga darshan, the highest Shiva temple and a 360° Himalayan view from Chandrashila."
+  ];
+
+  YATRAS[kedarnathTungnathIndex].highlights = [
+    "Kedarnath Jyotirlinga Darshan",
+    "World's Highest Shiva Temple — Tungnath",
+    "Chandrashila 360° Himalayan View",
+    "Kedarnath Evening Shayan Aarti",
+    "Chopta — Mini Switzerland of India",
+    "Deoria Tal (Optional)"
+  ];
+
+  YATRAS[kedarnathTungnathIndex].idealFor =
+    "Friends groups, couples, office groups, short-trip yatris and Shiva devotees who want the Panch Kedar feel inside a single 5-day itinerary.";
+
+  YATRAS[kedarnathTungnathIndex].importantNote =
+    "Both temples close for winter from November to April due to heavy snow — Kedarnath's idol moves to Ukhimath and Tungnath's to Maku Math. July–August falls in the monsoon and is best avoided, since Sonprayag and the Chopta approach road run through landslide-prone stretches. May–June and September–October are the recommended windows for clear weather and a stable trail.";
+
+  YATRAS[kedarnathTungnathIndex].destinationHighlights = [
+    { name: "Sonprayag", blurb: "The last motorable point for the Kedarnath trek and the overnight base for two nights on this itinerary." },
+    { name: "Kedarnath", blurb: "The Jyotirlinga shrine at 11,755 ft, the hump of Shiva in the Panch Kedar legend, reached on a 16 km trek from Gaurikund." },
+    { name: "Chopta", blurb: "The meadow known as the Mini Switzerland of India, and the trailhead for the Tungnath–Chandrashila walk." },
+    { name: "Tungnath", blurb: "The world's highest Shiva temple at roughly 12,800 ft, worshipping the arms of Shiva, third of the five Panch Kedar shrines." },
+    { name: "Chandrashila Peak", blurb: "The 13,000 ft high point of the yatra, with a 360° view of Nanda Devi, Trishul, Chaukhamba, Kedar Dome and Bandarpoonch." },
+    { name: "Deoria Tal", blurb: "An optional lake stop above Sari on the return leg, known for the reflection of Chaukhamba in still water." }
+  ];
+
+  YATRAS[kedarnathTungnathIndex].similarTreks = [
+    "kedarnath-badrinath-tungnath-yatra",
+    "chopta-tungnath-trek",
+    "kedarnath-yatra",
+    "madmaheshwar-yatra",
+    "rudranath-yatra",
+    "chardham-yatra"
+  ];
+
+  YATRAS[kedarnathTungnathIndex].itinerary = [
+    {
+      day: 1,
+      title: "Haridwar / Rishikesh to Sonprayag",
+      driveDistance: "210 km",
+      drivingTime: "8-9 Hours",
+      pickupPoint: "Haridwar Railway Station",
+      pickupTime: "6:00 AM",
+      altitudePoints: [
+        { location: "Haridwar", m: 314, ft: 1030 },
+        { location: "Sonprayag", m: 1676, ft: 5500 }
+      ],
+      description: "Morning pickup from Haridwar and a scenic drive up the Alaknanda valley to Sonprayag, the last parking point for private vehicles before the Kedarnath trek.",
+      detailedParagraphs: [
+        "Morning pickup from Haridwar Railway Station at 6:00 AM. Drive via Rishikesh, Devprayag Sangam — the confluence of the Alaknanda and Bhagirathi — Srinagar, and the Rudraprayag Sangam of the Mandakini and Alaknanda.",
+        "Reach Sonprayag / Sitapur by evening. This is the last parking point for private vehicles. Check in to the hotel and attend a briefing for the Kedarnath trek by your tour leader."
+      ],
+      highlights: ["Devprayag Sangam", "Rudraprayag Sangam", "Sonprayag"],
+      meals: "Dinner",
+      stayType: "Hotel in Sonprayag / Sitapur"
+    },
+    {
+      day: 2,
+      title: "Sonprayag to Kedarnath Dham Trek",
+      trekDistance: "16 km",
+      trekDuration: "7-8 Hours",
+      driveDistance: "Sonprayag → Gaurikund (3 km)",
+      timeNote: { label: "Wake up", value: "4:00 AM" },
+      altitudePoints: [
+        { location: "Gaurikund", m: 1982, ft: 6500 },
+        { location: "Kedarnath", m: 3583, ft: 11755 }
+      ],
+      altitudeGain: { m: 1601, ft: 5255 },
+      description: "The main trekking day of the yatra — a 16 km climb from Gaurikund to the Kedarnath Temple, with the evening Shayan Aarti at the shrine.",
+      detailedParagraphs: [
+        "Early wake-up at 4:00 AM. Take a local sharing jeep from Sonprayag to Gaurikund (3 km, paid extra). Start the 16 km trek from Gaurikund via Jungle Chatti (4 km), Bheembali (6 km) and Lincholi (11 km) to the Kedarnath base camp (15 km) and on to the temple (16 km).",
+        "Pony, palki and helicopter options are available at your own cost for those who cannot walk the full distance.",
+        "Reach Kedarnath by evening and check in to a tent or dormitory about 500 metres from the temple. Attend the evening Shayan Aarti darshan at 6:30 PM."
+      ],
+      highlights: ["Jungle Chatti", "Bheembali", "Lincholi", "Kedarnath Temple", "Shayan Aarti"],
+      meals: "Breakfast & Dinner",
+      stayType: "Tent / Dormitory in Kedarnath (shared washroom, hot water)"
+    },
+    {
+      day: 3,
+      title: "Kedarnath to Sonprayag Down Trek",
+      trekDistance: "16 km",
+      trekDuration: "5-6 Hours",
+      driveDistance: "Gaurikund → Sonprayag, 70 km overall",
+      timeNote: { label: "Morning darshan", value: "4:00 AM" },
+      altitudePoints: [
+        { location: "Kedarnath", m: 3583, ft: 11755 },
+        { location: "Sonprayag", m: 1676, ft: 5500 }
+      ],
+      description: "An early morning abhishek and darshan at the temple, followed by the down trek to Gaurikund and the drive back to Sonprayag.",
+      detailedParagraphs: [
+        "Early morning at 4:00 AM, visit the temple for the morning abhishek and darshan ahead of the crowds.",
+        "After breakfast at 8:00 AM, start the down trek to Gaurikund — faster than the climb up, at 5-6 hours. Take a jeep from Gaurikund to Sonprayag.",
+        "Check in to the same hotel in Sonprayag. Rest and enjoy a hot shower."
+      ],
+      highlights: ["Morning Abhishek", "Down Trek", "Sonprayag"],
+      meals: "Breakfast & Dinner",
+      stayType: "Hotel in Sonprayag / Sitapur"
+    },
+    {
+      day: 4,
+      title: "Sonprayag to Chopta, Tungnath & Chandrashila Trek, to Sari",
+      trekDistance: "4.5 km (Chopta–Tungnath–Chandrashila one way)",
+      trekDuration: "2-3 Hours",
+      driveDistance: "Sonprayag → Chopta, 90 km",
+      drivingTime: "4 Hours",
+      altitudePoints: [
+        { location: "Chopta", m: 2682, ft: 8800 },
+        { location: "Tungnath", m: 3902, ft: 12800 },
+        { location: "Chandrashila", m: 3962, ft: 13000 }
+      ],
+      altitudeGain: { m: 1280, ft: 4200 },
+      description: "A drive to Chopta via Ukhimath — the winter abode of Kedarnath — followed by the trek to Tungnath Temple and the Chandrashila summit, ending at Sari village.",
+      detailedParagraphs: [
+        "Morning 7:00 AM drive from Sonprayag to Chopta (90 km, 4 hours) via Ukhimath, the winter seat of the Kedarnath idol. Reach Chopta by 11:00 AM — called the Mini Switzerland of India for its meadows and pine forest.",
+        "Trek from Chopta (8,800 ft) to Tungnath Temple (12,800 ft) — 3.5 km, about 1.5 hours on a gradual, easy trail. Darshan at Tungnath, the world's highest Shiva temple, worshipping the arms of Lord Shiva.",
+        "A further 1 km steep climb of about 45 minutes reaches Chandrashila Peak (13,000 ft), with a 360° view of Nanda Devi, Trishul, Chaukhamba and Kedar Dome.",
+        "Trek back down to Chopta (2 hours) and drive 20 km to Sari village for the night."
+      ],
+      highlights: ["Ukhimath", "Chopta", "Tungnath Temple", "Chandrashila Peak", "Himalayan Panorama"],
+      meals: "Breakfast & Dinner",
+      stayType: "Hotel / Homestay in Sari / Ukhimath"
+    },
+    {
+      day: 5,
+      title: "Sari Village to Haridwar",
+      driveDistance: "250 km",
+      drivingTime: "9-10 Hours",
+      timeNote: { label: "Drop-off", value: "6:00 - 7:00 PM" },
+      description: "An optional visit to Deoria Tal, followed by the long drive back to Haridwar via Rudraprayag, Devprayag and Rishikesh, marking the end of the tour.",
+      detailedParagraphs: [
+        "Morning, after breakfast, visit Deoria Tal (2.5 km trek, optional, if time permits) — known for the reflection of Chaukhamba in the lake.",
+        "Drive back to Haridwar via Rudraprayag, Devprayag and Rishikesh.",
+        "Reach Haridwar by 6:00-7:00 PM. Drop at the railway station / hotel. Tour ends with the blessings of two Kedars."
+      ],
+      highlights: ["Deoria Tal (Optional)", "Journey Ends"],
+      meals: "Breakfast",
+      stayType: ""
+    }
+  ];
+
+  YATRAS[kedarnathTungnathIndex].inclusions = [
+    { title: "Transport", description: "Haridwar to Haridwar complete tour by Tempo Traveller / Ertiga / Innova as per group size, with all toll, parking and driver allowance included." },
+    { title: "Accommodation", description: "2 nights at Sonprayag / Sitapur in a hotel with attached washroom; 1 night at Kedarnath in a tent / dorm on sharing basis (near the temple); 1 night at Sari / Chopta / Ukhimath in a hotel, homestay or Swiss camp." },
+    { title: "Meal Plan", description: "MAP plan — 4 breakfasts and 4 dinners (veg), from Day 1 dinner to Day 5 breakfast, served at the hotel / camp only." },
+    { title: "Permits & Registration", description: "Uttarakhand Tourism Yatra registration / e-pass, plus forest entry for Chopta–Tungnath." },
+    { title: "Support", description: "Experienced staff, a basic first-aid kit and 24x7 on-tour support." }
+  ];
+
+  YATRAS[kedarnathTungnathIndex].exclusions = [
+    { title: "Pony / Palki / Helicopter", description: "Pony, palki or helicopter charges for Kedarnath, at actual cost." },
+    { title: "Local Jeep", description: "Sonprayag to Gaurikund local jeep, Rs 50 per side, per person." },
+    { title: "Lunch & personal expenses", description: "Lunch, personal expenses and porter charges." },
+    { title: "Helicopter weight / VIP darshan", description: "Extra helicopter weight charge or VIP darshan, where applicable." },
+    { title: "GST", description: "5% GST, extra." },
+    { title: "Deoria Tal entry fee", description: "Not included." },
+    { title: "Anything not listed", description: "Anything not specifically mentioned under inclusions." }
+  ];
+
+  YATRAS[kedarnathTungnathIndex].eligibilityCriteria = [
+    { icon: "User", text: "Kedarnath trek: 10-65 years strictly; Tungnath-Chandrashila: 8-70 years, family friendly" },
+    { icon: "FileText", text: "Valid ID proof (Aadhaar Card) and Uttarakhand Tourism yatra registration mandatory" },
+    { icon: "Stethoscope", text: "No major breathing, heart or knee-surgery history in the last 6 months; asthma / heart / high-BP guests must consult a doctor first" },
+    { icon: "Ban", text: "Not for pregnant women, children below 8 years, or anyone with a recent fracture or ligament injury" },
+    { icon: "Ban", text: "Alcohol and smoking strictly not allowed on the trek" }
+  ];
+
+  YATRAS[kedarnathTungnathIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 6-8 hours daily for two continuous days (Kedarnath)" },
+    { icon: "TrendingUp", text: "Able to climb 16 km uphill with about 6,000 ft of altitude gain" },
+    { icon: "Dumbbell", text: "Normal BMI — obesity is not advised for the trek route" },
+    { icon: "Activity", text: "Tungnath-Chandrashila is an easy 3.5 + 1 km trek, suitable for most fitness levels" },
+    { icon: "Backpack", text: "70+ guests can opt for the Kedarnath helicopter instead of the trek" }
+  ];
+
+  YATRAS[kedarnathTungnathIndex].howToReach = {
+    intro: "Kedarnath Tungnath Yatra starts and ends at Haridwar / Rishikesh, with pickup at 5:30 AM on Day 1.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "About 35 km from Rishikesh, with daily flights from Delhi, Mumbai and Bengaluru. From the airport, take a taxi to Rishikesh — about 1 hour, roughly Rs 1,500."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Haridwar Junction (HW)",
+      detail: "Best connected by trains from Delhi (about 6 hours), Mumbai, Kolkata and Lucknow. From Haridwar to Rishikesh is 25 km by auto or bus."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Haridwar / Rishikesh to Sonprayag via Devprayag, Srinagar and Rudraprayag",
+      detail: "Daily Volvo buses run from Delhi ISBT Kashmiri Gate to Rishikesh / Haridwar (6-7 hours, Rs 600-1,200), including overnight services.",
+      route: ["Haridwar / Rishikesh", "Devprayag", "Srinagar", "Rudraprayag", "Guptkashi", "Sonprayag"],
+      facts: [
+        { label: "Distance", value: "~210 km, Haridwar to Sonprayag" },
+        { label: "Drive", value: "~8-9 hours" },
+        { label: "Options", value: "Volvo Bus / Shared Taxi / Private Cab / Tempo Traveller" }
+      ]
+    },
+    pickup: {
+      point: "Haridwar Railway Station / Rishikesh",
+      time: "5:30 AM on Day 1",
+      dropPoint: "Haridwar / Rishikesh",
+      dropTime: "6:00 - 7:00 PM on Day 5",
+      note: "Uttarakhand Tourism yatra registration is compulsory — sent for you free of cost against your Aadhaar card."
+    }
+  };
+
+  YATRAS[kedarnathTungnathIndex].faqs = [
+    {
+      title: "What is the total trek distance for Kedarnath Tungnath?",
+      description: "A total of 40 km — Kedarnath is 32 km both sides (16+16), and Tungnath-Chandrashila is 8 km both sides (4+4)."
+    },
+    {
+      title: "What is the stay arrangement in Kedarnath?",
+      description: "There are no hotels in Kedarnath — only tents / dormitories on a sharing basis, with a common washroom and hot water in a bucket, about 500 metres before the temple. A sleeping bag and blanket are provided."
+    },
+    {
+      title: "Can senior citizens do this yatra?",
+      description: "Tungnath is easy and suits everyone. Kedarnath's trek is tough and takes 7-8 hours; a helicopter is recommended for guests above 65."
+    },
+    {
+      title: "Will mobile network and charging be available?",
+      description: "Jio works fully in Sonprayag and Chopta. In Kedarnath, Jio and BSNL work partially. A charging point in the Kedarnath tent costs Rs 50-100 — a power bank is a must."
+    },
+    {
+      title: "What is the best time to visit?",
+      description: "May-June (summer rush) and September-October (best weather, clear Himalayan views). Avoid July-August due to landslide risk."
+    },
+    {
+      title: "Can kids join the yatra?",
+      description: "Kids above 10 years can easily do it. Kids below 8 years are not recommended for the Kedarnath trek."
+    },
+    {
+      title: "What about food?",
+      description: "Only pure vegetarian food is available — good hotel food in Sonprayag and Chopta, and simple food like dal-chawal, paratha and Maggi in Kedarnath. Non-veg and alcohol are strictly banned."
+    },
+    {
+      title: "Is registration compulsory?",
+      description: "Yes, Uttarakhand Tourism yatra registration is compulsory. It is arranged free of cost — you just need to send your Aadhaar card."
+    },
+    {
+      title: "Is Deoria Tal included?",
+      description: "If time permits on Day 5, Deoria Tal (2.5 km trek) is added at no extra cost. The reflection of Chaukhamba peak in the lake is a highlight."
+    },
+    {
+      title: "What should I pack?",
+      description: "A heavy jacket, raincoat, trekking shoes (compulsory), woollen cap, gloves, power bank, torch, personal medicines and dry fruits."
+    }
+  ];
+
+  YATRAS[kedarnathTungnathIndex].article = {
+    title: "Kedarnath Tungnath Yatra: The Journey of Two Kedars That Completes Half Shiva",
+    standfirst: "If one Kedar gives you darshan, two Kedars give you completeness.",
+    sections: [
+      {
+        paragraphs: [
+          "Kedarnath and Tungnath are not two different temples. They are two body parts of the same Mahadev, broken in pain, hidden in the Himalayas, waiting for his true devotees to find him.",
+          "In the remote Garhwal Himalayas, where the Mandakini river roars and the rhododendron forests bloom red, lies a journey that is short in days but infinite in emotions — the Kedarnath Tungnath Yatra.",
+          "This is not a tour. This is where you first cry in pain while walking 16 km, and then you cry in peace when you finally see him."
+        ]
+      },
+      {
+        heading: "The Legend — Why Shiva Broke Himself",
+        paragraphs: [
+          "After the great Kurukshetra war, the Pandavas had won, but they had killed their own brothers. Their hands were soaked in blood and their souls were heavy with guilt. They came to Lord Shiva for forgiveness.",
+          "Shiva was angry. He didn't want to forgive them so easily. He took the form of a giant bull and hid in Guptkashi. When the Pandavas found him, he tried to disappear into the earth. Bhim caught his hump. The bull broke into five pieces.",
+          "His hump stayed at Kedarnath, where it is worshipped as a Jyotirlinga. His arms appeared at Tungnath, on a mountain so high that no other Shiva temple exists above it.",
+          "So when you visit Kedarnath and Tungnath together, you are not visiting two temples. You are joining two parts of Mahadev's broken body. And that is why it is called the Do Kedar Yatra."
+        ]
+      },
+      {
+        heading: "First Kedar: Kedarnath — The Soul (11,755 ft)",
+        paragraphs: [
+          "The 16 km trek from Gaurikund is not easy. Your legs will shiver at Jungle Chatti, your breath will stop at Bheembali, and your heart will want to quit at Lincholi. But you keep walking because everyone around you is walking — old mothers, small kids, sadhus with bare feet.",
+          "And then suddenly, after the last climb, you see it. The giant stone temple, standing alone in the middle of nothing, with Kedar Dome peak behind it covered in snow, and the Mandakini river flowing beside it. It is 1,200 years old, and it has survived floods, snowstorms and time.",
+          "You enter. The hump-shaped black stone is covered in ghee and flowers. The priest touches it with devotion. That moment, all your 16 km of pain disappears.",
+          "At 6:30 PM, the Shayan Aarti happens. The bells ring, the conch blows, and the whole valley chants Om Namah Shivaya. You don't watch the aarti, you feel it in your bones."
+        ]
+      },
+      {
+        heading: "Second Kedar: Tungnath — The Strength (~12,800 ft)",
+        paragraphs: [
+          "After Kedarnath, most people return. But Mahadev is still incomplete without his arms.",
+          "90 km away from Sonprayag lies Chopta, called the Mini Switzerland of India — meadows that look like green carpets, pine trees that touch the sky, and silence that heals you after the Kedarnath crowd.",
+          "From Chopta, a 3.5 km trek of pure beauty, full of red rhododendron flowers, takes you to Tungnath — the world's highest Shiva temple. Small, made of stone, covered with prayer flags, with a priest who lives there alone for six months.",
+          "Here his arms are worshipped. It is said Ravana did tapasya here, and Ram meditated here after killing Ravana. This is where strength meets peace."
+        ]
+      },
+      {
+        heading: "Chandrashila — The Top of the World (13,000 ft)",
+        paragraphs: [
+          "1 km above Tungnath, a steep climb takes you to Chandrashila. It is said that Chandra, the Moon God, did tapasya here.",
+          "You stand on a rock at 13,000 ft. In front of you are more than ten Himalayan peaks — Nanda Devi, Trishul, Chaukhamba, Kedar Dome, Bandarpoonch. All white, all giant, all silent. The wind is cold and the sun is golden. You are above the clouds."
+        ]
+      },
+      {
+        heading: "Why You Must Do Kedarnath Tungnath Together",
+        paragraphs: [
+          "Kedarnath alone is darshan. Kedarnath with Tungnath is completion.",
+          "In 5 days, you trek 40 km, climb from 5,000 ft to 13,000 ft, see a Jyotirlinga and the world's highest Shiva temple, walk through forests and glaciers, and sleep in tents where the temperature drops to -2 degrees.",
+          "It breaks your legs, but it fixes your soul. Because at the end, when you return to Haridwar, you don't just bring photos back — you bring a story you will tell your grandchildren: I found Mahadev."
+        ]
+      }
+    ],
+    signoff: "Trek Kedarnath and Tungnath with Trip My Soul."
   };
 }
