@@ -576,21 +576,19 @@ export const TREKS: Trek[] = [
   {
     "slug": "rupin-pass-trek",
     "name": "Rupin Pass Trek",
+    "tagline": "A high-altitude crossover from Himachal to Uttarakhand over the 15,350 ft Rupin Pass — hanging villages, a 3-stage waterfall and a steep snow gully into Sangla Valley.",
     "price": 17999,
     "days": 7,
     "nights": 6,
     "region": "Himachal Pradesh",
     "category": "Trending Treks",
     "startLocation": "Shimla to Shimla",
-    "difficulty": "Moderate",
+    "difficulty": "Difficult",
     "months": [
-      "Oct",
-      "Nov",
-      "Mar",
-      "Apr",
       "May",
       "Jun",
-      "Jul"
+      "Sep",
+      "Oct"
     ],
     "themes": [
       "Snow",
@@ -628,28 +626,331 @@ export const TREKS: Trek[] = [
   {
     "slug": "spiti-valley",
     "name": "Spiti Valley",
+    "tagline": "Winter Spiti — the White Desert of the Himalayas, via Shimla-Kinnaur, with frozen lakes, snow-bound 1000-year-old monasteries and the world's highest villages.",
     "price": 22999,
     "days": 9,
     "nights": 8,
     "region": "Himachal Pradesh",
     "category": "Upcoming Winter Treks",
     "startLocation": "Delhi To Delhi",
-    "difficulty": "Moderate",
+    "endLocation": "Delhi",
+    "availability": "Every Saturday night from Delhi",
+    "difficulty": "Easy-Moderate",
     "months": [
-      "Oct",
-      "Nov",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul"
+      "Dec",
+      "Jan",
+      "Feb",
+      "Mar"
     ],
     "themes": [
       "Snow",
-      "Meadow",
-      "Forest",
-      "Pass Crossing"
-    ]
+      "Off-Beat",
+      "Adventure",
+      "Winter"
+    ],
+    maxAltitude: "15,027 FT (Komic — World's Highest Village Connected by Road)",
+    totalDistance: "~1,100 Km Shimla to Shimla, plus Delhi-Shimla-Delhi by Volvo",
+    fitnessRequirement: "Easy to Moderate — this is a road trip, not a trek. No trekking fitness needed, but you should be able to walk 1-2 Km in snow and handle 8-9 Hrs of daily hill driving.",
+    minAge: 10,
+    maxAge: 65,
+    intro:
+      "Spiti Valley, known as the Middle Land between India and Tibet, is a high-altitude cold desert valley in Himachal Pradesh at an average altitude of 12,500 FT — surrounded by snow-capped Himalayas, 1000-year-old monasteries, turquoise rivers and the most dramatic landscapes of India. In winter, brown Spiti turns into a White Desert — 4-5 feet of snow, frozen waterfalls, a frozen Spiti River and temperatures of -15°C to -25°C, isolated from the world once the Manali route closes for the season.",
+    idealFor:
+      "Bikers, photographers, adventure lovers, mountain lovers, and anyone who wants to disconnect from the city and connect with the Himalayas. Easy to Moderate grade — friends, couples and solo travellers can all join. No trek, only snow walks.",
+    highlights: [
+      "World's Highest Post Office — Hikkim (14,400 FT)",
+      "World's Highest Village Connected by Road — Komic (15,027 FT)",
+      "World's Highest Petrol Pump — Kaza (12,270 FT)",
+      "Key Monastery (13,668 FT) — Biggest Monastery of Spiti, fully white in winter",
+      "Tabo Monastery — 1020 Years Old UNESCO Site, called the Ajanta of the Himalayas",
+      "Chicham Bridge — Asia's Highest Bridge (13,596 FT)",
+      "Langza — Village of Fossils with a 35 FT Buddha Statue in the white desert",
+      "Frozen Nako Lake, frozen waterfalls and a frozen Spiti River",
+      "Snow Leopard territory around Kaza & Kibber (Dec-March)",
+      "500-year-old naturally preserved Mummy at Gue Village",
+    ],
+    destinationHighlights: [
+      { name: "Chitkul", blurb: "The Last Village of India on the old Indo-Tibet trade route, buried under 3-4 ft of snow in winter." },
+      { name: "Kalpa", blurb: "The apple town of Kinnaur, with a front-row view of the 6,000 m Kinner Kailash range turning gold, white and red through the day." },
+      { name: "Nako Lake", blurb: "A frozen lake at 3,600 m you can walk on, beside the 1000-year-old Nako Monastery." },
+      { name: "Gue Village", blurb: "Home to India's only naturally preserved 500-year-old mummy — the Buddhist monk Lama Sangha Tenzin." },
+      { name: "Tabo Monastery", blurb: "1020 years old, a UNESCO site called the Ajanta of the Himalayas, still lit only by butter lamps." },
+      { name: "Dhankar Monastery", blurb: "A 1000-year-old monastery and fort built on a cliff edge, 500 years ago." },
+      { name: "Key Monastery", blurb: "The biggest monastery of Spiti at 13,668 FT — a snow-covered castle with monks chanting inside." },
+      { name: "Chicham Bridge", blurb: "Asia's Highest Bridge at 13,596 FT, over a gorge that runs full of snow in winter." },
+      { name: "Hikkim", blurb: "World's Highest Post Office at 14,400 FT — send a postcard to yourself, hand-stamped by Postmaster Rinchen." },
+      { name: "Komic", blurb: "World's Highest Village Connected by Road at 15,027 FT — higher than Leh." },
+      { name: "Langza", blurb: "Village of Fossils, watched over by a 35 FT Buddha Statue standing in the white desert." },
+    ],
+    itinerary: [
+      {
+        day: 0,
+        title: "Delhi to Shimla — Overnight Volvo",
+        description: "Board an AC Semi-Sleeper Volvo from Delhi for the overnight run to Shimla.",
+        detailedParagraphs: [
+          "Report at Delhi ISBT Kashmere Gate / Majnu Ka Tila at 9:30 PM. Board the AC Semi-Sleeper Volvo for Shimla — an overnight journey of 350 Km / 9-10 Hrs.",
+        ],
+        pickupPoint: "Delhi ISBT Kashmere Gate / Majnu Ka Tila",
+        pickupTime: "9:30 PM",
+        driveDistance: "350 Km",
+        drivingTime: "9-10 Hrs",
+        stayType: "Overnight Volvo",
+      },
+      {
+        day: 1,
+        title: "Shimla to Rampur/Sarahan",
+        description: "Drive via Narkanda past Shrikhand Mahadev Peak, check in and visit Bhimakali Temple.",
+        detailedParagraphs: [
+          "Reach Shimla Bus Stand at 7 AM and meet our Trip Captain. After breakfast, drive to Rampur via Narkanda — 180 Km / 7-8 Hrs — passing the snow-covered Shrikhand Mahadev Peak and the Satluj River.",
+          "Check in at the hotel in Rampur/Sarahan. In the evening, visit Bhimakali Temple. Dinner and overnight stay.",
+        ],
+        highlights: ["Narkanda", "Shrikhand Mahadev Peak view", "Bhimakali Temple"],
+        driveDistance: "180 Km",
+        drivingTime: "7-8 Hrs",
+        stayType: "Hotel",
+        meals: "Dinner",
+      },
+      {
+        day: 2,
+        title: "Rampur/Sarahan to Chitkul/Sangla",
+        description: "The Last Village of India, buried in 3-4 ft of snow, via Karchham Dam and Sangla Valley.",
+        detailedParagraphs: [
+          "After an early breakfast, drive to Chitkul — the Last Village of India on the old Indo-Tibet trade route — 110 Km / 6-7 Hrs, via Karchham Dam, Sangla Valley and the Baspa River.",
+          "Chitkul is fully covered in 3-4 FT of snow in winter. Walk through the white Sangla Valley and stop for chai at the last dhaba. Head back to Sangla by evening. Dinner and overnight stay at a Sangla/Chitkul homestay with Bukhari.",
+        ],
+        highlights: ["Karchham Dam", "Sangla Valley", "Chitkul — Last Village of India"],
+        driveDistance: "110 Km",
+        drivingTime: "6-7 Hrs",
+        stayType: "Homestay with Bukhari",
+        meals: "Breakfast, Dinner",
+      },
+      {
+        day: 3,
+        title: "Chitkul to Kalpa",
+        description: "The apple town of Kinnaur, with a front-row view of the Kinner Kailash range.",
+        detailedParagraphs: [
+          "Post breakfast, drive to Kalpa — the apple town of Kinnaur — 60 Km / 3-4 Hrs. Check in at the hotel and get the best view of the Kinner Kailash range (6,000 Mtrs) from your balcony.",
+          "In the evening, walk to Roghi Village & Suicide Point for the sunset view. Dinner and overnight stay at Kalpa.",
+        ],
+        highlights: ["Kinner Kailash view", "Roghi Village", "Suicide Point"],
+        driveDistance: "60 Km",
+        drivingTime: "3-4 Hrs",
+        stayType: "Hotel",
+        meals: "Breakfast, Dinner",
+      },
+      {
+        day: 4,
+        title: "Kalpa to Nako/Tabo",
+        description: "Cross into Spiti at Khab Sangam, walk on the frozen Nako Lake and visit the 1000-year-old Nako Monastery.",
+        detailedParagraphs: [
+          "Early morning start towards Spiti Valley — 110 Km / 6-7 Hrs. Cross Khab Sangam, the confluence of the Satluj and Spiti rivers, and enter Spiti. Visit Nako Village (3,600 Mtrs) — Nako Lake is fully frozen in winter and you can walk on it. Visit the 1000-year-old Nako Monastery.",
+          "Continue to Tabo and check in at the homestay. Dinner and overnight stay at Nako/Tabo.",
+        ],
+        highlights: ["Khab Sangam", "Frozen Nako Lake", "Nako Monastery"],
+        driveDistance: "110 Km",
+        drivingTime: "6-7 Hrs",
+        stayType: "Homestay",
+        meals: "Breakfast, Dinner",
+      },
+      {
+        day: 5,
+        title: "Tabo to Kaza via Gue & Dhankar",
+        description: "The 500-year-old Gue Mummy, Tabo Monastery and Dhankar Monastery on the way to Kaza.",
+        detailedParagraphs: [
+          "After breakfast, visit Gue Village — India's only naturally preserved 500-year-old mummy of Lama Sangha Tenzin. Next, Tabo Monastery (1020 years old, UNESCO Site — called the Ajanta of the Himalayas).",
+          "Drive to Dhankar and visit the 1000-year-old Dhankar Monastery & Fort on the cliff (subject to weather). Reach Kaza, headquarters of Spiti — 100 Km / 6 Hrs. Check in at the hotel. Dinner and overnight stay at Kaza.",
+        ],
+        highlights: ["Gue Mummy", "Tabo Monastery", "Dhankar Monastery"],
+        driveDistance: "100 Km",
+        drivingTime: "6 Hrs",
+        stayType: "Hotel",
+        meals: "Breakfast, Dinner",
+      },
+      {
+        day: 6,
+        title: "Kaza Local — Key, Chicham, Hikkim, Komic, Langza",
+        description: "The highlight day of Winter Spiti — Key Monastery, Chicham Bridge and the world's highest villages.",
+        detailedParagraphs: [
+          "Post breakfast, visit Key Monastery (13,668 FT), the biggest monastery of Spiti, fully white in winter, then Chicham Bridge (13,596 FT), Asia's Highest Bridge.",
+          "Continue to Hikkim (14,400 FT), the World's Highest Post Office — send a postcard — then Komic (15,027 FT), the World's Highest Village Connected by Road, and Langza (14,300 FT), the Village of Fossils with its 35 FT Buddha Statue in the white desert.",
+          "Back to Kaza for dinner, overnight stay and night star gazing.",
+        ],
+        highlights: ["Key Monastery", "Chicham Bridge", "Hikkim Post Office", "Komic", "Langza Buddha Statue"],
+        driveDistance: "60 Km",
+        stayType: "Hotel",
+        meals: "Breakfast, Dinner",
+      },
+      {
+        day: 7,
+        title: "Kaza to Kalpa",
+        description: "Return via Tabo, Nako and Khab Bridge, past the frozen waterfalls of Spiti.",
+        detailedParagraphs: [
+          "After an early breakfast, drive back to Kalpa via the same route — Tabo, Nako, Khab Bridge — 200 Km / 8-9 Hrs, passing the frozen waterfalls of Spiti. Tyres are chained crossing the Tinku Nala Glacier Point.",
+          "Reach Kalpa by evening. Dinner and overnight stay at Kalpa.",
+        ],
+        highlights: ["Frozen waterfalls of Spiti", "Tinku Nala Glacier Point"],
+        driveDistance: "200 Km",
+        drivingTime: "8-9 Hrs",
+        stayType: "Hotel",
+        meals: "Breakfast, Dinner",
+      },
+      {
+        day: 8,
+        title: "Kalpa to Shimla — Volvo to Delhi",
+        description: "Drive back to Shimla via Rampur-Narkanda and board the overnight Volvo to Delhi.",
+        detailedParagraphs: [
+          "Post breakfast, drive to Shimla via Rampur-Narkanda — 230 Km / 9-10 Hrs — reaching by 6-7 PM. Board the AC Volvo from Shimla Bus Stand at 9 PM for Delhi — overnight journey.",
+        ],
+        driveDistance: "230 Km",
+        drivingTime: "9-10 Hrs",
+        stayType: "Overnight Volvo",
+        meals: "Breakfast",
+      },
+      {
+        day: 9,
+        title: "Reach Delhi",
+        description: "Arrive at Delhi ISBT Kashmere Gate with the memories of White Spiti.",
+        detailedParagraphs: [
+          "Reach Delhi ISBT Kashmere Gate early morning, around 7-8 AM, with lifetime memories of White Spiti.",
+        ],
+        stayType: "Trip Ends — Drop at Delhi ISBT Kashmere Gate",
+      },
+    ],
+    "inclusions": [
+      { title: "Volvo Transfer", description: "Delhi to Shimla and return by AC Semi-Sleeper Volvo." },
+      { title: "Sightseeing Transport", description: "Entire sightseeing Shimla to Shimla by Tempo Traveller / SUV / 4x4, depending on group size and snow conditions." },
+      { title: "Accommodation", description: "7 Nights — 1 Night Rampur/Sarahan, 1 Night Chitkul/Sangla, 1 Night Nako/Tabo, 2 Nights Kaza, 1 Night Kalpa, 1 Night Shimla buffer." },
+      { title: "Meals", description: "12 Meals — Breakfast & Dinner included in the stays (Lunch not included)." },
+      { title: "Permits", description: "All Inner Line Permits for Spiti Valley." },
+      { title: "Driver & Vehicle Charges", description: "Driver night charges, toll tax, parking charges, green tax and fuel — all included." },
+      { title: "Trip Captain", description: "Experienced Trip Captain / Team Captain throughout the trip." },
+      { title: "Safety Kit", description: "An oxygen cylinder and snow chain 24x7 in the car for emergencies, plus a first aid kit." },
+    ],
+    "exclusions": [
+      { title: "Fares Not Mentioned", description: "Any air/train/bus fare not mentioned above." },
+      { title: "Lunch", description: "Lunch is not included on any day." },
+      { title: "Personal Shopping", description: "Any personal shopping of any type." },
+      { title: "Extra Meals & Drinks", description: "Snacks and meals not listed above, plus any alcoholic/non-alcoholic drinks, mineral water and snacks." },
+      { title: "Entry Tickets", description: "Monastery entry (Rs 50-100), Gue Mummy ticket (Rs 200), snow boots/jacket rent." },
+      { title: "Anything Not Mentioned", description: "Any expense arising from unforeseen contingencies, breakdowns, natural calamities, landslides, roadblocks, over-tourism or snow blizzards." },
+    ],
+    eligibilityCriteria: [
+      { icon: "Users", text: "Minimum age 10 (with parents), maximum age 65 if physically fit — ideal age group 18 to 45 years; children below 10 not allowed due to extreme cold" },
+      { icon: "Stethoscope", text: "No serious heart condition, asthma, high blood pressure or epilepsy — consult a doctor first if you have any medical history; not for pregnant women" },
+      { icon: "IdCard", text: "Valid Govt ID (Aadhar/Voter ID/Passport) and 2 passport photos for the Inner Line Permit; foreign nationals need a passport + Indian visa copy" },
+      { icon: "Users2", text: "Solo travellers and solo female travellers welcome — girls get rooms with other girls in verified family-run homestays" },
+      { icon: "Calendar", text: "Basic homestays with Bukhari heater in Nako, Tabo & Kaza — no 5-star luxury, and limited network (only BSNL works in Kaza)" },
+    ],
+    fitnessCriteria: [
+      { icon: "Footprints", text: "Must be able to walk 1-2 Km in snow at Komic, Hikkim, Langza and Key Monastery" },
+      { icon: "Mountain", text: "No trekking fitness required — Winter Spiti is a road trip, not a trek — but you should be okay with 8-9 Hrs of daily hill driving" },
+      { icon: "AlertTriangle", text: "AMS (headache, vomiting, breathlessness) can occur at altitude — an oxygen cylinder is carried, but inform your Trip Captain immediately if symptoms appear" },
+    ],
+    faqs: [
+      { title: "Is Winter Spiti safe? How cold is it?", description: "Yes, it is safe with an experienced operator. Day temperature is -5°C to 5°C, night temperature -15°C to -25°C in Kaza, Komic and Langza. We carry an oxygen cylinder, first-aid kit, heated homestays with Bukhari, snow chains and an experienced Trip Captain." },
+      { title: "What vehicle will be provided from Shimla to Shimla?", description: "As per group size and snow conditions: 12/13 Seater Tempo Traveller, Innova Crysta, or 4x4 Scorpio / Bolero / Thar for heavy snow after Kalpa. All vehicles carry snow chains." },
+      { title: "Why don't you take the Manali route in winter?", description: "The Manali-Atal Tunnel-Kunzum Pass-Kaza route stays closed November to June due to 15-20 ft snow at Kunzum Pass (15,060 FT). The only route open in winter is Shimla-Kinnaur-Kaza, which we follow." },
+      { title: "Is there mobile network and an ATM in Spiti?", description: "After Kalpa, only BSNL and Jio work, and only in Kaza market with slow data — Airtel/Vi have no network after Reckong Peo. There is one SBI ATM in Kaza, often out of cash — withdraw Rs 5,000-7,000 in Shimla/Reckong Peo." },
+      { title: "What type of stay is provided? Will we get heaters?", description: "Hotels with room heaters in Shimla, Narkanda, Rampur and Kalpa. Local homestays with a central Bukhari (wood heater) in Nako, Tabo, Kaza and Sangla/Chitkul. Hot water is given in buckets, as geysers and pipes freeze." },
+      { title: "What meals are included?", description: "12 meals: Day 1 Dinner through Day 6 Breakfast & Dinner, plus Day 7 Breakfast. Lunch is not included — available at local dhabas for Rs 200-300." },
+      { title: "Can we see a Snow Leopard in winter?", description: "January and February are best. The Snow Leopard comes down to Kibber Wildlife Sanctuary, Langza and Komic to hunt Blue Sheep — sighting chances are 10-15%. Red Fox, Ibex and Himalayan Wolf are commonly seen." },
+      { title: "Will Hikkim Post Office and Komic Village be open in winter?", description: "Yes, Hikkim (14,400 FT) stays open 11 AM to 3 PM. Komic (15,027 FT) and Langza are accessible, though heavy snowfall can block roads for a day — the Trip Captain will then take you to Pin Valley or Kibber instead." },
+      { title: "Will there be AMS / breathing issues?", description: "Kaza is at 12,500 FT and Komic at 15,027 FT, so mild headache and breathlessness on day one is normal. Stay hydrated, avoid alcohol and consult your doctor about Diamox. An oxygen cylinder is carried 24x7 in the vehicle." },
+      { title: "How much luggage should I carry?", description: "Strictly no trolley bags — only 1 Rucksack/Backpack (60L max) plus 1 small handbag, as space in the Tempo Traveller is limited and trolleys don't move in snow. Extra luggage can be left in a Shimla cloakroom for Rs 200/bag." },
+      { title: "What is the age limit? Are kids allowed?", description: "Minimum age 10 (with parents), maximum 65 if physically fit — ideal age group 18-45. Not recommended for pregnant women, infants, or people with severe asthma/heart conditions." },
+      { title: "Are snow boots and jackets available on rent?", description: "Yes, in Kaza — snow boots for Rs 300-400/day and jackets for Rs 400-500/day. We recommend bringing your own waterproof boots; sports shoes are not recommended." },
+      { title: "What is the booking amount and cancellation policy?", description: "Booking amount is Rs 5,000 per seat (non-refundable). Balance is due 7 days before departure. If the trip is cancelled from Shimla due to weather/roadblock, the full amount converts to a 1-year travel voucher — no cash refund if stuck midway due to snowfall." },
+      { title: "Which Volvo is provided from Delhi to Shimla?", description: "AC Semi-Sleeper Volvo (ZingBus/HRTC/Private) with 2x3 pushback seats, with 1-2 washroom breaks. Seat numbers are shared on WhatsApp a day before departure." },
+      { title: "Can solo travellers and girls join? Is it safe?", description: "Yes, around 40% of our travellers are solo, including solo female travellers. Girls share rooms with other girls in family-run homestays, and Trip Captains are verified." },
+    ],
+    howToReach: {
+      intro:
+        "The trip starts and ends at Delhi ISBT Kashmere Gate / Majnu Ka Tila, with pick-up 9-10 PM on Day 0. We provide Delhi-Shimla-Delhi AC Semi-Sleeper Volvo in the package. In winter, the Manali route is closed, so the entire Spiti circuit runs Shimla to Shimla via Kinnaur.",
+      air: {
+        summaryLabel: "Nearest Airport (for Delhi)",
+        summary: "IGI Airport, Delhi (DEL)",
+        detail: "From the airport, take the Airport Express Metro to Kashmere Gate (45 mins) or a taxi to Majnu Ka Tila (Rs 500-700). Book your return flight after 2 PM on Day 9, in case the Volvo is delayed by snow.",
+      },
+      train: {
+        summaryLabel: "Nearest Railway Stations (for Delhi)",
+        summary: "New Delhi (NDLS), Old Delhi (DLI), Hazrat Nizamuddin (NZM)",
+        detail: "From any of these, take an auto or metro to ISBT Kashmere Gate — 15-20 minutes.",
+      },
+      road: {
+        summaryLabel: "Shimla to Spiti Circuit",
+        summary: "Shimla - Narkanda - Rampur - Sangla - Chitkul - Kalpa - Nako - Tabo - Kaza - Kalpa - Shimla",
+        detail: "The Manali-Atal Tunnel-Kunzum Pass route is closed in winter due to heavy snowfall at Kunzum Pass (15,060 FT). We instead go via Kinnaur — open all year — with snow chains used from Kalpa onward. Total road trip is roughly 1,100 Km, Shimla to Shimla.",
+        route: ["Delhi", "Shimla", "Narkanda", "Rampur", "Sangla/Chitkul", "Kalpa", "Nako", "Tabo", "Kaza"],
+        facts: [
+          { label: "Shimla to Shimla", value: "~1,100 Km" },
+          { label: "Delhi to Shimla (Volvo)", value: "350 Km / 9-10 Hrs" },
+        ],
+      },
+      pickup: {
+        point: "Delhi ISBT Kashmere Gate (Volvo Stand) / Majnu Ka Tila Tibetan Colony",
+        time: "9:00 PM to 10:00 PM, Day 0 (report 30 mins early)",
+        dropPoint: "Delhi ISBT Kashmere Gate",
+        dropTime: "7-8 AM, Day 9",
+      },
+    },
+    article: {
+      title: "White Spiti: When The Himalayas Go Silent",
+      standfirst:
+        "There is Spiti that you see on Instagram in June — brown mountains, dusty roads, bikes, cafes with travellers. And then there is Spiti in January — which no Instagram reel can capture.",
+      readMinutes: 8,
+      sections: [
+        {
+          paragraphs: [
+            "In January, Spiti stops trying to impress you. It becomes raw, isolated and brutally honest. The brown mountains turn white. The Spiti River freezes from the edges. Waterfalls become ice walls. Roads disappear under 5 feet of snow. And the whole valley — from Chitkul to Kaza — goes silent. This is Winter Spiti.",
+          ],
+        },
+        {
+          heading: "The Only Road In",
+          paragraphs: [
+            "The journey starts not from Manali, but from Shimla, because Kunzum Pass — the gate from Manali to Spiti — shuts in October under 15 feet of snow. The only way into Spiti in winter is via Kinnaur: Shimla, Narkanda, Rampur, Sangla, Chitkul, Kalpa, Nako, Tabo and then Kaza — the old Hindustan-Tibet Trade Route.",
+            "The first white you see is at Narkanda, apple orchards under snow, locals in Kinnauri caps selling chai. After that you follow the Satluj River — the same river that comes from Mansarovar. In Sangla Valley, the Baspa River still flows, but half-frozen, and the sound of water moving under ice is something you remember for years.",
+          ],
+        },
+        {
+          heading: "Chitkul, Kalpa and the Frozen Gate of Spiti",
+          paragraphs: [
+            "Chitkul in winter is not a village, it is a white canvas. The Last Dhaba of India, which sells rajma chawal in summer, sits closed, its tin roof buried under 3 feet of snow. You walk knee-deep to reach the Baspa River, boots sinking, breath freezing — but the view in front, white Kinnaur mountains, frozen waterfalls, no other human for 2 Km, makes you forget the cold.",
+            "Kalpa is where you see Kinner Kailash for the first time — a 6,000 m wall of white straight from your hotel window, said to change colour through the day: golden at sunrise, white at noon, red at sunset. From Kalpa, you cross Khab Bridge, where the Satluj meets the Spiti — the official gate of Spiti Valley. After Khab, trees disappear, villages shrink to 10-15 houses, and the snow turns hard, not soft like Shimla, but hard like ice at -15°C.",
+          ],
+        },
+        {
+          heading: "A Frozen Lake, a Mummy, and 1000-Year-Old Murals",
+          paragraphs: [
+            "Nako Lake is the first frozen lake you see — 3,600 m high, 2 feet of solid ice, local kids playing cricket on it. You stand in the middle, surrounded by white mountains, and hear nothing — a silence that only exists in Winter Spiti.",
+            "Gue Village is a 40 Km detour, but it holds something India has nowhere else: a 500-year-old natural mummy, Lama Sangha Tenzin, a monk who mummified himself while meditating, still sitting in the same posture. In winter, when only a handful of people visit Gue in a month, you get the monastery to yourself, and the resident lama will make you butter tea and tell you how it was found by ITBP jawans after an earthquake.",
+            "Tabo Monastery is 1020 years old. In summer, 200 tourists come daily; in winter you are alone with the lamas still painting murals inside, by nothing but butter lamps. Tabo is called the Ajanta of the Himalayas — and in the silence of winter, you understand why.",
+          ],
+        },
+        {
+          heading: "Kaza and the Sky Full of Stars",
+          paragraphs: [
+            "Then comes Kaza, at 12,500 FT, half-empty in January — 70% of shops shut, only 2-3 cafes open around a Bukhari. You stay in a homestay where a Spitian mother cooks Thukpa, Momos and butter tea on the fire that keeps the room at 5°C when it's -20°C outside. Step out at 2 AM and the Milky Way is so bright it casts shadows on the snow.",
+            "The day in Kaza starts at 9 AM, because before that it's -20°C. First stop is Key Monastery — the biggest monastery of Spiti, looking like a white castle against white mountains, with a hundred lamas chanting, their breath fogging the cold air.",
+          ],
+        },
+        {
+          heading: "The World's Highest Everything",
+          paragraphs: [
+            "After Key comes Chicham Bridge, Asia's Highest Bridge at 13,596 FT, over a gorge 1,000 FT deep, wind strong enough that you need support to stand — but the view is white mountains to the horizon.",
+            "Hikkim, at 14,400 FT, holds the World's Highest Post Office, run for 30 years by Postmaster Rinchen, who still opens at 10 AM at -25°C to stamp your postcard — it reaches home a month later, but becomes your best souvenir. Komic, at 15,027 FT, is the World's Highest Village Connected by Road, higher than Leh, with only 12 people staying through winter. And Langza, watched over by a 35 FT Buddha Statue standing alone in the white desert, is famous for sea fossils — because Spiti sat under an ocean millions of years ago.",
+            "Winter Spiti is not a comfortable trip. It is -20°C, toilets freeze, water freezes, phone batteries die in 2 hours, noses block, lips crack. But it is the most honest Himalayas you will ever see. If Summer Spiti is a destination, Winter Spiti is an experience that stays with you for years.",
+          ],
+        },
+      ],
+    },
+    thingsToRemember: [
+      "No 5-star luxury in Winter Spiti — basic homestays with Bukhari heater in Nako, Tabo and Kaza, still around -10°C indoors at night.",
+      "Limited network after Kalpa — only BSNL/Jio work, and only in Kaza market.",
+      "Roadblocks from snowfall, landslides and black ice are common — the itinerary can change on weather, and the Trip Captain's call is final.",
+      "No alcohol or smoking during the high-altitude drive.",
+      "Carry cash — the one ATM in Kaza is often out of money.",
+    ],
+    similarTreks: ["manali-kasol", "auli-snow-trip", "chopta-with-auli"],
   },
   {
     "slug": "manali-kasol",
@@ -2134,30 +2435,42 @@ export const TREKS: Trek[] = [
     // back to the default hero image while it is unset).
   },
   {
-    // TODO(content): winter catalogue stub for Panwali Kantha Trek. Every value marked TODO
-    // below is a placeholder — ops to confirm before this listing goes live.
+    // Full content sourced from the ops-supplied Panwali Kantha write-up
+    // (overview, itinerary, eligibility, article, FAQs, how-to-reach and
+    // package terms); extended detail-page fields are assigned below via
+    // `panwaliKanthaIndex`.
+    // TODO(content): still no heroImage — trekDetail.ts falls back to the
+    // default hero image while it is unset, and no fixed package price is
+    // published in the source (it's offered "in customise"), so `price`
+    // stays null (see `priceNote`).
     "slug": "panwali-kantha-trek",
     "name": "Panwali Kantha Trek",
-    "price": null, // TODO(content): real price; the card shows "TBD" until set.
-    "days": 3, // TODO(content): real duration.
-    "nights": 2, // TODO(content): real duration.
+    "tagline": "A 7-8 km untouched Himalayan meadow at 11,500 ft between Trijuginarayan and Kedarnath, with a 180° wall of Garhwal peaks and almost no crowd",
+    "price": null,
+    "days": 5,
+    "nights": 4,
     "region": "Uttarakhand",
-    "category": "Upcoming Winter Treks",
-    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
-    "startLocation": "",
-    "difficulty": "Easy-Moderate", // TODO(content): real grade.
-    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "category": "Uttarakhand",
+    "startLocation": "Dehradun",
+    "endLocation": "Dehradun",
+    "difficulty": "Moderate",
+    "maxAltitude": "11,500 ft / 3,505 m",
+    "totalDistance": "32-33 km (16 km one way)",
+    "availability": "15 May to 25 June & 15 September to 15 October",
+    // Best season per the source is 15 May-25 Jun and 15 Sep-15 Oct — not a
+    // winter trek, so this doesn't match SEASON_MAP["Winter"] in app/page.tsx.
     "months": [
-      "Dec",
-      "Jan",
-      "Feb"
+      "May",
+      "Jun",
+      "Sep",
+      "Oct"
     ],
     "themes": [
-      "Snow"
+      "Meadow",
+      "Forest",
+      "Camping",
+      "Temple"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
   },
   {
     // TODO(content): winter catalogue stub for Khaliya Top Trek. Every value marked TODO
@@ -2835,18 +3148,18 @@ export const TREKS: Trek[] = [
     // back to the default hero image while it is unset).
   },
   {
-    // TODO(content): winter catalogue stub for Mukteshwar Winter Trip. Every value marked TODO
-    // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "mukteshwar-winter-trip",
     "name": "Mukteshwar Winter Trip",
+    "tagline": "A peaceful Kumaon hill station at 7,500 ft — a 350-year-old Shiva temple with 180° Himalayan views, the Chauli Ki Jali cliff, apple orchards and the Bhalu Gaad waterfall, Kathgodam to Kathgodam.",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
-    "days": 3, // TODO(content): real duration.
-    "nights": 2, // TODO(content): real duration.
+    "days": 3,
+    "nights": 2,
     "region": "Uttarakhand",
     "category": "Upcoming Winter Treks",
-    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
-    "startLocation": "",
-    "difficulty": "Easy-Moderate", // TODO(content): real grade.
+    "startLocation": "Kathgodam",
+    "endLocation": "Kathgodam",
+    "difficulty": "Easy",
+    "availability": "Every Saturday from Kathgodam, open all 12 months",
     // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
     "months": [
       "Dec",
@@ -2854,11 +3167,271 @@ export const TREKS: Trek[] = [
       "Feb"
     ],
     "themes": [
-      "Snow"
-    ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+      "Snow",
+      "Forest",
+      "Family with Kids",
+      "Couples"
+    ],
+    intro:
+      "Mukteshwar is a peaceful, offbeat hill station in Kumaon, Uttarakhand at 7,500 ft — 51 km from Nainital and 350 km from Delhi. If Nainital is full of lakes and crowd, Mukteshwar is all about silence, Himalayan views, orchards and peace. Perfect for couples, writers and nature lovers who want to stay away from the Mall Road rush.",
+    idealFor:
+      "Couples wanting privacy and a romantic view, writers and nature lovers on a workcation, and families who have already seen Nainital and want an offbeat, quiet extension.",
+    highlights: [
+      "Mukteshwar Dham Temple — 350 years old, 180° Himalayan view of Nanda Devi, Trishul & Panchachuli",
+      "Chauli Ki Jali — 100 ft cliff with natural rock holes, rock climbing, rappelling and zip-lining",
+      "Bhalu Gaad Waterfall — a hidden 60 ft fall, 30-min forest trek",
+      "Apple, peach, plum and apricot orchards, with fresh cider, jam and juice at the IVRI farm",
+      "Zero crowd and clean air — boutique resorts, homestays and stargazing, no Mall Road rush",
+      "Paragliding at Bhatelia and village walks to Adharshila & Dhanachuli",
+    ],
+    aboutParagraphs: [
+      "Mukteshwar is a small Himalayan town in the Nainital district of Uttarakhand, perched at 2,285 meters (7,500 ft) above sea level. It is 51 km from Nainital, 75 km from Kathgodam and 350 km from Delhi. Mukteshwar is famous for silence.",
+      "Mukteshwar literally means \"Lord of Salvation\". There is a 350-year-old Shiva temple at the top of the hill. It is said that a demon and his son were killed by Lord Shiva here, and he gave them mukti (salvation), so the place is called Mukteshwar Dham. The temple has a white marble Shivling surrounded by idols of Parvati, Ganesha and Nandi, and is covered with a copper yantra.",
+      "On a clear day (Oct-Nov & Mar-Apr), from Mukteshwar Temple you can see more than 10 Himalayan peaks in one frame — Nanda Devi (7,816 m), Nanda Kot, Trishul, Panchachuli and Nandaghunti. The view is wider than Nainital's Snow View Point.",
+      "Right behind the temple is Chauli Ki Jali, a 100-feet vertical cliff with natural holes (jalis) in the rocks. Local legend says women who couldn't conceive would come and pray touching the rock holes. Today it is famous for rock climbing & rappelling, zip-lining & valley crossing, and the best sunset in whole Kumaon, with the deep Ramgarh and Almora valley spread out below.",
+      "Mukteshwar is also an orchard town — the British started fruit cultivation here in the 19th century, and apple, peach, plum and pear orchards still cover the hills. The Government Fruit Research Farm and the IVRI (Indian Veterinary Research Institute) campus sell fresh juice, jams and pickles, and forest walks pass through deodar, oak and rhododendron.",
+      "With just 2-3 small markets, 10-15 cafes, a few home bakeries and cottage stays, and zero light pollution at night, Mukteshwar is built for the slow life — ideal for couples, writers, artists and families who already saw Nainital and want offbeat.",
+    ],
+    destinationHighlights: [
+      {
+        name: "Mukteshwar Dham Temple",
+        blurb: "A 350-year-old Shiva temple on the highest point of town, reached by a 100-step climb, with an uninterrupted 180° view of the Himalayas from the courtyard.",
+      },
+      {
+        name: "Chauli Ki Jali",
+        blurb: "A 100 ft cliff with natural rock holes just behind the temple — rock climbing, rappelling, zip-lining and the best sunset in Kumaon.",
+      },
+      {
+        name: "Bhalu Gaad Waterfall",
+        blurb: "A hidden 60 ft waterfall 4-5 km from the market, reached by a 20-30 min trek through forest and a stream — best July to November.",
+      },
+      {
+        name: "Fruit Orchards & IVRI Farm",
+        blurb: "Apple, peach, plum and apricot orchards you can walk through, with fresh cider, jam and juice at the IVRI campus farm — picking season June to August.",
+      },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Kathgodam Arrival & Transfer to Mukteshwar | Local Sunset Views",
+        description:
+          "Pickup from Kathgodam, drive through pine forest and apple orchards, check-in and an evening sunset walk to the local market and view points.",
+        detailedParagraphs: [
+          "Morning arrival at Kathgodam Railway Station / Pantnagar Airport, where our driver will receive you. Drive to Mukteshwar (75 km, 2.5-3 hrs) via Bhimtal, Bhowali and Ramgarh — a scenic route through pine forest and apple orchards.",
+          "Reach by noon and check in to your cottage / resort / homestay, followed by a welcome and some rest. In the evening, walk to the local market and sunset points, and watch a beautiful Himalayan sunset turning the Nanda Devi peak pink.",
+          "Hot dinner at the resort with stargazing — there are no city lights here. Overnight stay in Mukteshwar.",
+        ],
+        pickupPoint: "Kathgodam Railway Station / Pantnagar Airport",
+        driveDistance: "75 Km",
+        drivingTime: "2.5-3 Hrs",
+        stayType: "Cottage / Resort / Homestay",
+        meals: "Dinner",
+      },
+      {
+        day: 2,
+        title: "Mukteshwar Full Day Sightseeing & Adventure",
+        description:
+          "Mukteshwar Dham Temple, Chauli Ki Jali, the IVRI orchard, and an afternoon trek to Bhalu Gaad Waterfall.",
+        detailedParagraphs: [
+          "Wake up early for the sunrise view from your balcony — the Himalayas shining golden. After breakfast, start sightseeing at Mukteshwar Dham Temple (350 years old) — a 100-step climb, darshan of Lord Shiva, and a 180° Himalayan view from the temple courtyard.",
+          "Just a 2-min walk behind the temple is Chauli Ki Jali — the famous cliff with natural rock holes, valley views, photography and adventure activities like rock climbing, rappelling and zip-lining. Continue to the IVRI (Indian Veterinary Research Institute) campus and orchard visit — a walk through deodar forest, buying fresh apple juice and jams.",
+          "After a lunch break, head out for the Bhalu Gaad Waterfall trek — a 4 km drive plus a 1.5 km / 30-minute trek one side, through forest and a stream, to reach the 60 ft waterfall — the best place for nature photos and peace. Return by evening. Dinner and overnight stay in Mukteshwar.",
+        ],
+        highlights: ["Mukteshwar Dham Temple & Chauli Ki Jali", "Bhalu Gaad Waterfall trek"],
+        stayType: "Cottage / Resort / Homestay",
+        meals: "Breakfast, Dinner",
+      },
+      {
+        day: 3,
+        title: "Leisure Morning & Departure to Kathgodam",
+        description:
+          "Orchard visit, a village walk to Adharshila or Peora, then drop at Kathgodam.",
+        detailedParagraphs: [
+          "Enjoy a relaxed breakfast with a Himalayan view, then visit local fruit orchards — seasonal apple and plum picking (June-Aug), and buy organic jams and pickles. Take a short walk to Adharshila or Peora village for a glimpse of village life.",
+          "Drive back to Kathgodam (75 km, 2.5 hrs) and get dropped at Kathgodam station in time for your return train.",
+        ],
+        driveDistance: "75 Km",
+        drivingTime: "2.5 Hrs",
+        stayType: "Trip Ends — Drop at Kathgodam",
+        meals: "Breakfast",
+      },
+    ],
+    inclusions: [
+      {
+        title: "Accommodation",
+        description: "2 nights stay in Mukteshwar, triple/quad sharing basis, valley view / Himalayan view.",
+      },
+      {
+        title: "Meals (MAP Plan)",
+        description: "2 breakfasts and 2 dinners at the stay (veg — dal, rice, mix veg, roti, sweet).",
+      },
+      {
+        title: "Transportation & Sightseeing",
+        description: "Pickup & drop from Kathgodam Railway Station / Pantnagar Airport / Haldwani, all transfers and sightseeing by private car (not sharing) — Swift Dzire/WagonR for 2-3 pax, Ertiga/Innova for 4-6 pax, Tempo Traveller for 7+ pax, with driver allowance, fuel, toll tax, parking and green tax included.",
+      },
+      {
+        title: "Sightseeing Covered",
+        description: "Mukteshwar Dham Temple, Chauli Ki Jali, IVRI Campus & Orchard, Bhalu Gaad Waterfall (till the starting point + 30 min trek), Bhatelia Market, Peora / Dhanachuli village view.",
+      },
+      {
+        title: "Tour Support",
+        description: "24x7 on-tour support.",
+      },
+    ],
+    exclusions: [
+      { title: "Lunch", description: "Not included — available at local cafes; try the apple pie and pizza." },
+      { title: "Adventure Activities", description: "Rock climbing & rappelling at Chauli Ki Jali, zipline / valley crossing, paragliding and horse riding — all direct payment." },
+      { title: "Entry Tickets", description: "Any temple donation and orchard entry fee." },
+      { title: "Guide", description: "Local guide for the waterfall trek, if required." },
+      { title: "Personal Expenses", description: "Mineral water, snacks, shopping for jams/juices, laundry, tips." },
+      { title: "GST", description: "5% extra, if a bill is needed." },
+      { title: "Travel Insurance & Medical Expenses", description: "Not included." },
+      { title: "Anything Not Mentioned", description: "Anything not listed under inclusions." },
+    ],
+    eligibilityCriteria: [
+      { icon: "Users", text: "Open for all ages — kids (0-18), adults (18-60) and senior citizens (60-85+) are all suited; the car goes right till the hotel" },
+      { icon: "Stethoscope", text: "Asthma, BP, sugar and heart patients can travel — altitude is only 7,500 ft; not recommended within 1 month of major surgery; pregnant women safe till 7 months (avoid the cliff-side walk)" },
+      { icon: "IdCard", text: "Indian citizens need Aadhaar/Voter ID/Driving License for hotel check-in; foreign nationals need a passport & visa copy — no permit or Yatra registration required" },
+      { icon: "Users2", text: "Solo travellers, couples, friends' groups and families with kids are all welcome" },
+      { icon: "Calendar", text: "Open 365 days — no road blockage like the Char Dham route, even in monsoon or snowfall" },
+    ],
+    fitnessCriteria: [
+      { icon: "Footprints", text: "Easy grade — not a trek or Yatra; anyone who can walk 200-300 metres is eligible" },
+      { icon: "Mountain", text: "Only two spots need a short walk — the 100-step temple climb and the 30-min Bhalu Gaad Waterfall trek" },
+      { icon: "FileText", text: "No fitness certificate needed" },
+    ],
+    faqs: [
+      {
+        title: "What is Mukteshwar famous for?",
+        description: "Mukteshwar is famous for three things — the 350-year-old Mukteshwar Dham Temple (Lord Shiva), the Chauli Ki Jali cliff for adventure & sunset, and an uninterrupted Himalayan view of the Nanda Devi, Trishul and Panchachuli peaks. Plus apple orchards, Bhalu Gaad Waterfall and zero crowd.",
+      },
+      {
+        title: "How far is Mukteshwar from Nainital and Kathgodam?",
+        description: "From Nainital — 51 km, 1.5-2 hrs drive. From Kathgodam Railway Station — 75 km, 2.5-3 hrs drive via Bhimtal-Bhowali. From Delhi — 350 km, 8-9 hrs.",
+      },
+      {
+        title: "Does Mukteshwar have snowfall?",
+        description: "Yes. Mukteshwar gets proper snowfall every year from late December to mid-January. Nainital sometimes misses snow, but Mukteshwar, being at 7,500 ft, gets good snow. Plan the last week of December or the first two weeks of January if you want snow.",
+      },
+      {
+        title: "What is the best time to visit Mukteshwar?",
+        description: "March-June — pleasant weather at 15-25°C, best for families. October-November — best for the Himalayan view, clear sky, ideal for honeymoon. December-January — for snowfall. Avoid peak monsoon (July-August) if you want the waterfall trek, as the road becomes slippery.",
+      },
+      {
+        title: "Is Mukteshwar good for a honeymoon?",
+        description: "One of the best in Uttarakhand. There is no crowd like Nainital's Mall Road — only boutique cottages, wooden chalets and valley-view resorts with a private balcony, bonfire and stargazing. Very peaceful and romantic.",
+      },
+      {
+        title: "What are the things to do in Mukteshwar in 2 days?",
+        description: "Day 1: Mukteshwar Dham Temple darshan, Chauli Ki Jali sunset, rock climbing & zipline. Day 2: Bhalu Gaad Waterfall trek (30 min), IVRI orchard visit, cafe hopping, village walk to Adharshila/Dhanachuli.",
+      },
+      {
+        title: "Is there a market / ATM / hospital in Mukteshwar?",
+        description: "A small local market with 15-20 shops, 2-3 cafes and a medical shop. There's an SBI ATM in the market (sometimes out of cash, so carry cash). No big hospital — the nearest good hospital is in Bhowali (25 km) & Nainital. No petrol pump in main Mukteshwar; the last pump is at Bhatelia, 5 km before.",
+      },
+      {
+        title: "What type of hotels are available?",
+        description: "No big 5-star hotels — mostly boutique cottages, homestays, orchard resorts and wooden chalets with a kitchen, all with a Himalayan view.",
+      },
+      {
+        title: "Is Mukteshwar safe?",
+        description: "100% safe for families, solo female travellers and couples. Locals are very helpful and crime is very rare. Nights are very silent — carry a torch.",
+      },
+      {
+        title: "Can we do paragliding in Mukteshwar?",
+        description: "Yes, at Bhatelia, 5 km before Mukteshwar market — a short 10-15 min flight. Rock climbing & rappelling are also available at Chauli Ki Jali.",
+      },
+      {
+        title: "Is Kainchi Dham near Mukteshwar?",
+        description: "Yes, Kainchi Dham Ashram is 35 km from Mukteshwar (1.5 hrs) via Bhowali. You can cover it on the way from Kathgodam to Mukteshwar, or from Mukteshwar to Nainital.",
+      },
+      {
+        title: "What should I pack for Mukteshwar?",
+        description: "Summer: light woolens for evening, sunscreen, walking shoes. Winter: heavy jackets, gloves, cap, thermals. Carry a torch for the night and a power bank, as the light sometimes goes.",
+      },
+    ],
+    howToReach: {
+      intro:
+        "Pickup and drop is Kathgodam to Kathgodam — the last railway station of the Kumaon region and the gateway for every Nainital, Bhimtal, Kainchi Dham, Mukteshwar and Almora trip. Kathgodam is 350 km from Delhi, with the final 75 km to Mukteshwar on a winding hill road via Bhimtal, Bhowali and Ramgarh.",
+      air: {
+        summaryLabel: "Nearest Airport",
+        summary: "Pantnagar Airport (PGH) — around 85 Km from Mukteshwar",
+        detail:
+          "Limited daily flights from Delhi. Since flights are limited, most travellers prefer the train to Kathgodam followed by a taxi. A taxi from Pantnagar to Mukteshwar covers the same distance as from Kathgodam.",
+      },
+      train: {
+        summaryLabel: "Nearest Railway Station",
+        summary: "Kathgodam Railway Station (KGM) — 75 Km, 2.5-3 Hrs from Mukteshwar",
+        detail:
+          "The last railhead of the Kumaon region, well connected to Delhi (Ranikhet Express / Shatabdi), Lucknow and Kolkata. From Kathgodam, a private taxi takes you to Mukteshwar via Bhimtal-Bhowali.",
+      },
+      road: {
+        summaryLabel: "By Road from Delhi",
+        summary: "Delhi to Mukteshwar — 350 Km, 8-9 Hrs",
+        detail:
+          "Same route as Nainital — reach Kathgodam (the last railway station), then a 75 km drive (2.5 hrs) via Bhimtal and Bhowali. Distance from Nainital is 51 km (1.5 hrs). Direct taxis are also available from Delhi and Pantnagar Airport, though the airport is 85 km away with limited flights.",
+        route: ["Delhi", "Kathgodam", "Bhimtal", "Bhowali", "Ramgarh", "Mukteshwar"],
+        facts: [
+          { label: "Distance", value: "350 Km" },
+          { label: "Duration", value: "8-9 Hours" },
+        ],
+      },
+      pickup: {
+        point: "Kathgodam Railway Station / Pantnagar Airport / Haldwani",
+        time: "On arrival, Day 1",
+        dropPoint: "Kathgodam Railway Station",
+        dropTime: "Day 3, timed to the return train",
+        note: "Can be combined with Nainital, Kainchi Dham or Almora on either end of the trip.",
+      },
+    },
+    article: {
+      title: "Mukteshwar — The Quiet Himalayan Paradise",
+      standfirst:
+        "Mukteshwar is the feeling you get when you keep staring at it — the silence, the orchards and a Himalayan skyline that never leaves you.",
+      readMinutes: 5,
+      sections: [
+        {
+          paragraphs: [
+            "Perched at 7,500 feet above sea level in the Kumaon hills of Uttarakhand, 51 kilometres from Nainital, Mukteshwar is not a place you visit to tick off sightseeing spots. You visit it to do nothing. And that nothing feels like everything.",
+          ],
+        },
+        {
+          heading: "A Temple That Gives Salvation",
+          paragraphs: [
+            "The name comes from a 350-year-old Shiva temple that sits on the highest cliff of the town. Legend says Lord Shiva slayed a demon here and gave him mukti, or salvation. The temple is small, white, with a marble Shivling and a copper yantra. On a clear October morning, you can see a 180-degree stretch of the Himalayas — Nanda Devi, Trishul, Nanda Kot, Panchachuli, all standing white and silent in front of you. It is wider and clearer than Snow View Point in Nainital.",
+          ],
+        },
+        {
+          heading: "Chauli Ki Jali — The Cliff Behind the Temple",
+          paragraphs: [
+            "Just behind the temple is Chauli Ki Jali, or Chauthi Ki Jali — a 100-foot vertical rock wall with natural lattice holes. Local legend says a woman who touches the lattice will conceive. Young trekkers come here for something else — rock climbing, rappelling, and a sunset that drops straight into the Ramgarh valley. You sit on the edge, your legs hanging, and the wind hits you so hard you forget your phone exists.",
+          ],
+        },
+        {
+          heading: "A Waterfall You Have to Walk To",
+          paragraphs: [
+            "A little away, hidden in a forest, is Bhalu Gaad Waterfall. You don't reach it by car — you walk, for 20-30 minutes through a trail of oak and deodar, crossing a small stream, listening to birds you can't name. Then suddenly you hear water falling — a 60-foot fall, cold, white, untouched. No stalls, no queues. Just you and the sound.",
+          ],
+        },
+        {
+          heading: "An Orchard Town, and a Sky Full of Stars",
+          paragraphs: [
+            "Mukteshwar is an orchard town. The British brought apple farming here in the 1800s, and it stayed. The hills are full of apple, peach, plum and apricot trees, and in June, July and August the orchards are full — you can walk through them, pick a fruit and eat.",
+            "And then there is the night. No lake shimmer, no loud music — only a few cafes with warm yellow lights serving apple crumble and wood-fired pizza. Above, the sky opens up, because there is zero light pollution, and you can actually see the Milky Way. Couples sit around a bonfire, families talk, solo travellers write. It is one of those rare places where silence is not awkward.",
+          ],
+        },
+      ],
+      signoff:
+        "Mukteshwar is for honeymooners who want privacy, not crowds. For families who want a cottage with a kitchen and a view, not a hotel with a lift. For anyone who wants to wake up to birds. If you are planning Kumaon, do 2 nights in Mukteshwar — that becomes the story you tell everyone back home.",
+    },
+    thingsToRemember: [
+      "No fitness certificate needed — this is an easy-grade leisure trip, not a trek or Yatra.",
+      "ID proof (Aadhaar/Voter ID/Driving License for Indians, passport for foreign nationals) is mandatory for hotel check-in.",
+      "Lunch is not included on any day — budget separately for meals at local cafes.",
+      "Carry cash — the market has only one ATM and it sometimes runs out.",
+      "Carry a torch and power bank for the night, as there is very little street lighting.",
+    ],
+    similarTreks: ["auli-snow-trip", "nainital-winter-trip", "kanatal-winter-trip", "chopta-with-auli"],
   },
 ];
 
@@ -3080,14 +3653,15 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "adi-kailash-om-parvat-yatra",
-    "name": "Adi kailash om parvat",
+    "name": "Adi Kailash & Om Parvat Yatra",
+    "tagline": "Chhota Kailash and the natural OM on Om Parvat — Lord Shiva's Himalayan abode in India, no Tibet visa needed.",
     "price": 39500,
-    "days": null,
-    "nights": null,
+    "days": 7,
+    "nights": 6,
     "region": "Uttarakhand",
     "category": "Weekend Getaways",
-    "startLocation": "Kathgodam to Kathgodam",
-    "difficulty": "Moderate",
+    "startLocation": "Delhi to Delhi",
+    "difficulty": "Easy & Medium",
     "months": [
       "Oct",
       "Nov",
@@ -3103,6 +3677,268 @@ export const YATRAS: Trek[] = [
       "Forest",
       "Pass Crossing"
     ],
+    maxAltitude: "6,191 M / 20,300 FT (Om Parvat View Point)",
+    totalDistance: "Approx. 1,200 Km by Road (Delhi to Delhi) + 15 Km Trek/Walk",
+    fitnessRequirement: "Easy to Moderate — no prior trek experience needed, only a 3 Km walk to Parvati Sarovar (horses available on direct payment)",
+    minAge: 10,
+    maxAge: 70,
+    intro:
+      "Adi Kailash, also known as Chhota Kailash or Baba Kailash, is one of the most sacred pilgrimage sites in the Indian Himalayas — revered as the earthly abode of Lord Shiva, just like Mount Kailash in Tibet, but reachable with only an Aadhaar Card and an Inner Line Permit.",
+    aboutParagraphs: [
+      "Adi Kailash, also known as Chhota Kailash or Baba Kailash, is one of the most sacred and stunning pilgrimage sites in the Indian Himalayas. Located in the Pithoragarh District of Uttarakhand, near the Indo-Tibetan Border, Adi Kailash is revered as the earthly abode of Lord Shiva, similar to Mount Kailash in Tibet.",
+      "Surrounded by snow-covered peaks, dense forests and pristine lakes, the Adi Kailash region offers a spiritually enriching experience combined with raw natural beauty. At an altitude of 5,945 Mtrs (19,505 Ft), this holy peak is the replica of Mount Kailash.",
+      "Trekkers and pilgrims can also witness the peaceful Parvati Sarovar / Gauri Kund near the base of the mountain, known for its crystal-clear water and tranquil surroundings. The lake is dedicated to Goddess Parvati. The whole region is part of the ancient Kailash Mansarovar route.",
+      "Om Parvat is a sacred and awe-inspiring mountain located in the Darchula District of Uttarakhand, near the Indo-Nepal-Tibet border. What makes it truly unique is the natural formation of the sacred 'OM' (ॐ) symbol on its snow-covered surface — a phenomenon that draws thousands of pilgrims, trekkers and spiritual seekers every year.",
+      "Standing at an elevation of around 6,191 Meters (20,300 Ft), this mystical mountain holds deep spiritual meaning for Hindus, Buddhists and Jains. The OM is formed by natural deposition of snow and appears brightest when the snow melts slightly. The journey to Om Parvat is part of the Kailash Mansarovar Yatra and is often combined with visits to Adi Kailash.",
+    ],
+    highlights: [
+      "🕉️ Natural OM Symbol on Om Parvat",
+      "Adi Kailash Parikrama Darshan",
+      "Parvati Sarovar (Gauri Kund)",
+      "Pandav Parvat & Parvati Mukut",
+      "Brahma Parvat, Pandav Fort & Kunti Parvat",
+      "Kali Temple, Shesh Nag Parvat & Ved Vyas Cave",
+      "Kainchi Dham, Golu Devta Temple & Jageshwar Dham",
+      "Gunji, Navidhang, Kutti Village & Jyolingkong (Adi Kailash Base)",
+    ],
+    destinationHighlights: [
+      { name: "Adi Kailash", blurb: "Also known as Chhota Kailash or Baba Kailash — the earthly abode of Lord Shiva at 5,945 M (19,505 Ft), an exact replica of Mount Kailash." },
+      { name: "Om Parvat", blurb: "A 6,191 M (20,300 Ft) peak on the India-Nepal-Tibet tri-junction where snow naturally forms the sacred 'ॐ' symbol on its face." },
+      { name: "Parvati Sarovar / Gauri Kund", blurb: "A crystal-clear holy lake at the base of Adi Kailash, dedicated to Goddess Parvati." },
+      { name: "Vyas Valley", blurb: "Named after Maharishi Ved Vyas, who is believed to have stayed here in Ved Vyas Cave and written the Mahabharata." },
+      { name: "Kainchi Dham", blurb: "The famous ashram of Neem Karoli Baba, visited en route on Day 1 and Day 7." },
+      { name: "Jageshwar Dham", blurb: "A cluster of ancient Jyotirlinga-group temples in the deodar forests of Kumaon." },
+      { name: "Patal Bhuvaneshwar", blurb: "Lord Shiva's underground limestone cave, said to house 33 crore gods." },
+    ],
+    idealFor: "Shiva devotees, pilgrims, family groups, couples, nature lovers and photography groups — no prior trek experience needed.",
+    differentiators: [
+      "No Passport, No Visa, No China Permit — Kailash Darshan in India with just an Aadhaar Card and an Inner Line Permit",
+      "Both Adi Kailash and Om Parvat darshan covered in a single 7-day yatra",
+      "Off-road 4x4 Camper Jeep from Dharchula onward on BRO-built border roads",
+      "Only a 3 Km easy trek to Parvati Sarovar — horses available on direct payment",
+      "Spiritual circuit also covers Kainchi Dham, Golu Devta, Jageshwar Dham and Patal Bhuvaneshwar",
+    ],
+    importantNote:
+      "After Dharchula there is NO mobile network (Jio, Airtel, BSNL) for about 3 days, and Gunji/Nabi stay is a basic homestay on sharing basis with limited solar electricity. Non-veg and alcohol are strictly banned throughout Vyas Valley.",
+    itinerary: [
+      {
+        day: 1,
+        title: "Delhi to Pithoragarh",
+        description: "Drive 500 Km / 12-14 Hrs via Kainchi Dham and Almora.",
+        detailedDescription:
+          "Pickup from Delhi at 5 AM. Drive via Kainchi Dham, Almora and Golu Devta. Visit Kainchi Dham for darshan of Neem Karoli Baba's ashram before continuing on to Pithoragarh.",
+        highlights: ["Kainchi Dham Darshan"],
+        driveDistance: "500 Km",
+        drivingTime: "12-14 Hrs",
+        altitudePoints: [{ location: "Pithoragarh", m: 1514, ft: 4967 }],
+        meals: "Dinner",
+        accommodation: { type: "Hotel", name: "Pithoragarh" },
+      },
+      {
+        day: 2,
+        title: "Pithoragarh to Dharchula (Medical Test & Inner Line Permits)",
+        description: "Drive 90 Km / 4 Hrs. Medical test and Inner Line Permit formalities at SDM Office, Dharchula.",
+        detailedDescription:
+          "After breakfast, drive to Dharchula. Medical test and Inner Line Permit process at SDM Office Dharchula (mandatory for the yatra ahead) — views of the Kali River and the Nepal border along the way.",
+        highlights: ["Kali River", "Nepal Border", "Permit Formalities"],
+        driveDistance: "90 Km",
+        drivingTime: "4 Hrs",
+        altitudePoints: [{ location: "Dharchula", m: 940, ft: 3084 }],
+        meals: "Breakfast, Lunch, Dinner",
+        accommodation: { type: "Hotel", name: "Dharchula" },
+      },
+      {
+        day: 3,
+        title: "Dharchula to Gunji / Nabi",
+        description: "Drive 70 Km / 6-7 Hrs off-road via Chiyalekh, Garbyang and Kutti Village.",
+        detailedDescription:
+          "Early morning off-road drive via Chiyalekh, Garbyang, Kutti Village and the terraced Dhaan Ki Kheti fields, through the Vyas Valley with views of Shesh Nag Parvat.",
+        highlights: ["Vyas Valley", "Shesh Nag Parvat", "Kutti Village"],
+        driveDistance: "70 Km",
+        drivingTime: "6-7 Hrs (off-road)",
+        altitudePoints: [{ location: "Gunji / Nabi", m: 3200, ft: 10499 }],
+        meals: "Breakfast, Lunch, Dinner",
+        accommodation: { type: "Homestay", name: "Gunji/Nabi — very basic, 10,500 Ft" },
+      },
+      {
+        day: 4,
+        title: "Gunji/Nabi to Adi Kailash & Return to Gunji/Nabi",
+        description: "Drive 70 Km both side / 8 Hrs — the day of the main Adi Kailash darshan.",
+        detailedDescription:
+          "Drive 35 Km to Jyolingkong, the Adi Kailash base, then a short 3 Km walk to Parvati Sarovar / Gauri Kund. Darshan of Adi Kailash, Brahma Parvat, Pandav Parvat, Parvati Mukut, Pandav Fort and Kunti Parvat, before returning to Gunji/Nabi for the night.",
+        highlights: ["Adi Kailash Darshan", "Parvati Sarovar", "Brahma Parvat", "Pandav Parvat"],
+        driveDistance: "70 Km (round trip)",
+        drivingTime: "8 Hrs",
+        trekDistance: "3 Km (to Parvati Sarovar)",
+        altitudePoints: [{ location: "Adi Kailash Base (Jyolingkong)", m: 4515, ft: 14812 }],
+        meals: "Breakfast, Lunch, Dinner",
+        accommodation: { type: "Homestay", name: "Gunji/Nabi" },
+      },
+      {
+        day: 5,
+        title: "Gunji/Nabi to Om Parvat & Return to Dharchula",
+        description: "Drive to Om Parvat View Point, then 70 Km back to Dharchula.",
+        detailedDescription:
+          "Early 4 AM departure to Navidhang / Om Parvat View Point for darshan of the natural OM symbol at 6,191 M, plus views of Parvati Mata Navel Peak, Kali Temple, Ved Vyas Cave and Shesh Nag Parvat. Drive back 70 Km to Dharchula in the afternoon.",
+        highlights: ["Om Parvat Darshan", "Ved Vyas Cave", "Kali Temple", "Shesh Nag Parvat"],
+        driveDistance: "140 Km",
+        drivingTime: "9-10 Hrs",
+        altitudePoints: [{ location: "Om Parvat View Point (Navidhang)", m: 4200, ft: 13780 }],
+        meals: "Breakfast, Lunch, Dinner",
+        accommodation: { type: "Hotel", name: "Dharchula" },
+      },
+      {
+        day: 6,
+        title: "Dharchula to Jageshwar Dham",
+        description: "Drive 230 Km / 9-10 Hrs, en-route Patal Bhuvaneshwar Cave darshan.",
+        detailedDescription:
+          "After breakfast, proceed towards Jageshwar Dham, visiting Patal Bhuvaneshwar (Lord Shiva's underground cave, said to house 33 crore gods) and the Jageshwar Dham temple complex (a 12th-Jyotirlinga-group of temples) along the way.",
+        highlights: ["Patal Bhuvaneshwar Cave", "Jageshwar Dham"],
+        driveDistance: "230 Km",
+        drivingTime: "9-10 Hrs",
+        altitudePoints: [{ location: "Jageshwar Dham", m: 1870, ft: 6135 }],
+        meals: "Breakfast, Lunch, Dinner",
+        accommodation: { type: "Hotel", name: "Jageshwar Dham" },
+      },
+      {
+        day: 7,
+        title: "Jageshwar Dham to Delhi",
+        description: "Drive 394 Km / 9-10 Hrs via Kainchi Dham and Chitayi Golu Devta — yatra ends in Delhi.",
+        detailedDescription:
+          "After breakfast, visit Kainchi Dham and Chitayi Golu Devta (Temple of Bells, the God of Justice) before the long drive back. Drop at Delhi by 10-11 PM, closing the yatra.",
+        highlights: ["Kainchi Dham", "Chitayi Golu Devta"],
+        driveDistance: "394 Km",
+        drivingTime: "9-10 Hrs",
+        meals: "Breakfast",
+      },
+    ],
+    inclusions: [
+      { title: "Guide / Trip Captain", description: "Guide / Trip Captain from Dharchula." },
+      { title: "Transportation to Dharchula", description: "Innova / Tempo Traveller / Ertiga, Delhi to Dharchula and return (as per group size)." },
+      { title: "Off-road Camper Jeep", description: "4x4 Camper Jeep (5 persons per jeep), Dharchula to Gunji/Nabi to Dharchula — off-road vehicle mandatory." },
+      { title: "Stay — 6 Nights", description: "Hotel / Homestay on sharing basis: Pithoragarh (1N), Dharchula (2N), Gunji/Nabi (2N), Jageshwar Dham (1N)." },
+      { title: "Meals", description: "Pure vegetarian meals as per itinerary — Day 1 Dinner to Day 7 Breakfast." },
+      { title: "Permits & Medical Test", description: "Inner Line Permit, SDM permission and medical test fees included." },
+      { title: "First Aid & Oxygen", description: "First aid kit and oxygen support on the yatra." },
+    ],
+    exclusions: [
+      { title: "GST", description: "5% GST extra (mandatory as per Govt rule)." },
+      { title: "Medical & Evacuation", description: "Any medical expense or emergency evacuation." },
+      { title: "Insurance", description: "Any kind of insurance — travel, medical or accident." },
+      { title: "Extra Stay", description: "Additional stay beyond the package days, chargeable at ₹3,000/day." },
+      { title: "Horses", description: "Horses for the Parvati Sarovar trek (₹3,000-5,000), subject to availability — direct payment to the horse owner." },
+      { title: "Personal Expenses", description: "Tea/coffee, shopping, pooja samagri and porter charges." },
+      { title: "Alternate Vehicle on Landslide", description: "If the road closes due to landslide, alternate vehicle cost from Delhi to Pithoragarh is extra." },
+    ],
+    eligibilityCriteria: [
+      { icon: "User", text: "Age 10 to 70 years — below 10 not allowed per SDM Dharchula & ITBP rule; up to 75-80 years allowed if medically fit with a Govt hospital certificate" },
+      { icon: "Stethoscope", text: "Not open to trekkers with heart problems, high blood pressure, severe asthma or chronic illness; pregnant women not allowed" },
+      { icon: "FileText", text: "Valid Govt ID (Aadhaar / Voter ID / Passport for foreign nationals), 4 passport photos, and a medical fitness certificate not older than 1 month" },
+      { icon: "IdCard", text: "Foreign nationals allowed with a passport, special permit and MHA clearance (arranged by us, takes about 15 days)" },
+    ],
+    fitnessCriteria: [
+      { icon: "Footprints", text: "Only a 3-4 Km trek to Parvati Sarovar / Gauri Kund — horses available on direct payment" },
+      { icon: "Activity", text: "Mostly covered by 4x4 Camper Jeep on off-road terrain — basic fitness and the ability to sit through long drives is enough" },
+      { icon: "Dumbbell", text: "Regular cardio and breathing exercises recommended for 1 month before the yatra, given the altitude" },
+      { icon: "TrendingUp", text: "Goes up to 14,800 Ft (Adi Kailash base) and 14,500 Ft (Om Parvat) where oxygen is low — acclimatization stay at Dharchula is built in" },
+    ],
+    howToReach: {
+      intro: "Our service is Delhi to Delhi; you can also join from Kathgodam, Haldwani or Pithoragarh at a reduced cost.",
+      air: {
+        summaryLabel: "Nearest Airport",
+        summary: "Delhi Airport (DEL) — Best Option",
+        detail:
+          "Direct flights from all over India land at Delhi to join our Delhi-to-Delhi group. Pantnagar Airport (PGH), about 300 Km from Dharchula, is the nearest airport to the Pithoragarh region with daily flights from Delhi; Naini Saini Airport, Pithoragarh (NNS) is closer but has irregular flights.",
+      },
+      train: {
+        summaryLabel: "Best Option",
+        summary: "Kathgodam Railway Station (KGM)",
+        detail:
+          "About 300 Km from Dharchula / 110 Km from Pithoragarh — the main station with direct trains from Delhi (Ranikhet Express, Shatabdi, Sampark Kranti). Tanakpur (TPU) is a second option, about 200 Km from Dharchula. From Kathgodam/Haldwani, a taxi or bus runs to Pithoragarh in 8-9 Hrs.",
+      },
+      road: {
+        summaryLabel: "By Road",
+        summary: "Delhi to Pithoragarh via Haldwani, Almora & Gurna Mata",
+        detail:
+          "Road is good till Dharchula; after Dharchula it is full off-road, covered only by 4x4 Camper Jeep with ITBP check posts en route. Inner Line Permit is checked at Chiyalekh Check Post — no permit, no entry.",
+        route: ["Delhi", "Haldwani", "Almora", "Gurna Mata", "Pithoragarh", "Jauljibi", "Dharchula", "Chiyalekh", "Gunji"],
+        facts: [
+          { label: "Delhi to Pithoragarh", value: "500 Km / 12-14 Hrs" },
+          { label: "Pithoragarh to Dharchula", value: "90 Km / 4 Hrs" },
+          { label: "Dharchula to Gunji", value: "70 Km / 6-7 Hrs (off-road)" },
+        ],
+      },
+      pickup: {
+        point: "Delhi ISBT Kashmere Gate / Majnu Ka Tila, 5 AM (Day 1)",
+        time: "5:00 AM (Day 1)",
+        dropPoint: "Delhi",
+        dropTime: "10:00 PM – 11:00 PM (Day 7)",
+        note: "Kathgodam-to-Kathgodam pickup (8 AM Day 1) and Dharchula-to-Dharchula pickup are also available as reduced-cost options.",
+      },
+    },
+    faqs: [
+      {
+        title: "What is included in the Adi Kailash & Om Parvat Yatra package?",
+        description:
+          "Our Delhi-to-Delhi 7D/6N package includes transport (Delhi-Pithoragarh-Dharchula by Tempo/Innova, plus Dharchula-to-Gunji by 4x4 Camper Jeep, 5 pax per jeep), 6 nights hotel/homestay (sharing), all pure veg meals (Day 1 Dinner to Day 7 Breakfast), Inner Line Permit, medical test fees, a trip captain/guide, and first aid & oxygen.",
+      },
+      {
+        title: "What is the age limit and who can do this yatra?",
+        description:
+          "Minimum age is 10 years, maximum 70 years (up to 80 if medically fit). Children below 10 are not allowed by ITBP. Senior citizens, couples and families can do it if fit — only a 3 Km easy trek, no prior trekking experience needed. Pregnant women are not allowed.",
+      },
+      {
+        title: "Is a medical fitness certificate required?",
+        description:
+          "Yes, it's compulsory — a certificate from your city's Govt doctor, plus a repeat medical test at Dharchula Govt Hospital on Day 2 for the permit. Trekkers with heart issues, high BP or severe asthma are not advised to attempt the yatra.",
+      },
+      {
+        title: "How difficult is Adi Kailash Yatra? Is there an oxygen problem?",
+        description:
+          "Difficulty is Easy to Medium. The highest points are Adi Kailash base at Jyolingkong (14,800 Ft) and the Om Parvat view point (14,500 Ft). Oxygen is low but manageable — we carry an oxygen cylinder in the vehicle, and the acclimatization stay at Dharchula helps.",
+      },
+      {
+        title: "Is there network and electricity in Gunji/Nabi?",
+        description:
+          "No. After Dharchula there is no mobile network (Jio, Airtel, BSNL) for 3 days. Gunji/Nabi homestay has limited solar electricity — charging is possible but not guaranteed. Inform family before leaving Dharchula; network is full in Dharchula and Pithoragarh.",
+      },
+      {
+        title: "What type of stay and food is provided?",
+        description:
+          "Pithoragarh, Dharchula and Jageshwar have good hotels with attached bathroom and geyser. Gunji/Nabi is a very basic homestay (sharing, 4-6 people per room, common washroom, no luxury). Food is pure vegetarian North Indian — non-veg and alcohol are strictly banned in Vyas Valley.",
+      },
+      {
+        title: "Do we need a passport or visa for Adi Kailash?",
+        description:
+          "No. Indian citizens need only an Aadhaar Card and photos. Foreign nationals need a passport plus a special permit (we arrange it, about 15 days) — no China visa is required, unlike Kailash Mansarovar Yatra.",
+      },
+      {
+        title: "Is a horse available for the Parvati Sarovar trek?",
+        description:
+          "Yes, limited horses are available at Jyolingkong for the 3 Km trek to Parvati Sarovar / Gauri Kund — ₹3,000-5,000 per person, paid directly to the owner. Not included in the package; walking is easy if you're fit.",
+      },
+      {
+        title: "What is the best time for Adi Kailash & Om Parvat Yatra?",
+        description:
+          "Season runs May to October. Best months are May-June (clear sky, full snow) and September-October (best views, no rain). July-August is monsoon, with landslide and road-block risk.",
+      },
+      {
+        title: "What to pack for the yatra?",
+        description:
+          "Heavy woolen jacket, thermal inners, gloves, cap, woolen socks, waterproof trekking shoes, sunscreen SPF50, sunglasses, power bank, torch, personal medicines and Diamox for altitude (consult your doctor).",
+      },
+      {
+        title: "What if the permit gets rejected or the road is closed?",
+        description:
+          "If a permit is rejected for medical reasons or ITBP cannot issue it due to landslide/weather, we refund the proportionate amount after deducting transport and hotel costs already incurred. No full refund once the yatra has started; the yatra can also be delayed by 1-2 days for weather.",
+      },
+      {
+        title: "Is Om Parvat a trek or a vehicle darshan?",
+        description:
+          "Om Parvat is a vehicle darshan — you travel by Camper Jeep till the Navidhang view point and see the OM symbol from a distance. There is no trek involved.",
+      },
+    ],
+    similarTreks: ["chardham-yatra", "panch-kedar-trek"],
     // TODO(content): seeded departure so this yatra qualifies for the
     // 60-day "Upcoming" filter. Replace with the real batch grid.
     "batchDates": ["2026-10-14"]
@@ -7932,6 +8768,497 @@ if (harKiDunIndex !== -1) {
   };
 }
 
+// Static details for the Rupin Pass Trek (uid: rupin-pass-trek), the
+// high-altitude crossover from Bawta/Jiskun in Himachal Pradesh over the
+// 15,350 ft Rupin Pass into Ronti Gad and Sangla Valley, run as a
+// Shimla-to-Shimla circuit. `difficulty`, `months` and `tagline` on the
+// catalogue entry above have been corrected to Difficult / May-Jun & Sep-Oct
+// to match this published itinerary; the trek does not run in winter or
+// during the Jul-Aug monsoon. Booking terms are left unset so the listing
+// renders the shared cancellation copy from `trekDefaults.ts` / `TrekCancellation`.
+const rupinPassIndex = TREKS.findIndex(t => t.slug === 'rupin-pass-trek');
+if (rupinPassIndex !== -1) {
+  TREKS[rupinPassIndex].totalDistance = "Approx. 460 km by road + 41 km on foot";
+  TREKS[rupinPassIndex].maxAltitude = "15,350 ft / 4,680 m (Rupin Pass Top)";
+
+  TREKS[rupinPassIndex].inclusions = [
+    { title: "Accommodation at Bawta/Jiskun & Jakha", description: "02 nights in homestay/guest house on triple sharing, in the villages of Bawta/Jiskun and Jakha." },
+    { title: "Camping", description: "04 nights in trekking tents on triple sharing, with sleeping bags and mats." },
+    { title: "Trekking Guide", description: "01 certified trekking guide for the full duration of the trek." },
+    { title: "Trekking Crew", description: "Cooks and helpers to support the trek." },
+    { title: "Permits", description: "All trekking and camping permits and permissions for Govind Wildlife Sanctuary." },
+    { title: "Meals", description: "Basic Indian vegetarian meals (3 meals a day), from dinner on Day 1 to breakfast on Day 7." },
+    { title: "Trek Leader & Local Guide", description: "Certified Trek Leader and local guide throughout the trek." },
+    { title: "Transportation", description: "Transport from Shimla to Bawta/Jiskun on Day 1, and Sangla to Shimla on Day 7." },
+    { title: "Toll, Parking & Tax", description: "All toll, parking and tax charges included." }
+  ];
+
+  TREKS[rupinPassIndex].exclusions = [
+    { title: "GST", description: "Mandatory GST of 5% on the invoice amount." },
+    { title: "Personal Expenses", description: "Any personal expenses, personal trekking gear and personal medicines." },
+    { title: "Extra Meals & Beverages", description: "Any extra meals, snacks, tea, coffee or bottled water." },
+    { title: "Force Majeure Costs", description: "Any cost arising due to landslide, bad weather, roadblock or political disturbance — payable extra on spot." },
+    { title: "Backpack Offloading", description: "Rs. 1,500/- for the full trek (optional)." },
+    { title: "Travel Insurance", description: "Travel insurance." },
+    { title: "Shimla Stay", description: "Shimla accommodation on Day 0 and Day 7." },
+    { title: "Anything not listed", description: "Anything not specifically mentioned under Inclusions." }
+  ];
+
+  TREKS[rupinPassIndex].minAge = 14;
+  TREKS[rupinPassIndex].maxAge = 60;
+  TREKS[rupinPassIndex].minAgeWithGuardian = 14;
+  TREKS[rupinPassIndex].soloAgeMin = 18;
+
+  TREKS[rupinPassIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: 14–60 years — 14 to 17 years must be with a parent/guardian, and above 55 years must submit a medical fitness certificate" },
+    { icon: "Footprints", text: "Experience: Must have completed at least 1 Moderate or Moderate-Difficult trek in the last 2 years — not open to first-time trekkers" },
+    { icon: "Mountain", text: "This is a Difficult-grade crossover trek with a high-altitude pass, a steep snow gully and a glacier walk" },
+    { icon: "ShieldCheck", text: "We reserve the right to stop any trekker on the trail if the Trek Leader feels their fitness is inadequate — safety first" },
+    { icon: "Stethoscope", text: "Not permitted with severe asthma, heart problems, epilepsy, uncontrolled high BP, recent surgery, or a major illness/Covid in the last month" },
+    { icon: "Snowflake", text: "Closed through winter (heavy snow) and July–August (monsoon rain, landslides and risky river crossings)" }
+  ];
+
+  /** Difficult grade: 8-12 km daily with a 6-7 kg backpack, plus a roped snow-gully climb on summit day. */
+  TREKS[rupinPassIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to jog/run 5 km in 35–40 minutes without stopping" },
+    { icon: "TrendingUp", text: "Comfortable walking 10–12 km daily with a 6–7 kg backpack, for 6–7 consecutive days" },
+    { icon: "Dumbbell", text: "Able to climb 50 floors of stairs without heavy breathing" },
+    { icon: "Backpack", text: "BMI below 28 — recommended to reduce weight before the trek if higher" },
+    { icon: "Activity", text: "Start a 30-day pre-trek routine of daily running, stair climbing, squats, lunges, planks and breathing exercises (Kapal Bhati & Anulom Vilom)" }
+  ];
+
+  TREKS[rupinPassIndex].aboutParagraphs = [
+    "Rupin Pass Trek is a high-altitude crossover trek from Himachal Pradesh to Uttarakhand at an altitude of 15,350 ft (4,680 m). It connects Dhaula village in Uttarakhand with Sangla in Himachal Pradesh — but we run it as a Shimla-to-Shimla circuit, starting from Bawta/Jiskun and ending at Sangla, then driving back to Shimla.",
+    "This trek is called \"A Trek of Many Landscapes\" — you will never see the same view for two days in a row. The first day takes you into the hanging villages of Jiskun and Jhaka, the last village of Himachal Pradesh, with wooden-and-stone houses built on the edge of a cliff.",
+    "From Sewa to Dhanderas Thatch, the trail follows the Rupin River through a deep gorge to the 3-stage Rupin Waterfall, 100 metres high, where you camp right below it at Upper Waterfall Camp (13,120–13,200 ft) — at night, you can hear the waterfall from your tent.",
+    "Dhanderas Thatch itself is a huge alpine meadow at around 11,700 ft that turns yellow with marigold flowers in June and September, with views of the Dhauladhar Range. Summit day is a steep, 3-step snow climb from Upper Waterfall to the pass, including a roughly 75-degree snow gully climbed with the help of rope, before a 360-degree view from the top over the Kinnaur Kailash Range (6,050 m) and Sangla Valley.",
+    "After the pass, the trail descends into the green Ronti Gad valley — completely different from the Himachal side, with pine forest and meadows — before reaching Sangla Valley. Rupin Pass was originally an old shepherd route, used to move sheep between Himachal and Uttarakhand, and takes its name from the Rupin River that originates at the pass."
+  ];
+
+  TREKS[rupinPassIndex].highlights = [
+    "3-Stage Rupin Waterfall",
+    "Rupin River Gorge",
+    "Hanging Villages of Jiskun & Jhaka",
+    "Dhanderas Thatch Meadow",
+    "Marigold Meadows",
+    "Kinnaur Kailash View",
+    "3-Step Snow Climb to the Pass",
+    "Ronti Gad Valley"
+  ];
+
+  TREKS[rupinPassIndex].usps = [
+    {
+      title: "A landscape that changes every single day",
+      description: "Hanging villages, dense forest, a river gorge, a huge meadow, a waterfall camp, a snow gully and glacier, and finally pine forest in Sangla Valley — no other trek in India changes this much in seven days."
+    },
+    {
+      title: "The hanging villages of Jiskun & Jhaka",
+      description: "The first two days are spent in Jiskun and Jhaka, the highest hanging villages of Himachal — wood-and-stone houses on a cliff edge, potato farms and a way of life with no phone network."
+    },
+    {
+      title: "Dhanderas Thatch — the meadow of marigolds",
+      description: "A huge alpine meadow at 11,700 ft used as a 2-night acclimatisation stop, turning yellow with marigold flowers in June and September — one of the best campsites on any Himalayan trek."
+    },
+    {
+      title: "The 3-stage, 100 m Rupin Waterfall",
+      description: "You camp right below the famous 3-stage waterfall at Upper Waterfall Camp — the sound of falling water all night, under open stars."
+    },
+    {
+      title: "The snow climb through Rupin Gully",
+      description: "The final climb to the pass is a roughly 75-degree snow gully, climbed with rope, ice axe and microspikes — technical, thrilling, and the reason this trek is graded Difficult."
+    }
+  ];
+
+  TREKS[rupinPassIndex].destinationHighlights = [
+    { name: "Bawta / Jiskun", blurb: "The trailhead village at 7,700 ft on the Himachal side, and the first of the trek's hanging villages." },
+    { name: "Jakha (Jhaka)", blurb: "The highest hanging village on the trail, reached by a steep climb from Jiskun." },
+    { name: "Dhanderas Thatch", blurb: "A huge alpine meadow at roughly 11,700 ft, used as the trek's acclimatisation campsite, and known for its marigold flowers." },
+    { name: "Upper Waterfall Camp", blurb: "Campsite at around 13,200 ft, pitched right below the 3-stage, 100 m Rupin Waterfall." },
+    { name: "Rupin Pass", blurb: "The high point of the trek at 15,350 ft (4,680 m), crossed via a steep, roped snow gully." },
+    { name: "Ronti Gad", blurb: "The green valley on the Uttarakhand side of the pass, with meadows and pine forest, very different from the Himachal side." },
+    { name: "Sangla Valley", blurb: "The trek's endpoint at around 8,800 ft, inside Kinnaur, before the drive back to Shimla." }
+  ];
+
+  TREKS[rupinPassIndex].differentiators = [
+    "Region: Govind Wildlife Sanctuary, on the Himachal Pradesh–Uttarakhand border, ending in Sangla Valley (Kinnaur)",
+    "Trek type: high-altitude crossover trek — Dhaula (Uttarakhand) to Sangla (Himachal), run as a Shimla-to-Shimla circuit",
+    "Terrain: hanging villages, river gorge, alpine meadow, waterfall camp, steep snow gully and glacier walk",
+    "Best experience: villages, forests, meadows, waterfalls, rivers, a snow climb and a big pass crossing — all in one trek"
+  ];
+
+  TREKS[rupinPassIndex].idealFor =
+    "Experienced trekkers, adventure lovers, crossover-trek lovers, snow-climb lovers and photography groups aged 14–60 who have completed 1–2 Moderate treks before — comfortable with high altitude, a roped snow-gully climb and a glacier walk.";
+
+  TREKS[rupinPassIndex].importantNote =
+    "Rupin Pass is a Difficult-grade trek that climbs to 15,350 ft over a steep, roped snow gully — it is not for first-time trekkers, and you must have completed at least one Moderate or Moderate-Difficult trek in the last 2 years. The trek does not run in winter (heavy snow, high risk) or during July–August (monsoon rain, landslides in Himachal and risky river crossings). Trekkers aged 14–17 must be accompanied by a parent/guardian, and anyone above 55 must carry a medical fitness certificate.";
+
+  TREKS[rupinPassIndex].howToReach = {
+    intro: "The Rupin Pass Trek starts and ends in Shimla, with the trek on foot beginning at Bawta/Jiskun, on the Himachal Pradesh side of the Himachal–Uttarakhand border.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jubbarhatti Airport, Shimla (SLV) — 25 km",
+      detail: "Direct flights from Delhi (about 1 hour) exist but are limited and costly. Chandigarh Airport (IXC), 115 km / about 4 hours from Shimla, has daily flights from Delhi, Mumbai and Bangalore — from there take an HRTC Volvo or taxi to Shimla (4–5 hours, Rs. 400–600)."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Shimla Railway Station (Kalka–Shimla Toy Train)",
+      detail: "The scenic Kalka–Shimla Toy Train takes 5–6 hours and should be booked about a month in advance. Otherwise take a train to Kalka (90 km from Shimla) or Chandigarh (115 km) — from Delhi, a Shatabdi/Himalayan Queen to Kalka (4 hours), then an HRTC bus every 30 minutes to Shimla (about 3 hours, Rs. 200–300)."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Delhi to Shimla (350 km) via NH44, then Shimla to Bawta/Jiskun via Rohru and Dhaula",
+      detail: "Delhi to Shimla is 350 km / 8–10 hours. HRTC Volvo/Himsuta or private Volvo buses run every 30 minutes overnight from Delhi ISBT Kashmiri Gate/Majnu Ka Tila (Rs. 700–1,400), reaching Shimla by 5–6 AM — timed for the Day 1 pickup. Transport from Shimla to Bawta/Jiskun (about 200 km / 8–10 hours) is included in the package; on return, Sangla to Shimla (about 220 km / 9–10 hours) is also included.",
+      route: ["Delhi", "Panipat", "Chandigarh", "Solan", "Shimla", "Rohru", "Chirgaon", "Dhaula", "Bawta / Jiskun"],
+      facts: [
+        { label: "Delhi to Shimla", value: "350 km / 8–10 hours" },
+        { label: "Shimla to Bawta/Jiskun", value: "~200 km / 8–10 hours (included)" },
+        { label: "Sangla to Shimla", value: "~220 km / 9–10 hours (included)" }
+      ]
+    },
+    pickup: {
+      point: "Shimla Old Bus Stand / Mall Road",
+      time: "6:00 AM on Day 1",
+      dropPoint: "Shimla",
+      dropTime: "11:00 PM – 1:00 AM on Day 7 (night)",
+      note: "Reach Shimla a day before (Day 0) and stay overnight for better acclimatisation — recommended. If travelling on to Delhi, book a Day 8 morning bus/train rather than the same night. Last ATM and mobile network is at Rohru, about 80 km before Bawta — after that there is no network for 5 days (Jio works only in Shimla & Sangla; BSNL works at Jakha & Dhanderas). Carry cash, as villages do not accept UPI."
+    }
+  };
+
+  TREKS[rupinPassIndex].similarTreks = [
+    "har-ki-dun-trek",
+    "kuari-pass-trek",
+    "brahmatal-trek",
+    "phulara-ridge-trek",
+    "hampta-pass-trek"
+  ];
+
+  TREKS[rupinPassIndex].itinerary = [
+    {
+      day: 1,
+      title: "Shimla to Bawta / Jiskun",
+      driveDistance: "200 km",
+      drivingTime: "8-9 Hours",
+      pickupPoint: "Shimla Old Bus Stand",
+      pickupTime: "6:00 AM",
+      altitudePoints: [
+        { location: "Shimla", m: 2206, ft: 7238 },
+        { location: "Bawta / Jiskun", m: 2347, ft: 7700 }
+      ],
+      altitudeGain: { m: 141, ft: 462 },
+      description: "An early morning drive from Shimla to the hanging village of Bawta/Jiskun, via Rohru and Dhaula.",
+      detailedParagraphs: [
+        "Drive around 200 km / 8–9 hours from Shimla Old Bus Stand towards Bawta/Jiskun, via Rohru and Dhaula.",
+        "Rohru is the last point with a mobile network and an ATM — withdraw cash here, as the villages ahead do not accept UPI.",
+        "On arrival, check into a homestay/guest house at Bawta-Jiskun, the hanging village that marks the start of the trek.",
+        "Overnight stay in a homestay/guest house, with dinner included."
+      ],
+      highlights: ["Scenic Drive via Rohru", "Last ATM & Network at Rohru", "Bawta/Jiskun Hanging Village"],
+      meals: "Dinner",
+      stayType: "Homestay / Guest House"
+    },
+    {
+      day: 2,
+      title: "Bawta / Jiskun to Jakha (Jhaka)",
+      trekDistance: "5-6 km",
+      trekDuration: "4-5 Hours",
+      altitudePoints: [
+        { location: "Bawta / Jiskun", m: 2347, ft: 7700 },
+        { location: "Jakha (Jhaka)", m: 2652, ft: 8700 }
+      ],
+      altitudeGain: { m: 305, ft: 1000 },
+      description: "A steep climb from Jiskun, descending to a wooden bridge before a zig-zag climb to Jakha, the highest hanging village on the trail.",
+      detailedParagraphs: [
+        "The trail descends from Jiskun to a wooden bridge, then climbs in a zig-zag up to Jakha (Jhaka) — the highest hanging village on this trail.",
+        "Tea and Maggi stalls line the way, and Selwan Khad is the last reliable water point before camp.",
+        "Reach Jakha by afternoon for a hot lunch at camp, with time to look around the village.",
+        "Overnight stay in a homestay / tents at Jakha."
+      ],
+      highlights: ["Steep Zig-Zag Climb", "Selwan Khad", "Jakha — Highest Hanging Village"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Homestay / Tents"
+    },
+    {
+      day: 3,
+      title: "Jakha to Dhanderas Thatch (Lower Waterfall)",
+      trekDistance: "8-11 km",
+      trekDuration: "6-8 Hours",
+      altitudePoints: [
+        { location: "Jakha (Jhaka)", m: 2652, ft: 8700 },
+        { location: "Dhanderas Thatch", m: 3560, ft: 11680 }
+      ],
+      altitudeGain: { m: 908, ft: 2980 },
+      description: "A long day via Sewa village and pine forest, following the Rupin River gorge up to the meadow campsite of Dhanderas Thatch.",
+      detailedParagraphs: [
+        "A long, moderate-to-difficult day via the village of Sewa, through pine forest and along the Rupin River gorge.",
+        "Water bottles can be refilled from the river; expect snow bridges in season, along with wildflowers and meadows en route.",
+        "A packed lunch is provided on the trail. Reach the meadow campsite of Dhanderas Thatch by evening.",
+        "Overnight stay in tents at Dhanderas Thatch."
+      ],
+      highlights: ["Sewa Village", "Rupin River Gorge", "Pine Forest", "Dhanderas Thatch Meadow"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Tents"
+    },
+    {
+      day: 4,
+      title: "Acclimatisation / Buffer Day at Dhanderas Thatch",
+      altitudePoints: [
+        { location: "Dhanderas Thatch", m: 3560, ft: 11680 }
+      ],
+      altitudeGain: null,
+      description: "A rest and acclimatisation day at the meadow campsite, with a short hike to a waterfall viewpoint, and used as a weather buffer if needed.",
+      detailedParagraphs: [
+        "An important rest and acclimatisation day before the push towards the high pass.",
+        "A small hike to a waterfall viewpoint and time to explore the meadow, along with a gear check for the summit days ahead.",
+        "This day also serves as a buffer if bad weather has delayed the schedule.",
+        "Overnight stay in tents at Dhanderas Thatch."
+      ],
+      highlights: ["Acclimatisation", "Waterfall Viewpoint", "Gear Check", "Weather Buffer Day"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Tents"
+    },
+    {
+      day: 5,
+      title: "Dhanderas Thatch to Upper Waterfall",
+      trekDistance: "4 km",
+      trekDuration: "3-5 Hours",
+      altitudePoints: [
+        { location: "Dhanderas Thatch", m: 3560, ft: 11680 },
+        { location: "Upper Waterfall", m: 4000, ft: 13120 }
+      ],
+      altitudeGain: { m: 440, ft: 1440 },
+      description: "A short, picturesque day of boulder-walking and snow patches, camping just below the famous 3-stage Rupin Waterfall.",
+      detailedParagraphs: [
+        "A short but picturesque day with a moderate ascent over boulders and snow patches — walk around snow patches rather than stepping directly on them.",
+        "Small streams along the way can be used to refill water bottles, with a hot lunch served at the campsite.",
+        "Camp is pitched just below the 3-stage, 100 m Rupin Waterfall — you can hear it from your tent through the night.",
+        "Overnight stay in tents at Upper Waterfall Camp."
+      ],
+      highlights: ["Boulder & Snow Walk", "3-Stage Rupin Waterfall", "Waterfall Camp"],
+      meals: "Breakfast, Lunch & Dinner",
+      stayType: "Tents"
+    },
+    {
+      day: 6,
+      title: "Upper Waterfall to Ronti Gad, Crossing Rupin Pass",
+      trekDistance: "9-10 km",
+      trekDuration: "8-10 Hours",
+      altitudePoints: [
+        { location: "Upper Waterfall", m: 4000, ft: 13120 },
+        { location: "Rupin Pass Top", m: 4680, ft: 15350 },
+        { location: "Ronti Gad", m: 4090, ft: 13420 }
+      ],
+      altitudeGain: { m: 680, ft: 2230 },
+      description: "The toughest and most exciting day — a steep, roped 75-degree snow gully to Rupin Pass Top, followed by a long descent into Ronti Gad.",
+      detailedParagraphs: [
+        "The most exciting and toughest day of the trek. Start around 4:30 AM, carrying hot water, since water sources are limited on this stretch.",
+        "A steep, roughly 75-degree ascent through the Rupin Gully leads to Rupin Pass Top (15,350 ft), with a 360-degree view over the Kinnaur Kailash Range and Sangla Valley, followed by a steep descent on the Uttarakhand side.",
+        "A packed lunch is provided on the trail. Reach Ronti Gad, in the green valley on the far side of the pass, late in the evening.",
+        "Overnight stay in tents at Ronti Gad."
+      ],
+      highlights: ["Rupin Pass Top (15,350 ft)", "Roped Snow Gully Climb", "Kinnaur Kailash View", "Ronti Gad Valley"],
+      meals: "Breakfast, Packed Lunch & Dinner",
+      stayType: "Tents"
+    },
+    {
+      day: 7,
+      title: "Ronti Gad to Sangla & Back to Shimla",
+      trekDistance: "6-12 km",
+      trekDuration: "4-6 Hours",
+      driveDistance: "220 km",
+      drivingTime: "9-10 Hours",
+      altitudePoints: [
+        { location: "Ronti Gad", m: 4090, ft: 13420 },
+        { location: "Sangla", m: 2682, ft: 8800 }
+      ],
+      altitudeGain: null,
+      description: "A moderate descent to Sangla Valley, then the return drive to Shimla — the trip ends here.",
+      detailedParagraphs: [
+        "A moderate descent from Ronti Gad to Sangla, passing several water points along the way, reaching Sangla by early afternoon.",
+        "The return cab leaves Sangla around 3:00 PM for the drive back to Shimla (about 220 km / 9–10 hours), arriving late night.",
+        "Plan your Shimla hotel booking accordingly if you are staying over before travelling onward.",
+        "Trek ends on arrival in Shimla."
+      ],
+      highlights: ["Descent to Sangla Valley", "Return Drive to Shimla", "Trek Ends"],
+      meals: "Breakfast",
+      stayType: ""
+    }
+  ];
+
+  TREKS[rupinPassIndex].article = {
+    title: "Rupin Pass Trek: The Most Dramatic Crossover Trek of India",
+    standfirst:
+      "Hanging villages, a river gorge, a meadow of marigolds, a 100 m waterfall and a roped snow-gully climb to 15,350 ft — a trek that never shows you the same view twice.",
+    readMinutes: 6,
+    sections: [
+      {
+        paragraphs: [
+          "Rupin Pass Trek is a high-altitude crossover trek from Himachal Pradesh to Uttarakhand, crossing at 15,350 ft (4,680 m).",
+          "It connects Dhaula village in Uttarakhand with Sangla in Himachal Pradesh — but we run it as a Shimla-to-Shimla circuit, starting from Bawta/Jiskun and ending at Sangla, then driving back to Shimla.",
+          "Trekkers call this \"A Trek of Many Landscapes\" — you will never see the same view for two days running."
+        ]
+      },
+      {
+        heading: "The Hanging Villages — Jiskun & Jhaka",
+        paragraphs: [
+          "The first day takes you into the famous hanging village of Jiskun (7,700 ft) and on to Jhaka — the highest village on this trail.",
+          "Houses here are built of wood and stone, hanging on the edge of a cliff. This is the last village of Himachal Pradesh, and very few trekkers know about it."
+        ]
+      },
+      {
+        heading: "The Rupin River & the 3-Stage Waterfall",
+        paragraphs: [
+          "From Sewa to Dhanderas Thatch, the trail follows the Rupin River, which carves a deep gorge through the valley.",
+          "The 3-stage Rupin Waterfall (Upper Waterfall) is 100 metres high, and the trek camps right below it at Upper Waterfall Camp (13,200 ft) — at night, you can hear the waterfall from your tent."
+        ]
+      },
+      {
+        heading: "Dhanderas Thatch — the Meadow of Marigolds",
+        paragraphs: [
+          "This is the most beautiful campsite on the trek — a huge alpine meadow at 11,700 ft.",
+          "In June and September it turns yellow with marigold flowers, with views out to the Dhauladhar Range."
+        ]
+      },
+      {
+        heading: "The Snow Climb & the Rupin Pass Gully",
+        paragraphs: [
+          "Day 6 is summit day. From Upper Waterfall to Rupin Pass Top is a steep, 3-step snow climb, including a roughly 75-degree snow gully climbed with the help of rope — this is why the trek is graded Difficult.",
+          "On top, at 15,350 ft, the reward is a 360-degree view of the Kinnaur Kailash Range (6,050 m) and Sangla Valley."
+        ]
+      },
+      {
+        heading: "Ronti Gad & Sangla Valley",
+        paragraphs: [
+          "After the pass, the trail descends into the beautiful Ronti Gad valley — completely different from the Himachal side, with green meadows, pine forest and views into Sangla Valley."
+        ]
+      },
+      {
+        heading: "A Complete Himalayan Experience",
+        paragraphs: [
+          "Rupin Pass was originally an old shepherd route, used by shepherds from Himachal and Uttarakhand to move their sheep across the border — the name Rupin comes from the Rupin River, which originates at the pass.",
+          "This trek is for those who want the complete Himalayan experience — villages, forests, meadows, waterfalls, rivers, a snow climb and a big pass crossing, all in one trek."
+        ]
+      }
+    ],
+    signoff: "Rupin Pass Trek with Trip My Soul."
+  };
+
+  TREKS[rupinPassIndex].faqs = [
+    {
+      title: "What is the height of Rupin Pass?",
+      description: "Rupin Pass Top is 15,350 ft (4,680 m). The highest campsites are Upper Waterfall at 13,120–13,200 ft and Ronti Gad at 13,420 ft."
+    },
+    {
+      title: "Is Rupin Pass trek difficult?",
+      description: "Yes, it is a Difficult-grade trek — not for beginners. Expect 8–12 km of walking daily, a 8–10 hour summit day, and a steep, roughly 75-degree snow climb using rope. You must have completed at least one Moderate trek before."
+    },
+    {
+      title: "What is the distance of the Rupin Pass trek?",
+      description: "The total trekking distance is around 41 km, plus roughly 460 km of driving (Shimla-Bawta/Jiskun and Sangla-Shimla combined). The trip runs over 7 days."
+    },
+    {
+      title: "Is Rupin Pass safe?",
+      description: "Yes, with our certified trek leader, guide, proper acclimatisation at Dhanderas Thatch, technical gear (microspikes, ice axe, rope) and all permits — but you must follow the guide's instructions at all times."
+    },
+    {
+      title: "What is the best time to do Rupin Pass?",
+      description: "May–June for snow and the waterfall in full flow, and September–October for clear views and golden meadows (most recommended). We do not operate in July–August due to rain and landslides, or in winter."
+    },
+    {
+      title: "What is the pickup point?",
+      description: "Shimla Old Bus Stand at 6:00 AM on Day 1. We provide transport from Shimla to Bawta/Jiskun and Sangla back to Shimla. Drop is on Day 7 between 11:00 PM and 1:00 AM in Shimla."
+    },
+    {
+      title: "What type of stay do we get?",
+      description: "Day 1–2: homestay/guest house in Bawta/Jiskun and Jakha villages (triple sharing). Day 3–6: trekking tents (triple sharing) with sleeping bags and mats. Toilet tents are provided."
+    },
+    {
+      title: "What about food?",
+      description: "All vegetarian meals from Day 1 dinner to Day 7 breakfast — homestay food on Days 1–2, and camp food cooked by our crew on Days 3–6, including breakfast, lunch (packed or hot), dinner and evening tea/snacks."
+    },
+    {
+      title: "Is there mobile network on Rupin Pass?",
+      description: "Only up to Rohru. After that, there is no network for 5 days — BSNL works a little at Jakha and Dhanderas, while Jio/Airtel only work in Shimla and Sangla. Inform your family before you leave."
+    },
+    {
+      title: "Is there electricity and washroom?",
+      description: "No electricity on the trek — carry a power bank (10,000–20,000 mAh). Homestays have Indian-style toilets; on the trek, toilet tents with dry-pit toilets are provided."
+    },
+    {
+      title: "What is the temperature on Rupin Pass?",
+      description: "Day: 10°C to 18°C. Night: -2°C to -8°C at the upper camps, and -5°C to -10°C with wind at the pass top. It is very cold on summit day."
+    },
+    {
+      title: "What should I pack for Rupin Pass?",
+      description: "High-ankle waterproof trekking shoes, a down jacket rated to -10°C, 3 quick-dry tracks and T-shirts, thermals, a woollen cap, waterproof gloves, sunglasses, a head torch, a 50–60L backpack, a power bank, a water bottle and personal medicines. A full kit list is sent after booking."
+    },
+    {
+      title: "Can I do Rupin Pass alone?",
+      description: "Solo trekking is not permitted, as the trek is inside Govind Wildlife Sanctuary and requires permits, a guide and technical gear. Solo trekkers are welcome to join our fixed group departures."
+    },
+    {
+      title: "What about backpack offloading?",
+      description: "You carry your own backpack (6–7 kg). If you want to offload it, mule/porter support is available for Rs. 1,500/- for the full trek — inform us at least 2 days in advance."
+    },
+    {
+      title: "What if I get altitude sickness?",
+      description: "We build in a full acclimatisation day at Dhanderas Thatch (11,680 ft), and carry an oxygen cylinder, oximeter and first-aid kit. The trek leader monitors everyone closely, and we descend immediately to Jakha/Sewa in case of severe AMS."
+    },
+    {
+      title: "Is water available on the trail?",
+      description: "Yes, from natural streams for most of the trek. On Day 5 and Day 6 (Upper Waterfall to the pass), water sources are limited, so carry a 2–3L bottle — hot water is provided at the camps."
+    }
+  ];
+
+  TREKS[rupinPassIndex].packingList = [
+    {
+      category: "Clothing & Layers",
+      items: [
+        "Down jacket rated to -10°C",
+        "Thermal innerwear (top & bottom)",
+        "3 quick-dry trek pants & 3 T-shirts",
+        "Woollen cap, sun cap & waterproof gloves",
+        "Woollen socks (3-4 pairs)"
+      ]
+    },
+    {
+      category: "Footwear & Snow Gear",
+      items: [
+        "High-ankle, waterproof trekking shoes",
+        "Trekking pole",
+        "50-60L backpack with rain cover",
+        "Headlamp / head torch with spare batteries",
+        "Knee cap, if prone to knee pain"
+      ]
+    },
+    {
+      category: "Sun, Health & Essentials",
+      items: [
+        "Sunglasses with UV protection",
+        "Sunscreen & lip balm",
+        "Personal medicines, and an inhaler if mildly asthmatic",
+        "Power bank (10,000-20,000 mAh)",
+        "Personal water bottle (2-3L capacity)",
+        "Cash — villages do not accept UPI"
+      ]
+    },
+    {
+      category: "Documents",
+      items: [
+        "Govt ID proof (Aadhar Card mandatory)",
+        "Medical fitness certificate (for age 50+)",
+        "Signed indemnity form"
+      ]
+    }
+  ];
+
+  TREKS[rupinPassIndex].thingsToRemember = [
+    "Reach Shimla one day before (Day 0) and stay in a hotel for better acclimatisation.",
+    "Last ATM is at Rohru, about 80 km before Bawta — withdraw cash in Shimla or Rohru, as villages ahead do not accept UPI.",
+    "Last mobile network is at Rohru/Chirgaon — after that there is no network for 5 days. Jio works only in Shimla and Sangla; BSNL works at Jakha and Dhanderas.",
+    "If heading back to Delhi the same night, do not book a same-day bus or train from Shimla — book for the next morning (Day 8) and stay in Shimla on Day 7 night."
+  ];
+}
+
 // Static details for the Nag Tibba Trek (uid: nagtibba-trek), the two-day
 // summit route out of Pantwari in Tehri Garhwal. Trek essentials (packing list)
 // and the cancellation policy are deliberately left unset: Kedarkantha
@@ -9212,6 +10539,367 @@ if (kanatalIndex !== -1) {
     "mukteshwar-winter-trip",
     "auli-snow-trip",
     "chopta-with-auli"
+  ];
+}
+
+// Static details for the Panwali Kantha Trek (uid: panwali-kantha-trek).
+// Full content sourced from the ops-supplied write-up (overview, itinerary,
+// inclusion/exclusion, article, FAQs, eligibility and how-to-reach).
+const panwaliKanthaIndex = TREKS.findIndex(t => t.slug === 'panwali-kantha-trek');
+if (panwaliKanthaIndex !== -1) {
+  TREKS[panwaliKanthaIndex].minAge = 10;
+  TREKS[panwaliKanthaIndex].maxAge = 60;
+  TREKS[panwaliKanthaIndex].minAgeWithGuardian = 10;
+
+  TREKS[panwaliKanthaIndex].intro =
+    "Panwali Kantha is a virgin, less-crowded Himalayan meadow (bugyal) in Rudraprayag district, Uttarakhand, at roughly 11,500 ft. Trekkers who know Dayara Bugyal or Auli Bugyal call Panwali their raw, bigger sibling — but around 90% of trekkers haven't heard of it, which is exactly why it stays clean, peaceful and non-commercial. It lies between Trijuginarayan (the temple where Shiva and Parvati are said to have married) and Ghuttu Village, and its meadow runs an almost continuous 7-8 km, making it one of the longest high-altitude meadows in Garhwal.";
+
+  TREKS[panwaliKanthaIndex].aboutParagraphs = [
+    "Panwali Kantha is not a hill station — there are no hotels and no Mall Road. It is a 7-8 km long high-altitude meadow hidden between the Kedarnath and Gangotri valleys in Rudraprayag district, at 3,350 m / 11,000-11,500 ft. Local people call it \"Dev Bhoomi Ka Dil\" — the heart of God's land.",
+    "In ancient times Panwali was the walking route for the Pandavas, and later for pilgrims travelling from Gangotri to Kedarnath. It connects Trijuginarayan Temple — where Shiva and Parvati married, and where the eternal fire still burns — to Kedarnath, so the story goes that the gods themselves walked this meadow. Shepherds from Ghuttu and Reeh villages have also brought their sheep here every summer for centuries, treating Panwali as a second home; their old stone huts still stand in the meadow.",
+    "You cannot reach Panwali Kantha by road. The only way in is a 16 km trek one way from Ghuttu or Trijuginarayan, through dense oak and rhododendron forest before the trees give way to open meadow. That's precisely why there is no crowd, no shops and no hotels here — only the meadow, the tents and the Himalayas.",
+    "From the top, Panwali gives a near-continuous, 180-degree wall of snow peaks — Kedarnath Dome, Chaukhamba, Neelkanth, Thalay Sagar, the Gangotri group, Meru and Sumeru among them — and a sunrise that turns the whole range gold and then pink. At night, with no village for 16 km and no network or electricity, the sky opens into a clear view of the Milky Way and thousands of stars."
+  ];
+
+  TREKS[panwaliKanthaIndex].highlights = [
+    "A rare 7-8 km continuous meadow — one of the longest bugyals in Garhwal",
+    "180° Himalayan wall — Kedarnath Dome, Chaukhamba, Neelkanth, Thalay Sagar, Gangotri Group, Meru, Sumeru",
+    "Connects two dhams — Trijuginarayan Temple (Shiva-Parvati's marriage site) and Kedarnath",
+    "No network, no electricity — some of the clearest night skies and Milky Way views in Uttarakhand",
+    "Centuries-old shepherd trail with stone huts still standing in the meadow",
+    "Brahma Kamal and other Himalayan flowers in the July-August bloom"
+  ];
+
+  TREKS[panwaliKanthaIndex].usps = [
+    {
+      title: "Not a tourist spot — a trek",
+      description: "There is no road access; you trek 16 km one way from Ghuttu or Trijuginarayan. That single fact keeps out the crowds, the shops and the hotels."
+    },
+    {
+      title: "A 360° Himalayan wall",
+      description: "From the top you see Gangotri Group, Kedarnath Dome, Meru, Sumeru, Thalay Sagar, Chaukhamba and Neelkanth — almost the entire Garhwal range in one frame, best at sunrise."
+    },
+    {
+      title: "A trek between two dhams",
+      description: "The trail connects Kedarnath Dham on one side and Trijuginarayan Temple — where Shiva and Parvati married — on the other. Locals say the Pandavas passed through here."
+    },
+    {
+      title: "A wild bugyal experience",
+      description: "No tent-hotels like some other bugyals — just tents, thousands of visible stars, horses and sheep grazing by day, and occasional Himalayan bear footprints."
+    },
+    {
+      title: "Best for photographers and peace seekers",
+      description: "Green in May-June, flowering in July-August, golden-brown in September-October — with no network and no noise throughout."
+    }
+  ];
+
+  TREKS[panwaliKanthaIndex].destinationHighlights = [
+    { name: "Ghuttu Village", blurb: "The trek's base camp on the Tehri side — a small, hidden village with the ancient Bhootnath Temple and the Bhilangana River running through it." },
+    { name: "Trijuginarayan Temple", blurb: "The temple on the Kedarnath side where Shiva and Parvati are said to have married; the trek's other possible starting point, 12 km from Sonprayag." },
+    { name: "Pobhagi Bugyal", blurb: "A smaller advance-base meadow en route to Panwali, with old shepherd stone huts and a sunset view of Thalay Sagar." },
+    { name: "Panwali Kantha Top", blurb: "The main meadow at 11,500 ft — a 7-8 km green carpet with a 180° Himalayan wall in front of it." },
+    { name: "Raj Kharak", blurb: "A second, equally scenic campsite on the far side of the Panwali ridge, facing the Kedarnath valley, where shepherds graze large flocks of sheep." },
+    { name: "Gaurmanda Bugyal", blurb: "A smaller meadow near the forest line at 8,965 ft, close to a water source, on the descent back towards Ghuttu." }
+  ];
+
+  TREKS[panwaliKanthaIndex].differentiators = [
+    "Region: Rudraprayag district, Uttarakhand, between Trijuginarayan and Ghuttu, at 3,350 m (11,000-11,500 ft)",
+    "Meadow length: 7-8 km continuous — three times the length of bugyals like Dayara or Auli",
+    "Access: no road; 16 km trek one way, through dense oak-rhododendron forest for the first 10 km",
+    "Best season: 15 May-25 June (green + snow peaks) and 15 September-15 October (clear sky + golden meadow); July-August is monsoon, with flowers but also landslide and leech risk",
+    "No stay, no shops: camping only, everything carried in — no hotel, no Maggi point"
+  ];
+
+  TREKS[panwaliKanthaIndex].idealFor =
+    "Trekkers who want something raw and non-crowded — a long, untouched bugyal with a 180° Himalayan wall, camping under a clear night sky, and no phone network. Not for people looking for hotel stay and easy sightseeing; this is pure camping and trekking.";
+
+  TREKS[panwaliKanthaIndex].importantNote =
+    "There is no hotel, shop or network anywhere on this trek — only camping tents, and Jio works only slightly in Ghuttu village. A local guide is compulsory; the forest check post at the start will not allow entry without one. Not recommended for families with children below 10 or seniors above 60, since the daily walk runs 5-8 hours over 32-33 km in total, and no pony/mule is available for the last 6 km beyond Pobhagi.";
+
+  TREKS[panwaliKanthaIndex].sourceCaveat =
+    "The source write-up gives Panwali Kantha's altitude as both \"3,350 m (11,000-11,500 ft)\" and \"11,500 ft\" elsewhere — both figures are kept as published (11,500 ft actually converts to about 3,505 m). It similarly gives the round-trip trek distance as both 32 km and 33 km in different places; both are kept as published. No fixed package price is published — the source lists it as available \"in customise\" for groups of 4 or more — so none is shown here; contact the trips desk for current rates. If starting from Trijuginarayan instead of Ghuttu, the source notes the itinerary runs in reverse.";
+
+  TREKS[panwaliKanthaIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: minimum 10 years (physically active, trekking with parents); ideal 14-55 years; maximum 60 years, subject to fitness" },
+    { icon: "IdCard", text: "Valid government ID (Aadhaar / Passport) compulsory for the forest permit; foreign nationals need a passport and visa copy" },
+    { icon: "Users", text: "Not a solo trek — the forest department requires a certified local guide, minimum group size 2, maximum 12 per guide" },
+    { icon: "ShieldAlert", text: "Not allowed without a doctor's certificate for heart conditions, severe asthma, epilepsy, a recent major operation, severe knee/disc issues, or pregnancy" },
+    { icon: "HeartPulse", text: "Mild asthma or controlled high BP allowed with precautions — carry your inhaler or medicine plus a doctor's note" },
+    { icon: "Footprints", text: "Trek shoes compulsory — sports shoes are not allowed, as they slip on the meadow" }
+  ];
+
+  TREKS[panwaliKanthaIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 6-7 hours continuously with small breaks, over 9-10 km of uphill and downhill trail a day" },
+    { icon: "TrendingUp", text: "Able to climb roughly 1,000 ft in 2-3 hours without severe breathlessness" },
+    { icon: "Backpack", text: "Able to carry a small personal backpack of 4-5 kg; porter/mule offloading is available for the rest, but only up to Pobhagi" },
+    { icon: "Activity", text: "Quick self-test: a 5 km walk with a slight uphill, on 2-3 consecutive days, without needing to sit every 10 minutes" }
+  ];
+
+  TREKS[panwaliKanthaIndex].howToReach = {
+    intro: "Panwali Kantha starts and ends at Dehradun; the trek itself begins from Ghuttu Village (or Trijuginarayan on the Kedarnath side).",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "About 25 km from Dehradun city, with daily direct flights from Delhi (50 min), Mumbai, Bengaluru, Kolkata, Hyderabad, Lucknow and Ahmedabad. From the airport, a taxi to Dehradun city takes about 45 minutes."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Dehradun Railway Station (DDN)",
+      detail: "The main station in the city centre, connected by trains such as the Doon Express, Upasana Express and Amritsar-Dehradun Express from other major cities."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Dehradun to Ghuttu Village via Mussoorie, Chamba, New Tehri and Ghansali",
+      route: ["Dehradun", "Mussoorie", "Chamba", "New Tehri", "Ghansali", "Ghuttu"],
+      facts: [
+        { label: "Delhi - Dehradun", value: "250 km / 5-6 hrs" },
+        { label: "Dehradun - Ghuttu Village", value: "180 km / 7-8 hrs" },
+        { label: "Chandigarh - Dehradun", value: "170 km / 4-5 hrs" },
+        { label: "Haridwar / Rishikesh - Dehradun", value: "55 km / 1.5 hrs" }
+      ],
+      options: [
+        { from: "Delhi ISBT Kashmere Gate", name: "Govt. Uttarakhand Roadways AC / Volvo / ordinary buses, and private Volvo / Mercedes services", note: "Every 30 minutes, 6-7 hours; overnight private Volvos are the most popular" }
+      ]
+    },
+    pickup: {
+      point: "Dehradun Railway Station / ISBT / Airport",
+      time: "6:00 AM on Day 1",
+      dropPoint: "Dehradun Railway Station / ISBT",
+      dropTime: "Evening on Day 5",
+      note: "If your flight or train arrives after 5 PM the day before, plan to stay a night in Dehradun, since pickup is at 6:00 AM sharp."
+    }
+  };
+
+  TREKS[panwaliKanthaIndex].inclusions = [
+    { title: "Transportation", description: "Pickup and drop from Dehradun to Dehradun by shared/private cab (Bolero/Sumo/Tempo Traveller), including the 360 km round trip to Ghuttu Village, driver allowance, fuel, toll and parking." },
+    { title: "Accommodation", description: "1 night homestay at Ghuttu Village (triple/quad sharing, basic clean rooms) and 3 nights camping in dome tents (triple/quad sharing) with sleeping bags, mattresses and pillows." },
+    { title: "Meals", description: "All-veg meals from Day 1 dinner to Day 5 breakfast — homestay dinner on Day 1; breakfast, packed/hot lunch, evening tea-snacks and dinner on Days 2-4; breakfast on Day 5." },
+    { title: "Trek Support", description: "Certified local trek guide (compulsory, 1 per 8-10 persons), cook and helper, plus kitchen tent, dining tent and toilet tent." },
+    { title: "Permits & Camping", description: "Forest permits and entry fees for Panwali Kantha (Kedarnath Wildlife Sanctuary buffer) and all camping charges." },
+    { title: "Safety", description: "Basic first-aid kit and an oxygen cylinder at the campsite; support staff carry the camping gear and ration." }
+  ];
+
+  TREKS[panwaliKanthaIndex].exclusions = [
+    { title: "Personal trek gear", description: "Trek shoes, trek pole, poncho/raincoat, backpack, warm jackets, gloves, cap and head torch — available on rent if requested in advance." },
+    { title: "Porter / mule offloading", description: "A personal porter or mule to carry your own backpack (8-10 kg), charged per bag; most trekkers carry a small 5-6 kg daypack themselves." },
+    { title: "Water & extra food", description: "Mineral water bottles (carry your own; boiled water is provided at camp) and any food or snacks bought on the way." },
+    { title: "Personal expenses", description: "Tips to guide, driver and cook; phone charging, extra hot water and any shopping." },
+    { title: "Insurance & medical costs", description: "Travel and medical insurance, personal medicines, and the cost of rescue, helicopter or hospitalisation if required." },
+    { title: "GST", description: "5% GST extra if a bill is needed." },
+    { title: "Anything not listed", description: "Anything not specifically mentioned under inclusions." }
+  ];
+
+  TREKS[panwaliKanthaIndex].itinerary = [
+    {
+      day: 1,
+      title: "Dehradun to Ghuttu Village",
+      driveDistance: "180 km",
+      drivingTime: "7-8 Hours",
+      pickupPoint: "Dehradun Railway Station / ISBT / Airport",
+      pickupTime: "6:00 AM",
+      altitudePoints: [
+        { location: "Dehradun", m: 435, ft: 1427 },
+        { location: "Ghuttu Village", m: 1554, ft: 5100 }
+      ],
+      altitudeGain: { m: 1119, ft: 3673 },
+      description: "A scenic drive via Mussoorie, Chamba, New Tehri and Ghansali to the last-village base camp, with an evening walk and a guide briefing for the trek ahead.",
+      detailedParagraphs: [
+        "Pickup from Dehradun Railway Station / ISBT / Airport. The drive runs via Mussoorie, Chamba, New Tehri and Ghansali to Ghuttu — crossing Tehri Lake, pine forest and small Garhwali villages along the way, with breakfast or lunch taken en route.",
+        "Ghuttu is a small, hidden village — the last one before the trek — with no crowd at all. Check in to the homestay (basic but clean, wooden rooms with home-cooked food).",
+        "In the evening, take a short walk around the village, visit the ancient Bhootnath Temple, meet the locals and see the Bhilangana River. The guide briefs the group on the route ahead and what to pack for the next day.",
+        "Dinner and overnight stay at the Ghuttu homestay. Only Jio works, and that only slightly."
+      ],
+      highlights: ["Scenic Drive via Tehri Lake", "Bhootnath Temple, Ghuttu", "Bhilangana River"],
+      meals: "Dinner",
+      stayType: "Homestay — Ghuttu Village"
+    },
+    {
+      day: 2,
+      title: "Ghuttu Village to Pobhagi Bugyal",
+      trekDistance: "9 km",
+      trekDuration: "5-6 Hours",
+      altitudePoints: [
+        { location: "Ghuttu Village", m: 1554, ft: 5100 },
+        { location: "Pobhagi Bugyal", m: 2896, ft: 9500 }
+      ],
+      altitudeGain: { m: 1342, ft: 4400 },
+      description: "The trek begins with a forest permit check, then climbs steadily along the Bhilangana river through oak and rhododendron forest to the first meadow campsite.",
+      detailedParagraphs: [
+        "After hot tea and breakfast at the homestay, the trek starts with a forest department check post entry and permit check.",
+        "The trail runs Ghuttu to Reeh Village (30 minutes), then into dense oak and rhododendron forest with a slow, steady climb. The first 3 km follow the Bhilangana river before the climb continues.",
+        "A packed lunch or maggi is taken at a small shepherd tapri along the way, where open. The final kilometre is steep, then the meadow suddenly opens — Pobhagi.",
+        "Tents are already pitched at Pobhagi / Panwali Advance Base, a small bugyal with old shepherd stone huts. After hot tea and lunch, an evening acclimatisation walk gives a sunset view of Thalay Sagar peak. Dinner in the dining tent, overnight in dome tents at 2-5°C, under a very clear, star-filled sky."
+      ],
+      highlights: ["Bhilangana River Trail", "Oak & Rhododendron Forest", "Sunset View of Thalay Sagar"],
+      meals: "Breakfast, Lunch, Dinner",
+      stayType: "Camping — Pobhagi Bugyal"
+    },
+    {
+      day: 3,
+      title: "Pobhagi to Panwali Kantha Top to Raj Kharak",
+      trekDistance: "11 km",
+      trekDuration: "7-8 Hours",
+      altitudePoints: [
+        { location: "Pobhagi Bugyal", m: 2896, ft: 9500 },
+        { location: "Panwali Kantha Top", m: 3505, ft: 11500 },
+        { location: "Raj Kharak", m: 3353, ft: 11000 }
+      ],
+      altitudeGain: { m: 457, ft: 1500 },
+      description: "The main day of the trek — sunrise at Panwali Kantha's 11,500 ft top, a ridge walk across the full meadow, and a descent to the equally scenic Raj Kharak campsite.",
+      detailedParagraphs: [
+        "A steep 3 km climb through alpine meadow, with a packed breakfast, leads to Panwali Kantha Top (11,500 ft) in time for sunrise — the highlight of the trip.",
+        "From the top, a 180° Himalayan wall unfolds: Kedarnath Dome, Chaukhamba, Neelkanth, Thalay Sagar, Gangotri 1, 2, 3, Meru, Sumeru and Bharte Kunta, all turning gold in the morning light, with the 7 km meadow stretching out ahead.",
+        "After 1-1.5 hours at the top for photos, breakfast and quiet time, the trail crosses the entire Panwali Kantha meadow — a 4 km ridge walk — before descending to Raj Kharak (11,000 ft), reached by around 2:00-3:00 PM.",
+        "Raj Kharak is another beautiful meadow, facing the Kedarnath valley side, where local shepherds graze large flocks of sheep. Evening tea and exploration, then overnight in tents at what is often called the trip's most beautiful campsite."
+      ],
+      highlights: ["Sunrise at Panwali Kantha Top (11,500 ft)", "180° Garhwal Himalayan Wall", "4 km Ridge Walk Across the Meadow"],
+      meals: "Breakfast, Lunch, Dinner",
+      stayType: "Camping — Raj Kharak"
+    },
+    {
+      day: 4,
+      title: "Raj Kharak to Gaurmanda",
+      trekDistance: "8 km",
+      trekDuration: "4-5 Hours",
+      altitudePoints: [
+        { location: "Raj Kharak", m: 3353, ft: 11000 },
+        { location: "Gaurmanda Bugyal", m: 2733, ft: 8965 }
+      ],
+      altitudeGain: { m: -620, ft: -2035 },
+      description: "A relaxed, mostly downhill day through forest and small bugyals to a quieter meadow near the treeline, with a Kedarnath-facing sunrise to start.",
+      detailedParagraphs: [
+        "An easy, unhurried day. Sunrise from Raj Kharak gives a clear view of Kedarnath peak before breakfast and the start of the descent.",
+        "The trail runs through high-altitude forest and open meadow patches, mostly downhill, to Gaurmanda Bugyal (8,965 ft) — a smaller meadow near the forest line with a water source nearby.",
+        "Check in to tents (or the forest guest house where available). Evening rest and a story session with the guide — the last night under canvas on this trek."
+      ],
+      highlights: ["Kedarnath Peak Sunrise from Raj Kharak", "Descent Through High-Altitude Forest", "Gaurmanda Bugyal Campsite"],
+      meals: "Breakfast, Lunch, Dinner",
+      stayType: "Camping — Gaurmanda Bugyal"
+    },
+    {
+      day: 5,
+      title: "Gaurmanda to Ghuttu, drive to Dehradun",
+      trekDistance: "5 km",
+      trekDuration: "2-3 Hours",
+      driveDistance: "180 km",
+      drivingTime: "7-8 Hours",
+      altitudePoints: [
+        { location: "Gaurmanda Bugyal", m: 2733, ft: 8965 },
+        { location: "Ghuttu Village", m: 1554, ft: 5100 },
+        { location: "Dehradun", m: 435, ft: 1427 }
+      ],
+      altitudeGain: { m: -2298, ft: -7538 },
+      description: "An easy downhill walk back to Ghuttu, followed by the drive back to Dehradun for drop-off.",
+      detailedParagraphs: [
+        "After breakfast, an easy 5 km, roughly 2-hour downhill trek returns the group to Ghuttu Village.",
+        "Luggage is collected from the Ghuttu homestay before the drive back to Dehradun, with drop-off at Dehradun Railway Station / ISBT.",
+        "If starting from Trijuginarayan instead of Ghuttu, the source notes the itinerary runs in reverse — Trijuginarayan to Panwali to Ghuttu — over the same total distance."
+      ],
+      highlights: ["Easy Downhill Trek to Ghuttu", "Drive Back via Ghansali & New Tehri"],
+      meals: "Breakfast",
+      stayType: "Tour ends — no overnight"
+    }
+  ];
+
+  TREKS[panwaliKanthaIndex].faqs = [
+    {
+      title: "What is Panwali Kantha?",
+      description: "Panwali Kantha is a 7-8 km long high-altitude meadow (bugyal) at 11,500 ft in Rudraprayag district, Uttarakhand, lying between Trijuginarayan Temple and Kedarnath. It is one of the longest and most untouched bugyals in Garhwal — bigger than Dayara or Auli but with almost no crowd."
+    },
+    {
+      title: "Where does the Panwali Kantha trek start?",
+      description: "From Ghuttu Village (Tehri side, 180 km from Dehradun, 22 km from Ghansali, less crowded) or Trijuginarayan Temple (Kedarnath side, 12 km from Sonprayag). This package operates from the Ghuttu side."
+    },
+    {
+      title: "How difficult is the Panwali Kantha trek?",
+      description: "Moderate. A total of 32-33 km over 3 days of trekking, 5-8 hours a day, with no technical climbing — only mountain trail walking. Beginners with basic fitness can do it, but it is not recommended for kids below 10 or seniors above 60."
+    },
+    {
+      title: "What is the best time to visit Panwali Kantha?",
+      description: "15 May-25 June (green meadow, clear snow peaks, 10-20°C by day, 0-5°C at night) and 15 September-15 October (golden meadow, crystal-clear sky). July-August is monsoon, with Brahma Kamal in bloom but a higher risk of rain, landslide and leeches; November-April sees heavy snow and the trail is closed."
+    },
+    {
+      title: "Is there any hotel or stay in Panwali Kantha?",
+      description: "No — no hotel, lodge or shops, only camping. Dome tents, sleeping bags (rated to -10°C), mattresses, a kitchen tent and a toilet tent are provided. One night is spent in a Ghuttu Village homestay before the trek starts."
+    },
+    {
+      title: "Is a guide compulsory?",
+      description: "Yes. The forest department check post at Ghuttu / Trijuginarayan will not allow entry without a certified local guide. The guide, cook and permits are all included in the package."
+    },
+    {
+      title: "Is there network or electricity on the trek?",
+      description: "No network inside Panwali Kantha — only Jio works slightly in Ghuttu village — and no electricity during the trek. Carry a power bank (20,000 mAh) and a torch/headlamp; boiled water is provided at camp."
+    },
+    {
+      title: "What should I pack for the Panwali Kantha trek?",
+      description: "Waterproof trek shoes with ankle support, a warm jacket, fleece, thermals, gloves and a woollen cap, a raincoat/poncho and trek pole, a 40-50L backpack plus a small daypack, a 1L water bottle, sunscreen, sunglasses, personal medicines, a power bank and a torch. Trek shoes, jackets and poles are available on rent if requested 3 days in advance."
+    },
+    {
+      title: "Can we see Himalayan peaks from Panwali Kantha?",
+      description: "Yes — this is the main highlight. From the top you see Kedarnath Dome, Chaukhamba, Neelkanth, Thalay Sagar, Gangotri 1, 2 and 3, Meru, Sumeru and Bharte Kunta — almost the full Garhwal range, with what's said to be the best sunrise view in Uttarakhand."
+    },
+    {
+      title: "Is Panwali Kantha safe? Is there wildlife?",
+      description: "Yes, it's safe. The trek falls inside the Kedarnath Wildlife Sanctuary buffer — you may spot the Himalayan Monal or musk deer footprints. Black bears live in the lower forest but rarely come up to the meadow in summer, and the guide carries a stick and knows the trail well."
+    },
+    {
+      title: "How do we reach the Ghuttu Village base camp?",
+      description: "From Dehradun via Mussoorie, Chamba, New Tehri, Ghansali to Ghuttu — 180 km, 7-8 hours. Pickup is from Dehradun at 6:00 AM on Day 1."
+    },
+    {
+      title: "What about food during the trek?",
+      description: "Pure vegetarian, home-cooked, high-energy food — paratha, poha or omelette for breakfast; packed or hot rice-dal for lunch; dal, rice, sabzi, roti and soup for dinner, with tea twice a day. The team carries ration, cook and utensils; you can also bring dry fruits or energy bars."
+    }
+  ];
+
+  TREKS[panwaliKanthaIndex].article = {
+    title: "Panwali Kantha: Uttarakhand's Last Secret Meadow",
+    standfirst: "Hidden between the temple where Shiva married Parvati and the dham where he lives, a 7-kilometre carpet of grass at 11,500 feet is still waiting to be found.",
+    readMinutes: 6,
+    sections: [
+      {
+        paragraphs: [
+          "There are meadows you visit. And there is a meadow where you get lost, in a good way. Panwali Kantha is the second one.",
+          "It is not on any trending map, and it doesn't come with a thousand reels attached. It sits hidden between two holy places — Trijuginarayan Temple, where Lord Shiva married Parvati, and Kedarnath Dham, where he lives. In between, at 11,500 feet, lies a 7-kilometre-long green carpet that looks like someone rolled out grass all the way to the sky."
+        ]
+      },
+      {
+        heading: "A meadow you have to earn",
+        paragraphs: [
+          "Panwali is three times bigger than most bugyals, and ten times quieter, for one simple reason: you cannot reach it by car. You have to walk 16 kilometres to get there, climbing through oak and rhododendron forest, crossing small streams, passing old shepherd stone huts, and breathing hard the whole way. Then, suddenly, the trees end.",
+          "And you are standing on top of the world. In front of you, a 180-degree wall of snow mountains rises — Kedarnath Dome, Chaukhamba (7,138 m), Thalay Sagar, the Gangotri Group, Neelkanth, Meru, Sumeru. At sunrise, the first light turns these peaks gold, then pink, then white, and most people simply forget to take a photo."
+        ]
+      },
+      {
+        heading: "A meadow that changes with every season",
+        paragraphs: [
+          "The meadow itself is never quite the same. In May and June it is lush green, with small white and yellow flowers moving in the wind, horses and sheep grazing freely. In July and August, the monsoon brings out Brahma Kamal — the rare Himalayan flower that blooms only at night. By September and October, the whole meadow turns golden-brown, without a single tourist in sight.",
+          "There is no shop here, no Maggi point, no chai stall, no network and no electricity. At night you sleep in a tent, the temperature drops to zero, and the sky opens into a view most trekkers have never had in a city — the Milky Way, so clear it feels close enough to touch, and a silence deep enough to hear your own heartbeat."
+        ]
+      },
+      {
+        heading: "A trail older than any road",
+        paragraphs: [
+          "Panwali Kantha sits on an ancient trail. Shepherds from Ghuttu and Reeh villages have brought their sheep here for centuries, calling it their summer home, and the Pandavas are said to have passed through on their way beyond. Even today, the forest department insists on a local guide — the forest, in a real sense, still belongs to it.",
+          "The trek itself isn't difficult. If you can walk 6-7 hours a day, you can do it. The full route runs 32-33 kilometres across five days and four nights — Ghuttu to Pobhagi (9 km), Pobhagi to Panwali Top (3 km) and across the bugyal to Raj Kharak (8 km more), Raj Kharak to Gaurmanda (8 km), and Gaurmanda back to Ghuttu (5 km) — with one night in a Ghuttu homestay and three nights camping in the meadows."
+        ]
+      },
+      {
+        heading: "Not a luxury trek",
+        paragraphs: [
+          "There is no room service here, no menu card. What you get instead is dal-chawal cooked on a wood stove, hot tea in a steel glass, a sleeping bag that actually keeps you warm, and a guide who can name every peak on the skyline without pausing to think."
+        ]
+      }
+    ],
+    signoff: "If you are looking for something that isn't crowded, isn't commercial and isn't on every second Instagram post — or if you simply want to sit alone on a mountain for a while — Panwali Kantha is Uttarakhand's best-kept secret. And secrets are best when they're kept a little secret."
+  };
+
+  TREKS[panwaliKanthaIndex].similarTreks = [
+    "dayara-bugyal-trek",
+    "ali-bedni-bugyal-trek",
+    "brahmatal-trek",
+    "kuari-pass-trek",
+    "kedarkantha-trek"
   ];
 }
 
