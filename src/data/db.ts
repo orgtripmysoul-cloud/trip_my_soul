@@ -1322,6 +1322,305 @@ export const TREKS: Trek[] = [
     ]
   },
   {
+    "slug": "pangarchulla-peak-trek",
+    "name": "Pangarchulla Peak Trek",
+    "tagline": "Six days from Rishikesh to the 15,069 ft summit of Pangarchulla Peak, via Auli's Gorson Bugyal and the Khullara campsite in the Nanda Devi Sanctuary.",
+    "price": 9999,
+    "days": 6,
+    "nights": 5,
+    "region": "Uttarakhand",
+    "category": "Trending Treks",
+    "startLocation": "Rishikesh to Rishikesh",
+    "endLocation": "Rishikesh",
+    "difficulty": "Moderate to Difficult",
+    "maxAltitude": "15,069 ft / 4,575 m",
+    "totalDistance": "Approx. 540 km by Road + 34 km Trek",
+    "availability": "March – May & September – December",
+    "months": [
+      "Mar",
+      "Apr",
+      "May",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    "themes": [
+      "Snow",
+      "Meadow",
+      "Forest",
+      "Peak Summit"
+    ],
+    intro:
+      "Pangarchulla Peak Trek is one of the most thrilling and challenging summit treks of Uttarakhand, located in the Nanda Devi Sanctuary near Joshimath and Auli. Standing tall at 15,069 ft (4,575 m), this peak is not just a trek but a full Himalayan expedition for those who want to go beyond Kedarkantha and Brahmatal.",
+    idealFor:
+      "Experienced Trekkers, Summit Lovers, Snow Trek Lovers, Himalayan Peak Seekers, Photography Groups, Adventure Clubs, Winter Trek Enthusiasts",
+    highlights: [
+      "Pangarchulla Peak Summit (15,069 ft) — one of the highest summit treks of Uttarakhand, near the Indo-China border",
+      "Khullara Campsite — widely rated as the most beautiful campsite in Uttarakhand, ringed by snow peaks",
+      "Gorson Bugyal — Asia's largest bugyal / ski slope, right above Auli",
+      "Auli, the 'Mini Switzerland of India', and its artificial lake view",
+      "Trail through the Nanda Devi Sanctuary's oak, pine and rhododendron forest",
+      "Tali Lake — a frozen lake in winter, and the Kuari Pass trail connection",
+      "360° summit view of 20+ Himalayan giants including Nanda Devi, Dronagiri and Chaukhamba",
+      "Chance sightings of Himalayan Monal and bear pugmarks along the trail",
+    ],
+    aboutParagraphs: [
+      "Pangarchulla Peak Trek is one of the most thrilling and challenging summit treks of Uttarakhand, located in the Nanda Devi Sanctuary near Joshimath and Auli. Standing tall at 15,069 ft (4,575 m), this peak is not just a trek but a full Himalayan expedition for those who want to go beyond Kedarkantha and Brahmatal.",
+      "The trek starts from the famous ski resort Auli, known as Mini Switzerland of India. From Auli, the trail goes through Asia's largest meadow — Gorson Bugyal, then enters the dense forest of oak and rhododendron to reach Gulling Top and Khullara — which is considered one of the most beautiful campsites in the Indian Himalayas. Khullara is surrounded by snow-covered peaks on all sides.",
+      "The final summit push starts at 3 AM from Khullara. It is a steep 3,000 ft climb in snow with crampons and gaiters. But once you reach the top, you get a 360° view of more than 20 Himalayan giants including Nanda Devi (India's 2nd highest), Dronagiri, Chaukhamba, Kamet, Hathi-Ghoda, Mana and Neelkanth. No other trek near Rishikesh offers such a close view of Nanda Devi.",
+      "Pangarchulla is a 6 Days 5 Nights trek from Rishikesh to Rishikesh. It is graded as Moderate to Difficult and is recommended for trekkers who have already done at least one Himalayan trek like Kedarkantha, Dayara Bugyal or Kuari Pass. Best season is March to May for snow summit and September to December for clear weather.",
+      "If you are looking for a real summit, real snow, and real adventure away from the crowd — Pangarchulla Peak is the perfect upgrade for your next Himalayan challenge.",
+    ],
+    destinationHighlights: [
+      { name: "Nanda Devi", blurb: "7,816 m (25,643 ft) — India's second highest peak, dominating the summit-day panorama." },
+      { name: "Dronagiri", blurb: "7,066 m (23,182 ft) — one of the guardian peaks of the Nanda Devi Sanctuary." },
+      { name: "Chaukhamba", blurb: "7,138 m (23,419 ft) — the four-headed massif visible across the Alaknanda valley." },
+      { name: "Kamet", blurb: "7,756 m (25,446 ft) — second highest peak in the Garhwal Himalayas, near the Indo-China border." },
+      { name: "Hathi Ghoda", blurb: "6,727 m (22,070 ft) — the elephant-and-horse twin ridge seen from Khullara." },
+      { name: "Mana Parvat", blurb: "7,273 m (23,861 ft) — rising above the Mana valley near Badrinath." },
+      { name: "Neelkanth", blurb: "6,596 m (21,640 ft) — the pyramid peak overlooking Badrinath and Joshimath." },
+    ],
+    fitnessRequirement:
+      "This is not a beginner trek — you should be able to jog/run 4 Km in 30 minutes daily for at least 15 days before the trek, climb 50 floors without a break, and keep your BMI below 28. Summit day is a steep 14 Km / 12 Hrs climb, so at least one prior Himalayan trek (Kedarkantha, Dayara, Kuari Pass, Brahmatal or Chopta) is strongly preferred.",
+    eligibilityCriteria: [
+      { icon: "User", text: "Age 14 to 50 years — 14-18 year olds need a parent/guardian; above 45 years need a medical fitness certificate" },
+      { icon: "Mountain", text: "At least one prior Himalayan trek preferred — Kedarkantha, Dayara Bugyal, Kuari Pass, Brahmatal or Chopta; not recommended for first-time trekkers" },
+      { icon: "Stethoscope", text: "Not allowed for heart patients, high BP, severe asthma, epilepsy, severe joint pain or pregnant women; mild BP/asthma allowed with a doctor's NOC" },
+      { icon: "FileText", text: "Aadhaar Card/Passport compulsory for the forest permit, plus a self-declaration form signed at Rishikesh" },
+    ],
+    fitnessCriteria: [
+      { icon: "Footprints", text: "Jog/run 4 Km in 30 minutes daily, at least 15 days before the trek" },
+      { icon: "Activity", text: "Climb 50 floors without a break; daily 5 Km walk plus 20 squats and 20 lunges" },
+      { icon: "Backpack", text: "Carry an 8-10 Kg personal backpack through a 14 Km, 12-hour summit-day climb" },
+      { icon: "TrendingUp", text: "BMI below 28 — an overweight body makes the steep summit push much harder" },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Rishikesh to Joshimath (254 Km, 10 Hrs Drive)",
+        description: "Assemble at Rishikesh by 6:00 AM, drive to Joshimath/Pipalkoti via Devprayag, Srinagar, Rudraprayag and Karnprayag along the Alaknanda river.",
+        detailedDescription:
+          "The group will assemble at the pickup point at 06:00 AM. Afterward, you'll be introduced to the whole group and a briefing session would also be provided and then we'll head towards Joshimath/Pipalkoti. We'll reach Joshimath by the evening and check into our designated home stays. Dinner will be served in the evening followed by overnight stay. The pick-up point would be Natraj Chowk/Tapovan Chowk (tentative).",
+        pickupPoint: "Rishikesh — Natraj Chowk / Tapovan Chowk",
+        pickupTime: "6:00 AM – 6:30 AM",
+        driveDistance: "254 Km",
+        drivingTime: "10 Hrs",
+        stayType: "Homestay / Guest House",
+        meals: "Dinner",
+      },
+      {
+        day: 2,
+        title: "Joshimath/Pipalkoti to Tugasi (14 Km, 45 Mins Drive) | Trek to Guling (4 Km, 5 Hrs)",
+        description: "Short drive to Tugasi village, then trek up to the Guling campsite.",
+        detailedDescription:
+          "After early morning breakfast, we'll head out for Tugasi Village. Upon reaching Tugasi, we will start our trek to Guling. We'll reach Guling by the afternoon and check into our campsite. Lunch will be served later on. The rest of the day is at leisure. After some group bonding sessions, we will have dinner followed by an overnight stay in Guling.",
+        driveDistance: "14 Km",
+        drivingTime: "45 Mins",
+        trekDistance: "4 Km",
+        trekDuration: "5 Hrs",
+        stayType: "Alpine / Dome Tents",
+        meals: "Breakfast, Lunch, Dinner",
+      },
+      {
+        day: 3,
+        title: "Guling to Khullara (6 Km, 7 Hrs)",
+        description: "Trek from Guling to the Khullara base camp, considered one of the most beautiful campsites in the Indian Himalayas.",
+        detailedDescription:
+          "After early morning breakfast, you will be given the necessary instructions regarding the trekking trails. We will start trekking from Guling to Khullara. Later in the evening, we will check into our campsite at Khullara base. The rest of the day is at leisure. As the dusk starts to fall, you will get to witness the magical starry skies above. Dinner followed by an overnight stay at Khullara base camp.",
+        trekDistance: "6 Km",
+        trekDuration: "7 Hrs",
+        stayType: "Alpine / Dome Tents",
+        meals: "Breakfast, Lunch, Dinner",
+      },
+      {
+        day: 4,
+        title: "Trek to Pangarchulla Summit | Back to Khullara (14 Km, 12 Hrs) — Summit Day",
+        description: "Steep 3,000 ft summit push starting before midnight, with 360° views of Chaukhamba, Nilkantha and Nanda Devi, then descend back to Khullara.",
+        detailedDescription:
+          "Post dinner / early morning 3 AM, a small briefing session with necessary details about the rest of the trek will be provided. Afterward, we will begin our trek to Pangarchulla peak before midnight. Witness the sun rising from the great Himalayan ranges where you will catch a glimpse of the Chaukhamba massif, Nilkantha peaks, and Nanda Devi peaks, and many more. Afterward, we will descend toward the base camp. En route, we will have our packed lunch. Upon reaching Khullara, we will check into our campsite where we will have dinner followed by an overnight stay.",
+        trekDistance: "14 Km",
+        trekDuration: "12 Hrs",
+        stayType: "Alpine / Dome Tents",
+        meals: "Breakfast, Packed Lunch, Dinner",
+        timeNote: { label: "Summit Start", value: "3:00 AM" },
+        highlights: ["Steep 3,000 ft final summit push in snow, roped with crampons and gaiters", "360° view of Nanda Devi, Dronagiri, Chaukhamba, Kamet and Neelkanth from the top"],
+      },
+      {
+        day: 5,
+        title: "Khullara to Tugasi (10 Km, 6 Hrs) | Drive to Joshimath/Pipalkoti (14 Km, 45 Mins Drive)",
+        description: "Trek back down from Khullara to Tugasi village, then a short drive back to Joshimath/Pipalkoti.",
+        detailedDescription:
+          "After early morning breakfast, a small briefing session with necessary details about the rest of the trek will be given. We will begin trekking from Khullara to Tugasi village. En route, we will have our packed lunch. Upon reaching Tugasi, we will start the drive to Joshimath / Pipalkoti. Check in to our designated homestay at Joshimath where we will have dinner and spend the night.",
+        trekDistance: "10 Km",
+        trekDuration: "6 Hrs",
+        driveDistance: "14 Km",
+        drivingTime: "45 Mins",
+        stayType: "Homestay / Guest House",
+        meals: "Breakfast, Packed Lunch, Dinner",
+      },
+      {
+        day: 6,
+        title: "Joshimath to Rishikesh (254 Km, 10 Hrs Drive) — Drop Day",
+        description: "Scenic drive back along the Prayags — Devprayag, Rudraprayag and Karnprayag — to Rishikesh. End of tour.",
+        detailedDescription:
+          "After a refreshing morning tea, we will check out of our accommodations and start our return journey by driving towards Rishikesh. You can enjoy the scenic views of Prayags like Devprayag, Rudraprayag, and Karnprayag. Upon reaching Rishikesh, the group will disassemble and part ways with fond memories. End of Tour.",
+        driveDistance: "254 Km",
+        drivingTime: "10 Hrs",
+        stayType: "Trek Ends — Drop at Rishikesh",
+        meals: "Breakfast",
+        timeNote: { label: "Drop", value: "6:00 PM – 7:00 PM at Rishikesh" },
+      },
+    ],
+    inclusions: [
+      {
+        title: "Transportation",
+        description: "Rishikesh to Joshimath & Joshimath to Rishikesh by Tempo Traveller / Bolero (as per group size), plus Joshimath/Pipalkoti to Tugasi and back by local Jeep/Sumo.",
+      },
+      {
+        title: "Accommodation",
+        description: "2 nights homestay/guest house at Joshimath/Pipalkoti (triple/quad sharing) + 3 nights tented accommodation at Guling (1N) and Khullara (2N) — dome/alpine tents, triple sharing, sleeping bag, mattress and pillow provided.",
+      },
+      {
+        title: "Meals",
+        description: "Day 1 Dinner to Day 6 Breakfast — 5 Breakfast, 4 Lunch, 5 Dinner, all veg meals, plus evening tea-snacks and a packed lunch on summit day.",
+      },
+      {
+        title: "Trek Essentials",
+        description: "Certified Trek Leader, local guide and support staff, forest permit and camping charges (Nanda Devi Sanctuary entry fees included), microspikes/crampons and gaiters on summit day if snow, basic first aid kit, oxygen cylinder and oximeter with the trek leader, and a bonfire where permitted.",
+      },
+      {
+        title: "Other",
+        description: "All toll tax, parking and driver allowance included.",
+      },
+    ],
+    exclusions: [
+      { title: "Anything Not Mentioned", description: "Anything not mentioned in the inclusions above." },
+      { title: "Meals in Transit", description: "Day 1 breakfast & lunch, Day 6 lunch & dinner, and any meals during transit on the Rishikesh–Joshimath highway." },
+      { title: "Porter/Mule", description: "Personal porter or mule to carry personal luggage — ₹800-1,000 per day per bag extra." },
+      { title: "Rental Gear", description: "Trek shoes, trek pole and backpack on rent — available at Joshimath at extra cost." },
+      { title: "Insurance & Medical", description: "Any personal insurance and medical expenses." },
+      { title: "Extras", description: "Bottled water, tea/coffee apart from meals, and any personal-nature expenses." },
+      { title: "Natural Calamity", description: "Any cost arising due to natural calamity, landslide, road block or bad weather — client has to bear." },
+      { title: "GST", description: "5% GST extra." },
+    ],
+    faqs: [
+      { title: "What is the height of Pangarchulla Peak?", description: "Pangarchulla Peak is 15,069 ft (4,575 m) above sea level. It is a proper summit trek, not a pass or meadow trek." },
+      { title: "Where does the trek start and end? Is it Rishikesh to Rishikesh?", description: "Yes, it is Rishikesh to Rishikesh (6D/5N). Pickup on Day 1 at 6 AM from Rishikesh (Natraj Chowk/Tapovan Chowk) and drop on Day 6 by 6-7 PM at Rishikesh." },
+      { title: "What is the difficulty level? Can a beginner do it?", description: "Moderate to Difficult. Not recommended for absolute beginners. At least 1 Himalayan trek (Kedarkantha, Kuari Pass, Dayara, Brahmatal) is preferred. Summit day is a 14 Km / 12 Hrs tough climb, so you need good fitness." },
+      { title: "What is the total trek distance and driving distance?", description: "Trek distance is approx. 34 Km (Guling to Summit and back). Driving distance is 254 Km Rishikesh to Joshimath + 14 Km Joshimath to Tugasi = 268 Km one side." },
+      { title: "What is the best time for Pangarchulla Trek?", description: "December to April for full snow trek. April to June for best summit views with moderate snow at the top. September to November for clear views with no snow on the trail. Avoid July-August." },
+      { title: "Will there be snow?", description: "Yes. Dec to April brings full snow from Guling to Summit (3-5 ft). April-May has snow only near the summit. Sept-Oct has no snow except small patches on the summit." },
+      { title: "What is the temperature during the trek?", description: "Day time 8°C to 15°C. Night at Khullara -2°C to -8°C. Summit morning -5°C to -12°C in winters." },
+      { title: "What is included in meals?", description: "From Day 1 Dinner to Day 6 Breakfast, all veg meals, with a packed lunch on summit day. Day 1 breakfast/lunch and Day 6 lunch/dinner are not included (on the highway)." },
+      { title: "What type of accommodation is provided?", description: "2 nights homestay/guest house at Joshimath/Pipalkoti (triple/quad sharing) plus 3 nights tented stay at Guling (1N) and Khullara (2N), triple sharing. Sleeping bag, mattress and pillow provided." },
+      { title: "Is there network/electricity/charging?", description: "Network only at Joshimath/Rishikesh. No network at Guling and Khullara. Electricity only at Joshimath, and no charging in tents — carry a power bank (20,000 mAh)." },
+      { title: "Is washroom/toilet available?", description: "Attached washroom at Joshimath. Dry toilet tents (common) at Guling and Khullara — no bathrooms during the trek; wet wipes recommended." },
+      { title: "Can I carry my own backpack or will you provide a porter?", description: "You carry your own backpack (8-10 Kg). A personal porter/mule for extra luggage costs ₹800-1,000 per day per bag — inform us in advance." },
+      { title: "What if I can't reach the summit?", description: "Safety first. If the trek leader feels you are unfit, or the weather is bad, or you show AMS symptoms, you will be stopped at Khullara. No refund for an incomplete trek." },
+      { title: "Is it safe for girls / solo travelers?", description: "Yes, 100% safe. Every group has 30-40% girls and solo travelers, with a certified trek leader, guide and support staff, and separate tents for girls." },
+    ],
+    howToReach: {
+      intro: "Pickup and drop is Rishikesh to Rishikesh — reporting time is 6:00 AM to 6:30 AM sharp on Day 1 at Natraj Chowk/Tapovan Chowk (tentative).",
+      air: {
+        summaryLabel: "Nearest Airport",
+        summary: "Jolly Grant Airport, Dehradun (DED) — 20 Km from Rishikesh",
+        detail:
+          "Multiple daily flights connect Delhi (DEL) to Dehradun (DED) in about 1 hour on IndiGo, Air India and others. From the airport, a taxi to Rishikesh takes about 45 minutes (₹800-1,200). If your flight lands at night, stay a night in Rishikesh (₹800-1,500) and join the group next morning.",
+      },
+      train: {
+        summaryLabel: "Best Option",
+        summary: "Rishikesh Railway Station / Haridwar Junction",
+        detail:
+          "Rishikesh Railway Station (2 Km from Tapovan) or the newer Yog Nagari Rishikesh (YNRK) station are closest, but Haridwar Junction (20 Km away) has far more trains — all Delhi trains stop there. From Delhi, take the Nanda Devi Express, Yoga Express or Dehradun Shatabdi (4-6 Hrs, night trains available). From Haridwar, a shared auto/bus/cab to Rishikesh takes 45 minutes (₹50-300) and runs 24x7.",
+      },
+      road: {
+        summaryLabel: "By Bus / Overnight Volvo",
+        summary: "Delhi ISBT Kashmiri Gate / Anand Vihar to Rishikesh ISBT",
+        detail:
+          "Direct Volvo/AC buses and cabs run every 30 minutes from Delhi (250 Km, 6-7 Hrs); the last bus is at 11 PM. An overnight bus at 10-11 PM reaches Rishikesh by 5-6 AM, in time to join the group directly — the best option for Delhi guests. From Dehradun (45 Km, 1.5 Hrs), a shared auto/bus/cab runs every 30 minutes for ₹100-300. Rishikesh to Joshimath itself (254 Km, 10 Hrs) is included in the package and run by us.",
+        route: ["Rishikesh", "Devprayag", "Srinagar", "Rudraprayag", "Karnprayag", "Joshimath"],
+        facts: [
+          { label: "Distance", value: "254 Km" },
+          { label: "Duration", value: "10 Hours" },
+        ],
+      },
+      pickup: {
+        point: "Rishikesh — Natraj Chowk / Tapovan Chowk (tentative)",
+        time: "6:00 AM – 6:30 AM (Day 1)",
+        dropPoint: "Rishikesh — same as pickup point",
+        dropTime: "6:00 PM – 7:00 PM (Day 6)",
+        note: "Book your return bus/train/flight after 8 PM only on Day 6 — landslides or road blocks on the highway may delay arrival by 1-2 hours. Own-car parking is available at Rishikesh near Tapovan for ₹200-300 per day.",
+      },
+    },
+    article: {
+      title: "Pangarchulla Peak (15,069 ft) — The Ultimate Summit Trek of Uttarakhand",
+      standfirst:
+        "A perfect combination of snow trails, alpine meadows, oak forests and a jaw-dropping 360° view of the highest Himalayan peaks — the natural next step after Kedarkantha, Kuari Pass or Brahmatal.",
+      readMinutes: 7,
+      sections: [
+        {
+          paragraphs: [
+            "Pangarchulla Peak Trek is one of the most thrilling and rewarding summit treks in Uttarakhand, nestled in the Nanda Devi Sanctuary near Joshimath. Standing tall at 15,069 ft (4,590 m), Pangarchulla offers a perfect combination of snow trails, alpine meadows, oak forests, and a jaw-dropping 360-degree view of some of the highest Himalayan peaks. If you have already done Kedarkantha, Kuari Pass or Brahmatal and are looking for your next big Himalayan challenge, Pangarchulla is your next summit.",
+            "Unlike easy weekend treks, Pangarchulla is a true summit push — a 12-hour, 14 Km day that tests your endurance but rewards you with views you will never forget.",
+          ],
+        },
+        {
+          heading: "Why Pangarchulla Peak Trek Is Special",
+          paragraphs: [
+            "The Summit View: from the top of Pangarchulla, you get a 360-degree panorama of Nanda Devi (7,816 m) — India's second highest peak — the Chaukhamba massif, Dronagiri, Kamet, Hathi-Ghoda, Nilkantha, Mana and Trishul. This view is rated as one of the best in the Garhwal Himalayas.",
+            "The Trail Variation: the trail starts from Joshimath, goes to Tugasi — a small Himalayan village — then through dense oak and pine forests to Guling and Khullara, beautiful camping grounds. Khullara is your base camp, with Nanda Ghunti right in front.",
+            "Best Snow Trek After Kedarkantha: in winter (December to April), the entire trail from Guling to Summit is covered in 3-5 feet of snow, and you will need microspikes and gaiters — a true snow adventure.",
+            "Not Crowded: unlike Kedarkantha or Chopta, Pangarchulla is less crowded. You get peace, raw nature and real Himalayan wilderness.",
+          ],
+        },
+        {
+          heading: "Best Time to Visit",
+          paragraphs: [
+            "Winter / Snow Season (December to March) is best for snow lovers — full snow till Khullara, though the summit needs technical gear and temperatures drop to -10 to -15°C at night.",
+            "Spring (April to June) is best for beginners wanting a summit plus clear views — snow only at the summit, and pleasant weather overall.",
+            "Autumn (September to November) brings clear skies and the best mountain views, with no snow on the trail except at the summit — perfect for photography.",
+            "Avoid July-August — it's monsoon season, with a high landslide risk.",
+          ],
+        },
+        {
+          heading: "How Difficult Is Pangarchulla Trek?",
+          paragraphs: [
+            "Grade: Moderate to Difficult. It is not recommended for first-time trekkers — you need at least one easy-to-moderate trek behind you. Summit day itself is difficult: 14 Km with a roughly 3,000-5,000 ft ascent in a single day. Fitness is mandatory — you should be able to jog 4 Km in 30 minutes.",
+          ],
+        },
+        {
+          heading: "What to Carry",
+          paragraphs: [
+            "Trek shoes (waterproof, with ankle support), a 50-60 L backpack, a down jacket, 3 layers of clothing, 2 trek pants, thermal inners, a woolen cap, gloves, sunglasses, sunscreen, a power bank, a water bottle and personal medicine. Microspikes, gaiters, a sleeping bag and a mattress are provided by us where there's snow.",
+          ],
+        },
+      ],
+      signoff:
+        "Pangarchulla is not just a trek, it's your first Himalayan summit. That feeling of standing at 15,069 ft with Nanda Devi in front of you cannot be described in words.",
+    },
+    thingsToRemember: [
+      "Smoking and drinking are strictly not allowed during the trek — offenders will be sent back",
+      "No littering — carry back your plastic and use the dustbins provided",
+      "Follow the trek leader's instructions and don't go off alone — group safety is important",
+      "Keep your personal backpack to a maximum of 8-10 Kg; leave extra luggage at Joshimath (locker facility available)",
+      "The trek leader's decision is final — if a health issue arises during the trek, you will be descended to Joshimath with no refund for an incomplete trek",
+    ],
+    similarTreks: ["kuari-pass-trek", "rupin-pass-trek", "har-ki-dun-trek", "kedarkantha-trek", "gulabi-kantha-trek"],
+    batchDates: [
+      "2026-10-01", "2026-10-02", "2026-10-03", "2026-10-04", "2026-10-05", "2026-10-06", "2026-10-07", "2026-10-08",
+      "2026-10-09", "2026-10-10", "2026-10-11", "2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16",
+      "2026-10-17", "2026-10-18", "2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-24",
+      "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01",
+      "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09",
+      "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15", "2026-11-16", "2026-11-17",
+      "2026-11-18", "2026-11-19", "2026-11-20", "2026-11-21", "2026-11-22", "2026-11-23", "2026-11-24", "2026-11-25",
+      "2026-11-26", "2026-11-27", "2026-11-28", "2026-11-29", "2026-11-30", "2026-12-01", "2026-12-02", "2026-12-03",
+      "2026-12-04", "2026-12-05", "2026-12-06", "2026-12-07", "2026-12-08", "2026-12-09", "2026-12-10", "2026-12-11",
+      "2026-12-12", "2026-12-13", "2026-12-14", "2026-12-15",
+    ],
+  },
+  {
     "slug": "bali-pass-trek",
     "name": "Bali Pass Trek",
     "tagline": "Eight days from Dehradun crossing the 16,207 ft Bali Pass, linking Har Ki Dun Valley to Yamunotri over snow, ridge and glacial lake.",
@@ -2096,6 +2395,36 @@ export const TREKS: Trek[] = [
     ]
   },
   {
+    "slug": "chakrata-trip",
+    "name": "Chakrata Trip",
+    "price": 3999,
+    "days": 2,
+    "nights": 1,
+    "region": "Uttarakhand",
+    "category": "Weekend Getaways",
+    "startLocation": "Delhi to Delhi",
+    "difficulty": "Easy",
+    "availability": "March to June & September to February",
+    "months": [
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+      "Jan",
+      "Feb"
+    ],
+    "themes": [
+      "Waterfall",
+      "Forest",
+      "Camping",
+      "Weekend Getaway"
+    ]
+  },
+  {
     "slug": "auli-weekend-tour",
     "name": "Auli Weekend Tour",
     "price": 9500,
@@ -2473,30 +2802,41 @@ export const TREKS: Trek[] = [
     ]
   },
   {
-    // TODO(content): winter catalogue stub for Khaliya Top Trek. Every value marked TODO
-    // below is a placeholder — ops to confirm before this listing goes live.
+    // Full content sourced from the ops-supplied Khaliya Top write-up
+    // (overview, itinerary, eligibility, article, FAQs, how-to-reach and
+    // package terms); extended detail-page fields are assigned below via
+    // `khaliyaTopIndex`.
+    // TODO(content): still no heroImage — trekDetail.ts falls back to the
+    // default hero image while it is unset.
     "slug": "khaliya-top-trek",
     "name": "Khaliya Top Trek",
-    "price": null, // TODO(content): real price; the card shows "TBD" until set.
-    "days": 3, // TODO(content): real duration.
-    "nights": 2, // TODO(content): real duration.
+    "tagline": "Kumaon's balcony above Munsiyari — a 6 km alpine meadow at 11,500 ft with the closest possible sunrise view of the Panchachuli range",
+    "price": null, // TODO(content): no fixed package price published in the source (see `priceNote`/`sourceCaveat`).
+    "days": 4,
+    "nights": 3,
     "region": "Uttarakhand",
-    "category": "Upcoming Winter Treks",
-    // TODO(content): real start/end point. Empty string makes the card fall back to the region.
-    "startLocation": "",
-    "difficulty": "Easy-Moderate", // TODO(content): real grade.
-    // Dec/Jan/Feb is what SEASON_MAP["Winter"] in app/page.tsx matches on.
+    "category": "Uttarakhand",
+    "startLocation": "Kathgodam",
+    "endLocation": "Kathgodam",
+    "difficulty": "Easy to Moderate",
+    "maxAltitude": "11,500 ft / 3,500 m",
+    "totalDistance": "12 km (6 km up + 6 km down)",
+    "availability": "March to June & September to November",
     "months": [
-      "Dec",
-      "Jan",
-      "Feb"
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Sep",
+      "Oct",
+      "Nov"
     ],
     "themes": [
-      "Snow"
+      "Meadow",
+      "Snow",
+      "Forest",
+      "Sunrise"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
   },
   {
     // TODO(content): winter catalogue stub for Munsiyari-Khalia Top. Every value marked TODO
@@ -3432,6 +3772,310 @@ export const TREKS: Trek[] = [
       "Carry a torch and power bank for the night, as there is very little street lighting.",
     ],
     similarTreks: ["auli-snow-trip", "nainital-winter-trip", "kanatal-winter-trip", "chopta-with-auli"],
+  },
+  {
+    "slug": "harshil-valley-trip",
+    "name": "Harshil Valley Trip",
+    "tagline": "The Mini Switzerland of Uttarkashi — apple orchards, deodar forests and old wooden villages at 9,005 ft on the banks of the Bhagirathi, 26 km before Gangotri.",
+    "price": null, // TODO(content): real price; source quotes a "15k to 30k" range depending on shared/private car — the card shows "TBD" until a fixed price is set.
+    "days": 3,
+    "nights": 2,
+    "region": "Uttarakhand",
+    "category": "Weekend Getaways",
+    "startLocation": "Dehradun to Dehradun",
+    "endLocation": "Dehradun",
+    "difficulty": "Easy",
+    "maxAltitude": "9,005 ft / 2,745 m",
+    "availability": "Every Saturday from Dehradun — best March-June & September-October",
+    "months": [
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Sep",
+      "Oct",
+    ],
+    "themes": [
+      "Apple Orchards",
+      "River Valley",
+      "Pilgrimage",
+      "Cafe Culture",
+      "Family with Kids",
+      "Couples",
+    ],
+    intro:
+      "If Kumaon has Munsiyari, Garhwal has Harshil. A tiny valley at 9,005 ft on the banks of the Bhagirathi river, 26 km before Gangotri Dham, where apple orchards, deodar forests, snow peaks and old wooden houses live together. Not crowded like Manali, not commercial like Auli — Harshil is still pure.",
+    idealFor:
+      "Travellers who want a relaxed valley tour rather than a trek — apple orchards, a wooden skywalk bridge, Gangotri darshan and cafe culture, without daily 10 km walks. Great for families with kids, seniors and couples.",
+    highlights: [
+      "Gartang Gali — India's most thrilling 150-year-old wooden skywalk bridge, on a vertical rock face at 11,000 ft",
+      "Apple orchard walks and apple picking in Sept-Oct, in the apple capital of Uttarakhand",
+      "Gangotri Dham darshan, 26 km from Harshil, and Mukhba — the winter home of Maa Ganga",
+      "Bagori — a heritage village of the Tibetan-origin Jadh tribe, featured in the film Ram Teri Ganga Maili",
+      "Wilson Cottage — the 1864 wooden bungalow of Pahari Wilson, father of apple cultivation in Uttarakhand",
+      "Sunrise on Shrikanth Peak (6,109 m) turning gold to pink, seen right from Harshil",
+    ],
+    aboutParagraphs: [
+      "Harshil Valley is in Uttarkashi district, Uttarakhand, on the way to Gangotri Dham — 26 km before the temple and 75 km from Uttarkashi town. The valley sits at 9,005 ft (2,745 m) between two rivers, Bhagirathi and Jalandhari, and is made up of five villages within a 5-7 km stretch — Harshil, Mukhba, Dharali, Jhala and Bagori.",
+      "It is called the Mini Switzerland of Uttarkashi because of its landscape — a flat meadow, the Bhagirathi river making a wide U-turn, dense deodar forest on both sides, snow peaks all around and wooden cottages. In October, when apple trees turn red and poplars turn golden, it looks exactly like Switzerland.",
+      "Frederick Wilson, a British Army deserter who settled here in the 1840s-50s, is known as Pahari Wilson — the first man to bring apple cultivation to the valley. His 1864 bungalow and old watermill still stand in Harshil today, and Harshil grows what is considered the best apple in Uttarakhand.",
+      "Two cultures share this valley — Garhwali farmers in Harshil, Dharali and Mukhba, and the Jadh tribe of Tibetan origin in Bagori, who migrated here after the 1962 Indo-China war and keep their own language, dress and wool trade. Mukhba is the most sacred of the five — the idol of Maa Ganga rests here for six months every winter (November-April) when Gangotri Temple closes under snow.",
+      "Harshil is not a trek, it is an emotion. There is no rush to reach a top — you walk slowly along the river, breathe slowly, and the top is everywhere.",
+    ],
+    destinationHighlights: [
+      {
+        name: "Gartang Gali",
+        blurb: "A 150-year-old, 150-metre wooden skywalk built by Peshawari Pathans on a vertical rock face at 11,000 ft, with a 500 ft gorge below. Closed for 60 years after 1962, reopened in 2021. 16 km drive + 2 km trek from Harshil.",
+      },
+      {
+        name: "Mukhba Village",
+        blurb: "1 km above Harshil — the winter home of Maa Ganga, where her idol is brought for 6 months (Nov-April) when Gangotri Temple closes. A wooden temple with intricate carvings.",
+      },
+      {
+        name: "Bagori Village",
+        blurb: "Home to the Jadh tribe of Tibetan origin, with 400-year-old carved wooden houses, a Tibetan-style wool market, and the setting of the film Ram Teri Ganga Maili.",
+      },
+      {
+        name: "Apple Orchards",
+        blurb: "Harshil grows the best apples in Uttarakhand — red delicious and golden. In Sept-Oct you can walk into orchards and pick apples, with fresh juice and jam sold across the valley.",
+      },
+    ],
+    fitnessRequirement:
+      "Harshil Valley is not a difficult trek — it is a relaxed valley tour by car with small 2 km walks. Normal fitness is enough to cover Harshil, Gangotri and the villages; only the optional Gartang Gali trek needs a 4 km walk over 1.5 hours.",
+    eligibilityCriteria: [
+      { icon: "Users", text: "Open for all ages — even a 6-month-old baby can travel, and we have taken 75-year-old guests to Harshil & Gangotri; kids 2+ and below age 65 can also do Gartang Gali" },
+      { icon: "Stethoscope", text: "BP, sugar and mild asthma are fine with your regular medicines and inhaler; consult a doctor first for severe heart disease, pregnancy beyond 6 months, recent major surgery/fracture or epilepsy" },
+      { icon: "IdCard", text: "Indians need Aadhaar/Voter ID at the forest checkpost, no permit required; foreign nationals need a passport and register at the Bhatwari checkpost, but are not allowed beyond Gangotri into Nelong Valley" },
+      { icon: "Mountain", text: "Gartang Gali wooden bridge (11,000 ft) is allowed only for ages 8 to 65 by the forest department; guests outside this range can wait at the cafe near the parking point" },
+    ],
+    fitnessCriteria: [
+      { icon: "Footprints", text: "No trekking fitness needed for the main valley tour — 500 m to 1 km slow walks only" },
+      { icon: "Activity", text: "For Gartang Gali: comfortable walking 4 km total (2 km up, 2 km down) in about 1.5 hours on a gentle, not steep, trail" },
+      { icon: "FileText", text: "No fitness certificate needed — only a simple medical declaration form for our guide's information" },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Dehradun to Harshil Valley (225 Km | 8-9 Hrs Drive)",
+        description:
+          "Pickup from Dehradun, drive via Mussoorie, Chamba, Uttarkashi to Harshil along the Bhagirathi river, check-in and a leisure evening walk.",
+        detailedParagraphs: [
+          "Pickup at 6:30 AM from Dehradun Railway Station / ISBT. Drive via Mussoorie (35 km), Chamba and Uttarkashi (155 km) to Harshil (75 km). Breakfast stop at Mussoorie / Chamba (self-paid).",
+          "Lunch stop and Kashi Vishwanath Temple darshan at Uttarkashi — dedicated to Lord Shiva, the same as the Varanasi temple, 2 minutes' walk from the market.",
+          "From Uttarkashi to Harshil (75 km, 3 hrs) is the most beautiful stretch — the road runs along the Bhagirathi river, passing Maneri Dam & Bhali Dam, Gangnani hot spring and Sukhi Top, the first snow view point.",
+          "Arrive Harshil Valley by evening and check in. A leisure walk to the Bhagirathi river bank, an apple orchard visit (pluck apples with the owner's permission in Sept-Oct), a photo stop at Wilson Cottage (1864, outside view only) and a walk through the local market for apple juice, jam and local wool. Veg dinner and overnight in Harshil — carry a jacket, night temperature is 3-7°C even in summer.",
+        ],
+        pickupPoint: "Dehradun Railway Station / ISBT",
+        pickupTime: "6:30 AM",
+        driveDistance: "225 Km",
+        drivingTime: "8-9 Hrs",
+        stayType: "Hotel / Homestay",
+        meals: "Dinner",
+      },
+      {
+        day: 2,
+        title: "Harshil Sightseeing — Gangotri, Gartang Gali & Villages (70 Km Drive)",
+        description:
+          "Sunrise on Shrikanth Peak, Gangotri Temple darshan, Mukhba, Dharali & Bagori villages, and the Gartang Gali wooden skywalk.",
+        detailedParagraphs: [
+          "Wake up to sunrise on Shrikanth Peak (6,109 m) from the hotel balcony — the peak turns gold, then pink. Hot breakfast, then drive to Gangotri Temple (26 km, 1 hr) along a scenic road with deodar forest on one side and the Bhagirathi on the other. Gangotri Dham (11,200 ft) darshan (open 6:15 AM-7:30 PM, May-Nov only), holy water, parikrama and a visit to Surya Kund and Pandava Gufa nearby. (Dec-April, when the temple is closed, we take you to Mukhba village for Ganga darshan instead.)",
+          "Drive back towards Harshil, visiting Mukhba village (1 km above Harshil) — the winter home of Maa Ganga, a wooden temple with fine carvings and a short 200 m uphill walk. Continue to Dharali village, known for its apple orchards and the ancient Kalp Kedar Shiva temple, and Bagori village (10 min from Dharali) — the heritage village of the Jadh tribe, with 400-year-old carved wooden houses and pure wool shawls, caps and socks made by local women.",
+          "Drive to Gartang Gali (16 km from Harshil, 45 min), then a 2 km easy trek (30 min) through pine forest to the entry gate. Cross the 150-metre wooden skywalk built in 1850 on a vertical rock face at 11,000 ft, with a 500 ft gorge below and the Nelong Valley in front — walk slowly, hold the railing (30-40 min round trip). Open 9 AM-4 PM, May-Nov only.",
+          "Return to Harshil for lunch. Optional afternoon: a small 4 km round trek to Kyarkoti / Lama Top for a sunset meadow view, or a visit to Sattal near Dharali. Dinner and overnight in Harshil.",
+        ],
+        driveDistance: "70 Km",
+        stayType: "Hotel / Homestay",
+        meals: "Breakfast, Dinner",
+        highlights: ["Gangotri Temple darshan", "Gartang Gali wooden skywalk crossing", "Mukhba & Bagori village visits"],
+      },
+      {
+        day: 3,
+        title: "Harshil to Dehradun / Haridwar — Return (225 Km | 8-9 Hrs)",
+        description: "A last riverside morning walk, then drive back via Uttarkashi, Tehri and Mussoorie/Chamba to Dehradun.",
+        detailedParagraphs: [
+          "A last sunrise and a morning walk along the Bhagirathi river — don't miss it. Breakfast and check-out.",
+          "Drive back via Uttarkashi, Tehri and Dehradun, with a lunch stop at Chamba / Mussoorie (self-paid). Drop at Dehradun Railway Station / ISBT / Airport.",
+        ],
+        driveDistance: "225 Km",
+        drivingTime: "8-9 Hrs",
+        stayType: "Trip Ends — Drop at Dehradun",
+        meals: "Breakfast",
+      },
+    ],
+    inclusions: [
+      {
+        title: "Transport",
+        description: "Dehradun to Dehradun (or Haridwar to Haridwar) by private car as per group size — Swift/Bolero/Innova/Tempo Traveller (12-17 seater), including driver, diesel, toll, parking and green tax.",
+      },
+      {
+        title: "Accommodation",
+        description: "2 nights in Harshil / Dharali, hotel or homestay with attached bathroom, double/triple sharing.",
+      },
+      {
+        title: "Meals (MAP Plan)",
+        description: "2 breakfasts and 2 dinners, pure veg (Day 1 dinner to Day 3 breakfast).",
+      },
+      {
+        title: "Sightseeing",
+        description: "Uttarkashi Vishwanath Temple, Gangnani, Harshil, Dharali, Bagori heritage village, Mukhba village, Gangotri Temple day trip, and Gartang Gali up to the parking point.",
+      },
+      {
+        title: "Guide / Driver Support",
+        description: "Local driver-cum-guide for the Gartang Gali entry and village walks, driver allowance included.",
+      },
+      {
+        title: "Permits",
+        description: "Inner line checkpost entries for the Harshil & Gartang Gali area.",
+      },
+    ],
+    exclusions: [
+      { title: "Lunch", description: "Not included on any of the 3 days." },
+      { title: "Gartang Gali Entry Ticket", description: "Rs 150 per person (Indian) / higher for foreigners, paid directly at the gate." },
+      { title: "Gangotri Temple Pooja & Donation", description: "Any special pooja, prasad, donation or temple photographer." },
+      { title: "Personal Expenses", description: "Tea, coffee, snacks, mineral water, apple buying, wool shawl shopping, tips and laundry." },
+      { title: "GST", description: "5% extra if a bill/GST invoice is needed." },
+      { title: "Snow Jeep / Chain Charges", description: "If the road is snow-covered in Dec-Feb, plus any porter or pony charges." },
+      { title: "Travel Insurance", description: "Not included." },
+      { title: "Nelong Valley Permit & Jeep", description: "Not part of the standard 3D/2N tour; available as an add-on at extra cost, with a special SDM Uttarkashi permit needed 1 day in advance (Indians only)." },
+    ],
+    faqs: [
+      {
+        title: "Where is Harshil Valley and how far from Dehradun?",
+        description: "Harshil Valley is in Uttarkashi district, Uttarakhand, 26 km before Gangotri Dham. It is 225 km from Dehradun (8-9 hrs drive) and 75 km from Uttarkashi. Altitude 9,005 ft.",
+      },
+      {
+        title: "What is the best time to visit Harshil Valley?",
+        description: "Sept-Oct is best — apple season, golden autumn, clear sky. March-June is good for families and Gangotri darshan. Dec-Feb brings heavy snowfall (3-4 ft). Avoid July-August monsoon.",
+      },
+      {
+        title: "What is Gartang Gali and is it safe?",
+        description: "A 150-year-old, 150 m wooden skywalk on a vertical cliff at 11,000 ft, 16 km from Harshil. Fully renovated with railings and safe to cross. Entry Rs 150. Needs a 2 km trek to reach. Open May to Nov only.",
+      },
+      {
+        title: "Do we need any permit for Harshil?",
+        description: "No permit for Indians for Harshil, Gangotri or Gartang Gali — just carry Aadhaar. For Nelong Valley beyond Gangotri, Indians need an SDM permit (1 day advance). Foreigners are not allowed in Nelong, but are allowed in Harshil.",
+      },
+      {
+        title: "Can senior citizens and kids visit Harshil?",
+        description: "Yes, 100%. Harshil is a valley tour by car, not a trek. Kids of any age and seniors up to 75 years can visit. Only Gartang Gali needs a 4 km walk, which seniors with knee pain can skip.",
+      },
+      {
+        title: "How many days are needed for a Harshil trip?",
+        description: "3 Days / 2 Nights from Dehradun is standard — Day 1 Dehradun to Harshil, Day 2 Gangotri + Gartang Gali + Mukhba & Bagori villages, Day 3 return.",
+      },
+      {
+        title: "Is Gangotri Temple included? When does it close?",
+        description: "Yes, Gangotri (26 km from Harshil) is included on Day 2. The temple is open May to the first week of November only. In winter (Dec-April), when the temple is closed, Maa Ganga's idol is in Mukhba village near Harshil — darshan happens there instead.",
+      },
+      {
+        title: "Where do we stay and what food is available?",
+        description: "Hotels/homestays with attached bathroom. All stays serve only veg food, as non-veg and liquor are banned in the Harshil Eco-Zone.",
+      },
+      {
+        title: "What about mobile network, ATM and petrol?",
+        description: "Jio works in Harshil market, BSNL across the whole valley, Airtel/Vi are weak. There is no ATM in Harshil — the last ATM is 75 km before, in Uttarkashi, so carry cash. The last petrol pump is also in Uttarkashi/Bhatwari — fill a full tank before Harshil.",
+      },
+      {
+        title: "Can we see snow in Harshil?",
+        description: "Yes — Dec to Feb the valley gets 3-4 ft of snow. March has snow on the peaks plus a little in the valley. May-June has no valley snow but snow-capped peaks all around.",
+      },
+      {
+        title: "How much does the Harshil Valley tour cost?",
+        description: "For 3D/2N from Dehradun, it ranges roughly ₹15,000 to ₹30,000 depending on a budget shared tour vs. a standard private car — includes hotel with breakfast/dinner, transport and guide.",
+      },
+      {
+        title: "What should I carry for Harshil Valley?",
+        description: "A warm jacket (night temperature is 3-7°C even in summer), cap, gloves, good walking shoes, power bank, sunscreen, medicines and cash. For a Dec-Feb trip, carry heavy woollens and snow boots.",
+      },
+    ],
+    howToReach: {
+      intro:
+        "Pickup is from Dehradun at 6:00 AM on Day 1 — reach Dehradun the evening before, or by 5:30 AM on Day 1.",
+      air: {
+        summaryLabel: "Nearest Airport",
+        summary: "Jolly Grant Airport (DED), Dehradun — 25 Km from the city",
+        detail:
+          "Daily direct flights from Delhi (50 min), Mumbai, Bangalore, Kolkata, Hyderabad, Lucknow and Ahmedabad on Indigo, Air India and Spicejet. From the airport to Dehradun city — taxi (45 min) or airport bus. If your flight lands after 5 PM on Day 0, stay a night in Dehradun, since pickup is 6 AM sharp.",
+      },
+      train: {
+        summaryLabel: "Cheapest & Most Comfortable",
+        summary: "Dehradun Railway Station (DDN)",
+        detail:
+          "The main station in the city centre. From Delhi, take a direct bus or train; from Mumbai/Kolkata and other cities, direct trains such as the Doon Express, Upasana Express and Amritsar-Dehradun Express run to Dehradun.",
+      },
+      road: {
+        summaryLabel: "By Bus / Private Car",
+        summary: "Delhi to Dehradun — 250 Km, 5-6 Hrs via NH 334",
+        detail:
+          "From Delhi ISBT Kashmere Gate, Uttarakhand Roadways AC/Volvo/ordinary buses run every 30 minutes (6-7 hrs); private Volvo operators (RedBus, ZingBus) run overnight. From Chandigarh — 170 km, 4-5 hrs, hourly buses. From Haridwar/Rishikesh — 55 km, 1.5 hrs, buses/taxis every 15 min. Public buses also run from Rishikesh to Uttarkashi, with a shared jeep onward to Harshil.",
+        route: ["Delhi", "Dehradun", "Mussoorie", "Chamba", "Uttarkashi", "Harshil"],
+        facts: [
+          { label: "Distance", value: "225 Km" },
+          { label: "Duration", value: "8-9 Hours" },
+        ],
+      },
+      pickup: {
+        point: "Dehradun Railway Station Gate No. 1 / Dehradun ISBT / Prince Chowk",
+        time: "6:00 AM Sharp (Day 1)",
+        dropPoint: "Dehradun Railway Station / ISBT / Airport",
+        dropTime: "Evening, Day 3",
+        note: "Exact pickup location is shared on WhatsApp a day before. We can also book a hotel near the station in Dehradun if you arrive the previous day.",
+      },
+    },
+    article: {
+      title: "Harshil — Where Ganga Rests, Apples Blush And Time Stops",
+      standfirst:
+        "There is a place in Uttarakhand where the Bhagirathi river does not rush. It slows down, makes a wide U-turn, and rests.",
+      readMinutes: 6,
+      sections: [
+        {
+          paragraphs: [
+            "On that resting point, between dense deodar forests and snow peaks that rise like white walls, lies a valley so beautiful that the British called it Mini Switzerland. Its name is Harshil Valley.",
+          ],
+        },
+        {
+          heading: "The Last Real Himalayan Village Before Tibet",
+          paragraphs: [
+            "Harshil is not a hill station. It is a valley at 9,005 feet, 26 kilometres before Gangotri Dham, in Uttarkashi district — the last cluster of villages where life still runs on wood, wool and apples.",
+            "The valley is made of five villages — Harshil, Dharali, Mukhba, Jhala and Bagori. Walk from one to another and you cross only 7 kilometres, but you cross centuries. In Dharali you see apple orchards with red apples hanging like lights. In Bagori you see 400-year-old wooden houses with carvings no modern architect can copy. In Mukhba you see a wooden temple where Goddess Ganga herself lives for six months in winter, when her temple in Gangotri is buried under snow.",
+            "This is a valley where two cultures meet — Garhwali farmers and the Jadh tribe of Tibetan origin, who came here after the 1962 war, speak a different language, weave their own wool, and still remember the trade route to Tibet that passed through Nelong Valley.",
+          ],
+        },
+        {
+          heading: "Why Harshil Is Different From Mussoorie, Manali, Auli",
+          paragraphs: [
+            "Mussoorie has crowd. Manali has traffic. Auli has ski resorts. Harshil has silence.",
+            "You don't go to Harshil to do things. You go to Harshil to not do things — to sit on a rock by the Bhagirathi and watch the water turn blue, to drink chai in an orchard while your host tells you how his grandfather planted these apple trees, to see sunrise turn the 6,109-metre Shrikanth peak from white to gold to pink in 10 minutes.",
+            "There is no mall road here, only a river road. No DJ night, only a bonfire under a million stars, because there is no light pollution.",
+          ],
+        },
+        {
+          heading: "The Man Who Made Harshil Famous — Pahari Wilson",
+          paragraphs: [
+            "In 1842, a British soldier named Frederick Wilson deserted the East India Company army and ran into these mountains. He fell in love with a local girl, settled in Harshil, built a wooden cottage in 1864 and started the first apple orchard and deodar timber business.",
+            "Locals called him Pahari Wilson. He brought the first apple seeds from England, and today the Harshil apple is considered the best in Uttarakhand — sweet, crunchy, red like cheeks in winter. His cottage still stands, his watermill still runs. If Harshil looks like Europe, Wilson is one reason.",
+          ],
+        },
+        {
+          heading: "Three Jewels of Harshil",
+          paragraphs: [
+            "Gartang Gali — the wooden skywalk. 16 km from Harshil, at 11,000 feet, a 150-metre-long wooden bridge hangs on a vertical rock face, built 150 years ago by Peshawari Pathans to reach Tibet for trade. Below is a 500 feet straight drop; in front is Nelong Valley, a cold desert like Ladakh. Closed for 60 years after the 1962 war, it reopened in 2021 and is today India's most thrilling bridge.",
+            "Mukhba — the winter home of Ganga. When Gangotri temple closes in November due to heavy snow, priests bring the idol of Goddess Ganga to Mukhba village, 1 km above Harshil. For six months, all pooja happens here — so you can have Ganga darshan even in January, when Gangotri is under 10 feet of snow.",
+            "Bagori — the heritage village. Every house here is made of wood, stone and slate, with balconies carved with flowers and gods. People make pure woollen shawls, caps and socks, and this village was shown in the film Ram Teri Ganga Maili. Walk inside and an old lady will call you for chai — that is Harshil.",
+          ],
+        },
+      ],
+      signoff:
+        "Harshil is not a place you tick off on a map. It is a place you feel.",
+    },
+    thingsToRemember: [
+      "Non-veg and liquor are banned in the Harshil Eco-Zone — all stays serve pure veg food only.",
+      "There is no ATM and no petrol pump in Harshil — the last of both is 75 km before, in Uttarkashi. Carry cash and fill a full tank.",
+      "Gangotri Temple and Gartang Gali are both open May to November only; in winter, Ganga darshan happens at Mukhba village instead.",
+      "Carry ID proof — Aadhaar/Voter ID for Indians, passport for foreign nationals — for the forest checkpost and hotel check-in.",
+      "Night temperature is 3-7°C even in summer — carry a jacket; for a Dec-Feb visit, carry heavy woollens as the valley gets 3-4 ft of snow.",
+    ],
+    similarTreks: ["har-ki-dun-trek", "gaumukh-tapovan-trek", "mussoorie-winter-escape", "auli-snow-trip"],
   },
 ];
 
@@ -10903,6 +11547,335 @@ if (panwaliKanthaIndex !== -1) {
   ];
 }
 
+// Static details for the Khaliya Top Trek (uid: khaliya-top-trek). Full
+// content sourced from the ops-supplied Khaliya Top write-up (overview,
+// itinerary, eligibility, article, FAQs, how-to-reach and package terms).
+const khaliyaTopIndex = TREKS.findIndex(t => t.slug === 'khaliya-top-trek');
+if (khaliyaTopIndex !== -1) {
+  TREKS[khaliyaTopIndex].minAge = 7;
+  TREKS[khaliyaTopIndex].maxAge = 65;
+  TREKS[khaliyaTopIndex].minAgeWithGuardian = 7;
+
+  TREKS[khaliyaTopIndex].intro =
+    "Khaliya Top is one of the most beautiful and easiest Bugyal (alpine meadow) treks of Uttarakhand, sitting above Munsiyari in Pithoragarh district, Kumaon, at a height of 11,500 ft (3,500 m). If Panwali Kantha is Garhwal's secret, Khaliya Top is Kumaon's balcony — from the top you see the entire Panchachuli range so close that you feel you can touch it.";
+
+  TREKS[khaliyaTopIndex].aboutParagraphs = [
+    "Khaliya Top is not just a trek — it is a viewpoint, a balcony, a place where the Himalayas come so close that you forget to breathe. It sits at 11,500 feet above Munsiyari town, which is called \"Little Kashmir.\" The name Khaliya comes from Khaliya village, and \"Top\" means the meadow above it — so Khaliya Top means the big meadow above Khaliya village.",
+    "Picture a huge, open, sloping meadow, 3-4 km long, covered in soft alpine grass, with no trees on top — only grass, wind and sky. On one side is a deep valley with Munsiyari town 4,000 ft below, looking like a toy model; on the other three sides is a wall of snow mountains led by the mighty Panchachuli — five peaks named after the five Pandavas, standing together above 20,000 ft and covered in snow year-round. People trek 50 km to see this kind of view on other routes; on Khaliya, it comes after just 6 km.",
+    "Along with Panchachuli, you also see Rajrambha (6,537 m), Hardeol (7,151 m), Nanda Devi East (7,434 m), Nanda Kot (6,861 m) and Nanda Khat (6,611 m) — which is why photographers call Khaliya Top \"Panchachuli's Studio.\"",
+    "For centuries the local Bhotiya tribe used this top as a summer grazing ground for sheep and goats. When Munsiyari became a mountaineering base in the 1970s, trekkers headed to Milam Glacier and the Nanda Devi base camp used to cross Khaliya as an acclimatisation hike; KMVN later built a small hut at the top to promote tourism, and today the Nehru Institute of Mountaineering uses it as a winter ski-practice ground."
+  ];
+
+  TREKS[khaliyaTopIndex].highlights = [
+    "360° view of the Panchachuli range, so close it feels touchable, at the end of just a 6 km trek",
+    "Widely considered one of the best sunrises in India — Panchachuli turning pink, then orange, then gold",
+    "Also visible: Rajrambha, Hardeol, Nanda Devi East, Nanda Kot and Nanda Khat",
+    "Munsiyari town glowing 4,000 ft below at night — one of Kumaon's easiest big-mountain views",
+    "A genuine beginner, family and couple trek — no technical or risky sections",
+    "Far less crowded than Auli or Dayara Bugyal, while still raw, clean and silent"
+  ];
+
+  TREKS[khaliyaTopIndex].usps = [
+    {
+      title: "The easiest big Himalayan view trek",
+      description: "Only a 6 km trek gets you a view that takes 30+ km on other routes — the entire Panchachuli wall, up close, with almost no technical difficulty."
+    },
+    {
+      title: "Kumaon's answer to Panwali Kantha",
+      description: "If Panwali Kantha is Garhwal's secret meadow, Khaliya Top is Kumaon's balcony — a huge sloping alpine meadow facing a 180°+ wall of 6,000-7,400 m peaks."
+    },
+    {
+      title: "A genuinely family-friendly trek",
+      description: "Even an 8-year-old can do it comfortably — no steep, exposed or risky sections, and a base town (Munsiyari) with real hotels, cafés and a market."
+    },
+    {
+      title: "Best sunrise in Kumaon",
+      description: "At 5:15 AM the first ray hits Panchachuli II, and within 10 minutes all five peaks turn pink, then orange, then gold — photographers travel here just for these 30 minutes."
+    },
+    {
+      title: "Still uncrowded",
+      description: "Unlike Auli, Chopta or Dayara Bugyal on a weekend, Khaliya Top on a weekday may have only 10-15 people on the entire meadow — real silence, just wind and your heartbeat."
+    }
+  ];
+
+  TREKS[khaliyaTopIndex].destinationHighlights = [
+    { name: "Munsiyari", blurb: "\"Little Kashmir\" of Uttarakhand and the trek's base town (7,200 ft) — real hotels, cafés and a market, not a remote village, with a sunset view of Panchachuli from town itself." },
+    { name: "Balanti Gate / Balanti Farm", blurb: "The trailhead 5 km from Munsiyari where the drive ends and the walk begins, followed 2 km on by Balanti Farm, the first tea-break point where Panchachuli first comes into view." },
+    { name: "Khaliya Top", blurb: "The main meadow at 11,500 ft — a 3-4 km alpine bugyal facing the full Panchachuli wall, with a small KMVN rest hut and tented camp." },
+    { name: "Zero Point", blurb: "A short 15-minute walk beyond the main meadow, for an even wider angle on Panchachuli, Rajrambha and Hardeol." },
+    { name: "Birthi Falls", blurb: "A scenic waterfall en route between Munsiyari and the plains, worth a stop on the Day 1 drive or as a Day 3 detour." },
+    { name: "Tribal Heritage Museum & Nanda Devi Temple, Munsiyari", blurb: "Optional afternoon-free stops in Munsiyari town — a small tribal-culture museum and a temple that doubles as a sunset point." }
+  ];
+
+  TREKS[khaliyaTopIndex].differentiators = [
+    "Region: above Munsiyari, Pithoragarh district, Kumaon, at 11,500 ft (3,500 m)",
+    "Trek distance: only 12 km total (6 km up, 6 km down) — one of the shortest Bugyal treks with a major peak view",
+    "Base camp: Munsiyari (7,200 ft) — 310 km from Kathgodam, 450 km from Dehradun, with hotels and a market",
+    "Best season: March-June (snow + green mix) and September-November (golden meadow, clearest sky); December-February is a heavy-snow trek for experienced trekkers only; avoid July-August (rain, leeches, cloud cover)",
+    "Trail: pine forest, then oak and rhododendron forest, opening suddenly into a huge meadow, with a KMVN rest house at the top"
+  ];
+
+  TREKS[khaliyaTopIndex].idealFor =
+    "Beginners who have never done a Himalayan trek but want a big-mountain view without a five-day walk; couples on a short romantic trip; families with kids aged 7 and above; photographers and drone shooters; and anyone who cannot commit to longer treks like Panwali Kantha or Kedarkantha but still wants to stand in front of a 20,000 ft wall of peaks.";
+
+  TREKS[khaliyaTopIndex].importantNote =
+    "There is no shop at the top — carry your own water and snacks. Ponies are available only up to Balanti Farm; the last 2-3 km must be walked. There is no mobile network at Khaliya Top — only Jio/BSNL work a little in Munsiyari town — so carry a power bank. Carry warm clothes even in summer, since the wind at the top is very cold, and expect 0 to -5°C at night in camp. A guide is not compulsory by the forest department but is strongly recommended, since the trail gets confusing in fog.";
+
+  TREKS[khaliyaTopIndex].sourceCaveat =
+    "The source write-up gives the trek distance as both \"12 km total (6 km up + 6 km down)\" and, in places, as a \"5-6 km\" one-way walk after a short drive to Balanti Gate — both are kept as published; the shorter figure reflects that a 5 km jeep drive from Munsiyari covers part of the route before the walk starts. No fixed package price is published in the source, so none is shown here; contact the trips desk for current rates. KMVN Guest House stay at the top is quoted separately in the source at roughly Rs 800-1,000 per person with food, alongside the tented camp option included in the package below.";
+
+  TREKS[khaliyaTopIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: minimum 7 years (active kids trekking with parents); ideal 10-55 years; maximum 65 years for a fit, regular walker, with a self-declaration above 60" },
+    { icon: "IdCard", text: "Any government photo ID (Aadhaar preferred) compulsory for the forest check-post entry; foreign nationals need a passport and visa" },
+    { icon: "Users", text: "Solo travellers welcome — you'll be added to a group, since the trek needs a minimum of 2 people to operate" },
+    { icon: "ShieldAlert", text: "Needs a doctor's permission: heart patients with a stent or surgery within 1 year, severe breathing conditions needing oxygen support, pregnancy beyond 5 months, or a leg/knee ligament operation within 4 months" },
+    { icon: "HeartPulse", text: "High BP, diabetes, mild asthma or mild knee pain are allowed — carry your medicine, inhaler and a trekking pole" },
+    { icon: "Footprints", text: "Trek shoes recommended but not compulsory — good-grip sports shoes also work, unlike stricter treks such as Panwali Kantha" }
+  ];
+
+  TREKS[khaliyaTopIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 5-6 km uphill in 5-6 hours with breaks — the only real physical requirement" },
+    { icon: "TrendingUp", text: "Able to climb 3-4 floors of stairs without chest pain or heavy breathlessness" },
+    { icon: "Backpack", text: "Only a small 2-3 kg daypack to carry yourself — main luggage stays behind at the Munsiyari hotel" },
+    { icon: "Activity", text: "Quick self-test: walk 3 km continuously in a park without needing to sit down" }
+  ];
+
+  TREKS[khaliyaTopIndex].howToReach = {
+    intro: "Khaliya Top starts and ends at Kathgodam; the trek itself begins from Munsiyari, 310 km away.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Pantnagar Airport (PGH)",
+      detail: "About 30 km from Kathgodam/Haldwani, with daily flights from Delhi (about 1 hour). Flights are pricier and more weather-prone than the train, so the train is the more reliable option. A taxi from Pantnagar to Kathgodam takes about 45 minutes."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Kathgodam Railway Station",
+      detail: "The main station for all Kumaon treks, with direct trains from Delhi, Lucknow, Kanpur, Kolkata and Jammu — including the overnight Ranikhet Express from Delhi. Book via IRCTC 2-3 weeks in advance in season (May-June, October)."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Kathgodam to Munsiyari via Almora, Bageshwar, Kapkot, Tejam and Birthi Falls",
+      route: ["Kathgodam", "Almora", "Bageshwar", "Kapkot", "Tejam", "Birthi Falls", "Munsiyari"],
+      facts: [
+        { label: "Delhi - Kathgodam / Haldwani", value: "280-300 km / 7-8 hrs" },
+        { label: "Kathgodam - Munsiyari", value: "310 km / 10-11 hrs" },
+        { label: "Dehradun - Munsiyari", value: "450 km" },
+        { label: "Pantnagar Airport - Kathgodam", value: "30 km / 45 min" }
+      ],
+      options: [
+        { from: "Delhi ISBT Anand Vihar / Kashmere Gate", name: "Uttarakhand Roadways / UPSRTC buses (ordinary, AC, Volvo) every 30 minutes, plus private Volvo services (RedBus, ZingBus)", note: "Overnight Volvo departs Delhi around 10 PM, reaching Haldwani by 5 AM; an auto from there to Kathgodam station takes about 200 rupees and 7 km" }
+      ]
+    },
+    pickup: {
+      point: "Kathgodam Railway Station Main Gate, near the taxi stand",
+      time: "6:00 - 6:30 AM sharp on Day 1",
+      dropPoint: "Kathgodam Railway Station",
+      dropTime: "Evening, 6-7 PM on Day 4",
+      note: "The driver calls the evening before with the vehicle number. If you arrive in Kathgodam late the previous evening, plan a night's stay near the station (KMVN Kathgodam is a good option), since pickup is sharp at 6:00 AM."
+    }
+  };
+
+  TREKS[khaliyaTopIndex].inclusions = [
+    { title: "Transportation", description: "Pickup from Kathgodam Railway Station on Day 1 and drop back on Day 4, by shared Sumo/Bolero/Tempo Traveller, including the Munsiyari-to-Balanti Gate drive both ways, driver allowance, toll, parking and fuel." },
+    { title: "Accommodation", description: "2 nights in a Munsiyari hotel (triple/quad sharing, attached bathroom, hot water) and 1 night in tents at Khaliya Top or the KMVN hut, subject to availability (triple sharing, alpine tent, sleeping bag rated to -10°C, mattress and pillow)." },
+    { title: "Meals", description: "All-veg meals — 3 breakfasts, 2 lunches and 3 dinners in total, including a hot cooked lunch (not packed) at Khaliya Top on trek day." },
+    { title: "Trek Support", description: "Local experienced trek guide (1 per 8-10 persons, Hindi/English speaking), a cook and helper at the Khaliya Top camp, plus kitchen, dining and toilet tents and all camping equipment." },
+    { title: "Permits & Fees", description: "Forest entry permit for the Askot Wildlife Sanctuary (Khaliya Top lies inside it), camping permission and KMVN hut/tent charges at the top." },
+    { title: "Safety", description: "Basic first-aid kit (medicines, bandage, oximeter), a trekking pole on request, and a walkie-talkie for the guide to stay in contact with the base." }
+  ];
+
+  TREKS[khaliyaTopIndex].exclusions = [
+    { title: "Personal Expenses", description: "Train/flight/bus tickets to and from Kathgodam, any Day-0 stay in Kathgodam, lunch on Day 1 and Day 4, tea/coffee/snacks on drive days, and personal shopping in Munsiyari." },
+    { title: "Extra Accommodation / Transport", description: "Extra nights if a landslide, road block or missed train delays you, a private vehicle or double-sharing hotel upgrade, and a personal porter to carry your backpack (mule offloading is not possible on the last 2 km)." },
+    { title: "Gear", description: "Trek shoes, backpack, raincoat and warm clothes — a packing list is provided and most items can be rented in Munsiyari." },
+    { title: "Insurance & Emergency", description: "Travel/medical insurance, any emergency evacuation or helicopter rescue cost (rarely needed on this trek), and hospital expenses in Munsiyari." },
+    { title: "Others", description: "Pony/horse charges up to Balanti (if needed), 5% GST if a bill is required, and anything not mentioned under inclusions." }
+  ];
+
+  TREKS[khaliyaTopIndex].itinerary = [
+    {
+      day: 1,
+      title: "Kathgodam to Munsiyari Drive",
+      driveDistance: "310 km",
+      drivingTime: "10-11 Hours",
+      pickupPoint: "Kathgodam Railway Station",
+      pickupTime: "6:00 AM",
+      altitudePoints: [
+        { location: "Kathgodam", m: 549, ft: 1800 },
+        { location: "Munsiyari", m: 2195, ft: 7200 }
+      ],
+      altitudeGain: { m: 1646, ft: 5400 },
+      description: "One of the most scenic drives in Kumaon — via Almora, Bageshwar, Kapkot, Tejam and Birthi Falls — past rivers, waterfalls and pine forest to the base town of Munsiyari.",
+      detailedParagraphs: [
+        "Pickup from Kathgodam Railway Station at 6:00 AM. The drive runs via Almora, Bageshwar, Kapkot, Tejam and Birthi Falls to Munsiyari, with breakfast or lunch taken en route.",
+        "Reach Munsiyari by evening and check in to the hotel. The evening is free to explore Munsiyari market — pick up a cap or gloves if needed — with a sunset view of the Panchachuli range visible from the hotel itself.",
+        "Dinner and overnight stay at a Munsiyari hotel, triple/quad sharing."
+      ],
+      highlights: ["Scenic Drive via Birthi Falls", "Sunset View of Panchachuli from Munsiyari", "Munsiyari Market"],
+      meals: "Dinner",
+      stayType: "Hotel — Munsiyari"
+    },
+    {
+      day: 2,
+      title: "Munsiyari to Khaliya Top Trek",
+      driveDistance: "5 km",
+      trekDistance: "5-6 km",
+      trekDuration: "5-6 Hours",
+      altitudePoints: [
+        { location: "Munsiyari", m: 2195, ft: 7200 },
+        { location: "Khaliya Top", m: 3505, ft: 11500 }
+      ],
+      altitudeGain: { m: 1310, ft: 4300 },
+      description: "A short drive to Balanti Gate, then a climb through pine and oak forest that opens suddenly into the huge Khaliya Top meadow, facing the Panchachuli wall.",
+      detailedParagraphs: [
+        "After breakfast, pack only a small daypack — the main luggage stays in the Munsiyari hotel's cloak room. Drive 5 km to Balanti Bend / Khaliya Gate, the point from where vehicles cannot go further, and complete the forest check-post entry.",
+        "The trail runs Balanti Gate to Balanti Farm (about 2 km, gradual climb, pine forest) to a forest rest hut (about 3.5 km, steeper climb through oak and rhododendron) to Khaliya Top (about 5.5 km, opening into meadow). Stop for tea at Balanti Farm, where Panchachuli first comes into view.",
+        "Check in to tents or the KMVN hut at the top. Free time to explore the meadow, walk the extra 15 minutes to Zero Point, and photograph the Panchachuli range, Rajrambha and Hardeol.",
+        "Watch the sunset turn Panchachuli golden, then dinner in the dining tent. Overnight in tents at Khaliya Top; temperature drops to 0 to -5°C at night, sleeping bag provided."
+      ],
+      highlights: ["Pine & Oak Forest Trail", "Zero Point Viewpoint", "Sunset Over Panchachuli"],
+      meals: "Breakfast, Lunch, Dinner",
+      stayType: "Camping / KMVN Hut — Khaliya Top"
+    },
+    {
+      day: 3,
+      title: "Khaliya Top to Munsiyari Return",
+      trekDistance: "5-6 km",
+      trekDuration: "3-4 Hours",
+      driveDistance: "5 km",
+      altitudePoints: [
+        { location: "Khaliya Top", m: 3505, ft: 11500 },
+        { location: "Munsiyari", m: 2195, ft: 7200 }
+      ],
+      altitudeGain: { m: -1310, ft: -4300 },
+      description: "The trip's highlight — sunrise over the full Panchachuli range — followed by the descent to Balanti Gate and an afternoon free in Munsiyari.",
+      detailedParagraphs: [
+        "Early wake-up call for the highlight of the trek: sunrise over Panchachuli, the five peaks turning from pink to orange to gold over about 40 minutes, best watched with a hot cup of tea in hand.",
+        "Breakfast at camp (paratha, omelette, tea), then pack up and descend back to Balanti Gate, followed by the 5 km drive back to Munsiyari and hotel check-in.",
+        "Afternoon free to explore Munsiyari — options include Birthi Falls (35 km detour, sometimes covered on Day 1 instead), the Tribal Heritage Museum, Nanda Devi Temple as a sunset point, or the local market for pure woollen shawls.",
+        "Dinner and overnight stay at the Munsiyari hotel."
+      ],
+      highlights: ["Sunrise Over Panchachuli", "Free Time in Munsiyari", "Tribal Heritage Museum / Nanda Devi Temple (optional)"],
+      meals: "Breakfast, Lunch, Dinner",
+      stayType: "Hotel — Munsiyari"
+    },
+    {
+      day: 4,
+      title: "Munsiyari to Kathgodam Drive Back",
+      driveDistance: "310 km",
+      drivingTime: "9-10 Hours",
+      altitudePoints: [
+        { location: "Munsiyari", m: 2195, ft: 7200 },
+        { location: "Kathgodam", m: 549, ft: 1800 }
+      ],
+      altitudeGain: { m: -1646, ft: -5400 },
+      description: "The drive back to Kathgodam by the same scenic route, with breakfast at the hotel and stops for meals along the way.",
+      detailedParagraphs: [
+        "Early breakfast and check-out, then start the drive back to Kathgodam along the same route.",
+        "Breakfast/tea halt at Chaukori or Bageshwar, and lunch near Almora.",
+        "Drop-off at Kathgodam Railway Station by 6-7 PM. Trek ends."
+      ],
+      highlights: ["Drive via Chaukori / Bageshwar", "Lunch Halt Near Almora"],
+      meals: "Breakfast",
+      stayType: "Tour ends — no overnight"
+    }
+  ];
+
+  TREKS[khaliyaTopIndex].faqs = [
+    {
+      title: "What is Khaliya Top height and distance?",
+      description: "Khaliya Top is at 11,500 feet (3,500 metres). Trek distance is only 10-12 km total — 5-6 km up from Balanti Gate to the top, and 5-6 km down the same way, after a 5 km drive from Munsiyari to Balanti Gate."
+    },
+    {
+      title: "Is Khaliya Top trek difficult?",
+      description: "No — it is Easy to Moderate, one of the easiest Himalayan treks to reach a view of 6,000-7,000 m peaks. Daily walking is only 4-5 hours, with no technical or boulder sections, so first-timers, kids 8+ and families can do it comfortably."
+    },
+    {
+      title: "What is the best time for Khaliya Top?",
+      description: "March-April for a snow trek (2-3 ft snow at top); May-June for a green meadow with clear peaks, best for families; September-October for a golden meadow and the clearest sky, best for photography; December-February is heavy snow, for experienced trekkers only. Avoid July-August due to rain and leeches."
+    },
+    {
+      title: "How to reach Khaliya Top base camp, Munsiyari?",
+      description: "The base is Munsiyari town. Nearest railway station is Kathgodam (310 km, 10-11 hrs drive) and Tanakpur (250 km); nearest airport is Pantnagar (350 km). Pickup from Kathgodam is at 6 AM; from Delhi, the overnight Ranikhet Express reaches Kathgodam by morning."
+    },
+    {
+      title: "Is there stay at Khaliya Top?",
+      description: "Yes, but basic — either the KMVN Tourist Hut at the top (a small hut with a few beds and food) or tents with a sleeping bag rated to -10°C, mattress, kitchen tent and toilet tent. There is no hotel or electricity at the top; Munsiyari has good hotels with attached bathrooms."
+    },
+    {
+      title: "Is a guide compulsory for Khaliya Top?",
+      description: "Not compulsory by the forest department, but strongly recommended for first-timers, since the trail gets confusing in fog or cloud and weather changes fast; a guide is essential in the snow season."
+    },
+    {
+      title: "Is there network and electricity at Khaliya Top?",
+      description: "No network and no electricity at the top; Jio and BSNL work in Munsiyari town. Carry a 20,000 mAh power bank and a torch — hot boiled water is provided at camp."
+    },
+    {
+      title: "What mountains are visible from Khaliya Top?",
+      description: "The closest, clearest view of Panchachuli I to V, Rajrambha (6,537 m), Hardeol (7,151 m), Nanda Devi East, Nanda Kot (6,861 m) and Nanda Khat. The sunrise view of Panchachuli is the main highlight."
+    },
+    {
+      title: "Can we do Khaliya Top in winter / snow?",
+      description: "Yes, December to April is the snow season. You'll need waterproof trek shoes, gaiters, warm layers and gloves; microspikes are provided if needed. The winter trek is slightly harder than summer but very beautiful."
+    },
+    {
+      title: "What to pack for Khaliya Top?",
+      description: "Trek shoes or good-grip sports shoes, a warm jacket, fleece, two thermals, gloves, a woollen cap and 3 pairs of socks, a raincoat/poncho and trek pole, sunglasses, sunscreen, cap, a 1L water bottle, power bank and headlamp, plus personal medicines. A 40L backpack works — big trolley bags are not practical; extra luggage stays at the Munsiyari hotel."
+    },
+    {
+      title: "Is food available on the trek?",
+      description: "No shops on the trek route or at the top — you must carry packed food or travel with the package, which includes Day 1 dinner through Day 4 breakfast: veg, hot-cooked paratha, poha, dal-rice, sabzi-roti, soup and tea. Dry fruits or energy bars are worth carrying for the trail."
+    },
+    {
+      title: "Is a horse or pony available?",
+      description: "Ponies are available up to Balanti Farm (one side, about 3 km). The last 2 km through the steep meadow has no pony option — only walking. A pony can help with the first half if you have a knee issue."
+    },
+    {
+      title: "Is Khaliya Top safe for girls / solo travellers?",
+      description: "Yes, it's very safe — Munsiyari is a tourist town with helpful locals. Groups typically run around 40% women; solo women trekkers are placed in shared tents with other women in the group."
+    }
+  ];
+
+  TREKS[khaliyaTopIndex].article = {
+    title: "Khaliya Top: The Balcony of Panchachuli",
+    standfirst: "If there is one trek in Uttarakhand where you walk just 5 kilometres and get a view people usually walk 50 kilometres for, it is Khaliya Top.",
+    readMinutes: 6,
+    sections: [
+      {
+        paragraphs: [
+          "Located at 11,500 feet above the beautiful town of Munsiyari in Pithoragarh district, Kumaon, Khaliya Top is a vast alpine meadow that acts as a natural balcony for the mighty Panchachuli range. You don't just see Panchachuli from Khaliya Top — you feel it standing right in front of you.",
+          "Khaliya Top lies in the Johar Valley near the India-Nepal-Tibet border. The base village, Munsiyari (7,200 ft), is called the \"Little Kashmir\" of Uttarakhand, and is 310 km from Kathgodam railway station and 450 km from Dehradun. From Munsiyari, Khaliya Top is just a 5 km drive plus a 5 km trek."
+        ]
+      },
+      {
+        heading: "Why Khaliya Top is famous",
+        paragraphs: [
+          "The five peaks of Panchachuli (6,334 m to 6,904 m) are so close from Khaliya Top that on a clear morning you can see the cracks on the glaciers. The name means \"five ovens\" of the Pandavas — local legend says they cooked their last meal on these peaks before going to heaven.",
+          "The sunrise here is legendary. At around 5:15 AM the first ray touches Panchachuli II, and within 10 minutes all five peaks turn from pink to fiery orange to golden — photographers travel from across India for just those 30 minutes.",
+          "It is also a genuinely beginner-friendly big-Himalayan trek. A 10-year-old and a 60-year-old can do it with the same excitement — no technical climb, no risky boulder zone, just 5-6 hours up and 3 hours down. And unlike Auli, Chopta or Dayara Bugyal on a weekend, Khaliya Top is still raw — on a weekday you might share the entire meadow with only 10-15 people."
+        ]
+      },
+      {
+        heading: "The trek experience",
+        paragraphs: [
+          "The journey starts from Kathgodam with a 10-hour scenic drive to Munsiyari through Almora, Bageshwar and Chaukori, past rivers, pine forest, Birthi Falls and distant snow peaks. One night in a Munsiyari hotel allows for acclimatisation before the drive next morning to Balanti Gate, the trek's starting point.",
+          "The first 2 km run through pine forest on a gradual ascent, with Himalayan birdsong along the way. The next 2 km climb steeply through oak and rhododendron — in March-April this stretch is full of red rhododendron blooms. At around 3.5 km, the forest ends abruptly and the huge meadow opens up, with the white wall of Panchachuli, Rajrambha and Hardeol standing in front. Most people simply stop and stand for a while — it's hard not to.",
+          "The top is reached by lunchtime, followed by hot dal-chawal in a tent, a walk to Zero Point, and a sunset that paints Panchachuli gold once again. Night at Khaliya Top is its own world — no electricity, no network, Munsiyari's lights twinkling 4,000 feet below, and a sky clear enough to show the Milky Way. Temperatures drop to around -5°C, and the next morning brings the sunrise that makes the whole trip."
+        ]
+      }
+    ],
+    signoff: "Khaliya Top gives you both a huge meadow and the closest possible view of 20,000 ft peaks, with zero construction on top. It is proof that you don't need to walk ten days to see heaven — sometimes six kilometres are enough."
+  };
+
+  TREKS[khaliyaTopIndex].similarTreks = [
+    "panwali-kantha-trek",
+    "kedarkantha-trek",
+    "dayara-bugyal-trek",
+    "brahmatal-trek",
+    "kuari-pass-trek"
+  ];
+}
+
 // Static details for the Chopta Tungnath Chandrashila Trek (uid:
 // chopta-tungnath-trek). This listing lives in `YATRAS`, not `TREKS`, so the
 // assignments below index that array — /treks/[slug] resolves against both.
@@ -12594,4 +13567,331 @@ if (kedarnathTungnathIndex !== -1) {
     ],
     signoff: "Trek Kedarnath and Tungnath with Trip My Soul."
   };
+}
+
+// Static details for the Chakrata Trip (uid: chakrata-trip), the offbeat
+// Jaunsar Bawar cantonment weekend getaway from Delhi.
+const chakrataIndex = TREKS.findIndex(t => t.slug === 'chakrata-trip');
+if (chakrataIndex !== -1) {
+  TREKS[chakrataIndex].tagline = "Tiger Falls, Chilmiri sunsets and deodar forests — an easy Delhi weekend into offbeat Uttarakhand.";
+  TREKS[chakrataIndex].endLocation = "Delhi";
+  TREKS[chakrataIndex].totalDistance = "Approx. 640 km by Road (Delhi to Delhi) + 8 km Trek / Walk";
+  TREKS[chakrataIndex].maxAltitude = "9,300 ft / 2,835 m (Deoban)";
+
+  TREKS[chakrataIndex].inclusions = [
+    { title: "Travel", description: "Travel by AC & Comfortable Traveller / Urbania / Bolero - Delhi to Delhi." },
+    { title: "Accommodation", description: "1 Night Accommodation at Chakrata's Best Resort / Swiss Camps - Triple / Quad Sharing Basis (Deluxe Room)." },
+    { title: "Meals", description: "2 Meals - 1 Breakfast + 1 Dinner (Veg Buffet)." },
+    { title: "Guided Trek", description: "Guided Trek to Moila Top (9,000 FT) & Budher Caves (Miola Caves) with Local Guide." },
+    { title: "Chilmiri Neck", description: "Visit to Chilmiri Neck - Chakrata's Highest Sunset Point." },
+    { title: "Tiger Falls", description: "Visit to Tiger Falls - 312 FT Highest Direct Waterfall." },
+    { title: "Bonfire", description: "Evening Bonfire with Music (Subject to weather conditions)." },
+    { title: "Trip Captain", description: "Trip Captain Throughout The Trip - From Delhi to Delhi." },
+    { title: "Toll & Parking", description: "Toll Taxes, Driver Allowance, Parking Charges Included." }
+  ];
+
+  TREKS[chakrataIndex].exclusions = [
+    { title: "Lunch", description: "Not included - You can buy at Local Dhabas." },
+    { title: "Personal Expenses", description: "Snacks, Tea, Water Bottles, Maggi at Trek Points." },
+    { title: "Adventure Activities", description: "Zip Line, Rappelling at Tiger Falls - 200-500/- (Pay Directly)." },
+    { title: "GST", description: "5% GST Extra if you need Invoice." },
+    { title: "Anything not listed", description: "Anything not specifically mentioned in the Inclusion List." }
+  ];
+
+  TREKS[chakrataIndex].minAge = 5;
+  TREKS[chakrataIndex].maxAge = 60;
+
+  TREKS[chakrataIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: 5–60 years - No age restriction for this easy trip" },
+    { icon: "Footprints", text: "No trek experience needed - Easy grade, 2–3 km walking only" },
+    { icon: "ShieldCheck", text: "Family & kids friendly - Comfortable resort stay for all ages" },
+    { icon: "Users", text: "Solo travellers welcome - Separate tents / rooms for girls" },
+    { icon: "Heart", text: "Couple friendly - Cottage / private room option at extra cost" },
+    { icon: "Stethoscope", text: "Inform in advance if you have Asthma, Heart Problem or High BP - Carry your medicines" }
+  ];
+
+  TREKS[chakrataIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Comfortable walking 2–3 km on easy, well-marked trails" },
+    { icon: "TrendingUp", text: "Tiger Falls trek: 1 km down and up on stairs through forest" },
+    { icon: "Mountain", text: "Moila Top trek: 2.5 km easy walk through deodar forest to the meadows" },
+    { icon: "Activity", text: "No prior fitness training or high-altitude acclimatisation required" }
+  ];
+
+  TREKS[chakrataIndex].aboutParagraphs = [
+    "Chakrata is a quiet cantonment town in Uttarakhand, located at 7,000 ft, just 320 km from Delhi. Unlike Mussoorie or Shimla, Chakrata is still offbeat, clean and less crowded because it is under Army (Special Frontier Force). No mall road rush, no traffic jams — just deodar forests, waterfalls, meadows and silence.",
+    "Our Chakrata 1N/2D Trip Ex: Delhi is perfect for a weekend getaway from Delhi. You travel overnight from Delhi to Dehradun to Chakrata, spend a night in Chakrata in a hotel / camp with bonfire, visit Tiger Falls, Chilmiri Top, Moila Top and Budher Caves and come back to Delhi.",
+    "If you are from Delhi NCR and want to escape the city heat or crowd for two days, if you want to see a real waterfall (312 ft Tiger Falls), or if you want to sit in a forest and do a bonfire with friends while clicking photos of the Himalayas — Chakrata is made for you.",
+    "No high-altitude trekking, no fitness required — anyone can go, from a 5 year old kid to a 60 year old parent. Best for couples, friend groups, families with kids, college groups and corporate teams."
+  ];
+
+  TREKS[chakrataIndex].highlights = [
+    "Tiger Falls - 312 FT Highest Direct Waterfall",
+    "Chilmiri Neck - Sunrise & Sunset Point",
+    "Deoban Forest - Dense Deodar & Himalayan Views",
+    "Budher / Moila Caves - 150M Limestone Cave",
+    "Kanasar - Asia's Biggest Deodar Tree",
+    "Bonfire, Music & Camping"
+  ];
+
+  TREKS[chakrataIndex].usps = [
+    {
+      title: "Delhi to Delhi in AC Traveller / Volvo + Local Taxi",
+      description: "No self-driving tension - Delhi to Kalsi highway is good, but after Kalsi roads are narrow and steep."
+    },
+    {
+      title: "Stay near Chakrata Market / Kanasar Camps",
+      description: "Best located resort / Swiss camp stay with bonfire area and mountain views."
+    },
+    {
+      title: "All major points covered",
+      description: "Tiger Falls Trek (with guide), Chilmiri Neck Sunset, Moila Top & Budher Caves walk."
+    },
+    {
+      title: "Meals + Bonfire + Music + Trek Guide included",
+      description: "Everything managed so you can focus on the forests, waterfall and mountains."
+    },
+    {
+      title: "Trip Captain from Delhi",
+      description: "Manages the entire trip end to end, from pickup to drop."
+    }
+  ];
+
+  TREKS[chakrataIndex].destinationHighlights = [
+    { name: "Tiger Falls", blurb: "312 ft direct waterfall, 20 km from Chakrata, one of the highest direct falls in India." },
+    { name: "Chilmiri Neck", blurb: "Chakrata's highest point (7,500 ft), an Army-controlled sunset viewpoint over the valley." },
+    { name: "Deoban Forest", blurb: "Dense deodar forest at 9,300 ft with wide Himalayan views on clear days." },
+    { name: "Budher / Moila Caves", blurb: "A 150 metre limestone cave with hanging stalactites inside the Moila Top forest." },
+    { name: "Kanasar", blurb: "Home to Asia's biggest Deodar tree, near the meadows of Moila Danda." }
+  ];
+
+  TREKS[chakrataIndex].differentiators = [
+    "Region: Dehradun District, Uttarakhand - Jaunsar Bawar Region (Cantonment Hill Station)",
+    "Trip type: easy weekend getaway - no trek experience needed",
+    "Terrain: deodar forests, meadows, a limestone cave and a 312 ft waterfall",
+    "Best experience: offbeat, uncrowded alternative to Mussoorie and Shimla"
+  ];
+
+  TREKS[chakrataIndex].idealFor =
+    "Delhi NCR travellers aged 5–60 looking for an easy 1N/2D weekend getaway - nature lovers, waterfall lovers, families, couples, solo travellers, college groups and corporate teams. No trek experience or fitness training required.";
+
+  TREKS[chakrataIndex].importantNote =
+    "Chakrata is an Army Cantonment Area - carry your original Aadhar Card / valid Govt ID, it is checked at the Chakrata checkpost and again at the Kanasar gate for Budher Caves entry. Smoking and drinking inside the vehicle is strictly prohibited.";
+
+  TREKS[chakrataIndex].howToReach = {
+    intro: "The Chakrata Trip starts and ends in Delhi, running via Dehradun and Kalsi.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "IGI Airport, Delhi (Starting Point) / Jolly Grant Airport, Dehradun",
+      detail: "IGI Delhi is the trip's start point. Jolly Grant Airport, Dehradun is 115 km from Chakrata, enroute, with a taxi onward costing roughly ₹3,500-4,000."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Delhi - Hazrat Nizamuddin / New Delhi / Kashmiri Gate ISBT",
+      detail: "Delhi is the pickup point. Dehradun Railway Station is 92 km from Chakrata and lies on the route, roughly the midpoint of the drive."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Delhi - Meerut - Roorkee - Dehradun - Kalsi - Chakrata",
+      detail: "Delhi to Chakrata is 320 km / 8-9 hours by road. From Dehradun, it is 90 km / 3-3.5 hours via Vikasnagar, Kalsi and Sahiya. The road is a good highway till Kalsi, but after Kalsi it is a single hilly road with sharp turns - self-drive is not recommended at night or in monsoon.",
+      route: ["Delhi", "Meerut", "Roorkee", "Dehradun", "Kalsi", "Sahiya", "Chakrata"],
+      facts: [
+        { label: "Distance", value: "320 km (Delhi) / 90 km (Dehradun)" },
+        { label: "Drive", value: "8-9 Hours (Delhi) / 3-3.5 Hours (Dehradun)" },
+        { label: "Bus Option", value: "Dehradun ISBT to Chakrata - 5:30 AM & 1:00 PM - ₹150 - 4 Hrs" }
+      ]
+    },
+    pickup: {
+      point: "Delhi - Kashmiri Gate / Majnu Ka Tila / Akshardham",
+      time: "9:00-10:00 PM on Day 0",
+      dropPoint: "Delhi",
+      dropTime: "6:00-7:00 AM on the last day",
+      note: "Overnight journey from Delhi to Dehradun on Day 0. Dehradun to Dehradun batch pickup is at Dehradun Railway Station / ISBT at 6:00 AM."
+    }
+  };
+
+  TREKS[chakrataIndex].itinerary = [
+    {
+      day: 0,
+      title: "Delhi to Dehradun (Overnight Journey)",
+      driveDistance: "250 km",
+      pickupPoint: "Delhi - Kashmiri Gate / Majnu Ka Tila / Akshardham",
+      pickupTime: "9:00-10:00 PM",
+      description: "Overnight departure from Delhi to Dehradun, with a scenic route and a midway refreshment break.",
+      detailedParagraphs: [
+        "Embark on an overnight journey from Delhi to Dehradun with the batch, taking a scenic route.",
+        "The bus / traveller stops midway for a refreshing break before continuing on to Dehradun."
+      ],
+      highlights: ["Overnight Departure", "Midway Break"],
+      meals: "None",
+      stayType: "Overnight Travel"
+    },
+    {
+      day: 1,
+      title: "Dehradun to Chakrata - Moila Top Trek & Chilmiri Sunset",
+      driveDistance: "90 km",
+      drivingTime: "3-3.5 Hours",
+      trekDistance: "2.5 km",
+      trekDuration: "2-3 Hours",
+      altitudePoints: [
+        { location: "Dehradun", m: 549, ft: 1800 },
+        { location: "Chakrata", m: 2134, ft: 7000 },
+        { location: "Moila Top", m: 2743, ft: 9000 },
+        { location: "Chilmiri Neck", m: 2286, ft: 7500 }
+      ],
+      altitudeGain: { m: 1585, ft: 5200 },
+      description: "Reach Dehradun early morning, drive to Chakrata and check in, then trek to Moila Top & Budher Caves for 360° Himalayan views, followed by sunset at Chilmiri Neck and a bonfire dinner.",
+      detailedParagraphs: [
+        "Reach Dehradun around 6 AM and drive to Chakrata (90 km), checking into the resort by 8 AM.",
+        "After breakfast, the whole group heads to Lokhandi and starts the trek to Moila Top, enjoying a 360° view of the Himalayas and the unseen beauty of the Bugyal in the dark deodar forest, along with the Budher / Moila Caves.",
+        "After completing the trek, the group hikes to Chilmiri Top for a beautiful sunset - the whole valley turns orange as the Himalayan range glows.",
+        "The group returns to the resort for dinner with a bonfire and music."
+      ],
+      highlights: ["Moila Top Trek", "Budher Caves", "360° Himalayan View", "Chilmiri Sunset", "Bonfire & Music"],
+      meals: "Breakfast & Dinner",
+      stayType: "Resort / Swiss Camp"
+    },
+    {
+      day: 2,
+      title: "Tiger Falls & Return to Delhi",
+      trekDistance: "1 km (Down + Up)",
+      trekDuration: "1-2 Hours",
+      driveDistance: "90 km (to Dehradun) + 250 km (to Delhi)",
+      altitudePoints: [
+        { location: "Chakrata", m: 2134, ft: 7000 },
+        { location: "Tiger Falls", m: 1399, ft: 4590 }
+      ],
+      altitudeGain: null,
+      description: "Morning tea with Himalayan views, trek down to the 312 ft Tiger Falls, then drive back via Dehradun to Delhi, arriving early next morning.",
+      detailedParagraphs: [
+        "The day starts with morning tea and a beautiful Himalayan view from your bed.",
+        "After breakfast, the whole group goes to Tiger Falls, hidden in the hilly terrain of Chakrata, 20 km away at a height of 312 ft - considered one of the highest direct waterfalls in India.",
+        "After enjoying the waterfall, the group heads back to Dehradun and then on to Delhi, arriving around 4:00-5:00 AM with many memories and new friends."
+      ],
+      highlights: ["Tiger Falls Trek", "312 FT Waterfall", "Return to Delhi"],
+      meals: "Breakfast",
+      stayType: ""
+    }
+  ];
+
+  TREKS[chakrataIndex].article = {
+    title: "Chakrata - The Hidden Himalayan Gem Near Delhi | Complete Travel Guide",
+    standfirst:
+      "Just 320 km from Delhi, this small cantonment town in Uttarakhand is still untouched, raw, and surrounded by dense deodar forests, misty mountains and two of Uttarakhand's most beautiful treks - Moila Top and Tiger Falls.",
+    readMinutes: 6,
+    sections: [
+      {
+        paragraphs: [
+          "If you are tired of crowded Mussoorie and looking for a peaceful, offbeat weekend getaway near Delhi, Chakrata is the answer.",
+          "Unlike other hill stations, Chakrata is a Restricted Army Cantonment Area. That is the reason you won't find too many hotels, market crowd or traffic here. This is exactly what makes it special - clean air, no pollution, and pure nature."
+        ]
+      },
+      {
+        heading: "Moila Top Trek & Budher Caves",
+        paragraphs: [
+          "The main highlight of Chakrata. A 2.5 km easy trek from Lokhandi through dark deodar forest takes you to a wide green meadow - Moila Danda or Bugyal. From here you get a 360° view of Swargarohini, Bandarpoonch and other Himalayan peaks.",
+          "Inside the forest is the famous Budher Caves (Miola Caves) - a 150 metre long limestone cave with hanging stalactites. It feels like you are inside an ancient era."
+        ]
+      },
+      {
+        heading: "Tiger Falls (312 FT)",
+        paragraphs: [
+          "Located 20 km from Chakrata, it is one of the highest direct waterfalls in India. Water falls straight from a height of 312 feet into a small natural pool.",
+          "The trek to the base is just 1 km downhill through thick forest. You can sit at the bottom, dip your feet, and listen to the roar of the fall - completely healing."
+        ]
+      },
+      {
+        heading: "Chilmiri Neck",
+        paragraphs: [
+          "The highest point of Chakrata (7,500 ft), under Army control. From here, sunset looks magical - the whole valley turns orange and the Himalayan range glows.",
+          "Photography is restricted here due to the Army area, but the view remains in your memory forever."
+        ]
+      },
+      {
+        heading: "Best Time to Visit",
+        paragraphs: [
+          "March to June is best for trekking and clear Himalayan views, with temperatures of 10-25°C. July to September is monsoon, with the waterfall at its peak and lush green forest, but the trek becomes slippery.",
+          "October to November is best for clear skies and sunset views, while December to February brings a snowfall season that turns Chakrata white - perfect for snow lovers."
+        ]
+      },
+      {
+        heading: "Things to Remember",
+        paragraphs: [
+          "Carry your Aadhar Card - it is checked at the Cantonment gate. Drones are not allowed and no permit is needed. Carry cash, as ATMs are limited, and avoid loud music at the waterfall.",
+          "Chakrata is not a luxury destination - it is a raw, offbeat, forest destination for those who want to disconnect from city noise and connect with mountains."
+        ]
+      }
+    ],
+    signoff: "Trip My Soul organizes weekend batches for Chakrata - Delhi to Delhi - with AC transport, resort stay, meals, trek guide and trip captain."
+  };
+
+  TREKS[chakrataIndex].faqs = [
+    { title: "What is the distance from Delhi to Chakrata?", description: "Delhi to Chakrata is 320 km. It takes 8-9 hours to reach Dehradun overnight, plus 3 hours to Chakrata - total 11-12 hours including breaks." },
+    { title: "Is Chakrata safe for girls & solo travellers?", description: "Yes, 100% safe. Chakrata is an Army Cantonment Area, so security is very high. 40% of our travellers are solo female travellers, with separate accommodation for girls and a trip captain for safety." },
+    { title: "Is the trek difficult? Can beginners do it?", description: "Both Moila Top (2.5 km) and Tiger Falls (1 km) are easy grade treks. No prior trek experience is needed - kids (5+ years) and elders (up to 60 years) can easily do it, with only 200-300 steps at Tiger Falls." },
+    { title: "Will we get snow in Chakrata?", description: "Yes, from December to February you get snowfall at Moila Top and Chilmiri Neck. March and November also have chances - we run special snow trek batches in winter." },
+    { title: "What about mobile network & ATM?", description: "Only Jio & BSNL work in Chakrata - Airtel & VI have very weak signals, and no network during the Moila Top trek. Carry cash - only 2 ATMs in Chakrata market, often out of service." },
+    { title: "What type of accommodation do you provide?", description: "We provide the best resort / Swiss camps in Chakrata, with attached washroom, hot water, mountain view and bonfire area, on a triple / quad sharing basis. Double sharing & couple private cottage are available at extra cost." },
+    { title: "What will be the temperature in Chakrata?", description: "Summer is 10°C to 25°C (pleasant); winter is -5°C to 10°C (very cold). Carry jackets in all seasons - nights are cold even in summer." },
+    { title: "Is Aadhar Card mandatory?", description: "Yes. Chakrata is an Army area - ID proof is checked at the Kanasar Checkpost for Budher Caves entry, so carry your original Aadhar / Govt ID." },
+    { title: "Can we take our own car / bike?", description: "Yes, but the road after Kalsi is single, steep and has sharp turns. Avoid night driving - if you are not confident on hill driving, better to book the Delhi to Delhi package." },
+    { title: "Are meals included? Veg or Non-Veg?", description: "1 Breakfast + 1 Dinner (veg buffet) is included. Lunch is not included, available at local dhabas for ₹200-300. Chakrata is a veg area due to the cantonment, so non-veg is not easily available." },
+    { title: "Is drinking / smoking allowed?", description: "Drinking & smoking inside the vehicle is strictly prohibited. You can consume at the resort after the trek in a limited way, but should not create a nuisance for others." },
+    { title: "What to carry for the Chakrata trip?", description: "ID proof, warm jacket, trek shoes / sports shoes, power bank, cash, medicines, sunscreen, sunglasses and a small backpack." },
+    { title: "What is the pickup point & time?", description: "Delhi - Kashmiri Gate / Majnu Ka Tila - 9:00 to 10:00 PM. Dehradun - Dehradun Railway Station / ISBT - 6:00 AM." },
+    { title: "What if it rains? Will the trek be cancelled?", description: "Light rain - the trek continues with ponchos. Heavy rain - the trek may be shifted to Tiger Falls only or resort activities for safety. No refund in case of weather issues, but we provide an alternate plan." }
+  ];
+
+  TREKS[chakrataIndex].packingList = [
+    {
+      category: "Clothing & Layers",
+      items: [
+        "Warm jacket (all seasons - nights are cold even in summer)",
+        "Quick-dry T-shirts & trekking pants",
+        "Warm cap & gloves (winter batches)",
+        "Woollen socks (2-3 pairs)"
+      ]
+    },
+    {
+      category: "Footwear & Gear",
+      items: [
+        "Trekking shoes / sports shoes",
+        "Small backpack / trolley bag (avoid big suitcase)",
+        "Power bank & charging cable",
+        "Torch / headlamp"
+      ]
+    },
+    {
+      category: "Sun, Health & Documents",
+      items: [
+        "Sunglasses & sunscreen",
+        "Personal medicines (inform in advance for Asthma, Heart Problem, High BP)",
+        "Cash (limited ATMs in Chakrata market)",
+        "Aadhar Card / valid Govt ID (mandatory)"
+      ]
+    }
+  ];
+
+  TREKS[chakrataIndex].thingsToRemember = [
+    "Carry your original Aadhar Card / valid Govt ID - it is checked at the Chakrata checkpost and again at the Kanasar gate for Budher Caves entry.",
+    "Smoking & drinking inside the vehicle is strictly prohibited, and littering in the forest & waterfall area is not allowed.",
+    "Pack light - one small backpack / trolley bag, avoid a big suitcase as the hill road and small trek don't suit it."
+  ];
+
+  TREKS[chakrataIndex].bookingAdvance = 1000;
+  TREKS[chakrataIndex].bookingTerms = [
+    { title: "Trip Cost", description: "₹3,999 + 5% GST* per person on triple / quad sharing." },
+    { title: "Upgrade - Double Sharing", description: "₹1,000 per person extra." },
+    { title: "Upgrade - Couple Cottage / Private Room", description: "₹1,000 per person extra." },
+    { title: "Inclusions", description: "AC travel Delhi to Delhi, 1 night stay, 2 meals, guided treks, bonfire and trip captain as mentioned in the package." },
+    { title: "Exclusions", description: "Lunch, personal expenses, adventure activities and anything not specifically mentioned under inclusions." },
+    { title: "ID Proof", description: "Valid Aadhar Card / Govt ID is mandatory - checked at the Chakrata Cantonment checkpost." },
+    { title: "Weather & Route", description: "Itinerary may change due to weather, Army/forest restrictions or safety conditions." }
+  ];
+
+  TREKS[chakrataIndex].similarTreks = [
+    "auli-weekend-tour",
+    "mussoorie-winter-escape",
+    "nainital-winter-trip",
+    "munsiyari-khalia-top"
+  ];
 }
