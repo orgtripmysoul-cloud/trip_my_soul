@@ -25,6 +25,8 @@ export const BRAND = {
 export const COMPANY_NAME = "TripMySoul Pvt. Ltd.";
 export const COMPANY_ADDRESS = "Saraswati Vihar, Ajabpur Khurd, Dehradun, Uttarakhand - 248001";
 export const SUPPORT_PHONE = "+91 81786 13438";
+export const SUPPORT_EMAIL = "bookings@tripmysoul.in";
+export const WEBSITE_URL = "www.tripmysoul.in";
 
 interface EmailLayoutProps {
   previewText: string;

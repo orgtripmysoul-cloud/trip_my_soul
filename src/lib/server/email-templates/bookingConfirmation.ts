@@ -5,7 +5,7 @@ import { formatInr } from "@/lib/money";
 import BookingConfirmation from "../../../../emails/booking-confirmation";
 import BookingInternalNotification from "../../../../emails/booking-internal-notification";
 
-/** Shape of `vars` on a `booking.payment_success` notification_outbox row — see capture_payment() in supabase/migrations/0010_booking_confirmation_context.sql. */
+/** Shape of `vars` on a `booking.confirmed` notification_outbox row — see capture_payment() in supabase/migrations/0011_trip_reminders.sql. */
 export interface BookingConfirmationVars {
   booking_no: string;
   pax: number;
@@ -18,8 +18,13 @@ export interface BookingConfirmationVars {
   duration_days: number | null;
   batch_label: string;
   start_date: string | null;
+  end_date?: string | null;
+  pickup_location?: string | null;
   total_amount: number;
   amount_paid: number;
+  paid_amount?: number;
+  balance_amount?: number;
+  payment_state?: string;
   gateway_payment_id: string;
 }
 
@@ -42,9 +47,14 @@ export async function renderBookingConfirmationEmail(vars: BookingConfirmationVa
     difficulty: vars.difficulty ?? "—",
     durationDays: vars.duration_days ?? 0,
     departureDateLabel: formatDepartureDate(vars.start_date),
+    returnDateLabel: formatDepartureDate(vars.end_date ?? null),
     batchLabel: vars.batch_label,
     pax: vars.pax,
+    pickupLocation: vars.pickup_location ?? null,
     totalAmount: vars.total_amount,
+    paidAmount: vars.paid_amount ?? vars.amount_paid,
+    balanceAmount: vars.balance_amount ?? Math.max(vars.total_amount - (vars.paid_amount ?? vars.amount_paid), 0),
+    paymentStatus: vars.payment_state ?? "confirmed",
   });
 
   const [html, text] = await Promise.all([render(element), render(element, { plainText: true })]);

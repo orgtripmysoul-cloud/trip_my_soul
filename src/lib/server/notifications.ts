@@ -2,6 +2,8 @@ import "server-only";
 import { supabaseAdmin } from "./supabase";
 import { sendEmail } from "./resend";
 import { renderBookingConfirmationEmail, type BookingConfirmationVars } from "./email-templates/bookingConfirmation";
+import { renderPaymentReceivedEmail, type PaymentReceivedVars } from "./email-templates/paymentReceived";
+import { renderTripReminderEmail, type TripReminderVars } from "./email-templates/tripReminder";
 
 const MAX_ATTEMPTS = 8;
 /** Exponential backoff in minutes: 1, 2, 4, 8, 16, 32, 64, 128. */
@@ -71,8 +73,13 @@ export async function dispatchPendingNotifications(limit = 25): Promise<{ sent: 
 
 function renderTemplate(templateCode: string, vars: Record<string, unknown>): Promise<{ subject: string; html: string; text: string }> {
   switch (templateCode) {
-    case "booking.payment_success":
+    case "booking.payment_success": // retained for any pre-0011 outbox rows still pending
+    case "booking.confirmed":
       return renderBookingConfirmationEmail(vars as unknown as BookingConfirmationVars);
+    case "booking.payment_received":
+      return renderPaymentReceivedEmail(vars as unknown as PaymentReceivedVars);
+    case "booking.trip_reminder":
+      return renderTripReminderEmail(vars as unknown as TripReminderVars);
     default:
       throw new Error(`Unknown notification template: ${templateCode}`);
   }

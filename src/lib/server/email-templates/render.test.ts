@@ -64,3 +64,47 @@ describe("renderBookingConfirmationEmail", () => {
     expect(text).toContain("asha@example.com");
   });
 });
+
+describe("renderPaymentReceivedEmail", () => {
+  it("renders the payment receipt with booking id, amount and transaction id", async () => {
+    const { renderPaymentReceivedEmail } = await import("./paymentReceived");
+    const { subject, html, text } = await renderPaymentReceivedEmail({
+      booking_no: "TMS-0001",
+      customer_name: "Asha Rao",
+      trek_name: "Valley of Flowers Trek",
+      batch_label: "06 Aug-11 Aug 2026",
+      start_date: "2026-08-06",
+      amount_paid: 92500,
+      payment_status: "captured",
+      gateway_payment_id: "pay_test123",
+      booking_status: "partially_paid",
+    });
+
+    expect(subject).toContain("TMS-0001");
+    expect(html).toContain("₹92,500");
+    expect(html).toContain("pay_test123");
+    expect(html).toContain("Booking Confirmation email shortly");
+    expect(text).toContain("TMS-0001");
+  });
+});
+
+describe("renderTripReminderEmail", () => {
+  it("renders the 3-day reminder with departure details and packing list", async () => {
+    const { renderTripReminderEmail } = await import("./tripReminder");
+    const { subject, html, text } = await renderTripReminderEmail({
+      booking_no: "TMS-0001",
+      customer_name: "Asha Rao",
+      trek_name: "Valley of Flowers Trek",
+      start_date: "2026-08-06",
+      end_date: "2026-08-11",
+      reporting_time: "6:00 AM",
+      pickup_location: "Haridwar Railway Station",
+    });
+
+    expect(subject).toContain("Valley of Flowers Trek");
+    expect(html).toContain("TMS-0001");
+    expect(html).toContain("Haridwar Railway Station");
+    expect(html).toContain("6:00 AM");
+    expect(text).toContain("3 Days to Go");
+  });
+});
