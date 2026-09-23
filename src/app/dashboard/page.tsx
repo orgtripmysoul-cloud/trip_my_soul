@@ -8,7 +8,8 @@ import {
 } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { TREKS, WILDLIFE, YATRAS } from "@/data/db";
-import type { MyBookingSummary, MyBookingsResponse } from "@/lib/types/booking";
+import type { AdditionalPaymentResponse, MyBookingSummary, MyBookingsResponse } from "@/lib/types/booking";
+import { loadRazorpayScript, lookupBooking, newIdempotencyKey, verifyPayment } from "@/lib/client/checkoutApi";
 
 const FALLBACK_TREK_IMAGE =
   "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=350&q=85";
@@ -50,6 +51,11 @@ export default function DashboardPage() {
   const [cancelReason, setCancelReason] = useState("Schedule Conflict");
   const [cancelNotes, setCancelNotes] = useState("");
   const [cancelSuccessMsg, setCancelSuccessMsg] = useState(false);
+
+  // Pay Now (installment / balance) state, keyed by booking number.
+  const [payAmounts, setPayAmounts] = useState<Record<string, string>>({});
+  const [payLoading, setPayLoading] = useState<Record<string, boolean>>({});
+  const [payError, setPayError] = useState<Record<string, string>>({});
 
   // Fix server-client mismatch
   useEffect(() => {
@@ -129,6 +135,87 @@ export default function DashboardPage() {
     setFeedbackSuccess(true);
     setReviewText("");
     setTimeout(() => setFeedbackSuccess(false), 3000);
+  };
+
+  const pollAfterAdditionalPayment = async (bookingNo: string, email: string) => {
+    for (let attempt = 0; attempt < 8; attempt++) {
+      await new Promise((resolve) => setTimeout(resolve, 2500));
+      try {
+        const result = await lookupBooking(bookingNo, email);
+        setBookings((prev) =>
+          prev.map((b) =>
+            b.bookingNo === bookingNo
+              ? { ...b, paidAmount: result.paidAmount, status: result.status, paymentState: result.paymentState }
+              : b
+          )
+        );
+        if (result.paymentState === "fully_paid" || result.status === "confirmed" || result.status === "partially_paid") {
+          return;
+        }
+      } catch {
+        // transient — keep polling until attempts run out
+      }
+    }
+  };
+
+  const handlePayNow = async (booking: MyBookingSummary) => {
+    const dueAmount = Math.max(booking.totalAmount - booking.paidAmount, 0);
+    const rawAmount = payAmounts[booking.bookingNo] ?? String(dueAmount);
+    const amount = Number(rawAmount);
+
+    setPayError((prev) => ({ ...prev, [booking.bookingNo]: "" }));
+
+    if (!Number.isFinite(amount) || amount <= 0) {
+      setPayError((prev) => ({ ...prev, [booking.bookingNo]: "Please enter a valid amount." }));
+      return;
+    }
+    if (amount > dueAmount) {
+      setPayError((prev) => ({ ...prev, [booking.bookingNo]: "Amount cannot exceed the outstanding balance." }));
+      return;
+    }
+
+    setPayLoading((prev) => ({ ...prev, [booking.bookingNo]: true }));
+    try {
+      const res = await fetch(`/api/v1/public/bookings/${encodeURIComponent(booking.bookingNo)}/additional-payment`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Idempotency-Key": newIdempotencyKey() },
+        body: JSON.stringify({ email: userEmail, amount }),
+      });
+      const body = (await res.json()) as AdditionalPaymentResponse & { code?: string; message?: string };
+      if (!res.ok) {
+        setPayError((prev) => ({ ...prev, [booking.bookingNo]: body.message ?? "Could not start payment." }));
+        return;
+      }
+
+      await loadRazorpayScript();
+      if (!window.Razorpay) {
+        setPayError((prev) => ({ ...prev, [booking.bookingNo]: "Payment service is temporarily unavailable." }));
+        return;
+      }
+
+      const rzp = new window.Razorpay({
+        key: body.razorpayKeyId,
+        amount: Math.round(body.amount * 100),
+        currency: body.currency,
+        name: "TripMySoul",
+        description: `${booking.trekName || booking.batchLabel} — additional payment`,
+        order_id: body.razorpayOrderId,
+        prefill: { name: userName, email: userEmail },
+        theme: { color: "#0B2545" },
+        handler: (response) => {
+          verifyPayment(response).catch(() => {});
+          void pollAfterAdditionalPayment(booking.bookingNo, userEmail);
+        },
+      });
+      rzp.on("payment.failed", (resp) => {
+        setPayError((prev) => ({ ...prev, [booking.bookingNo]: resp.error?.description || "Payment failed. Please try again." }));
+      });
+      rzp.open();
+    } catch {
+      setPayError((prev) => ({ ...prev, [booking.bookingNo]: "Could not start payment. Please try again." }));
+    } finally {
+      setPayLoading((prev) => ({ ...prev, [booking.bookingNo]: false }));
+    }
   };
 
   return (
@@ -308,6 +395,41 @@ export default function DashboardPage() {
                               </span>
                             </div>
                           </div>
+
+                          {!cancelled &&
+                            booking.paymentState !== "fully_paid" &&
+                            (booking.status === "partially_paid" || booking.status === "confirmed") && (
+                              <div className="p-3 bg-brand-warm-bg border border-gray-150 rounded-2xl space-y-2">
+                                <div className="flex items-center justify-between text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                                  <span>Balance Due</span>
+                                  <span className="text-brand-forest">₹{Math.max(booking.totalAmount - booking.paidAmount, 0).toLocaleString("en-IN")}</span>
+                                </div>
+                                <div className="flex flex-col sm:flex-row gap-2">
+                                  <input
+                                    type="number"
+                                    min={1}
+                                    max={Math.max(booking.totalAmount - booking.paidAmount, 0)}
+                                    step="0.01"
+                                    placeholder={String(Math.max(booking.totalAmount - booking.paidAmount, 0))}
+                                    value={payAmounts[booking.bookingNo] ?? ""}
+                                    onChange={(e) =>
+                                      setPayAmounts((prev) => ({ ...prev, [booking.bookingNo]: e.target.value }))
+                                    }
+                                    className="p-2.5 min-h-[40px] rounded-xl border border-gray-200 text-xs w-full sm:w-32 focus:outline-none"
+                                  />
+                                  <button
+                                    onClick={() => handlePayNow(booking)}
+                                    disabled={payLoading[booking.bookingNo]}
+                                    className="px-4 py-2.5 min-h-[40px] bg-brand-forest hover:bg-brand-forest-light text-white rounded-xl font-bold text-[11px] transition disabled:opacity-50 shrink-0"
+                                  >
+                                    {payLoading[booking.bookingNo] ? "Starting..." : "Pay Online"}
+                                  </button>
+                                </div>
+                                {payError[booking.bookingNo] && (
+                                  <p className="text-[10px] font-bold text-red-600">{payError[booking.bookingNo]}</p>
+                                )}
+                              </div>
+                            )}
 
                           <div className="flex flex-wrap gap-2.5 pt-2">
                             <a

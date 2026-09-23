@@ -11,6 +11,8 @@ export const ERROR_CODES = [
   "SERVICE_UNAVAILABLE",
   "EMAIL_NOT_VERIFIED",
   "RATE_LIMITED",
+  "FORBIDDEN",
+  "UNAUTHORIZED",
 ] as const;
 
 export type ErrorCode = (typeof ERROR_CODES)[number];
@@ -28,6 +30,8 @@ const STATUS_BY_CODE: Record<ErrorCode, number> = {
   SERVICE_UNAVAILABLE: 503,
   EMAIL_NOT_VERIFIED: 403,
   RATE_LIMITED: 429,
+  FORBIDDEN: 403,
+  UNAUTHORIZED: 401,
 };
 
 /** Thrown by route handlers; never leaks stack traces or secrets to the client. */
@@ -59,8 +63,24 @@ export function fromPostgresError(error: { code?: string; message?: string }): A
   if (message.includes("SEATS_UNAVAILABLE")) {
     return new AppError("SEATS_UNAVAILABLE", "Sorry, these seats are no longer available. Please choose another departure.");
   }
-  if (message.includes("DEPARTURE_NOT_FOUND") || message.includes("PAYMENT_NOT_FOUND")) {
+  if (
+    message.includes("DEPARTURE_NOT_FOUND") ||
+    message.includes("PAYMENT_NOT_FOUND") ||
+    message.includes("BOOKING_NOT_FOUND")
+  ) {
     return new AppError("NOT_FOUND", "We couldn't find that booking.");
+  }
+  if (message.includes("BOOKING_NOT_PAYABLE")) {
+    return new AppError("VALIDATION_FAILED", "This booking cannot accept further payments.");
+  }
+  if (message.includes("INVALID_AMOUNT") || message.includes("INVALID_INITIAL_PAYMENT_AMOUNT")) {
+    return new AppError("VALIDATION_FAILED", "Please enter a valid amount.");
+  }
+  if (message.includes("AMOUNT_EXCEEDS_BALANCE")) {
+    return new AppError("VALIDATION_FAILED", "This amount exceeds the outstanding balance.");
+  }
+  if (message.includes("INVALID_METHOD")) {
+    return new AppError("VALIDATION_FAILED", "Unsupported payment method.");
   }
   return new AppError("INTERNAL_ERROR", "Something went wrong. Please try again.");
 }

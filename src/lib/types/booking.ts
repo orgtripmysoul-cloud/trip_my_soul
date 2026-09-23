@@ -20,12 +20,19 @@ export interface CreateBookingRequest {
   couponCode?: string;
   /** Issued by POST /api/verify/confirm after the primary booker's email is OTP-verified. */
   verificationToken: string;
+  /** Optional partial-payment amount for the first payment; omit to pay the full trek total now. */
+  payNowAmount?: number;
 }
 
 export interface CreateBookingResponse {
   bookingNo: string;
   holdExpiresAt: string;
+  /** The full trek total, regardless of how much is being paid in this Razorpay order. */
   totalAmount: number;
+  /** Outstanding balance after this order's payment is captured (== totalAmount - payingNowAmount). */
+  amountDue: number;
+  /** The amount this Razorpay order is actually for (== totalAmount unless payNowAmount was requested). */
+  payingNowAmount: number;
   currency: string;
   razorpayOrderId: string;
   razorpayKeyId: string;
@@ -38,6 +45,27 @@ export interface PaymentIntentResponse {
   currency: string;
   razorpayOrderId: string;
   razorpayKeyId: string;
+}
+
+export interface AdditionalPaymentRequest {
+  email: string;
+  amount: number;
+}
+
+export interface AdditionalPaymentResponse {
+  bookingNo: string;
+  /** The amount this Razorpay order is for (the requested installment, not the full total). */
+  amount: number;
+  currency: string;
+  razorpayOrderId: string;
+  razorpayKeyId: string;
+  /**
+   * Provisional/not authoritative — computed client-side-friendly as
+   * total_amount - paid_amount - amount at request time, purely so the UI
+   * can show an optimistic updated balance. Only the webhook-confirmed
+   * booking state (via /bookings/lookup or /bookings/mine) is authoritative.
+   */
+  amountDue: number;
 }
 
 export interface VerifyPaymentRequest {
@@ -89,4 +117,85 @@ export interface MyBookingsResponse {
 export interface ApiErrorBody {
   code: string;
   message: string;
+}
+
+/** Admin panel types (src/app/admin/**, src/app/api/v1/admin/**). */
+
+export interface AdminBookingListItem {
+  bookingNo: string;
+  status: string;
+  paymentState: string;
+  totalAmount: number;
+  paidAmount: number;
+  currency: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  trekName: string;
+  batchLabel: string;
+  createdAt: string;
+}
+
+export interface AdminBookingListResponse {
+  bookings: AdminBookingListItem[];
+  total: number;
+  limit: number;
+  offset: number;
+}
+
+export interface AdminPaymentRecord {
+  id: string;
+  kind: string;
+  amount: number;
+  currency: string;
+  gateway: string;
+  method: string | null;
+  status: string;
+  transactionReference: string | null;
+  notes: string | null;
+  collectedByName: string | null;
+  verifiedByName: string | null;
+  verifiedAt: string | null;
+  capturedAt: string | null;
+  createdAt: string;
+}
+
+export interface AdminBookingTraveller {
+  fullName: string;
+  email: string | null;
+  isPrimary: boolean;
+}
+
+export interface AdminBookingDetailResponse {
+  bookingNo: string;
+  status: string;
+  paymentState: string;
+  pax: number;
+  totalAmount: number;
+  paidAmount: number;
+  currency: string;
+  createdAt: string;
+  customer: { name: string; email: string; phone: string };
+  trekName: string;
+  batchLabel: string;
+  startDate: string | null;
+  endDate: string | null;
+  travellers: AdminBookingTraveller[];
+  payments: AdminPaymentRecord[];
+}
+
+export type AdminManualPaymentMethod = "cash" | "upi_manual" | "bank_transfer" | "other";
+export type AdminManualPaymentKind = "advance" | "installment" | "final" | "other";
+
+export interface AdminRecordPaymentRequest {
+  amount: number;
+  method: AdminManualPaymentMethod;
+  kind?: AdminManualPaymentKind;
+  transactionReference?: string;
+  notes?: string;
+}
+
+export interface AdminRecordPaymentResponse {
+  booking: { bookingNo: string; status: string; paymentState: string; totalAmount: number; paidAmount: number };
+  payment: AdminPaymentRecord;
 }

@@ -41,6 +41,9 @@ function validate(body: Partial<CreateBookingRequest>): CreateBookingRequest {
   if (!Array.isArray(body.travellers) || body.travellers.length !== body.pax) {
     throw new AppError("VALIDATION_FAILED", "Traveller details do not match the number of travellers.");
   }
+  if (body.payNowAmount !== undefined && !isValidInrAmount(body.payNowAmount)) {
+    throw new AppError("VALIDATION_FAILED", "Please enter a valid amount to pay now.");
+  }
   for (const traveller of body.travellers) {
     if (!traveller.fullName?.trim()) {
       throw new AppError("VALIDATION_FAILED", "Every traveller needs a name.");
@@ -115,6 +118,13 @@ export async function POST(request: NextRequest) {
       throw new AppError("VALIDATION_FAILED", "Could not calculate a valid amount for this booking.");
     }
 
+    if (
+      body.payNowAmount !== undefined &&
+      !(body.payNowAmount > 0 && body.payNowAmount <= pricing.totalAmount)
+    ) {
+      throw new AppError("VALIDATION_FAILED", "The amount to pay now cannot exceed the trek total.");
+    }
+
     const { data: created, error: createError } = await db.rpc("create_booking_with_hold", {
       p_departure_id: departure.id,
       p_pax: body.pax,
@@ -134,19 +144,20 @@ export async function POST(request: NextRequest) {
       p_total_amount: pricing.totalAmount,
       p_coupon_code: body.couponCode ?? null,
       p_hold_minutes: 15,
+      p_initial_payment_amount: body.payNowAmount ?? null,
     });
     if (createError) throw fromPostgresError(createError);
 
     const booking = created.booking as { id: string; booking_no: string };
     const hold = created.hold as { expires_at: string };
-    const payment = created.payment as { id: string };
+    const payment = created.payment as { id: string; amount: number };
 
     let order;
     try {
       order = await createRazorpayOrder({
-        amountPaise: toPaise(pricing.totalAmount),
+        amountPaise: toPaise(payment.amount),
         receipt: booking.booking_no,
-        notes: { booking_id: booking.id, departure_id: departure.id, kind: "full" },
+        notes: { booking_id: booking.id, departure_id: departure.id, kind: payment.amount >= pricing.totalAmount ? "full" : "advance" },
       });
     } catch (err) {
       // Booking + hold already persisted; leave payment row at 'created' with
@@ -161,6 +172,8 @@ export async function POST(request: NextRequest) {
       bookingNo: booking.booking_no,
       holdExpiresAt: hold.expires_at,
       totalAmount: pricing.totalAmount,
+      amountDue: pricing.totalAmount - payment.amount,
+      payingNowAmount: payment.amount,
       currency: "INR",
       razorpayOrderId: order.id,
       razorpayKeyId: env.publicRazorpayKeyId,
