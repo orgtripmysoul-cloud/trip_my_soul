@@ -3,6 +3,16 @@ import * as React from "react";
 import { formatInr } from "@/lib/money";
 import { BRAND, EmailLayout, SUPPORT_EMAIL, SUPPORT_PHONE, WEBSITE_URL } from "./components/EmailLayout";
 
+/** "razorpay" for gateway captures; the rest are admin-recorded manual payments (payments.gateway). */
+export type PaymentReceivedMethod = "razorpay" | "cash" | "upi_manual" | "bank_transfer" | "other";
+
+const MANUAL_METHOD_LABELS: Record<Exclude<PaymentReceivedMethod, "razorpay">, string> = {
+  cash: "Cash",
+  upi_manual: "UPI",
+  bank_transfer: "Bank transfer",
+  other: "Other",
+};
+
 export interface PaymentReceivedProps {
   bookingNo: string;
   customerName: string;
@@ -12,7 +22,10 @@ export interface PaymentReceivedProps {
   batchLabel: string;
   amountPaid: number;
   paymentStatus: string;
+  /** Razorpay payment id, or for manual payments the recorded / synthesized reference (e.g. "CASH-a1b2c3d4"). */
   transactionId: string;
+  /** Defaults to "razorpay", which keeps the original "Transaction ID" row. */
+  paymentMethod?: PaymentReceivedMethod;
   bookingConfirmed: boolean;
 }
 
@@ -34,8 +47,11 @@ export default function PaymentReceived({
   amountPaid,
   paymentStatus,
   transactionId,
+  paymentMethod = "razorpay",
   bookingConfirmed,
 }: PaymentReceivedProps) {
+  const manualMethodLabel = paymentMethod === "razorpay" ? null : (MANUAL_METHOD_LABELS[paymentMethod] ?? "Other");
+
   return (
     <EmailLayout previewText={`Payment received for booking ${bookingNo}`}>
       <Text style={{ fontSize: 20, fontWeight: 700, color: BRAND.navy, margin: "0 0 4px", fontFamily: "'Playfair Display', Georgia, serif" }}>
@@ -53,7 +69,11 @@ export default function PaymentReceived({
           <DetailRow label="Departure Date" value={departureDateLabel ?? batchLabel} />
           <DetailRow label="Amount Received" value={<span style={{ color: BRAND.teal }}>{formatInr(amountPaid)}</span>} />
           <DetailRow label="Payment Status" value={paymentStatus} />
-          <DetailRow label="Transaction ID" value={transactionId} />
+          {manualMethodLabel ? (
+            <DetailRow label="Payment reference" value={`${manualMethodLabel} · ${transactionId}`} />
+          ) : (
+            <DetailRow label="Transaction ID" value={transactionId} />
+          )}
         </tbody>
       </table>
 
