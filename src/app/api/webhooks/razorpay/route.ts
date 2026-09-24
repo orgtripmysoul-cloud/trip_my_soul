@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import "server-only";
 import { verifyWebhookSignature } from "@/lib/server/razorpay";
 import { supabaseAdmin } from "@/lib/server/supabase";
@@ -101,7 +101,11 @@ export async function POST(request: NextRequest) {
 
   // Best-effort, outside any DB transaction — a Resend failure here must
   // never undo the payment state change committed above.
-  dispatchPendingNotifications(10).catch((err) => console.error("[razorpay-webhook] notification dispatch failed", err));
+  // after() keeps the function alive until dispatch finishes; an un-awaited
+  // promise can be frozen by Vercel once the response is returned.
+  after(() =>
+    dispatchPendingNotifications(10).catch((err) => console.error("[razorpay-webhook] notification dispatch failed", err))
+  );
 
   return NextResponse.json({ ok: true }, { status: 200 });
 }
@@ -130,8 +134,10 @@ async function processEvent(db: ReturnType<typeof supabaseAdmin>, body: Razorpay
       // them the first time a payment is actually captured).
       const vars = (data as { vars?: BookingConfirmationVars } | null)?.vars;
       if (vars) {
-        sendInternalBookingNotification(vars).catch((err) =>
-          console.error("[razorpay-webhook] internal notification email failed", err)
+        after(() =>
+          sendInternalBookingNotification(vars).catch((err) =>
+            console.error("[razorpay-webhook] internal notification email failed", err)
+          )
         );
       }
       return;
