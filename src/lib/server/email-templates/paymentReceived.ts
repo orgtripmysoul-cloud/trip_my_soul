@@ -1,9 +1,13 @@
 import "server-only";
 import { render } from "@react-email/render";
 import * as React from "react";
-import PaymentReceived from "../../../../emails/payment-received";
+import PaymentReceived, { type PaymentReceivedMethod } from "../../../../emails/payment-received";
 
-/** Shape of `vars` on a `booking.payment_received` notification_outbox row — see capture_payment() in supabase/migrations/0011_trip_reminders.sql. */
+/**
+ * Shape of `vars` on a `booking.payment_received` notification_outbox row — see capture_payment() in
+ * supabase/migrations/0011_trip_reminders.sql and record_manual_payment() in
+ * supabase/migrations/0013_manual_payment_method_in_vars.sql.
+ */
 export interface PaymentReceivedVars {
   booking_no: string;
   customer_name: string;
@@ -14,6 +18,11 @@ export interface PaymentReceivedVars {
   payment_status: string;
   gateway_payment_id: string;
   booking_status: string;
+  /**
+   * Set only by record_manual_payment (cash / upi_manual / bank_transfer / other). Absent on Razorpay
+   * captures (and on any manual row queued before 0013), which render as a Razorpay "Transaction ID".
+   */
+  payment_method?: PaymentReceivedMethod | null;
 }
 
 function formatDepartureDate(iso: string | null): string | null {
@@ -36,6 +45,7 @@ export async function renderPaymentReceivedEmail(vars: PaymentReceivedVars): Pro
     amountPaid: vars.amount_paid,
     paymentStatus: vars.payment_status,
     transactionId: vars.gateway_payment_id,
+    paymentMethod: vars.payment_method ?? "razorpay",
     bookingConfirmed: vars.booking_status === "confirmed",
   });
 
