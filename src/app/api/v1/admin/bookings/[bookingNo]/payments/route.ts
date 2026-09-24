@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import "server-only";
 import { supabaseAdmin } from "@/lib/server/supabase";
 import { requireStaff } from "@/lib/server/adminAuth";
@@ -123,12 +123,18 @@ export async function POST(request: NextRequest, context: { params: Promise<{ bo
 
     await completeIdempotencyKey(ENDPOINT, idempotencyKey, 200, responseBody);
 
-    // Best-effort, outside the response — same pattern as the razorpay webhook.
-    sendInternalBookingNotification(result.vars).catch((err) =>
-      console.error("[admin-record-payment] internal notification email failed", err)
+    // Best-effort, after the response is sent. after() keeps the serverless
+    // function alive until these finish; a bare un-awaited promise can be
+    // frozen/dropped by Vercel once the response returns.
+    after(() =>
+      sendInternalBookingNotification(result.vars).catch((err) =>
+        console.error("[admin-record-payment] internal notification email failed", err)
+      )
     );
-    dispatchPendingNotifications(10).catch((err) =>
-      console.error("[admin-record-payment] notification dispatch failed", err)
+    after(() =>
+      dispatchPendingNotifications(10).catch((err) =>
+        console.error("[admin-record-payment] notification dispatch failed", err)
+      )
     );
 
     return NextResponse.json(responseBody, { status: 200 });
