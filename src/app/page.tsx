@@ -532,22 +532,19 @@ export default function Home() {
       setSelectedFilters({ ...initialFilters, seasons: [season] })
     );
 
+  /** Winters folds the old standalone "Upcoming" pill in: only upcoming winter departures show. */
+  const winterActive = selectedFilters.seasons.includes("Winter") && selectedFilters.upcomingOnly;
+  const selectWinter = () =>
+    applyPill(winterActive, () =>
+      setSelectedFilters({ ...initialFilters, seasons: ["Winter"], upcomingOnly: true })
+    );
+
   const quickFilters = [
-    {
-      label: "Upcoming",
-      action: () =>
-        applyPill(selectedFilters.upcomingOnly, () =>
-          setSelectedFilters({ ...initialFilters, upcomingOnly: true })
-        ),
-      active: selectedFilters.upcomingOnly,
-    },
-    { label: "Winter", action: () => selectSeason("Winter"), active: selectedFilters.seasons.includes("Winter") },
-    { label: "Spiritual Journey", action: () => selectCollection("yatra"), active: activeCollection === "yatra" },
-    { label: "Weekend Trips", action: () => selectCollection("weekend"), active: activeCollection === "weekend" },
+    { label: "Winters", action: selectWinter, active: winterActive },
+    { label: "Spiritual", action: () => selectCollection("yatra"), active: activeCollection === "yatra" },
+    { label: "Weekend", action: () => selectCollection("weekend"), active: activeCollection === "weekend" },
     { label: "Monsoon", action: () => selectSeason("Monsoon"), active: selectedFilters.seasons.includes("Monsoon") },
     { label: "Summer", action: () => selectSeason("Summer"), active: selectedFilters.seasons.includes("Summer") },
-    { label: "Spring", action: () => selectSeason("Spring"), active: selectedFilters.seasons.includes("Spring") },
-    { label: "Backpacking Trips", action: () => selectCollection("backpacking"), active: activeCollection === "backpacking" },
   ];
 
   const awardsData = [

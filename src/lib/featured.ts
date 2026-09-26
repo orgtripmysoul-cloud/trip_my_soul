@@ -8,6 +8,12 @@
 
 /** Pinned slugs, in the order they should appear. */
 export const FEATURED_TREK_SLUGS = [
+  // Trips with their own real photo galleries — lead every listing
+  "madmaheshwar-trek",
+  "rudranath-trek",
+  "kedarnath-yatra",
+  "kedarnath-badrinath",
+  "kedarnath-badrinath-tungnath",
   // Himalayan treks
   "kuari-pass-trek",
   "kedarkantha-trek",
@@ -17,15 +23,11 @@ export const FEATURED_TREK_SLUGS = [
   "bali-pass-trek",
   // Yatras
   "chopta-tungnath-trek",
-  "kedarnath-yatra",
   "char-dham-yatra",
   "panch-kedar-yatra",
   "three-kedar-yatra",
-  "rudranath-trek",
-  "kedarnath-badrinath-tungnath",
   "auli-yatra",
   // Weekend trips
-  "madmaheshwar-trek",
   "yulla-kanda-trek",
   // Backpacking trips
   "kerala-special",

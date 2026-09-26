@@ -5102,7 +5102,46 @@ if (kedarkanthaIndex !== -1) {
   TREKS[kedarkanthaIndex].externalReviews = [
     { source: "Google", subject: "Trip My Soul", url: "https://share.google/x8Aku8JSIGelFRINg" },
     { source: "Google", subject: "Trip My Soul", url: "https://share.google/2M2aAdunUeKVgdtDg" },
-    { source: "Google", subject: "Trip My Soul", url: "https://share.google/EhWe66nKh3aiOP85Q" }
+    { source: "Google", subject: "Trip My Soul", url: "https://share.google/EhWe66nKh3aiOP85Q" },
+    {
+      source: "Google",
+      subject: "Trip My Soul",
+      author: "manika varshney",
+      rating: 5,
+      date: "8 months ago",
+      text: [
+        "This was my very first trek with Trip My Soul, and it turned out to be an absolutely wonderful experience. The entire journey was memorable, but what truly made it special was our trek leader, Rakesh Negi.",
+        "He was incredibly supportive, encouraging, and motivating throughout the trek. At one point, my health was really not good, and I was struggling a lot. However, our trek leader never gave up on me. With his constant guidance, patience, and encouragement, he helped me push through and reach the summit successfully.",
+        "Reaching the top and witnessing such a breathtaking sunrise made every bit of effort worthwhile. That moment will stay with me forever. I am truly grateful for his dedication, kindness, and leadership.",
+        "I will always cherish this experience, and I am deeply thankful to Trip My Soul and especially to Rakesh Negi for making my first trek so memorable. He is genuinely the best trek leader, and I couldn't have asked for a better start to my trekking journey."
+      ]
+    },
+    {
+      source: "Google",
+      subject: "Trip My Soul",
+      author: "Manju Chahar",
+      rating: 5,
+      date: "7 months ago",
+      text: [
+        "Trekking Kedarkantha with Trip My Soul was an unforgettable experience from start to finish. The entire journey was extremely well organized, and the team made sure every detail was taken care of so we could fully enjoy the trek.",
+        "The trek leaders and guides (Rakesh and Trishna) were knowledgeable, supportive, and always motivated us, especially during the challenging climbs. They ensured our safety at every step while also sharing interesting insights about the mountains, local culture, and surroundings. The campsites were scenic and well managed, the tents were comfortable, and the food was surprisingly delicious and nutritious — exactly what you need after a long day of trekking.",
+        "What truly stood out was the professionalism and warmth of the Trip My Soul team. They treated everyone like family, created a fun group atmosphere, and were always ready to help with anything we needed. Watching the sunrise from the Kedarkantha summit was magical, and the experience felt even more special thanks to their excellent planning and support.",
+        "I highly recommend Trip My Soul to anyone planning the Kedarkantha trek. If you want a safe, well-organized, and memorable Himalayan adventure, they are a fantastic choice."
+      ]
+    },
+    {
+      source: "Google",
+      subject: "Trip My Soul",
+      author: "Sky Noob",
+      rating: 5,
+      date: "9 months ago",
+      text: [
+        "My Kedarkantha trek was truly one of the most unforgettable experiences of my life, and a huge credit goes to our amazing trek leader. From the very beginning till the summit, the trek leader was extremely helpful, supportive, and motivating, always ensuring everyone was safe, comfortable, and confident. Their encouragement and constant support, especially till the peak, made a big difference and kept the entire group going with high spirits.",
+        "This trek was not just about the trail — it was filled with fun, laughter, and beautiful bonding moments. We shared countless stories, played games, and board games at night, which became the highlight after long trekking days. Despite the bone-chilling cold, the atmosphere remained warm because everyone was cheerful and full of energy.",
+        "The nights were absolutely magical. Watching countless stars and even satellites with the naked eye was a surreal experience. The cold near the peak was intense, but reaching the summit made it all worth it. The sunset view from the top was breathtaking and unforgettable, truly a once-in-a-lifetime sight.",
+        "The meals were surprisingly amazing, honestly better than many restaurants. Huge respect to the people who prepared and provided such delicious, warm, and hygienic food along with other amenities at such a high altitude — it takes real dedication and hard work. Every member of the team was welcoming, cheerful, and full of positivity, which added so much value to the entire experience."
+      ]
+    }
   ];
 
   TREKS[kedarkanthaIndex].reviewVideos = [
