@@ -4480,6 +4480,7 @@ export const YATRAS: Trek[] = [
     "slug": "kedarnath-yatra",
     "name": "Kedarnath Trek",
     "tagline": "Four days from Haridwar to the Kedarnath shrine at 11,755 ft, with an overnight halt at the temple.",
+    "heroImage": "/Trips_gallery/Kedarnath/IMG_1946.jpg",
     "price": 6499,
     "days": 4,
     "nights": 3,
@@ -5015,7 +5016,6 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate",
     "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
     "batchDates": ["2026-09-19"]              // TODO(content): seeded departure
   },
   {
@@ -5033,7 +5033,7 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate",
     "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "heroImage": "/Trips_gallery/Madhmaheshwar/IMG_1777.jpg",
     "batchDates": ["2026-09-26"]              // TODO(content): seeded departure
   },
   {
@@ -5050,7 +5050,7 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate",   // TODO(content): the trip entry rates this Moderate-Difficult
     "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "heroImage": "/Trips_gallery/Rudranath/IMG_0096.jpg",
     "batchDates": ["2026-10-03"]              // TODO(content): seeded departure
   },
   {

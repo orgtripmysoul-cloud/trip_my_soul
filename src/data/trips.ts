@@ -92,6 +92,8 @@ export interface TripListingItem extends TripNavItem {
   minAge?: number;
   maxAge?: number;
   maxGroupSize?: string;
+  /** Extra frames for the hero slideshow, in addition to `heroImage`. */
+  heroImages?: string[];
 
   // Booking widget
   originalPrice?: number;
@@ -394,10 +396,15 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       name: "Madmaheshwar Trek",
       slug: "madmaheshwar-trek",
       duration: "2N/3D",
-      heroImage: "/Trips_gallery/Madhmaheshwar/IMG_1219.jpg",
+      heroImage: "/Trips_gallery/Madhmaheshwar/IMG_1777.jpg",
       tagline: "A standalone run at the Madhyamaheshwar shrine at 3,490 m, Delhi to Delhi.",
     },
     {
+      heroImages: [
+        "/Trips_gallery/Madhmaheshwar/IMG_1990_Original.jpg",
+        "/Trips_gallery/Madhmaheshwar/IMG_1220.jpg",
+        "/Trips_gallery/Madhmaheshwar/IMG_1357.jpg",
+      ],
       region: "Uttarakhand",
       startLocation: "Delhi",
       endLocation: "Delhi",
@@ -1435,7 +1442,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Char Dham Yatra",
       slug: "char-dham-yatra",
       duration: "8N/9D",
-      heroImage: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "/Trips_gallery/Kedarnath/IMG_1946.jpg",
       tagline: "Yamunotri, Gangotri, Kedarnath and Badrinath in 8 Nights / 9 Days, Haridwar to Haridwar.",
     },
     {
@@ -1738,7 +1745,6 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Panch Kedar Yatra",
       slug: "panch-kedar-yatra",
       duration: "11N/12D",
-      heroImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80",
       tagline: "All five Panch Kedar shrines — Kedarnath, Madhmaheshwar, Tungnath, Rudranath and Kalpeshwar — in one 12-day expedition.",
     },
     {
@@ -2247,7 +2253,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Rudranath Trek",
       slug: "rudranath-trek",
       duration: "4N/5D",
-      heroImage: "/Trips_gallery/Rudranath/IMG_0059.jpg",
+      heroImage: "/Trips_gallery/Rudranath/IMG_8695.jpg",
       tagline: "Rhododendron forest and alpine meadow up to the Rudranath shrine at 2,286 m.",
     },
     {
@@ -2292,18 +2298,9 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       rentalGear: TREK_RENTAL_GEAR,
       thingsToRemember: TRIP_GROUND_RULES,
       gallery: [
-        { url: "/Trips_gallery/Rudranath/20241006_144903.jpg" },
-        { url: "/Trips_gallery/Rudranath/IMG_0059.jpg" },
         { url: "/Trips_gallery/Rudranath/IMG_0096.jpg" },
         { url: "/Trips_gallery/Rudranath/IMG_3985.jpg" },
-        { url: "/Trips_gallery/Rudranath/IMG_4001.jpg" },
-        { url: "/Trips_gallery/Rudranath/IMG_4040.jpg" },
-        { url: "/Trips_gallery/Rudranath/IMG_4270.jpg" },
-        { url: "/Trips_gallery/Rudranath/IMG_4642.jpg" },
-        { url: "/Trips_gallery/Rudranath/IMG_4673.jpg" },
-        { url: "/Trips_gallery/Rudranath/IMG_4674.jpg" },
         { url: "/Trips_gallery/Rudranath/IMG_8694.jpg" },
-        { url: "/Trips_gallery/Rudranath/IMG_8695.jpg" },
       ],
       relatedSlugs: ["three-kedar-yatra", "panch-kedar-yatra", "chopta-tungnath-trek"],
     }
@@ -2314,10 +2311,14 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Kedarnath Yatra",
       slug: "kedarnath-yatra",
       duration: "3N/4D",
-      heroImage: "/Trips_gallery/Kedarnath/IMG_1463.jpg",
+      heroImage: "/Trips_gallery/Kedarnath/IMG_1946.jpg",
       tagline: "A divine Himalayan journey to Lord Shiva's shrine at 3,384 m.",
     },
     {
+      heroImages: [
+        "/Trips_gallery/Kedarnath/IMG_1668.jpg",
+        "/Trips_gallery/Kedarnath/IMG_1851.jpg",
+      ],
       region: "Uttarakhand",
       startLocation: "Haridwar",
       endLocation: "Haridwar",
@@ -2378,10 +2379,15 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Kedarnath Badrinath",
       slug: "kedarnath-badrinath",
       duration: "4N/5D",
-      heroImage: "/Trips_gallery/Badrinath/IMG_2149.jpg",
+      heroImage: "/Trips_gallery/Badrinath/IMG_2170.jpg",
       tagline: "Shiva & Vishnu — the Do Dham Yatra of Kedarnath and Badrinath in 5 Days / 4 Nights.",
     },
     {
+      heroImages: [
+        "/Trips_gallery/Badrinath/IMG_2154.jpg",
+        "/Trips_gallery/Badrinath/IMG_2165.jpg",
+        "/Trips_gallery/Kedarnath/IMG_1771.jpg",
+      ],
       region: "Rudraprayag & Chamoli District, Uttarakhand",
       startLocation: "Haridwar / Rishikesh",
       endLocation: "Haridwar / Rishikesh",
@@ -2984,6 +2990,7 @@ export function tripToTrek(trip: TripListingItem): Trek {
 
     // Header
     heroImage: trip.heroImage,
+    heroImages: trip.heroImages,
     detailsPath: trip.detailsPath,
     tripCode: trip.tripCode,
     availability: trip.availability,
