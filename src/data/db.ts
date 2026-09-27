@@ -5466,9 +5466,6 @@ if (kedarkanthaIndex !== -1) {
   };
 
   TREKS[kedarkanthaIndex].externalReviews = [
-    { source: "Google", subject: "Trip My Soul", url: "https://share.google/x8Aku8JSIGelFRINg" },
-    { source: "Google", subject: "Trip My Soul", url: "https://share.google/2M2aAdunUeKVgdtDg" },
-    { source: "Google", subject: "Trip My Soul", url: "https://share.google/EhWe66nKh3aiOP85Q" },
     {
       source: "Google",
       subject: "Trip My Soul",
