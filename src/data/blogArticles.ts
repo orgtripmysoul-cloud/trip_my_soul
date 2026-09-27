@@ -25,8 +25,7 @@ export const blogArticles: BlogArticle[] = [
       "Everything you need to know before your snow trek — layering, footwear, fitness, AMS awareness and the full winter packing checklist.",
     category: "Preparation Guide",
     date: "July 15, 2026",
-    image:
-      "https://images.unsplash.com/photo-1486916856992-e4db22c8df33?auto=format&fit=crop&w=800&q=80",
+    image: "/Trips_gallery/Kedarkantha/IMG_4130.JPG.jpeg",
     standfirst: "Everything You Need to Know Before Your Snow Trek",
     readMinutes: 12,
     sections: [
@@ -370,8 +369,7 @@ export const blogArticles: BlogArticle[] = [
       "How Trip My Soul and its trekkers protect Himalayan trails, wildlife, water sources and mountain communities on every expedition.",
     category: "Sustainability",
     date: "May 10, 2026",
-    image:
-      "https://images.unsplash.com/photo-1533240332313-0db49b439ad3?auto=format&fit=crop&w=800&q=80",
+    image: "/Trips_gallery/Brahmatal/IMG_4310.JPG.jpeg",
     standfirst: "The Mountains Give Us Memories. Let's Leave Them Their Beauty.",
     readMinutes: 8,
     sections: [
@@ -507,8 +505,7 @@ export const blogArticles: BlogArticle[] = [
       "Two treks from the same base village, two very different Himalayan experiences — a side-by-side guide to help you pick the right one.",
     category: "Preparation Guide",
     date: "April 05, 2026",
-    image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    image: "/Trips_gallery/Har_Ki_Dun/HKD_river_pines.jpeg",
     standfirst: "Two Treks. Two Completely Different Himalayan Experiences.",
     readMinutes: 9,
     sections: [
@@ -603,8 +600,7 @@ export const blogArticles: BlogArticle[] = [
       "Know the symptoms, understand acclimatisation and follow the TMS AMS protocol — because the summit is optional, your safety is not.",
     category: "Preparation Guide",
     date: "Feb 18, 2026",
-    image:
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80",
+    image: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4240.JPG.jpeg",
     standfirst: "Know the Symptoms. Respect the Altitude. Stay Safe.",
     readMinutes: 10,
     sections: [
@@ -744,8 +740,7 @@ export const blogArticles: BlogArticle[] = [
       "From the lush Kullu Valley to the rugged high desert of Lahaul in a single crossing — the trek that shows two completely different Himalayas.",
     category: "Trek Stories",
     date: "March 22, 2026",
-    image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+    image: "/Trips_gallery/Dyara_Bugyal/IMG_4438.JPG.jpeg",
     standfirst: "A Journey from Green Valleys to the High Desert",
     readMinutes: 6,
     sections: [
