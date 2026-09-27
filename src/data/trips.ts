@@ -2332,7 +2332,13 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       alternateNames: ["Kedarnath", "Kedarnath Dham", "Guptkashi", "Gaurikund", "Sonprayag", "Panch Kedar", "Kedar"],
       altitude: "Kedarnath — 3,384 m (11,755 ft), as printed in the source itinerary",
       minAge: 12,
-      availability: "Daily departures from Haridwar / Rishikesh",
+      availability: "Every Saturday from Haridwar / Rishikesh, until 9 November",
+      // Weekly Saturday departures, the last one on 7 Nov — the season closes
+      // 9 Nov.
+      batchDates: [
+        "2026-10-03", "2026-10-10", "2026-10-17",
+        "2026-10-24", "2026-10-31", "2026-11-07",
+      ],
       intro:
         "Four days from Haridwar to the Kedarnath shrine and back, with an overnight stay at the temple. The trail from Sonprayag climbs through valleys, rhododendron canopy and the chattis at Gaurikund and Jungle Chatti, and the halt at Guptkashi on the way up doubles as an acclimatisation night.",
       highlights: [

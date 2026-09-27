@@ -4491,7 +4491,13 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate to Difficult",
     "maxAltitude": "11,755 ft / 3,583 m",
     "totalDistance": "32 Kilometers",
-    "availability": "May – November",
+    "availability": "Every Saturday, until 9 November",
+    // Weekly Saturday departures; the last batch leaves 7 Nov, the season
+    // closes 9 Nov.
+    "batchDates": [
+      "2026-10-03", "2026-10-10", "2026-10-17",
+      "2026-10-24", "2026-10-31", "2026-11-07"
+    ],
     "months": [
       "May",
       "Jun",
