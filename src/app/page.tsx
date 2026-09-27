@@ -558,28 +558,52 @@ export default function Home() {
 
   const googleReviewsData = [
     {
-      name: "Rohan Kapoor",
+      name: "Ajju BaBa",
       rating: 5,
-      date: "2 weeks ago",
-      trek: "Buran Ghati Pass Trek",
-      text: "The ice wall slide at Buran Ghati was the highlight of my life! Guides carried safety ropes and SpO2 meters at every single camp. Food was outstanding.",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80"
+      date: "a month ago",
+      trek: "Valley Of Flowers & Hemkund Sahib",
+      text: "I had an absolutely incredible unforgettable experience with Trek My Soul during our recent trek to the Valley of Flowers and Hemkund Sahib. The entire journey was flawlessly organized from start to finish. A special mention goes out to our guide, Suraj, who did a fantastic job keeping us safe and making the journey memorable — highly attentive to our group's pacing and comfort, especially during the steeper sections and the high-altitude climb up to Hemkund Sahib. I highly recommend Trek My Soul to anyone looking for a seamless, safe, and well-managed Himalayan trek.",
+      avatar: "https://ui-avatars.com/api/?name=Ajju+BaBa&background=1f5f4a&color=fff&size=100&bold=true"
     },
     {
-      name: "Pooja Malhotra",
+      name: "Evlin Jose",
       rating: 5,
-      date: "1 month ago",
-      trek: "Kedarkantha Winter Summit",
-      text: "Booked Kedarkantha with TripMySoul for my family. Super clean tents, warm sleeping bags, and extremely polite staff. 10/10 recommendation!",
-      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80"
+      date: "3 weeks ago",
+      trek: "Valley Of Flowers & Hemkund Sahib",
+      text: "Had a wonderful time with Trip my soul. Trek leader Vikky was so helpful. He helped my 7 year old daughter to climb the mountain and she was so comfortable with him. Food and stay were equally good. We explored Ghangaria and Valley of Flowers which were mesmerizing.",
+      avatar: "https://ui-avatars.com/api/?name=Evlin+Jose&background=b45309&color=fff&size=100&bold=true"
     },
     {
-      name: "Vikramaditya Singh",
+      name: "Laxmi Sri",
+      rating: 5,
+      date: "a month ago",
+      trek: "Kashmir Tour Package",
+      text: "We went to Kashmir for a week and we booked a tour package with Trip my Soul and it was definitely a good decision that we made. Since this was our first time to Kashmir, we were wondering how it would go.. but thanks to Trip My Soul!!! They made it soo comfortable and tension free. They took a really good care of us from the beginning to end and made sure we didn't get disappointed anywhere. We are very happy with our trip and had an amazing experience.",
+      avatar: "https://ui-avatars.com/api/?name=Laxmi+Sri&background=7c2d12&color=fff&size=100&bold=true"
+    },
+    {
+      name: "Yashik Khanna",
+      rating: 5,
+      date: "3 months ago",
+      trek: "Tungnath Trek",
+      text: "Arrangements were awesome. Tungnath trek was so much easy and comfortable with Devraj Singh. Our guide Devraj was also taking our care on our trek. All the arrangements at the stay were the best. Our cook Mamchand cooked very tasty food and food was also healthy and tasty. Our cab driver Dependra Rangad drove our cab very properly and carefully, also made us reach everywhere on time.",
+      avatar: "https://ui-avatars.com/api/?name=Yashik+Khanna&background=0f766e&color=fff&size=100&bold=true"
+    },
+    {
+      name: "Hemanth",
+      rating: 4,
+      date: "2 months ago",
+      trek: "Valley Of Flowers & Hemkund Sahib",
+      text: "I recently completed the Valley of Flowers & Hemkund Sahib trek with Trip My Soul and it was a truly refreshing and memorable experience. The weather was exceptionally clear throughout the trek, allowing us to enjoy breathtaking views of the Himalayas, lush valleys, waterfalls, and beautiful landscapes. A special mention to our trek leader, Suraj, who was extremely supportive, friendly, and motivating throughout the journey. Overall, it was a wonderful trek with good organization, beautiful scenery, and great memories.",
+      avatar: "https://ui-avatars.com/api/?name=Hemanth&background=be123c&color=fff&size=100&bold=true"
+    },
+    {
+      name: "Shreesha",
       rating: 5,
       date: "2 months ago",
-      trek: "Kashmir Great Lakes",
-      text: "Everything was perfectly coordinated from Srinagar pickup to final drop. Felt 100% safe as a solo trekker.",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80"
+      trek: "Valley Of Flowers & Hemkund Sahib",
+      text: "Recently I have completed the Valley of Flowers and Hemkund Sahib Trek with Trip my Soul and Backpack Clan as my trekking company. It was great experience. I enjoyed it a lot. Weather and trekking guide both supported us very well to finish the Summit in both trek. Special mention, our trekking guide Suraj. He was very supportive, encouraging and informative about the trek. These helped us to complete the trek. Stay at Pandukeshwar was good.",
+      avatar: "https://ui-avatars.com/api/?name=Shreesha&background=4338ca&color=fff&size=100&bold=true"
     }
   ];
 
@@ -952,8 +976,11 @@ export default function Home() {
                       </div>
 
                       <div className="flex items-center gap-0.5">
-                        {Array.from({ length: rev.rating }).map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 shrink-0 text-amber-400 fill-current" />
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`w-3.5 h-3.5 shrink-0 ${i < rev.rating ? "text-amber-400 fill-current" : "text-gray-300"}`}
+                          />
                         ))}
                       </div>
 
