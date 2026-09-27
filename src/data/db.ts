@@ -1297,7 +1297,7 @@ export const TREKS: Trek[] = [
     "difficulty": "Easy to Moderate",
     "maxAltitude": "12,000 ft / 3,658 m",
     "totalDistance": "20–25 Kilometers",
-    "availability": "September – June",
+    "availability": "March – June & September – December (snow: December – February)",
     "months": [
       "Oct",
       "Nov",
@@ -1315,7 +1315,9 @@ export const TREKS: Trek[] = [
       "Meadow",
       "Forest",
       "Pass Crossing"
-    ]
+    ],
+    route: ["Raithal", "Gui", "Dayara Bugyal", "Gui", "Raithal"],
+    trailType: "Alpine Meadow Trek — oak & rhododendron forest, meadows and ridges"
   },
   {
     "slug": "kuari-pass-trek",
@@ -6327,32 +6329,30 @@ if (kedarkanthaIndex !== -1) {
 const dayaraBugyalIndex = TREKS.findIndex(t => t.slug === 'dayara-bugyal-trek');
 if (dayaraBugyalIndex !== -1) {
   TREKS[dayaraBugyalIndex].inclusions = [
-    { title: "Accommodation", description: "1 night in Raithal + 2 nights in camps." },
-    { title: "Meals", description: "Breakfast, lunch & dinner during the trek." },
-    { title: "Transportation", description: "Dehradun → Raithal → Dehradun." },
-    { title: "Trek Support", description: "Experienced trek leader & support staff." },
-    { title: "Camping", description: "Tents, sleeping bags & camping equipment." },
-    { title: "Permits", description: "Forest/trek permits & applicable entry charges." },
-    { title: "Kitchen & Cooking Team", description: "Dedicated trek kitchen staff." },
-    { title: "First Aid", description: "Basic first-aid kit & emergency support." },
-    { title: "Drinking Water", description: "Access to safe drinking water during the trek." },
-    { title: "Gear Support", description: "Common camping and technical equipment as required." },
-    { title: "Trek Briefing", description: "Pre-trek briefing and route guidance." }
+    { title: "Accommodation", description: "3 nights on quad/triple-sharing basis — 1 night in Raithal and 2 nights at the Gui campsite." },
+    { title: "Meals", description: "All meals during the trek — breakfast, lunch and dinner." },
+    { title: "Morning Tea/Coffee", description: "Morning tea or coffee on every trek day." },
+    { title: "Transportation", description: "Dehradun → Raithal → Dehradun/Rishikesh." },
+    { title: "Trek Leader/Guide", description: "Experienced trek leader or guide throughout the trek." },
+    { title: "Support Staff", description: "Support staff and camping crew." },
+    { title: "Tented Accommodation", description: "Tented accommodation at Gui." },
+    { title: "Sleeping Bags & Mattresses", description: "Sleeping bags and mattresses for the camping nights." },
+    { title: "Camping Equipment", description: "Camping equipment, kitchen tent and dining tent." },
+    { title: "Permits", description: "Trekking permits and required forest entry permits." },
+    { title: "First Aid", description: "First-aid kit and basic medical support." },
+    { title: "Trek Equipment & Safety Gear", description: "Trek equipment and safety gear required by the trek operator." }
   ];
 
   TREKS[dayaraBugyalIndex].exclusions = [
-    { title: "Airfare / train tickets", description: "Travel to and from Dehradun." },
-    { title: "Dehradun stay", description: "Accommodation & meals in Dehradun before/after the trek." },
-    { title: "Personal expenses", description: "Snacks, beverages, laundry, etc." },
-    { title: "Personal trekking gear", description: "Shoes, jackets, backpack, trekking poles, etc." },
-    { title: "Personal medication", description: "Personal medication & medical expenses." },
-    { title: "Emergency evacuation", description: "Evacuation / rescue costs, if required." },
-    { title: "Insurance", description: "Travel & trekking insurance." },
-    { title: "Additional transportation", description: "Transport needed due to route changes, delays or personal reasons." },
-    { title: "Weather & roadblocks", description: "Expenses arising from bad weather, roadblocks or natural circumstances." },
-    { title: "Anything not listed", description: "Any service not specifically mentioned under “Inclusions”." },
-    { title: "Tips & porters", description: "Tips, porter charges for personal luggage and other optional services." },
-    { title: "GST & taxes", description: "GST or applicable taxes, if not included in the advertised trek price." }
+    { title: "Personal expenses", description: "Snacks, beverages, laundry and phone calls." },
+    { title: "Personal porter / mule", description: "Personal porter or mule service for your luggage." },
+    { title: "Personal trekking gear", description: "Trekking shoes, jackets, trekking poles and other personal gear." },
+    { title: "Medical expenses", description: "Any medical expenses or evacuation costs." },
+    { title: "Insurance", description: "Travel insurance." },
+    { title: "Weather & roadblocks", description: "Expenses caused by bad weather, landslides, roadblocks or natural calamities." },
+    { title: "Extra stay & meals", description: "Any additional accommodation or meals outside the planned itinerary." },
+    { title: "Early return", description: "Any cost arising from an early return or change in itinerary due to personal reasons." },
+    { title: "Anything not listed", description: "Anything not specifically mentioned under “Inclusions”." }
   ];
 
   // The criteria Kedarkantha publishes, with the altitude row set to this
@@ -6399,7 +6399,7 @@ if (dayaraBugyalIndex !== -1) {
     pickup: {
       point: "Dehradun Railway Station",
       time: "6:00 AM on Day 1",
-      dropPoint: "Dehradun",
+      dropPoint: "Dehradun / Rishikesh",
       dropTime: "Evening of Day 4",
       note: "For TMS departures the trek starts with a pickup from Dehradun, followed by the drive to Raithal Village, the base village for the Dayara Bugyal Trek."
     }
@@ -6411,7 +6411,7 @@ if (dayaraBugyalIndex !== -1) {
     { title: "Trek Cost", description: "₹6,499 + 5% GST* per selected package/departure date." },
     { title: "Booking Amount", description: "20% advance payment required to confirm your seat." },
     { title: "Balance Payment", description: "Payable before/at the start of the trek as per booking terms." },
-    { title: "Transportation", description: "Dehradun–Raithal–Dehradun as per the selected package." },
+    { title: "Transportation", description: "Dehradun–Raithal–Dehradun/Rishikesh as per the selected package." },
     { title: "Inclusions", description: "Accommodation, meals, trek permits/forest charges, trek guide & support staff as mentioned in the package." },
     { title: "Exclusions", description: "Personal expenses, insurance, emergency evacuation, additional transport and anything not specifically mentioned under inclusions." },
     { title: "GST", description: "Applicable as per package/booking terms." },
@@ -6419,6 +6419,40 @@ if (dayaraBugyalIndex !== -1) {
     { title: "Weather & Route", description: "Itinerary may change due to weather, government/forest restrictions or safety conditions." },
     { title: "Personal Expenses", description: "Any expenses arising due to personal reasons will be borne by the participant." },
     { title: "ID Proof", description: "Valid government-issued ID is required at the time of booking/check-in." }
+  ];
+
+  TREKS[dayaraBugyalIndex].heroImage =
+    "/Trips_gallery/Dyara_Bugyal/IMG_4453.JPG.jpeg";
+
+  // `heroImages` replaces the slideshow entirely, so the hero shot leads the list.
+  TREKS[dayaraBugyalIndex].heroImages = [
+    "/Trips_gallery/Dyara_Bugyal/IMG_4453.JPG.jpeg",
+    "/Trips_gallery/Dyara_Bugyal/IMG_4438.JPG.jpeg",
+    "/Trips_gallery/Dyara_Bugyal/IMG_4440.JPG.jpeg",
+    "/Trips_gallery/Dyara_Bugyal/IMG_4451.JPG.jpeg"
+  ];
+
+  TREKS[dayaraBugyalIndex].gallery = [
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4453.JPG.jpeg", caption: "The Garhwal range mirrored in the tarn beside the meadow" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4437.JPG.jpeg", caption: "Alpenglow on the peaks above the campsite" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4450.JPG.jpeg", caption: "Dayara Bugyal in the green season — one of India's largest alpine meadows" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4451.JPG.jpeg", caption: "Tents on the meadow, seen from above" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4431.JPG.jpeg", caption: "Autumn grass on the bugyal, facing the snow line" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4447.JPG.jpeg", caption: "Walking out onto the meadow under a clear winter sky" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4432.JPG.jpeg", caption: "A lone trekker on the winter snowfields below the peaks" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4433.JPG.jpeg", caption: "Fresh snowfall in the oak forest above Raithal" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4436.JPG.jpeg", caption: "Climbing through the snowbound forest in falling snow" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4435.JPG.jpeg", caption: "Waiting out a snowfall on the trail" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4434.JPG.jpeg", caption: "Open snow slopes on the way up to the bugyal" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4445.JPG.jpeg", caption: "The last climb onto Dayara Bugyal" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4438.JPG.jpeg", caption: "Crossing a snowfield at the edge of the forest" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4446.JPG.jpeg", caption: "Snow-covered ridges seen from the trail" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4448.JPG.jpeg", caption: "The mule train carrying supplies across the meadow" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4439.JPG.jpeg", caption: "Camp pitched on open snow with the range behind" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4441.JPG.jpeg", caption: "On the meadow in winter sunshine" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4440.JPG.jpeg", caption: "Sunset over the Garhwal Himalaya from the meadow" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4449.JPG.jpeg", caption: "Last light at the campsite" },
+    { url: "/Trips_gallery/Dyara_Bugyal/IMG_4452.JPG.jpeg", caption: "A lit tent after dark at Gui" }
   ];
 
   TREKS[dayaraBugyalIndex].aboutParagraphs = [
@@ -6461,7 +6495,7 @@ if (dayaraBugyalIndex !== -1) {
 
   TREKS[dayaraBugyalIndex].destinationHighlights = [
     { name: "Raithal", blurb: "The Garhwal base village above the Bhagirathi valley, and the road head for the trek." },
-    { name: "Gui Campsite", blurb: "A forest clearing at about 9,700 ft, reached through oak and rhododendron, and the campsite for both trek nights." },
+    { name: "Gui Campsite", blurb: "A forest clearing at about 9,800 ft, reached through oak and rhododendron, and the campsite for both trek nights." },
     { name: "Dayara Bugyal", blurb: "The meadow the trek is named for — open grassland at roughly 12,000 ft, under snow through the winter months." },
     { name: "Bhatwari", blurb: "The last town on the drive in, on the Uttarkashi–Gangotri road below Raithal." }
   ];
@@ -6490,15 +6524,15 @@ if (dayaraBugyalIndex !== -1) {
     {
       day: 1,
       title: "Dehradun to Raithal",
-      driveDistance: "190–200 km",
+      driveDistance: "180–190 km",
       drivingTime: "7-9 Hours",
       pickupPoint: "Dehradun Railway Station",
       pickupTime: "6:00 AM",
       altitudePoints: [
         { location: "Dehradun", m: 640, ft: 2100 },
-        { location: "Raithal", m: 2300, ft: 7545 }
+        { location: "Raithal", m: 2256, ft: 7400 }
       ],
-      altitudeGain: { m: 1660, ft: 5445 },
+      altitudeGain: { m: 1616, ft: 5300 },
       description: "A scenic Himalayan drive to Raithal, the base village of the Dayara Bugyal Trek.",
       detailedParagraphs: [
         "Your Himalayan journey begins early morning from Dehradun. Meet our team at the designated pickup point and begin the drive towards Raithal.",
@@ -6507,19 +6541,19 @@ if (dayaraBugyalIndex !== -1) {
         "Enjoy dinner and an overnight stay in Raithal."
       ],
       highlights: ["Bhagirathi Valley Drive", "Uttarkashi & Bhatwari", "Raithal Village", "Trek Briefing"],
-      meals: "Snacks & Dinner",
+      meals: "Dinner",
       stayType: "Guesthouse / Homestay"
     },
     {
       day: 2,
       title: "Raithal to Gui Campsite",
-      trekDistance: "6 km",
-      trekDuration: "4-5 Hours",
+      trekDistance: "4 km",
+      trekDuration: "2-3 Hours",
       altitudePoints: [
-        { location: "Raithal", m: 2300, ft: 7545 },
-        { location: "Gui", m: 2957, ft: 9700 }
+        { location: "Raithal", m: 2256, ft: 7400 },
+        { location: "Gui", m: 2987, ft: 9800 }
       ],
-      altitudeGain: { m: 657, ft: 2155 },
+      altitudeGain: { m: 731, ft: 2400 },
       description: "Climb out of Raithal through oak and rhododendron forest to the Gui campsite.",
       detailedParagraphs: [
         "After breakfast the trek begins. The trail leaves Raithal and enters dense oak and rhododendron forest almost immediately.",
@@ -6535,14 +6569,14 @@ if (dayaraBugyalIndex !== -1) {
     {
       day: 3,
       title: "Gui to Dayara Bugyal and back to Gui",
-      trekDistance: "8 km",
-      trekDuration: "6-7 Hours",
+      trekDistance: "8–10 km",
+      trekDuration: "5-7 Hours",
       altitudePoints: [
-        { location: "Gui", m: 2957, ft: 9700 },
+        { location: "Gui", m: 2987, ft: 9800 },
         { location: "Dayara Bugyal", m: 3658, ft: 12000 },
-        { location: "Gui", m: 2957, ft: 9700 }
+        { location: "Gui", m: 2987, ft: 9800 }
       ],
-      altitudeGain: { m: 701, ft: 2300 },
+      altitudeGain: { m: 671, ft: 2200 },
       description: "The highlight of the trek — the forest opens into the vast meadows of Dayara Bugyal at 12,000 ft.",
       detailedParagraphs: [
         "Leave camp after breakfast with a light daypack. The trail climbs steadily through the last of the forest.",
@@ -6557,23 +6591,23 @@ if (dayaraBugyalIndex !== -1) {
     },
     {
       day: 4,
-      title: "Gui to Raithal to Dehradun",
-      trekDistance: "6 km",
-      trekDuration: "3-4 Hours",
-      driveDistance: "190–200 km",
+      title: "Gui to Raithal to Dehradun/Rishikesh",
+      trekDistance: "4 km",
+      trekDuration: "2-3 Hours",
+      driveDistance: "180–190 km",
       drivingTime: "7-9 Hours",
       altitudePoints: [
-        { location: "Gui", m: 2957, ft: 9700 },
-        { location: "Raithal", m: 2300, ft: 7545 },
+        { location: "Gui", m: 2987, ft: 9800 },
+        { location: "Raithal", m: 2256, ft: 7400 },
         { location: "Dehradun", m: 640, ft: 2100 }
       ],
       altitudeGain: null,
-      description: "Descend the forest trail to Raithal and drive back to Dehradun as the journey ends.",
+      description: "Descend the forest trail to Raithal and drive back to Dehradun/Rishikesh as the journey ends.",
       detailedParagraphs: [
         "Wake up at the campsite and enjoy your final Himalayan breakfast.",
         "The descent from Gui to Raithal follows the same trail you climbed two days ago — but it no longer feels unfamiliar. You remember the bends, the trees, the campsite and the people you walked with.",
-        "Arrive in Raithal and board the vehicle for the return journey to Dehradun.",
-        "Enjoy the last scenic drive back down the Bhagirathi valley, reaching Dehradun in the evening with the meadows still fresh in your memory."
+        "Arrive in Raithal and board the vehicle for the return journey towards Dehradun/Rishikesh.",
+        "Enjoy the last scenic drive back down the Bhagirathi valley, reaching Dehradun/Rishikesh in the evening with the meadows still fresh in your memory."
       ],
       highlights: ["Forest Descent", "Raithal", "Scenic Drive", "Journey Ends"],
       meals: "Breakfast",
