@@ -295,7 +295,8 @@ export function resolveTrekDetail(trek: Trek) {
 
     // Derived overview facts
     seasons: deriveSeasons(trek.months),
-    trailType: deriveTrailType(trek.themes),
+    trailType: trek.trailType ?? deriveTrailType(trek.themes),
+    route: trek.route,
     transport: trek.transport ?? deriveTransport(trek.region),
     /** Published travel copy, where the listing has it; else `transport` alone. */
     howToReach: trek.howToReach,
@@ -371,6 +372,8 @@ export function resolveTrekDetail(trek: Trek) {
     article: trek.article,
     reviews: buildDefaultReviews(trek.name),
     trailVideos: buildDefaultTrailVideos(trek.name),
+    aboutHeading: trek.aboutHeading ?? `About ${trek.name}`,
+    aboutSubheading: trek.aboutSubheading,
     aboutParagraphs:
       trek.aboutParagraphs ??
       (trek.intro ? [trek.intro] : fb ? buildAboutParagraphs(trek.name) : []),

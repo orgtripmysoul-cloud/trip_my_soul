@@ -13,6 +13,10 @@ export interface BlogArticle {
   image: string;
   standfirst?: string;
   readMinutes?: number;
+  /** Listing this story belongs to, linked from the foot of the article. */
+  trekSlug?: string;
+  /** Display name for `trekSlug`, used as the link label. */
+  trekName?: string;
   sections: BlogArticleSection[];
   signoff?: string;
 }
@@ -740,9 +744,13 @@ export const blogArticles: BlogArticle[] = [
       "From the lush Kullu Valley to the rugged high desert of Lahaul in a single crossing — the trek that shows two completely different Himalayas.",
     category: "Trek Stories",
     date: "March 22, 2026",
+    // TODO(content): placeholder — swap for the Hampta Pass photo the client is
+    // sending. This frame is from Dayara Bugyal, not Hampta.
     image: "/Trips_gallery/Dyara_Bugyal/IMG_4438.JPG.jpeg",
     standfirst: "A Journey from Green Valleys to the High Desert",
     readMinutes: 6,
+    trekSlug: "hampta-pass-trek",
+    trekName: "Hampta Pass",
     sections: [
       {
         paragraphs: [
@@ -759,7 +767,8 @@ export const blogArticles: BlogArticle[] = [
           "From Balu Ka Ghera, the mountains begin to feel different.",
           "The trail climbs steadily toward Hampta Pass. The air gets thinner, the terrain becomes rougher, and every step demands a little more patience.",
           "You look back and realise how far you've come.",
-          "Ahead is the pass. Behind you is the green valley.",
+          "Ahead is the pass.",
+          "Behind you is the green valley.",
           "And somewhere between the two is a moment when you stop thinking about how many kilometres are left and simply keep walking.",
         ],
       },
@@ -768,8 +777,12 @@ export const blogArticles: BlogArticle[] = [
         paragraphs: [
           "At around 4,270 metres (14,000+ ft), Hampta Pass is the highest point of the crossing.",
           "Reaching the top doesn't always feel like a dramatic movie moment.",
-          "Sometimes it is quieter. A deep breath. A tired smile. A few seconds of silence.",
-          "And the realisation: \"I actually made it.\"",
+          "Sometimes it is quieter.",
+          "A deep breath.",
+          "A tired smile.",
+          "A few seconds of silence.",
+          "And the realisation:",
+          "\"I actually made it.\"",
           "The mountains stretch around you, and the trail you followed suddenly looks incredibly small.",
         ],
       },
@@ -779,7 +792,10 @@ export const blogArticles: BlogArticle[] = [
           "Perhaps the most remarkable part of Hampta Pass is what happens after crossing it.",
           "You descend towards Shea Goru, and the landscape changes dramatically.",
           "The lush greens of Kullu give way to the dry, rugged terrain of Lahaul. Within a few hours, it can feel as though you have walked into an entirely different world.",
-          "The colours change. The vegetation changes. The mountains change. Even the silence feels different.",
+          "The colours change.",
+          "The vegetation changes.",
+          "The mountains change.",
+          "Even the silence feels different.",
           "That sudden transition is what makes Hampta Pass a true Himalayan crossover trek.",
         ],
       },
@@ -789,16 +805,23 @@ export const blogArticles: BlogArticle[] = [
           "The descent is demanding in its own way.",
           "Loose rocks, steep sections and changing terrain require careful steps. But with every turn, the landscape opens wider.",
           "Eventually, Shea Goru appears below.",
-          "You are tired. Your legs know you've had a long day. But there is also a strange sense of satisfaction.",
-          "Because today wasn't just another day on a trail. Today, you crossed a mountain pass.",
+          "You are tired.",
+          "Your legs know you've had a long day.",
+          "But there is also a strange sense of satisfaction.",
+          "Because today wasn't just another day on a trail.",
+          "Today, you crossed a mountain pass.",
         ],
       },
       {
         heading: "From Shea Goru to Chatru",
         paragraphs: [
           "The following trail takes you deeper into the Lahaul landscape before reaching Chatru, where the main trekking section generally ends.",
-          "For many trekkers, the physical journey may be coming to an end. But the story isn't.",
-          "The photographs remain. The muddy shoes remain. The tired legs remain. The jokes from the trail remain.",
+          "For many trekkers, the physical journey may be coming to an end.",
+          "But the story isn't.",
+          "The photographs remain.",
+          "The muddy shoes remain.",
+          "The tired legs remain.",
+          "The jokes from the trail remain.",
           "And somewhere in your memory, there is that one moment when you stood on Hampta Pass and looked at two completely different Himalayan worlds.",
         ],
       },
@@ -807,19 +830,27 @@ export const blogArticles: BlogArticle[] = [
         paragraphs: [
           "Hampta Pass isn't memorable simply because of its altitude.",
           "It is memorable because of change.",
-          "Forest to meadow. Meadow to snow and rock. Green Kullu to rugged Lahaul. Nervous first steps to confident mountain walking.",
+          "Forest to meadow.",
+          "Meadow to snow and rock.",
+          "Green Kullu to rugged Lahaul.",
+          "Nervous first steps to confident mountain walking.",
           "And strangers on Day 1 becoming trekking companions by the time you reach Chatru.",
           "That's the magic of a crossover trek.",
-          "You don't simply travel across a mountain. You experience a completely different side of the Himalayas in the same journey.",
+          "You don't simply travel across a mountain.",
+          "You experience a completely different side of the Himalayas in the same journey.",
         ],
       },
       {
         heading: "Your Hampta Pass Story Awaits",
         paragraphs: [
           "One day, you'll look back at the photographs.",
-          "You'll remember the cold streams. The long climbs. The laughter around camp. The silence at the pass.",
+          "You'll remember the cold streams.",
+          "The long climbs.",
+          "The laughter around camp.",
+          "The silence at the pass.",
           "And that feeling of standing somewhere above the clouds, knowing that you crossed it on your own two feet.",
-          "The Himalayas aren't just meant to be seen. They're meant to be experienced.",
+          "The Himalayas aren't just meant to be seen.",
+          "They're meant to be experienced.",
         ],
       },
     ],

@@ -16,8 +16,8 @@ interface TrekAboutProps {
  */
 export default function TrekAbout({ detail, noun }: TrekAboutProps) {
   const {
-    trek, aboutParagraphs, highlights, usps, idealFor, differentiators,
-    importantNote, destinationHighlights, sourceCaveat,
+    aboutHeading, aboutSubheading, aboutParagraphs, highlights, usps, idealFor,
+    differentiators, importantNote, destinationHighlights, sourceCaveat,
   } = detail;
 
   const hasAnything =
@@ -32,8 +32,12 @@ export default function TrekAbout({ detail, noun }: TrekAboutProps) {
   return (
     <>
       <h2 className="text-lg font-extrabold text-brand-dark-text font-serif">
-        About {trek.name}
+        {aboutHeading}
       </h2>
+
+      {aboutSubheading && (
+        <p className="text-sm font-bold text-brand-forest">{aboutSubheading}</p>
+      )}
 
       {!hasAnything && (
         <p className="text-xs text-gray-500 font-medium">
@@ -44,8 +48,10 @@ export default function TrekAbout({ detail, noun }: TrekAboutProps) {
 
       {aboutParagraphs.length > 0 && (
         <div className="text-sm text-gray-650 leading-relaxed space-y-4">
+          {/* `whitespace-pre-line` keeps the deliberate line breaks inside a
+              paragraph (the yatra copy is written as short broken lines). */}
           {aboutParagraphs.map((text, idx) => (
-            <p key={idx}>{text}</p>
+            <p key={idx} className="whitespace-pre-line">{text}</p>
           ))}
         </div>
       )}

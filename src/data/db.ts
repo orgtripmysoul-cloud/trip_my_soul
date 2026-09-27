@@ -1,3 +1,5 @@
+import { getBlogArticle } from "./blogArticles";
+
 export interface TrekBatch {
   id: string;
   startDate: string;
@@ -313,6 +315,13 @@ export interface Trek {
   fitnessCriteria?: IconBullet[];
   maxAltitude?: string;
   totalDistance?: string;
+  /**
+   * Overrides the trail type derived from `themes`, where the listing's own
+   * copy describes the trail better than the theme tags can.
+   */
+  trailType?: string;
+  /** Trail route as an ordered list of points, shown as an overview fact. */
+  route?: string[];
 
   // --- Extended detail-page fields. All optional; `trekDefaults.ts` fills the gaps. ---
   gallery?: GalleryImage[];
@@ -369,6 +378,10 @@ export interface Trek {
 
   // Overview & about
   intro?: string;
+  /** Overrides the "About {name}" heading, e.g. a yatra that should not read "Trek". */
+  aboutHeading?: string;
+  /** Optional line under the About heading. */
+  aboutSubheading?: string;
   aboutParagraphs?: string[];
   highlights?: string[];
   usps?: Usp[];
@@ -598,9 +611,26 @@ export const TREKS: Trek[] = [
     ]
   },
   {
+    /**
+     * Only the client-approved story and the three overview facts it supports
+     * are filled in here. Everything else is still pending from the client and
+     * deliberately left to the generic fallbacks rather than invented:
+     *
+     * TODO(content): About Trek copy (aboutParagraphs / highlights / idealFor)
+     * TODO(content): quick + detailed itinerary
+     * TODO(content): inclusions and exclusions
+     * TODO(content): eligibility and fitness criteria
+     * TODO(content): departure dates (`batchDates`)
+     * TODO(content): how to reach (`howToReach`)
+     * TODO(content): trek essentials / packing list
+     * TODO(content): FAQs
+     * TODO(content): confirm the fare — ₹7,500 below is unconfirmed
+     * TODO(content): replace the placeholder hero with the client's Hampta
+     *   photo and add it to `gallery`
+     */
     "slug": "hampta-pass-trek",
     "name": "Hampta Pass",
-    "price": 7500,
+    "price": 7500,                            // TODO(content): unconfirmed
     "days": 5,
     "nights": 4,
     "region": "Himachal Pradesh",
@@ -621,7 +651,12 @@ export const TREKS: Trek[] = [
       "Meadow",
       "Forest",
       "Pass Crossing"
-    ]
+    ],
+    // The three facts the client's story supports. The generic 12,500 ft
+    // default was wrong for the pass.
+    maxAltitude: "14,000 FT / 4,270 M (Hampta Pass)",
+    route: ["Jobra (above Manali)", "Balu Ka Ghera", "Hampta Pass", "Shea Goru", "Chatru"],
+    trailType: "Crossover Trek — Kullu Valley (Green) to Lahaul (High Desert)"
   },
   {
     "slug": "spiti-valley",
@@ -5004,7 +5039,23 @@ export const YATRAS: Trek[] = [
     "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
     "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
-    "batchDates": ["2026-09-12"]              // TODO(content): seeded departure
+    "batchDates": ["2026-09-12"],             // TODO(content): seeded departure
+    // Client-approved About copy. Line breaks inside a paragraph are
+    // intentional and are preserved by `whitespace-pre-line` in TrekAbout.
+    // TODO(content): itinerary, inclusions, eligibility, departures and FAQs
+    // are still pending from the client — they render from the generic trek
+    // fallbacks until that data arrives.
+    "aboutHeading": "About Do Dham Yatra",
+    "aboutSubheading": "A Journey That Takes You Closer to the Divine",
+    "aboutParagraphs": [
+      "Some journeys are not meant to be measured in kilometres.\nThey are measured in faith, emotions and blessings.",
+      "The Do Dham Yatra to Kedarnath and Badrinath is one such journey — a sacred passage through the heart of the Himalayas, where every mountain carries a story, every river feels holy, and every step brings you closer to yourself.",
+      "Begin your journey at Kedarnath Dham, the sacred abode of Lord Shiva. Surrounded by magnificent Himalayan peaks, the journey to Kedarnath is a test of faith, strength and devotion. As you finally stand before the ancient temple, the tiredness of the journey slowly fades, leaving behind a feeling that is difficult to put into words.",
+      "From Kedarnath, continue towards Badrinath Dham, the divine abode of Lord Vishnu. Nestled amidst the Himalayas beside the sacred Alaknanda River, Badrinath offers an atmosphere of peace, devotion and spiritual calm.",
+      "But Do Dham is not only about visiting two temples.\nIt is about leaving behind the noise of everyday life and listening to what your soul has been trying to say.\nIt is about travelling with your parents, holding your family's hands, sharing prayers with loved ones and creating memories that remain in the heart forever.",
+      "At Trip My Soul, we believe that a pilgrimage should be more than a trip.\nIt should be an experience filled with faith, care, comfort and unforgettable moments.",
+      "So come with your prayers.\nCome with your family.\nCome with your faith.\nAnd let the Himalayas take you where your soul truly belongs."
+    ]
   },
   {
     "slug": "panch-kedar-dham-yatra",
@@ -14296,4 +14347,24 @@ if (chakrataIndex !== -1) {
     "nainital-winter-trip",
     "munsiyari-khalia-top"
   ];
+}
+
+/**
+ * Hampta Pass publishes the client's "Crossing Hampta Pass" story as its
+ * written guide. The copy is sourced from the blog article rather than being
+ * duplicated here, so the trek page and /blogs/crossing-hampta-pass can never
+ * drift apart. Everything else on this listing is still pending — see the
+ * TODO(content) block on the trek entry itself.
+ */
+const hamptaPassIndex = TREKS.findIndex(t => t.slug === 'hampta-pass-trek');
+const hamptaPassStory = getBlogArticle('crossing-hampta-pass');
+if (hamptaPassIndex !== -1 && hamptaPassStory) {
+  TREKS[hamptaPassIndex].article = {
+    title: hamptaPassStory.title,
+    standfirst: hamptaPassStory.standfirst,
+    readMinutes: hamptaPassStory.readMinutes,
+    image: hamptaPassStory.image,
+    sections: hamptaPassStory.sections,
+    signoff: hamptaPassStory.signoff
+  };
 }

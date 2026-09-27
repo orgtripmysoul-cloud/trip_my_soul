@@ -2,7 +2,7 @@
 
 import React from "react";
 import {
-  Activity, Calendar, Compass, Globe, Home, MapPin, Plane, ShieldAlert,
+  Activity, Calendar, Compass, Globe, Home, MapPin, Plane, Route, ShieldAlert,
   ShieldCheck, Sparkles, Train, TrendingUp, Users, Utensils,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -42,7 +42,7 @@ interface TrekOverviewFactsProps {
 export default function TrekOverviewFacts({ detail, noun }: TrekOverviewFactsProps) {
   const {
     trek, seasons, trailType, transport, country, maxAltitude, totalDistance,
-    cateringFood, campStay, maxGroupSize, endLocation,
+    cateringFood, campStay, maxGroupSize, endLocation, route,
   } = detail;
 
   return (
@@ -68,6 +68,12 @@ export default function TrekOverviewFacts({ detail, noun }: TrekOverviewFactsPro
           <Fact icon={TrendingUp} label="Max Altitude" value={maxAltitude} valueClassName="font-sans" />
           <Fact icon={ShieldAlert} label={`${noun} Grade`} value={trek.difficulty} valueClassName="font-sans" />
           <Fact icon={Compass} label="Trail Type" value={trailType} valueClassName="font-sans" />
+          <Fact
+            icon={Route}
+            label="Route"
+            value={route && route.length > 0 ? route.join(" → ") : undefined}
+            valueClassName="font-sans"
+          />
           <Fact icon={Utensils} label="Catering Food" value={cateringFood} valueClassName="font-sans font-medium" />
           <Fact icon={Users} label="Group Size" value={maxGroupSize} valueClassName="font-sans" />
         </div>

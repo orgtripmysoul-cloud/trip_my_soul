@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { blogArticles, getBlogArticle } from "@/data/blogArticles";
 
 export function generateStaticParams() {
@@ -71,6 +71,24 @@ export default async function BlogArticlePage({
         <p className="text-sm font-extrabold text-brand-forest font-serif pt-6 border-t border-gray-100">
           {article.signoff}
         </p>
+      )}
+
+      {/* Stories written against a listing point back at it. */}
+      {article.trekSlug && (
+        <Link
+          href={`/treks/${article.trekSlug}`}
+          className="flex items-center justify-between gap-3 min-h-[44px] bg-brand-warm-bg/60 border border-gray-150 rounded-2xl px-5 py-4 hover:border-brand-forest/40 transition"
+        >
+          <span className="min-w-0">
+            <span className="block text-[10px] font-extrabold uppercase tracking-wider text-gray-400">
+              Read about the trek
+            </span>
+            <span className="block text-sm font-extrabold text-brand-dark-text font-serif truncate">
+              {article.trekName ?? "View the trek page"}
+            </span>
+          </span>
+          <ArrowRight className="w-4 h-4 shrink-0 text-brand-dusk-orange" />
+        </Link>
       )}
 
       <div className="pt-4">
