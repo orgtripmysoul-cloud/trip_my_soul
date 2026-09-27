@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { Calendar, Check, Plus, Sparkles } from "lucide-react";
+import { Calendar, Check, Plus, Sparkles, CheckCircle2 } from "lucide-react";
 import type { ResolvedTrekDetail } from "@/lib/trekDetail";
+import { ApiError, submitQuoteLead } from "@/lib/client/checkoutApi";
 import ModalShell from "./ModalShell";
 import TrekAddOnsModal from "./TrekAddOnsModal";
 import TrekHighlightsModal, { buildHighlightLines } from "./TrekHighlightsModal";
@@ -33,7 +34,34 @@ export default function TrekBookingSidebar({
 }: TrekBookingSidebarProps) {
   const { originalPrice, tripCode } = detail;
 
-  const [openPanel, setOpenPanel] = useState<"highlights" | "addons" | null>(null);
+  const [openPanel, setOpenPanel] = useState<"highlights" | "addons" | "quote" | null>(null);
+  const [quoteName, setQuoteName] = useState("");
+  const [quotePhone, setQuotePhone] = useState("");
+  const [quoteEmail, setQuoteEmail] = useState("");
+  const [quoteStatus, setQuoteStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [quoteError, setQuoteError] = useState<string | null>(null);
+
+  const handleSubmitQuoteLead = async () => {
+    if (!quoteName.trim() || !quotePhone.trim()) {
+      setQuoteError("Please enter your name and mobile number.");
+      return;
+    }
+    setQuoteError(null);
+    setQuoteStatus("submitting");
+    try {
+      await submitQuoteLead({
+        name: quoteName.trim(),
+        phone: quotePhone.trim(),
+        email: quoteEmail.trim() || undefined,
+        tripLabel: detail.trek.name,
+        source: "tbd_quote",
+      });
+      setQuoteStatus("success");
+    } catch (err) {
+      setQuoteStatus("error");
+      setQuoteError(err instanceof ApiError ? err.message : "Could not submit your request. Please try again.");
+    }
+  };
 
   const highlightLines = buildHighlightLines(detail, noun);
   const previewLines = highlightLines.slice(0, PREVIEW_COUNT);
@@ -122,10 +150,10 @@ export default function TrekBookingSidebar({
 
       {/* CTA action */}
       <button
-        onClick={onBookNow}
+        onClick={price === null ? () => setOpenPanel("quote") : onBookNow}
         className="w-full bg-brand-forest hover:bg-brand-forest-light text-white py-4 rounded-full font-bold shadow-lg transition flex items-center justify-center gap-2 hover:-translate-y-0.5 transform duration-200"
       >
-        <span>{selectedBatch ? `Book ${noun} Slot` : "Choose Departure Dates"}</span>
+        <span>{price === null ? "Get Custom Quote" : selectedBatch ? `Book ${noun} Slot` : "Choose Departure Dates"}</span>
       </button>
 
       {openPanel === "highlights" && (
@@ -137,6 +165,57 @@ export default function TrekBookingSidebar({
       {openPanel === "addons" && (
         <ModalShell onClose={() => setOpenPanel(null)} className="max-w-lg text-left">
           <TrekAddOnsModal noun={noun} onClose={() => setOpenPanel(null)} onBookNow={onBookNow} />
+        </ModalShell>
+      )}
+
+      {openPanel === "quote" && (
+        <ModalShell
+          onClose={() => {
+            setOpenPanel(null);
+            setQuoteStatus("idle");
+          }}
+          className="max-w-sm text-left"
+        >
+          {quoteStatus === "success" ? (
+            <div className="p-6 text-center space-y-3">
+              <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
+              <h3 className="font-bold text-brand-dark-text">Request received!</h3>
+              <p className="text-xs text-gray-500">Our trip expert will reach out with a custom quote and payment link shortly.</p>
+            </div>
+          ) : (
+            <div className="p-6 space-y-3">
+              <h3 className="font-bold text-brand-dark-text">Get a Custom Quote</h3>
+              <p className="text-xs text-gray-500">Share your details and we&apos;ll send a personalised price for {detail.trek.name}.</p>
+              <input
+                placeholder="Your name"
+                value={quoteName}
+                onChange={(e) => setQuoteName(e.target.value)}
+                className="w-full p-3 min-h-[44px] rounded-xl border border-gray-200 text-sm"
+              />
+              <input
+                type="tel"
+                placeholder="Mobile number"
+                value={quotePhone}
+                onChange={(e) => setQuotePhone(e.target.value)}
+                className="w-full p-3 min-h-[44px] rounded-xl border border-gray-200 text-sm"
+              />
+              <input
+                type="email"
+                placeholder="Email (optional)"
+                value={quoteEmail}
+                onChange={(e) => setQuoteEmail(e.target.value)}
+                className="w-full p-3 min-h-[44px] rounded-xl border border-gray-200 text-sm"
+              />
+              {quoteError && <p className="text-[11px] font-bold text-red-600">{quoteError}</p>}
+              <button
+                onClick={handleSubmitQuoteLead}
+                disabled={quoteStatus === "submitting"}
+                className="w-full py-3 rounded-full bg-brand-forest hover:bg-brand-forest-light text-white font-bold text-sm transition disabled:opacity-50"
+              >
+                {quoteStatus === "submitting" ? "Submitting..." : "Request Quote"}
+              </button>
+            </div>
+          )}
         </ModalShell>
       )}
     </div>

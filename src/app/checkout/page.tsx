@@ -6,6 +6,7 @@ import Link from "next/link";
 import { TREKS, WILDLIFE, YATRAS } from "@/data/db";
 import { ALL_TRIPS, tripToTrek } from "@/data/trips";
 import { TREK_ADD_ONS, type TrekAddOnKey } from "@/data/addOns";
+import { TRIP_BOOKING_TERMS } from "@/data/tripShared";
 import {
   Calendar, Info, ArrowLeft,
   CheckCircle2, XCircle, User, HelpCircle, Lock, ShieldCheck, Phone, Mail, AlertTriangle, Clock
@@ -148,6 +149,9 @@ function CheckoutContent() {
   // T&C Acceptance
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
+  // Partial payment: pay just the registration fee now, or the full amount.
+  const [payOption, setPayOption] = useState<"registration" | "full">("full");
+
   // Real payment/booking flow state (server is authoritative for all of it).
   const [flowState, setFlowState] = useState<FlowState>("form");
   const [flowError, setFlowError] = useState<string | null>(null);
@@ -175,6 +179,10 @@ function CheckoutContent() {
   const taxableSubtotal = rawSubtotal - discountAmount;
   const gstAmount = Math.round(taxableSubtotal * 0.05); // 5% GST
   const grossTotalINR = taxableSubtotal + gstAmount;
+
+  // Registration-fee-only amount: capped at the trip total so it never exceeds it for a low-priced trip.
+  const registrationFeeAmount = Math.min(TRIP_BOOKING_TERMS.advancePerPerson * participants.length, grossTotalINR);
+  const payNowAmount = payOption === "registration" ? registrationFeeAmount : grossTotalINR;
 
   const displayPrice = (inrVal: number) => {
     if (currency === "USD") {
@@ -273,7 +281,7 @@ function CheckoutContent() {
   }, []);
 
   const openRazorpayCheckout = useCallback(
-    async (order: { razorpayKeyId: string; razorpayOrderId: string; totalAmount: number; currency: string; bookingNo: string }) => {
+    async (order: { razorpayKeyId: string; razorpayOrderId: string; totalAmount: number; payingNowAmount?: number; currency: string; bookingNo: string }) => {
       try {
         await loadRazorpayScript();
       } catch {
@@ -291,7 +299,7 @@ function CheckoutContent() {
       setFlowState("awaiting_payment");
       const rzp = new window.Razorpay({
         key: order.razorpayKeyId,
-        amount: Math.round(order.totalAmount * 100),
+        amount: Math.round((order.payingNowAmount ?? order.totalAmount) * 100),
         currency: order.currency,
         name: "TripMySoul",
         description: `${trek?.name ?? "TripMySoul Booking"} — ${batchParam}`,
@@ -382,6 +390,7 @@ function CheckoutContent() {
       })),
       couponCode: appliedCouponCode || undefined,
       verificationToken,
+      payNowAmount: payOption === "registration" ? registrationFeeAmount : undefined,
     };
 
     try {
@@ -774,6 +783,41 @@ function CheckoutContent() {
                 </span>
               </div>
 
+              {/* Pay registration fee only vs full amount */}
+              {!booking && registrationFeeAmount < grossTotalINR && (
+                <div className="space-y-2 pt-1">
+                  <span className="text-xs font-bold uppercase tracking-wider text-gray-400 block">How much would you like to pay now?</span>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setPayOption("registration")}
+                      className={`py-2.5 px-2 rounded-xl border text-xs font-bold transition ${
+                        payOption === "registration" ? "border-brand-forest bg-brand-forest/10 text-brand-forest" : "border-gray-200 text-gray-600"
+                      }`}
+                    >
+                      Pay Registration Fee Only
+                      <span className="block text-[10px] font-semibold mt-0.5">{displayPrice(registrationFeeAmount)}</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setPayOption("full")}
+                      className={`py-2.5 px-2 rounded-xl border text-xs font-bold transition ${
+                        payOption === "full" ? "border-brand-forest bg-brand-forest/10 text-brand-forest" : "border-gray-200 text-gray-600"
+                      }`}
+                    >
+                      Pay Full Amount
+                      <span className="block text-[10px] font-semibold mt-0.5">{displayPrice(grossTotalINR)}</span>
+                    </button>
+                  </div>
+                  {payOption === "registration" && (
+                    <p className="text-[10px] text-gray-400">
+                      Balance of {displayPrice(grossTotalINR - registrationFeeAmount)} is due before departure. Track it from your{" "}
+                      <a href="/dashboard" className="text-blue-600 font-bold hover:underline">My Bookings</a> dashboard.
+                    </p>
+                  )}
+                </div>
+              )}
+
               {/* Terms Checkbox */}
               <div className="pt-2">
                 <label className="flex items-start gap-2.5 min-h-[44px] py-2 cursor-pointer text-xs text-gray-600 font-medium">
@@ -839,8 +883,8 @@ function CheckoutContent() {
                     : flowState === "processing"
                     ? "Confirming your booking..."
                     : booking
-                    ? `Retry Payment (${displayPrice(grossTotalINR)})`
-                    : `Pay Now (${displayPrice(grossTotalINR)})`}
+                    ? `Retry Payment (${displayPrice(booking.payingNowAmount)})`
+                    : `Pay Now (${displayPrice(payNowAmount)})`}
                 </button>
               )}
 

@@ -139,6 +139,11 @@ async function processEvent(db: ReturnType<typeof supabaseAdmin>, body: Razorpay
             console.error("[razorpay-webhook] internal notification email failed", err)
           )
         );
+
+        const bookingId = (data as { booking?: { id?: string } } | null)?.booking?.id;
+        if (bookingId) {
+          await db.from("custom_quotes").update({ status: "paid" }).eq("booking_id", bookingId).eq("status", "pending");
+        }
       }
       return;
     }

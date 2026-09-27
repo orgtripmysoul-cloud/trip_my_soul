@@ -199,3 +199,110 @@ export interface AdminRecordPaymentResponse {
   booking: { bookingNo: string; status: string; paymentState: string; totalAmount: number; paidAmount: number };
   payment: AdminPaymentRecord;
 }
+
+/** Custom payments (src/app/pay/**, src/app/admin/quotes/**, src/app/admin/payments/**). */
+
+export type CustomPaymentPurpose = "advance" | "full" | "balance" | "addon";
+
+export interface CreateCustomPaymentRequest {
+  customer: { name: string; email: string; phone: string };
+  tripLabel: string;
+  departureDate?: string | null;
+  pax: number;
+  amount: number;
+  purpose: CustomPaymentPurpose;
+  notes?: string;
+}
+
+export interface CreateCustomPaymentResponse {
+  bookingNo: string;
+  holdExpiresAt: string;
+  totalAmount: number;
+  payingNowAmount: number;
+  currency: string;
+  razorpayOrderId: string;
+  razorpayKeyId: string;
+}
+
+export interface CreateQuoteLeadRequest {
+  name: string;
+  email?: string;
+  phone: string;
+  tripLabel?: string;
+  departureDate?: string | null;
+  message?: string;
+  source?: "tbd_quote" | "callback";
+}
+
+export interface QuoteDetailsResponse {
+  status: "pending" | "paid" | "expired" | "cancelled";
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  tripLabel: string;
+  departureDate: string | null;
+  pax: number;
+  amount: number;
+  taxAmount: number;
+  totalAmount: number;
+  purpose: CustomPaymentPurpose;
+  addonDetail: string | null;
+  notes: string | null;
+  expiryDate: string;
+}
+
+export interface AdminCreateQuoteRequest {
+  customer: { name: string; email: string; phone: string };
+  tripLabel: string;
+  departureDate?: string | null;
+  pax?: number;
+  amount: number;
+  purpose: CustomPaymentPurpose;
+  addonDetail?: string;
+  notes?: string;
+  expiryDate: string;
+}
+
+export interface AdminQuoteListItem {
+  token: string;
+  status: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  tripLabel: string;
+  amount: number;
+  purpose: CustomPaymentPurpose;
+  expiryDate: string;
+  bookingNo: string | null;
+  createdAt: string;
+}
+
+export interface AdminQuoteListResponse {
+  quotes: AdminQuoteListItem[];
+}
+
+export interface AdminCreateQuoteResponse {
+  token: string;
+  payUrl: string;
+}
+
+export interface AdminPaymentListItem {
+  bookingNo: string;
+  bookingType: "trek" | "custom";
+  trekName: string;
+  customerName: string;
+  customerEmail: string;
+  status: string;
+  paymentState: string;
+  totalAmount: number;
+  paidAmount: number;
+  currency: string;
+  createdAt: string;
+}
+
+export interface AdminPaymentListResponse {
+  payments: AdminPaymentListItem[];
+  total: number;
+  limit: number;
+  offset: number;
+}

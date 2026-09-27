@@ -4,7 +4,11 @@ import type {
   BookingLookupResponse,
   CreateBookingRequest,
   CreateBookingResponse,
+  CreateCustomPaymentRequest,
+  CreateCustomPaymentResponse,
+  CreateQuoteLeadRequest,
   PaymentIntentResponse,
+  QuoteDetailsResponse,
   VerifyPaymentRequest,
   VerifyPaymentResponse,
 } from "@/lib/types/booking";
@@ -109,6 +113,27 @@ export async function lookupBooking(bookingNo: string, email: string): Promise<B
     throw new ApiError(data.code ?? "INTERNAL_ERROR", data.message ?? "Something went wrong.");
   }
   return data as BookingLookupResponse;
+}
+
+export function createCustomPayment(body: CreateCustomPaymentRequest, idempotencyKey: string): Promise<CreateCustomPaymentResponse> {
+  return postJson("/api/v1/public/pay", body, idempotencyKey);
+}
+
+export function submitQuoteLead(body: CreateQuoteLeadRequest): Promise<{ ok: boolean }> {
+  return postJson("/api/v1/public/quote-leads", body);
+}
+
+export async function getQuoteDetails(token: string): Promise<QuoteDetailsResponse> {
+  const res = await fetch(`/api/v1/public/quotes/${encodeURIComponent(token)}`);
+  const data = await res.json();
+  if (!res.ok) {
+    throw new ApiError(data.code ?? "INTERNAL_ERROR", data.message ?? "Something went wrong.");
+  }
+  return data as QuoteDetailsResponse;
+}
+
+export function payQuote(token: string, idempotencyKey: string): Promise<CreateCustomPaymentResponse> {
+  return postJson(`/api/v1/public/quotes/${encodeURIComponent(token)}/pay`, {}, idempotencyKey);
 }
 
 let razorpayScriptPromise: Promise<void> | null = null;

@@ -2,12 +2,14 @@
 
 import React, { useState } from "react";
 import { PhoneCall, X } from "lucide-react";
+import { submitQuoteLead } from "@/lib/client/checkoutApi";
 
 /** Desktop-only "request a call back" card. Mobile gets the global WhatsApp button instead. */
 export default function TrekCallbackBar() {
   const [showCallbackBar, setShowCallbackBar] = useState(true);
   const [callbackPhone, setCallbackPhone] = useState("");
   const [callbackSuccess, setCallbackSuccess] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   if (!showCallbackBar) return null;
 
@@ -36,19 +38,25 @@ export default function TrekCallbackBar() {
               className="bg-white/5 border border-white/10 text-base lg:text-xs px-3 py-2 min-h-[44px] rounded-lg focus:outline-none flex-1 min-w-0 text-white"
             />
             <button
-              onClick={() => {
-                if (callbackPhone.trim()) {
+              onClick={async () => {
+                if (!callbackPhone.trim() || submitting) return;
+                setSubmitting(true);
+                try {
+                  await submitQuoteLead({ name: "Website visitor", phone: callbackPhone.trim(), source: "callback" });
                   setCallbackSuccess(true);
                   setTimeout(() => {
                     setCallbackSuccess(false);
                     setCallbackPhone("");
                     setShowCallbackBar(false);
                   }, 2500);
+                } finally {
+                  setSubmitting(false);
                 }
               }}
-              className="bg-brand-dusk-orange hover:bg-brand-dusk-orange/90 text-white text-xs min-h-[44px] inline-flex items-center justify-center font-bold px-4 py-2 rounded-lg transition shrink-0 min-h-[40px]"
+              disabled={submitting}
+              className="bg-brand-dusk-orange hover:bg-brand-dusk-orange/90 text-white text-xs min-h-[44px] inline-flex items-center justify-center font-bold px-4 py-2 rounded-lg transition shrink-0 disabled:opacity-60"
             >
-              Call Me
+              {submitting ? "Sending..." : "Call Me"}
             </button>
           </div>
         </div>
