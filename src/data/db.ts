@@ -4480,7 +4480,7 @@ export const YATRAS: Trek[] = [
     "slug": "kedarnath-yatra",
     "name": "Kedarnath Trek",
     "tagline": "Four days from Haridwar to the Kedarnath shrine at 11,755 ft, with an overnight halt at the temple.",
-    "heroImage": "/Trips_gallery/Kedarnath/IMG_1946.jpg",
+    "heroImage": "/Trips_gallery/Kedarnath/IMG_1668.jpg",
     "price": 6499,
     "days": 4,
     "nights": 3,

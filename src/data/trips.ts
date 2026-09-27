@@ -1745,6 +1745,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Panch Kedar Yatra",
       slug: "panch-kedar-yatra",
       duration: "11N/12D",
+      heroImage: "/Trips_gallery/Kedarnath/IMG_1851.jpg",
       tagline: "All five Panch Kedar shrines — Kedarnath, Madhmaheshwar, Tungnath, Rudranath and Kalpeshwar — in one 12-day expedition.",
     },
     {
