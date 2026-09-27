@@ -495,7 +495,7 @@ function CheckoutContent() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
 
           {/* Left Column: Participant Details & Add-Ons */}
-          <div className="lg:col-span-2 space-y-6 order-last lg:order-first">
+          <div className="lg:col-span-2 space-y-6">
 
             {/* 0. Primary Booker Details */}
             <div className="bg-white border border-gray-150 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
@@ -734,8 +734,9 @@ function CheckoutContent() {
 
           </div>
 
-          {/* Right Column: Payment Summary Card — shown first on mobile */}
-          <div className="space-y-6 order-first lg:order-last">
+          {/* Right Column: Payment Summary Card — last on mobile, after the
+              participant details it totals up. */}
+          <div className="space-y-6">
             <div className="bg-white border border-gray-200 rounded-3xl p-6 sm:p-8 shadow-md space-y-5 lg:sticky lg:top-28">
               <h2 className="text-xl font-bold font-serif text-brand-dark-text flex items-center gap-2">
                 <span className="text-[#E84855] font-black">₹</span>
