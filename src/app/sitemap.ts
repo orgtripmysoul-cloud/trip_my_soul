@@ -1,15 +1,13 @@
 import type { MetadataRoute } from "next";
 
 import { blogArticles } from "@/data/blogArticles";
-import { REGIONS, TREKS, YATRAS } from "@/data/db";
-import { BACKPACKING_TRIPS, CANONICAL_TRIP_PATHS, WEEKEND_TRIPS } from "@/data/trips";
+import { POLICY_PAGES } from "@/data/policies";
+import { REGIONS } from "@/data/db";
+import { indexableTreks } from "@/data/trekCatalogue";
+import { BACKPACKING_TRIPS, WEEKEND_TRIPS } from "@/data/trips";
+import { SITE_URL } from "@/lib/seo";
 
-/**
- * Canonical origin, `www` included: the apex 308-redirects to `www`, so every
- * URL here has to carry the host Google will actually land on — otherwise each
- * crawl of each URL pays for a redirect hop.
- */
-export const BASE_URL = "https://www.tripmysoul.in";
+const BASE_URL = SITE_URL;
 
 type Entry = MetadataRoute.Sitemap[number];
 
@@ -37,18 +35,6 @@ const STATIC_ROUTES: { path: string; priority: number; changeFrequency: Entry["c
   { path: "/suggest-a-trek", priority: 0.6, changeFrequency: "monthly" },
 ];
 
-/**
- * Policy slugs handled by the `/policies/[slug]` switch. That page is a client
- * component with the copy inlined, so there is no data module to import from —
- * keep this in step with the cases there and the Footer links.
- */
-const POLICY_SLUGS = [
-  "payment-policy",
-  "cancellation-policy",
-  "terms-conditions",
-  "privacy-policy",
-];
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
@@ -67,11 +53,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry(route.path, route.priority, route.changeFrequency),
   );
 
-  // A package superseded by a /trips/... page is listed there only, so each one
-  // appears in the sitemap exactly once at its canonical URL.
-  const trekEntries = [...TREKS, ...YATRAS]
-    .filter((trek) => !(trek.slug in CANONICAL_TRIP_PATHS))
-    .map((trek) => entry(`/treks/${trek.slug}`, 0.6, "weekly"));
+  // One entry per package: `indexableTreks` drops anything superseded by a
+  // /trips/... page and any unpublished stub duplicating a populated listing,
+  // so nothing is advertised at two URLs.
+  const trekEntries = indexableTreks().map((trek) =>
+    entry(`/treks/${trek.slug}`, 0.6, "weekly"),
+  );
 
   const regionEntries = REGIONS.map((region) =>
     entry(`/regions/${region.slug}`, 0.6, "weekly"),
@@ -89,8 +76,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry(`/trips/backpacking/${trip.slug}`, 0.6, "weekly"),
   );
 
-  const policyEntries = POLICY_SLUGS.map((slug) =>
-    entry(`/policies/${slug}`, 0.3, "yearly"),
+  const policyEntries = POLICY_PAGES.map((policy) =>
+    entry(`/policies/${policy.slug}`, 0.3, "yearly"),
   );
 
   return [

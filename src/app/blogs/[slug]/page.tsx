@@ -1,10 +1,39 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { blogArticles, getBlogArticle } from "@/data/blogArticles";
+import { buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return blogArticles.map((article) => ({ slug: article.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getBlogArticle(slug);
+
+  if (!article) {
+    return buildMetadata({
+      title: "Article Not Found",
+      description: "This article is no longer published. Browse our trekking guides and trail stories.",
+      path: `/blogs/${slug}`,
+    });
+  }
+
+  return buildMetadata({
+    title: article.title,
+    // `excerpt` over `standfirst`: the standfirst is a short display tagline,
+    // often under 50 characters, which wastes most of the SERP snippet.
+    description: article.excerpt ?? article.standfirst ?? "",
+    path: `/blogs/${slug}`,
+    image: article.image,
+    type: "article",
+  });
 }
 
 export default async function BlogArticlePage({

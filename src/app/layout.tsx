@@ -3,7 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { BASE_URL } from "@/app/sitemap";
+import { clampDescription, SITE_URL } from "@/lib/seo";
 
 export const viewport = {
   width: "device-width",
@@ -18,13 +18,19 @@ export const metadata: Metadata = {
   // Resolves relative OG/icon URLs against the live origin. Without it Next
   // falls back to localhost at build time, which silently breaks any social
   // preview image the moment one is added.
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL(SITE_URL),
   title: "Trekking in India | Best Adventure Travel & Holiday Packages | TripMySoul",
-  description: SITE_DESCRIPTION,
+  // Clamped for the SERP snippet. The JSON-LD below keeps the full sentence,
+  // where length is not a constraint.
+  description: clampDescription(SITE_DESCRIPTION),
   keywords: "Trekking in India, Adventure Travel India, Uttarakhand Treks, Himachal Pradesh Treks, Kashmir Great Lakes, Chardham Yatra, Cab Bookings",
+  // Homepage canonical. Every public route below overrides this with its own
+  // via `buildMetadata`, so nothing else inherits it.
+  alternates: { canonical: SITE_URL },
   openGraph: {
     title: "TripMySoul | Where Every Journey Heals the Soul",
     description: "Handcrafted high-altitude trekking experiences and pilgrimage tours in the Indian Himalayas.",
+    url: SITE_URL,
     type: "website",
     locale: "en_US",
     siteName: "TripMySoul",
@@ -37,8 +43,8 @@ const ORGANIZATION_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "TripMySoul",
-  url: BASE_URL,
-  logo: `${BASE_URL}/tms-logo-mark.png`,
+  url: SITE_URL,
+  logo: `${SITE_URL}/tms-logo-mark.png`,
   description: SITE_DESCRIPTION,
   email: "tripmysoulteam@gmail.com",
   telephone: "+91-8178613438",
