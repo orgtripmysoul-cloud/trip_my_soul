@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { Compass, Mail, Phone, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { OFFICES } from "@/data/db";
 
 export default function Footer() {
@@ -17,8 +18,14 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-3 min-h-[44px]">
-              <div className="w-10 h-10 shrink-0 rounded-full bg-brand-dusk flex items-center justify-center">
-                <Compass className="w-6 h-6 text-white" />
+              <div className="relative w-10 h-10 shrink-0">
+                <Image
+                  src="/tms-logo-mark.png"
+                  alt="TripMySoul logo"
+                  fill
+                  sizes="40px"
+                  className="object-contain"
+                />
               </div>
               <div className="min-w-0">
                 <span className="text-xl font-bold tracking-wider block leading-none">TripMySoul</span>
