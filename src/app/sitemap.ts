@@ -4,7 +4,12 @@ import { blogArticles } from "@/data/blogArticles";
 import { REGIONS, TREKS, YATRAS } from "@/data/db";
 import { BACKPACKING_TRIPS, CANONICAL_TRIP_PATHS, WEEKEND_TRIPS } from "@/data/trips";
 
-export const BASE_URL = "https://tripmysoul.in";
+/**
+ * Canonical origin, `www` included: the apex 308-redirects to `www`, so every
+ * URL here has to carry the host Google will actually land on — otherwise each
+ * crawl of each URL pays for a redirect hop.
+ */
+export const BASE_URL = "https://www.tripmysoul.in";
 
 type Entry = MetadataRoute.Sitemap[number];
 
