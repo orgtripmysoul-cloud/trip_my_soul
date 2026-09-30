@@ -744,9 +744,7 @@ export const blogArticles: BlogArticle[] = [
       "From the lush Kullu Valley to the rugged high desert of Lahaul in a single crossing — the trek that shows two completely different Himalayas.",
     category: "Trek Stories",
     date: "March 22, 2026",
-    // TODO(content): placeholder — swap for the Hampta Pass photo the client is
-    // sending. This frame is from Dayara Bugyal, not Hampta.
-    image: "/Trips_gallery/Dyara_Bugyal/IMG_4438.JPG.jpeg",
+    image: "/Trips_gallery/Hampta%20Pass/0bc8b112-014d-4cac-bcce-e676223ce81b.jpg.jpeg",
     standfirst: "A Journey from Green Valleys to the High Desert",
     readMinutes: 6,
     trekSlug: "hampta-pass-trek",

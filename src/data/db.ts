@@ -625,8 +625,9 @@ export const TREKS: Trek[] = [
      * TODO(content): trek essentials / packing list
      * TODO(content): FAQs
      * TODO(content): confirm the fare — ₹7,500 below is unconfirmed
-     * TODO(content): replace the placeholder hero with the client's Hampta
-     *   photo and add it to `gallery`
+     *
+     * The hero and gallery are set from the client's Hampta photography at the
+     * bottom of this file.
      */
     "slug": "hampta-pass-trek",
     "name": "Hampta Pass",
@@ -3128,8 +3129,8 @@ export const TREKS: Trek[] = [
       "Snow"
     ]
     // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // neutral factual line while it is unset). The hero and gallery are set from
+    // the client's Kartik Swami photography at the bottom of this file.
   },
   {
     // TODO(content): winter catalogue stub for Auli Snow Trip. Every value marked TODO
@@ -14401,4 +14402,114 @@ if (hamptaPassIndex !== -1 && hamptaPassStory) {
     sections: hamptaPassStory.sections,
     signoff: hamptaPassStory.signoff
   };
+}
+
+/**
+ * Photography the client shot on these four listings, from
+ * `public/Trips_gallery/`. The source files were iPhone HEIFs, which only
+ * Safari renders — they are stored here as JPEGs. Folder names carry spaces on
+ * disk, so the paths are written `%20`-encoded, as `Kuari Pass trek` already is.
+ */
+if (hamptaPassIndex !== -1) {
+  TREKS[hamptaPassIndex].heroImage =
+    "/Trips_gallery/Hampta%20Pass/0bc8b112-014d-4cac-bcce-e676223ce81b.jpg.jpeg";
+
+  TREKS[hamptaPassIndex].heroImages = [
+    "/Trips_gallery/Hampta%20Pass/0bc8b112-014d-4cac-bcce-e676223ce81b.jpg.jpeg",
+    "/Trips_gallery/Hampta%20Pass/3323960f-1dd2-4913-98fc-3d428195542a.jpg.jpeg",
+    "/Trips_gallery/Hampta%20Pass/505da57a-59b5-4e24-9ca2-8f3d5ef828de.jpg.jpeg",
+    "/Trips_gallery/Hampta%20Pass/d5e1a883-7a2c-4526-9341-94c2ab766e16.jpg.jpeg"
+  ];
+
+  TREKS[hamptaPassIndex].gallery = [
+    { url: "/Trips_gallery/Hampta%20Pass/0bc8b112-014d-4cac-bcce-e676223ce81b.jpg.jpeg", caption: "A lone trekker crossing the snowfield below the pass" },
+    { url: "/Trips_gallery/Hampta%20Pass/11deb1c1-52cf-46fe-b8d4-af80e4262822.jpg.jpeg", caption: "Climbing the rocky trail as the cloud comes in" },
+    { url: "/Trips_gallery/Hampta%20Pass/3323960f-1dd2-4913-98fc-3d428195542a.jpg.jpeg", caption: "Chandra Taal, clear to the lake bed" },
+    { url: "/Trips_gallery/Hampta%20Pass/43541937-4aa3-481b-abfc-891d5b3b11bd.jpg.jpeg", caption: "Layered up on the trail above Jobra" },
+    { url: "/Trips_gallery/Hampta%20Pass/505da57a-59b5-4e24-9ca2-8f3d5ef828de.jpg.jpeg", caption: "Crossing the stream on the way up the valley" },
+    { url: "/Trips_gallery/Hampta%20Pass/IMG_0842.jpeg", caption: "Rain gear on, moving across the snow" },
+    { url: "/Trips_gallery/Hampta%20Pass/IMG_3055.jpeg", caption: "The batch at Chandra Taal after the crossing" },
+    { url: "/Trips_gallery/Hampta%20Pass/b5c8ad47-69ef-404b-aa9b-7c07b2b4ce13.jpg.jpeg", caption: "Done — Hampta Pass with Chandra Taal" },
+    { url: "/Trips_gallery/Hampta%20Pass/b5cc56a0-3b10-4466-9da0-a753e56935c8.jpg.jpeg", caption: "The full group on the snow below the pass" },
+    { url: "/Trips_gallery/Hampta%20Pass/d5e1a883-7a2c-4526-9341-94c2ab766e16.jpg.jpeg", caption: "Hampta Pass summit, 14,100 ft" }
+  ];
+}
+
+const valleyOfFlowersIndex = TREKS.findIndex(t => t.slug === 'valley-of-flowers-trek');
+if (valleyOfFlowersIndex !== -1) {
+  TREKS[valleyOfFlowersIndex].heroImage =
+    "/Trips_gallery/Valley%20of%20flowers/8e450bc7-8b4e-4cc2-bc7c-b1a83f75d3b2.jpg.jpeg";
+
+  TREKS[valleyOfFlowersIndex].heroImages = [
+    "/Trips_gallery/Valley%20of%20flowers/8e450bc7-8b4e-4cc2-bc7c-b1a83f75d3b2.jpg.jpeg",
+    "/Trips_gallery/Valley%20of%20flowers/704fe075-42f4-46e7-a9f6-8115c2d4412a.jpg.jpeg",
+    "/Trips_gallery/Valley%20of%20flowers/IMG_0588.jpeg",
+    "/Trips_gallery/Valley%20of%20flowers/3803e0be-5522-47c5-98ca-8706f79deb2c.jpg.jpeg"
+  ];
+
+  TREKS[valleyOfFlowersIndex].gallery = [
+    { url: "/Trips_gallery/Valley%20of%20flowers/704fe075-42f4-46e7-a9f6-8115c2d4412a.jpg.jpeg", caption: "Himalayan geranium in bloom on the valley floor" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/7c62d034-7154-45b3-a38f-82206aebbc0f.jpg.jpeg", caption: "A single geranium among the undergrowth" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/7377bba1-8431-4fd7-9a9f-9e6a6b0880da.jpg.jpeg", caption: "Blue forget-me-nots along the trail" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/86f761a3-1e00-4057-a530-eba1749459c8.jpg.jpeg", caption: "A deep red bloom opening in the grass" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/8e450bc7-8b4e-4cc2-bc7c-b1a83f75d3b2.jpg.jpeg", caption: "Pink blossom on the shrubs above the valley" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/6b143a21-5360-4e00-869c-7a0b0808be17.jpg.jpeg", caption: "At the Valley of Flowers National Park gate" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/7140a762-dedc-4ec1-8f91-9485be3208a9.jpg.jpeg", caption: "Trekkers at the park entrance" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/58f060fc-da4b-43cc-9d8f-67611f88cdb3.jpg.jpeg", caption: "On the bridge above the river on the way in" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/IMG_0149.jpeg", caption: "On the road up the Bhyundar valley" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/IMG_0413.jpeg", caption: "The group at the campsite below the valley" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/3803e0be-5522-47c5-98ca-8706f79deb2c.jpg.jpeg", caption: "The batch in the valley with the tricolour" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/04dc4b0e-be77-4e7e-86e3-c05713783ddb.jpg.jpeg", caption: "Done — Valley of Flowers Trek, 12,000 ft" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/c30bb7ca-edd4-48bc-966d-b37247685896.jpg.jpeg", caption: "The batch on the meadow inside the valley" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/IMG_0554.jpeg", caption: "A prayer flag against the snow peaks" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/IMG_0383.jpeg", caption: "Bells and flags at the shrine beside the lake" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/IMG_0568.jpeg", caption: "The shivling and trishuls at the lakeside shrine" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/IMG_0588.jpeg", caption: "Hemkund lake at 14,200 ft" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/IMG_0843.jpeg", caption: "Hemkund Sahib gurudwara in the mist" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/IMG_0512.jpeg", caption: "The batch at Hemkund, snow peaks behind" },
+    { url: "/Trips_gallery/Valley%20of%20flowers/e4676e13-c873-4655-8d66-bd359d31e8cf.jpg.jpeg", caption: "Done — Hemkund Sahib, 14,200 ft" }
+  ];
+}
+
+const kartikSwamiIndex = TREKS.findIndex(t => t.slug === 'kartik-swami-trek');
+if (kartikSwamiIndex !== -1) {
+  TREKS[kartikSwamiIndex].heroImage =
+    "/Trips_gallery/Kartik%20swami/0bc8b112-014d-4cac-bcce-e676223ce81b.jpg.jpeg";
+
+  TREKS[kartikSwamiIndex].heroImages = [
+    "/Trips_gallery/Kartik%20swami/0bc8b112-014d-4cac-bcce-e676223ce81b.jpg.jpeg",
+    "/Trips_gallery/Kartik%20swami/6354b719-3885-4e98-a013-08ac86e5f87f.jpg.jpeg",
+    "/Trips_gallery/Kartik%20swami/d4736335-697e-42fd-b8eb-60e46b56a6ec.jpg.jpeg",
+    "/Trips_gallery/Kartik%20swami/e658ace0-2e4e-4739-89bc-69626e823ef5.jpg.jpeg"
+  ];
+
+  TREKS[kartikSwamiIndex].gallery = [
+    { url: "/Trips_gallery/Kartik%20swami/0bc8b112-014d-4cac-bcce-e676223ce81b.jpg.jpeg", caption: "The temple on the ridge, reached by the last flight of steps" },
+    { url: "/Trips_gallery/Kartik%20swami/6354b719-3885-4e98-a013-08ac86e5f87f.jpg.jpeg", caption: "Flags flying over the Kartik Swami temple" },
+    { url: "/Trips_gallery/Kartik%20swami/731d87a4-9196-420a-b2ed-ffe3443f1672.jpg.jpeg", caption: "The shrine at the top of the ridge" },
+    { url: "/Trips_gallery/Kartik%20swami/292fae31-983d-428a-a195-2f6365620268.jpg.jpeg", caption: "Looking out over the Garhwal ranges from the temple railing" },
+    { url: "/Trips_gallery/Kartik%20swami/98a88372-edc3-4379-9b5a-d2d180414a87.jpg.jpeg", caption: "Brass bells hung along the railing above the valley" },
+    { url: "/Trips_gallery/Kartik%20swami/e658ace0-2e4e-4739-89bc-69626e823ef5.jpg.jpeg", caption: "Red chunris and bells left by pilgrims on the ridge" },
+    { url: "/Trips_gallery/Kartik%20swami/d4736335-697e-42fd-b8eb-60e46b56a6ec.jpg.jpeg", caption: "Offerings tied to the rocks at the summit outcrop" }
+  ];
+}
+
+const adiKailashIndex = YATRAS.findIndex(y => y.slug === 'adi-kailash-om-parvat-yatra');
+if (adiKailashIndex !== -1) {
+  YATRAS[adiKailashIndex].heroImage =
+    "/Trips_gallery/Adi%20Kailash/IMG_0285.jpeg";
+
+  YATRAS[adiKailashIndex].heroImages = [
+    "/Trips_gallery/Adi%20Kailash/IMG_0285.jpeg",
+    "/Trips_gallery/Adi%20Kailash/IMG_0333.jpeg",
+    "/Trips_gallery/Adi%20Kailash/IMG_0551.jpeg",
+    "/Trips_gallery/Adi%20Kailash/IMG_0597.jpeg"
+  ];
+
+  YATRAS[adiKailashIndex].gallery = [
+    { url: "/Trips_gallery/Adi%20Kailash/IMG_0285.jpeg", caption: "Snowbound peaks above the base at Jyolingkong" },
+    { url: "/Trips_gallery/Adi%20Kailash/IMG_0333.jpeg", caption: "Darshan with folded hands before the peak" },
+    { url: "/Trips_gallery/Adi%20Kailash/IMG_0551.jpeg", caption: "Trishul and prayer flags at the shrine below the peak" },
+    { url: "/Trips_gallery/Adi%20Kailash/IMG_0597.jpeg", caption: "A wildflower held up against the snow line" }
+  ];
 }
