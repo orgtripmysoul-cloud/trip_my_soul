@@ -14513,3 +14513,67 @@ if (adiKailashIndex !== -1) {
     { url: "/Trips_gallery/Adi%20Kailash/IMG_0597.jpeg", caption: "A wildflower held up against the snow line" }
   ];
 }
+
+/**
+ * Gaumukh Tapovan photography from `public/Trips_gallery/Gaumukh Tapovan/`.
+ *
+ * Three files in that folder — `2f1b12e9…`, `9e88813e…` and `a59b72d8…` — are
+ * green-meadow and turquoise-lake shots that belong to Kashmir Great Lakes, not
+ * to the Bhagirathi valley; they are left out until the client confirms where
+ * they go. `IMG_2336.jpg.jpeg` is a zero-byte file and is also left out.
+ */
+const gaumukhTapovanIndex = TREKS.findIndex(t => t.slug === 'gaumukh-tapovan-trek');
+if (gaumukhTapovanIndex !== -1) {
+  TREKS[gaumukhTapovanIndex].heroImage =
+    "/Trips_gallery/Gaumukh%20Tapovan/IMG_2038.jpg.jpeg";
+
+  TREKS[gaumukhTapovanIndex].heroImages = [
+    "/Trips_gallery/Gaumukh%20Tapovan/IMG_2038.jpg.jpeg",
+    "/Trips_gallery/Gaumukh%20Tapovan/1b1bdee8-d720-4dbe-a31a-42e80872d600.jpg.jpeg",
+    "/Trips_gallery/Gaumukh%20Tapovan/a5550b7e-1f5d-4d0d-89ad-56a3964001d3.jpg.jpeg",
+    "/Trips_gallery/Gaumukh%20Tapovan/IMG_2031.jpg.jpeg"
+  ];
+
+  TREKS[gaumukhTapovanIndex].gallery = [
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/1b1bdee8-d720-4dbe-a31a-42e80872d600.jpg.jpeg", caption: "The batch at Tapovan with Shivling behind" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/a5550b7e-1f5d-4d0d-89ad-56a3964001d3.jpg.jpeg", caption: "At Gaumukh, the snout of the Gangotri glacier" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/IMG_2314.jpg.jpeg", caption: "Offering Bhagirathi water at the glacier mouth" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/22af84f4-e6f0-47d4-9d47-1e02d83bf9ae.jpg.jpeg", caption: "Crossing the glacial stream below the Bhagirathi peaks" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/IMG_2024.jpg.jpeg", caption: "An early start up the Bhagirathi valley" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/IMG_2033.jpg.jpeg", caption: "Picking a way down through the boulder field" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/IMG_2045.jpg.jpeg", caption: "Watching the cloud build over the peaks" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/IMG_2311.jpg.jpeg", caption: "The dome shelter at Bhojbasa" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/IMG_2031.jpg.jpeg", caption: "Camp pitched at Tapovan under Shivling" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/IMG_2038.jpg.jpeg", caption: "Shivling, 21,467 ft, from Tapovan" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/IMG_2328.jpg.jpeg", caption: "Shivling above the Tapovan meadow" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/IMG_2347.jpg.jpeg", caption: "A cairn built above the Gangotri glacier" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/IMG_2027.jpg.jpeg", caption: "Primula and rhodiola in flower on the moraine" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/IMG_2003.jpg.jpeg", caption: "Hot tea on the moraine after the rain" },
+    { url: "/Trips_gallery/Gaumukh%20Tapovan/IMG_2006.jpg.jpeg", caption: "Celebrating at the glacial pool under the cloud" }
+  ];
+}
+
+/** Kashmir Great Lakes photography from `public/Trips_gallery/Kashmir Great Lake/`. */
+const kashmirGreatLakesIndex = TREKS.findIndex(t => t.slug === 'kashmir-great-lakes-trek');
+if (kashmirGreatLakesIndex !== -1) {
+  TREKS[kashmirGreatLakesIndex].heroImage =
+    "/Trips_gallery/Kashmir%20Great%20Lake/4cdd257d-796d-4bbc-a07b-e47c2e59d5cc.jpg.jpeg";
+
+  TREKS[kashmirGreatLakesIndex].heroImages = [
+    "/Trips_gallery/Kashmir%20Great%20Lake/4cdd257d-796d-4bbc-a07b-e47c2e59d5cc.jpg.jpeg",
+    "/Trips_gallery/Kashmir%20Great%20Lake/b4a1df99-73ec-4ec5-8f4f-ee37aa90afe5.jpg.jpeg",
+    "/Trips_gallery/Kashmir%20Great%20Lake/5d374332-8bf6-4c78-a045-fc2f1e8c161a.jpg.jpeg",
+    "/Trips_gallery/Kashmir%20Great%20Lake/6927cf34-d52c-4c21-a2ed-a3ab98c6488d.jpg.jpeg"
+  ];
+
+  TREKS[kashmirGreatLakesIndex].gallery = [
+    { url: "/Trips_gallery/Kashmir%20Great%20Lake/4cdd257d-796d-4bbc-a07b-e47c2e59d5cc.jpg.jpeg", caption: "Two of the great lakes seen from the pass above" },
+    { url: "/Trips_gallery/Kashmir%20Great%20Lake/ca9bc764-4c98-4283-b4d5-149d2d43fe4a.jpg.jpeg", caption: "The line of trekkers dropping towards the lakes" },
+    { url: "/Trips_gallery/Kashmir%20Great%20Lake/b4a1df99-73ec-4ec5-8f4f-ee37aa90afe5.jpg.jpeg", caption: "Gadsar Pass, 4,200 m" },
+    { url: "/Trips_gallery/Kashmir%20Great%20Lake/5d374332-8bf6-4c78-a045-fc2f1e8c161a.jpg.jpeg", caption: "Done — Kashmir Great Lakes Trek, 13,750 ft" },
+    { url: "/Trips_gallery/Kashmir%20Great%20Lake/1bb50573-31e6-4097-9891-c4c38daac31d.jpg.jpeg", caption: "The batch resting on the grass by the lake" },
+    { url: "/Trips_gallery/Kashmir%20Great%20Lake/6927cf34-d52c-4c21-a2ed-a3ab98c6488d.jpg.jpeg", caption: "Taking in the lake at the end of the day's walk" },
+    { url: "/Trips_gallery/Kashmir%20Great%20Lake/0067607e-3fc3-493c-a55a-dcdfeb2887e9.jpg.jpeg", caption: "Tents spread across the meadow campsite" },
+    { url: "/Trips_gallery/Kashmir%20Great%20Lake/f4bc171a-0c70-4be2-9b33-fbd3bc7edf86.jpg.jpeg", caption: "Rain moving over the lake and the camp meadow" }
+  ];
+}
