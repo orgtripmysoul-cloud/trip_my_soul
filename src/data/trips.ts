@@ -174,7 +174,7 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       name: "Gokarna & Dandeli",
       slug: "gokarna-dandeli",
       duration: "2N/3D",
-      heroImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/PXL_20260103_054657562.MP_Paradise_beach_gokarna_Paradise_Beach_Trail%2C_Gokarna%2C_Karnataka_581326_01.jpg/1920px-PXL_20260103_054657562.MP_Paradise_beach_gokarna_Paradise_Beach_Trail%2C_Gokarna%2C_Karnataka_581326_01.jpg",
       tagline: "Coastal sunsets, river rafting, and laid-back beach trails on the Karnataka coast.",
     },
     {
@@ -193,7 +193,7 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       name: "Coorg & Chikmagalur",
       slug: "coorg-chikmagalur",
       duration: "2N/3D",
-      heroImage: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Landscapes_of_Western_Ghats_from_Mullayyanagiri_Betta.jpg/1920px-Landscapes_of_Western_Ghats_from_Mullayyanagiri_Betta.jpg",
       tagline: "Coffee estates, misty hills, and waterfall hikes in the Western Ghats.",
     },
     {
@@ -212,7 +212,7 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       name: "Ooty & Coonoor",
       slug: "ooty-coonoor",
       duration: "2N/3D",
-      heroImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/CoonoorTeaEstate.jpg/1920px-CoonoorTeaEstate.jpg",
       tagline: "Nilgiri toy train views, tea gardens, and cool hill-station escapes.",
     },
     {
@@ -295,7 +295,7 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       name: "Munnar",
       slug: "munnar",
       duration: "2N/3D",
-      heroImage: "https://images.unsplash.com/photo-1593692892547-f762bc747e55?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Munnar_Tea_Plantations-WUS07265.jpg/1920px-Munnar_Tea_Plantations-WUS07265.jpg",
       tagline: "Rolling tea plantations, wildlife spotting, and serene Kerala highlands.",
     },
     {
@@ -319,7 +319,7 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       name: "Chopta & Tungnath Trek",
       slug: "chopta-tungnath-trek",
       duration: "2N/3D",
-      heroImage: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Chandrashila_summit_%281_of_1%29.jpg/1920px-Chandrashila_summit_%281_of_1%29.jpg",
       tagline: "The world's highest Shiva temple, a 4,000 m summit, and 360° Himalayan views.",
     },
     {
@@ -508,7 +508,7 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       name: "Yulla Kanda Trek",
       slug: "yulla-kanda-trek",
       duration: "2N/3D",
-      heroImage: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Baspa_Valley_at_Sangla%2C_Himachal_Pradesh%2C_India.jpg/1920px-Baspa_Valley_at_Sangla%2C_Himachal_Pradesh%2C_India.jpg",
       tagline: "The world's highest Krishna temple, at 12,778 ft in Kinnaur.",
     },
     {
@@ -593,7 +593,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Shimla & Manali",
       slug: "shimla-manali",
       duration: "4N/5D",
-      heroImage: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Ridge_-_Shimla_2014-05-08_1492.JPG/1920px-Ridge_-_Shimla_2014-05-08_1492.JPG",
       tagline: "Classic Himachal valleys, pine forests, and mountain town culture.",
     },
     {
@@ -612,7 +612,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Kashmir",
       slug: "kashmir",
       duration: "4N/5D",
-      heroImage: "https://images.unsplash.com/photo-1595815771617-1ff6b4e3251e?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mobile_fruit_seller_on_shikara_in_Dal_lake_%2C_Srinagar_%2CKashmir.jpg/1920px-Mobile_fruit_seller_on_shikara_in_Dal_lake_%2C_Srinagar_%2CKashmir.jpg",
       tagline: "Dal Lake shikaras, alpine meadows, and the crown of India.",
     },
     {
@@ -631,7 +631,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Rishikesh & Mussoorie",
       slug: "rishikesh-mussoorie",
       duration: "4N/5D",
-      heroImage: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Lakshman_Jhula_Bridge_-_Hrishikesh_-_Uttarakhand_001.jpg/1920px-Lakshman_Jhula_Bridge_-_Hrishikesh_-_Uttarakhand_001.jpg",
       tagline: "Ganga ghats, yoga retreats, and colonial hill-station charm.",
     },
     {
@@ -650,7 +650,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Meghalaya",
       slug: "meghalaya",
       duration: "5N/6D",
-      heroImage: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Nohkalikai_falls_bikash.jpg/1920px-Nohkalikai_falls_bikash.jpg",
       tagline: "Living root bridges, crystal rivers, and the abode of clouds.",
     },
     {
@@ -669,7 +669,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Leh Ladakh",
       slug: "leh-ladakh",
       duration: "6N/7D",
-      heroImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Pangong_Tso_in_eastern_Ladakh%28Changthang%29.jpg/1920px-Pangong_Tso_in_eastern_Ladakh%28Changthang%29.jpg",
       tagline: "High-altitude passes, monasteries, and moon-like landscapes.",
     },
     {
@@ -688,7 +688,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Spiti Valley",
       slug: "spiti-valley",
       duration: "7N/8D",
-      heroImage: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Key_Monastery%28_Lahaul_Spiti%29.jpg/1920px-Key_Monastery%28_Lahaul_Spiti%29.jpg",
       tagline: "Remote Himalayan villages, ancient gompas, and rugged desert mountains.",
     },
     {
@@ -707,7 +707,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Kerala",
       slug: "kerala",
       duration: "5N/4D",
-      heroImage: "https://images.unsplash.com/photo-1602216050166-0354fe7992ec?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Kerala_Backwaters_-_Canal_near_Chamabakulam.jpg/1920px-Kerala_Backwaters_-_Canal_near_Chamabakulam.jpg",
       tagline: "Backwaters, spice trails, and God's Own Country at an easy pace.",
     },
     {
@@ -726,7 +726,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Kerala Special",
       slug: "kerala-special",
       duration: "4N/5D",
-      heroImage: "https://images.unsplash.com/photo-1593693411515-c20261bcad6e?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Kerala_Backwaters_near_Nedumudy_-_4.jpg/1920px-Kerala_Backwaters_near_Nedumudy_-_4.jpg",
       tagline: "Munnar tea country, an Alleppey houseboat night, and the Kovalam–Varkala coast.",
     },
     {
@@ -881,7 +881,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       slug: "kerala-thekkady",
       duration: "4N/5D",
       // NB: photo-1602216050166 (used by the older "kerala" entry) now 404s on Unsplash.
-      heroImage: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Periyar_National_Park-WUS07817-Verbessert-RR.jpg/1920px-Periyar_National_Park-WUS07817-Verbessert-RR.jpg",
       tagline: "Munnar's tea hills, Thekkady's wildlife and a night on a Deluxe Houseboat in the Alleppey backwaters — Kochi to Kochi in 5 days.",
     },
     {
@@ -1220,7 +1220,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Auli Yatra",
       slug: "auli-yatra",
       duration: "2N/3D",
-      heroImage: "https://images.unsplash.com/photo-1551524559-8af4e6624178?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Auli_in_October_2015_-_40.jpg/1920px-Auli_in_October_2015_-_40.jpg",
       tagline: "Asia's 2nd longest cable car, ski slopes and Gorson Bugyal — Uttarakhand's Ski Capital in 3 days from Rishikesh.",
     },
     {
@@ -2096,7 +2096,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "3 Kedar Yatra",
       slug: "three-kedar-yatra",
       duration: "7N/8D",
-      heroImage: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Tungnath_temple_one_of_thepanch_kedar.jpg/1920px-Tungnath_temple_one_of_thepanch_kedar.jpg",
       tagline: "Madmaheshwar, Rudranath and Kalpeshwar — three Panch Kedar shrines in eight days.",
     },
     {
@@ -2162,7 +2162,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Madhyamaheshwar Trek — 4 Days",
       slug: "madhyamaheshwar-trek-4-day",
       duration: "3N/4D",
-      heroImage: "https://images.unsplash.com/photo-1486911278844-a81c5267e227?auto=format&fit=crop&w=1920&q=80",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Chaukhamba_peak_-_and_a_lonely_hut.jpg/1920px-Chaukhamba_peak_-_and_a_lonely_hut.jpg",
       tagline: "Ransi to the Madhyamaheshwar shrine and a pre-dawn climb to Buda Madhyamaheshwar, ex-Haridwar.",
     },
     {

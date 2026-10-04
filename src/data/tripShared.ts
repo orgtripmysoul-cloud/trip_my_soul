@@ -93,10 +93,10 @@ export const HIMALAYAN_TREK_EXCLUSIONS = [
 
 /** Standard booking terms for short group trips. */
 export const TRIP_BOOKING_TERMS = {
-  advancePerPerson: 2000,
+  advancePerPerson: 1000,
   balanceDueDays: 10,
   summary:
-    "Deposit ₹2,000 per person as advance to confirm your seat. The remaining payment must be made 10 days before the trip departure date.",
+    "Deposit ₹1,000 per person as advance to confirm your seat. The remaining payment must be made 10 days before the trip departure date.",
 };
 
 /**

@@ -6,7 +6,7 @@
  * and where it is charged.
  */
 
-export type TrekAddOnKey = "insurance" | "offload";
+export type TrekAddOnKey = "insurance" | "offload" | "gear";
 
 export interface TrekAddOn {
   key: TrekAddOnKey;
@@ -28,7 +28,13 @@ export const TREK_ADD_ONS: TrekAddOn[] = [
     key: "offload",
     label: "Backpack Offloading (to Mule/Porter)",
     description: "A porter carries your main 12 kg backpack on the trail.",
-    price: 1000,
+    price: 2000,
+  },
+  {
+    key: "gear",
+    label: "Rental Gear",
+    description: "Trek shoes, trekking pole, jacket and backpack on hire for the full trek.",
+    price: 1500,
   },
 ];
 

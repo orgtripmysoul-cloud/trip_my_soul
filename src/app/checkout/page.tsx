@@ -135,7 +135,8 @@ function CheckoutContent() {
       isPrimary: true,
       addOns: {
         insurance: true,
-        offload: false
+        offload: false,
+        gear: false
       } as Record<TrekAddOnKey, boolean>
     }
   ]);
@@ -207,7 +208,7 @@ function CheckoutContent() {
         name: derivedName.charAt(0).toUpperCase() + derivedName.slice(1),
         email: emailStr,
         isPrimary: false,
-        addOns: { insurance: true, offload: false }
+        addOns: { insurance: true, offload: false, gear: false }
       }
     ]);
     setCoParticipantEmail("");

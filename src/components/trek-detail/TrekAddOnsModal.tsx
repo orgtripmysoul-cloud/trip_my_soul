@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
-import { Backpack, HeartPulse, Info, Plus } from "lucide-react";
+import { Backpack, HeartPulse, Info, Plus, Tent } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { TREK_ADD_ONS, type TrekAddOnKey } from "@/data/addOns";
 
 const ICONS: Record<TrekAddOnKey, LucideIcon> = {
   insurance: HeartPulse,
   offload: Backpack,
+  gear: Tent,
 };
 
 interface TrekAddOnsModalProps {

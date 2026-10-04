@@ -2693,7 +2693,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "gulabi-kantha-trek",
     "name": "Gulabi Kantha Trek",
-    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Deoban.jpg/1920px-Deoban.jpg",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gulabi_Kantha_Trek_in_winters.png/1920px-Gulabi_Kantha_Trek_in_winters.png",
     "price": 11999,
     "days": 6,
     "nights": 5,
@@ -5090,7 +5090,7 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate",
     "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Badrinath_Temple.jpg/1920px-Badrinath_Temple.jpg",
     "batchDates": ["2026-09-12"],             // TODO(content): seeded departure
     // Client-approved About copy. Line breaks inside a paragraph are
     // intentional and are preserved by `whitespace-pre-line` in TrekAbout.
@@ -5177,7 +5177,7 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate",
     "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Har_ki_doon_valley-Sankari_Range_-_Uttarakhand-DSC_0001.jpg/1920px-Har_ki_doon_valley-Sankari_Range_-_Uttarakhand-DSC_0001.jpg",
     "batchDates": ["2026-10-10"]              // TODO(content): seeded departure
   },
   {
@@ -5194,7 +5194,7 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate",
     "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/SWARGAROHINI_MOUNTAIN.2.jpg/1920px-SWARGAROHINI_MOUNTAIN.2.jpg",
     "batchDates": ["2026-09-05"]              // TODO(content): seeded departure
   },
   {
@@ -5211,7 +5211,7 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate",
     "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/AjitHota_RupinPass_LowerwWaterfall_view.jpg/1920px-AjitHota_RupinPass_LowerwWaterfall_view.jpg",
     "batchDates": ["2026-09-13"]              // TODO(content): seeded departure
   },
   {
@@ -5227,7 +5227,7 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate",
     "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Roopkund_-_The_Mystery_Lake.jpg/1920px-Roopkund_-_The_Mystery_Lake.jpg",
     "batchDates": ["2026-09-20"]              // TODO(content): seeded departure
   },
   {
@@ -5244,7 +5244,7 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate",
     "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Chaukhamba_from_Bedni_Bugyal.jpg/1920px-Chaukhamba_from_Bedni_Bugyal.jpg",
     "batchDates": ["2026-10-04"]              // TODO(content): seeded departure
   },
   {
@@ -5261,7 +5261,7 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate",
     "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Kedarkantha_trek.jpg/1920px-Kedarkantha_trek.jpg",
     "batchDates": ["2026-10-17"]              // TODO(content): seeded departure
   },
   {
@@ -5278,7 +5278,7 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate",
     "months": ["Jun", "Jul", "Aug", "Sep", "Oct"],  // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80",  // TODO(content): replace placeholder
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Key_Monastery%2C_Spiti_Valley_footloosedev.jpg/1920px-Key_Monastery%2C_Spiti_Valley_footloosedev.jpg",
     "batchDates": ["2026-09-27"]              // TODO(content): seeded departure
   }
 ];
