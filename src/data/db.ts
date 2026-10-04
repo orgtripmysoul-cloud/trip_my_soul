@@ -510,6 +510,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "kasol-kheerganga-trek",
     "name": "Kasol Kheerganga Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Parvati_Valley_river_kasol.jpg/1920px-Parvati_Valley_river_kasol.jpg",
     "price": 6000,
     "days": 4,
     "nights": 3,
@@ -536,6 +537,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "yulla-kanda-trek",
     "name": "Yulla Kanda Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Baspa_Valley_under_snow%2C_Kinnaur%2C_Himachal_Pradesh%2C_India.jpg/1920px-Baspa_Valley_under_snow%2C_Kinnaur%2C_Himachal_Pradesh%2C_India.jpg",
     "tagline": "The world's highest Shri Krishna temple, at 12,778 ft in Kinnaur — three days from Shimla.",
     "price": null,
     "days": 3,
@@ -563,6 +565,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "tirthan-valley",
     "name": "Tirthan Valley Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Great_Himalayan_National_Park_Mountain_View.jpg/1920px-Great_Himalayan_National_Park_Mountain_View.jpg",
     "price": 7500,
     "days": 5,
     "nights": 4,
@@ -589,6 +592,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "rupin-pass-trek",
     "name": "Rupin Pass Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/AjitHota_RupinPass_UpperWaterfall.jpg/1920px-AjitHota_RupinPass_UpperWaterfall.jpg",
     "tagline": "A high-altitude crossover from Himachal to Uttarakhand over the 15,350 ft Rupin Pass — hanging villages, a 3-stage waterfall and a steep snow gully into Sangla Valley.",
     "price": 17999,
     "days": 7,
@@ -631,6 +635,7 @@ export const TREKS: Trek[] = [
      */
     "slug": "hampta-pass-trek",
     "name": "Hampta Pass",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Shea_Goru_%28Hampta_Pass%29.jpg/1920px-Shea_Goru_%28Hampta_Pass%29.jpg",
     "price": 7500,                            // TODO(content): unconfirmed
     "days": 5,
     "nights": 4,
@@ -662,6 +667,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "spiti-valley",
     "name": "Spiti Valley",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Pin_Valley_Spiti_Himachal_Jun18_D72_7092.jpg/1920px-Pin_Valley_Spiti_Himachal_Jun18_D72_7092.jpg",
     "tagline": "Winter Spiti — the White Desert of the Himalayas, via Shimla-Kinnaur, with frozen lakes, snow-bound 1000-year-old monasteries and the world's highest villages.",
     "price": 22999,
     "days": 9,
@@ -1003,6 +1009,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "manali-kasol",
     "name": "Manali kasol",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Solang_Valley_%2CManali%2C_Himachal_Pardes%2C_India.JPG/1920px-Solang_Valley_%2CManali%2C_Himachal_Pardes%2C_India.JPG",
     "price": 11999,
     "days": 6,
     "nights": 5,
@@ -1041,6 +1048,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "bir-billing-paragliding-trek",
     "name": "Bir Biling Paragliding & Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/BIR_BILLING_PARAGLIDING.jpg/1920px-BIR_BILLING_PARAGLIDING.jpg",
     "price": 9200,
     "days": 4,
     "nights": 3,
@@ -1067,6 +1075,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "sar-pass-trek",
     "name": "Sar Pass Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Parvati_Valley_in_Himachal_Pradesh_03.jpg/1920px-Parvati_Valley_in_Himachal_Pradesh_03.jpg",
     "price": 6499,
     "days": 5,
     "nights": 4,
@@ -1093,6 +1102,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "triund-trek",
     "name": "Triund-Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Dhauladhar_alpenglow_above_Dharamshala%2C_India.jpg/1920px-Dhauladhar_alpenglow_above_Dharamshala%2C_India.jpg",
     "price": 4400,
     "days": 3,
     "nights": 2,
@@ -1119,6 +1129,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "beas-kund-trek",
     "name": "Beas Kund Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Beas_Kund_%2801%29.jpg/1920px-Beas_Kund_%2801%29.jpg",
     "price": 5900,
     "days": 3,
     "nights": 2,
@@ -1145,6 +1156,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "buran-ghati-pass-trek",
     "name": "Buran Ghati Pass",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Pabbar_valley%2C_Rohru.jpg/1920px-Pabbar_valley%2C_Rohru.jpg",
     "price": 16500,
     "days": 7,
     "nights": 6,
@@ -1171,6 +1183,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "shimla-tour",
     "name": "Shimla",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ridge_-_Scandal_Point_-_Shimla_2014-05-07_1215.JPG/1920px-Ridge_-_Scandal_Point_-_Shimla_2014-05-07_1215.JPG",
     "price": 16500,
     "days": 5,
     "nights": 4,
@@ -1209,6 +1222,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "leh-ladakh",
     "name": "Leh-Ladakh",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Pangong_Tso_Lake_1.jpg/1920px-Pangong_Tso_Lake_1.jpg",
     "price": 26999,
     "days": 6,
     "nights": 5,
@@ -1235,6 +1249,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "kedarkantha-trek",
     "name": "Kedarkantha Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Sun_Rise_View_from_Kedarkantha_Summit.jpg/1920px-Sun_Rise_View_from_Kedarkantha_Summit.jpg",
     "tagline": "Five days from Dehradun to the 12,500 ft Kedarkantha summit, through the snowbound pine forests above Sankri.",
     "price": 5999,
     "days": 5,
@@ -1276,6 +1291,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "dayara-bugyal-trek",
     "name": "Dayara Bugyal Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/En_route_to_Dayara_Bugyal_at_Gui_camp_03.jpg/1920px-En_route_to_Dayara_Bugyal_at_Gui_camp_03.jpg",
     "tagline": "Four days from Dehradun to one of India's largest alpine meadows, at 12,000 ft above the base village of Raithal.",
     "price": 6499,
     "days": 4,
@@ -1323,6 +1339,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "kuari-pass-trek",
     "name": "Kuari Pass Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Dunagiri_from_Kuari_Pass.jpg/1920px-Dunagiri_from_Kuari_Pass.jpg",
     "tagline": "Six days from Dehradun over Lord Curzon's trail to the 12,516 ft Kuari Pass, facing Nanda Devi, Dronagiri, Kamet and Chaukhamba.",
     "price": 7999,
     "days": 6,
@@ -1369,6 +1386,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "brahmatal-trek",
     "name": "Brahmatal Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Brahmatal.jpg/1920px-Brahmatal.jpg",
     "tagline": "Five days from Rishikesh through the oak forests above Lohajung to the frozen Brahmatal Lake and a 12,200 ft ridge facing Trishul and Nanda Ghunti.",
     "price": 6499,
     "days": 5,
@@ -1411,6 +1429,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "pangarchulla-trek",
     "name": "Kuari Pass with Pangarchulla Peak",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Mt._Dronagiri.jpg/1920px-Mt._Dronagiri.jpg",
     "tagline": "Six days from Rishikesh on the Lord Curzon Trail, crossing Kuari Pass (12,516 ft) and summiting Pangarchulla Peak (15,069 ft) for a 180° view of 108 Himalayan peaks.",
     "price": 11000,
     "days": 6,
@@ -1446,6 +1465,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "pangarchulla-peak-trek",
     "name": "Pangarchulla Peak Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Pangarchulla_Peak.jpg/1920px-Pangarchulla_Peak.jpg",
     "tagline": "Six days from Rishikesh to the 15,069 ft summit of Pangarchulla Peak, via Auli's Gorson Bugyal and the Khullara campsite in the Nanda Devi Sanctuary.",
     "price": 9999,
     "days": 6,
@@ -1745,6 +1765,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "bali-pass-trek",
     "name": "Bali Pass Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SWARGAROHINI_PEAK.jpg/1920px-SWARGAROHINI_PEAK.jpg",
     "tagline": "Eight days from Dehradun crossing the 16,207 ft Bali Pass, linking Har Ki Dun Valley to Yamunotri over snow, ridge and glacial lake.",
     "price": 21999,
     "days": 8,
@@ -2094,6 +2115,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "phulara-ridge-trek",
     "name": "Phulara Ridge Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Phulara_ridge.jpg/1920px-Phulara_ridge.jpg",
     "tagline": "Six days from Dehradun through Govind Wildlife Sanctuary to a 3 Km walk along the 12,150 ft Phulara Ridge, ending at the meadow campsite of Pushtara.",
     "price": 9999,
     "days": 6,
@@ -2406,6 +2428,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "gaumukh-tapovan-trek",
     "name": "Gaumukh Tapovan",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Gangotri_Glacier.jpg/1920px-Gangotri_Glacier.jpg",
     "price": 16499,
     "days": 7,
     "nights": 6,
@@ -2432,6 +2455,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "valley-of-flowers-trek",
     "name": "Valley Of Flower",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Valley_of_flowers_national_park%2C_Uttarakhand%2C_India_03_%28edit%29.jpg/1920px-Valley_of_flowers_national_park%2C_Uttarakhand%2C_India_03_%28edit%29.jpg",
     "price": 8500,
     "days": 6,
     "nights": 5,
@@ -2458,6 +2482,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "nagtibba-trek",
     "name": "Nag Tibba Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Nag_Tibba_02.jpg/1920px-Nag_Tibba_02.jpg",
     "tagline": "Two days from Dehradun through the oak forests above Pantwari to the 9,915 ft Nag Tibba summit.",
     "price": 3499,
     "days": 2,
@@ -2503,6 +2528,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "har-ki-dun-trek",
     "name": "Har Ki Dun Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Har_ki_doon_valley_-Sankari_Range_-Uttarakhand-DSC_0002.jpg/1920px-Har_ki_doon_valley_-Sankari_Range_-Uttarakhand-DSC_0002.jpg",
     "price": 10999,
     "days": 7,
     "nights": 6,
@@ -2531,6 +2557,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "chakrata-trip",
     "name": "Chakrata Trip",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Chakrata_nice_wather.jpg/1920px-Chakrata_nice_wather.jpg",
     "price": 3999,
     "days": 2,
     "nights": 1,
@@ -2561,6 +2588,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "auli-weekend-tour",
     "name": "Auli Weekend Tour",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Auli_in_October_2015_-_36.jpg/1920px-Auli_in_October_2015_-_36.jpg",
     "price": 9500,
     "days": 5,
     "nights": 4,
@@ -2587,6 +2615,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "kedartal-trek",
     "name": "Kedartal Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Thalay_Sagar_Bhrigupanth_Kirti_Sthambh_and_Bharte_Kunta.jpg/1920px-Thalay_Sagar_Bhrigupanth_Kirti_Sthambh_and_Bharte_Kunta.jpg",
     "price": 20999,
     "days": 7,
     "nights": 6,
@@ -2625,6 +2654,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "fachu-kandi-pass-trek",
     "name": "Fachu Kandi Pass Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/SUPIN_RIVER_VALLEY.jpg/1920px-SUPIN_RIVER_VALLEY.jpg",
     "price": 19999,
     "days": 8,
     "nights": 7,
@@ -2663,6 +2693,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "gulabi-kantha-trek",
     "name": "Gulabi Kantha Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Deoban.jpg/1920px-Deoban.jpg",
     "price": 11999,
     "days": 6,
     "nights": 5,
@@ -2701,6 +2732,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "sarutal-trek",
     "name": "Sarutal Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Purva_Falls_formed_by_Tons_River.jpg/1920px-Purva_Falls_formed_by_Tons_River.jpg",
     "price": 12999,
     "days": 7,
     "nights": 6,
@@ -2739,6 +2771,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "ali-bedni-bugyal-trek",
     "name": "Ali Bedni Bugyal trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Trisul_peak_from_bedni_bugyal.jpg/1920px-Trisul_peak_from_bedni_bugyal.jpg",
     "price": 9500,
     "days": null,
     "nights": null,
@@ -2765,6 +2798,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "tarsar-marsar-trek",
     "name": "Tarsar Marsar Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Tarsar_lake-Kashmir.jpg/1920px-Tarsar_lake-Kashmir.jpg",
     "price": 13999,
     "days": 7,
     "nights": 6,
@@ -2791,6 +2825,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "deoban-trek",
     "name": "Deoban Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Deoban.jpg/1920px-Deoban.jpg",
     "price": 4499,
     "days": 3,
     "nights": 2,
@@ -2817,6 +2852,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "kashmir-great-lakes-trek",
     "name": "Kashmir Great Lakes",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Campsite_near_Gangabal_lake%2C_Jammu_and_Kashmir%2C_India.jpg/1920px-Campsite_near_Gangabal_lake%2C_Jammu_and_Kashmir%2C_India.jpg",
     "price": 15999,
     "days": 8,
     "nights": 7,
@@ -2843,6 +2879,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "kashmir-tour",
     "name": "Kashmir Tour",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Dal_Lake_at_sunset%2C_Srinagar.jpg/1920px-Dal_Lake_at_sunset%2C_Srinagar.jpg",
     "price": 14999,
     "days": 5,
     "nights": 4,
@@ -2881,6 +2918,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "panch-kedar-trek",
     "name": "Panch Kedar",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Madhyamaheshwar_Temple.JPG/1920px-Madhyamaheshwar_Temple.JPG",
     "tagline": "All five Panch Kedar shrines in one circuit — Kedarnath, Madhyamaheshwar, Tungnath, Rudranath and Kalpeshwar — over twelve days from Rishikesh.",
     "price": 34999,
     "days": 12,
@@ -2908,6 +2946,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "meghalaya-tour",
     "name": "Meghalaya",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Mawlynnong%27s_Living_Root_Bridge_in_Meghalaya%2C_India.jpg/1920px-Mawlynnong%27s_Living_Root_Bridge_in_Meghalaya%2C_India.jpg",
     "price": 21499,
     "days": 6,
     "nights": 5,
@@ -2948,6 +2987,7 @@ export const TREKS: Trek[] = [
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "deoriatal-chopta-trek",
     "name": "Deoriatal-Chopta Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Mighty_snow_peak%2C_Chopta%2C_Uttarakhand.jpg/1920px-Mighty_snow_peak%2C_Chopta%2C_Uttarakhand.jpg",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
@@ -2977,21 +3017,20 @@ export const TREKS: Trek[] = [
     "themes": [
       "Snow"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // TODO(content): add `tagline` — a one-line card summary. TrekCard falls back
+    // to a neutral factual line while it is unset.
   },
   {
     // Full content sourced from the ops-supplied Panwali Kantha write-up
     // (overview, itinerary, eligibility, article, FAQs, how-to-reach and
     // package terms); extended detail-page fields are assigned below via
     // `panwaliKanthaIndex`.
-    // TODO(content): still no heroImage — trekDetail.ts falls back to the
-    // default hero image while it is unset, and no fixed package price is
+    // TODO(content): no fixed package price is
     // published in the source (it's offered "in customise"), so `price`
     // stays null (see `priceNote`).
     "slug": "panwali-kantha-trek",
     "name": "Panwali Kantha Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Nomads_of_the_Bugyals_in_Uttarakhand_01.jpg/1920px-Nomads_of_the_Bugyals_in_Uttarakhand_01.jpg",
     "tagline": "A 7-8 km untouched Himalayan meadow at 11,500 ft between Trijuginarayan and Kedarnath, with a 180° wall of Garhwal peaks and almost no crowd",
     "price": null,
     "days": 5,
@@ -3024,10 +3063,9 @@ export const TREKS: Trek[] = [
     // (overview, itinerary, eligibility, article, FAQs, how-to-reach and
     // package terms); extended detail-page fields are assigned below via
     // `khaliyaTopIndex`.
-    // TODO(content): still no heroImage — trekDetail.ts falls back to the
-    // default hero image while it is unset.
     "slug": "khaliya-top-trek",
     "name": "Khaliya Top Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Sunrise_at_Munsiyari_-_I_%2814547053363%29.jpg/1920px-Sunrise_at_Munsiyari_-_I_%2814547053363%29.jpg",
     "tagline": "Kumaon's balcony above Munsiyari — a 6 km alpine meadow at 11,500 ft with the closest possible sunrise view of the Panchachuli range",
     "price": null, // TODO(content): no fixed package price published in the source (see `priceNote`/`sourceCaveat`).
     "days": 4,
@@ -3061,6 +3099,7 @@ export const TREKS: Trek[] = [
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "munsiyari-khalia-top",
     "name": "Munsiyari-Khalia Top",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Panchachuli_Peaks.jpg/1920px-Panchachuli_Peaks.jpg",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
@@ -3090,15 +3129,15 @@ export const TREKS: Trek[] = [
     "themes": [
       "Snow"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // TODO(content): add `tagline` — a one-line card summary. TrekCard falls back
+    // to a neutral factual line while it is unset.
   },
   {
     // TODO(content): winter catalogue stub for Kartik Swami Trek. Every value marked TODO
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "kartik-swami-trek",
     "name": "Kartik Swami Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Golden_landscape_from_Kartik_Swami_Temple_Rudraprayag.JPG/1920px-Golden_landscape_from_Kartik_Swami_Temple_Rudraprayag.JPG",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
@@ -3137,6 +3176,7 @@ export const TREKS: Trek[] = [
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "auli-snow-trip",
     "name": "Auli Snow Trip",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Snow_at_Auli.jpg/1920px-Snow_at_Auli.jpg",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
@@ -3166,9 +3206,8 @@ export const TREKS: Trek[] = [
     "themes": [
       "Snow"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // TODO(content): add `tagline` — a one-line card summary. TrekCard falls back
+    // to a neutral factual line while it is unset.
   },
   {
     // Chopta with Auli — Rishikesh-to-Rishikesh circuit covering Auli's ski
@@ -3177,6 +3216,7 @@ export const TREKS: Trek[] = [
     // in the `choptaWithAuliIndex` block.
     "slug": "chopta-with-auli",
     "name": "Chopta with Auli",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Auli_in_October_2015_-_38.jpg/1920px-Auli_in_October_2015_-_38.jpg",
     "tagline": "Auli's ski slopes, the world's highest Shiva temple and a 13,000 ft summit in one trip",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 4,
@@ -3209,14 +3249,13 @@ export const TREKS: Trek[] = [
       "Temple",
       "Meadow"
     ]
-    // TODO(content): add `heroImage` — trekDetail.ts falls back to the default
-    // hero image while it is unset.
   },
   {
     // TODO(content): winter catalogue stub for Chopta Snow Trip. Every value marked TODO
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "chopta-snow-trip",
     "name": "Chopta Snow Trip",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Tungnath_Temple_in_winter.jpg/1920px-Tungnath_Temple_in_winter.jpg",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
@@ -3246,15 +3285,15 @@ export const TREKS: Trek[] = [
     "themes": [
       "Snow"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // TODO(content): add `tagline` — a one-line card summary. TrekCard falls back
+    // to a neutral factual line while it is unset.
   },
   {
     // TODO(content): winter catalogue stub for Munsiyari Snow Trip. Every value marked TODO
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "munsiyari-snow-trip",
     "name": "Munsiyari Snow Trip",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Panchachuli_and_nearby_peaks.jpg/1920px-Panchachuli_and_nearby_peaks.jpg",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
@@ -3284,19 +3323,18 @@ export const TREKS: Trek[] = [
     "themes": [
       "Snow"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // TODO(content): add `tagline` — a one-line card summary. TrekCard falls back
+    // to a neutral factual line while it is unset.
   },
   {
     // Full content sourced from the ops-supplied Kanatal write-up (overview,
     // itinerary, eligibility, article, FAQs, how-to-reach and package terms);
     // extended detail-page fields are assigned below via `kanatalIndex`.
-    // TODO(content): still no heroImage — trekDetail.ts falls back to the
-    // default hero image while it is unset, and no fixed package price is
+    // TODO(content): no fixed package price is
     // published in the source, so `price` stays null (see `priceNote`).
     "slug": "kanatal-winter-trip",
     "name": "Kanatal Winter Trip",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Himalays-viewed-from-Dhanaulti.jpg/1920px-Himalays-viewed-from-Dhanaulti.jpg",
     "tagline": "A quiet pine-forest hill station near Mussoorie, with Surkanda Devi temple, forest treks and zip-lining over the valley",
     "price": null,
     "days": 3,
@@ -3337,6 +3375,7 @@ export const TREKS: Trek[] = [
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "dhanaulti-snow-trip",
     "name": "Dhanaulti Snow Trip",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Dhanaulti_snow_fall.jpg/1920px-Dhanaulti_snow_fall.jpg",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
@@ -3366,15 +3405,15 @@ export const TREKS: Trek[] = [
     "themes": [
       "Snow"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // TODO(content): add `tagline` — a one-line card summary. TrekCard falls back
+    // to a neutral factual line while it is unset.
   },
   {
     // TODO(content): winter catalogue stub for Mussoorie Winter Escape. Every value marked TODO
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "mussoorie-winter-escape",
     "name": "Mussoorie Winter Escape",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Mussoorie_Hill_Station.jpg/1920px-Mussoorie_Hill_Station.jpg",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
@@ -3404,15 +3443,15 @@ export const TREKS: Trek[] = [
     "themes": [
       "Snow"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // TODO(content): add `tagline` — a one-line card summary. TrekCard falls back
+    // to a neutral factual line while it is unset.
   },
   {
     // TODO(content): winter catalogue stub for Chakrata Winter Trip. Every value marked TODO
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "chakrata-winter-trip",
     "name": "Chakrata Winter Trip",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Dehradun_Snow_covered_peaks.jpg/1920px-Dehradun_Snow_covered_peaks.jpg",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
@@ -3442,13 +3481,13 @@ export const TREKS: Trek[] = [
     "themes": [
       "Snow"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // TODO(content): add `tagline` — a one-line card summary. TrekCard falls back
+    // to a neutral factual line while it is unset.
   },
   {
     "slug": "nainital-winter-trip",
     "name": "Nainital Winter Trip",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Naini_Lake%2C_Nainital%2C_Uttarakhand%2C_India.jpg/1920px-Naini_Lake%2C_Nainital%2C_Uttarakhand%2C_India.jpg",
     "tagline": "The Lake City of Uttarakhand — Naini Lake boating, Mall Road evenings, Himalayan view points and the Bhimtal-Sattal-Naukuchiatal lake cluster, Kathgodam to Kathgodam.",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3,
@@ -3764,6 +3803,7 @@ export const TREKS: Trek[] = [
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "ranikhet-winter-trip",
     "name": "Ranikhet Winter Trip",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Misty_Chir_Pine_woods_in_Ranikhet.jpg/1920px-Misty_Chir_Pine_woods_in_Ranikhet.jpg",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
@@ -3793,15 +3833,15 @@ export const TREKS: Trek[] = [
     "themes": [
       "Snow"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // TODO(content): add `tagline` — a one-line card summary. TrekCard falls back
+    // to a neutral factual line while it is unset.
   },
   {
     // TODO(content): winter catalogue stub for Binsar Winter Escape. Every value marked TODO
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "binsar-winter-escape",
     "name": "Binsar Winter Escape",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/On_the_edge_of_heaven_%28binsar_wild_life_sanctury%29.jpg/1920px-On_the_edge_of_heaven_%28binsar_wild_life_sanctury%29.jpg",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
@@ -3831,15 +3871,15 @@ export const TREKS: Trek[] = [
     "themes": [
       "Snow"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // TODO(content): add `tagline` — a one-line card summary. TrekCard falls back
+    // to a neutral factual line while it is unset.
   },
   {
     // TODO(content): winter catalogue stub for Kausani Winter Trip. Every value marked TODO
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "kausani-winter-trip",
     "name": "Kausani Winter Trip",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Trisul%2C_Nanda_Devi_and_Himalayan_range_from_Kausani%2C_Uttarakhand.jpg/1920px-Trisul%2C_Nanda_Devi_and_Himalayan_range_from_Kausani%2C_Uttarakhand.jpg",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
@@ -3869,13 +3909,13 @@ export const TREKS: Trek[] = [
     "themes": [
       "Snow"
     ]
-    // TODO(content): add `tagline` (one-line card summary — TrekCard falls back to a
-    // neutral factual line while it is unset) and `heroImage` (trekDetail.ts falls
-    // back to the default hero image while it is unset).
+    // TODO(content): add `tagline` — a one-line card summary. TrekCard falls back
+    // to a neutral factual line while it is unset.
   },
   {
     "slug": "mukteshwar-winter-trip",
     "name": "Mukteshwar Winter Trip",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Mukteshwar_Uttarakhand_India.jpg/1920px-Mukteshwar_Uttarakhand_India.jpg",
     "tagline": "A peaceful Kumaon hill station at 7,500 ft — a 350-year-old Shiva temple with 180° Himalayan views, the Chauli Ki Jali cliff, apple orchards and the Bhalu Gaad waterfall, Kathgodam to Kathgodam.",
     "price": null, // TODO(content): real price; the card shows "TBD" until set.
     "days": 3,
@@ -4174,6 +4214,7 @@ export const TREKS: Trek[] = [
   {
     "slug": "harshil-valley-trip",
     "name": "Harshil Valley Trip",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Bhagirathi_River_at_Gangotri_WTK20150915-IMG_2704.jpg/1920px-Bhagirathi_River_at_Gangotri_WTK20150915-IMG_2704.jpg",
     "tagline": "The Mini Switzerland of Uttarkashi — apple orchards, deodar forests and old wooden villages at 9,005 ft on the banks of the Bhagirathi, 26 km before Gangotri.",
     "price": null, // TODO(content): real price; source quotes a "15k to 30k" range depending on shared/private car — the card shows "TBD" until a fixed price is set.
     "days": 3,
@@ -4481,6 +4522,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "chopta-tungnath-trek",
     "name": "Chopta Tungnath Chandrashila Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tungnath_temple%2C_Himalayas.jpg/1920px-Tungnath_temple%2C_Himalayas.jpg",
     "tagline": "Tungnath — the world's highest Shiva temple — the 4,000 m Chandrashila summit and Deoriatal, in three days from Rishikesh.",
     "price": 4999,
     "days": 3,
@@ -4555,6 +4597,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "badrinath-kedarnath-yatra",
     "name": "Badrinath Kedarnath Yatra",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Shiva_Kedarnath_Temple_by_Bhaktapur.jpg/1920px-Shiva_Kedarnath_Temple_by_Bhaktapur.jpg",
     "price": 11999,
     "days": 5,
     "nights": 4,
@@ -4581,6 +4624,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "kedarnath-and-tungnath-yatra",
     "name": "Kedarnath Tungnath Yatra",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Temple_at_Chandrashila_summit_02.jpg/1920px-Temple_at_Chandrashila_summit_02.jpg",
     "tagline": "Two of the five Panch Kedar in 5 Days from Haridwar — the Kedarnath Jyotirlinga, the world's highest Shiva temple at Tungnath, and the Chandrashila summit.",
     "price": 10999,
     "days": 5,
@@ -4620,6 +4664,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "chardham-yatra",
     "name": "Chardham Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Devotees_at_Kedarnath_temple%2C_Uttrakhand_01.jpg/1920px-Devotees_at_Kedarnath_temple%2C_Uttrakhand_01.jpg",
     "tagline": "Yamunotri, Gangotri, Kedarnath and Badrinath in 8 Nights / 9 Days from Haridwar.",
     "price": 24999,
     "days": 9,
@@ -4648,6 +4693,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "do-dham-and-tungnath-yatra",
     "name": "Do Dham And Tungnath Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Devotees_at_Kedarnath_temple%2C_Uttrakhand_02.jpg/1920px-Devotees_at_Kedarnath_temple%2C_Uttrakhand_02.jpg",
     "price": 14999,
     "days": 6,
     "nights": 5,
@@ -4677,6 +4723,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "kedarnath-yatra-by-helicopter",
     "name": "Kedarnath Yatra By Helicopter",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Kedarnath_temple_october_2022.jpg/1920px-Kedarnath_temple_october_2022.jpg",
     "price": 45000,
     "days": 1,
     "nights": 0,
@@ -4703,6 +4750,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "adi-kailash-om-parvat-yatra",
     "name": "Adi Kailash & Om Parvat Yatra",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Adi_Kailash1.jpg/1920px-Adi_Kailash1.jpg",
     "tagline": "Chhota Kailash and the natural OM on Om Parvat — Lord Shiva's Himalayan abode in India, no Tibet visa needed.",
     "price": 39500,
     "days": 7,
@@ -4995,6 +5043,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "chardham-yatra-by-helicopter",
     "name": "Chardham Yatra By Helicopter",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Badrinath_temple_entrance.JPG/1920px-Badrinath_temple_entrance.JPG",
     "price": 185000,
     "days": 5,
     "nights": 4,
@@ -5063,6 +5112,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "panch-kedar-dham-yatra",
     "name": "Panch Kedar Trek",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Small_temple_at_Madhyamaheshwar_village.JPG/1920px-Small_temple_at_Madhyamaheshwar_village.JPG",
     // TODO(content): shares a name with `panch-kedar-yatra` in BACKPACKING_TRIPS
     // and `panch-kedar-trek` in TREKS. Slug suffixed to keep it unique; decide
     // whether this entry should instead point at one of those detail pages.
@@ -5237,6 +5287,7 @@ export const WILDLIFE: Trek[] = [
   {
     "slug": "satpura-002",
     "name": "satpura",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Spotted_deer%2C_Satpura_Tiger_Reserve%2C_Madhai%2C_Madhya_Pradesh.jpg/1920px-Spotted_deer%2C_Satpura_Tiger_Reserve%2C_Madhai%2C_Madhya_Pradesh.jpg",
     "price": 12000,
     "days": 3,
     "nights": 2,
@@ -5266,6 +5317,7 @@ export const WILDLIFE: Trek[] = [
   {
     "slug": "pench-004",
     "name": "Pench",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Spotted_Deer_in_Pench_National_Park_India.jpg/1920px-Spotted_Deer_in_Pench_National_Park_India.jpg",
     "price": 12000,
     "days": 3,
     "nights": 2,
@@ -5295,6 +5347,7 @@ export const WILDLIFE: Trek[] = [
   {
     "slug": "tadoba-006",
     "name": "Tadoba",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Bengal_tigress_with_cub_at_Tadoba_Andhari_Tiger_Reserve%2C_Maharashtra%2C_India.jpg/1920px-Bengal_tigress_with_cub_at_Tadoba_Andhari_Tiger_Reserve%2C_Maharashtra%2C_India.jpg",
     "price": 12000,
     "days": 3,
     "nights": 2,
@@ -5324,6 +5377,7 @@ export const WILDLIFE: Trek[] = [
   {
     "slug": "madhai-008",
     "name": "Madhai",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Sambar_deer%2C_Satpura_Tiger_Reserve%2C_Madhai%2C_Madhya_Pradesh.jpg/1920px-Sambar_deer%2C_Satpura_Tiger_Reserve%2C_Madhai%2C_Madhya_Pradesh.jpg",
     "price": 12000,
     "days": 3,
     "nights": 2,
@@ -5353,6 +5407,7 @@ export const WILDLIFE: Trek[] = [
   {
     "slug": "kanha-010",
     "name": "Kanha",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Tiger_Kanha_National_Park.jpg/1920px-Tiger_Kanha_National_Park.jpg",
     "price": 12000,
     "days": 3,
     "nights": 2,
@@ -5382,6 +5437,7 @@ export const WILDLIFE: Trek[] = [
   {
     "slug": "pachmarhi-012",
     "name": "Pachmarhi",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Majestic_Vistas_from_the_Hills_of_Pachmarhi_22.jpg/1920px-Majestic_Vistas_from_the_Hills_of_Pachmarhi_22.jpg",
     "price": 12000,
     "days": 3,
     "nights": 2,
@@ -5411,6 +5467,7 @@ export const WILDLIFE: Trek[] = [
   {
     "slug": "bandhavgarh-014",
     "name": "Bandhavgarh",
+    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Bandhavgarh_National_Park_01.jpg/1920px-Bandhavgarh_National_Park_01.jpg",
     "price": 12000,
     "days": 3,
     "nights": 2,
