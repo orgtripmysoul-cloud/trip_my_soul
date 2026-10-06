@@ -4,5 +4,65 @@
       "path": "/api/internal/cron",
       "schedule": "0 3 * * *"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": {
+            "eq": "tripmysoul-new.vercel.app"
+          }
+        }
+      ],
+      "destination": "https://www.tripmysoul.in/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": {
+            "eq": "tripmysoul.in"
+          }
+        }
+      ],
+      "destination": "https://www.tripmysoul.in/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path((?!api/).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": {
+            "eq": "tripmysoul-bice.vercel.app"
+          }
+        }
+      ],
+      "destination": "https://www.tripmysoul.in/:path",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "missing": [
+        {
+          "type": "host",
+          "value": {
+            "eq": "www.tripmysoul.in"
+          }
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
   ]
 }
