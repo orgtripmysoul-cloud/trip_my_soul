@@ -1,66 +1,59 @@
-"use client";
-
-import React, { useMemo } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { AlertCircle } from "lucide-react";
-import { TREKS, WILDLIFE, YATRAS } from "@/data/db";
+import { notFound } from "next/navigation";
+import type { Trek } from "@/data/db";
+import { findTrek, TREK_CATALOGUE } from "@/data/trekCatalogue";
+import { CANONICAL_TRIP_PATHS } from "@/data/trips";
 import TrekDetailView from "@/components/trek-detail/TrekDetailView";
 
-export default function TrekDetailPage() {
-  const params = useParams();
-  const router = useRouter();
-  const slug = params.slug as string;
+type Params = { params: Promise<{ slug: string }> };
 
-  // `/yatra` and the wildlife listings link here too, so resolve against every
-  // catalogue rather than TREKS alone — otherwise those cards 404.
-  const catalogue = useMemo(() => [...TREKS, ...YATRAS, ...WILDLIFE], []);
+/**
+ * Prerender every listing at build time so the full detail page — itinerary,
+ * inclusions, FAQs, article — is in the static HTML. Slugs that the layout
+ * redirects to a `/trips/...` page are left to render on demand.
+ */
+export function generateStaticParams() {
+  return TREK_CATALOGUE.filter((t) => !CANONICAL_TRIP_PATHS[t.slug]).map((t) => ({
+    slug: t.slug,
+  }));
+}
 
-  const trek = useMemo(() => catalogue.find((t) => t.slug === slug) || null, [catalogue, slug]);
-
-  // Similar Treks: an editorial list where the listing names one, otherwise the
-  // automatic match on region or difficulty.
-  const similarTreks = useMemo(() => {
-    if (!trek) return [];
-
-    if (trek.similarTreks?.length) {
-      const picked = trek.similarTreks
-        .filter((s) => s !== trek.slug)
-        .map((s) => catalogue.find((t) => t.slug === s))
-        .filter((t) => t !== undefined);
-      if (picked.length > 0) return picked.slice(0, 4);
-    }
-
-    const matches = catalogue.filter(
-      (t) => t.slug !== trek.slug && (t.region === trek.region || t.difficulty === trek.difficulty)
-    );
-    return matches.length > 0
-      ? matches.slice(0, 4)
-      : catalogue.filter((t) => t.slug !== trek.slug).slice(0, 4);
-  }, [catalogue, trek]);
-
-  if (!trek) {
-    return (
-      <div className="max-w-md mx-auto py-40 px-4 text-center space-y-4 font-sans">
-        <AlertCircle className="w-12 h-12 text-brand-dusk mx-auto" />
-        <h1 className="text-2xl font-bold text-brand-dark-text">Trek not found</h1>
-        <p className="text-xs text-gray-500">
-          The trek route you are looking for does not exist or has been renamed.
-        </p>
-        <button
-          onClick={() => router.push("/treks")}
-          className="px-5 py-2.5 rounded-full bg-brand-forest hover:bg-brand-forest-light text-white font-bold text-xs transition"
-        >
-          Back to all treks
-        </button>
-      </div>
-    );
+/**
+ * Similar Treks: an editorial list where the listing names one, otherwise the
+ * automatic match on region or difficulty.
+ */
+function similarTo(trek: Trek): Trek[] {
+  if (trek.similarTreks?.length) {
+    const picked = trek.similarTreks
+      .filter((s) => s !== trek.slug)
+      .map((s) => TREK_CATALOGUE.find((t) => t.slug === s))
+      .filter((t): t is Trek => t !== undefined);
+    if (picked.length > 0) return picked.slice(0, 4);
   }
+
+  const matches = TREK_CATALOGUE.filter(
+    (t) => t.slug !== trek.slug && (t.region === trek.region || t.difficulty === trek.difficulty)
+  );
+  return matches.length > 0
+    ? matches.slice(0, 4)
+    : TREK_CATALOGUE.filter((t) => t.slug !== trek.slug).slice(0, 4);
+}
+
+export default async function TrekDetailPage({ params }: Params) {
+  const { slug } = await params;
+
+  // `/yatra` and the wildlife listings link here too, so this resolves against
+  // every catalogue rather than TREKS alone.
+  const trek = findTrek(slug);
+
+  // A real 404 (see ./not-found.tsx) rather than a 200 "not found" page, so
+  // retired slugs drop out of the index instead of lingering as soft 404s.
+  if (!trek) notFound();
 
   return (
     <TrekDetailView
       trek={trek}
-      similar={similarTreks}
-      totalCount={catalogue.length}
+      similar={similarTo(trek)}
+      totalCount={TREK_CATALOGUE.length}
       browseHref="/treks"
       noun="Trek"
     />
