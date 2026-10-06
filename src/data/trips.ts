@@ -174,6 +174,31 @@ function parseDuration(duration: string): { days: number; nights: number } {
   return { days, nights };
 }
 
+/**
+ * Every date from `from` to `to` inclusive, as ISO strings, optionally limited
+ * to certain weekdays (0 = Sunday). Built from UTC parts so a schedule never
+ * drifts a day when the build machine sits in another timezone.
+ *
+ * Lets a season be declared as a rule ("Saturdays in October", "daily through
+ * winter") instead of ~90 hand-typed dates that nobody can check.
+ */
+function datesInRange(from: string, to: string, weekdays?: number[]): string[] {
+  const [fy, fm, fd] = from.split("-").map(Number);
+  const [ty, tm, td] = to.split("-").map(Number);
+  const end = Date.UTC(ty, tm - 1, td);
+  const out: string[] = [];
+
+  for (let t = Date.UTC(fy, fm - 1, fd); t <= end; ) {
+    const day = new Date(t);
+    if (!weekdays || weekdays.includes(day.getUTCDay())) {
+      out.push(day.toISOString().slice(0, 10));
+    }
+    t = day.setUTCDate(day.getUTCDate() + 1);
+  }
+
+  return out;
+}
+
 function toListingItem(
   item: TripNavItem,
   meta: Omit<TripListingItem, keyof TripNavItem | "days" | "nights" | "detailsPath"> & { detailsPath: string }
@@ -349,7 +374,22 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       alternateNames: ["Chopta Tungnath Chandrashila Trek", "Tungnath Trek", "Chandrashila Trek", "Deoria Tal", "Chopta Trek", "Kedar"],
       altitude: "Chandrashila — a 4,000 m Himalayan summit",
       minAge: 8,
-      availability: "Weekend batches every Friday from Delhi",
+      availability: "Oct: every Saturday · Nov–Jan: daily departures",
+      /**
+       * Dates are the ex-Rishikesh Day 1. The ex-Delhi variant runs the same
+       * departures, leaving Delhi on the Day 0 night before (so a Saturday
+       * batch is a Friday-night Delhi pickup) — see `priceNote` and the Day 0
+       * / Day 4 itinerary entries.
+       *
+       * October is weekends only; from November the trek runs daily through
+       * the winter season, which ends in January.
+       */
+      batchDates: [
+        // October starts at the 10th rather than the 1st: the departures list
+        // has no past-date filter, so the 3rd would render as bookable.
+        ...datesInRange("2026-10-10", "2026-10-31", [6]),
+        ...datesInRange("2026-11-01", "2027-01-31"),
+      ],
       intro:
         "The most accessible Himalayan trek in Uttarakhand and a genuine 4,000 m summit without the stress. Tungnath is the highest Shiva temple in the world, and Chandrashila above it gives a full 360° of the range.",
       highlights: [

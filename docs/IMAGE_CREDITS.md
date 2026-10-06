@@ -117,8 +117,9 @@ adaptation, and neither is framing it with CSS in a hero banner.
 | `shimla-manali` | trips.ts | Biswarup Ganguly | CC BY 3.0 | [Ridge - Shimla 2014-05-08 1492.JPG](https://commons.wikimedia.org/wiki/File:Ridge_-_Shimla_2014-05-08_1492.JPG) |
 | `shimla-tour` | db.ts | Biswarup Ganguly | CC BY 3.0 | [Ridge - Scandal Point - Shimla 2014-05-07 1215.JPG](https://commons.wikimedia.org/wiki/File:Ridge_-_Scandal_Point_-_Shimla_2014-05-07_1215.JPG) |
 | `spiti-valley` | db.ts | Timothy Gonsalves | CC BY-SA 4.0 | [Pin Valley Spiti Himachal Jun18 D72 7092.jpg](https://commons.wikimedia.org/wiki/File:Pin_Valley_Spiti_Himachal_Jun18_D72_7092.jpg) |
+| `spiti-valley` | db.ts | Gurpreet1986 | CC BY-SA 4.0 | [Key Monastery( Lahaul Spiti).jpg](https://commons.wikimedia.org/wiki/File:Key_Monastery(_Lahaul_Spiti).jpg) |
 | `spiti-valley` | trips.ts | Gurpreet1986 | CC BY-SA 4.0 | [Key Monastery( Lahaul Spiti).jpg](https://commons.wikimedia.org/wiki/File:Key_Monastery(_Lahaul_Spiti).jpg) |
-| `spiti-valley-yatra` | db.ts | Footloosedev | CC BY-SA 4.0 | [Key Monastery, Spiti Valley footloosedev.jpg](https://commons.wikimedia.org/wiki/File:Key_Monastery,_Spiti_Valley_footloosedev.jpg) |
+| `spiti-valley` | db.ts | Footloosedev | CC BY-SA 4.0 | [Key Monastery, Spiti Valley footloosedev.jpg](https://commons.wikimedia.org/wiki/File:Key_Monastery,_Spiti_Valley_footloosedev.jpg) |
 | `tadoba-006` | db.ts | Rohit Sharma | CC BY-SA 4.0 | [Bengal tigress with cub at Tadoba Andhari Tiger Reserve, Maharashtra, India.jpg](https://commons.wikimedia.org/wiki/File:Bengal_tigress_with_cub_at_Tadoba_Andhari_Tiger_Reserve,_Maharashtra,_India.jpg) |
 | `tarsar-marsar-trek` | db.ts | Savitri Kore | CC BY-SA 4.0 | [Tarsar lake-Kashmir.jpg](https://commons.wikimedia.org/wiki/File:Tarsar_lake-Kashmir.jpg) |
 | `three-kedar-yatra` | trips.ts | Punita keshri | CC BY-SA 4.0 | [Tungnath temple one of thepanch kedar.jpg](https://commons.wikimedia.org/wiki/File:Tungnath_temple_one_of_thepanch_kedar.jpg) |

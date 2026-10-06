@@ -666,9 +666,15 @@ export const TREKS: Trek[] = [
   },
   {
     "slug": "spiti-valley",
-    "name": "Spiti Valley",
+    // Single listing for Spiti: the old `spiti-valley-yatra` stub in YATRAS was
+    // the same trip with placeholder content, so it was folded in here.
+    "name": "Spiti Valley Trek",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Pin_Valley_Spiti_Himachal_Jun18_D72_7092.jpg/1920px-Pin_Valley_Spiti_Himachal_Jun18_D72_7092.jpg",
-    "tagline": "Winter Spiti — the White Desert of the Himalayas, via Shimla-Kinnaur, with frozen lakes, snow-bound 1000-year-old monasteries and the world's highest villages.",
+    heroImages: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Pin_Valley_Spiti_Himachal_Jun18_D72_7092.jpg/1920px-Pin_Valley_Spiti_Himachal_Jun18_D72_7092.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Key_Monastery%2C_Spiti_Valley_footloosedev.jpg/1920px-Key_Monastery%2C_Spiti_Valley_footloosedev.jpg",
+    ],
+    "tagline": "Winter Spiti — the White Desert of the Himalayas, via Shimla-Kinnaur: the monastery circuit of the cold desert (Key, Dhankar, Tabo and Kaza), frozen lakes and the world's highest villages.",
     "price": 22999,
     "days": 9,
     "nights": 8,
@@ -1003,6 +1009,25 @@ export const TREKS: Trek[] = [
       "Roadblocks from snowfall, landslides and black ice are common — the itinerary can change on weather, and the Trip Captain's call is final.",
       "No alcohol or smoking during the high-altitude drive.",
       "Carry cash — the one ATM in Kaza is often out of money.",
+    ],
+    // Real Spiti photos, so the listing stops falling back to the generic
+    // Himalayan album in `trekDefaults.DEFAULT_GALLERY`. These are the three
+    // Commons images the site already carried for Spiti, including the one from
+    // the merged `spiti-valley-yatra` listing.
+    // TODO(content): swap in the trip's own shots under /Trips_gallery/Spiti.
+    gallery: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Pin_Valley_Spiti_Himachal_Jun18_D72_7092.jpg/1920px-Pin_Valley_Spiti_Himachal_Jun18_D72_7092.jpg",
+        caption: "Pin Valley — the cold desert floor below Kaza",
+      },
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Key_Monastery%2C_Spiti_Valley_footloosedev.jpg/1920px-Key_Monastery%2C_Spiti_Valley_footloosedev.jpg",
+        caption: "Key Monastery at 13,668 FT — the biggest monastery of Spiti",
+      },
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Key_Monastery%28_Lahaul_Spiti%29.jpg/1920px-Key_Monastery%28_Lahaul_Spiti%29.jpg",
+        caption: "The gompa stacked up its ridge above the Spiti River",
+      },
     ],
     similarTreks: ["manali-kasol", "auli-snow-trip", "chopta-with-auli"],
   },
@@ -5263,24 +5288,9 @@ export const YATRAS: Trek[] = [
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Kedarkantha_trek.jpg/1920px-Kedarkantha_trek.jpg",
     "batchDates": ["2026-10-17"]              // TODO(content): seeded departure
-  },
-  {
-    "slug": "spiti-valley-yatra",
-    "name": "Spiti Valley Trek",
-    // TODO(content): cross-listing of `spiti-valley` in TREKS and BACKPACKING_TRIPS.
-    "tagline": "The monastery circuit of the cold desert — Key, Dhankar, Tabo and Kaza.",
-    "price": null,            // TODO(content): no published fare yet
-    "days": null,             // TODO(content): duration pending
-    "nights": null,           // TODO(content): duration pending
-    "region": "Himachal Pradesh",
-    "category": "Spiritual Journey",
-    "startLocation": "Delhi To Delhi",        // TODO(content): confirm start/end
-    "difficulty": "Moderate",
-    "months": ["Jun", "Jul", "Aug", "Sep", "Oct"],  // TODO(content): confirm season
-    "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Key_Monastery%2C_Spiti_Valley_footloosedev.jpg/1920px-Key_Monastery%2C_Spiti_Valley_footloosedev.jpg",
-    "batchDates": ["2026-09-27"]              // TODO(content): seeded departure
   }
+  // `spiti-valley-yatra` removed — it duplicated `spiti-valley` in TREKS, which
+  // now carries the merged content.
 ];
 
 export const WILDLIFE: Trek[] = [

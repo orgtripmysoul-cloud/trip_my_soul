@@ -124,7 +124,12 @@ export default function TrekDetailView({
 
   const goToCheckout = (batchId: string) => {
     const priceParam = activePrice !== null ? `&price=${activePrice}` : "";
-    router.push(`/checkout?slug=${trek.slug}&batch=${encodeURIComponent(batchId)}${priceParam}`);
+    // `step=book` marks this as a real booking. Without it a `/checkout?slug=…`
+    // visit is treated as an old search-engine link and redirected back to the
+    // detail page — see src/middleware.ts.
+    router.push(
+      `/checkout?slug=${trek.slug}&step=book&batch=${encodeURIComponent(batchId)}${priceParam}`
+    );
   };
 
   /**
