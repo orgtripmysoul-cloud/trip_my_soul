@@ -4597,7 +4597,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "badrinath-kedarnath-yatra",
     "name": "Badrinath Kedarnath Yatra",
-    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Shiva_Kedarnath_Temple_by_Bhaktapur.jpg/1920px-Shiva_Kedarnath_Temple_by_Bhaktapur.jpg",
+    "heroImage": "/Trips_gallery/Badrinath/IMG_2149.jpg",
     "price": 11999,
     "days": 5,
     "nights": 4,
@@ -4624,7 +4624,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "kedarnath-and-tungnath-yatra",
     "name": "Kedarnath Tungnath Yatra",
-    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Temple_at_Chandrashila_summit_02.jpg/1920px-Temple_at_Chandrashila_summit_02.jpg",
+    "heroImage": "/Trips_gallery/Kedarnath/IMG_1803.jpg",
     "tagline": "Two of the five Panch Kedar in 5 Days from Haridwar — the Kedarnath Jyotirlinga, the world's highest Shiva temple at Tungnath, and the Chandrashila summit.",
     "price": 10999,
     "days": 5,
@@ -4693,7 +4693,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "do-dham-and-tungnath-yatra",
     "name": "Do Dham And Tungnath Trek",
-    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Devotees_at_Kedarnath_temple%2C_Uttrakhand_02.jpg/1920px-Devotees_at_Kedarnath_temple%2C_Uttrakhand_02.jpg",
+    "heroImage": "/Trips_gallery/Kedarnath/IMG_1771.jpg",
     "price": 14999,
     "days": 6,
     "nights": 5,
@@ -4723,7 +4723,7 @@ export const YATRAS: Trek[] = [
   {
     "slug": "kedarnath-yatra-by-helicopter",
     "name": "Kedarnath Yatra By Helicopter",
-    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Kedarnath_temple_october_2022.jpg/1920px-Kedarnath_temple_october_2022.jpg",
+    "heroImage": "/Trips_gallery/Kedarnath/IMG_1463.jpg",
     "price": 45000,
     "days": 1,
     "nights": 0,
@@ -5177,7 +5177,7 @@ export const YATRAS: Trek[] = [
     "difficulty": "Moderate",
     "months": ["May", "Jun", "Sep", "Oct"],   // TODO(content): confirm season
     "themes": ["Snow", "Meadow", "Forest", "Pass Crossing"],  // TODO(content)
-    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Har_ki_doon_valley-Sankari_Range_-_Uttarakhand-DSC_0001.jpg/1920px-Har_ki_doon_valley-Sankari_Range_-_Uttarakhand-DSC_0001.jpg",
+    "heroImage": "/Trips_gallery/Har_Ki_Dun/HKD_swargarohini.jpeg",
     "batchDates": ["2026-10-10"]              // TODO(content): seeded departure
   },
   {

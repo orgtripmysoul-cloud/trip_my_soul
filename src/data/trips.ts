@@ -319,7 +319,7 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       name: "Chopta & Tungnath Trek",
       slug: "chopta-tungnath-trek",
       duration: "2N/3D",
-      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Chandrashila_summit_%281_of_1%29.jpg/1920px-Chandrashila_summit_%281_of_1%29.jpg",
+      heroImage: "/Trips_gallery/Tungnath_chandrashila/IMG_4346.JPG.jpeg",
       tagline: "The world's highest Shiva temple, a 4,000 m summit, and 360° Himalayan views.",
     },
     {
@@ -2162,7 +2162,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       name: "Madhyamaheshwar Trek — 4 Days",
       slug: "madhyamaheshwar-trek-4-day",
       duration: "3N/4D",
-      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Chaukhamba_peak_-_and_a_lonely_hut.jpg/1920px-Chaukhamba_peak_-_and_a_lonely_hut.jpg",
+      heroImage: "/Trips_gallery/Madhmaheshwar/IMG_1357.jpg",
       tagline: "Ransi to the Madhyamaheshwar shrine and a pre-dawn climb to Buda Madhyamaheshwar, ex-Haridwar.",
     },
     {
