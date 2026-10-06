@@ -1,4 +1,12 @@
-import type { EquipmentGroup, HowToReach, IconBullet, ItineraryDay, Trek } from "@/data/db";
+import type {
+  ArticleContent,
+  EquipmentGroup,
+  ExternalReview,
+  HowToReach,
+  IconBullet,
+  ItineraryDay,
+  Trek,
+} from "@/data/db";
 import {
   CONFIRMATION_POLICY,
   HIMALAYAN_TREK_EXCLUSIONS,
@@ -122,6 +130,8 @@ export interface TripListingItem extends TripNavItem {
   fitnessCriteria?: IconBullet[];
   howToReach?: HowToReach;
   faqs?: { title: string; description: string }[];
+  /** Long-form written guide, shown in the Article section of the detail page. */
+  article?: ArticleContent;
 
   // Other info
   cancellationPolicy?: string;
@@ -131,6 +141,10 @@ export interface TripListingItem extends TripNavItem {
   // Media & related
   gallery?: TripGalleryImage[];
   relatedSlugs?: string[];
+  /** Reviews published on another platform, shown in the Trek Reviews section. */
+  externalReviews?: ExternalReview[];
+  /** YouTube review videos, as watch/Shorts URLs. */
+  reviewVideos?: string[];
 
   // Logistics
   /** Vehicle allocated by group size. */
@@ -387,7 +401,234 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
       rentalGear: TREK_RENTAL_GEAR,
       thingsToRemember: TRIP_GROUND_RULES,
-      relatedSlugs: ["madmaheshwar-trek", "kedarnath-yatra", "rudranath-trek"],
+      // Shot on past batches. The folder also holds four .HEIC originals, left
+      // out because browsers other than Safari will not render them in an <img>.
+      gallery: [
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4227.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4228.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4229.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4231.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4232.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4237.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4240.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4246.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4247.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4259.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4267.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4268.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4277.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4278.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4342.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4343.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4345.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4346.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4349.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4350.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4351.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4352.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4353.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4355.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4357.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4358.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4359.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4360.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4361.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4362.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4363.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4364.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4365.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4367.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4370.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4372.JPG.jpeg" },
+        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4373.JPG.jpeg" },
+      ],
+      faqs: [
+        {
+          title: "What is the Chopta Tungnath Chandrashila Trek?",
+          description:
+            "It is a scenic Himalayan trek covering Chopta, Tungnath Temple and Chandrashila Summit, with Deoriatal included in this itinerary.",
+        },
+        {
+          title: "How difficult is the Chopta Tungnath Trek?",
+          description: "The trek is considered Easy to Moderate and is suitable for beginners with basic fitness.",
+        },
+        {
+          title: "How many days are required for the trek?",
+          description: "Our itinerary is a 3 Days / 2 Nights trip covering Tungnath, Chandrashila and Deoriatal.",
+        },
+        {
+          title: "What is the altitude of Chandrashila?",
+          description: "Chandrashila Summit is approximately 4,000 metres (13,123 ft) above sea level.",
+        },
+        {
+          title: "What is the best time to do the Chopta Tungnath Chandrashila Trek?",
+          description:
+            "The best seasons are generally April to June and September to November. Winter offers a different experience with snow, subject to weather and road conditions.",
+        },
+        {
+          title: "Can beginners do this trek?",
+          description: "Yes. Beginners can do this trek with reasonable fitness, proper pacing and suitable trekking shoes.",
+        },
+        {
+          title: "Is Tungnath Temple open throughout the year?",
+          description:
+            "No. Tungnath Temple follows its seasonal opening and closing schedule. During the winter closure, the temple area may remain inaccessible depending on conditions.",
+        },
+        {
+          title: "How far is Chandrashila from Chopta?",
+          description:
+            "The trekking route from Chopta to Chandrashila is approximately 5 km one way, depending on the exact route and conditions.",
+        },
+        {
+          title: "Where does the trek start and where do we stay?",
+          description:
+            "The trip accommodation is in Sari Village. The Tungnath–Chandrashila trek starts from Chopta, which is reached by road from Sari.",
+        },
+        {
+          title: "What should I carry for the Chopta Tungnath Trek?",
+          description:
+            "Carry good trekking shoes, warm layers, rain protection, water bottle, sunglasses, sunscreen, personal medicines, a small backpack and basic toiletries.",
+        },
+      ],
+      article: {
+        title: "Chopta Tungnath Chandrashila Trek: Where the Mountains Meet Your Soul",
+        standfirst:
+          "Green meadows above Sari, the world's highest Shiva temple, a 4,000 m summit and the still water of Deoriatal — the Mini Switzerland of Uttarakhand, told the way it is felt.",
+        readMinutes: 6,
+        sections: [
+          {
+            paragraphs: [
+              "Some journeys are not meant to be completed just for the destination.",
+              "They are meant to be felt.",
+              "The Chopta Tungnath Chandrashila Trek is one such journey — where every step takes you a little farther from the noise of everyday life and a little closer to yourself.",
+              "Tucked away in the beautiful mountains of Uttarakhand, Chopta is often called the “Mini Switzerland of Uttarakhand.” Surrounded by green meadows, dense forests and magnificent Himalayan peaks, it is a place where the air feels different and the silence speaks.",
+              "But the real journey begins when you leave the road behind and start walking.",
+            ],
+          },
+          {
+            heading: "A Journey That Begins in Sari",
+            paragraphs: [
+              "Our journey begins at Sari Village, a peaceful Himalayan settlement surrounded by mountains and forests.",
+              "As the evening settles over the village, the pace of life naturally slows down. There are no crowded streets, no traffic horns and no city rush — only mountain air, simple village life and a sky filled with stars.",
+              "This is where you prepare yourself for the adventure waiting the next morning.",
+            ],
+          },
+          {
+            heading: "Walking Towards Tungnath",
+            paragraphs: [
+              "The next morning, the journey takes you towards Chopta, the starting point of the trek to Tungnath and Chandrashila.",
+              "The trail gradually climbs through beautiful Himalayan landscapes. With every turn, the scenery changes. Forests open up to mountain views, clouds drift across the peaks and the sound of the wind becomes your constant companion.",
+              "And then comes Tungnath.",
+              "Standing at a high altitude amidst the Himalayas, Tungnath is not just a temple — it is an experience of faith, silence and nature coming together.",
+              "For many trekkers, reaching Tungnath feels like more than simply completing a trail.",
+              "It feels like arriving somewhere they had been searching for without knowing it.",
+            ],
+          },
+          {
+            heading: "The Final Climb to Chandrashila",
+            paragraphs: [
+              "From Tungnath, the trail becomes steeper as you make your way towards Chandrashila Summit.",
+              "The climb may test your legs, but the mountains keep giving you reasons to continue.",
+              "And when you finally reach the summit, everything suddenly feels worth it.",
+              "Standing at Chandrashila, with the vast Himalayan ranges stretching endlessly before you, you realise how small our worries can feel when viewed from the mountains.",
+              "On a clear day, the majestic Chaukhamba range and other Himalayan peaks create a breathtaking panorama.",
+              "You don’t need a perfect photograph at that moment.",
+              "You simply need to stand there and take it all in.",
+            ],
+          },
+          {
+            heading: "Deoriatal – A Quiet Ending to a Beautiful Journey",
+            paragraphs: [
+              "The adventure continues towards Deoriatal, a serene lake surrounded by forests and magnificent Himalayan views.",
+              "The peaceful trail from Sari to Deoriatal offers a completely different experience from the Chandrashila climb.",
+              "Here, there is no rush.",
+              "Just trees, birds, mountain air and the beautiful silence of the Himalayas.",
+              "On a clear day, the reflection of the mountains in the calm waters of Deoriatal creates a picture that stays in your memory long after you leave.",
+            ],
+          },
+          {
+            heading: "More Than Just a Trek",
+            paragraphs: [
+              "The Chopta Tungnath Chandrashila Trek is often described as an easy-to-moderate Himalayan trek, making it a wonderful choice for beginners and first-time trekkers.",
+              "But its beauty is not measured by difficulty.",
+              "It is measured by the moments you collect along the way.",
+              "A sunrise over the mountains.",
+              "A quiet conversation on the trail.",
+              "A cup of tea in a Himalayan village.",
+              "The first sight of Tungnath.",
+              "The feeling of reaching Chandrashila.",
+              "The silence of Deoriatal.",
+              "These are the moments that turn a trek into a memory.",
+            ],
+          },
+          {
+            heading: "Come for the Mountains, Return with a Story",
+            paragraphs: [
+              "You may begin this journey thinking that you are going to explore the Himalayas.",
+              "But somewhere between Sari and Chandrashila, you may realise that the mountains have also given you the chance to explore yourself.",
+              "So pack your backpack, leave the city behind and take that first step.",
+              "Chopta is waiting.",
+              "Tungnath is calling.",
+              "Chandrashila is waiting for your footsteps.",
+              "And perhaps, somewhere along the trail, you will find a version of yourself that the noise of the city made you forget.",
+              "Your mountains. Your journey. Your story.",
+            ],
+          },
+        ],
+        signoff: "Travel with Trip My Soul.",
+      },
+      // The five published pairings, matching the `/treks` listing. The first
+      // four render; all resolve to Himalayan treks rather than weekend trips.
+      relatedSlugs: ["kedarkantha-trek", "brahmatal-trek", "kuari-pass-trek", "dayara-bugyal-trek", "nagtibba-trek"],
+      // Transcribed verbatim from the Google reviews on the Trip My Soul profile.
+      externalReviews: [
+        {
+          source: "Google",
+          subject: "Trip My Soul",
+          rating: 5,
+          date: "5 months ago",
+          text: [
+            "Review of Tungnath–Chandrashila Trek",
+            "I usually don't write reviews, but this one I had to.",
+            "The trek was beautiful, and the best part was our trek leader Himanshu bhaiya - a huge shoutout to him. I was trekking at a slow tortoise pace, but he was so kind, calm and patient the whole way. He never rushed me and kept encouraging me as well as guiding me, which made the trek feel easy, comfortable and enjoyable.",
+            "The stay was neat and peaceful with lovely views, though basic toiletries would have helped, but understandable since it's a remote place. It is a pretty offbeat place to stay.",
+            "Also, thanks to Rohit Bhaiya who drove us safely to and fro throughout this whole trip.",
+            "Overall, the trek was amazing, and Himanshu bhaiya's patience and kindness made it even more special.",
+            "In case, you are planning your trek with TMS do ask for this trek leader."
+          ]
+        },
+        {
+          source: "Google",
+          subject: "Trip My Soul",
+          author: "Shailly Sharma",
+          rating: 5,
+          date: "2 months ago",
+          text: [
+            "Amazing Kedarnath & Tungnath Experience!",
+            "I recently traveled to Kedarnath and Tungnath with this trip my soul, and the entire experience was fantastic from start to finish. Everything was well-organized, including transportation, and itinerary planning, which made the trip completely stress-free and enjoyable.",
+            "Although at Sonparyag the stay and food was average.",
+            "A special shoutout to Vicky, Arun Bhaiya and Mamchand for their exceptional support throughout the journey. They were incredibly helpful, approachable, and always ensured that everyone in the group was comfortable and safe. Their positive attitude, local knowledge, and willingness to help made the trip even more memorable.",
+            "I highly recommend this travel company to anyone planning a spiritual or trekking trip to the Himalayas. Thank you for creating such wonderful memories—I look forward to traveling with you again! 🙏🏔️"
+          ]
+        },
+        {
+          source: "Google",
+          subject: "Trip My Soul",
+          author: "Parag Dubey",
+          rating: 5,
+          date: "a year ago",
+          text: [
+            "It was our first trek & literally I had to say it was my best experience to feel nature and mountains.",
+            "Had an amazing experience with Trip My Soul on the chandrashila trek! Everything was well-organized, and our trek lead, himanshu bhai was incredibly supportive and knowledgeable. The views were breathtaking, the campsites clean, and the food delicious. Highly recommend them for a hassle-free and memorable trekking adventure …"
+          ]
+        }
+      ],
+      reviewVideos: [
+        "https://youtube.com/shorts/Q235DetUukc",
+        "https://youtube.com/shorts/pJ9esoHTl7g",
+        "https://youtube.com/shorts/YtTT7-Ru9bA",
+        "https://youtube.com/shorts/9Y2YYU6cz5s"
+      ],
     }
   ),
 
@@ -3025,6 +3266,7 @@ export function tripToTrek(trip: TripListingItem): Trek {
     fitnessCriteria: trip.fitnessCriteria,
     howToReach: trip.howToReach,
     faqs: trip.faqs,
+    article: trip.article,
 
     // Cost terms
     originalPrice: trip.originalPrice,
@@ -3051,6 +3293,8 @@ export function tripToTrek(trip: TripListingItem): Trek {
     contactNumbers: trip.contactNumbers,
 
     gallery: trip.gallery,
+    externalReviews: trip.externalReviews,
+    reviewVideos: trip.reviewVideos,
 
     useTrekFallbacks: false,
   };
