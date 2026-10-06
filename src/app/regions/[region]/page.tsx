@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Compass, MapPin } from "lucide-react";
 import { REGIONS, TREKS } from "@/data/db";
 import TrekCard from "@/components/TrekCard";
+import { toCardTrek } from "@/lib/cardTrek";
 
 type Params = { params: Promise<{ region: string }> };
 
@@ -61,7 +62,7 @@ export default async function RegionLandingPage({ params }: Params) {
         {regionTreks.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {regionTreks.map((trek) => (
-              <TrekCard key={trek.slug} trek={trek} />
+              <TrekCard key={trek.slug} trek={toCardTrek(trek)} />
             ))}
           </div>
         ) : (
