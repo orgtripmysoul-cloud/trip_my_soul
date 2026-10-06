@@ -30,6 +30,36 @@ export function clampDescription(text: string, max = 155): string {
   return `${cut.slice(0, cut.lastIndexOf(" "))}…`;
 }
 
+/**
+ * Metadata for a route that must never appear in search results — checkout,
+ * payment, auth and account pages.
+ *
+ * Three things matter here, and all three have bitten this site:
+ *
+ * 1. `robots: noindex, nofollow` is the actual instruction. Without it these
+ *    routes inherit the root layout's indexable defaults.
+ * 2. `alternates: { canonical: null }` *removes* the root layout's homepage
+ *    canonical. Next merges metadata down the tree, so omitting the key keeps
+ *    the inherited `https://www.tripmysoul.in` — which told Google the
+ *    checkout URL was the homepage and let it surface as a sitelink.
+ * 3. A distinct title, so these never compete with the homepage on brand terms.
+ *
+ * A route using this must also be crawlable in `robots.ts`: a disallowed URL
+ * is never fetched, so the noindex tag is never read. See the note there.
+ */
+export function noIndexMetadata(title: string, description: string): Metadata {
+  return {
+    title: `${title}${TITLE_SUFFIX}`,
+    description: clampDescription(description),
+    alternates: { canonical: null },
+    robots: {
+      index: false,
+      follow: false,
+      googleBot: { index: false, follow: false },
+    },
+  };
+}
+
 export interface PageSeo {
   /** Without the brand suffix — `buildMetadata` appends it. */
   title: string;
