@@ -3,6 +3,7 @@ import type { Trek } from "@/data/db";
 import { findTrek, TREK_CATALOGUE } from "@/data/trekCatalogue";
 import { CANONICAL_TRIP_PATHS } from "@/data/trips";
 import TrekDetailView from "@/components/trek-detail/TrekDetailView";
+import { toCardTrek } from "@/lib/cardTrek";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -52,7 +53,7 @@ export default async function TrekDetailPage({ params }: Params) {
   return (
     <TrekDetailView
       trek={trek}
-      similar={similarTo(trek)}
+      similar={similarTo(trek).map(toCardTrek)}
       totalCount={TREK_CATALOGUE.length}
       browseHref="/treks"
       noun="Trek"
