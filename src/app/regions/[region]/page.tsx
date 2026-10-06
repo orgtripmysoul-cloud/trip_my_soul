@@ -1,42 +1,23 @@
-"use client";
-
-import React, { useMemo } from "react";
-import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import { ArrowLeft, Compass, MapPin } from "lucide-react";
 import { REGIONS, TREKS } from "@/data/db";
 import TrekCard from "@/components/TrekCard";
 
-export default function RegionLandingPage() {
-  const params = useParams();
-  const router = useRouter();
-  const regionSlug = params.region as string;
+type Params = { params: Promise<{ region: string }> };
 
-  // Retrieve region details
-  const region = useMemo(() => {
-    return REGIONS.find((r) => r.slug === regionSlug) || null;
-  }, [regionSlug]);
+/** Prerender each region so its trek list is in the static HTML. */
+export function generateStaticParams() {
+  return REGIONS.map((r) => ({ region: r.slug }));
+}
 
-  // Retrieve treks in this region
-  const regionTreks = useMemo(() => {
-    if (!region) return [];
-    return TREKS.filter((t) => t.region.toLowerCase().includes(region.name.toLowerCase()));
-  }, [region]);
+export default async function RegionLandingPage({ params }: Params) {
+  const { region: regionSlug } = await params;
 
-  if (!region) {
-    return (
-      <div className="max-w-md mx-auto py-40 px-4 text-center space-y-4">
-        <Compass className="w-12 h-12 text-brand-dusk mx-auto" />
-        <h1 className="text-2xl font-bold text-brand-dark-text">Region not found</h1>
-        <p className="text-xs text-gray-500">The region path does not exist. Browse our standard options.</p>
-        <button
-          onClick={() => router.push("/")}
-          className="px-5 py-2.5 rounded-full bg-brand-forest hover:bg-brand-forest-light text-white font-bold text-xs transition"
-        >
-          Back to Home
-        </button>
-      </div>
-    );
-  }
+  const region = REGIONS.find((r) => r.slug === regionSlug);
+  if (!region) notFound();
+
+  const regionTreks = TREKS.filter((t) => t.region.toLowerCase().includes(region.name.toLowerCase()));
 
   return (
     <div className="bg-brand-warm-bg min-h-screen">
@@ -52,14 +33,14 @@ export default function RegionLandingPage() {
 
         <div className="absolute bottom-10 left-0 w-full">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-            <button
-              onClick={() => router.push("/")}
+            <Link
+              href="/"
               className="inline-flex items-center gap-1.5 min-h-[44px] text-xs font-bold text-gray-500 hover:text-brand-dark-text md:text-gray-300 md:hover:text-white transition bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 self-start"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Home</span>
-            </button>
-            
+            </Link>
+
             <h1 className="text-3xl sm:text-5xl font-extrabold font-serif text-brand-dark-text md:text-white leading-tight flex items-center gap-2">
               <MapPin className="w-6 h-6 md:w-8 md:h-8 text-brand-dusk-orange shrink-0" />
               <span>{region.name} Treks</span>
