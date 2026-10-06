@@ -1,6 +1,7 @@
 import TrekDetailView from "@/components/trek-detail/TrekDetailView";
 import { BACKPACKING_TRIPS, WEEKEND_TRIPS, tripToTrek } from "@/data/trips";
 import type { TripListingItem } from "@/data/trips";
+import { toCardTrek } from "@/lib/cardTrek";
 
 interface TripDetailPageProps {
   trip: TripListingItem;
@@ -41,7 +42,7 @@ export default function TripDetailPage({ trip, category }: TripDetailPageProps) 
   const filled =
     picks.length > 0 ? picks : catalogue.filter((t) => t.slug !== trip.slug).slice(0, 4);
 
-  const similar = filled.map(tripToTrek);
+  const similar = filled.map((t) => toCardTrek(tripToTrek(t)));
 
   return (
     <TrekDetailView
