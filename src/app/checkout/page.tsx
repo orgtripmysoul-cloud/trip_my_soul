@@ -831,7 +831,7 @@ function CheckoutContent() {
                   />
                   <span>
                     I accept Term and Condition |{" "}
-                    <a href="/policies/terms-and-conditions" target="_blank" className="text-blue-600 font-bold hover:underline inline-flex items-center min-h-[44px]">
+                    <a href="/policies/terms-conditions" target="_blank" className="text-blue-600 font-bold hover:underline inline-flex items-center min-h-[44px]">
                       READ T&C
                     </a>
                   </span>

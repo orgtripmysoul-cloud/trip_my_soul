@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { notFound } from "next/navigation";
 
 import { BACKPACKING_TRIPS } from "@/data/trips";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, noIndexMetadata } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -11,11 +12,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const trip = BACKPACKING_TRIPS.find((t) => t.slug === slug);
 
   if (!trip) {
-    return buildMetadata({
-      title: "Trip Not Found",
-      description: "This backpacking trip is no longer listed. Browse our current backpacking routes instead.",
-      path: `/trips/backpacking/${slug}`,
-    });
+    // The layout 404s this path, so these tags exist only for the error
+    // response — `noindex` keeps that body out of the index.
+    return noIndexMetadata(
+      "Trip Not Found",
+      "This backpacking trip is no longer listed. Browse our current backpacking routes instead.",
+    );
   }
 
   return buildMetadata({
@@ -26,6 +28,17 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   });
 }
 
-export default function BackpackingTripLayout({ children }: { children: ReactNode }) {
+export default async function BackpackingTripLayout({
+  children,
+  params,
+}: { children: ReactNode } & Params) {
+  const { slug } = await params;
+
+  // Unknown slugs used to render "Trip not found" with HTTP 200 — a soft 404.
+  // The page is a client component, so the status has to be set here.
+  if (!BACKPACKING_TRIPS.some((t) => t.slug === slug)) {
+    notFound();
+  }
+
   return <>{children}</>;
 }

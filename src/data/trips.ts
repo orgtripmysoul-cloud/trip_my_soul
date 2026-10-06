@@ -207,6 +207,271 @@ function toListingItem(
   return { ...item, ...meta, days, nights };
 }
 
+/* ------------------------------------------------------------------ */
+/* Chopta & Tungnath — shared between the ex-Rishikesh and ex-Delhi    */
+/* packages. Same trek, same photos, same copy; only the transport     */
+/* legs, price and pickup city differ, so everything below is declared */
+/* once and referenced by both listings.                               */
+/* ------------------------------------------------------------------ */
+
+const CHOPTA_ALTERNATE_NAMES = [
+  "Chopta Tungnath Chandrashila Trek",
+  "Tungnath Trek",
+  "Chandrashila Trek",
+  "Deoria Tal",
+  "Chopta Trek",
+  "Kedar",
+];
+
+/**
+ * Both variants run on the same departure calendar. The dates are the
+ * ex-Rishikesh Day 1; the ex-Delhi package leaves Delhi on the night before,
+ * so a Saturday batch is a Friday-night pickup.
+ *
+ * October is weekends only; from November the trek runs daily through the
+ * winter season, which ends in January.
+ */
+const CHOPTA_BATCH_DATES = [
+  // October starts at the 10th rather than the 1st: the departures list
+  // has no past-date filter, so the 3rd would render as bookable.
+  ...datesInRange("2026-10-10", "2026-10-31", [6]),
+  ...datesInRange("2026-11-01", "2027-01-31"),
+];
+
+const CHOPTA_HIGHLIGHTS = [
+  "Tungnath — highest Shiva temple in the world",
+  "Chandrashila summit, 360° Himalayan views",
+  "Deoria Tal",
+  "Dhari Devi Temple",
+  "Devprayag Sangam",
+  "Monal birds, occasionally Himalayan Tahr",
+  "Suitable for all ages — easy grade",
+  "Accessible year round; moderate Dec–Feb with snowfall",
+];
+
+/** Days 1–3 are identical in both packages; the Delhi variant wraps them. */
+const CHOPTA_TREK_ITINERARY: TripItineraryDay[] = [
+  { day: 1, title: "Rishikesh to Sari Village", entries: [{ text: "Drive about 200 km, 6–7 hours." }, { text: "Sightseeing at Dhari Devi Temple and Devprayag Sangam." }, { text: "Check into homestay or campstay. Overnight Sari." }] },
+  { day: 2, title: "Tungnath and Chandrashila", entries: [{ text: "Trek 3.5 km to Tungnath, then 1.5 km further to Chandrashila — about 5 km in total." }, { text: "Temple visit and 360° Himalayan views." }, { text: "Overnight Sari." }] },
+  { day: 3, title: "Deoria Tal and return", entries: [{ text: "Trek about 1.5 km, roughly an hour, to Deoria Tal." }, { text: "Drive back to Rishikesh." }] },
+];
+
+/** Everything the fare covers apart from the transport leg, which differs. */
+const CHOPTA_COST_INCLUDES = [
+  "Vegetarian meals only, from Day 1 dinner to last-day breakfast",
+  "Camps or homestay accommodation, triple / quad sharing",
+  "Experienced qualified guide",
+  "Basic first aid",
+  "Achievement certificate",
+];
+
+const CHOPTA_COST_EXCLUDES = [
+  "Forest fees and permits",
+  "Meals during transportation",
+  "Personal expenses",
+  "Costs from unscheduled delays such as roadblocks or landslides",
+  "Porter and mule charges",
+  "Backpack offloading charges",
+  "Evacuation cost",
+  "Anything not listed under inclusions",
+];
+
+// Shot on past batches. The folder also holds four .HEIC originals, left
+// out because browsers other than Safari will not render them in an <img>.
+const CHOPTA_GALLERY: TripGalleryImage[] = [
+  "IMG_4227", "IMG_4228", "IMG_4229", "IMG_4231", "IMG_4232", "IMG_4237",
+  "IMG_4240", "IMG_4246", "IMG_4247", "IMG_4259", "IMG_4267", "IMG_4268",
+  "IMG_4277", "IMG_4278", "IMG_4342", "IMG_4343", "IMG_4345", "IMG_4346",
+  "IMG_4349", "IMG_4350", "IMG_4351", "IMG_4352", "IMG_4353", "IMG_4355",
+  "IMG_4357", "IMG_4358", "IMG_4359", "IMG_4360", "IMG_4361", "IMG_4362",
+  "IMG_4363", "IMG_4364", "IMG_4365", "IMG_4367", "IMG_4370", "IMG_4372",
+  "IMG_4373",
+].map((name) => ({ url: `/Trips_gallery/Chopta%20Tungnath%20Trek/${name}.JPG.jpeg` }));
+
+const CHOPTA_FAQS = [
+  {
+    title: "What is the Chopta Tungnath Chandrashila Trek?",
+    description:
+      "It is a scenic Himalayan trek covering Chopta, Tungnath Temple and Chandrashila Summit, with Deoriatal included in this itinerary.",
+  },
+  {
+    title: "How difficult is the Chopta Tungnath Trek?",
+    description: "The trek is considered Easy to Moderate and is suitable for beginners with basic fitness.",
+  },
+  {
+    title: "What is the altitude of Chandrashila?",
+    description: "Chandrashila Summit is approximately 4,000 metres (13,123 ft) above sea level.",
+  },
+  {
+    title: "What is the best time to do the Chopta Tungnath Chandrashila Trek?",
+    description:
+      "The best seasons are generally April to June and September to November. Winter offers a different experience with snow, subject to weather and road conditions.",
+  },
+  {
+    title: "Can beginners do this trek?",
+    description: "Yes. Beginners can do this trek with reasonable fitness, proper pacing and suitable trekking shoes.",
+  },
+  {
+    title: "Is Tungnath Temple open throughout the year?",
+    description:
+      "No. Tungnath Temple follows its seasonal opening and closing schedule. During the winter closure, the temple area may remain inaccessible depending on conditions.",
+  },
+  {
+    title: "How far is Chandrashila from Chopta?",
+    description:
+      "The trekking route from Chopta to Chandrashila is approximately 5 km one way, depending on the exact route and conditions.",
+  },
+  {
+    title: "Where does the trek start and where do we stay?",
+    description:
+      "The trip accommodation is in Sari Village. The Tungnath–Chandrashila trek starts from Chopta, which is reached by road from Sari.",
+  },
+  {
+    title: "What should I carry for the Chopta Tungnath Trek?",
+    description:
+      "Carry good trekking shoes, warm layers, rain protection, water bottle, sunglasses, sunscreen, personal medicines, a small backpack and basic toiletries.",
+  },
+];
+
+const CHOPTA_ARTICLE: ArticleContent = {
+  title: "Chopta Tungnath Chandrashila Trek: Where the Mountains Meet Your Soul",
+  standfirst:
+    "Green meadows above Sari, the world's highest Shiva temple, a 4,000 m summit and the still water of Deoriatal — the Mini Switzerland of Uttarakhand, told the way it is felt.",
+  readMinutes: 6,
+  sections: [
+    {
+      paragraphs: [
+        "Some journeys are not meant to be completed just for the destination.",
+        "They are meant to be felt.",
+        "The Chopta Tungnath Chandrashila Trek is one such journey — where every step takes you a little farther from the noise of everyday life and a little closer to yourself.",
+        "Tucked away in the beautiful mountains of Uttarakhand, Chopta is often called the “Mini Switzerland of Uttarakhand.” Surrounded by green meadows, dense forests and magnificent Himalayan peaks, it is a place where the air feels different and the silence speaks.",
+        "But the real journey begins when you leave the road behind and start walking.",
+      ],
+    },
+    {
+      heading: "A Journey That Begins in Sari",
+      paragraphs: [
+        "Our journey begins at Sari Village, a peaceful Himalayan settlement surrounded by mountains and forests.",
+        "As the evening settles over the village, the pace of life naturally slows down. There are no crowded streets, no traffic horns and no city rush — only mountain air, simple village life and a sky filled with stars.",
+        "This is where you prepare yourself for the adventure waiting the next morning.",
+      ],
+    },
+    {
+      heading: "Walking Towards Tungnath",
+      paragraphs: [
+        "The next morning, the journey takes you towards Chopta, the starting point of the trek to Tungnath and Chandrashila.",
+        "The trail gradually climbs through beautiful Himalayan landscapes. With every turn, the scenery changes. Forests open up to mountain views, clouds drift across the peaks and the sound of the wind becomes your constant companion.",
+        "And then comes Tungnath.",
+        "Standing at a high altitude amidst the Himalayas, Tungnath is not just a temple — it is an experience of faith, silence and nature coming together.",
+        "For many trekkers, reaching Tungnath feels like more than simply completing a trail.",
+        "It feels like arriving somewhere they had been searching for without knowing it.",
+      ],
+    },
+    {
+      heading: "The Final Climb to Chandrashila",
+      paragraphs: [
+        "From Tungnath, the trail becomes steeper as you make your way towards Chandrashila Summit.",
+        "The climb may test your legs, but the mountains keep giving you reasons to continue.",
+        "And when you finally reach the summit, everything suddenly feels worth it.",
+        "Standing at Chandrashila, with the vast Himalayan ranges stretching endlessly before you, you realise how small our worries can feel when viewed from the mountains.",
+        "On a clear day, the majestic Chaukhamba range and other Himalayan peaks create a breathtaking panorama.",
+        "You don’t need a perfect photograph at that moment.",
+        "You simply need to stand there and take it all in.",
+      ],
+    },
+    {
+      heading: "Deoriatal – A Quiet Ending to a Beautiful Journey",
+      paragraphs: [
+        "The adventure continues towards Deoriatal, a serene lake surrounded by forests and magnificent Himalayan views.",
+        "The peaceful trail from Sari to Deoriatal offers a completely different experience from the Chandrashila climb.",
+        "Here, there is no rush.",
+        "Just trees, birds, mountain air and the beautiful silence of the Himalayas.",
+        "On a clear day, the reflection of the mountains in the calm waters of Deoriatal creates a picture that stays in your memory long after you leave.",
+      ],
+    },
+    {
+      heading: "More Than Just a Trek",
+      paragraphs: [
+        "The Chopta Tungnath Chandrashila Trek is often described as an easy-to-moderate Himalayan trek, making it a wonderful choice for beginners and first-time trekkers.",
+        "But its beauty is not measured by difficulty.",
+        "It is measured by the moments you collect along the way.",
+        "A sunrise over the mountains.",
+        "A quiet conversation on the trail.",
+        "A cup of tea in a Himalayan village.",
+        "The first sight of Tungnath.",
+        "The feeling of reaching Chandrashila.",
+        "The silence of Deoriatal.",
+        "These are the moments that turn a trek into a memory.",
+      ],
+    },
+    {
+      heading: "Come for the Mountains, Return with a Story",
+      paragraphs: [
+        "You may begin this journey thinking that you are going to explore the Himalayas.",
+        "But somewhere between Sari and Chandrashila, you may realise that the mountains have also given you the chance to explore yourself.",
+        "So pack your backpack, leave the city behind and take that first step.",
+        "Chopta is waiting.",
+        "Tungnath is calling.",
+        "Chandrashila is waiting for your footsteps.",
+        "And perhaps, somewhere along the trail, you will find a version of yourself that the noise of the city made you forget.",
+        "Your mountains. Your journey. Your story.",
+      ],
+    },
+  ],
+  signoff: "Travel with Trip My Soul.",
+};
+
+// Transcribed verbatim from the Google reviews on the Trip My Soul profile.
+const CHOPTA_EXTERNAL_REVIEWS: ExternalReview[] = [
+  {
+    source: "Google",
+    subject: "Trip My Soul",
+    rating: 5,
+    date: "5 months ago",
+    text: [
+      "Review of Tungnath–Chandrashila Trek",
+      "I usually don't write reviews, but this one I had to.",
+      "The trek was beautiful, and the best part was our trek leader Himanshu bhaiya - a huge shoutout to him. I was trekking at a slow tortoise pace, but he was so kind, calm and patient the whole way. He never rushed me and kept encouraging me as well as guiding me, which made the trek feel easy, comfortable and enjoyable.",
+      "The stay was neat and peaceful with lovely views, though basic toiletries would have helped, but understandable since it's a remote place. It is a pretty offbeat place to stay.",
+      "Also, thanks to Rohit Bhaiya who drove us safely to and fro throughout this whole trip.",
+      "Overall, the trek was amazing, and Himanshu bhaiya's patience and kindness made it even more special.",
+      "In case, you are planning your trek with TMS do ask for this trek leader.",
+    ],
+  },
+  {
+    source: "Google",
+    subject: "Trip My Soul",
+    author: "Shailly Sharma",
+    rating: 5,
+    date: "2 months ago",
+    text: [
+      "Amazing Kedarnath & Tungnath Experience!",
+      "I recently traveled to Kedarnath and Tungnath with this trip my soul, and the entire experience was fantastic from start to finish. Everything was well-organized, including transportation, and itinerary planning, which made the trip completely stress-free and enjoyable.",
+      "Although at Sonparyag the stay and food was average.",
+      "A special shoutout to Vicky, Arun Bhaiya and Mamchand for their exceptional support throughout the journey. They were incredibly helpful, approachable, and always ensured that everyone in the group was comfortable and safe. Their positive attitude, local knowledge, and willingness to help made the trip even more memorable.",
+      "I highly recommend this travel company to anyone planning a spiritual or trekking trip to the Himalayas. Thank you for creating such wonderful memories—I look forward to traveling with you again! 🙏🏔️",
+    ],
+  },
+  {
+    source: "Google",
+    subject: "Trip My Soul",
+    author: "Parag Dubey",
+    rating: 5,
+    date: "a year ago",
+    text: [
+      "It was our first trek & literally I had to say it was my best experience to feel nature and mountains.",
+      "Had an amazing experience with Trip My Soul on the chandrashila trek! Everything was well-organized, and our trek lead, himanshu bhai was incredibly supportive and knowledgeable. The views were breathtaking, the campsites clean, and the food delicious. Highly recommend them for a hassle-free and memorable trekking adventure …",
+    ],
+  },
+];
+
+const CHOPTA_REVIEW_VIDEOS = [
+  "https://youtube.com/shorts/Q235DetUukc",
+  "https://youtube.com/shorts/pJ9esoHTl7g",
+  "https://youtube.com/shorts/YtTT7-Ru9bA",
+  "https://youtube.com/shorts/9Y2YYU6cz5s",
+];
+
 export const WEEKEND_TRIPS: TripListingItem[] = [
   toListingItem(
     {
@@ -371,69 +636,21 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       themes: ["Snow", "Meadow", "Forest", "Pilgrimage"],
       category: "Weekend Trip",
       detailsPath: "/trips/weekend/chopta-tungnath-trek",
-      alternateNames: ["Chopta Tungnath Chandrashila Trek", "Tungnath Trek", "Chandrashila Trek", "Deoria Tal", "Chopta Trek", "Kedar"],
+      alternateNames: [...CHOPTA_ALTERNATE_NAMES, "Chopta Tungnath Rishikesh to Rishikesh"],
       altitude: "Chandrashila — a 4,000 m Himalayan summit",
       minAge: 8,
       availability: "Oct: every Saturday · Nov–Jan: daily departures",
-      /**
-       * Dates are the ex-Rishikesh Day 1. The ex-Delhi variant runs the same
-       * departures, leaving Delhi on the Day 0 night before (so a Saturday
-       * batch is a Friday-night Delhi pickup) — see `priceNote` and the Day 0
-       * / Day 4 itinerary entries.
-       *
-       * October is weekends only; from November the trek runs daily through
-       * the winter season, which ends in January.
-       */
-      batchDates: [
-        // October starts at the 10th rather than the 1st: the departures list
-        // has no past-date filter, so the 3rd would render as bookable.
-        ...datesInRange("2026-10-10", "2026-10-31", [6]),
-        ...datesInRange("2026-11-01", "2027-01-31"),
-      ],
+      batchDates: CHOPTA_BATCH_DATES,
       intro:
-        "The most accessible Himalayan trek in Uttarakhand and a genuine 4,000 m summit without the stress. Tungnath is the highest Shiva temple in the world, and Chandrashila above it gives a full 360° of the range.",
-      highlights: [
-        "Tungnath — highest Shiva temple in the world",
-        "Chandrashila summit, 360° Himalayan views",
-        "Deoria Tal",
-        "Dhari Devi Temple",
-        "Devprayag Sangam",
-        "Monal birds, occasionally Himalayan Tahr",
-        "Suitable for all ages — easy grade",
-        "Accessible year round; moderate Dec–Feb with snowfall",
-      ],
-      /** The two source PDFs are the same trek from different pickup cities. */
-      priceNote:
-        "Same trek, two pickup points. The Delhi variant adds a Day 0 night pickup and a Day 4 early-morning drop. Both prices exclude GST.",
+        "The most accessible Himalayan trek in Uttarakhand and a genuine 4,000 m summit without the stress. Tungnath is the highest Shiva temple in the world, and Chandrashila above it gives a full 360° of the range. Rishikesh to Rishikesh — if you need a Delhi pickup, book the Delhi to Delhi package instead.",
+      highlights: CHOPTA_HIGHLIGHTS,
+      priceNote: "Price excludes GST.",
       packages: [
         { id: "ex-rishikesh", label: "Ex-Rishikesh — 3D/2N", price: 4999, paxLabel: "Ex-Rishikesh", vehicle: "By group size", sharing: "Triple / quad" },
-        { id: "ex-delhi", label: "Ex-Delhi — adds Day 0 and Day 4", price: 6499, paxLabel: "Ex-Delhi", vehicle: "By group size", sharing: "Triple / quad" },
       ],
-      itinerary: [
-        { day: 0, title: "Delhi pickup — ex-Delhi variant only", entries: [{ text: "Night pickup from Kashmiri Gate or Akshardham Temple, 10–11 PM." }] },
-        { day: 1, title: "Rishikesh to Sari Village", entries: [{ text: "Drive about 200 km, 6–7 hours." }, { text: "Sightseeing at Dhari Devi Temple and Devprayag Sangam." }, { text: "Check into homestay or campstay. Overnight Sari." }] },
-        { day: 2, title: "Tungnath and Chandrashila", entries: [{ text: "Trek 3.5 km to Tungnath, then 1.5 km further to Chandrashila — about 5 km in total." }, { text: "Temple visit and 360° Himalayan views." }, { text: "Overnight Sari." }] },
-        { day: 3, title: "Deoria Tal and return", entries: [{ text: "Trek about 1.5 km, roughly an hour, to Deoria Tal." }, { text: "Drive back to Rishikesh." }] },
-        { day: 4, title: "Delhi drop — ex-Delhi variant only", entries: [{ text: "Early morning drop at Kashmiri Gate or Akshardham Temple, 4–5 AM." }] },
-      ],
-      costIncludes: [
-        "Rishikesh to Rishikesh, or Delhi to Delhi, transport depending on variant",
-        "Vegetarian meals only, from Day 1 dinner to last-day breakfast",
-        "Camps or homestay accommodation, triple / quad sharing",
-        "Experienced qualified guide",
-        "Basic first aid",
-        "Achievement certificate",
-      ],
-      costExcludes: [
-        "Forest fees and permits",
-        "Meals during transportation",
-        "Personal expenses",
-        "Costs from unscheduled delays such as roadblocks or landslides",
-        "Porter and mule charges",
-        "Backpack offloading charges",
-        "Evacuation cost",
-        "Anything not listed under inclusions",
-      ],
+      itinerary: CHOPTA_TREK_ITINERARY,
+      costIncludes: ["Rishikesh to Rishikesh transport", ...CHOPTA_COST_INCLUDES],
+      costExcludes: CHOPTA_COST_EXCLUDES,
       transportModes: TRANSPORT_BY_GROUP_SIZE,
       cancellationPolicy: TIERED_CANCELLATION_POLICY,
       confirmationPolicy: CONFIRMATION_POLICY,
@@ -441,234 +658,104 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
       rentalGear: TREK_RENTAL_GEAR,
       thingsToRemember: TRIP_GROUND_RULES,
-      // Shot on past batches. The folder also holds four .HEIC originals, left
-      // out because browsers other than Safari will not render them in an <img>.
-      gallery: [
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4227.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4228.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4229.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4231.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4232.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4237.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4240.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4246.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4247.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4259.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4267.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4268.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4277.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4278.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4342.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4343.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4345.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4346.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4349.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4350.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4351.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4352.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4353.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4355.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4357.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4358.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4359.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4360.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4361.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4362.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4363.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4364.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4365.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4367.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4370.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4372.JPG.jpeg" },
-        { url: "/Trips_gallery/Chopta%20Tungnath%20Trek/IMG_4373.JPG.jpeg" },
-      ],
+      gallery: CHOPTA_GALLERY,
       faqs: [
-        {
-          title: "What is the Chopta Tungnath Chandrashila Trek?",
-          description:
-            "It is a scenic Himalayan trek covering Chopta, Tungnath Temple and Chandrashila Summit, with Deoriatal included in this itinerary.",
-        },
-        {
-          title: "How difficult is the Chopta Tungnath Trek?",
-          description: "The trek is considered Easy to Moderate and is suitable for beginners with basic fitness.",
-        },
+        ...CHOPTA_FAQS.slice(0, 2),
         {
           title: "How many days are required for the trek?",
-          description: "Our itinerary is a 3 Days / 2 Nights trip covering Tungnath, Chandrashila and Deoriatal.",
+          description: "This package is a 3 Days / 2 Nights trip from Rishikesh covering Tungnath, Chandrashila and Deoriatal. The Delhi to Delhi package runs the same trek over 4 days.",
         },
-        {
-          title: "What is the altitude of Chandrashila?",
-          description: "Chandrashila Summit is approximately 4,000 metres (13,123 ft) above sea level.",
-        },
-        {
-          title: "What is the best time to do the Chopta Tungnath Chandrashila Trek?",
-          description:
-            "The best seasons are generally April to June and September to November. Winter offers a different experience with snow, subject to weather and road conditions.",
-        },
-        {
-          title: "Can beginners do this trek?",
-          description: "Yes. Beginners can do this trek with reasonable fitness, proper pacing and suitable trekking shoes.",
-        },
-        {
-          title: "Is Tungnath Temple open throughout the year?",
-          description:
-            "No. Tungnath Temple follows its seasonal opening and closing schedule. During the winter closure, the temple area may remain inaccessible depending on conditions.",
-        },
-        {
-          title: "How far is Chandrashila from Chopta?",
-          description:
-            "The trekking route from Chopta to Chandrashila is approximately 5 km one way, depending on the exact route and conditions.",
-        },
-        {
-          title: "Where does the trek start and where do we stay?",
-          description:
-            "The trip accommodation is in Sari Village. The Tungnath–Chandrashila trek starts from Chopta, which is reached by road from Sari.",
-        },
-        {
-          title: "What should I carry for the Chopta Tungnath Trek?",
-          description:
-            "Carry good trekking shoes, warm layers, rain protection, water bottle, sunglasses, sunscreen, personal medicines, a small backpack and basic toiletries.",
-        },
+        ...CHOPTA_FAQS.slice(2),
       ],
-      article: {
-        title: "Chopta Tungnath Chandrashila Trek: Where the Mountains Meet Your Soul",
-        standfirst:
-          "Green meadows above Sari, the world's highest Shiva temple, a 4,000 m summit and the still water of Deoriatal — the Mini Switzerland of Uttarakhand, told the way it is felt.",
-        readMinutes: 6,
-        sections: [
-          {
-            paragraphs: [
-              "Some journeys are not meant to be completed just for the destination.",
-              "They are meant to be felt.",
-              "The Chopta Tungnath Chandrashila Trek is one such journey — where every step takes you a little farther from the noise of everyday life and a little closer to yourself.",
-              "Tucked away in the beautiful mountains of Uttarakhand, Chopta is often called the “Mini Switzerland of Uttarakhand.” Surrounded by green meadows, dense forests and magnificent Himalayan peaks, it is a place where the air feels different and the silence speaks.",
-              "But the real journey begins when you leave the road behind and start walking.",
-            ],
-          },
-          {
-            heading: "A Journey That Begins in Sari",
-            paragraphs: [
-              "Our journey begins at Sari Village, a peaceful Himalayan settlement surrounded by mountains and forests.",
-              "As the evening settles over the village, the pace of life naturally slows down. There are no crowded streets, no traffic horns and no city rush — only mountain air, simple village life and a sky filled with stars.",
-              "This is where you prepare yourself for the adventure waiting the next morning.",
-            ],
-          },
-          {
-            heading: "Walking Towards Tungnath",
-            paragraphs: [
-              "The next morning, the journey takes you towards Chopta, the starting point of the trek to Tungnath and Chandrashila.",
-              "The trail gradually climbs through beautiful Himalayan landscapes. With every turn, the scenery changes. Forests open up to mountain views, clouds drift across the peaks and the sound of the wind becomes your constant companion.",
-              "And then comes Tungnath.",
-              "Standing at a high altitude amidst the Himalayas, Tungnath is not just a temple — it is an experience of faith, silence and nature coming together.",
-              "For many trekkers, reaching Tungnath feels like more than simply completing a trail.",
-              "It feels like arriving somewhere they had been searching for without knowing it.",
-            ],
-          },
-          {
-            heading: "The Final Climb to Chandrashila",
-            paragraphs: [
-              "From Tungnath, the trail becomes steeper as you make your way towards Chandrashila Summit.",
-              "The climb may test your legs, but the mountains keep giving you reasons to continue.",
-              "And when you finally reach the summit, everything suddenly feels worth it.",
-              "Standing at Chandrashila, with the vast Himalayan ranges stretching endlessly before you, you realise how small our worries can feel when viewed from the mountains.",
-              "On a clear day, the majestic Chaukhamba range and other Himalayan peaks create a breathtaking panorama.",
-              "You don’t need a perfect photograph at that moment.",
-              "You simply need to stand there and take it all in.",
-            ],
-          },
-          {
-            heading: "Deoriatal – A Quiet Ending to a Beautiful Journey",
-            paragraphs: [
-              "The adventure continues towards Deoriatal, a serene lake surrounded by forests and magnificent Himalayan views.",
-              "The peaceful trail from Sari to Deoriatal offers a completely different experience from the Chandrashila climb.",
-              "Here, there is no rush.",
-              "Just trees, birds, mountain air and the beautiful silence of the Himalayas.",
-              "On a clear day, the reflection of the mountains in the calm waters of Deoriatal creates a picture that stays in your memory long after you leave.",
-            ],
-          },
-          {
-            heading: "More Than Just a Trek",
-            paragraphs: [
-              "The Chopta Tungnath Chandrashila Trek is often described as an easy-to-moderate Himalayan trek, making it a wonderful choice for beginners and first-time trekkers.",
-              "But its beauty is not measured by difficulty.",
-              "It is measured by the moments you collect along the way.",
-              "A sunrise over the mountains.",
-              "A quiet conversation on the trail.",
-              "A cup of tea in a Himalayan village.",
-              "The first sight of Tungnath.",
-              "The feeling of reaching Chandrashila.",
-              "The silence of Deoriatal.",
-              "These are the moments that turn a trek into a memory.",
-            ],
-          },
-          {
-            heading: "Come for the Mountains, Return with a Story",
-            paragraphs: [
-              "You may begin this journey thinking that you are going to explore the Himalayas.",
-              "But somewhere between Sari and Chandrashila, you may realise that the mountains have also given you the chance to explore yourself.",
-              "So pack your backpack, leave the city behind and take that first step.",
-              "Chopta is waiting.",
-              "Tungnath is calling.",
-              "Chandrashila is waiting for your footsteps.",
-              "And perhaps, somewhere along the trail, you will find a version of yourself that the noise of the city made you forget.",
-              "Your mountains. Your journey. Your story.",
-            ],
-          },
-        ],
-        signoff: "Travel with Trip My Soul.",
-      },
-      // The five published pairings, matching the `/treks` listing. The first
-      // four render; all resolve to Himalayan treks rather than weekend trips.
-      relatedSlugs: ["kedarkantha-trek", "brahmatal-trek", "kuari-pass-trek", "dayara-bugyal-trek", "nagtibba-trek"],
-      // Transcribed verbatim from the Google reviews on the Trip My Soul profile.
-      externalReviews: [
+      article: CHOPTA_ARTICLE,
+      // The Delhi variant of this same package first, then the five published
+      // pairings matching the `/treks` listing. Only the first four render.
+      relatedSlugs: ["chopta-tungnath-trek-delhi", "kedarkantha-trek", "brahmatal-trek", "kuari-pass-trek", "dayara-bugyal-trek", "nagtibba-trek"],
+      externalReviews: CHOPTA_EXTERNAL_REVIEWS,
+      reviewVideos: CHOPTA_REVIEW_VIDEOS,
+    }
+  ),
+
+  toListingItem(
+    {
+      name: "Chopta & Tungnath Trek — Delhi to Delhi",
+      slug: "chopta-tungnath-trek-delhi",
+      duration: "3N/4D",
+      heroImage: "/Trips_gallery/Tungnath_chandrashila/IMG_4346.JPG.jpeg",
+      tagline: "The same 4,000 m summit and the world's highest Shiva temple, run door to door from Delhi.",
+    },
+    {
+      region: "Uttarakhand",
+      startLocation: "Delhi",
+      endLocation: "Delhi",
+      difficulty: "Easy",
+      price: 6499,
+      months: ["Mar", "Apr", "May", "Jun", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
+      themes: ["Snow", "Meadow", "Forest", "Pilgrimage"],
+      category: "Weekend Trip",
+      detailsPath: "/trips/weekend/chopta-tungnath-trek-delhi",
+      alternateNames: [
+        ...CHOPTA_ALTERNATE_NAMES,
+        "Chopta Tungnath Delhi to Delhi",
+        "Chopta Tungnath Trek from Delhi",
+        "Chandrashila Trek from Delhi",
+      ],
+      altitude: "Chandrashila — a 4,000 m Himalayan summit",
+      minAge: 8,
+      availability: "Oct: every Friday · Nov–Feb: daily departures",
+      /**
+       * Delhi departure dates — the Day 0 night pickup, one day earlier than
+       * the ex-Rishikesh Day 1 in `CHOPTA_BATCH_DATES`. A batch runs Day 0 to
+       * Day 4, so the 9th departs on the 9th and drops back on the 13th.
+       *
+       * October is Fridays only (9th, 16th, 23rd, 30th); from November the
+       * trek departs daily through the winter season, ending in February.
+       */
+      batchDates: [
+        ...datesInRange("2026-10-09", "2026-10-30", [5]),
+        ...datesInRange("2026-11-01", "2027-02-28"),
+      ],
+      intro:
+        "The same Chopta, Tungnath and Chandrashila trek as the Rishikesh package, with the road legs built in: an overnight departure from Delhi on Day 0 and an early-morning drop back on Day 4. Pickup and drop at Kashmiri Gate or Akshardham Temple.",
+      highlights: [...CHOPTA_HIGHLIGHTS, "Overnight Delhi pickup and drop — no separate travel to book"],
+      priceNote: "Price excludes GST. Covers Delhi to Delhi transport; the ex-Rishikesh package is the same trek without the road legs.",
+      packages: [
+        { id: "ex-delhi", label: "Ex-Delhi — 4D/3N", price: 6499, paxLabel: "Ex-Delhi", vehicle: "By group size", sharing: "Triple / quad" },
+      ],
+      itinerary: [
+        { day: 0, title: "Overnight departure from Delhi", entries: [{ time: "10–11 PM", text: "Night pickup from Kashmiri Gate or Akshardham Temple." }, { text: "Overnight drive Delhi → Rishikesh, about 6 hours." }] },
+        // Days 1 and 2 are the trek proper, shared with the ex-Rishikesh
+        // package; Day 3 is restated because the drive continues to Delhi.
+        ...CHOPTA_TREK_ITINERARY.slice(0, 2),
+        { day: 3, title: "Deoria Tal and departure", entries: [{ text: "Trek about 1.5 km, roughly an hour, to Deoria Tal." }, { text: "Drive back via Rishikesh and on to Delhi overnight." }] },
+        { day: 4, title: "Arrival in Delhi", entries: [{ time: "4–5 AM", text: "Early morning drop at Kashmiri Gate or Akshardham Temple." }] },
+      ],
+      costIncludes: ["Delhi to Delhi transport", ...CHOPTA_COST_INCLUDES],
+      costExcludes: CHOPTA_COST_EXCLUDES,
+      transportModes: TRANSPORT_BY_GROUP_SIZE,
+      cancellationPolicy: TIERED_CANCELLATION_POLICY,
+      confirmationPolicy: CONFIRMATION_POLICY,
+      contactNumbers: TRIP_CONTACT_NUMBERS,
+      thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
+      rentalGear: TREK_RENTAL_GEAR,
+      thingsToRemember: TRIP_GROUND_RULES,
+      gallery: CHOPTA_GALLERY,
+      faqs: [
+        ...CHOPTA_FAQS.slice(0, 2),
         {
-          source: "Google",
-          subject: "Trip My Soul",
-          rating: 5,
-          date: "5 months ago",
-          text: [
-            "Review of Tungnath–Chandrashila Trek",
-            "I usually don't write reviews, but this one I had to.",
-            "The trek was beautiful, and the best part was our trek leader Himanshu bhaiya - a huge shoutout to him. I was trekking at a slow tortoise pace, but he was so kind, calm and patient the whole way. He never rushed me and kept encouraging me as well as guiding me, which made the trek feel easy, comfortable and enjoyable.",
-            "The stay was neat and peaceful with lovely views, though basic toiletries would have helped, but understandable since it's a remote place. It is a pretty offbeat place to stay.",
-            "Also, thanks to Rohit Bhaiya who drove us safely to and fro throughout this whole trip.",
-            "Overall, the trek was amazing, and Himanshu bhaiya's patience and kindness made it even more special.",
-            "In case, you are planning your trek with TMS do ask for this trek leader."
-          ]
+          title: "How many days are required for the trek?",
+          description: "This package runs over 4 days from Delhi: a Day 0 overnight departure, two days on the trail from Sari, and an early-morning arrival back in Delhi on Day 4.",
         },
         {
-          source: "Google",
-          subject: "Trip My Soul",
-          author: "Shailly Sharma",
-          rating: 5,
-          date: "2 months ago",
-          text: [
-            "Amazing Kedarnath & Tungnath Experience!",
-            "I recently traveled to Kedarnath and Tungnath with this trip my soul, and the entire experience was fantastic from start to finish. Everything was well-organized, including transportation, and itinerary planning, which made the trip completely stress-free and enjoyable.",
-            "Although at Sonparyag the stay and food was average.",
-            "A special shoutout to Vicky, Arun Bhaiya and Mamchand for their exceptional support throughout the journey. They were incredibly helpful, approachable, and always ensured that everyone in the group was comfortable and safe. Their positive attitude, local knowledge, and willingness to help made the trip even more memorable.",
-            "I highly recommend this travel company to anyone planning a spiritual or trekking trip to the Himalayas. Thank you for creating such wonderful memories—I look forward to traveling with you again! 🙏🏔️"
-          ]
+          title: "Where is the Delhi pickup and drop?",
+          description: "Pickup is from Kashmiri Gate or Akshardham Temple between 10 and 11 PM on the night before Day 1, and the drop is at the same points between 4 and 5 AM on Day 4.",
         },
-        {
-          source: "Google",
-          subject: "Trip My Soul",
-          author: "Parag Dubey",
-          rating: 5,
-          date: "a year ago",
-          text: [
-            "It was our first trek & literally I had to say it was my best experience to feel nature and mountains.",
-            "Had an amazing experience with Trip My Soul on the chandrashila trek! Everything was well-organized, and our trek lead, himanshu bhai was incredibly supportive and knowledgeable. The views were breathtaking, the campsites clean, and the food delicious. Highly recommend them for a hassle-free and memorable trekking adventure …"
-          ]
-        }
+        ...CHOPTA_FAQS.slice(2),
       ],
-      reviewVideos: [
-        "https://youtube.com/shorts/Q235DetUukc",
-        "https://youtube.com/shorts/pJ9esoHTl7g",
-        "https://youtube.com/shorts/YtTT7-Ru9bA",
-        "https://youtube.com/shorts/9Y2YYU6cz5s"
-      ],
+      article: CHOPTA_ARTICLE,
+      relatedSlugs: ["chopta-tungnath-trek", "kedarkantha-trek", "brahmatal-trek", "kuari-pass-trek", "dayara-bugyal-trek"],
+      externalReviews: CHOPTA_EXTERNAL_REVIEWS,
+      reviewVideos: CHOPTA_REVIEW_VIDEOS,
     }
   ),
 
@@ -3454,6 +3541,7 @@ export const CANONICAL_TRIP_PATHS: Record<string, string> = {
   "yulla-kanda-trek": "/trips/weekend/yulla-kanda-trek",
   // YATRAS
   "chopta-tungnath-trek": "/trips/weekend/chopta-tungnath-trek",
+  "chopta-tungnath-trek-delhi": "/trips/weekend/chopta-tungnath-trek-delhi",
   "kedarnath-yatra": "/trips/backpacking/kedarnath-yatra",
   "chardham-yatra": "/trips/backpacking/char-dham-yatra",
 };

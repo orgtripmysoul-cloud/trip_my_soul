@@ -23,6 +23,7 @@ export const FEATURED_TREK_SLUGS = [
   "bali-pass-trek",
   // Yatras
   "chopta-tungnath-trek",
+  "chopta-tungnath-trek-delhi",
   "char-dham-yatra",
   "panch-kedar-yatra",
   "three-kedar-yatra",

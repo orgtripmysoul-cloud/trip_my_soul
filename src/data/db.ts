@@ -4581,6 +4581,46 @@ export const YATRAS: Trek[] = [
       "Pilgrimage"
     ]
   },
+  // The Delhi-to-Delhi run of the same trek. A catalogue stub only: it exists
+  // so the package is indexed by the homepage and `/yatra`, which read this
+  // file rather than `trips.ts`. `CANONICAL_TRIP_PATHS` points its cards at
+  // the written-up trip page, so there is no thin `/treks/[slug]` duplicate.
+  {
+    "slug": "chopta-tungnath-trek-delhi",
+    "name": "Chopta Tungnath Chandrashila Trek — Delhi to Delhi",
+    "heroImage": "/Trips_gallery/Tungnath_chandrashila/IMG_4346.JPG.jpeg",
+    "tagline": "The same Tungnath and Chandrashila trek, run door to door from Delhi with an overnight departure and an early-morning drop.",
+    "price": 6499,
+    "days": 4,
+    "nights": 3,
+    "region": "Uttarakhand",
+    "category": "Spiritual Journey",
+    "startLocation": "Delhi To Delhi",
+    "endLocation": "Delhi",
+    "difficulty": "Easy to Moderate",
+    "maxAltitude": "13,123 ft / 4,000 m",
+    "totalDistance": "15–17 Kilometers",
+    "availability": "October: every Friday; November – February: daily departures",
+    "months": [
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun"
+    ],
+    "themes": [
+      "Snow",
+      "Meadow",
+      "Forest",
+      "Summit",
+      "Pilgrimage"
+    ]
+  },
   {
     "slug": "kedarnath-yatra",
     "name": "Kedarnath Trek",
