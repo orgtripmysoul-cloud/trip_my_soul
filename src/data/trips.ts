@@ -2340,7 +2340,7 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
         "2026-10-24", "2026-10-31", "2026-11-07",
       ],
       intro:
-        "Four days from Haridwar to the Kedarnath shrine and back, with an overnight stay at the temple. The trail from Sonprayag climbs through valleys, rhododendron canopy and the chattis at Gaurikund and Jungle Chatti, and the halt at Guptkashi on the way up doubles as an acclimatisation night.",
+        "Four days from Haridwar or Rishikesh to the Kedarnath shrine and back, with an overnight stay at the temple. The 16 km trail from Gaurikund climbs through valleys, rhododendron canopy and the chattis at Jungle Chatti, and the halts at Sonprayag on either side keep the trek days clean.",
       highlights: [
         "Kedarnath Temple at 11,755 ft, with the pre-dawn Abhishek",
         "Kedarnath Dome and Kedar Peak at sunrise and sunset",
@@ -2353,10 +2353,10 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
       sourceCaveat:
         "Two things in the source PDF do not line up. The inclusions section is boilerplate carried over from a longer itinerary — it refers to 7 nights of accommodation and meals from Day 1 dinner to Day 5 breakfast, which cannot apply to a 4-day trip, so inclusions are withheld here pending confirmation. The calendar page also states daily departures from Haridwar / Rishikesh while a later page states weekend batches every Saturday. The itinerary, pricing, transport and packing details below are accurate as printed.",
       itinerary: [
-        { day: 1, title: "Haridwar to Guptkashi", entries: [{ text: "Drive 220 km, 8–9 hours, to 1,319 m." }, { text: "Passes Dhari Devi, Rudraprayag Sangam and the Mandakini river." }, { text: "Overnight Guptkashi." }] },
-        { day: 2, title: "Kedarnath", entries: [{ text: "20 km by road, then 20 km trek one way to 3,384 m." }, { text: "Doli, palki, pony and horse available at your own cost." }, { text: "Temple visit. Overnight Kedarnath." }] },
-        { day: 3, title: "Back to Guptkashi", entries: [{ text: "Pre-dawn bath, Abhishek and puja at the temple." }, { text: "Trek 20 km down to Sonprayag, then drive. Overnight Guptkashi." }] },
-        { day: 4, title: "Return to Haridwar", entries: [{ text: "Drive 220 km, 6–7 hours. Drop at the railway station." }] },
+        { day: 1, title: "Haridwar / Rishikesh to Sonprayag — 220 km, 8–9 hrs", entries: [{ text: "5 AM pickup from Haridwar / Rishikesh." }, { text: "Drive via Devprayag, Srinagar, Rudraprayag and Guptkashi." }, { text: "Registration check en route." }, { text: "Reach Sonprayag / Sitapur by evening. Dinner and overnight at the hotel." }] },
+        { day: 2, title: "Sonprayag to Kedarnath — 21 km drive + trek", entries: [{ text: "4 AM wake up, shared local jeep to Gaurikund (5 km)." }, { text: "16 km trek from Gaurikund to Kedarnath, 6–8 hours." }, { text: "Reach Kedarnath by evening for the evening Aarti darshan." }, { text: "Overnight at Kedarnath in a tent, dorm or lodge (basic)." }] },
+        { day: 3, title: "Kedarnath to Sonprayag — 16 km trek down + drive", entries: [{ text: "4 AM darshan, Abhishek and Bhairav Temple visit (0.5 km)." }, { text: "After breakfast, descend to Gaurikund in 5–6 hours." }, { text: "Shared jeep to Sonprayag. Dinner and overnight at the Sonprayag hotel." }] },
+        { day: 4, title: "Sonprayag to Haridwar / Rishikesh — 220 km, 8–9 hrs", entries: [{ text: "After breakfast, drive back to Haridwar / Rishikesh." }, { text: "Reach by 6–7 PM. Tour ends with blessings." }] },
       ],
       costExcludes: HIMALAYAN_TREK_EXCLUSIONS,
       transportModes: TRANSPORT_BY_GROUP_SIZE,
