@@ -6,7 +6,7 @@
  * and where it is charged.
  */
 
-export type TrekAddOnKey = "insurance" | "offload" | "gear";
+export type TrekAddOnKey = "insurance" | "offload" | "gear" | "twinSharing";
 
 export interface TrekAddOn {
   key: TrekAddOnKey;
@@ -36,6 +36,35 @@ export const TREK_ADD_ONS: TrekAddOn[] = [
     description: "Trek shoes, trekking pole, jacket and backpack on hire for the full trek.",
     price: 1500,
   },
+  {
+    key: "twinSharing",
+    label: "Twin Sharing Stay",
+    description: "Share your room and tent with one partner of your choice, instead of the default sharing basis.",
+    price: 2000,
+  },
 ];
 
 export const TREK_ADD_ON_KEYS: TrekAddOnKey[] = TREK_ADD_ONS.map((a) => a.key);
+
+/**
+ * Trips whose camps are already sold on a fixed triple/quad-sharing basis, so
+ * the twin-sharing upgrade cannot be offered on them. Every other trek, trip
+ * and yatra is eligible. Add a slug here when an itinerary commits a campsite
+ * to triple or quad sharing.
+ */
+export const TWIN_SHARING_EXCLUDED_SLUGS: readonly string[] = [
+  "kuari-pass-trek",
+  "pangarchulla-trek",
+  "brahmatal-trek",
+];
+
+/** True when `key` may be sold on the trip with this slug. */
+export function isAddOnAvailableForTrip(key: TrekAddOnKey, slug: string | undefined): boolean {
+  if (key !== "twinSharing") return true;
+  return !!slug && !TWIN_SHARING_EXCLUDED_SLUGS.includes(slug);
+}
+
+/** The add-ons actually bookable on one trip, in display order. */
+export function getAddOnsForTrip(slug: string | undefined): TrekAddOn[] {
+  return TREK_ADD_ONS.filter((addOn) => isAddOnAvailableForTrip(addOn.key, slug));
+}

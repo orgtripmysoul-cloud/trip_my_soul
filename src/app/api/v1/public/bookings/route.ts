@@ -10,7 +10,7 @@ import { isValidInrAmount, isValidPax, toPaise } from "@/lib/money";
 import { env } from "@/lib/server/env";
 import { verifyVerificationToken } from "@/lib/server/verificationToken";
 import type { CreateBookingRequest, CreateBookingResponse } from "@/lib/types/booking";
-import { TREK_ADD_ON_KEYS } from "@/data/addOns";
+import { TREK_ADD_ON_KEYS, isAddOnAvailableForTrip } from "@/data/addOns";
 
 export const dynamic = "force-dynamic";
 
@@ -51,6 +51,9 @@ function validate(body: Partial<CreateBookingRequest>): CreateBookingRequest {
     for (const key of traveller.addOns ?? []) {
       if (!TREK_ADD_ON_KEYS.includes(key)) {
         throw new AppError("VALIDATION_FAILED", "Unknown add-on selected.");
+      }
+      if (!isAddOnAvailableForTrip(key, body.trekSlug)) {
+        throw new AppError("VALIDATION_FAILED", "That add-on is not available on this trip.");
       }
     }
   }

@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { TREKS, WILDLIFE, YATRAS } from "@/data/db";
 import { ALL_TRIPS, tripToTrek } from "@/data/trips";
-import { TREK_ADD_ONS, type TrekAddOnKey } from "@/data/addOns";
+import { getAddOnsForTrip, isAddOnAvailableForTrip, type TrekAddOnKey } from "@/data/addOns";
 import { TRIP_BOOKING_TERMS } from "@/data/tripShared";
 import {
   Calendar, Info, ArrowLeft,
@@ -136,7 +136,8 @@ function CheckoutContent() {
       addOns: {
         insurance: true,
         offload: false,
-        gear: false
+        gear: false,
+        twinSharing: false
       } as Record<TrekAddOnKey, boolean>
     }
   ]);
@@ -164,15 +165,18 @@ function CheckoutContent() {
   // Price calculations
   const basePricePerPerson = priceParam ?? trek?.price ?? 0;
   
+  /** Add-ons bookable on this trip — twin sharing drops out on fixed triple/quad itineraries. */
+  const availableAddOns = useMemo(() => getAddOnsForTrip(trek?.slug), [trek?.slug]);
+
   const totalAddOns = useMemo(() => {
     return participants.reduce((total, p) => {
-      const addOnSum = TREK_ADD_ONS.reduce(
+      const addOnSum = availableAddOns.reduce(
         (sum, addOn) => (p.addOns[addOn.key] ? sum + addOn.price : sum),
         0
       );
       return total + addOnSum;
     }, 0);
-  }, [participants]);
+  }, [participants, availableAddOns]);
 
   const totalBasePrice = basePricePerPerson * participants.length;
   const rawSubtotal = totalBasePrice + totalAddOns;
@@ -208,7 +212,7 @@ function CheckoutContent() {
         name: derivedName.charAt(0).toUpperCase() + derivedName.slice(1),
         email: emailStr,
         isPrimary: false,
-        addOns: { insurance: true, offload: false, gear: false }
+        addOns: { insurance: true, offload: false, gear: false, twinSharing: false }
       }
     ]);
     setCoParticipantEmail("");
@@ -387,7 +391,9 @@ function CheckoutContent() {
         fullName: p.isPrimary ? primaryName.trim() : p.name,
         email: p.isPrimary ? primaryEmail.trim().toLowerCase() : p.email,
         isPrimary: p.isPrimary,
-        addOns: (Object.keys(p.addOns) as TrekAddOnKey[]).filter((key) => p.addOns[key]),
+        addOns: (Object.keys(p.addOns) as TrekAddOnKey[]).filter(
+          (key) => p.addOns[key] && isAddOnAvailableForTrip(key, trek.slug)
+        ),
       })),
       couponCode: appliedCouponCode || undefined,
       verificationToken,
@@ -678,7 +684,7 @@ function CheckoutContent() {
                     </span>
 
                     <div className="space-y-2 text-xs">
-                      {TREK_ADD_ONS.map((addOn) => (
+                      {availableAddOns.map((addOn) => (
                         <label
                           key={addOn.key}
                           className="flex items-center justify-between gap-2 min-h-[44px] p-2.5 rounded-xl border border-gray-150 hover:bg-gray-50/50 cursor-pointer transition"

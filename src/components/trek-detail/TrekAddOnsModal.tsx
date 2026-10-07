@@ -1,18 +1,21 @@
 "use client";
 
 import React from "react";
-import { Backpack, HeartPulse, Info, Plus, Tent } from "lucide-react";
+import { Backpack, HeartPulse, Info, Plus, Tent, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { TREK_ADD_ONS, type TrekAddOnKey } from "@/data/addOns";
+import { getAddOnsForTrip, type TrekAddOnKey } from "@/data/addOns";
 
 const ICONS: Record<TrekAddOnKey, LucideIcon> = {
   insurance: HeartPulse,
   offload: Backpack,
   gear: Tent,
+  twinSharing: Users,
 };
 
 interface TrekAddOnsModalProps {
   noun: string;
+  /** Decides which extras this trip may be sold — twin sharing is not offered everywhere. */
+  slug: string;
   onClose: () => void;
   /** Sends the traveller on to pick a batch, where the add-ons are actually chosen. */
   onBookNow: () => void;
@@ -22,7 +25,9 @@ interface TrekAddOnsModalProps {
  * Read-only price list of the optional extras. Selection stays at checkout —
  * this only tells the traveller what each one costs before they commit.
  */
-export default function TrekAddOnsModal({ noun, onClose, onBookNow }: TrekAddOnsModalProps) {
+export default function TrekAddOnsModal({ noun, slug, onClose, onBookNow }: TrekAddOnsModalProps) {
+  const addOns = getAddOnsForTrip(slug);
+
   return (
     <>
       <div className="w-12 h-12 rounded-full bg-brand-forest/10 flex items-center justify-center">
@@ -37,7 +42,7 @@ export default function TrekAddOnsModal({ noun, onClose, onBookNow }: TrekAddOns
       </div>
 
       <div className="space-y-2.5">
-        {TREK_ADD_ONS.map((addOn) => {
+        {addOns.map((addOn) => {
           const Icon = ICONS[addOn.key];
           return (
             <div

@@ -164,7 +164,12 @@ export default function TrekBookingSidebar({
 
       {openPanel === "addons" && (
         <ModalShell onClose={() => setOpenPanel(null)} className="max-w-lg text-left">
-          <TrekAddOnsModal noun={noun} onClose={() => setOpenPanel(null)} onBookNow={onBookNow} />
+          <TrekAddOnsModal
+            noun={noun}
+            slug={detail.trek.slug}
+            onClose={() => setOpenPanel(null)}
+            onBookNow={onBookNow}
+          />
         </ModalShell>
       )}
 
