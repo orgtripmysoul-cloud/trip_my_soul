@@ -1293,7 +1293,10 @@ export const TREKS: Trek[] = [
       "2026-12-05",
       "2026-12-19",
     ],
-    "startLocation": "Sankri",
+    // Pickup and drop are Dehradun to Dehradun; Sankri is the base village,
+    // reached on the Day 1 drive.
+    "startLocation": "Dehradun",
+    "endLocation": "Dehradun",
     "difficulty": "Easy to Moderate",
     "maxAltitude": "12,500 ft / 3,810 m",
     "totalDistance": "20–24 Kilometers",
@@ -1335,7 +1338,7 @@ export const TREKS: Trek[] = [
       "2026-12-05",
       "2026-12-19",
     ],
-    "startLocation": "Raithal",
+    "startLocation": "Dehradun",
     "difficulty": "Easy to Moderate",
     "maxAltitude": "12,000 ft / 3,658 m",
     "totalDistance": "20–25 Kilometers",
@@ -4591,8 +4594,8 @@ export const YATRAS: Trek[] = [
     "heroImage": "/Trips_gallery/Tungnath_chandrashila/IMG_4346.JPG.jpeg",
     "tagline": "The same Tungnath and Chandrashila trek, run door to door from Delhi with an overnight departure and an early-morning drop.",
     "price": 6499,
-    "days": 4,
-    "nights": 3,
+    "days": 3,
+    "nights": 2,
     "region": "Uttarakhand",
     "category": "Spiritual Journey",
     "startLocation": "Delhi To Delhi",
@@ -6440,7 +6443,7 @@ if (dayaraBugyalIndex !== -1) {
     { title: "Accommodation", description: "3 nights on quad/triple-sharing basis — 1 night in Raithal and 2 nights at the Gui campsite." },
     { title: "Meals", description: "All meals during the trek — breakfast, lunch and dinner." },
     { title: "Morning Tea/Coffee", description: "Morning tea or coffee on every trek day." },
-    { title: "Transportation", description: "Dehradun → Raithal → Dehradun/Rishikesh." },
+    { title: "Transportation", description: "Dehradun → Raithal → Dehradun." },
     { title: "Trek Leader/Guide", description: "Experienced trek leader or guide throughout the trek." },
     { title: "Support Staff", description: "Support staff and camping crew." },
     { title: "Tented Accommodation", description: "Tented accommodation at Gui." },
@@ -7246,7 +7249,7 @@ if (kuariPassIndex !== -1) {
       ],
       highlights: ["Alaknanda Valley Drive", "River Confluences", "Joshimath", "Trek Briefing"],
       meals: "Dinner",
-      stayType: "Hotel in Joshimath — twin/triple sharing"
+      stayType: "Hotel in Joshimath — triple/quad sharing"
     },
     {
       day: 2,
@@ -7269,7 +7272,7 @@ if (kuariPassIndex !== -1) {
       ],
       highlights: ["Himalayan Villages", "Forest Trail", "Valley Views", "First Camp"],
       meals: "Breakfast, Lunch & Dinner",
-      stayType: "Gulling campsite — twin sharing"
+      stayType: "Gulling campsite — triple sharing"
     },
     {
       day: 3,
@@ -7290,7 +7293,7 @@ if (kuariPassIndex !== -1) {
       ],
       highlights: ["Oak & Rhododendron Forest", "Nanda Devi Views", "Dronagiri Views", "Meadow Camp"],
       meals: "Breakfast, Lunch & Dinner",
-      stayType: "Khullara campsite — twin sharing"
+      stayType: "Khullara campsite — triple sharing"
     },
     {
       day: 4,
@@ -7320,7 +7323,7 @@ if (kuariPassIndex !== -1) {
         "High Ridge Walk"
       ],
       meals: "Breakfast, Packed Lunch & Dinner",
-      stayType: "Khullara campsite — twin sharing"
+      stayType: "Khullara campsite — triple sharing"
     },
     {
       day: 5,
@@ -7344,7 +7347,7 @@ if (kuariPassIndex !== -1) {
       ],
       highlights: ["Forest Descent", "Trek Ends at Tugasi", "Return to Joshimath"],
       meals: "Breakfast, Lunch & Dinner",
-      stayType: "Hotel in Joshimath — twin/triple sharing"
+      stayType: "Hotel in Joshimath — triple/quad sharing"
     },
     {
       day: 6,
@@ -7417,7 +7420,7 @@ if (kuariPassIndex !== -1) {
     },
     {
       title: "What accommodation is provided during the trek?",
-      description: "The itinerary includes hotel accommodation in Joshimath and camping accommodation during the trekking days. Camping is generally on a twin-sharing basis, subject to campsite conditions."
+      description: "The itinerary includes hotel accommodation in Joshimath on a triple/quad-sharing basis and camping accommodation during the trekking days. Camping is generally on a triple-sharing basis, subject to campsite conditions."
     },
     {
       title: "What should I carry for the Kuari Pass Trek?",
@@ -7666,8 +7669,8 @@ if (kuariPassIndex !== -1) {
 
   TREKS[kuariPassIndex].inclusions = [
     { title: "Transportation", description: "Dehradun → Joshimath → Dehradun, and Joshimath → Tugasi Village → Joshimath." },
-    { title: "Accommodation in Joshimath", description: "Twin/triple sharing." },
-    { title: "Camping accommodation", description: "Tents at the campsites during the trek." },
+    { title: "Accommodation in Joshimath", description: "Triple/quad sharing." },
+    { title: "Camping accommodation", description: "Tents at the campsites during the trek, on triple sharing." },
     { title: "Meals", description: "All meals during the trek as mentioned in the itinerary." },
     { title: "Trek Leader", description: "Experienced Trek Leader for the batch." },
     { title: "Local Trek Guide", description: "Local guide familiar with the Kuari Pass route." },
@@ -7933,6 +7936,44 @@ if (pangarchullaIndex !== -1) {
     "Kuari Pass alone is a moderate, beginner-friendly balcony walk to a 180° view of 108 Himalayan peaks in one line — Nanda Devi, Dronagiri, Kamet, Chaukhamba, Neelkanth, Trishul and more. Pangarchulla Peak is the harder, technical half of the trip: a 70–75° snow and rock wall above 14,500 ft, climbed roped up with helmet, ice axe and micro-spikes, starting at 1 AM so the group summits for sunrise.",
     "The trip runs the Kuari Pass day as an acclimatization day out of Khullara, with the Trek Leader checking fitness, oxygen levels and BP that evening before clearing anyone for the Pangarchulla summit attempt the next day. Trekkers who are not fit enough, or for whom the weather turns, rest at Khullara while the summit team goes up — safety decides who climbs, not the itinerary.",
     "Best done December to March for full winter snow, or April to June and September to October for clear Himalayan views without the deep snow; the route is closed in July–August monsoon."
+  ];
+
+  TREKS[pangarchullaIndex].heroImage =
+    "/Trips_gallery/Kuari%20Pass%20trek/IMG_4243.JPG.jpeg";
+
+  TREKS[pangarchullaIndex].heroImages = [
+    "/Trips_gallery/Kuari%20Pass%20trek/IMG_4243.JPG.jpeg",
+    "/Trips_gallery/Kuari%20Pass%20trek/IMG_4244.JPG.jpeg",
+    "/Trips_gallery/Kuari%20Pass%20trek/IMG_4269.JPG.jpeg",
+    "/Trips_gallery/Kuari%20Pass%20trek/IMG_4274.JPG.jpeg"
+  ];
+
+  TREKS[pangarchullaIndex].gallery = [
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4214.JPG.jpeg", caption: "Oak and pine forest above the Karchi roadhead" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4215.JPG.jpeg", caption: "Above the treeline on the Lord Curzon Trail" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4216.JPG.jpeg", caption: "Snow on the trail below Kuari Pass" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4235.JPG.jpeg", caption: "On the Lord Curzon Trail above Joshimath" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4236.JPG.jpeg", caption: "Forest section on the climb to Khullara" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4239.JPG.jpeg", caption: "The Khullara meadow campsite at 10,900 ft" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4240.JPG.jpeg", caption: "Climbing towards Khullara" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4241.JPG.jpeg", caption: "Camp below Dronagiri and Hathi-Ghoda" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4242.JPG.jpeg", caption: "Snow slopes on the way to the pass" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4243.JPG.jpeg", caption: "Kuari Pass at 12,516 ft" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4244.JPG.jpeg", caption: "Nanda Devi and Dronagiri from Kuari Pass" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4249.JPG.jpeg", caption: "Kamet and Chaukhamba on a clear morning" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4250.JPG.jpeg", caption: "Ridge walk on the acclimatization day" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4256.JPG.jpeg", caption: "The summit team on the trail" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4257.JPG.jpeg", caption: "The balcony view of 108 Himalayan peaks" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4260.JPG.jpeg", caption: "Oak and rhododendron forest on the lower trail" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4261.JPG.jpeg", caption: "Tents pitched at Khullara" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4262.JPG.jpeg", caption: "The climb out of camp towards the pass" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4269.JPG.jpeg", caption: "Khullara meadow under snow" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4270.JPG.jpeg", caption: "Snow slopes on the Pangarchulla approach" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4272.JPG.jpeg", caption: "High on the ridge above Kuari Pass" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4274.JPG.jpeg", caption: "Nanda Devi, Dronagiri and Trishul in one line" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4275.JPG.jpeg", caption: "Kamet and Chaukhamba from the high camp" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4276.JPG.jpeg", caption: "Ridge walk above the treeline" },
+    { url: "/Trips_gallery/Kuari%20Pass%20trek/IMG_4279.JPG.jpeg", caption: "The team after summit day" }
   ];
 
   TREKS[pangarchullaIndex].highlights = [
@@ -8393,7 +8434,7 @@ if (brahmatalIndex !== -1) {
       ],
       highlights: ["Oak & Rhododendron Forest", "Bekaltal Lake", "Snow Trail", "First Camp"],
       meals: "Breakfast, Lunch & Dinner",
-      stayType: "Bekaltal campsite — twin sharing"
+      stayType: "Bekaltal campsite — triple sharing"
     },
     {
       day: 3,
@@ -8414,7 +8455,7 @@ if (brahmatalIndex !== -1) {
       ],
       highlights: ["Alpine Meadows", "Ridge Walk", "Brahmatal Lake", "Trishul & Nanda Ghunti"],
       meals: "Breakfast, Lunch & Dinner",
-      stayType: "Brahmatal campsite — twin sharing"
+      stayType: "Brahmatal campsite — triple sharing"
     },
     {
       day: 4,
@@ -8443,7 +8484,7 @@ if (brahmatalIndex !== -1) {
         "High Ridge Walk"
       ],
       meals: "Breakfast, Packed Lunch & Dinner",
-      stayType: "Daldam campsite — twin sharing"
+      stayType: "Daldam campsite — triple sharing"
     },
     {
       day: 5,

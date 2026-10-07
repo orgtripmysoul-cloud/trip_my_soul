@@ -258,7 +258,7 @@ const CHOPTA_TREK_ITINERARY: TripItineraryDay[] = [
 
 /** Everything the fare covers apart from the transport leg, which differs. */
 const CHOPTA_COST_INCLUDES = [
-  "Vegetarian meals only, from Day 1 dinner to last-day breakfast",
+  "Vegetarian meals only — dinner and breakfast at the stays, from Day 1 dinner to last-day breakfast",
   "Camps or homestay accommodation, triple / quad sharing",
   "Experienced qualified guide",
   "Basic first aid",
@@ -268,6 +268,7 @@ const CHOPTA_COST_INCLUDES = [
 const CHOPTA_COST_EXCLUDES = [
   "Forest fees and permits",
   "Meals during transportation",
+  "Lunch",
   "Personal expenses",
   "Costs from unscheduled delays such as roadblocks or landslides",
   "Porter and mule charges",
@@ -663,7 +664,7 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
         ...CHOPTA_FAQS.slice(0, 2),
         {
           title: "How many days are required for the trek?",
-          description: "This package is a 3 Days / 2 Nights trip from Rishikesh covering Tungnath, Chandrashila and Deoriatal. The Delhi to Delhi package runs the same trek over 4 days.",
+          description: "This package is a 3 Days / 2 Nights trip from Rishikesh covering Tungnath, Chandrashila and Deoriatal. The Delhi to Delhi package runs the same 3 Days / 2 Nights trek, with overnight road legs either side.",
         },
         ...CHOPTA_FAQS.slice(2),
       ],
@@ -680,7 +681,7 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
     {
       name: "Chopta & Tungnath Trek — Delhi to Delhi",
       slug: "chopta-tungnath-trek-delhi",
-      duration: "3N/4D",
+      duration: "2N/3D",
       heroImage: "/Trips_gallery/Tungnath_chandrashila/IMG_4346.JPG.jpeg",
       tagline: "The same 4,000 m summit and the world's highest Shiva temple, run door to door from Delhi.",
     },
@@ -706,7 +707,8 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       /**
        * Delhi departure dates — the Day 0 night pickup, one day earlier than
        * the ex-Rishikesh Day 1 in `CHOPTA_BATCH_DATES`. A batch runs Day 0 to
-       * Day 4, so the 9th departs on the 9th and drops back on the 13th.
+       * the Day 3 overnight drive, so the 9th departs on the 9th and drops
+       * back early on the 13th.
        *
        * October is Fridays only (9th, 16th, 23rd, 30th); from November the
        * trek departs daily through the winter season, ending in February.
@@ -716,19 +718,18 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
         ...datesInRange("2026-11-01", "2027-02-28"),
       ],
       intro:
-        "The same Chopta, Tungnath and Chandrashila trek as the Rishikesh package, with the road legs built in: an overnight departure from Delhi on Day 0 and an early-morning drop back on Day 4. Pickup and drop at Kashmiri Gate or Akshardham Temple.",
+        "The same Chopta, Tungnath and Chandrashila trek as the Rishikesh package, with the road legs built in: an overnight departure from Delhi on Day 0 and an overnight drive back after Day 3, dropping you in early the next morning. Pickup and drop at Kashmiri Gate or Akshardham Temple.",
       highlights: [...CHOPTA_HIGHLIGHTS, "Overnight Delhi pickup and drop — no separate travel to book"],
       priceNote: "Price excludes GST. Covers Delhi to Delhi transport; the ex-Rishikesh package is the same trek without the road legs.",
       packages: [
-        { id: "ex-delhi", label: "Ex-Delhi — 4D/3N", price: 6499, paxLabel: "Ex-Delhi", vehicle: "By group size", sharing: "Triple / quad" },
+        { id: "ex-delhi", label: "Ex-Delhi — 3D/2N", price: 6499, paxLabel: "Ex-Delhi", vehicle: "By group size", sharing: "Triple / quad" },
       ],
       itinerary: [
         { day: 0, title: "Overnight departure from Delhi", entries: [{ time: "10–11 PM", text: "Night pickup from Kashmiri Gate or Akshardham Temple." }, { text: "Overnight drive Delhi → Rishikesh, about 6 hours." }] },
         // Days 1 and 2 are the trek proper, shared with the ex-Rishikesh
         // package; Day 3 is restated because the drive continues to Delhi.
         ...CHOPTA_TREK_ITINERARY.slice(0, 2),
-        { day: 3, title: "Deoria Tal and departure", entries: [{ text: "Trek about 1.5 km, roughly an hour, to Deoria Tal." }, { text: "Drive back via Rishikesh and on to Delhi overnight." }] },
-        { day: 4, title: "Arrival in Delhi", entries: [{ time: "4–5 AM", text: "Early morning drop at Kashmiri Gate or Akshardham Temple." }] },
+        { day: 3, title: "Deoria Tal and departure", entries: [{ text: "Trek about 1.5 km, roughly an hour, to Deoria Tal." }, { text: "Drive back via Rishikesh and on to Delhi overnight." }, { time: "4–5 AM", text: "Early morning drop at Kashmiri Gate or Akshardham Temple the next day." }] },
       ],
       costIncludes: ["Delhi to Delhi transport", ...CHOPTA_COST_INCLUDES],
       costExcludes: CHOPTA_COST_EXCLUDES,
@@ -744,11 +745,11 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
         ...CHOPTA_FAQS.slice(0, 2),
         {
           title: "How many days are required for the trek?",
-          description: "This package runs over 4 days from Delhi: a Day 0 overnight departure, two days on the trail from Sari, and an early-morning arrival back in Delhi on Day 4.",
+          description: "This package is a 3 Days / 2 Nights trip, wrapped in overnight road legs from Delhi: a Day 0 night departure, two days on the trail from Sari, Deoria Tal on Day 3, and an overnight drive back that reaches Delhi early the next morning.",
         },
         {
           title: "Where is the Delhi pickup and drop?",
-          description: "Pickup is from Kashmiri Gate or Akshardham Temple between 10 and 11 PM on the night before Day 1, and the drop is at the same points between 4 and 5 AM on Day 4.",
+          description: "Pickup is from Kashmiri Gate or Akshardham Temple between 10 and 11 PM on the night before Day 1, and the drop is at the same points between 4 and 5 AM on the morning after Day 3.",
         },
         ...CHOPTA_FAQS.slice(2),
       ],
