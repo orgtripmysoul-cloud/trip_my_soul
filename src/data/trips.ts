@@ -1062,12 +1062,375 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
     {
       region: "Himachal Pradesh",
       startLocation: "Manali",
+      endLocation: "Manali",
       difficulty: "Difficult",
       price: 24999,
       months: ["May", "Jun", "Jul", "Aug", "Sep", "Oct"],
       themes: ["Off-Beat", "Snow", "Adventure"],
       category: "Backpacking Trip",
       detailsPath: "/trips/backpacking/spiti-valley",
+
+      // Names the same circuit was sold under on the old site — see
+      // `LEGACY_PACKAGE_KEYS`, which points all three at this slug.
+      alternateNames: [
+        "Spiti Summer Expedition",
+        "Spiti Winter Expedition",
+        "Lahaul Spiti Circuit",
+        "Spiti Valley Road Trip",
+      ],
+      altitude: "15,027 ft / 4,581 m (Komic)",
+      availability: "May – October, once the Kunzum Pass road opens",
+      minAge: 12,
+      maxGroupSize: "18 travellers per departure",
+      contactNumbers: TRIP_CONTACT_NUMBERS,
+
+      // Weekly Saturday departures across the Kunzum-open season. Declared as a
+      // rule rather than ~23 hand-typed dates — see `datesInRange`.
+      batchDates: datesInRange("2026-05-02", "2026-10-03", [6]),
+
+      intro:
+        "Eight days on the road through the cold desert of Lahaul & Spiti — Manali to Kaza over the 14,931 ft Kunzum Pass, the thousand-year-old gompas at Key, Dhankar and Tabo, the world's highest villages at Langza, Hikkim and Komic, the Pin Valley, and a night camped beside Chandratal before the drive back. Entirely by road: there is no trekking on this circuit beyond short walks at each stop.",
+      highlights: [
+        "Kunzum Pass (14,931 ft) — the gateway between Lahaul and Spiti",
+        "Key Monastery, the largest and oldest gompa in Spiti",
+        "Hikkim — the world's highest post office, at 14,567 ft",
+        "Komic and Langza, among the highest motorable villages on earth",
+        "Tabo Monastery, founded in 996 CE and known as the Ajanta of the Himalayas",
+        "Dhankar Gompa, perched on a spur above the Spiti–Pin confluence",
+        "Mudh village and the Pin Valley National Park",
+        "A night under canvas at Chandratal, the crescent-shaped moon lake",
+      ],
+      usps: [
+        {
+          title: "Two nights in Kaza before going higher",
+          description:
+            "The itinerary holds you at Kaza (12,500 ft) for a full day before the Langza–Komic loop, so your body has time to adjust. Rushing straight to 15,000 ft is the single most common cause of AMS on this circuit.",
+        },
+        {
+          title: "Chandratal under canvas, not a day visit",
+          description:
+            "Most operators photograph Chandratal from the roadhead and drive on. You camp at the designated site near the lake and see it at both dusk and first light.",
+        },
+        {
+          title: "Oxygen and a first-aid kit in the vehicle",
+          description:
+            "Portable oxygen, a pulse oximeter and a stocked first-aid kit travel with the group throughout. The nearest hospital to Kaza is in Keylong or Reckong Peo, several hours away.",
+        },
+        {
+          title: "Local drivers, local homestays",
+          description:
+            "Drivers are from Lahaul and Spiti and know the road in every condition. Village nights are in family-run homestays rather than chain hotels.",
+        },
+      ],
+      idealFor:
+        "Travellers who want high-altitude Himalayan landscape and Buddhist monastic culture without a multi-day trek, and who are comfortable with long mountain drives, basic village accommodation and limited mobile network.",
+      importantNote:
+        "Spiti is a high-altitude cold desert. The circuit crosses 14,000 ft on Day 2 and stays above 12,000 ft for most of the trip. The Kunzum Pass road is snowbound and closed from roughly November to April, so departures run only in the open season and the route may still be reversed via Shimla at short notice if the pass is blocked.",
+      destinationHighlights: [
+        {
+          name: "Kaza",
+          blurb:
+            "Spiti's largest settlement and sub-divisional headquarters at around 12,500 ft, on the left bank of the Spiti river. The base for the Langza–Hikkim–Komic loop and the last place on the circuit with reliable ATMs, fuel and a BSNL signal.",
+        },
+        {
+          name: "Key Monastery",
+          blurb:
+            "The largest monastery in Spiti, about 14 km from Kaza, stacked in tiers up a conical hill above the river at roughly 13,700 ft. A Gelugpa gompa believed to date to the 11th century, holding old thangkas, manuscripts and a working monastic school.",
+        },
+        {
+          name: "Hikkim, Langza & Komic",
+          blurb:
+            "Three villages on the plateau above Kaza. Hikkim runs the world's highest post office at 14,567 ft; Langza sits under a hillside Buddha statue in ground rich with marine fossils; Komic, at about 15,027 ft, claims the highest motorable village with a monastery.",
+        },
+        {
+          name: "Tabo Monastery",
+          blurb:
+            "Founded in 996 CE and in continuous use since — mud-walled, low and unassuming from outside, with murals and stucco inside that give it the name 'Ajanta of the Himalayas'. A protected monument of national importance.",
+        },
+        {
+          name: "Dhankar",
+          blurb:
+            "The old fort-capital of the Spiti kingdom, built on a spur of eroded rock overlooking the point where the Pin meets the Spiti. A short, steep walk above the village leads to Dhankar Lake.",
+        },
+        {
+          name: "Pin Valley",
+          blurb:
+            "A side valley running south from the Spiti river into Pin Valley National Park — snow leopard and ibex country, and the only part of Spiti where the Nyingma order predominates. The road ends at Mudh village.",
+        },
+        {
+          name: "Chandratal",
+          blurb:
+            "A crescent-shaped lake at about 14,100 ft on the Samudra Tapu plateau, fed by snowmelt and changing colour through the day. Camping is restricted to designated sites a short walk from the shore.",
+        },
+      ],
+
+      itinerary: [
+        {
+          day: 0,
+          title: "Delhi to Manali — overnight journey",
+          entries: [
+            { time: "5:30 PM", text: "Board the overnight Volvo from Delhi (Majnu Ka Tila / RK Ashram). Booked separately — not part of the package." },
+            { text: "Travellers arriving by air into Bhuntar or already in Manali join the group on Day 1 morning." },
+          ],
+        },
+        {
+          day: 1,
+          title: "Arrive Manali — acclimatisation day",
+          entries: [
+            { time: "8:00 AM", text: "Arrive in Manali, meet the trip captain and check in to the hotel." },
+            { text: "Rest through the morning. The rest of the circuit climbs fast, so this day is deliberately light." },
+            { text: "Afternoon walk through Old Manali, the Hadimba Devi temple and the Manu temple." },
+            { text: "Evening trip briefing — route, altitude, documents and what to pack into your daypack." },
+            { text: "Overnight in Manali (6,700 ft)." },
+          ],
+        },
+        {
+          day: 2,
+          title: "Manali to Kaza via Atal Tunnel and Kunzum Pass",
+          entries: [
+            { time: "5:00 AM", text: "Early start — this is the longest driving day, roughly 200 km over 9–10 hours." },
+            { text: "Cross the Atal Tunnel into the Lahaul valley and follow the Chandra river upstream past Sissu and Gramphu." },
+            { text: "Breakfast stop at Batal, then the climb to Kunzum Pass (14,931 ft). Short halt at the Kunzum Devi temple." },
+            { text: "Descend into Spiti through Losar and Hansa, reaching Kaza by evening." },
+            { text: "Light dinner, early night, and no exertion — this is your first night above 12,000 ft." },
+            { text: "Overnight in Kaza (12,500 ft)." },
+          ],
+        },
+        {
+          day: 3,
+          title: "Kaza — Key, Kibber, Langza, Hikkim and Komic",
+          entries: [
+            { time: "8:30 AM", text: "Drive to Key Monastery and spend the morning in the gompa and its prayer halls." },
+            { text: "Continue to Kibber village and the Kibber Wildlife Sanctuary viewpoint." },
+            { text: "Lunch back in Kaza, then up to the plateau: Langza and its hillside Buddha, with fossil hunting in the fields." },
+            { text: "Hikkim — post a card home from the world's highest post office at 14,567 ft. Carry cash; cards are not accepted." },
+            { text: "Komic (15,027 ft) and the Tangyud monastery before returning to Kaza at sunset." },
+            { text: "Overnight in Kaza." },
+          ],
+        },
+        {
+          day: 4,
+          title: "Kaza to Pin Valley — Mudh village",
+          entries: [
+            { time: "9:00 AM", text: "Drive south-east along the Spiti river and turn into the Pin Valley at Attargo." },
+            { text: "Stop at Kungri Monastery, the Nyingma gompa that serves the valley." },
+            { text: "Continue to Mudh, the last village on the road, and check in to a homestay." },
+            { text: "Afternoon free to walk the riverbed and the village fields, or simply sit out the light." },
+            { text: "Overnight in Mudh, Pin Valley (12,300 ft)." },
+          ],
+        },
+        {
+          day: 5,
+          title: "Pin Valley to Tabo via Dhankar",
+          entries: [
+            { time: "9:00 AM", text: "Drive back out of the Pin Valley to Dhankar." },
+            { text: "Visit Dhankar Gompa and the old fort above the Spiti–Pin confluence." },
+            { text: "Optional 1-hour walk up to Dhankar Lake — steep and at altitude, so entirely your call." },
+            { text: "Continue to Tabo and visit the 996 CE monastery complex and its murals." },
+            { text: "Evening free in Tabo. Overnight in Tabo (10,760 ft)." },
+          ],
+        },
+        {
+          day: 6,
+          title: "Tabo to Chandratal",
+          entries: [
+            { time: "7:00 AM", text: "Long drive back west through Kaza and Losar, recrossing Kunzum Pass." },
+            { text: "Turn off at Kunzum for the rough 14 km track down to the Chandratal camping ground." },
+            { text: "Short walk to the lake for sunset. The water changes colour as the light goes." },
+            { text: "Dinner at camp. Nights here are cold even in mid-summer — expect close to freezing." },
+            { text: "Overnight in tents at Chandratal (14,100 ft)." },
+          ],
+        },
+        {
+          day: 7,
+          title: "Chandratal to Manali",
+          entries: [
+            { time: "6:00 AM", text: "Optional sunrise walk back to the lake before breakfast." },
+            { time: "8:00 AM", text: "Drive out via Batal and Gramphu, then through the Atal Tunnel to Manali." },
+            { text: "Arrive in Manali by late afternoon. Hot shower, proper network and a last group dinner." },
+            { text: "Overnight in Manali." },
+          ],
+        },
+        {
+          day: 8,
+          title: "Departure from Manali",
+          entries: [
+            { text: "Breakfast and check out." },
+            { text: "Drop at the Manali bus stand or Volvo boarding point. Trip concludes." },
+            { text: "Keep a buffer day before any onward flight or booking — the Spiti road is weather-dependent." },
+          ],
+        },
+      ],
+
+      costIncludes: [
+        "7 nights accommodation — hotels in Manali, guesthouse in Kaza, homestays in Mudh and Tabo, and tents at Chandratal",
+        "All breakfasts and dinners from Day 1 dinner to Day 8 breakfast",
+        "Private vehicle for the full Manali–Spiti–Manali circuit, allocated by group size",
+        "Experienced local driver and a trip captain throughout",
+        "Inner-line formalities and monastery entry where applicable",
+        "Portable oxygen cylinder, pulse oximeter and a stocked first-aid kit with the group",
+        "All tolls, parking, fuel and driver allowances",
+      ],
+      costExcludes: [
+        "Delhi–Manali–Delhi Volvo or air fare",
+        "All lunches and any meal taken during transit",
+        "Personal expenses, tips, laundry and telephone charges",
+        "Travel and health insurance",
+        "Camera fees at monasteries where charged",
+        "Any cost arising from a road closure, landslide or evacuation",
+        "Anything not listed under inclusions",
+        "5% GST",
+      ],
+      priceNote:
+        "₹24,999 per person is the Manali-to-Manali fare. Travel to and from Manali is arranged separately — tell the trips desk if you would like the Delhi Volvo booked alongside.",
+
+      eligibilityCriteria: [
+        { icon: "User", text: "Age 12 to 60 — travellers under 18 need a parent or guardian on the trip" },
+        { icon: "Mountain", text: "No trekking experience needed, but you must be comfortable spending seven days above 10,000 ft" },
+        { icon: "Stethoscope", text: "Not suitable for anyone with a heart condition, uncontrolled high blood pressure, severe asthma or a recent surgery — altitude here is unforgiving" },
+        { icon: "FileText", text: "Carry an original government photo ID; it is checked at the inner-line and sanctuary posts" },
+        { icon: "Car", text: "Long days on rough, exposed mountain road — not advisable if you suffer badly from motion sickness" },
+      ],
+      fitnessCriteria: [
+        { icon: "Footprints", text: "Able to walk 2–3 km on uneven ground at altitude, such as the Dhankar Lake path or the Chandratal shore" },
+        { icon: "Activity", text: "Comfortable with 8–10 hour driving days on unsurfaced road" },
+        { icon: "Heart", text: "Start 15–20 minutes of daily cardio about three weeks before departure — it noticeably eases the first two days" },
+      ],
+      howToReach: {
+        intro:
+          "The circuit starts and ends in Manali. Reach Manali by the evening of Day 0 or the morning of Day 1; everything beyond that point is covered by the trip vehicle.",
+        air: {
+          summaryLabel: "Nearest Airport",
+          summary: "Bhuntar Airport (KUU), Kullu — 50 km from Manali",
+          detail:
+            "Limited daily flights from Delhi and Chandigarh, and frequently cancelled for weather. Most travellers fly into Chandigarh (240 km) or Delhi instead and continue by road.",
+        },
+        train: {
+          summaryLabel: "Nearest Railway Station",
+          summary: "Joginder Nagar (JDNX) — 160 km; Chandigarh (CDG) — 240 km",
+          detail:
+            "Joginder Nagar is a narrow-gauge terminus with very limited service. Chandigarh is the practical railhead, with overnight buses on to Manali.",
+        },
+        road: {
+          summaryLabel: "Route",
+          summary: "Manali → Kunzum Pass → Kaza → Pin Valley → Tabo → Chandratal → Manali",
+          detail:
+            "Roughly 800 km over eight days, almost all of it above 10,000 ft. The Manali side is reached through the Atal Tunnel; the Kunzum Pass section is unsurfaced and crosses several glacial stream beds.",
+          route: ["Manali", "Kunzum Pass", "Kaza", "Mudh (Pin Valley)", "Dhankar", "Tabo", "Chandratal", "Manali"],
+          facts: [
+            { label: "Duration", value: "8 Days / 7 Nights" },
+            { label: "Highest point", value: "Komic — 15,027 ft / 4,581 m" },
+            { label: "Transport", value: "Private vehicle throughout" },
+          ],
+        },
+        pickup: {
+          point: "Manali Volvo bus stand / Mall Road",
+          time: "Day 1, 8:00 AM",
+          dropPoint: "Manali Volvo bus stand",
+          dropTime: "Day 8, after breakfast",
+          note:
+            "Overnight Volvo seats from Delhi are not included but can be booked through the trips desk. Keep a spare day before any onward flight — the Spiti road is weather-dependent and delays do happen.",
+        },
+      },
+
+      faqs: [
+        {
+          title: "How long is the Spiti Valley trip?",
+          description: "8 Days / 7 Nights, Manali to Manali, covering Kunzum Pass, Kaza, the Langza–Hikkim–Komic loop, Pin Valley, Dhankar, Tabo and Chandratal.",
+        },
+        {
+          title: "Is there any trekking on this trip?",
+          description: "No. This is a road circuit. The only walking is short and optional — the climb to Dhankar Lake, the Chandratal shore, and strolls around each village.",
+        },
+        {
+          title: "When is the best time to visit Spiti?",
+          description: "May to October, once the Kunzum Pass road clears. June to September is the most reliable window. The pass is snowbound from roughly November to April, when Spiti is reachable only via Shimla.",
+        },
+        {
+          title: "Will I get altitude sickness?",
+          description: "Possibly. The circuit crosses 14,931 ft on Day 2 and stays above 12,000 ft for most of the week. The Day 1 rest in Manali and the two nights at Kaza before the high-village loop are there to reduce the risk. Drink 3–4 litres of water a day, avoid alcohol, and tell your trip captain at the first sign of a headache or breathlessness.",
+        },
+        {
+          title: "What is the accommodation like?",
+          description: "Hotels in Manali, a guesthouse in Kaza, family-run homestays in Mudh and Tabo, and tents at Chandratal. Village stays are clean but basic — expect shared bathrooms, intermittent hot water and no heating beyond blankets.",
+        },
+        {
+          title: "Is there mobile network and internet?",
+          description: "Only BSNL and, patchily, Jio work in Spiti, and only around Kaza and Tabo. There is no network at Chandratal, in Pin Valley or on most of the road. Tell people at home before you leave.",
+        },
+        {
+          title: "Are ATMs available?",
+          description: "Kaza has the only ATMs on the circuit and they run dry often. Carry enough cash from Manali for the whole week — homestays, the Hikkim post office and roadside dhabas are cash-only.",
+        },
+        {
+          title: "Do I need an inner-line permit?",
+          description: "Indian nationals do not need a permit for the Manali–Kaza–Tabo circuit. Foreign nationals require an inner-line permit for the stretch beyond Tabo towards Sumdo; send your passport details at least 15 days ahead so we can arrange it.",
+        },
+        {
+          title: "How cold does it get?",
+          description: "Daytime temperatures in summer sit around 15–20°C, but nights at Kaza drop to 2–5°C and Chandratal can touch freezing even in July. Pack as though for winter regardless of the month.",
+        },
+        {
+          title: "What happens if the road is blocked?",
+          description: "Landslides and snow can close Kunzum Pass or the Gramphu road at any time. The trip captain may reverse the route via Shimla, hold the group an extra day, or shorten a leg. Costs of such delays are not included in the package, and no refund is due for an itinerary changed on safety grounds.",
+        },
+        {
+          title: "Is the trip suitable for children?",
+          description: "Minimum age is 12, and under-18s must travel with a parent or guardian. Younger children are not advised — the altitude gain is steep and the nearest hospital is hours away.",
+        },
+      ],
+
+      thingsToCarry: HIMALAYAN_TREK_PACKING_LIST.flatMap((g) => g.items),
+      thingsToRemember: TRIP_GROUND_RULES,
+      transportModes: TRANSPORT_BY_GROUP_SIZE,
+      cancellationPolicy: TIERED_CANCELLATION_POLICY,
+      confirmationPolicy: CONFIRMATION_POLICY,
+      bookingAdvance: TRIP_BOOKING_TERMS.advancePerPerson,
+      balanceDueDays: TRIP_BOOKING_TERMS.balanceDueDays,
+
+      gallery: [
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Kee_monastery_Spiti_Valley_%28edited%29.jpg/1920px-Kee_monastery_Spiti_Valley_%28edited%29.jpg",
+          caption: "Key Monastery stacked up its hill above the Spiti river",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Chandra_Taal_Lake.jpg/1920px-Chandra_Taal_Lake.jpg",
+          caption: "Chandratal, the crescent moon lake at 14,100 ft",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Langza_village_and_Buddha_statue.jpg/1920px-Langza_village_and_Buddha_statue.jpg",
+          caption: "The hillside Buddha above Langza village",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Dhankar_Gompa%2C_Spiti.jpg/1920px-Dhankar_Gompa%2C_Spiti.jpg",
+          caption: "Dhankar Gompa on its spur above the Pin–Spiti confluence",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Tabo_Monastery.jpg/1920px-Tabo_Monastery.jpg",
+          caption: "Tabo Monastery, in continuous use since 996 CE",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Mudh_Village_Pin_Spiti_Himachal_Jun18_D72_7094.jpg/1920px-Mudh_Village_Pin_Spiti_Himachal_Jun18_D72_7094.jpg",
+          caption: "Mudh, the last village on the Pin Valley road",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Kunzum_Pass.jpg/1920px-Kunzum_Pass.jpg",
+          caption: "Kunzum Pass at 14,931 ft, the gateway into Spiti",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Komic_village.jpg/1920px-Komic_village.jpg",
+          caption: "Komic, among the highest motorable villages on earth",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Kibber-14-gje.jpg/1920px-Kibber-14-gje.jpg",
+          caption: "Kibber village on the plateau above Kaza",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/NH505_Spiti_Kaza_Losar_Jun18_D72_7797.jpg/1920px-NH505_Spiti_Kaza_Losar_Jun18_D72_7797.jpg",
+          caption: "The road between Losar and Kaza",
+        },
+      ],
+      relatedSlugs: ["leh-ladakh", "shimla-manali", "kashmir"],
     }
   ),
   toListingItem(

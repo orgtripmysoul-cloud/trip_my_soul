@@ -4,7 +4,6 @@ import { notFound, redirect } from "next/navigation";
 
 import type { Trek } from "@/data/db";
 import { duplicateTrekCanonical, findTrek } from "@/data/trekCatalogue";
-import { CANONICAL_TRIP_PATHS } from "@/data/trips";
 import { buildMetadata, noIndexMetadata } from "@/lib/seo";
 
 /**
@@ -37,8 +36,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     );
   }
 
-  // A stub duplicating a populated listing points its canonical at the complete
-  // page, so the two stop competing and the ranking signals consolidate there.
+  // A slug the catalogue serves from somewhere else points its canonical at
+  // that page, so the two stop competing and the ranking signals consolidate
+  // there. The layout 301s these anyway; the tag is what the redirect target
+  // inherits if a crawler reads this response before following it.
   const canonicalPath = duplicateTrekCanonical(slug) ?? `/treks/${slug}`;
 
   return buildMetadata({
@@ -57,12 +58,18 @@ export default async function TrekLayout({
 } & Params) {
   const { slug } = await params;
 
-  // These slugs describe the same package as a fully-detailed /trips/... page.
-  // Leaving them out of the sitemap stopped advertising them but did not stop
-  // Google reaching them through old links, so redirect to the canonical page
-  // and let the duplicate drop out of the index. Stub duplicates are handled
-  // with a canonical tag instead — they still render.
-  const supersededBy = CANONICAL_TRIP_PATHS[slug];
+  // These slugs describe a package that is fully written up somewhere else —
+  // either a detailed /trips/... page, or a complete twin under /treks/ that an
+  // unpopulated stub shadows. Leaving them out of the sitemap stopped
+  // advertising them but did not stop Google reaching them through old links,
+  // so redirect to the real page and let the duplicate drop out of the index.
+  //
+  // A stub used to render instead of redirecting, on the grounds that a
+  // redirect was too blunt. It wasn't: with no `price` and no `days` of its own
+  // the page filled both from `trekDefaults`, so `/treks/bali-pass-yatra`
+  // advertised ₹12,450 and "null days / null nights" against a twin selling the
+  // same trek at its real fare. A stub with nothing to say has nothing to show.
+  const supersededBy = duplicateTrekCanonical(slug);
   if (supersededBy) {
     redirect(supersededBy);
   }

@@ -1792,7 +1792,7 @@ export const TREKS: Trek[] = [
     "name": "Bali Pass Trek",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SWARGAROHINI_PEAK.jpg/1920px-SWARGAROHINI_PEAK.jpg",
     "tagline": "Eight days from Dehradun crossing the 16,207 ft Bali Pass, linking Har Ki Dun Valley to Yamunotri over snow, ridge and glacial lake.",
-    "price": 21999,
+    "price": 18999,
     "days": 8,
     "nights": 7,
     "region": "Uttarakhand",

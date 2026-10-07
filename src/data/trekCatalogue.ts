@@ -22,17 +22,21 @@ function isUnpublishedStub(trek: Trek): boolean {
 }
 
 /**
- * Where a `/treks/[slug]` page should point search engines instead of itself,
- * or null when the page is already the canonical one.
+ * Where a `/treks/[slug]` page should send a visitor instead of rendering
+ * itself, or null when the page is already the canonical one.
  *
- * Two distinct cases, deliberately treated differently:
+ * Two routes in, one behaviour out — `src/app/treks/[slug]/layout.tsx` 301s on
+ * either, and `indexableTreks` keeps both out of the sitemap:
  *
  * 1. `CANONICAL_TRIP_PATHS` — the package genuinely lives at a `/trips/...`
- *    page now. The old URL redirects.
+ *    page now.
  * 2. A stub sharing its name with a fully-populated twin, e.g.
- *    `bali-pass-yatra` against `bali-pass-trek`. Both render, so a redirect
- *    would be too blunt; these carry a canonical tag to the complete page and
- *    stay out of the sitemap until someone fills the content in.
+ *    `bali-pass-yatra` against `bali-pass-trek`. A stub carries no `price` and
+ *    no `days`, so rendering it means rendering the `trekDefaults` fallbacks —
+ *    a placeholder fare and a blank duration — next to a twin that sells the
+ *    same trek for real. Send people to the twin until someone fills the
+ *    content in, at which point the stub stops matching `isUnpublishedStub`
+ *    and starts rendering on its own.
  */
 export function duplicateTrekCanonical(slug: string): string | null {
   const supersededBy = CANONICAL_TRIP_PATHS[slug];
