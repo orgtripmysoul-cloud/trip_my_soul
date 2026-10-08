@@ -24,6 +24,8 @@ import {
 } from "@/data/trips";
 import { departsWithinWindow } from "@/lib/upcoming";
 import { featuredRank } from "@/lib/featured";
+import { SEASON_MAP, SEASON_ORDER, seasonRank } from "@/lib/season";
+import { useCurrentSeason } from "@/lib/useCurrentSeason";
 
 const initialFilters: FilterState = {
   region: [],
@@ -33,14 +35,6 @@ const initialFilters: FilterState = {
   themes: [],
   seasons: [],
   upcomingOnly: false,
-};
-
-const SEASON_MAP: Record<string, string[]> = {
-  "Winter": ["Dec", "Jan", "Feb"],
-  "Spring": ["Mar", "Apr"],
-  "Summer": ["May", "Jun"],
-  "Monsoon": ["Jul", "Aug"],
-  "Autumn": ["Sep", "Oct", "Nov"]
 };
 
 /**
@@ -340,7 +334,10 @@ const YOUTUBE_SHORTS = [
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilters, setSelectedFilters] = useState<FilterState>(initialFilters);
-  const [sortBy, setSortBy] = useState("price-asc");
+  // Season-first by default: the grid opens on what is actually runnable now.
+  const [sortBy, setSortBy] = useState("season");
+  /** `null` until hydration, so the pre-rendered card order is never contradicted. */
+  const seasonNow = useCurrentSeason();
   const [activeCollection, setActiveCollection] = useState<CollectionKey>("all");
 
   // FAQ category tabs + accordion state. The open row is an index into the
@@ -483,6 +480,13 @@ export default function Home() {
   const sortedEntries = useMemo(() => {
     const entriesCopy = [...filteredEntries];
     return entriesCopy.sort(({ trek: a }, { trek: b }) => {
+      // Season grouping outranks the featured tiebreak, else a featured trek
+      // from another season would sit above the season it belongs to.
+      if (sortBy === "season" && seasonNow) {
+        const season = seasonRank(a.months, seasonNow) - seasonRank(b.months, seasonNow);
+        if (season !== 0) return season;
+      }
+
       // Fully written-up treks lead the list, whatever sort is selected.
       const featured = featuredRank(a.slug) - featuredRank(b.slug);
       if (featured !== 0) return featured;
@@ -501,11 +505,14 @@ export default function Home() {
           return daysA - daysB;
         case "days-desc":
           return daysB - daysA;
+        case "season":
+          // Same season — cheapest first keeps the grouping readable.
+          return priceA - priceB;
         default:
           return 0;
       }
     });
-  }, [filteredEntries, sortBy]);
+  }, [filteredEntries, sortBy, seasonNow]);
 
   const handleResetFilters = () => {
     setSelectedFilters(initialFilters);
@@ -543,8 +550,13 @@ export default function Home() {
     { label: "Winters", action: selectWinter, active: winterActive },
     { label: "Spiritual", action: () => selectCollection("yatra"), active: activeCollection === "yatra" },
     { label: "Weekend", action: () => selectCollection("weekend"), active: activeCollection === "weekend" },
-    { label: "Monsoon", action: () => selectSeason("Monsoon"), active: selectedFilters.seasons.includes("Monsoon") },
-    { label: "Summer", action: () => selectSeason("Summer"), active: selectedFilters.seasons.includes("Summer") },
+    // Every remaining season gets a pill, so the seasons facet is reachable
+    // without opening the filter panel. Winter already has its own pill above.
+    ...SEASON_ORDER.filter((season) => season !== "Winter").map((season) => ({
+      label: season,
+      action: () => selectSeason(season),
+      active: selectedFilters.seasons.includes(season),
+    })),
   ];
 
   const awardsData = [
@@ -727,6 +739,9 @@ export default function Home() {
                   aria-label="Sort treks"
                   className="text-base lg:text-xs font-bold bg-transparent border-0 focus:outline-none text-brand-dark-text font-sans cursor-pointer min-w-0 max-w-full self-stretch py-3 -my-3"
                 >
+                  <option value="season">
+                    Season{seasonNow ? `: ${seasonNow} First` : ""}
+                  </option>
                   <option value="price-asc">Price: Low to High</option>
                   <option value="price-desc">Price: High to Low</option>
                   <option value="days-asc">Duration: Short to Long</option>

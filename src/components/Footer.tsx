@@ -95,6 +95,10 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-brand-dusk-orange shrink-0" />
                 <span className="min-w-0 break-all">tripmysoulteam@gmail.com</span>
               </a>
+              <a href="mailto:Bookings@tripmysoul.in" className="flex items-center gap-3 min-h-[44px] hover:text-white transition">
+                <Mail className="w-4 h-4 text-brand-dusk-orange shrink-0" />
+                <span className="min-w-0 break-all">Bookings@tripmysoul.in</span>
+              </a>
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-brand-dusk-orange shrink-0 mt-1" />
                 <div className="min-w-0">

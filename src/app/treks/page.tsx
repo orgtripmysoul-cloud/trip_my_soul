@@ -6,6 +6,8 @@ import { Search, SlidersHorizontal, ArrowUpDown } from "lucide-react";
 import { TREKS } from "@/data/db";
 import { departsWithinWindow } from "@/lib/upcoming";
 import { featuredRank } from "@/lib/featured";
+import { SEASON_MAP, seasonRank } from "@/lib/season";
+import { useCurrentSeason } from "@/lib/useCurrentSeason";
 import TrekCard from "@/components/TrekCard";
 import FilterPanel, { FilterState } from "@/components/FilterPanel";
 
@@ -19,19 +21,14 @@ const initialFilters: FilterState = {
   upcomingOnly: false,
 };
 
-const SEASON_MAP: Record<string, string[]> = {
-  "Winter": ["Dec", "Jan", "Feb"],
-  "Spring": ["Mar", "Apr"],
-  "Summer": ["May", "Jun"],
-  "Monsoon": ["Jul", "Aug"],
-  "Autumn": ["Sep", "Oct", "Nov"]
-};
-
 function TreksList() {
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilters, setSelectedFilters] = useState<FilterState>(initialFilters);
-  const [sortBy, setSortBy] = useState("price-asc");
+  // Season-first by default: the list opens on what is actually runnable now.
+  const [sortBy, setSortBy] = useState("season");
+  /** `null` until hydration — see the hook for why. */
+  const seasonNow = useCurrentSeason();
 
   // Read filter queries from URL
   useEffect(() => {
@@ -147,6 +144,13 @@ function TreksList() {
   const sortedTreks = useMemo(() => {
     const treksCopy = [...filteredTreks];
     return treksCopy.sort((a, b) => {
+      // Season grouping outranks the featured tiebreak, else a featured trek
+      // from another season would sit above the season it belongs to.
+      if (sortBy === "season" && seasonNow) {
+        const season = seasonRank(a.months, seasonNow) - seasonRank(b.months, seasonNow);
+        if (season !== 0) return season;
+      }
+
       // Fully written-up treks lead the list, whatever sort is selected.
       const featured = featuredRank(a.slug) - featuredRank(b.slug);
       if (featured !== 0) return featured;
@@ -165,11 +169,14 @@ function TreksList() {
           return daysA - daysB;
         case "days-desc":
           return daysB - daysA;
+        case "season":
+          // Same season — cheapest first keeps the grouping readable.
+          return priceA - priceB;
         default:
           return 0;
       }
     });
-  }, [filteredTreks, sortBy]);
+  }, [filteredTreks, sortBy, seasonNow]);
 
   const handleResetFilters = () => {
     setSelectedFilters(initialFilters);
@@ -241,6 +248,9 @@ function TreksList() {
             onChange={(e) => setSortBy(e.target.value)}
             className="text-base lg:text-xs font-semibold min-h-[44px] py-2 px-4 rounded-xl border border-gray-200 bg-white focus:outline-none text-brand-dark-text min-w-0 max-w-full"
           >
+            <option value="season">
+              Season{seasonNow ? `: ${seasonNow} First` : ""}
+            </option>
             <option value="price-asc">Price: Low to High</option>
             <option value="price-desc">Price: High to Low</option>
             <option value="days-asc">Duration: Short to Long</option>

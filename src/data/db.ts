@@ -4626,7 +4626,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "kedarnath-yatra",
-    "name": "Kedarnath Trek",
+    "name": "Kedarnath Yatra",
     "tagline": "Four days from Haridwar to the Kedarnath shrine at 11,755 ft, with an overnight halt at the temple.",
     "heroImage": "/Trips_gallery/Kedarnath/IMG_1668.jpg",
     "price": 6499,
@@ -4731,7 +4731,7 @@ export const YATRAS: Trek[] = [
   },
   {
     "slug": "chardham-yatra",
-    "name": "Chardham Trek",
+    "name": "Chardham Yatra",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Devotees_at_Kedarnath_temple%2C_Uttrakhand_01.jpg/1920px-Devotees_at_Kedarnath_temple%2C_Uttrakhand_01.jpg",
     "tagline": "Yamunotri, Gangotri, Kedarnath and Badrinath in 8 Nights / 9 Days from Haridwar.",
     "price": 24999,
@@ -5145,7 +5145,7 @@ export const YATRAS: Trek[] = [
      ---------------------------------------------------------------------- */
   {
     "slug": "do-dham-yatra",
-    "name": "Do Dham Trek",
+    "name": "Do Dham Yatra",
     // TODO(content): confirm this is distinct from `badrinath-kedarnath-yatra`
     // above, which covers the same two shrines under a different name.
     "tagline": "Kedarnath and Badrinath, the two Garhwal dhams, on a single guided itinerary.",
