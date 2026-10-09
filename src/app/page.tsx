@@ -24,7 +24,13 @@ import {
 } from "@/data/trips";
 import { departsWithinWindow } from "@/lib/upcoming";
 import { featuredRank } from "@/lib/featured";
-import { SEASON_MAP, SEASON_ORDER, seasonRank } from "@/lib/season";
+import { SEASON_MAP, seasonRank } from "@/lib/season";
+import {
+  CURATED_CATEGORIES,
+  CURATED_PILLS,
+  CuratedPill,
+  curatedRank,
+} from "@/lib/curatedCategories";
 import { useCurrentSeason } from "@/lib/useCurrentSeason";
 
 const initialFilters: FilterState = {
@@ -68,25 +74,32 @@ const dedupeBySlug = (entries: CatalogEntry[]): CatalogEntry[] => {
   });
 };
 
-/** Categories on `TREKS` that belong to the weekend-trips collection. */
-const isWeekendCategory = (category: string) =>
-  category.toLowerCase().includes("weekend");
+/** The grid with no pill selected: the trek and yatra catalogue, as before. */
+const CATALOG_ENTRIES: CatalogEntry[] = dedupeBySlug([
+  ...TREKS.map((trek) => ({ trek })),
+  ...YATRAS.map((trek) => ({ trek })),
+]);
 
-/** Collections behind the quick-filter pills. Keys match `CollectionKey`. */
-const COLLECTIONS: Record<"all" | "yatra" | "weekend" | "backpacking", CatalogEntry[]> = {
-  all: dedupeBySlug([
+/**
+ * Every catalogue entry, keyed by slug, for the curated pills to draw from.
+ * Trip listings come first so a slug carried by both a trip and a `TREKS`/
+ * `YATRAS` row resolves to the written-up version, with its own gallery and
+ * detail route.
+ */
+const CATALOG_BY_SLUG = new Map<string, CatalogEntry>(
+  dedupeBySlug([
+    ...WEEKEND_TRIPS.map(tripEntry),
+    ...BACKPACKING_TRIPS.map(tripEntry),
     ...TREKS.map((trek) => ({ trek })),
     ...YATRAS.map((trek) => ({ trek })),
-  ]),
-  yatra: YATRAS.map((trek) => ({ trek })),
-  weekend: dedupeBySlug([
-    ...WEEKEND_TRIPS.map(tripEntry),
-    ...TREKS.filter((trek) => isWeekendCategory(trek.category)).map((trek) => ({ trek })),
-  ]),
-  backpacking: BACKPACKING_TRIPS.map(tripEntry),
-};
+  ]).map((entry) => [entry.trek.slug, entry])
+);
 
-type CollectionKey = keyof typeof COLLECTIONS;
+/** A pill's line-up, in listed order. Slugs with no catalogue entry drop out. */
+const curatedEntries = (pill: CuratedPill): CatalogEntry[] =>
+  CURATED_CATEGORIES[pill]
+    .map((slug) => CATALOG_BY_SLUG.get(slug))
+    .filter((entry): entry is CatalogEntry => entry !== undefined);
 
 /** True when a catalogue entry has a published departure inside the window. */
 const entryIsUpcoming = (entry: CatalogEntry): boolean =>
@@ -338,7 +351,8 @@ export default function Home() {
   const [sortBy, setSortBy] = useState("season");
   /** `null` until hydration, so the pre-rendered card order is never contradicted. */
   const seasonNow = useCurrentSeason();
-  const [activeCollection, setActiveCollection] = useState<CollectionKey>("all");
+  /** The quick-filter pill in force, or `null` when the grid is showing the catalogue. */
+  const [activePill, setActivePill] = useState<CuratedPill | null>(null);
 
   // FAQ category tabs + accordion state. The open row is an index into the
   // active category's questions, so it resets whenever the category changes.
@@ -403,7 +417,11 @@ export default function Home() {
 
   // Real-time trek search & filter matching
   const filteredEntries = useMemo(() => {
-    return COLLECTIONS[activeCollection].filter(({ trek }) => {
+    // A pill replaces the collection outright: its line-up is the result set,
+    // in the order it is listed. Search and the filter panel still narrow it.
+    const source = activePill ? curatedEntries(activePill) : CATALOG_ENTRIES;
+
+    return source.filter(({ trek }) => {
       // 1. Search text query
       const matchesSearch =
         trek.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -474,11 +492,21 @@ export default function Home() {
     })
     // 8. Upcoming Departures Filter — anything leaving in the next 60 days
     .filter((entry) => !selectedFilters.upcomingOnly || entryIsUpcoming(entry));
-  }, [searchQuery, selectedFilters, activeCollection]);
+  }, [searchQuery, selectedFilters, activePill]);
 
   // Sort treks
   const sortedEntries = useMemo(() => {
     const entriesCopy = [...filteredEntries];
+
+    // Inside a pill the editorial order is the whole answer — no featured
+    // pinning, no price tiebreak, and the sort dropdown stays out of it.
+    if (activePill) {
+      return entriesCopy.sort(
+        ({ trek: a }, { trek: b }) =>
+          curatedRank(activePill, a.slug) - curatedRank(activePill, b.slug)
+      );
+    }
+
     return entriesCopy.sort(({ trek: a }, { trek: b }) => {
       // Season grouping outranks the featured tiebreak, else a featured trek
       // from another season would sit above the season it belongs to.
@@ -512,52 +540,29 @@ export default function Home() {
           return 0;
       }
     });
-  }, [filteredEntries, sortBy, seasonNow]);
+  }, [filteredEntries, sortBy, seasonNow, activePill]);
 
   const handleResetFilters = () => {
     setSelectedFilters(initialFilters);
     setSearchQuery("");
-    setActiveCollection("all");
+    setActivePill(null);
   };
 
   /** Pills are exclusive: picking one clears the rest, clicking it again clears all. */
-  const applyPill = (isActive: boolean, apply: () => void) => {
-    if (isActive) {
+  const selectPill = (pill: CuratedPill) => {
+    if (activePill === pill) {
       handleResetFilters();
       return;
     }
     setSelectedFilters(initialFilters);
-    setActiveCollection("all");
-    apply();
+    setActivePill(pill);
   };
 
-  const selectCollection = (key: CollectionKey) =>
-    applyPill(activeCollection === key, () => setActiveCollection(key));
-
-  const selectSeason = (season: string) =>
-    applyPill(selectedFilters.seasons.includes(season), () =>
-      setSelectedFilters({ ...initialFilters, seasons: [season] })
-    );
-
-  /** Winters folds the old standalone "Upcoming" pill in: only upcoming winter departures show. */
-  const winterActive = selectedFilters.seasons.includes("Winter") && selectedFilters.upcomingOnly;
-  const selectWinter = () =>
-    applyPill(winterActive, () =>
-      setSelectedFilters({ ...initialFilters, seasons: ["Winter"], upcomingOnly: true })
-    );
-
-  const quickFilters = [
-    { label: "Winters", action: selectWinter, active: winterActive },
-    { label: "Spiritual", action: () => selectCollection("yatra"), active: activeCollection === "yatra" },
-    { label: "Weekend", action: () => selectCollection("weekend"), active: activeCollection === "weekend" },
-    // Every remaining season gets a pill, so the seasons facet is reachable
-    // without opening the filter panel. Winter already has its own pill above.
-    ...SEASON_ORDER.filter((season) => season !== "Winter").map((season) => ({
-      label: season,
-      action: () => selectSeason(season),
-      active: selectedFilters.seasons.includes(season),
-    })),
-  ];
+  const quickFilters = CURATED_PILLS.map((pill) => ({
+    label: pill,
+    action: () => selectPill(pill),
+    active: activePill === pill,
+  }));
 
   const awardsData = [
     {
@@ -789,7 +794,7 @@ export default function Home() {
 
               {sortedEntries.length > 0 ? (
                 <SwiperCarousel
-                  key={`${searchQuery}-${sortBy}-${activeCollection}-${JSON.stringify(selectedFilters)}`}
+                  key={`${searchQuery}-${sortBy}-${activePill}-${JSON.stringify(selectedFilters)}`}
                   slidesPerView={1}
                   spaceBetween={20}
                   showNavigation={true}
