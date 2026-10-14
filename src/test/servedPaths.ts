@@ -19,6 +19,7 @@ const STATIC_ROUTES = new Set([
   "/trips",
   "/weekend-trips",
   "/backpacking-trips",
+  "/south-trips",
   "/premium-trips",
   "/yatra",
   "/blogs",

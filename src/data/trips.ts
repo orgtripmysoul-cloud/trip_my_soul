@@ -3895,6 +3895,25 @@ export function getTripBySlug(slug: string): TripListingItem | undefined {
 }
 
 /**
+ * States the "Explore South" catalogue covers. Matched as a substring of
+ * `trip.region` so a qualified region ("Wayanad, Kerala") still files south.
+ */
+export const SOUTH_REGIONS = [
+  "Kerala",
+  "Karnataka",
+  "Tamil Nadu",
+  "Goa",
+  "Andhra Pradesh",
+  "Telangana",
+  "Puducherry",
+];
+
+/** Every South India trip, across both catalogues. */
+export const SOUTH_TRIPS: TripListingItem[] = ALL_TRIPS.filter((trip) =>
+  SOUTH_REGIONS.some((region) => trip.region.toLowerCase().includes(region.toLowerCase()))
+);
+
+/**
  * Legacy `db.ts` slugs that describe the same package as a fully-detailed trip
  * in this file. Cards for these point at the trip page so a package has one
  * canonical detail page instead of a thin duplicate on `/treks/[slug]`.

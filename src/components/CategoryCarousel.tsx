@@ -21,7 +21,7 @@ const CATEGORIES: CategoryCard[] = [
   {
     label: "Explore South",
     icon: MapPin,
-    href: "/treks?region=south",
+    href: "/south-trips",
     image: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=500&q=80",
   },
   {

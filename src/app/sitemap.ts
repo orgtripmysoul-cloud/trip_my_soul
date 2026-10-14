@@ -18,6 +18,7 @@ const STATIC_ROUTES: { path: string; priority: number; changeFrequency: Entry["c
   { path: "/blogs", priority: 0.8, changeFrequency: "daily" },
   { path: "/weekend-trips", priority: 0.8, changeFrequency: "weekly" },
   { path: "/backpacking-trips", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/south-trips", priority: 0.8, changeFrequency: "weekly" },
   { path: "/premium-trips", priority: 0.8, changeFrequency: "weekly" },
   { path: "/yatra", priority: 0.8, changeFrequency: "weekly" },
   { path: "/summer-camps", priority: 0.8, changeFrequency: "weekly" },

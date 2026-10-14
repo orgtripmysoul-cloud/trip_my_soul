@@ -51,8 +51,11 @@ const HERO_ANNOUNCEMENT = {
   headline: "Most Popular Autumn Treks in India: Fixed Departure Dates Open for Booking",
   treks: [
     { label: "Kedarkantha Trek", slug: "kedarkantha-trek" },
-    { label: "Har Ki Dun Trek", slug: "har-ki-dun-trek" },
-    { label: "Kedarnath Darshan & Chopta Tungnath Trek", slug: "kedarnath-and-tungnath-yatra" },
+    { label: "Kuari Pass Trek", slug: "kuari-pass-trek" },
+    { label: "Brahmatal Trek", slug: "brahmatal-trek" },
+    { label: "Dayara Bugyal Trek", slug: "dayara-bugyal-trek" },
+    { label: "Chandrashila Chopta Trek", slug: "chopta-tungnath-trek" },
+    { label: "Gulabi Kantha Trek", slug: "gulabi-kantha-trek" },
   ],
 } as const;
 

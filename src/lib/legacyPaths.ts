@@ -32,6 +32,7 @@ const LIVE_SUBTREES = [
 const LIVE_PAGES = [
   "/weekend-trips",
   "/backpacking-trips",
+  "/south-trips",
   "/premium-trips",
   "/yatra",
   "/about-us",
