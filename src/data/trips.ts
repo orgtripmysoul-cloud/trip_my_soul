@@ -885,7 +885,7 @@ export const WEEKEND_TRIPS: TripListingItem[] = [
       startLocation: "Shimla",
       endLocation: "Shimla",
       difficulty: "Moderate",
-      price: null,
+      price: 6999,
       months: ["May", "Jun", "Jul", "Aug", "Sep", "Oct"],
       themes: ["Pilgrimage", "Meadow", "Forest"],
       category: "Weekend Trip",

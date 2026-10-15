@@ -539,7 +539,7 @@ export const TREKS: Trek[] = [
     "name": "Yulla Kanda Trek",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Baspa_Valley_under_snow%2C_Kinnaur%2C_Himachal_Pradesh%2C_India.jpg/1920px-Baspa_Valley_under_snow%2C_Kinnaur%2C_Himachal_Pradesh%2C_India.jpg",
     "tagline": "The world's highest Shri Krishna temple, at 12,778 ft in Kinnaur — three days from Shimla.",
-    "price": null,
+    "price": 6999,
     "days": 3,
     "nights": 2,
     "region": "Himachal Pradesh",
@@ -3016,7 +3016,8 @@ export const TREKS: Trek[] = [
     "slug": "deoriatal-chopta-trek",
     "name": "Deoriatal-Chopta Trek",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Mighty_snow_peak%2C_Chopta%2C_Uttarakhand.jpg/1920px-Mighty_snow_peak%2C_Chopta%2C_Uttarakhand.jpg",
-    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "price": 4999,
+    "priceNote": "₹4,999 per person ex-Rishikesh. ₹6,499 per person for the Delhi-to-Delhi package.",
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
     "region": "Uttarakhand",
@@ -3053,14 +3054,11 @@ export const TREKS: Trek[] = [
     // (overview, itinerary, eligibility, article, FAQs, how-to-reach and
     // package terms); extended detail-page fields are assigned below via
     // `panwaliKanthaIndex`.
-    // TODO(content): no fixed package price is
-    // published in the source (it's offered "in customise"), so `price`
-    // stays null (see `priceNote`).
     "slug": "panwali-kantha-trek",
     "name": "Panwali Kantha Trek",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Nomads_of_the_Bugyals_in_Uttarakhand_01.jpg/1920px-Nomads_of_the_Bugyals_in_Uttarakhand_01.jpg",
     "tagline": "A 7-8 km untouched Himalayan meadow at 11,500 ft between Trijuginarayan and Kedarnath, with a 180° wall of Garhwal peaks and almost no crowd",
-    "price": null,
+    "price": 9999,
     "days": 5,
     "nights": 4,
     "region": "Uttarakhand",
@@ -3166,7 +3164,7 @@ export const TREKS: Trek[] = [
     "slug": "kartik-swami-trek",
     "name": "Kartik Swami Trek",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Golden_landscape_from_Kartik_Swami_Temple_Rudraprayag.JPG/1920px-Golden_landscape_from_Kartik_Swami_Temple_Rudraprayag.JPG",
-    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "price": 4999,
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
     "region": "Uttarakhand",
@@ -3205,7 +3203,7 @@ export const TREKS: Trek[] = [
     "slug": "auli-snow-trip",
     "name": "Auli Snow Trip",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Snow_at_Auli.jpg/1920px-Snow_at_Auli.jpg",
-    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "price": 6999,
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
     "region": "Uttarakhand",
@@ -3246,7 +3244,8 @@ export const TREKS: Trek[] = [
     "name": "Chopta with Auli",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Auli_in_October_2015_-_38.jpg/1920px-Auli_in_October_2015_-_38.jpg",
     "tagline": "Auli's ski slopes, the world's highest Shiva temple and a 13,000 ft summit in one trip",
-    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "price": 7999,
+    "priceNote": "₹7,999 per person for 4 days / 3 nights. ₹9,999 per person for 5 days / 4 nights.",
     "days": 4,
     "nights": 3,
     "region": "Uttarakhand",
@@ -3284,7 +3283,8 @@ export const TREKS: Trek[] = [
     "slug": "chopta-snow-trip",
     "name": "Chopta Snow Trip",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Tungnath_Temple_in_winter.jpg/1920px-Tungnath_Temple_in_winter.jpg",
-    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "price": 4999,
+    "priceNote": "₹4,999 per person ex-Rishikesh. ₹6,499 per person for the Delhi-to-Delhi package.",
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
     "region": "Uttarakhand",
@@ -3442,7 +3442,7 @@ export const TREKS: Trek[] = [
     "slug": "mussoorie-winter-escape",
     "name": "Mussoorie Winter Escape",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Mussoorie_Hill_Station.jpg/1920px-Mussoorie_Hill_Station.jpg",
-    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "price": 6999,
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
     "region": "Uttarakhand",
@@ -3480,7 +3480,8 @@ export const TREKS: Trek[] = [
     "slug": "chakrata-winter-trip",
     "name": "Chakrata Winter Trip",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Dehradun_Snow_covered_peaks.jpg/1920px-Dehradun_Snow_covered_peaks.jpg",
-    "price": null, // TODO(content): real price; the card shows "TBD" until set.
+    "price": 4999,
+    "priceNote": "₹4,999 per person ex-Dehradun. ₹6,499 per person for the Delhi-to-Delhi package.",
     "days": 3, // TODO(content): real duration.
     "nights": 2, // TODO(content): real duration.
     "region": "Uttarakhand",
@@ -4244,7 +4245,7 @@ export const TREKS: Trek[] = [
     "name": "Harshil Valley Trip",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Bhagirathi_River_at_Gangotri_WTK20150915-IMG_2704.jpg/1920px-Bhagirathi_River_at_Gangotri_WTK20150915-IMG_2704.jpg",
     "tagline": "The Mini Switzerland of Uttarkashi — apple orchards, deodar forests and old wooden villages at 9,005 ft on the banks of the Bhagirathi, 26 km before Gangotri.",
-    "price": null, // TODO(content): real price; source quotes a "15k to 30k" range depending on shared/private car — the card shows "TBD" until a fixed price is set.
+    "price": 6999,
     "days": 3,
     "nights": 2,
     "region": "Uttarakhand",
@@ -5149,7 +5150,7 @@ export const YATRAS: Trek[] = [
     // TODO(content): confirm this is distinct from `badrinath-kedarnath-yatra`
     // above, which covers the same two shrines under a different name.
     "tagline": "Kedarnath and Badrinath, the two Garhwal dhams, on a single guided itinerary.",
-    "price": null,            // TODO(content): no published fare yet
+    "price": 11999,
     "days": null,             // TODO(content): duration pending
     "nights": null,           // TODO(content): duration pending
     "region": "Uttarakhand",
@@ -5185,7 +5186,7 @@ export const YATRAS: Trek[] = [
     // and `panch-kedar-trek` in TREKS. Slug suffixed to keep it unique; decide
     // whether this entry should instead point at one of those detail pages.
     "tagline": "Kedarnath, Tungnath, Rudranath, Madmaheshwar and Kalpeshwar — the five Shiva shrines of Garhwal.",
-    "price": null,            // TODO(content): no published fare yet
+    "price": 34499,
     "days": null,             // TODO(content): duration pending
     "nights": null,           // TODO(content): duration pending
     "region": "Uttarakhand",
@@ -5202,7 +5203,8 @@ export const YATRAS: Trek[] = [
     // TODO(content): overlaps `madmaheshwar-trek` (WEEKEND_TRIPS) and
     // `madhyamaheshwar-trek-4-day` (BACKPACKING_TRIPS).
     "tagline": "The second of the Panch Kedar, reached on foot from Ransi through the Madhyamaheshwar valley.",
-    "price": null,            // TODO(content): no published fare yet
+    "price": 6999,
+    "priceNote": "₹6,999 per person for 3 days / 2 nights. ₹8,499 per person for 4 days / 3 nights ex-Rishikesh.",
     "days": null,             // TODO(content): duration pending
     "nights": null,           // TODO(content): duration pending
     "region": "Uttarakhand",
@@ -5219,7 +5221,7 @@ export const YATRAS: Trek[] = [
     "name": "Rudranath Trek",
     // TODO(content): overlaps `rudranath-trek` in BACKPACKING_TRIPS.
     "tagline": "The Shiva face shrine at Rudranath, the hardest to reach of the Panch Kedar.",
-    "price": null,            // TODO(content): no published fare yet
+    "price": 10999,
     "days": null,             // TODO(content): duration pending
     "nights": null,           // TODO(content): duration pending
     "region": "Uttarakhand",
@@ -5236,7 +5238,7 @@ export const YATRAS: Trek[] = [
     "name": "Har Ki Dun Trek",
     // TODO(content): cross-listing of `har-ki-dun-trek` in TREKS.
     "tagline": "The valley of gods above Sankri, walked through the Mahabharata villages of the Tons.",
-    "price": null,            // TODO(content): no published fare yet
+    "price": 10999,
     "days": null,             // TODO(content): duration pending
     "nights": null,           // TODO(content): duration pending
     "region": "Uttarakhand",
@@ -5253,7 +5255,7 @@ export const YATRAS: Trek[] = [
     "name": "Bali Pass Trek",
     // TODO(content): cross-listing of `bali-pass-trek` in TREKS.
     "tagline": "The high crossing from Har Ki Dun to Yamunotri, linking the valley to the dham.",
-    "price": null,            // TODO(content): no published fare yet
+    "price": 21999,
     "days": null,             // TODO(content): duration pending
     "nights": null,           // TODO(content): duration pending
     "region": "Uttarakhand",
@@ -5270,7 +5272,7 @@ export const YATRAS: Trek[] = [
     "name": "Rupin Pass Trek",
     // TODO(content): cross-listing of `rupin-pass-trek` in TREKS.
     "tagline": "The hanging-village crossing from Dhaula in Uttarakhand over into Sangla in Kinnaur.",
-    "price": null,            // TODO(content): no published fare yet
+    "price": 17999,
     "days": null,             // TODO(content): duration pending
     "nights": null,           // TODO(content): duration pending
     "region": "Himachal Pradesh",   // TODO(content): route starts in Uttarakhand; TREKS files it under Himachal Pradesh
@@ -5286,7 +5288,7 @@ export const YATRAS: Trek[] = [
     "slug": "roopkund-yatra",
     "name": "Roopkund Trek",
     "tagline": "The glacial lake below Trishul, reached over the Ali and Bedni bugyals.",
-    "price": null,            // TODO(content): no published fare yet
+    "price": 17999,
     "days": null,             // TODO(content): duration pending
     "nights": null,           // TODO(content): duration pending
     "region": "Uttarakhand",
@@ -5303,7 +5305,7 @@ export const YATRAS: Trek[] = [
     "name": "Ali Bedni Bugyal Trek",
     // TODO(content): cross-listing of `ali-bedni-bugyal-trek` in TREKS.
     "tagline": "Two of the largest meadows in the Garhwal Himalaya, under the Trishul and Nanda Ghunti faces.",
-    "price": null,            // TODO(content): no published fare yet
+    "price": 10999,
     "days": null,             // TODO(content): duration pending
     "nights": null,           // TODO(content): duration pending
     "region": "Uttarakhand",
@@ -5320,7 +5322,7 @@ export const YATRAS: Trek[] = [
     "name": "Phulara Ridge Trek",
     // TODO(content): cross-listing of `phulara-ridge-trek` in TREKS.
     "tagline": "A rare continuous ridge walk above Sankri, open on both sides for most of a day.",
-    "price": null,            // TODO(content): no published fare yet
+    "price": 8999,
     "days": null,             // TODO(content): duration pending
     "nights": null,           // TODO(content): duration pending
     "region": "Uttarakhand",
@@ -11897,7 +11899,7 @@ if (panwaliKanthaIndex !== -1) {
     "There is no hotel, shop or network anywhere on this trek — only camping tents, and Jio works only slightly in Ghuttu village. A local guide is compulsory; the forest check post at the start will not allow entry without one. Not recommended for families with children below 10 or seniors above 60, since the daily walk runs 5-8 hours over 32-33 km in total, and no pony/mule is available for the last 6 km beyond Pobhagi.";
 
   TREKS[panwaliKanthaIndex].sourceCaveat =
-    "The source write-up gives Panwali Kantha's altitude as both \"3,350 m (11,000-11,500 ft)\" and \"11,500 ft\" elsewhere — both figures are kept as published (11,500 ft actually converts to about 3,505 m). It similarly gives the round-trip trek distance as both 32 km and 33 km in different places; both are kept as published. No fixed package price is published — the source lists it as available \"in customise\" for groups of 4 or more — so none is shown here; contact the trips desk for current rates. If starting from Trijuginarayan instead of Ghuttu, the source notes the itinerary runs in reverse.";
+    "The source write-up gives Panwali Kantha's altitude as both \"3,350 m (11,000-11,500 ft)\" and \"11,500 ft\" elsewhere — both figures are kept as published (11,500 ft actually converts to about 3,505 m). It similarly gives the round-trip trek distance as both 32 km and 33 km in different places; both are kept as published. The source write-up lists the trek as available \"in customise\" for groups of 4 or more; the package price shown here is the current ops-confirmed rate. If starting from Trijuginarayan instead of Ghuttu, the source notes the itinerary runs in reverse.";
 
   TREKS[panwaliKanthaIndex].eligibilityCriteria = [
     { icon: "User", text: "Age: minimum 10 years (physically active, trekking with parents); ideal 14-55 years; maximum 60 years, subject to fitness" },
