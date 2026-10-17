@@ -48,7 +48,7 @@ const HERO_SLIDES = [
  * `TREKS`/`YATRAS`, since /treks/[slug] resolves against those.
  */
 const HERO_ANNOUNCEMENT = {
-  headline: "Most Popular Autumn Treks in India: Fixed Departure Dates Open for Booking",
+  headline: "Most Popular Winter Treks in India: Fixed Departure Dates Open for Booking",
   treks: [
     { label: "Kedarkantha Trek", slug: "kedarkantha-trek" },
     { label: "Kuari Pass Trek", slug: "kuari-pass-trek" },
