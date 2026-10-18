@@ -16,12 +16,13 @@
 -- in one step (admin-initiated), plus (c) let the very first payment be less
 -- than the full total.
 
--- payment_kind already has full/advance/addon/other; add the two the LLD's
--- ledger vocabulary needs for a multi-payment history ('installment' for a
--- second-or-later online payment, 'final' for the payment that closes the
--- balance). Existing rows keep their existing kind unchanged.
-alter type payment_kind add value if not exists 'installment';
-alter type payment_kind add value if not exists 'final';
+-- payment_kind already has full/advance/addon/other; the two values this
+-- migration relies on ('installment' for a second-or-later online payment,
+-- 'final' for the payment that closes the balance) are added in
+-- 00115_payment_kind_values.sql. They must land in an earlier transaction:
+-- Postgres rejects the use of a newly added enum value in the transaction
+-- that added it, and create_additional_payment below defaults p_kind to
+-- 'installment'. Existing rows keep their existing kind unchanged.
 
 -- Manual payment methods are stored in payments.gateway (already a free
 -- text column, already what gateway_order_id/gateway_payment_id uniqueness

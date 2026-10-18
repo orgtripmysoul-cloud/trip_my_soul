@@ -1,3 +1,29 @@
+# Namespaces this project's local containers, and moves them off the default
+# 543xx ports so the local stack can run alongside another Supabase project
+# on the same machine. Local development only — does not affect the hosted
+# project.
+project_id = "tripmysoul"
+
+[api]
+enabled = true
+port = 54421
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54422
+shadow_port = 54420
+major_version = 17
+
+[studio]
+enabled = true
+port = 54423
+
+[local_smtp]
+enabled = true
+port = 54424
+
 [auth]
 site_url = "https://tripmysoul.in"
 additional_redirect_urls = ["https://tripmysoul.in/", "http://localhost:3000/"]

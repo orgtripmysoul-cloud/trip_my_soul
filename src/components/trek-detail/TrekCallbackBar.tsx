@@ -2,13 +2,14 @@
 
 import React, { useState } from "react";
 import { PhoneCall, X } from "lucide-react";
-import { submitQuoteLead } from "@/lib/client/checkoutApi";
+import { submitLead } from "@/lib/client/leadsApi";
 
 /** Desktop-only "request a call back" card. Mobile gets the global WhatsApp button instead. */
-export default function TrekCallbackBar() {
+export default function TrekCallbackBar({ trekSlug, trekName }: { trekSlug?: string; trekName?: string } = {}) {
   const [showCallbackBar, setShowCallbackBar] = useState(true);
   const [callbackPhone, setCallbackPhone] = useState("");
   const [callbackSuccess, setCallbackSuccess] = useState(false);
+  const [callbackError, setCallbackError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
   if (!showCallbackBar) return null;
@@ -41,14 +42,26 @@ export default function TrekCallbackBar() {
               onClick={async () => {
                 if (!callbackPhone.trim() || submitting) return;
                 setSubmitting(true);
+                setCallbackError(null);
                 try {
-                  await submitQuoteLead({ name: "Website visitor", phone: callbackPhone.trim(), source: "callback" });
+                  await submitLead({
+                    formType: "callback",
+                    name: "Website visitor",
+                    phone: callbackPhone.trim(),
+                    trekSlug,
+                    trekName,
+                    consentMarketing: true,
+                  });
                   setCallbackSuccess(true);
                   setTimeout(() => {
                     setCallbackSuccess(false);
                     setCallbackPhone("");
                     setShowCallbackBar(false);
                   }, 2500);
+                } catch (err) {
+                  // Previously failures were swallowed and the card just reset,
+                  // so a mistyped number looked like a successful request.
+                  setCallbackError(err instanceof Error ? err.message : "Could not send. Please try again.");
                 } finally {
                   setSubmitting(false);
                 }
@@ -59,6 +72,7 @@ export default function TrekCallbackBar() {
               {submitting ? "Sending..." : "Call Me"}
             </button>
           </div>
+          {callbackError && <p className="text-[10px] font-bold text-red-400">{callbackError}</p>}
         </div>
       )}
 

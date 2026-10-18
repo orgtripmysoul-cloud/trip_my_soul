@@ -1,12 +1,13 @@
 import "server-only";
 import { supabaseAdmin } from "./supabase";
 import { AppError } from "./errors";
+import type { StaffRole } from "@/lib/types/crm";
 
 export interface StaffContext {
   id: string;
   fullName: string;
   email: string;
-  role: "admin" | "staff";
+  role: StaffRole;
 }
 
 /**
