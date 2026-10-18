@@ -2722,9 +2722,10 @@ export const TREKS: Trek[] = [
     "slug": "gulabi-kantha-trek",
     "name": "Gulabi Kantha Trek",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gulabi_Kantha_Trek_in_winters.png/1920px-Gulabi_Kantha_Trek_in_winters.png",
-    "price": 11999,
-    "days": 6,
-    "nights": 5,
+    "tagline": "Five days from Dehradun via Hanuman Chatti, climbing through oak and rhododendron forest and the Seema Thatch meadow to a roughly 4,000 m summit.",
+    "price": 9499,
+    "days": 5,
+    "nights": 4,
     "region": "Uttarakhand",
     "category": "Upcoming Winter Treks",
     "batchDates": [
@@ -2740,7 +2741,12 @@ export const TREKS: Trek[] = [
       "2026-12-19",
     ],
     "startLocation": "Dehradun to Dehradun",
-    "difficulty": "Moderate",
+    "endLocation": "Dehradun",
+    "difficulty": "Moderate to Difficult",
+    "maxAltitude": "Approx. 13,120 ft / 4,000 m",
+    "totalDistance": "31 Kilometers",
+    "trailType": "Himalayan summit trek — dense forest, mountain meadows and Himalayan panoramas",
+    "route": ["Dehradun", "Hanuman Chatti", "Kandola Chhani", "Seema Thatch", "Gulabi Kantha Summit", "Hanuman Chatti", "Dehradun"],
     "months": [
       "Oct",
       "Nov",
@@ -2755,7 +2761,108 @@ export const TREKS: Trek[] = [
       "Meadow",
       "Forest",
       "Pass Crossing"
-    ]
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Dehradun to Hanuman Chatti (2,100 m)",
+        description:
+          "Drive 180 Km (6-7 Hrs) via Mussoorie, Naugaon and Barkot. Scenic mountain roads along the Yamuna Valley. Overnight guesthouse/camp.",
+        detailedParagraphs: [
+          "Begin your journey from Dehradun in the morning and drive through Mussoorie, Naugaon and Barkot, enjoying scenic mountain roads and beautiful views of the Yamuna Valley.",
+          "Reach Hanuman Chatti, settle into your accommodation and relax after the journey. Meet your trek team, check your equipment and prepare for the trek ahead.",
+        ],
+        driveDistance: "180 Km",
+        drivingTime: "6-7 Hrs",
+        stayType: "Guesthouse / Camp",
+        meals: "Dinner",
+      },
+      {
+        day: 2,
+        title: "Hanuman Chatti to Kandola Chhani (2,700 m) — 5 Km Trek",
+        description:
+          "Trek 5 Km (4-5 Hrs) through dense oak, pine and rhododendron forest to the Kandola Chhani campsite.",
+        detailedParagraphs: [
+          "After breakfast, begin your trek towards Kandola Chhani. Walk through dense oak, pine and rhododendron forests, following scenic mountain trails with occasional clearings and valley views.",
+          "Reach the campsite, enjoy refreshments and spend the evening surrounded by nature.",
+        ],
+        trekDistance: "5 Km",
+        trekDuration: "4-5 Hrs",
+        stayType: "Camp",
+        meals: "Breakfast, Lunch, Evening Snacks, Dinner",
+      },
+      {
+        day: 3,
+        title: "Kandola Chhani to Seema Thatch (3,474 m) — 6 Km Trek",
+        description:
+          "Trek 6 Km (6-7 Hrs), ascending through alpine forest and open meadows to the high-altitude meadow of Seema Thatch.",
+        detailedParagraphs: [
+          "After breakfast, continue ascending through alpine forests and open meadows. Enjoy the changing mountain scenery as the trail gains altitude and the landscape becomes more expansive.",
+          "Arrive at Seema Thatch, a beautiful high-altitude meadow, and spend the evening resting and preparing for the summit attempt.",
+        ],
+        trekDistance: "6 Km",
+        trekDuration: "6-7 Hrs",
+        stayType: "Camp",
+        meals: "Breakfast, Lunch, Evening Snacks, Dinner",
+      },
+      {
+        day: 4,
+        title: "Seema Thatch to Gulabi Kantha Summit (approx. 4,000 m) and down to Kandola Chhani — Summit Day",
+        description:
+          "Trek approx. 15 Km (8-9 Hrs). Early-morning summit climb with panoramic Himalayan views, then descend to Kandola Chhani.",
+        detailedParagraphs: [
+          "Start early in the morning for the summit trek to Gulabi Kantha. Climb along mountain trails to reach the summit, where you can enjoy spectacular Himalayan views, weather permitting.",
+          "Take photographs and spend some time appreciating the mountain panorama before beginning your descent towards Kandola Chhani.",
+          "Return to camp, enjoy a warm meal and relax after a challenging day of trekking.",
+        ],
+        trekDistance: "Approx. 15 Km",
+        trekDuration: "8-9 Hrs",
+        stayType: "Camp",
+        meals: "Breakfast, Lunch, Evening Snacks, Dinner",
+        highlights: ["Summit day — approximately 4,000 m, with panoramic Himalayan views, weather permitting"],
+        timeNote: { label: "Summit start", value: "Early morning" },
+      },
+      {
+        day: 5,
+        title: "Kandola Chhani to Hanuman Chatti and Drive to Dehradun",
+        description:
+          "Trek 5 Km (3-4 Hrs) down to Hanuman Chatti, then drive 180 Km (6-7 Hrs) to Dehradun via Barkot and Mussoorie. Trek ends by evening.",
+        detailedParagraphs: [
+          "After breakfast, descend through the forest trail to Hanuman Chatti. On arrival, board your vehicle for the return drive to Dehradun via Barkot and Mussoorie.",
+          "Arrive by evening, depending on road and trail conditions, marking the end of your Gulabi Kantha trekking adventure.",
+        ],
+        trekDistance: "5 Km",
+        trekDuration: "3-4 Hrs",
+        driveDistance: "180 Km",
+        drivingTime: "6-7 Hrs",
+        stayType: "Trek Ends — Drop at Dehradun",
+        meals: "Breakfast",
+        timeNote: { label: "Drop", value: "Evening at Dehradun" },
+      },
+    ],
+    inclusions: [
+      { title: "Transportation", description: "Dehradun to Hanuman Chatti and return to Dehradun." },
+      { title: "Accommodation", description: "Guesthouse/camp on Day 1 and camping during the trek, on a sharing basis." },
+      { title: "Meals", description: "Nutritious vegetarian meals during the trek, including breakfast, lunch, evening snacks and dinner." },
+      { title: "Trek Leader", description: "Experienced trek leader and support staff." },
+      { title: "Local Guides", description: "Local trekking guides familiar with the route." },
+      { title: "Camping Equipment", description: "Tents, sleeping bags and sleeping mats." },
+      { title: "Safety Equipment", description: "First-aid kit and basic emergency support." },
+      { title: "Permits", description: "Required trekking and forest permits, as applicable." },
+      { title: "Support Staff", description: "Trek support team for campsite setup and meal preparation." },
+      { title: "Safety Briefing", description: "Pre-trek briefing and basic trekking instructions." },
+    ],
+    exclusions: [
+      { title: "Meals in Transit", description: "Any meals during road journeys to and from Hanuman Chatti." },
+      { title: "Personal Expenses", description: "Snacks, beverages, mineral water and shopping." },
+      { title: "Personal Trekking Gear", description: "Trekking shoes, jackets, raincoats and trekking poles." },
+      { title: "Insurance", description: "Any kind of insurance, including travel, medical or evacuation insurance." },
+      { title: "Medical & Evacuation", description: "Emergency evacuation, rescue operations or additional medical expenses." },
+      { title: "Delays & Weather", description: "Any costs arising from delays due to bad weather, roadblocks or unforeseen circumstances, including accommodation or meals beyond the itinerary." },
+      { title: "Porterage", description: "Porter or mule services for personal luggage." },
+      { title: "GST", description: "GST, if applicable and not included in the package price." },
+      { title: "Anything Else", description: "Anything not specifically mentioned in the inclusions." },
+    ],
   },
   {
     "slug": "sarutal-trek",
@@ -14725,5 +14832,227 @@ if (kashmirGreatLakesIndex !== -1) {
     { url: "/Trips_gallery/Kashmir%20Great%20Lake/6927cf34-d52c-4c21-a2ed-a3ab98c6488d.jpg.jpeg", caption: "Taking in the lake at the end of the day's walk" },
     { url: "/Trips_gallery/Kashmir%20Great%20Lake/0067607e-3fc3-493c-a55a-dcdfeb2887e9.jpg.jpeg", caption: "Tents spread across the meadow campsite" },
     { url: "/Trips_gallery/Kashmir%20Great%20Lake/f4bc171a-0c70-4be2-9b33-fbd3bc7edf86.jpg.jpeg", caption: "Rain moving over the lake and the camp meadow" }
+  ];
+}
+
+/**
+ * Gulabi Kantha Trek — client-supplied overview, how-to-reach, FAQs and article.
+ *
+ * The source overview gives the total trek distance as "approximately 20-30 km,
+ * depending on the route", while the published day-by-day itinerary adds up to
+ * 31 km; the itinerary figure is kept on the listing and the source range is
+ * noted in the FAQs.
+ */
+const gulabiKanthaIndex = TREKS.findIndex(t => t.slug === 'gulabi-kantha-trek');
+if (gulabiKanthaIndex !== -1) {
+  TREKS[gulabiKanthaIndex].intro =
+    "Gulabi Kantha is a Himalayan summit trek in the Uttarkashi district of Uttarakhand, known for its scenic meadows, forest trails and panoramic mountain views. The five-day route starts and ends in Dehradun, with Hanuman Chatti on the Yamunotri road as the base, and climbs through oak, pine and rhododendron forest and the Seema Thatch meadow to a summit of roughly 4,000 m / 13,200 ft.";
+
+  TREKS[gulabiKanthaIndex].highlights = [
+    "A roughly 4,000 m / 13,200 ft summit day with panoramic Himalayan views, weather permitting",
+    "Bandarpoonch and Swargarohini visible from the higher sections, depending on weather and visibility",
+    "Dense oak, pine and rhododendron forest on the climb out of Hanuman Chatti",
+    "High-altitude camping at Kandola Chhani and the Seema Thatch meadow",
+    "A quieter alternative to Kedarkantha on the same five-day, Dehradun-to-Dehradun format"
+  ];
+
+  TREKS[gulabiKanthaIndex].destinationHighlights = [
+    { name: "Hanuman Chatti", blurb: "The base at 2,100 m on the Yamunotri route in Uttarkashi district, reached on the Day 1 drive from Dehradun via Mussoorie and Barkot." },
+    { name: "Kandola Chhani", blurb: "The first campsite at 2,700 m, set among dense oak, pine and rhododendron forest about 5 km above Hanuman Chatti." },
+    { name: "Seema Thatch", blurb: "The high-altitude meadow campsite at 3,474 m, where the forest opens out and the summit climb begins the following morning." },
+    { name: "Gulabi Kantha Summit", blurb: "The high point of the trek at approximately 4,000 m / 13,200 ft, with Bandarpoonch and Swargarohini visible on a clear day." }
+  ];
+
+  TREKS[gulabiKanthaIndex].idealFor =
+    "Nature lovers, adventure enthusiasts and trekking groups with good fitness who are comfortable walking for several hours a day on mountain trails. Prior trekking experience is helpful but not essential; summit day is the demanding part.";
+
+  TREKS[gulabiKanthaIndex].importantNote =
+    "Snowfall cannot be guaranteed on any particular departure — it depends on the season and recent weather. Mobile connectivity is limited or unavailable on the remote sections of the trail. The exact summit altitude, the best season for your dates and your pickup point should all be confirmed with the local trek team before departure.";
+
+  TREKS[gulabiKanthaIndex].eligibilityCriteria = [
+    { icon: "Footprints", text: "Experience: prior trekking experience is helpful but not always essential" },
+    { icon: "Dumbbell", text: "Fitness: good physical fitness required, with comfort walking several hours on mountain trails" },
+    { icon: "Mountain", text: "Altitude: up to approximately 4,000 m / 13,200 ft" },
+    { icon: "Snowflake", text: "Must be prepared for cold, and for snow conditions depending on the season" },
+    { icon: "Stethoscope", text: "Participants should be medically fit for high-altitude trekking and camping" }
+  ];
+
+  TREKS[gulabiKanthaIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 5-6 km on mountain trails comfortably, and up to 15 km on summit day" },
+    { icon: "TrendingUp", text: "Able to handle continuous ascents without excessive breathlessness" },
+    { icon: "Backpack", text: "Comfortable carrying a light daypack through the day" },
+    { icon: "Activity", text: "Regular walking, jogging or stair training for 3-4 weeks before the trek is recommended" }
+  ];
+
+  TREKS[gulabiKanthaIndex].howToReach = {
+    intro: "The Gulabi Kantha Trek begins at Hanuman Chatti, in Uttarkashi district on the Yamunotri route; the most convenient gateway is Dehradun.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "From the airport, travel into Dehradun and arrange road transport onward to Hanuman Chatti via Mussoorie and Barkot."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Dehradun Railway Station",
+      detail: "Dehradun is the railhead for this trek. From the station, continue by road to Hanuman Chatti via Mussoorie and Barkot."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Dehradun to Hanuman Chatti via Mussoorie, Nainbagh and Barkot",
+      route: ["Dehradun", "Mussoorie", "Nainbagh", "Barkot", "Hanuman Chatti"],
+      detail: "Private taxis are the most convenient option; buses and shared vehicles may be available via Barkot.",
+      facts: [
+        { label: "Dehradun - Hanuman Chatti", value: "160-190 km / 6-8 hrs" },
+        { label: "Road conditions", value: "Mountain roads along the Yamuna Valley; travel time varies" }
+      ]
+    },
+    pickup: {
+      point: "Dehradun",
+      time: "Morning on Day 1",
+      dropPoint: "Dehradun",
+      dropTime: "Evening on Day 5",
+      note: "Confirm your exact pickup location and the trailhead with the trek operator before departure."
+    }
+  };
+
+  TREKS[gulabiKanthaIndex].faqs = [
+    {
+      title: "Where is the Gulabi Kantha Trek located?",
+      description: "Gulabi Kantha is a Himalayan trekking destination in Uttarkashi district, Uttarakhand, known for its scenic meadows, forest trails and panoramic mountain views."
+    },
+    {
+      title: "How many days are required for the Gulabi Kantha Trek?",
+      description: "The trek typically takes 5 days and 4 nights, starting and ending in Dehradun."
+    },
+    {
+      title: "What is the maximum altitude of the trek?",
+      description: "The summit is approximately 4,000 metres (13,200 feet) above sea level. The exact altitude should be confirmed with the local trek team."
+    },
+    {
+      title: "What is the difficulty level of the Gulabi Kantha Trek?",
+      description: "It is generally considered a moderate-to-difficult trek, involving continuous ascents, high-altitude camping and a challenging summit day."
+    },
+    {
+      title: "What is the best time to do the Gulabi Kantha Trek?",
+      description: "The best season depends on weather and trail conditions. Spring, summer and autumn can offer suitable trekking windows, while winter may bring snow and more challenging conditions."
+    },
+    {
+      title: "How long is the trek?",
+      description: "Approximately 20-30 km depending on the route taken; the published day-by-day itinerary totals about 31 km, including the 15 km summit day."
+    },
+    {
+      title: "Do I need prior trekking experience?",
+      description: "Prior trekking experience is helpful but not always essential. Participants should have good fitness and be comfortable walking for several hours on mountain trails."
+    },
+    {
+      title: "What is the starting point of the trek?",
+      description: "The trek starts from Hanuman Chatti, with pickup and transportation from Dehradun as per the package itinerary."
+    },
+    {
+      title: "What type of accommodation is provided?",
+      description: "Accommodation generally includes a guesthouse or camp on the first night and tents at designated campsites during the trek."
+    },
+    {
+      title: "What meals are included during the trek?",
+      description: "Nutritious vegetarian meals are generally provided during the trekking days, according to the package inclusions."
+    },
+    {
+      title: "Is mobile network connectivity available during the trek?",
+      description: "Mobile connectivity may be limited or unavailable in remote sections of the trail. Network availability depends on your operator and location."
+    },
+    {
+      title: "Is snow guaranteed during the Gulabi Kantha Trek?",
+      description: "No. Snowfall and snow conditions depend on the season and recent weather. Snow cannot be guaranteed for any particular departure."
+    },
+    {
+      title: "Which peaks are visible from the trek?",
+      description: "Bandarpoonch and Swargarohini are visible from the higher sections, depending on weather and visibility."
+    },
+    {
+      title: "What should I pack for the trek?",
+      description: "Carry sturdy trekking shoes, warm layers, a waterproof jacket, a backpack, a water bottle, a headlamp, personal medicines and other essential trekking gear."
+    },
+    {
+      title: "Is the Gulabi Kantha Trek suitable for beginners?",
+      description: "Beginners with good physical fitness and proper preparation may be able to complete the trek. The summit day can be demanding, so follow the trek leader's guidance."
+    }
+  ];
+
+  TREKS[gulabiKanthaIndex].article = {
+    title: "Gulabi Kantha Trek — Where the Mountains Touch Your Soul",
+    standfirst: "Some journeys are not just about reaching a destination. They are about finding peace in the silence of the mountains, discovering strength within yourself, and experiencing moments that stay in your heart long after you return home.",
+    readMinutes: 6,
+    sections: [
+      {
+        paragraphs: [
+          "The Gulabi Kantha Trek in Uttarakhand is one such journey.",
+          "Hidden in the beautiful Garhwal Himalayas, Gulabi Kantha invites you to step away from the noise of everyday life and enter a world of untouched forests, endless meadows, fresh mountain air and breathtaking Himalayan landscapes.",
+          "Here, every trail has a story to tell. Every sunrise brings a new feeling of hope, and every step takes you closer to the beauty of nature."
+        ]
+      },
+      {
+        heading: "A Journey Beyond the Ordinary",
+        paragraphs: [
+          "Imagine walking through peaceful forests, surrounded by towering trees and the gentle sound of nature. The cool mountain breeze touches your face as the trail leads you deeper into the wilderness.",
+          "There are no crowded streets, no endless notifications and no rush to reach anywhere. Just you, the mountains and a beautiful feeling of freedom.",
+          "As you climb higher, the landscape begins to change. Forest trails open into vast green meadows, mountain peaks appear on the horizon, and the world below slowly fades away.",
+          "For a moment, everything feels simple. You realise that sometimes, the best way to move forward in life is to step away from everything familiar."
+        ]
+      },
+      {
+        heading: "Gulabi Kantha — A Place Where Nature Feels Like Poetry",
+        paragraphs: [
+          "The beauty of Gulabi Kantha lies in its peaceful surroundings and the raw charm of the Himalayas.",
+          "The forests, open meadows and magnificent mountain scenery create an experience that feels far removed from everyday life. Depending on the season, the landscape reveals different colours and moods, making every visit unique.",
+          "On clear days, the surrounding Himalayan peaks create a spectacular backdrop. The changing light, the fresh mountain air and the silence of the high-altitude wilderness make even the simplest moments feel extraordinary.",
+          "You may arrive here looking for adventure, but somewhere along the way, you may discover something more meaningful: a little peace, a little courage and a deeper connection with yourself."
+        ]
+      },
+      {
+        heading: "Not Every Summit Is About the Mountains",
+        paragraphs: [
+          "Every trek brings its own challenges. There are steep climbs, tired legs, unpredictable weather and moments when the journey feels longer than expected.",
+          "But there is something beautiful about continuing, one step at a time.",
+          "You learn to appreciate the small victories. You learn that progress does not always have to be fast. And when you finally stand surrounded by the grandeur of the Himalayas, the feeling is difficult to put into words.",
+          "The summit becomes more than a point on a map. It becomes a reminder of everything it took to get there. Sometimes, the greatest achievement is not reaching the top. It is discovering the strength you carried within yourself all along."
+        ]
+      },
+      {
+        heading: "More Than a Trek, It Is a Feeling",
+        paragraphs: [
+          "The most unforgettable memories are often the simplest ones.",
+          "Sharing laughter with fellow trekkers around a campsite. Watching the sky change colours as the sun disappears behind the mountains. Enjoying a warm meal after a long day on the trail. Looking up at a sky filled with stars, far away from the lights of the city.",
+          "These are the moments that make a Himalayan journey special. You may forget the exact distance you walked or the number of hours you spent climbing, but you will remember how the mountains made you feel.",
+          "And perhaps, that is the real magic of trekking."
+        ]
+      },
+      {
+        heading: "Find Your Own Story in the Himalayas",
+        paragraphs: [
+          "Not everyone comes to the mountains for the same reason. Some come seeking adventure. Some come to challenge themselves. Some simply need a break from the responsibilities and expectations of everyday life.",
+          "Whatever brings you here, Gulabi Kantha offers an opportunity to slow down, breathe deeply and experience the mountains in their natural beauty.",
+          "You do not need to have everything figured out before you begin. Sometimes, all you need is the courage to take the first step.",
+          "Because the mountains do not ask who you are, what you do or how much you have achieved. They simply invite you to experience the moment."
+        ]
+      },
+      {
+        heading: "Let the Mountains Call You",
+        paragraphs: [
+          "At Trip My Soul, we believe that travel is about more than visiting beautiful places. It is about creating memories, building connections and collecting experiences that become a part of who we are.",
+          "Gulabi Kantha is an invitation to experience the Himalayas with an open heart, a spirit of adventure and a willingness to discover something new.",
+          "Come for the mountains. Stay for the moments. Return with a story that belongs only to you."
+        ]
+      }
+    ],
+    signoff: "Gulabi Kantha Trek — not just a journey to the mountains, but a journey back to yourself. Trip My Soul, Himalayan Spiritual Journeys."
+  };
+
+  TREKS[gulabiKanthaIndex].similarTreks = [
+    "dayara-bugyal-trek",
+    "kedarkantha-trek",
+    "brahmatal-trek",
+    "har-ki-dun-trek",
+    "phulara-ridge-trek",
+    "kuari-pass-trek"
   ];
 }
