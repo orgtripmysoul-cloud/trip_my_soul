@@ -6431,6 +6431,14 @@ if (kedarkanthaIndex !== -1) {
     }
   };
 
+  // Gulabi Kantha runs the same Nov-Apr daily departure calendar as Kedarkantha,
+  // and is the same 5 days / 4 nights, so the start-end pairs carry over as-is.
+  // Cloned rather than shared so edits to one schedule cannot leak into the other.
+  const gulabiKanthaIndex = TREKS.findIndex(t => t.slug === 'gulabi-kantha-trek');
+  if (gulabiKanthaIndex !== -1) {
+    TREKS[gulabiKanthaIndex].batches = structuredClone(TREKS[kedarkanthaIndex].batches);
+  }
+
   const buranGhatiIndex = TREKS.findIndex(t => t.slug === 'buran-ghati-pass-trek');
   if (buranGhatiIndex !== -1) {
     TREKS[buranGhatiIndex].itinerary = [
