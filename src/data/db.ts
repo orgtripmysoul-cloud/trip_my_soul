@@ -15047,6 +15047,40 @@ if (gulabiKanthaIndex !== -1) {
     signoff: "Gulabi Kantha Trek — not just a journey to the mountains, but a journey back to yourself. Trip My Soul, Himalayan Spiritual Journeys."
   };
 
+  TREKS[gulabiKanthaIndex].heroImage =
+    "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-07.jpeg";
+
+  TREKS[gulabiKanthaIndex].heroImages = [
+    "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-09.jpeg",
+    "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-16.jpeg",
+    "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-19.jpeg"
+  ];
+
+  // Client-supplied photography from the trek, under
+  // /public/Trips_gallery/Gulabi Kantha Trek (space encoded as %20 in the URL).
+  TREKS[gulabiKanthaIndex].gallery = [
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-01.jpeg", caption: "Crossing a snow clearing below the oak and pine forest" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-02.jpeg", caption: "Breaking trail across fresh snow above the forest line" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-03.jpeg", caption: "Snowbound huts and forest on the way up from Hanuman Chatti" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-04.jpeg", caption: "A lit tent under a sky full of stars at camp" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-05.jpeg", caption: "A mountain dog keeping watch over the trail" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-06.jpeg", caption: "The Himalayan skyline through changing evening light" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-07.jpeg", caption: "Walking through falling snow in the deodar forest" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-08.jpeg", caption: "Footprints across a sunlit snow meadow near camp" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-09.jpeg", caption: "Heading up the open slopes towards the summit" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-10.jpeg", caption: "The group at the top, flag and all" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-11.jpeg", caption: "A solitary climb up a cloud-wrapped snow slope" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-12.jpeg", caption: "First light on summit morning" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-13.jpeg", caption: "Tents pitched on snow at the high camp" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-14.jpeg", caption: "The forest trail under fresh snow" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-15.jpeg", caption: "Crossing the open meadow on a grey winter afternoon" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-16.jpeg", caption: "Looking out over the valley from the ridge" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-17.jpeg", caption: "A snowbound basin on the upper trail" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-18.jpeg", caption: "Steep going through the bare winter oaks" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-19.jpeg", caption: "Snow peaks on a clear Garhwal morning" },
+    { url: "/Trips_gallery/Gulabi%20Kantha%20Trek/gulabi-kantha-20.jpeg", caption: "A quiet moment at the forest camp" }
+  ];
+
   TREKS[gulabiKanthaIndex].similarTreks = [
     "dayara-bugyal-trek",
     "kedarkantha-trek",
