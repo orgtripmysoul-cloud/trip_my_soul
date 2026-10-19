@@ -978,21 +978,707 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
   ),
   toListingItem(
     {
-      name: "Kashmir",
+      name: "Manali, Solang & Kasol",
+      slug: "manali-solang-kasol-weekend-getaway",
+      duration: "3N/4D",
+      heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Solang_valley_under_snow%2C_2015.jpg/1920px-Solang_valley_under_snow%2C_2015.jpg",
+      tagline: "Old Manali cafes, the Atal Tunnel to Sissu, and the Parvati valley in one long weekend.",
+    },
+    {
+      region: "Himachal Pradesh",
+      startLocation: "Delhi / Chandigarh",
+      endLocation: "Delhi / Chandigarh",
+      difficulty: "Easy",
+      // TODO(content): fare not set by the trips desk yet — renders as
+      // "Price on request" until a figure is published.
+      price: null,
+      months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      themes: ["Snow", "Adventure", "Beginner"],
+      category: "Backpacking Trip",
+      detailsPath: "/trips/backpacking/manali-solang-kasol-weekend-getaway",
+
+      alternateNames: [
+        "Manali Solang Kasol Extended Weekend Getaway",
+        "Shimla Manali Kasol",
+        "Manali Kasol Trip",
+        "Kasol Manikaran",
+        "Atal Tunnel Sissu",
+      ],
+      altitude: "10,235 ft / 3,120 m (Atal Tunnel & Sissu)",
+      availability: "Round the year — snow at Solang and Sissu from December to February",
+      maxGroupSize: "As per departure; private batches on request",
+      contactPhone: "+91 91213 43330",
+
+      // Day 0 is a Thursday-night pickup, so the three nights in the hills fall
+      // across the long weekend and the group is back by Tuesday noon. Declared
+      // as a rule rather than a year of hand-typed dates — see `datesInRange`.
+      batchDates: datesInRange("2026-10-22", "2027-10-28", [4]),
+
+      intro:
+        "An extended weekend in the Kullu and Parvati valleys, run out of Delhi and Chandigarh on overnight transit at both ends. Two nights in Manali for Old Manali's cafes, the Hadimba temple and a day across the Atal Tunnel to Sissu, then down the Beas to Kullu's adventure stretch and a night in Kasol, with the Chalal riverside trail and the hot springs at Manikaran before the drive home.",
+      highlights: [
+        "Old Manali cafes, Mall Road and the Hadimba Devi temple",
+        "Solang Valley under snow from December to February",
+        "The Atal Tunnel — 9.02 km under the Rohtang massif",
+        "Sissu and the barren Lahaul valley at about 10,235 ft",
+        "Kullu's adventure stretch on the Beas",
+        "Kasol and the bohemian Parvati valley",
+        "The 3 km riverside trail to Chalal village",
+        "Manikaran Gurudwara and its sacred hot springs",
+        "Two bonfire and music nights, in Manali and in Kasol",
+      ],
+      usps: [
+        {
+          title: "Three valleys in one weekend",
+          description:
+            "Kullu, Lahaul and Parvati on a single itinerary — pine-forest hill town, cold-desert tunnel country and riverside cafe culture, without a day wasted doubling back.",
+        },
+        {
+          title: "Overnight transit at both ends",
+          description:
+            "You leave after work on Day 0 and are back by Tuesday noon. Only one working day goes into a trip that gives you three full days in the mountains.",
+        },
+        {
+          title: "Sissu on the far side of the tunnel",
+          description:
+            "Most Manali weekends stop at Solang. This one carries on through the Atal Tunnel into Lahaul, where the landscape changes completely within twenty minutes of driving.",
+        },
+        {
+          title: "Trip captains with the group throughout",
+          description:
+            "A dedicated coordinator travels with the batch from the boarding point onward — stays, transfers and the day plan are handled for you.",
+        },
+      ],
+      idealFor:
+        "Beginners, backpackers, solo travellers, college groups and corporate teams who want a Himalayan weekend with no trekking commitment — only light village and riverside walking.",
+      importantNote:
+        "Days 0 and 4 are overnight road journeys and are not counted in the 3N/4D duration. The Solang, Atal Tunnel and Sissu leg depends on road and snow conditions; the tunnel is closed to traffic at short notice in heavy snow, and the day is then reworked around Solang and Manali.",
+      destinationHighlights: [
+        {
+          name: "Manali",
+          blurb:
+            "A hill town at about 6,700 ft on the Beas, and the base for both nights of the first half. Old Manali above the river holds the cafes and guesthouses; the Hadimba Devi temple of 1553 stands in the deodar forest at Dhungri, and Mall Road handles the shopping.",
+        },
+        {
+          name: "Solang Valley",
+          blurb:
+            "A wide side valley 13 km north of Manali, under the Beas Kund ridge. Paragliding, zorbing and a ropeway in summer; snow activities through December to February, all charged on the spot and not part of the package.",
+        },
+        {
+          name: "Atal Tunnel & Sissu",
+          blurb:
+            "The 9.02 km Atal Tunnel runs under the Rohtang massif at about 10,000 ft and opens into Lahaul in roughly ten minutes. Sissu sits on the far side with the Chandra river, a waterfall off the cliff face and a wholly barren, high-desert landscape.",
+        },
+        {
+          name: "Kullu",
+          blurb:
+            "The valley floor town on the drive south, and the river-adventure stretch of the Beas. Rafting, zip lines and river crossings operate here in season, booked and paid for directly.",
+        },
+        {
+          name: "Kasol",
+          blurb:
+            "A village on the Parvati river at about 5,200 ft, known for its Israeli cafes, backpacker crowd and riverside camps. The base for the last night of the trip.",
+        },
+        {
+          name: "Chalal & Manikaran",
+          blurb:
+            "Chalal is a 30-minute walk upstream from Kasol over a footbridge — a flat 3 km round trip through pine forest. Manikaran, 4 km the other way, holds the Gurudwara and the hot springs that langar food is cooked in.",
+        },
+      ],
+
+      itinerary: [
+        {
+          day: 0,
+          title: "Overnight departure from Delhi / Chandigarh",
+          entries: [
+            { time: "Evening", text: "Report at the scheduled boarding point 30 minutes before departure. Briefing with the trip captains." },
+            { text: "Board the AC Deluxe bus or Tempo Traveller and start the overnight run to Manali — about 530 km and 12–14 hours from Delhi." },
+            { text: "Overnight in transit. No meals on this leg." },
+          ],
+        },
+        {
+          day: 1,
+          title: "Arrive Manali — Hadimba, Old Manali and Mall Road",
+          entries: [
+            { time: "Morning", text: "Arrive in Manali, check in to the hotel and freshen up." },
+            { time: "Afternoon", text: "Hadimba Devi temple in the deodar forest at Dhungri, then Old Manali's cafes and the Manu temple." },
+            { time: "Evening", text: "Free time on Mall Road for shopping and dinner at the hotel." },
+            { text: "Overnight in Manali (about 6,700 ft)." },
+          ],
+        },
+        {
+          day: 2,
+          title: "Solang Valley, Atal Tunnel and Sissu",
+          entries: [
+            { time: "After breakfast", text: "Drive to Solang Valley, 13 km north. Paragliding, ropeway and snow activities are available on the spot at your own cost." },
+            { text: "Continue through the Atal Tunnel into Lahaul and on to Sissu — about 80 km round trip, 6–8 hours with stops." },
+            { text: "Time at Sissu for the Chandra river, the waterfall and the Lahaul landscape at about 10,235 ft." },
+            { time: "Evening", text: "Return to Manali. Bonfire and music at the hotel, then dinner." },
+            { text: "Overnight in Manali." },
+          ],
+        },
+        {
+          day: 3,
+          title: "Manali to Kasol via Kullu",
+          entries: [
+            { time: "After breakfast", text: "Check out and drive south along the Beas — about 75 km, 3–4 hours with stops." },
+            { text: "Stop on the Kullu adventure stretch for river rafting, zip line or river crossing, each charged directly by the operator." },
+            { text: "Carry on into the Parvati valley and check in at Kasol (about 5,200 ft)." },
+            { time: "Evening", text: "Riverside time, bonfire and music, then dinner." },
+            { text: "Overnight in Kasol." },
+          ],
+        },
+        {
+          day: 4,
+          title: "Kasol, Chalal, Manikaran and overnight return",
+          entries: [
+            { time: "After breakfast", text: "Check out and walk the Kasol market and cafes." },
+            { text: "Cross the footbridge for the Chalal trail — a flat 3 km round trip along the Parvati through pine forest." },
+            { text: "Drive 4 km to Manikaran for the Gurudwara and the hot springs." },
+            { time: "Evening", text: "Board the vehicle for the overnight return — about 500 km." },
+            { text: "Overnight in transit." },
+          ],
+        },
+        {
+          day: 5,
+          title: "Arrive back in Chandigarh / Delhi",
+          entries: [
+            { text: "Drop at the designated points in Chandigarh and Delhi by noon. Trip concludes." },
+            { text: "Keep a buffer before any onward flight or train — the return is a mountain road and delays happen." },
+          ],
+        },
+      ],
+
+      costIncludes: [
+        "3 nights accommodation — 2 nights hotel in Manali, 1 night stay in Kasol, on triple or quad sharing with extra mattresses",
+        "6 meals — 3 breakfasts and 3 dinners",
+        "Transfers from and back to Delhi / Chandigarh in an AC Tempo Traveller, Toyota Innova or AC Deluxe bus, allocated by group size",
+        "All sightseeing listed in the itinerary — non-AC vehicle on the hill sections",
+        "Evening bonfire with music",
+        "Trip coordinator and team captains with the group throughout",
+      ],
+      costExcludes: [
+        "Travel to and from the Delhi / Chandigarh pickup point",
+        "All lunches, highway dhaba stops, snacks and beverages",
+        "Adventure activities — river rafting, paragliding, and snow activities at Solang and Kullu",
+        "Entry tickets, activity charges and permits at viewpoints",
+        "Any cost arising from a landslide, roadblock, breakdown, natural calamity or weather event",
+        "Personal medical and travel insurance",
+        "Anything not listed under inclusions",
+      ],
+      priceNote:
+        "The fare is quoted from the Delhi / Chandigarh boarding point and covers transfers, stays and 6 meals only. Adventure activities at Solang, Kullu and Kasol are paid directly to the operator on site.",
+
+      eligibilityCriteria: [
+        { icon: "User", text: "Open to beginners, backpackers, solo travellers and families — no trekking experience needed" },
+        { icon: "Footprints", text: "Basic mobility for light walking on cobbled village paths and riverside trails" },
+        { icon: "FileText", text: "Original government photo ID is mandatory and is checked before boarding; foreign nationals must carry passport and a valid Indian visa" },
+        { icon: "Car", text: "Long overnight road journeys at both ends, and winding ghat roads through the day" },
+        { icon: "Stethoscope", text: "Tell the team in advance about any respiratory or heart condition — the Atal Tunnel and Sissu leg goes above 10,000 ft" },
+      ],
+      fitnessCriteria: [
+        { icon: "Footprints", text: "Able to walk 3 km on a flat riverside trail — the Chalal stretch on the last day" },
+        { icon: "Activity", text: "Comfortable with back-to-back overnight bus journeys and full sightseeing days in between" },
+        { icon: "Heart", text: "General fitness is enough; carry motion sickness tablets if hill roads affect you" },
+      ],
+      howToReach: {
+        intro:
+          "The trip starts and ends at the Delhi or Chandigarh boarding point. Reach the pickup point 30 minutes before the scheduled evening departure on Day 0; everything from there is covered.",
+        air: {
+          summaryLabel: "Nearest Airport",
+          summary: "Indira Gandhi International (DEL), Delhi or Shaheed Bhagat Singh International (IXC), Chandigarh",
+          detail:
+            "Bhuntar Airport (KUU) near Kullu is the closest field to Manali, 50 km away, but service is limited and weather-dependent. Travellers joining the group transfer should fly into Delhi or Chandigarh.",
+        },
+        train: {
+          summaryLabel: "Nearest Railway Station",
+          summary: "New Delhi (NDLS) or Chandigarh (CDG)",
+          detail:
+            "Book arrivals with a comfortable buffer before the evening pickup — the vehicle leaves on schedule and cannot wait on a delayed train.",
+        },
+        road: {
+          summaryLabel: "Route",
+          summary: "Delhi / Chandigarh → Manali → Atal Tunnel & Sissu → Kullu → Kasol → Delhi / Chandigarh",
+          detail:
+            "About 530 km from Delhi to Manali on the overnight leg and roughly 500 km on the return, with 80 km round trip to Sissu and 75 km from Manali to Kasol in between.",
+          route: ["Delhi / Chandigarh", "Manali", "Solang Valley", "Atal Tunnel", "Sissu", "Kullu", "Kasol", "Manikaran", "Delhi / Chandigarh"],
+          facts: [
+            { label: "Duration", value: "4 Days / 3 Nights, plus two overnight transits" },
+            { label: "Highest point", value: "Atal Tunnel & Sissu — 10,235 ft / 3,120 m" },
+            { label: "Walking", value: "About 3 km on the Chalal trail, plus local sightseeing on foot" },
+          ],
+        },
+        pickup: {
+          point: "Scheduled boarding points in Delhi and Chandigarh, shared before departure",
+          time: "Day 0, evening — report 30 minutes early",
+          dropPoint: "Same boarding points in Chandigarh and Delhi",
+          dropTime: "Day 5, by noon",
+          note:
+            "Travel to and from the boarding point is your own arrangement and is not part of the fare.",
+        },
+      },
+
+      faqs: [
+        {
+          title: "How long is the trip?",
+          description:
+            "3 Nights / 4 Days in the mountains, plus two overnight road journeys — you leave on a Thursday evening and are back in Delhi or Chandigarh by Tuesday noon.",
+        },
+        {
+          title: "Is there any trekking?",
+          description:
+            "No. The only walking is the flat 3 km riverside trail to Chalal village and short strolls around Old Manali, Kasol and Manikaran. The grade is easy throughout.",
+        },
+        {
+          title: "When will I see snow?",
+          description:
+            "December to February at Solang and Sissu, and often around the Atal Tunnel. The rest of the year the same route runs green, with the cafes and river activities at their best from March to October.",
+        },
+        {
+          title: "Are adventure activities included?",
+          description:
+            "No. Paragliding and the ropeway at Solang, snow activities in winter and rafting or zip lining at Kullu are all paid directly to the operator on site. Your trip captain will point you to the licensed ones.",
+        },
+        {
+          title: "What meals are included?",
+          description:
+            "Six meals — breakfast and dinner on each of the three hill days. Lunches, highway dhaba stops and anything you order at a cafe are on you.",
+        },
+        {
+          title: "What is the accommodation like?",
+          description:
+            "A comfortable hotel in Manali for two nights and a stay in Kasol for one, on triple or quad sharing with extra mattresses where needed. Rooms are arranged separately for men and women; ask in advance for couple sharing.",
+        },
+        {
+          title: "Will the Atal Tunnel be open?",
+          description:
+            "Usually, but not always. Heavy snow closes it to traffic at short notice, and the Sissu leg is then replaced with time at Solang and around Manali. No refund is due for a leg dropped on safety grounds.",
+        },
+        {
+          title: "Can we book private or custom dates?",
+          description:
+            "Yes. Alongside the open group departures, custom dates can be arranged for college groups, corporate teams and private batches. Call or WhatsApp +91 91213 43330.",
+        },
+        {
+          title: "What ID do I need?",
+          description:
+            "An original government photo ID — driving licence, voter ID, Aadhaar or passport — is verified before boarding. Foreign nationals must carry their original passport and a valid Indian visa.",
+        },
+        {
+          title: "How do I confirm a seat?",
+          description:
+            "An advance per person blocks the seat and is non-refundable. The balance must be cleared at least 24 hours before departure; dues outstanding after that can cost you the seat without refund.",
+        },
+      ],
+
+      thingsToCarry: [
+        "Warm woollen beanie or cap",
+        "Neck buff or muffler",
+        "Sunglasses",
+        "Sunblock and lip balm",
+        "Heavy fleece or down jacket",
+        "Windcheater",
+        "Thermal innerwear, top and bottom",
+        "Denim, cargoes or track pants",
+        "Sweatshirts and cotton tees",
+        "Extra pairs of woollen socks",
+        "Sturdy sports or hiking shoes with grip",
+        "Casual slip-ons or sandals",
+        "20–30L daypack for the day excursions",
+        "Reusable water bottle",
+        "Power bank",
+        "Personal medical kit, with motion sickness tablets",
+        "Original government photo ID — passport and Indian visa for foreign nationals",
+      ],
+      thingsToRemember: [
+        ...TRIP_GROUND_RULES,
+        "Report at the pickup point 30 minutes before the scheduled departure.",
+        "Smoking and drinking are not permitted inside the vehicle at any point in the journey.",
+        "Bookings are non-transferable — only the travellers named at confirmation can board.",
+      ],
+      transportModes: TRANSPORT_BY_GROUP_SIZE,
+      cancellationPolicy:
+        "The advance booking amount is non-refundable under any circumstances. No refund is given for sightseeing or inclusions you do not use during the trip, and bookings cannot be transferred to another traveller.",
+      confirmationPolicy:
+        "An advance per person blocks your seat and is non-refundable. The remaining payment must be cleared at least 24 hours before departure; unpaid dues after that can lead to the seat being cancelled without refund.",
+      balanceDueDays: 1,
+
+      gallery: [
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Hidimba_Devi_Temple%2C_Dhungri_Manali.jpg/1920px-Hidimba_Devi_Temple%2C_Dhungri_Manali.jpg",
+          caption: "Hadimba Devi temple in the deodar forest at Dhungri, Manali",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Old_Manali%2C_Manali%2C_India_%28Unsplash_MSK-2kuYJDE%29.jpg/1920px-Old_Manali%2C_Manali%2C_India_%28Unsplash_MSK-2kuYJDE%29.jpg",
+          caption: "Old Manali above the Beas",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Solang_Valley%2C_Paragliding%2C_India.jpg/1920px-Solang_Valley%2C_Paragliding%2C_India.jpg",
+          caption: "Paragliding over Solang Valley",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Solang_valley_mountain_view.jpg/1920px-Solang_valley_mountain_view.jpg",
+          caption: "The Beas Kund ridge above Solang",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Atal_Tunnel.jpg/1920px-Atal_Tunnel.jpg",
+          caption: "The Atal Tunnel, 9.02 km under the Rohtang massif",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Wildflowers_Mountains_Sissu_Lahaul_Jul19_D72_10447.jpg/1920px-Wildflowers_Mountains_Sissu_Lahaul_Jul19_D72_10447.jpg",
+          caption: "Sissu, on the Lahaul side of the tunnel",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Kullu_Valley%2C_Beas_River_near_Manali%2C_India.jpg/1920px-Kullu_Valley%2C_Beas_River_near_Manali%2C_India.jpg",
+          caption: "The Beas running through the Kullu valley",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Parvati_River_At_Kasol_%28197732809%29.jpeg/1920px-Parvati_River_At_Kasol_%28197732809%29.jpeg",
+          caption: "The Parvati river at Kasol",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Parvati_valley_near_Kasol%2C_Kullu_district_in_Himachal_04.jpg/1920px-Parvati_valley_near_Kasol%2C_Kullu_district_in_Himachal_04.jpg",
+          caption: "Pine forest on the Chalal trail above Kasol",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Manikaran_Gurdwara%2C_a_Holy_place_for_Shikhs_at_Manikaran_04.jpg/1920px-Manikaran_Gurdwara%2C_a_Holy_place_for_Shikhs_at_Manikaran_04.jpg",
+          caption: "Manikaran Gurudwara and its hot springs",
+        },
+      ],
+      relatedSlugs: ["shimla-manali", "spiti-valley", "kashmir"],
+    }
+  ),
+  toListingItem(
+    {
+      name: "Kashmir – Paradise on Earth",
       slug: "kashmir",
       duration: "4N/5D",
       heroImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mobile_fruit_seller_on_shikara_in_Dal_lake_%2C_Srinagar_%2CKashmir.jpg/1920px-Mobile_fruit_seller_on_shikara_in_Dal_lake_%2C_Srinagar_%2CKashmir.jpg",
-      tagline: "Dal Lake shikaras, alpine meadows, and the crown of India.",
+      tagline:
+        "Mughal gardens, the Pahalgam pine valleys, the Gulmarg gondola and a houseboat night on Dal Lake — Srinagar to Srinagar in 5 days.",
     },
     {
       region: "Jammu & Kashmir",
       startLocation: "Srinagar",
-      difficulty: "Moderate",
+      endLocation: "Srinagar",
+      difficulty: "Easy",
       price: 16999,
-      months: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
-      themes: ["Lakes", "Meadow", "Couples"],
+      months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      themes: ["Lakes", "Meadow", "Snow", "Couples", "Family with Kids"],
       category: "Backpacking Trip",
       detailsPath: "/trips/backpacking/kashmir",
+
+      alternateNames: ["Kashmir Paradise on Earth", "Srinagar Pahalgam Gulmarg Tour", "Kashmir Valley Tour"],
+      altitude: "~2,600 m (8,500 ft) at Gulmarg; Apharwat Peak reaches ~3,950 m on Gondola Phase 2",
+      availability: "Fixed departures and private batches run round the year",
+      contactPhone: "+91-9121343330",
+
+      heroImages: [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Gulmarg_-_Jannat_on_Earth.jpg/1920px-Gulmarg_-_Jannat_on_Earth.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Pahalgam_Valley.jpg/1920px-Pahalgam_Valley.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/India_-_Srinagar_-_023_-_Nishat_Bagh_Mughal_Gardens.jpg/1920px-India_-_Srinagar_-_023_-_Nishat_Bagh_Mughal_Gardens.jpg",
+      ],
+
+      intro:
+        "Nestled amidst the Himalayas, Kashmir is celebrated as paradise on earth. This 5-day journey crosses the heart of the valley: the terraced Mughal gardens of Nishat, Shalimar and Chashme Shahi below the Shankaracharya Temple, the saffron fields of Pampore on the way to the pine valleys of Pahalgam, the Gondola cable car climbing towards snow-capped Apharwat in Gulmarg, and a closing sunset shikara cruise with an overnight heritage houseboat stay on Dal Lake.",
+      highlights: [
+        "Nishat Bagh, Shalimar Bagh & Chashme Shahi Mughal gardens",
+        "Shankaracharya Temple above Srinagar",
+        "Pampore saffron fields & Awantipora ruins",
+        "Pahalgam pine valleys, Lavender Park & Gori Shankar Temple",
+        "Gulmarg meadows and the world's highest golf course",
+        "Apharwat Gondola cable car (optional)",
+        "Sunset shikara ride on Dal Lake",
+        "Overnight heritage houseboat stay",
+      ],
+      idealFor:
+        "Families, couples, honeymooners, solo travellers and seniors who want the valley at a leisurely pace — no trekking background required.",
+      destinationHighlights: [
+        {
+          name: "Srinagar",
+          blurb:
+            "The valley's summer capital at ~1,585 m, built around Dal Lake and the terraced Mughal gardens laid out by Jahangir and Shah Jahan.",
+        },
+        {
+          name: "Pahalgam",
+          blurb:
+            "A pine-and-meadow valley at ~2,200 m on the Lidder river, the base for the Aru, Betaab and Chandanwari side valleys.",
+        },
+        {
+          name: "Gulmarg",
+          blurb:
+            "The meadow of flowers at ~2,600 m — a winter ski resort, home to the world's highest golf course, and the foot of the Apharwat gondola.",
+        },
+        {
+          name: "Dal Lake",
+          blurb:
+            "Srinagar's lake of shikaras, floating gardens and carved cedar houseboats, best seen on the water at sunset.",
+        },
+      ],
+
+      priceNote:
+        "₹16,999 per person is the Srinagar-to-Srinagar fare. Flights and train fares to and from Srinagar are not included. A minimum 25% advance confirms the booking; 50% is due 30–45 days before departure and the balance 15–30 days before. Bookings are liable to cancellation without refund if dues are not cleared at least 15 days prior to travel.",
+      bookingAdvancePct: 25,
+      confirmationPolicy:
+        "A minimum 25% advance of the total package cost confirms your slot. Trip My Soul emails your confirmation once the advance is received.",
+
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrival in Srinagar & Mughal Gardens tour",
+          entries: [
+            { text: "Arrive at Srinagar airport, where our representative meets you and transfers you to the hotel." },
+            { text: "Visit Nishat Bagh, the garden of bliss, terraced above Dal Lake." },
+            { text: "Continue to Shalimar Bagh and Chashme Shahi." },
+            { text: "Shankaracharya Temple for the view over the city and the lake." },
+            { text: "Dinner and overnight at a premium 3-star hotel in Srinagar (~1,585 m)." },
+          ],
+        },
+        {
+          day: 2,
+          title: "Srinagar to Pahalgam via the saffron fields",
+          entries: [
+            { text: "Breakfast, then drive to Pahalgam — about 97 km, 2.5 hours." },
+            { text: "Stop at the Pampore saffron fields and the Awantipora ruins en route." },
+            { text: "Pahalgam: Lavender Park and Gori Shankar Temple." },
+            {
+              text: "Optional union-cab excursions to the Aru, Betaab and Chandanwari valleys or Baisaran — booked and paid locally.",
+            },
+            { text: "Dinner and overnight at a premium 3-star hotel in Pahalgam (~2,200 m)." },
+          ],
+        },
+        {
+          day: 3,
+          title: "Pahalgam to Gulmarg — the meadow of flowers",
+          entries: [
+            { text: "Breakfast, then the scenic drive to Gulmarg — about 140 km, 3.5 to 4 hours." },
+            { text: "Explore the Gulmarg meadows and the world's highest golf course." },
+            { text: "Optional Gondola cable car towards Apharwat Peak — Phase 1 and Phase 2 tickets are paid separately." },
+            { text: "Dinner and overnight at a premium 3-star hotel in Gulmarg (~2,600 m / 8,500 ft)." },
+          ],
+        },
+        {
+          day: 4,
+          title: "Gulmarg to Srinagar & the Dal Lake shikara ride",
+          entries: [
+            { text: "A leisurely morning in Gulmarg after breakfast." },
+            { text: "Drive back to Srinagar — about 56 km, 1.5 hours." },
+            { text: "One-hour sunset shikara cruise across Dal Lake." },
+            { text: "Check in to a traditional houseboat. Dinner and overnight on the water." },
+          ],
+        },
+        {
+          day: 5,
+          title: "Houseboat check-out & departure",
+          entries: [
+            { text: "Breakfast on the houseboat, then check out." },
+            { text: "Transfer to Srinagar airport — 15 to 20 km, 30 to 45 minutes." },
+            { text: "The trip concludes." },
+          ],
+        },
+      ],
+
+      costIncludes: [
+        "4 nights accommodation — premium 3-star hotels in Srinagar, Pahalgam and Gulmarg plus one night on a Dal Lake houseboat",
+        "4 breakfasts and 4 dinners, Kashmiri and multi-cuisine",
+        "One-hour sunset shikara ride on Dal Lake",
+        "All intercity and local sightseeing transfers in a dedicated tourist vehicle",
+        "Airport pickup and drop",
+        "Dedicated representative and driver assistance throughout",
+      ],
+      costExcludes: [
+        "Airfare and train fare to and from Srinagar",
+        "Lunches, beverages, snacks and personal refreshments",
+        "Gulmarg Gondola tickets (Phase 1 and Phase 2) and pony charges",
+        "Local union cabs and ponies for the Pahalgam interior valleys — Aru, Betaab, Chandanwari and Baisaran",
+        "Entry fees for the Mughal gardens, monuments and temple viewpoints",
+        "Personal travel and medical insurance",
+        "Expenses arising from natural hazards, landslides, flight delays or weather",
+      ],
+
+      eligibilityCriteria: [
+        { icon: "User", text: "Open to all ages — travellers under 18 need written parental consent" },
+        { icon: "Mountain", text: "No trekking background needed; the highest night is Gulmarg at about 8,500 ft" },
+        { icon: "Footprints", text: "Suitable for families, couples, solo travellers and seniors" },
+        { icon: "Car", text: "Winding mountain road between Pahalgam and Gulmarg — carry motion sickness tablets if you are prone to it" },
+        { icon: "FileText", text: "Carry an original government photo ID; it is checked at valley road posts and on arrival" },
+      ],
+      fitnessCriteria: [
+        { icon: "Footprints", text: "Able to walk 2–4 km at an easy pace around gardens, markets and meadows" },
+        { icon: "Activity", text: "Comfortable with 2–4 hour road transfers on winding valley highway" },
+        { icon: "Heart", text: "Routine walking and light stretching in the weeks before departure are enough preparation" },
+      ],
+      importantNote:
+        "Gulmarg is cold and dry even outside winter, and gondola operations are weather-dependent. Carry prescribed medication and tell your trip captain about any cardiovascular or respiratory condition before departure.",
+
+      howToReach: {
+        intro:
+          "The trip starts and ends in Srinagar. Reach Srinagar airport on Day 1 and a representative will meet you; everything from there is covered by the trip vehicle.",
+        air: {
+          summaryLabel: "Nearest Airport",
+          summary: "Sheikh ul-Alam International Airport, Srinagar (SXR)",
+          detail:
+            "Direct flights from Delhi, Mumbai, Bengaluru and other metros. Airport pickup by our representative is included.",
+        },
+        train: {
+          summaryLabel: "Nearest Railhead",
+          summary: "Jammu Tawi (JAT) / Udhampur (UHP)",
+          detail:
+            "From either station, private or shared cabs and buses run to Srinagar along NH 44 — roughly 265 km from Jammu, 8 to 10 hours depending on highway conditions.",
+        },
+        road: {
+          summaryLabel: "Route",
+          summary: "Srinagar → Pahalgam → Gulmarg → Srinagar",
+          detail:
+            "Srinagar is connected to the rest of the country by the Jammu–Srinagar National Highway (NH 44). The circuit itself covers roughly 290 km of valley road over four driving days.",
+          route: ["Srinagar", "Pampore", "Pahalgam", "Gulmarg", "Srinagar"],
+          facts: [
+            { label: "Duration", value: "5 Days / 4 Nights" },
+            { label: "Highest point", value: "Gulmarg — 8,500 ft / 2,600 m" },
+            { label: "Transport", value: "Dedicated tourist vehicle throughout" },
+          ],
+        },
+        pickup: {
+          point: "Sheikh ul-Alam International Airport, Srinagar (SXR)",
+          time: "Day 1, on arrival",
+          dropPoint: "Sheikh ul-Alam International Airport, Srinagar (SXR)",
+          dropTime: "Day 5, after houseboat check-out",
+          note:
+            "Share your flight details in advance so the representative can time the pickup. Keep a buffer before any onward connection — Srinagar flights are weather-sensitive.",
+        },
+      },
+
+      faqs: [
+        {
+          title: "How long is the Kashmir trip?",
+          description:
+            "5 Days / 4 Nights, Srinagar to Srinagar, covering the Srinagar Mughal gardens, Pahalgam, Gulmarg and a houseboat night on Dal Lake.",
+        },
+        {
+          title: "Is there any trekking on this trip?",
+          description:
+            "No. This is a sightseeing and leisure circuit. The only walking is easy and optional — strolls around the gardens, the Gulmarg meadows and the Pahalgam riverside, roughly 2 to 4 km a day.",
+        },
+        {
+          title: "When is the best time to visit Kashmir?",
+          description:
+            "Round the year. April to September brings spring blossom, lush meadows and the saffron and lavender seasons; November to February brings snow and skiing in Gulmarg. Each window looks completely different, so pick by the Kashmir you want to see.",
+        },
+        {
+          title: "Is the Gondola ride included?",
+          description:
+            "No. Gulmarg Gondola tickets for Phase 1 and Phase 2 are excluded and bought on the day. Tickets are limited, demand-driven and dependent on the weather, so the ride cannot be guaranteed.",
+        },
+        {
+          title: "What is the accommodation like?",
+          description:
+            "Premium 3-star hotels in Srinagar, Pahalgam and Gulmarg, and one night on a traditional carved-cedar houseboat on Dal Lake. Breakfast and dinner are included at every stay.",
+        },
+        {
+          title: "Why are the Pahalgam valley excursions not included?",
+          description:
+            "Aru, Betaab, Chandanwari and Baisaran are served exclusively by local union cabs and ponies, whose rates are fixed on site and cannot be pre-booked. Budget for them separately if you plan to go.",
+        },
+        {
+          title: "Is the trip suitable for children and senior citizens?",
+          description:
+            "Yes. There is no trekking, the altitude stays moderate and the daily pace is relaxed. Travellers under 18 need written parental consent to join.",
+        },
+        {
+          title: "How cold does it get?",
+          description:
+            "Gulmarg can drop below freezing at night in winter and stays cool even in summer. Carry layers, a down or heavy fleece jacket and waterproof footwear whatever the month.",
+        },
+        {
+          title: "Do I need a permit to visit Kashmir?",
+          description:
+            "Indian nationals need no permit for the Srinagar–Pahalgam–Gulmarg circuit, only an original government photo ID. Foreign nationals should carry their passport and visa for routine registration at hotels.",
+        },
+        {
+          title: "What happens if the weather closes a road?",
+          description:
+            "Snow and landslides can close the valley roads at short notice. The trip captain may reorder the itinerary, hold the group a day, or drop a leg on safety grounds. Costs of such delays are not included and no refund is due for an itinerary changed for safety.",
+        },
+      ],
+
+      thingsToCarry: [
+        "Warm woollen cap or beanie and a muffler",
+        "UV sunglasses for snow glare",
+        "High-SPF sunscreen, lip balm and moisturiser",
+        "Heavy fleece or down jacket",
+        "Woollen sweaters and thermal inners, tops and bottoms",
+        "Comfortable jeans or trousers",
+        "Extra pairs of woollen socks",
+        "Comfortable walking shoes",
+        "Waterproof shoes or snow boots for Gulmarg",
+        "Slippers for the hotel and houseboat",
+        "Original government photo ID",
+        "Flight or train tickets",
+        "Personal medication and a basic first aid kit",
+        "Motion sickness tablets",
+        "Power bank",
+        "Compact daypack",
+        "Umbrella or raincoat",
+        "Cash — ATMs are sparse outside Srinagar",
+      ],
+      thingsToRemember: [
+        "Zero tolerance for littering — carry your plastic wrappers and bottles out with you.",
+        "Punctuality is required; a late start pushes every drive of the day back.",
+        "Minors under 18 need written parental consent to travel.",
+        "Gondola, pony and union-cab charges are settled directly on site, in cash.",
+        "Unavailed inclusions during the trip are not refundable.",
+      ],
+
+      cancellationPolicy:
+        "Bookings are non-refundable and non-transferable on client cancellation. A full refund is made only where Trip My Soul cancels the tour. Unavailed activities or inclusions during the trip are not refundable. Rescheduling: one complimentary change is allowed more than 30 days before travel; within 15 days of travel rescheduling is not permitted. Send all rescheduling requests by email to tripmysoulsouth@gmail.com.",
+
+      gallery: [
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/India_-_Srinagar_-_023_-_Nishat_Bagh_Mughal_Gardens.jpg/1920px-India_-_Srinagar_-_023_-_Nishat_Bagh_Mughal_Gardens.jpg",
+          caption: "Nishat Bagh terraced above Dal Lake",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Shalimar_Bagh%2C_Srinagar.jpg/1920px-Shalimar_Bagh%2C_Srinagar.jpg",
+          caption: "Shalimar Bagh, laid out for Jahangir in 1619",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Chashme_Shahi_Garden_%2814526211636%29.jpg/1920px-Chashme_Shahi_Garden_%2814526211636%29.jpg",
+          caption: "Chashme Shahi, the smallest of the three Mughal gardens",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/The_Ancient_Shankaracharya_Temple_%28Srinagar%2C_Jammu_and_Kashmir%29.jpg/1920px-The_Ancient_Shankaracharya_Temple_%28Srinagar%2C_Jammu_and_Kashmir%29.jpg",
+          caption: "Shankaracharya Temple on its hill above Srinagar",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Saffron_From_Pampore.jpg/1920px-Saffron_From_Pampore.jpg",
+          caption: "Saffron from the Pampore fields on the Pahalgam road",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Pahalgam_Valley.jpg/1920px-Pahalgam_Valley.jpg",
+          caption: "The Pahalgam valley on the Lidder river",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Betaab_Valley%2C_Pehalgam%2C_Kashmir.jpg/1920px-Betaab_Valley%2C_Pehalgam%2C_Kashmir.jpg",
+          caption: "Betaab Valley, one of the optional Pahalgam excursions",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Gulmarg_-_Jannat_on_Earth.jpg/1920px-Gulmarg_-_Jannat_on_Earth.jpg",
+          caption: "Gulmarg, the meadow of flowers at 8,500 ft",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Gulmarg_Gondola%2C_Cable_Car.JPG/1920px-Gulmarg_Gondola%2C_Cable_Car.JPG",
+          caption: "The Gulmarg Gondola, one of the highest cable cars in the world",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Apharwat_Peak_Gulmarg.jpg/1920px-Apharwat_Peak_Gulmarg.jpg",
+          caption: "Apharwat Peak at the top of Gondola Phase 2",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Dal_lake_by_Ahanger_HOBO.jpg/1920px-Dal_lake_by_Ahanger_HOBO.jpg",
+          caption: "Houseboats moored on Dal Lake",
+        },
+      ],
+      relatedSlugs: ["leh-ladakh", "shimla-manali", "spiti-valley"],
     }
   ),
   toListingItem(

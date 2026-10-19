@@ -1276,7 +1276,7 @@ export const TREKS: Trek[] = [
     "name": "Kedarkantha Trek",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Sun_Rise_View_from_Kedarkantha_Summit.jpg/1920px-Sun_Rise_View_from_Kedarkantha_Summit.jpg",
     "tagline": "Five days from Dehradun to the 12,500 ft Kedarkantha summit, through the snowbound pine forests above Sankri.",
-    "price": 5999,
+    "price": 6000,
     "days": 5,
     "nights": 4,
     "region": "Uttarakhand",
@@ -1793,7 +1793,12 @@ export const TREKS: Trek[] = [
   {
     "slug": "bali-pass-trek",
     "name": "Bali Pass Trek",
-    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SWARGAROHINI_PEAK.jpg/1920px-SWARGAROHINI_PEAK.jpg",
+    "heroImage": "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-11.jpeg",
+    "heroImages": [
+      "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-01.jpeg",
+      "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-28.jpeg",
+      "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-27.jpeg"
+    ],
     "tagline": "Eight days from Dehradun crossing the 16,207 ft Bali Pass, linking Har Ki Dun Valley to Yamunotri over snow, ridge and glacial lake.",
     "price": 18999,
     "days": 8,
@@ -2138,6 +2143,42 @@ export const TREKS: Trek[] = [
       ],
       signoff: "If Kedarkantha is introduction, and Har Ki Dun is story, then Bali Pass is the climax.",
     },
+    // Client-supplied photography from the trek, under
+    // /public/Trips_gallery/Bali Pass Trek (space encoded as %20 in the URL).
+    gallery: [
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-01.jpeg", caption: "Dropping down the snow slopes with the Garhwal skyline ahead" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-02.jpeg", caption: "Snow and rock on the ridgeline above the pass" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-03.jpeg", caption: "A corniced ridge falling away into the valley" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-04.jpeg", caption: "The team walking out under the hanging glaciers of Swargarohini" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-05.jpeg", caption: "A single line of footprints across the upper snowfield" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-06.jpeg", caption: "Resting on the rocks with the ridge stretching out below" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-07.jpeg", caption: "Crossing the open snowfield towards the pass" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-08.jpeg", caption: "Cloud lifting off a snow-draped face above the trail" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-09.jpeg", caption: "The dark rock wall guarding the head of the valley" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-10.jpeg", caption: "Roped up on the rocky summit ridge under a clear sky" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-11.jpeg", caption: "Horses grazing in the meadows below the snow line" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-12.jpeg", caption: "Carrying rope into the mist on the approach to Base Camp" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-13.jpeg", caption: "Head torches moving out before first light on summit day" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-14.jpeg", caption: "Cloud pouring over the peaks as the group climbs" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-15.jpeg", caption: "Three figures crossing a vast snow basin on a grey morning" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-16.jpeg", caption: "Following the wind-sculpted snow ridge upward" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-17.jpeg", caption: "The line strung out along the ridge in flat light" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-18.jpeg", caption: "Breaking trail through deep snow under a deep blue sky" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-19.jpeg", caption: "Climbing on in a whiteout above Base Camp" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-20.jpeg", caption: "Crossing the wide snow bowl below the pass" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-21.jpeg", caption: "The team at the top of Bali Pass, 16,207 ft, in falling snow" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-22.jpeg", caption: "The knife-edge snow ridge with the Yamunotri side opening up" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-23.jpeg", caption: "Taking in the view of Kalanag from the trail" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-24.jpeg", caption: "At the forest rest house before the walk begins" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-25.jpeg", caption: "The full group in the meadows of Ruinsara" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-26.jpeg", caption: "Traversing an icy section above the glacier" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-27.jpeg", caption: "Camp pitched beside the glacial stream below the pass" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-28.jpeg", caption: "The valley opening out, with a turquoise glacial lake below" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-29.jpeg", caption: "Coming up the fixed rope on the rocky section" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-30.jpeg", caption: "Hot chai with the mountain crew inside the kitchen tent" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-31.jpeg", caption: "The team gathered on the rocks below the summit spire" },
+      { url: "/Trips_gallery/Bali%20Pass%20Trek/bali-pass-32.jpeg", caption: "Sunset over the meadow campsite" }
+    ],
     similarTreks: ["har-ki-dun-trek", "pangarchulla-trek", "gaumukh-tapovan-trek", "roopkund-yatra", "rupin-pass-trek"],
   },
   {
@@ -5790,7 +5831,7 @@ if (kedarkanthaIndex !== -1) {
   TREKS[kedarkanthaIndex].bookingAdvancePct = 20;
 
   TREKS[kedarkanthaIndex].bookingTerms = [
-    { title: "Trek Cost", description: "₹5,999 + 5% GST* per selected package/departure date." },
+    { title: "Trek Cost", description: "₹6,000 + 5% GST* per selected package/departure date." },
     { title: "Booking Amount", description: "20% advance payment required to confirm your seat." },
     { title: "Balance Payment", description: "Payable before/at the start of the trek as per booking terms." },
     { title: "Transportation", description: "Dehradun–Sankri–Dehradun as per the selected package." },
