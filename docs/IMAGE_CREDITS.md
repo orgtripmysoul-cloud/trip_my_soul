@@ -88,7 +88,7 @@ adaptation, and neither is framing it with CSS in a hero banner.
 | `madhyamaheshwar-trek-4-day` | trips.ts | Sharath chandra mudalkar | CC BY-SA 4.0 | [Chaukhamba peak - and a lonely hut.jpg](https://commons.wikimedia.org/wiki/File:Chaukhamba_peak_-_and_a_lonely_hut.jpg) |
 | `manali-kasol` | db.ts | Harvinder Chandigarh | CC BY-SA 4.0 | [Solang Valley ,Manali, Himachal Pardes, India.JPG](https://commons.wikimedia.org/wiki/File:Solang_Valley_,Manali,_Himachal_Pardes,_India.JPG) |
 | `meghalaya` | trips.ts | Bikash9c | CC BY-SA 4.0 | [Nohkalikai falls bikash.jpg](https://commons.wikimedia.org/wiki/File:Nohkalikai_falls_bikash.jpg) |
-| `meghalaya-tour` | db.ts | Sujan Bandyopadhyay | CC BY-SA 4.0 | [Mawlynnong's Living Root Bridge in Meghalaya, India.jpg](https://commons.wikimedia.org/wiki/File:Mawlynnong%27s_Living_Root_Bridge_in_Meghalaya,_India.jpg) |
+| `meghalaya` (gallery) | trips.ts | Sujan Bandyopadhyay | CC BY-SA 4.0 | [Mawlynnong's Living Root Bridge in Meghalaya, India.jpg](https://commons.wikimedia.org/wiki/File:Mawlynnong%27s_Living_Root_Bridge_in_Meghalaya,_India.jpg) |
 | `mukteshwar-winter-trip` | db.ts | Vipinvasudeva | CC BY-SA 4.0 | [Mukteshwar Uttarakhand India.jpg](https://commons.wikimedia.org/wiki/File:Mukteshwar_Uttarakhand_India.jpg) |
 | `munnar` | trips.ts | Rainer Halama | CC BY-SA 4.0 | [Munnar Tea Plantations-WUS07265.jpg](https://commons.wikimedia.org/wiki/File:Munnar_Tea_Plantations-WUS07265.jpg) |
 | `munsiyari-khalia-top` | db.ts | Mukul.pandey07 | CC BY-SA 4.0 | [Panchachuli Peaks.jpg](https://commons.wikimedia.org/wiki/File:Panchachuli_Peaks.jpg) |

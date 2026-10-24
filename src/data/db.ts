@@ -3120,45 +3120,6 @@ export const TREKS: Trek[] = [
     ]
   },
   {
-    "slug": "meghalaya-tour",
-    "name": "Meghalaya",
-    "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Mawlynnong%27s_Living_Root_Bridge_in_Meghalaya%2C_India.jpg/1920px-Mawlynnong%27s_Living_Root_Bridge_in_Meghalaya%2C_India.jpg",
-    "price": 21499,
-    "days": 6,
-    "nights": 5,
-    "region": "Meghalaya",
-    "category": "Upcoming Winter Treks",
-    "batchDates": [
-      "2026-10-03",
-      "2026-10-10",
-      "2026-10-17",
-      "2026-10-24",
-      "2026-10-31",
-      "2026-11-07",
-      "2026-11-14",
-      "2026-11-21",
-      "2026-12-05",
-      "2026-12-19",
-    ],
-    "startLocation": "Guwahati to Guwahati",
-    "difficulty": "Moderate",
-    "months": [
-      "Oct",
-      "Nov",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul"
-    ],
-    "themes": [
-      "Snow",
-      "Meadow",
-      "Forest",
-      "Pass Crossing"
-    ]
-  },
-  {
     // TODO(content): winter catalogue stub for Deoriatal-Chopta Trek. Every value marked TODO
     // below is a placeholder — ops to confirm before this listing goes live.
     "slug": "deoriatal-chopta-trek",

@@ -28,6 +28,10 @@ export function hasBookingSelection(params: URLSearchParams): boolean {
 const RETIRED_SLUG_ALIASES: Record<string, string> = {
   // Folded into the `spiti-valley` TREKS listing (see src/data/db.ts).
   "spiti-valley-yatra": "spiti-valley",
+  // Was a thin winter-catalogue duplicate of the `meghalaya` backpacking trip,
+  // which now carries the full itinerary. Removed from db.ts; `meghalaya-910`
+  // in LEGACY_PACKAGE_KEYS still resolves through here.
+  "meghalaya-tour": "meghalaya",
 };
 
 /**
