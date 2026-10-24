@@ -1710,13 +1710,317 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
     },
     {
       region: "Meghalaya",
-      startLocation: "Shillong",
-      difficulty: "Moderate",
+      startLocation: "Guwahati",
+      endLocation: "Guwahati",
+      difficulty: "Easy-Moderate",
       price: 17999,
-      months: ["Oct", "Nov", "Mar", "Apr", "May"],
-      themes: ["Waterfall", "Off-Beat", "Adventure"],
+      months: ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"],
+      themes: ["Waterfall", "Off-Beat", "Beginner", "Family with Kids", "Adventure"],
       category: "Backpacking Trip",
       detailsPath: "/trips/backpacking/meghalaya",
+
+      alternateNames: [
+        "Meghalaya Backpacking Trip",
+        "Shillong Cherrapunji Dawki",
+        "Scotland of the East",
+        "Double Decker Living Root Bridge",
+        "Umngot River Dawki",
+      ],
+      altitude: "Approx. 5,250 ft / 1,600 m (Shillong)",
+      availability: "October to April",
+      maxGroupSize: "As per departure; private, women-only and corporate batches on request",
+      contactPhone: "+91 91213 43330",
+
+      intro:
+        "Six days in the Scotland of the East, starting and ending at Guwahati. Misty hills on the drive up to Shillong, the cascades of Cherrapunji, a day down thousands of stone steps to the Double Decker living root bridge at Nongriat, the glass-clear Umngot river at Dawki, and the limestone caves and canyon viewpoints in between — run at an easy pace with Khasi hosts and one proper trekking day.",
+      highlights: [
+        "The Double Decker living root bridge at Nongriat",
+        "Nohkalikai Falls, the tallest plunge waterfall in India",
+        "Elephant Falls and the Shillong viewpoints",
+        "The transparent Umngot river at Dawki",
+        "Mawsmai and Arwah limestone caves",
+        "Seven Sisters Falls and the Cherrapunji canyon views",
+        "Khasi village hospitality and local markets",
+        "Mawlynnong, Asia's cleanest village, on the Dawki circuit",
+      ],
+      usps: [
+        {
+          title: "One real trek, no expedition commitment",
+          description:
+            "Day 3 is a genuine 6–7 km return hike on stone steps to Nongriat. The rest of the trip is road transit and short walks, so a beginner gets the root bridge without signing up for a multi-day trek.",
+        },
+        {
+          title: "Permits and transfers handled end to end",
+          description:
+            "Airport or railway pickup at Guwahati, every transfer on the itinerary and all state and entry permits are arranged for you.",
+        },
+        {
+          title: "Three bases, no backtracking",
+          description:
+            "Shillong, Cherrapunji and Dawki in sequence, each a short drive from the last — the circuit closes back at Guwahati without repeating a leg.",
+        },
+        {
+          title: "A trip captain with the group throughout",
+          description:
+            "A dedicated driver and trip captain travel with the batch from pickup to drop, handling stays, routing and the day plan.",
+        },
+      ],
+      idealFor:
+        "Beginners, backpackers, solo travellers, couples, families and corporate teams who want the Northeast's waterfalls, caves and root bridges with only one demanding walking day.",
+      importantNote:
+        "Day 3 descends and re-climbs roughly 3,500 stone steps to the Double Decker root bridge. It is the one strenuous day of the trip — come prepared for it, or arrange with the trip captain to wait at Tyrna. Local guide charges for that trek and boating fees at Dawki are paid on site.",
+      destinationHighlights: [
+        {
+          name: "Shillong",
+          blurb:
+            "The Khasi hill capital at about 1,600 m, and the base for the first and fifth nights. Elephant Falls, the viewpoints above town, Ward's Lake and Police Bazaar for the evening markets.",
+        },
+        {
+          name: "Cherrapunji",
+          blurb:
+            "Sohra, 50–60 km south of Shillong on the edge of the plateau. Nohkalikai Falls, Seven Sisters Falls, the Mawsmai and Arwah limestone caves, and canyon views down into the Bangladesh plains.",
+        },
+        {
+          name: "Nongriat",
+          blurb:
+            "A village in the gorge below Tyrna, reached only on foot down a long flight of stone steps. The Double Decker living root bridge — two tiers of ficus roots trained across the stream over generations — stands here.",
+        },
+        {
+          name: "Dawki & the Umngot",
+          blurb:
+            "On the Bangladesh border, about 85 km from Cherrapunji. The Umngot runs clear enough in the dry season for a boat to look like it is floating on air; boating is charged directly at the ghat.",
+        },
+        {
+          name: "Mawlynnong",
+          blurb:
+            "Asia's cleanest village, on the Dawki circuit — bamboo walkways, a sky view platform, and another single-span living root bridge nearby at Riwai.",
+        },
+      ],
+
+      itinerary: [
+        {
+          day: 1,
+          title: "Arrive Guwahati and transfer to Shillong",
+          entries: [
+            { time: "On arrival", text: "Pickup from Guwahati airport or railway station and briefing with the trip captain." },
+            { text: "Drive to Shillong on NH 6 — about 100 km, 3 hours, with a stop at Umiam Lake." },
+            { time: "Evening", text: "Check in, then free time at Police Bazaar and the local markets." },
+            { text: "Overnight in Shillong (about 1,600 m). No meals on this day." },
+          ],
+        },
+        {
+          day: 2,
+          title: "Shillong to Cherrapunji sightseeing",
+          entries: [
+            { time: "After breakfast", text: "Check out and drive to Cherrapunji — about 50–60 km, 2 hours." },
+            { text: "Elephant Falls and the Shillong viewpoints on the way out of town." },
+            { text: "Nohkalikai Falls, Seven Sisters Falls and the canyon viewpoints at Sohra." },
+            { text: "Mawsmai and Arwah limestone caves, depending on the light left in the day." },
+            { text: "Overnight in Cherrapunji. Breakfast included." },
+          ],
+        },
+        {
+          day: 3,
+          title: "Double Decker living root bridge at Nongriat",
+          entries: [
+            { time: "Early morning", text: "Breakfast and an early start from the hotel to Tyrna, the trailhead." },
+            { text: "Descend roughly 3,500 stone steps through forest to Nongriat — about 6–7 km return, 4–5 hours including time at the bridge." },
+            { text: "Time at the Double Decker root bridge and the natural pools before the climb back out." },
+            { time: "Evening", text: "Return to the hotel in Cherrapunji." },
+            { text: "Overnight in Cherrapunji. Breakfast included. A local guide for the trek is paid on site." },
+          ],
+        },
+        {
+          day: 4,
+          title: "Cherrapunji to Dawki",
+          entries: [
+            { time: "After breakfast", text: "Check out and drive to Dawki — about 85 km, 2.5 hours." },
+            { text: "Stop at Mawlynnong, Asia's cleanest village, and the single-span root bridge at Riwai." },
+            { text: "Reach the Umngot river. Boating on the clear water is available at the ghat, charged directly." },
+            { time: "Evening", text: "Check in to the hotel or riverside camp." },
+            { text: "Overnight in Dawki. Breakfast and dinner included." },
+          ],
+        },
+        {
+          day: 5,
+          title: "Dawki to Shillong via the waterfalls",
+          entries: [
+            { time: "After breakfast", text: "Check out and drive back up to Shillong — about 80 km, 3 hours." },
+            { text: "Waterfall and viewpoint stops en route, as the weather allows." },
+            { time: "Evening", text: "Check in at Shillong, with free time for shopping and cafes." },
+            { text: "Overnight in Shillong. Breakfast included." },
+          ],
+        },
+        {
+          day: 6,
+          title: "Shillong to Guwahati airport drop",
+          entries: [
+            { time: "After breakfast", text: "Check out and drive to Guwahati — about 100 km, 3 hours." },
+            { text: "Drop at Guwahati airport or railway station. Trip concludes." },
+            { text: "Keep a buffer of at least 3 hours before any onward flight or train — this is a hill road." },
+          ],
+        },
+      ],
+
+      costIncludes: [
+        "Airport or railway station pick-up and drop at Guwahati",
+        "5 nights accommodation in hotels or guesthouses on a sharing basis",
+        "Daily breakfast from Day 2 to Day 6",
+        "Dinner on Day 4 at Dawki",
+        "All transfers and sightseeing as per the itinerary",
+        "All state and entry permits required for the tour",
+        "Dedicated driver and trip captain with the group throughout",
+      ],
+      costExcludes: [
+        "Airfare and railway fare",
+        "Lunches and any meal not listed in the itinerary",
+        "Local guide charges for the Double Decker root bridge trek",
+        "Boating fees on the Umngot river at Dawki",
+        "Monument, cave and sightseeing entry fees",
+        "Travel and medical insurance",
+        "Anything not listed under inclusions",
+      ],
+      priceNote:
+        "The fare covers transfers, stays, permits and the listed meals only. The Nongriat trek guide, Dawki boating and all entry tickets are paid directly on site.",
+
+      eligibilityCriteria: [
+        { icon: "User", text: "Open to beginners, backpackers, solo travellers, couples and families" },
+        { icon: "Footprints", text: "Day 3 needs the stamina for roughly 3,500 stone steps down and back up — the rest of the trip is light walking" },
+        { icon: "FileText", text: "Original government photo ID is mandatory — driving licence, Aadhaar or voter ID; foreign nationals must carry passport and a valid Indian visa" },
+        { icon: "Car", text: "Winding hill roads on every transfer day, 2–3 hours at a time" },
+        { icon: "Stethoscope", text: "Tell the team in advance about any chronic condition, joint problem or respiratory concern, and carry your own medication" },
+      ],
+      fitnessCriteria: [
+        { icon: "Footprints", text: "Able to descend and climb a long flight of stone steps — about 6–7 km return over 4–5 hours" },
+        { icon: "Activity", text: "Two weeks of regular cardio and stair-climbing practice before the trip makes Day 3 far easier" },
+        { icon: "Heart", text: "Light stretching beforehand, and motion sickness tablets if ghat roads affect you" },
+      ],
+      howToReach: {
+        intro:
+          "The trip starts and ends at Guwahati. Pickup from the airport or railway station is included — share your arrival details in advance so the transfer can be timed.",
+        air: {
+          summaryLabel: "Nearest Airport",
+          summary: "Lokpriya Gopinath Bordoloi International Airport (GAU), Guwahati",
+          detail:
+            "Well connected to Delhi, Kolkata, Mumbai and Bengaluru. Airport pickup on Day 1 and drop on Day 6 are part of the package.",
+        },
+        train: {
+          summaryLabel: "Nearest Railway Station",
+          summary: "Guwahati Railway Station (GHY)",
+          detail:
+            "Connected to most major Indian cities. Station pickup and drop are included on the same terms as the airport transfer.",
+        },
+        road: {
+          summaryLabel: "Route",
+          summary: "Guwahati → Shillong → Cherrapunji → Nongriat → Dawki → Shillong → Guwahati",
+          detail:
+            "About 100 km from Guwahati to Shillong on NH 6, 50–60 km on to Cherrapunji, 85 km to Dawki and 80 km back up to Shillong. Cabs and shared transit also run on the Guwahati–Shillong leg for anyone joining late.",
+          route: ["Guwahati", "Shillong", "Cherrapunji", "Nongriat", "Dawki", "Mawlynnong", "Shillong", "Guwahati"],
+          facts: [
+            { label: "Duration", value: "6 Days / 5 Nights" },
+            { label: "Highest point", value: "Shillong — about 5,250 ft / 1,600 m" },
+            { label: "Trekking", value: "About 6–7 km return on Day 3; 3–6 km of walking on the other sightseeing days" },
+          ],
+        },
+        pickup: {
+          point: "Guwahati airport (GAU) or Guwahati railway station",
+          time: "Day 1, on arrival — share your flight or train details in advance",
+          dropPoint: "Guwahati airport or railway station",
+          dropTime: "Day 6, afternoon",
+          note:
+            "Book the return flight or train with at least a 3-hour buffer after the scheduled drop.",
+        },
+      },
+
+      faqs: [
+        {
+          title: "How long is the trip?",
+          description:
+            "5 Nights / 6 Days, Guwahati to Guwahati — one night in Shillong, two in Cherrapunji, one in Dawki and one back in Shillong.",
+        },
+        {
+          title: "How hard is the Double Decker root bridge trek?",
+          description:
+            "It is the one demanding day. Roughly 3,500 stone steps down to Nongriat and the same back up — about 6–7 km return over 4–5 hours. Moderate fitness and a couple of weeks of stair practice are enough; the grade elsewhere on the trip is easy.",
+        },
+        {
+          title: "When is the best time to go?",
+          description:
+            "October to April. The Umngot at Dawki is at its clearest in the dry winter months, and the waterfalls still run well into the post-monsoon season.",
+        },
+        {
+          title: "What meals are included?",
+          description:
+            "Breakfast each day from Day 2 to Day 6, plus dinner at Dawki on Day 4. Lunches and everything else are on you — both vegetarian and non-vegetarian local food is easy to find.",
+        },
+        {
+          title: "Are permits included?",
+          description:
+            "Yes. All state and entry permits required for the tour are arranged as part of the package. Entry tickets at individual monuments and caves are not.",
+        },
+        {
+          title: "Is boating at Dawki included?",
+          description:
+            "No. Boats on the Umngot are hired at the ghat and paid directly. Your trip captain will point you to the licensed operators.",
+        },
+        {
+          title: "What is the accommodation like?",
+          description:
+            "Comfortable hotels and guesthouses on a sharing basis, with a hotel or riverside camp at Dawki. Rooms are arranged separately for men and women; ask in advance for couple sharing.",
+        },
+        {
+          title: "Can we book private or custom dates?",
+          description:
+            "Yes. Alongside the open group departures, custom batches can be arranged for private groups, women-only groups and corporate teams. Call or WhatsApp +91 91213 43330.",
+        },
+        {
+          title: "How do I confirm a seat?",
+          description:
+            "₹5,000 per person as advance blocks the seat. It is non-refundable, and the balance is due 10 days before departure.",
+        },
+      ],
+
+      thingsToCarry: [
+        "Hat or cap",
+        "Light jacket, and a warmer one for the winter months",
+        "Thermal innerwear, top and bottom, for December to February",
+        "Comfortable travel clothes and quick-dry tees",
+        "Extra pairs of socks and undergarments",
+        "Gloves for the colder departures",
+        "Sturdy trekking or running shoes with grip for the Nongriat steps",
+        "Slippers or sandals for the stays",
+        "20–30L daypack for the day excursions",
+        "Reusable water bottle",
+        "Umbrella or raincoat — Meghalaya rains out of season too",
+        "Power bank",
+        "Personal medication and a basic first aid kit",
+        "Original government photo ID — passport and Indian visa for foreign nationals",
+      ],
+      thingsToRemember: [
+        ...TRIP_GROUND_RULES,
+        "Day 3 is strenuous — pace yourself on the climb back out of Nongriat and carry enough water.",
+        "The Nongriat guide, Dawki boating and all entry tickets are settled on site, in cash.",
+        "Unavailed inclusions during the trip are not refundable.",
+      ],
+      transportModes: TRANSPORT_BY_GROUP_SIZE,
+      cancellationPolicy:
+        "The ₹5,000 advance is non-refundable under any circumstances. Cancel 7 days or more before departure and 50% of the balance is refunded. No refund is given for cancellations made less than 48 hours before the trip. If Trip My Soul cancels for weather, political unrest, low participation or another unforeseen situation, you receive a full refund less any transport cancellation charges. Rescheduling to a later batch is at management discretion and subject to seat availability.",
+      confirmationPolicy:
+        "₹5,000 per person as advance confirms your seat and is non-refundable. The remaining balance is payable 10 days before departure; the seat is finally confirmed only on full payment.",
+      bookingAdvance: 5000,
+      balanceDueDays: 10,
+
+      gallery: [
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Nohkalikai_falls_bikash.jpg/1920px-Nohkalikai_falls_bikash.jpg",
+          caption: "Nohkalikai Falls, the tallest plunge waterfall in India",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Mawlynnong%27s_Living_Root_Bridge_in_Meghalaya%2C_India.jpg/1920px-Mawlynnong%27s_Living_Root_Bridge_in_Meghalaya%2C_India.jpg",
+          caption: "A living root bridge trained across the stream near Mawlynnong",
+        },
+      ],
+      relatedSlugs: ["rishikesh-mussoorie", "leh-ladakh", "spiti-valley"],
     }
   ),
   toListingItem(
