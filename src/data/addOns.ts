@@ -22,7 +22,7 @@ export const TREK_ADD_ONS: TrekAddOn[] = [
     key: "insurance",
     label: "Medical & Trek Insurance",
     description: "Covers high altitude emergency hospitalization and evacuation.",
-    price: 240,
+    price: 600,
   },
   {
     key: "offload",

@@ -33,13 +33,13 @@ describe("computeBookingPricing", () => {
   });
 
   it("adds add-on prices before discount and tax", () => {
-    // 10000/person * 1 pax = 10000 base + insurance(240) = 10240 gross.
+    // 10000/person * 1 pax = 10000 base + insurance(600) = 10600 gross.
     const result = computeBookingPricing(10000, [
       { fullName: "A", isPrimary: true, addOns: ["insurance"] },
     ], undefined);
 
-    expect(result.grossAmount).toBe(10240);
-    expect(result.taxAmount).toBe(Math.round(10240 * 0.05 * 100) / 100);
+    expect(result.grossAmount).toBe(10600);
+    expect(result.taxAmount).toBe(Math.round(10600 * 0.05 * 100) / 100);
   });
 
   it("applies a discount before computing GST", () => {
