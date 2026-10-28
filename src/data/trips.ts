@@ -228,14 +228,15 @@ const CHOPTA_ALTERNATE_NAMES = [
  * ex-Rishikesh Day 1; the ex-Delhi package leaves Delhi on the night before,
  * so a Saturday batch is a Friday-night pickup.
  *
- * October is weekends only; from November the trek runs daily through the
- * winter season, which ends in January.
+ * October and November are weekends only; from December the trek runs daily
+ * through the winter season, which ends in January.
  */
 const CHOPTA_BATCH_DATES = [
   // October starts at the 10th rather than the 1st: the departures list
   // has no past-date filter, so the 3rd would render as bookable.
   ...datesInRange("2026-10-10", "2026-10-31", [6]),
-  ...datesInRange("2026-11-01", "2027-01-31"),
+  ...datesInRange("2026-11-01", "2026-11-30", [6]),
+  ...datesInRange("2026-12-01", "2027-01-31"),
 ];
 
 const CHOPTA_HIGHLIGHTS = [
