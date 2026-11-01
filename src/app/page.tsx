@@ -101,6 +101,20 @@ const curatedEntries = (pill: CuratedPill): CatalogEntry[] =>
     .map((slug) => CATALOG_BY_SLUG.get(slug))
     .filter((entry): entry is CatalogEntry => entry !== undefined);
 
+/**
+ * Sort key for the winter-first default: the "Winters" line-up leads the grid
+ * in its listed order, everything else ties behind it. Driven by the curated
+ * list rather than `months`, so ops decides what counts as a winter trip, and
+ * unlike `seasonRank` it does not depend on the clock — the server and the
+ * first client render agree.
+ */
+const WINTER_LEAD_RANK = new Map<string, number>(
+  CURATED_CATEGORIES.Winters.map((slug, index) => [slug, index])
+);
+
+const winterLeadRank = (slug: string): number =>
+  WINTER_LEAD_RANK.get(slug) ?? Number.MAX_SAFE_INTEGER;
+
 /** True when a catalogue entry has a published departure inside the window. */
 const entryIsUpcoming = (entry: CatalogEntry): boolean =>
   departsWithinWindow(entry.trek, entry.batchDates);
@@ -508,6 +522,14 @@ export default function Home() {
     }
 
     return entriesCopy.sort(({ trek: a }, { trek: b }) => {
+      // Default view leads with the winter line-up, ahead of both the season
+      // grouping and the featured pinning. An explicitly chosen sort (price,
+      // duration) is left alone.
+      if (sortBy === "season") {
+        const winter = winterLeadRank(a.slug) - winterLeadRank(b.slug);
+        if (winter !== 0) return winter;
+      }
+
       // Season grouping outranks the featured tiebreak, else a featured trek
       // from another season would sit above the season it belongs to.
       if (sortBy === "season" && seasonNow) {
