@@ -30,6 +30,8 @@ adaptation, and neither is framing it with CSS in a hero banner.
 | `adi-kailash-om-parvat-yatra` | db.ts | Geet Arts | CC BY-SA 4.0 | [Adi Kailash1.jpg](https://commons.wikimedia.org/wiki/File:Adi_Kailash1.jpg) |
 | `ali-bedni-bugyal-trek` | db.ts | Yash Soorma | CC BY-SA 4.0 | [Trisul peak from bedni bugyal.jpg](https://commons.wikimedia.org/wiki/File:Trisul_peak_from_bedni_bugyal.jpg) |
 | `ali-bedni-bugyal-yatra` | db.ts | Yash Soorma | CC BY-SA 4.0 | [Chaukhamba from Bedni Bugyal.jpg](https://commons.wikimedia.org/wiki/File:Chaukhamba_from_Bedni_Bugyal.jpg) |
+| `auli-chopta-rishikesh` | trips.ts | Siddharth2121 | CC BY-SA 4.0 | [Auli in October 2015 - 38.jpg](https://commons.wikimedia.org/wiki/File:Auli_in_October_2015_-_38.jpg) |
+| `auli-chopta-rishikesh` | trips.ts | Navdeep Gusain | CC BY-SA 4.0 | [Tungnath Temple in winter.jpg](https://commons.wikimedia.org/wiki/File:Tungnath_Temple_in_winter.jpg) |
 | `auli-snow-trip` | db.ts | ArmouredCyborg | CC BY-SA 4.0 | [Snow at Auli.jpg](https://commons.wikimedia.org/wiki/File:Snow_at_Auli.jpg) |
 | `auli-weekend-tour` | db.ts | Siddharth2121 | CC BY-SA 4.0 | [Auli in October 2015 - 36.jpg](https://commons.wikimedia.org/wiki/File:Auli_in_October_2015_-_36.jpg) |
 | `auli-yatra` | trips.ts | Siddharth2121 | CC BY-SA 4.0 | [Auli in October 2015 - 40.jpg](https://commons.wikimedia.org/wiki/File:Auli_in_October_2015_-_40.jpg) |

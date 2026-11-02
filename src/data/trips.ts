@@ -1703,6 +1703,403 @@ export const BACKPACKING_TRIPS: TripListingItem[] = [
   ),
   toListingItem(
     {
+      name: "Auli, Chopta & Rishikesh",
+      slug: "auli-chopta-rishikesh",
+      duration: "7N/8D",
+      heroImage:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Auli_in_October_2015_-_38.jpg/1920px-Auli_in_October_2015_-_38.jpg",
+      tagline: "Auli's ski slopes, the world's highest Shiva temple and the Ganga at Rishikesh, in one week.",
+    },
+    {
+      region: "Uttarakhand",
+      startLocation: "Delhi",
+      endLocation: "Delhi",
+      difficulty: "Easy-Moderate",
+      price: 20700,
+      originalPrice: 23000,
+      months: ["Nov", "Dec", "Jan", "Feb", "Mar", "Apr"],
+      themes: ["Snow", "Temple", "Meadow", "Lakes", "Adventure"],
+      category: "Backpacking Trip",
+      detailsPath: "/trips/backpacking/auli-chopta-rishikesh",
+
+      alternateNames: [
+        "Uttarakhand Backpacking Trip",
+        "Auli Chopta Rishikesh",
+        "Auli Chopta Tungnath",
+        "Chopta Deoria Tal Rishikesh",
+        "Joshimath Auli Backpacking",
+      ],
+      altitude: "12,110 ft / 3,691 m (Chandrashila Summit)",
+      availability: "November to early April",
+      minAge: 18,
+      maxAge: 40,
+      maxGroupSize: "As per departure; private, women-only and corporate batches on request",
+      contactPhone: "+91 91213 43330",
+
+      intro:
+        "Eight days across Garhwal on one loop out of Delhi. Two nights at Joshimath with a full day up at Auli on the chairlift, then across to Chopta for the Tungnath and Chandrashila climb, the mirror lake at Deoria Tal on the way down, and two days in Rishikesh for rafting and the evening Ganga Aarti before the overnight run back to Delhi. Travel is by tempo traveller with a trip captain on board throughout.",
+      highlights: [
+        "Auli — ski slopes and meadows, reached by chairlift from Joshimath",
+        "Nanda Devi and Nar Parvat from the Auli ridge",
+        "Tungnath — highest Shiva temple in the world",
+        "Chandrashila summit, 360° Himalayan views",
+        "Deoria Tal — the lake that mirrors the snow peaks",
+        "All four Prayags on the drive: Devprayag, Rudraprayag, Karnaprayag, Nandaprayag",
+        "Bonfire evening at Chopta",
+        "White-water rafting on the Ganga at Rishikesh",
+        "Ram Jhula, Janki Setu and the sunset Ganga Aarti",
+      ],
+      usps: [
+        {
+          title: "Three very different Uttarakhands in one trip",
+          description:
+            "Auli's open ski meadows, Chopta's forest and temple trail, and the river town energy of Rishikesh — a week that would normally take three separate bookings.",
+        },
+        {
+          title: "A summit that a beginner can actually reach",
+          description:
+            "Chandrashila is 12,110 ft, but the climb from Chopta is only about 4 km each way on a stepped trail. Reasonable fitness is enough; no technical skill is needed.",
+        },
+        {
+          title: "Chairlift included, no trek to the snow line",
+          description:
+            "The Joshimath to Auli chairlift and the local cab to the lift station are both covered, so the Auli day is spent on the slopes rather than getting to them.",
+        },
+        {
+          title: "18 to 40, backpacker pace",
+          description:
+            "A young open-group batch travelling together in one tempo traveller, on shared rooms, with a trip captain from the Delhi pickup to the Delhi drop.",
+        },
+      ],
+      idealFor:
+        "Backpackers, solo travellers and friend groups aged 18 to 40 who want snow, a Himalayan summit and the Ganga in a single week off work.",
+      importantNote:
+        "Days 1 and 7 are overnight road journeys between Delhi and the hills, and the Delhi–Joshimath leg can run 15 to 18 hours depending on road conditions. If heavy snowfall blocks the tempo traveller, a 4x4 is arranged locally and charged on the spot. Tungnath temple itself closes for the winter from November to April, though the trail to the temple door stays open for the snow trek.",
+      destinationHighlights: [
+        {
+          name: "Joshimath",
+          blurb:
+            "The base town at 6,150 ft, two nights on this itinerary. Gateway to Auli and Badrinath, and the last proper town before the ski slopes.",
+        },
+        {
+          name: "Auli",
+          blurb:
+            "Open bugyal meadow and India's best-known ski slope, 12 km above Joshimath and reached by chairlift. Nanda Devi, Nar Parvat and the Himalayan wall fill the skyline.",
+        },
+        {
+          name: "Chopta",
+          blurb:
+            "A forest meadow inside the Kedarnath Wildlife Sanctuary rather than a town — deodar and rhododendron on every side, which is why it is called the Mini Switzerland of India. Trailhead for Tungnath.",
+        },
+        {
+          name: "Tungnath & Chandrashila",
+          blurb:
+            "Tungnath is the highest Shiva temple in the world and one of the Panch Kedar. Chandrashila, 1.5 km further up, tops out at 12,110 ft with a 360° view of the Garhwal peaks.",
+        },
+        {
+          name: "Deoria Tal",
+          blurb:
+            "A small lake a short climb above Sari Village that holds a clean reflection of the Chaukhamba massif on a still morning.",
+        },
+        {
+          name: "Rishikesh",
+          blurb:
+            "The last stop: rafting on the Ganga, the Ram Jhula and Janki Setu footbridges, the cafes of Tapovan and the Aarti on the ghats at sunset.",
+        },
+      ],
+
+      itinerary: [
+        {
+          day: 1,
+          title: "Delhi to Joshimath — overnight drive",
+          entries: [
+            { time: "8:30 PM", text: "Report at the Delhi pickup point and meet the trip captain." },
+            { text: "Depart by tempo traveller for Joshimath — about 505 km." },
+            { text: "Overnight in the vehicle. Expect a long haul: 15 to 18 hours on the road is normal for this leg." },
+          ],
+        },
+        {
+          day: 2,
+          title: "Arrive Joshimath, rest and acclimatise",
+          entries: [
+            { text: "Drive on through the Prayags — Devprayag, Rudraprayag, Karnaprayag and Nandaprayag — alongside the Alaknanda." },
+            { time: "Afternoon", text: "Reach Joshimath (6,150 ft) and check in." },
+            { text: "Leisure day. Rest, walk around town and let the altitude settle." },
+            { text: "Overnight in Joshimath. Dinner included." },
+          ],
+        },
+        {
+          day: 3,
+          title: "Joshimath to Auli and back",
+          entries: [
+            { time: "After breakfast", text: "Local cab to the chairlift station, then up to Auli — about 12 km." },
+            { text: "The day at Auli: the ski slopes, the meadows and views of Nanda Devi and Nar Parvat." },
+            { time: "Evening", text: "Return to Joshimath." },
+            { text: "Overnight in Joshimath. Breakfast and dinner included." },
+          ],
+        },
+        {
+          day: 4,
+          title: "Joshimath to Chopta",
+          entries: [
+            { time: "After breakfast", text: "Check out and drive to Chopta — about 145 km through Chamoli and Ukhimath." },
+            { text: "Vegetarian snacks en route." },
+            { time: "Evening", text: "Check in to the camp at Chopta. Bonfire, weather permitting." },
+            { text: "Overnight in Chopta. Breakfast and dinner included." },
+          ],
+        },
+        {
+          day: 5,
+          title: "Tungnath and Chandrashila",
+          entries: [
+            { time: "Early morning", text: "Breakfast, then start the trek from Chopta." },
+            { text: "Climb about 4 km to Tungnath, the highest Shiva temple in the world, and on to the Chandrashila summit at 12,110 ft." },
+            { text: "Packed lunch on the trail. Descend to Chopta the same day." },
+            { text: "Overnight in Chopta. Breakfast, packed lunch and dinner included." },
+          ],
+        },
+        {
+          day: 6,
+          title: "Deoria Tal, then down to Rishikesh",
+          entries: [
+            { time: "Early morning", text: "Drive to Sari Village and trek up to Deoria Tal for the reflection of the snow peaks." },
+            { text: "Return to Sari, then the long drive down to Rishikesh." },
+            { time: "Evening", text: "Check in at Rishikesh." },
+            { text: "Overnight in Rishikesh. Breakfast and dinner included." },
+          ],
+        },
+        {
+          day: 7,
+          title: "Rafting and Rishikesh, then overnight to Delhi",
+          entries: [
+            { time: "Morning", text: "White-water rafting on the Ganga." },
+            { time: "Afternoon", text: "Rishikesh sightseeing — Ram Jhula, Janki Setu and the cafes." },
+            { time: "Sunset", text: "Ganga Aarti on the ghats." },
+            { time: "Night", text: "Depart Rishikesh for Delhi. Overnight in the vehicle. Breakfast included." },
+          ],
+        },
+        {
+          day: 8,
+          title: "Arrive Delhi",
+          entries: [
+            { time: "6:00 AM", text: "Expected arrival in Delhi. Trip concludes." },
+            { text: "Keep a buffer of at least 3 hours before any onward flight or train." },
+          ],
+        },
+      ],
+
+      costIncludes: [
+        "Accommodation on shared occupancy — double, triple or quad — as per the itinerary",
+        "All transport by tempo traveller, Delhi to Delhi",
+        "11 vegetarian meals in total, on a modified American plan — breakfast and dinner at the stays",
+        "Packed lunch on the Tungnath trek day",
+        "Vegetarian snacks on Day 4",
+        "Tungnath entry fee",
+        "Chairlift at Auli",
+        "Local cab from Joshimath to the chairlift station and back",
+        "White-water rafting at Rishikesh",
+        "All sightseeing as per the itinerary",
+        "Trip captain with the group throughout",
+        "Toll taxes, parking and driver allowances",
+        "All necessary permits",
+        "First aid kit",
+      ],
+      costExcludes: [
+        "Early check-in before 1 PM and late check-out after 11 AM",
+        "Lunches and any meal not listed under inclusions",
+        "Entry tickets at exploration sites",
+        "A 4x4 vehicle if heavy snowfall blocks the tempo traveller — arranged locally and paid on the spot",
+        "Extra stay or food costs arising from travel delays",
+        "Personal expenses",
+        "Travel and medical insurance",
+        "Anything not listed under inclusions",
+      ],
+      priceNote:
+        "₹20,700 per person after the early-bird discount, down from ₹23,000. GST at 5% applies on top. The fare covers transport, shared stays, the listed meals, the Auli chairlift and the Rishikesh rafting; lunches, entry tickets and any snow-day 4x4 are paid directly.",
+
+      eligibilityCriteria: [
+        { icon: "User", text: "Open to travellers aged 18 to 40 — this is a young open-group backpacking batch" },
+        { icon: "Footprints", text: "Able to walk about 8 km return on a stepped mountain trail on the Tungnath day" },
+        { icon: "FileText", text: "Original government photo ID is mandatory — driving licence, Aadhaar or voter ID" },
+        { icon: "Car", text: "Two overnight road journeys and several long mountain driving days; the Delhi–Joshimath leg alone can run 15 to 18 hours" },
+        { icon: "Stethoscope", text: "Tell the team in advance about any chronic condition, joint problem or respiratory concern, and carry your own medication" },
+      ],
+      fitnessCriteria: [
+        { icon: "Footprints", text: "Comfortable covering 4 km uphill to around 12,000 ft and back down the same day" },
+        { icon: "Activity", text: "Two to three weeks of regular cardio before the trip makes the Chandrashila climb far easier" },
+        { icon: "Heart", text: "Motion sickness tablets if ghat roads affect you — the route is almost entirely hill road" },
+      ],
+      howToReach: {
+        intro:
+          "The trip runs Delhi to Delhi. The batch leaves the Delhi pickup point at 8:30 PM on Day 1 and is back by about 6:00 AM on Day 8 — book onward travel with a buffer, since both legs are overnight road journeys.",
+        air: {
+          summaryLabel: "Nearest Airport",
+          summary: "Indira Gandhi International Airport (DEL), Delhi",
+          detail:
+            "Reach Delhi by the evening of Day 1 to make the 8:30 PM departure. On Day 8 the group reaches Delhi around 6:00 AM; allow at least 3 hours before a flight.",
+        },
+        train: {
+          summaryLabel: "Nearest Railway Station",
+          summary: "New Delhi Railway Station (NDLS) / Anand Vihar Terminal (ANVT)",
+          detail:
+            "Both are a short ride from the pickup point. The exact pickup location is shared with the batch a few days before departure.",
+        },
+        road: {
+          summaryLabel: "Route",
+          summary: "Delhi → Joshimath → Auli → Chopta → Sari (Deoria Tal) → Rishikesh → Delhi",
+          detail:
+            "About 505 km from Delhi to Joshimath, 12 km up to Auli, 145 km across to Chopta, then down to Rishikesh and back to Delhi. All transport is by tempo traveller and is part of the package.",
+          route: ["Delhi", "Devprayag", "Rudraprayag", "Karnaprayag", "Nandaprayag", "Joshimath", "Auli", "Chopta", "Sari / Deoria Tal", "Rishikesh", "Delhi"],
+          facts: [
+            { label: "Duration", value: "8 Days / 7 Nights" },
+            { label: "Highest point", value: "Chandrashila Summit — 12,110 ft / 3,691 m" },
+            { label: "Trekking", value: "About 8 km return to Tungnath and Chandrashila on Day 5, plus the short Deoria Tal climb on Day 6" },
+          ],
+        },
+        pickup: {
+          point: "Delhi — exact pickup point shared with the batch before departure",
+          time: "Day 1, 8:30 PM",
+          dropPoint: "Delhi",
+          dropTime: "Day 8, around 6:00 AM",
+          note:
+            "Both the outbound and return legs are overnight drives. Road and weather conditions can shift these times by several hours.",
+        },
+      },
+
+      faqs: [
+        {
+          title: "How long is the trip and where does it start?",
+          description:
+            "8 Days / 7 Nights, Delhi to Delhi. The batch leaves Delhi at 8:30 PM on Day 1 and returns around 6:00 AM on Day 8. Two of the seven nights are spent travelling overnight in the vehicle.",
+        },
+        {
+          title: "How much travel is involved?",
+          description:
+            "A lot — this is a road trip as much as a trek. Delhi to Joshimath is about 505 km and commonly takes 15 to 18 hours; Joshimath to Chopta is another 145 km of hill road, and the return to Delhi is an overnight drive. Plan for it rather than being surprised by it.",
+        },
+        {
+          title: "How difficult is the Tungnath and Chandrashila trek?",
+          description:
+            "Easy to moderate. It is roughly 4 km up from Chopta to Tungnath and on to Chandrashila at 12,110 ft, on a stepped trail, and the same back down on the same day. Beginners with reasonable fitness manage it; in winter the snow makes it slower and a good grippy shoe matters.",
+        },
+        {
+          title: "Is it suitable for beginners?",
+          description:
+            "Yes. There is no technical climbing anywhere on the itinerary, Auli is reached by chairlift and Deoria Tal is a short walk. Day 5 is the only real trekking day.",
+        },
+        {
+          title: "What is the best time to go?",
+          description:
+            "November to early April. December to February brings the heaviest snow at Auli and Chopta; March and early April are clearer and milder with snow still on the higher slopes.",
+        },
+        {
+          title: "Will Tungnath temple be open?",
+          description:
+            "The temple itself closes for the winter from roughly November to April, when the deity is moved down to Ukhimath. The trail stays open to the temple door, so the trek and the Chandrashila summit still run — you just may not find the shrine itself open.",
+        },
+        {
+          title: "What should I carry, especially in winter?",
+          description:
+            "Thermals, a heavy insulated jacket, gloves, a woollen cap, waterproof trekking shoes with grip, sunglasses and sunscreen. Full list under Things to Carry.",
+        },
+        {
+          title: "Can snowfall or roadblocks change the plan?",
+          description:
+            "Yes. Heavy snowfall, landslides or roadblocks can alter the route or the order of days, and if the tempo traveller cannot get through, a 4x4 is arranged locally and charged on the spot. The trip captain decides on the ground, with safety first.",
+        },
+        {
+          title: "What accommodation is provided?",
+          description:
+            "Shared occupancy — double, triple or quad — in hotels or guesthouses at Joshimath and Rishikesh, and a camp at Chopta. Rooms are arranged separately for men and women; ask in advance for couple sharing.",
+        },
+        {
+          title: "What meals are included?",
+          description:
+            "11 vegetarian meals in total, on a modified American plan — breakfast and dinner at the stays — plus a packed lunch on the Tungnath trek day and snacks on Day 4. Other lunches and anything on the road are on you.",
+        },
+        {
+          title: "Is the Auli chairlift included?",
+          description:
+            "Yes. Both the chairlift at Auli and the local cab from Joshimath to the lift station and back are part of the package.",
+        },
+        {
+          title: "Will a trip captain travel with us?",
+          description:
+            "Yes — a trip captain is with the batch from the Delhi pickup to the Delhi drop, alongside a dedicated driver.",
+        },
+      ],
+
+      thingsToCarry: [
+        "Thermal innerwear, top and bottom",
+        "Heavy insulated or down jacket",
+        "Fleece or woollen sweater as a mid-layer",
+        "Windproof and waterproof outer shell",
+        "Woollen cap, neck gaiter and warm gloves",
+        "Waterproof trekking shoes with good grip — not sneakers, for the snow",
+        "Extra pairs of woollen socks and undergarments",
+        "Slippers or sandals for the stays",
+        "20–30L daypack for the trek days",
+        "Sunglasses with UV protection and sunscreen — snow glare is strong",
+        "Reusable water bottle and a thermos",
+        "Headtorch with spare batteries",
+        "Power bank — charging is limited at Chopta",
+        "Quick-dry towel and basic toiletries",
+        "Personal medication and a small first aid kit",
+        "Original government photo ID",
+      ],
+      thingsToRemember: [
+        ...TRIP_GROUND_RULES,
+        "Days 1 and 7 are overnight drives — sleep on the bus is the plan, not a hotel.",
+        "Network is patchy from Joshimath onwards and weak at Chopta; Jio works best.",
+        "Carry cash. ATMs are unreliable past Joshimath, and the snow-day 4x4 and entry tickets are settled on site.",
+        "Unavailed inclusions during the trip are not refundable.",
+      ],
+      transportModes: TRANSPORT_BY_GROUP_SIZE,
+      cancellationPolicy: TRIP_CANCELLATION_POLICY,
+      confirmationPolicy: CONFIRMATION_POLICY,
+
+      // Day 1 of each batch — the Delhi departure night. The 7 Nov 2026 batch
+      // is listed as full at source and is left out.
+      batchDates: [
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28",
+        "2026-12-05",
+        "2026-12-12",
+        "2027-01-09",
+        "2027-01-16",
+        "2027-01-23",
+        "2027-01-30",
+        "2027-02-06",
+        "2027-02-13",
+        "2027-02-20",
+        "2027-02-27",
+        "2027-03-06",
+        "2027-03-13",
+        "2027-03-20",
+        "2027-03-26",
+      ],
+
+      // The source page is self-contradictory on two points, both kept as
+      // published rather than silently resolved — see `sourceCaveat`.
+      sourceCaveat:
+        "The source itinerary describes the trip as starting and ending at Rishikesh in its overview, while its batch list and day plan both run Delhi to Delhi; the Delhi version is used here. It also prints Chandrashila at 12,110 ft, where our own Chopta listings carry 13,000 ft for the same summit. Confirm both with the team at the time of booking.",
+
+      gallery: [
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Auli_in_October_2015_-_38.jpg/1920px-Auli_in_October_2015_-_38.jpg",
+          caption: "The meadows and ski slopes above Joshimath at Auli",
+        },
+        {
+          url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Tungnath_Temple_in_winter.jpg/1920px-Tungnath_Temple_in_winter.jpg",
+          caption: "Tungnath, the highest Shiva temple in the world, under winter snow",
+        },
+      ],
+      relatedSlugs: ["auli-yatra", "rishikesh-mussoorie", "kedarnath-yatra"],
+    }
+  ),
+  toListingItem(
+    {
       name: "Meghalaya",
       slug: "meghalaya",
       duration: "5N/6D",
