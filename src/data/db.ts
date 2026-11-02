@@ -2627,7 +2627,7 @@ export const TREKS: Trek[] = [
     "slug": "chakrata-trip",
     "name": "Chakrata Trip",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Chakrata_nice_wather.jpg/1920px-Chakrata_nice_wather.jpg",
-    "price": 3999,
+    "price": 5499,
     "days": 2,
     "nights": 1,
     "region": "Uttarakhand",
@@ -14634,7 +14634,7 @@ if (chakrataIndex !== -1) {
 
   TREKS[chakrataIndex].bookingAdvance = 1000;
   TREKS[chakrataIndex].bookingTerms = [
-    { title: "Trip Cost", description: "₹3,999 + 5% GST* per person on triple / quad sharing." },
+    { title: "Trip Cost", description: "₹5,499 + 5% GST* per person on triple / quad sharing." },
     { title: "Upgrade - Double Sharing", description: "₹1,000 per person extra." },
     { title: "Upgrade - Couple Cottage / Private Room", description: "₹1,000 per person extra." },
     { title: "Inclusions", description: "AC travel Delhi to Delhi, 1 night stay, 2 meals, guided treks, bonfire and trip captain as mentioned in the package." },
