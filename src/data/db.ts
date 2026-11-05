@@ -616,19 +616,19 @@ export const TREKS: Trek[] = [
   },
   {
     /**
-     * Only the client-approved story and the three overview facts it supports
-     * are filled in here. Everything else is still pending from the client and
-     * deliberately left to the generic fallbacks rather than invented:
+     * The overview, itinerary, eligibility, how-to-reach, inclusions and FAQs
+     * are now filled from the client's Hampta write-up, in the augmentation
+     * block at the bottom of this file. Still pending:
      *
-     * TODO(content): About Trek copy (aboutParagraphs / highlights / idealFor)
-     * TODO(content): quick + detailed itinerary
-     * TODO(content): inclusions and exclusions
-     * TODO(content): eligibility and fitness criteria
-     * TODO(content): departure dates (`batchDates`)
-     * TODO(content): how to reach (`howToReach`)
+     * TODO(content): departure dates (`batchDates`) — the source gives only
+     *   "daily, May to mid-September", with no year and no operating calendar,
+     *   and it contradicts the stated mid-June open. See `sourceCaveat`.
      * TODO(content): trek essentials / packing list
-     * TODO(content): FAQs
      * TODO(content): confirm the fare — ₹7,500 below is unconfirmed
+     *
+     * The written guide stays sourced from the `crossing-hampta-pass` blog
+     * article so the two can never drift; the client's newer article copy is
+     * published as `aboutParagraphs` and `intro` instead of replacing it.
      *
      * The hero and gallery are set from the client's Hampta photography at the
      * bottom of this file.
@@ -636,21 +636,23 @@ export const TREKS: Trek[] = [
     "slug": "hampta-pass-trek",
     "name": "Hampta Pass",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Shea_Goru_%28Hampta_Pass%29.jpg/1920px-Shea_Goru_%28Hampta_Pass%29.jpg",
+    "tagline": "Five days, two Himalayas — the green Kullu Valley on one side of the pass, the cold desert of Lahaul on the other.",
     "price": 7500,                            // TODO(content): unconfirmed
     "days": 5,
     "nights": 4,
     "region": "Himachal Pradesh",
     "category": "Trending Treks",
     "startLocation": "Manali to Manali",
-    "difficulty": "Moderate",
+    endLocation: "Manali",
+    availability: "Daily departures through the mid-June to September season",
+    "difficulty": "Easy-Moderate",
+    // The pass is under snow and shut from November to May, so the generic
+    // Oct/Nov/Mar-Jul winter spread did not apply here.
     "months": [
-      "Oct",
-      "Nov",
-      "Mar",
-      "Apr",
-      "May",
       "Jun",
-      "Jul"
+      "Jul",
+      "Aug",
+      "Sep"
     ],
     "themes": [
       "Snow",
@@ -658,10 +660,11 @@ export const TREKS: Trek[] = [
       "Forest",
       "Pass Crossing"
     ],
-    // The three facts the client's story supports. The generic 12,500 ft
-    // default was wrong for the pass.
-    maxAltitude: "14,000 FT / 4,270 M (Hampta Pass)",
-    route: ["Jobra (above Manali)", "Balu Ka Ghera", "Hampta Pass", "Shea Goru", "Chatru"],
+    // The generic 12,500 ft default was wrong for the pass. 14,107 ft is the
+    // figure the client's itinerary and FAQs both publish.
+    maxAltitude: "14,107 FT / 4,310 M (Hampta Pass)",
+    totalDistance: "26 KM",
+    route: ["Jobra (above Manali)", "Chika", "Balu Ka Ghera", "Hampta Pass", "Shea Goru", "Chatru", "Chandratal"],
     trailType: "Crossover Trek — Kullu Valley (Green) to Lahaul (High Desert)"
   },
   {
@@ -2523,30 +2526,37 @@ export const TREKS: Trek[] = [
   },
   {
     "slug": "valley-of-flowers-trek",
-    "name": "Valley Of Flower",
+    "name": "Valley Of Flowers & Hemkund Sahib",
     "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Valley_of_flowers_national_park%2C_Uttarakhand%2C_India_03_%28edit%29.jpg/1920px-Valley_of_flowers_national_park%2C_Uttarakhand%2C_India_03_%28edit%29.jpg",
+    "tagline": "A UNESCO World Heritage valley of 500+ flower species, and the highest Gurudwara in the world above it.",
     "price": 8500,
     "days": 6,
     "nights": 5,
     "region": "Uttarakhand",
     "category": "Trending Treks",
     "startLocation": "Rishikesh to Rishikesh",
+    endLocation: "Rishikesh",
+    availability: "Daily departures, 1 July to mid-September",
     "difficulty": "Moderate",
+    // The valley is a monsoon trek: it is in bloom only while the rest of the
+    // Garhwal calendar is shut. The previous Oct/Nov/Mar-Jul spread was the
+    // generic winter-trek default and did not apply here.
     "months": [
-      "Oct",
-      "Nov",
-      "Mar",
-      "Apr",
-      "May",
       "Jun",
-      "Jul"
+      "Jul",
+      "Aug",
+      "Sep"
     ],
     "themes": [
-      "Snow",
       "Meadow",
       "Forest",
-      "Pass Crossing"
-    ]
+      "Pilgrimage",
+      "Family with Kids"
+    ],
+    maxAltitude: "15,200 FT / 4,633 M (Hemkund Sahib)",
+    totalDistance: "38 KM",
+    route: ["Rishikesh", "Joshimath", "Govindghat", "Pulna", "Ghangaria", "Valley of Flowers", "Hemkund Sahib"],
+    trailType: "Forest and river trail to a UNESCO alpine valley, with a stone-stair climb to a high-altitude lake shrine"
   },
   {
     "slug": "nagtibba-trek",
@@ -14671,6 +14681,334 @@ if (hamptaPassIndex !== -1 && hamptaPassStory) {
   };
 }
 
+if (hamptaPassIndex !== -1) {
+  TREKS[hamptaPassIndex].minAge = 9;
+  TREKS[hamptaPassIndex].maxAge = 62;
+  TREKS[hamptaPassIndex].minAgeWithGuardian = 9;
+
+  TREKS[hamptaPassIndex].intro =
+    "A crossover trek from Jobra near Manali to Chhatru in Lahaul, and the reason people call it two treks in one. For the first two days you walk the green Kullu Valley — pine forest, the Rani river, meadows and wildflowers. Then you cross the pass at 14,107 ft and the Lahaul side opens up: brown, dry, silent, a cold desert. Twenty-six kilometres over five days, with a drive out to Chandratal on Day 4 when the road is open.";
+
+  TREKS[hamptaPassIndex].aboutParagraphs = [
+    "Hampta Pass sits in the Pir Panjal range at about 14,107 ft and forms a natural corridor between the green Kullu Valley and the cold Chandra Valley in Lahaul. It takes its name from Hampta village, below Sethan in upper Kullu, and for generations it was a working route rather than a trekking one — Gaddi shepherds moved their flocks across it every summer from Kullu to the high grasslands of Lahaul and Spiti. Local belief also places the Pandavas on this trail, on their journey towards heaven after the Mahabharata war.",
+    "The Pir Panjal here is a climate boundary, and that is the whole point of the trek. Monsoon cloud comes up the Kullu side, soaks it, and stops dead at the ridge. The Lahaul side gets almost none of it. The result is two sides of one pass that look like two different countries, and you walk from one into the other in a single morning.",
+    "From the top you get Deo Tibba and Mount Indrasen with their glaciers, vertical rock walls, waterfalls, hanging glaciers and small lakes. Lower down, between roughly 3,000 and 3,800 m, the trail runs through wildflowers, herbs, and pine, oak, maple and rhododendron forest.",
+    "Most itineraries extend to Chandratal — the Moon Lake, named for its crescent shape — at about 4,300 m on the Samudra Tapu plateau near the Chandra river. The water is clear blue and changes colour through the day with the light. Between the landscape change, the shepherd history, the peak views and Chandratal, it is the most popular short crossover trek in India, and the one most often recommended as a first Himalayan trek."
+  ];
+
+  TREKS[hamptaPassIndex].highlights = [
+    "A true crossover — green Kullu Valley on one side of the pass, the cold desert of Lahaul on the other",
+    "Hampta Pass at 14,107 ft, with panoramic views of the Pir Panjal range",
+    "Deo Tibba and Mount Indrasen, their glaciers, hanging glaciers and vertical rock walls",
+    "Chandratal, the crescent-shaped Moon Lake at about 4,300 m, as a Day 4 excursion",
+    "Wildflower meadows and boulder fields between Chika and Balu Ka Ghera",
+    "The icy glacial stream crossing below Shea Goru",
+    "The Atal Tunnel on the drive home — 9 km under Rohtang, green Solang on the far side",
+    "26 km in five days, with no technical climbing anywhere on the route"
+  ];
+
+  TREKS[hamptaPassIndex].usps = [
+    {
+      title: "Two Himalayas in five days",
+      description: "Forest, meadow and river on the Kullu side; brown rock, thin air and open sky on the Lahaul side. One pass crossing separates them, and the change happens in a single morning."
+    },
+    {
+      title: "A first Himalayan trek that still feels big",
+      description: "Graded easy to moderate with no technical climbing, but with a 14,107 ft pass, a glacial stream crossing and a genuine high-altitude lake. Beginners finish it; experienced trekkers still rate it."
+    },
+    {
+      title: "Chandratal included",
+      description: "The Day 4 excursion drives out from Chhatru to the Moon Lake at 4,300 m — one of the most photographed lakes in the Himalayas, and normally a trip of its own."
+    },
+    {
+      title: "Short approach from Manali",
+      description: "Jobra is an hour and a half from Manali by road, so Day 1 is a drive and a two-kilometre walk rather than a full day in a vehicle. Nothing is wasted on the approach."
+    },
+    {
+      title: "A season with four different treks in it",
+      description: "June and July put snow on the pass crossing, August fills the Kullu side with wildflowers, and September gives the clearest skies and the best views. Same trail, three quite different trips."
+    }
+  ];
+
+  TREKS[hamptaPassIndex].destinationHighlights = [
+    { name: "Jobra", blurb: "The roadhead above Manali at about 3,078 m, reached by a 1-1.5 hour drive through deodar and pine forest and the Beas valley. The walking starts here." },
+    { name: "Chika", blurb: "The first campsite, 2-3 km in, where the forest opens suddenly into wide green meadow beside the Rani river, with mountains on all sides." },
+    { name: "Balu Ka Ghera", blurb: "Literally 'a bed of sand' — a large flat campsite at about 3,783 m formed by river silt, with the river alongside and the first big views of Deo Tibba. The acclimatisation stop before the pass." },
+    { name: "Hampta Pass", blurb: "14,107 ft, in the Pir Panjal. Green Kullu behind you, the brown Lahaul desert in front, and Deo Tibba, Indrasen and the glaciers all around." },
+    { name: "Shea Goru", blurb: "A cold, windy, desolate campsite at about 3,600 m beside a glacial stream on the Lahaul side, surrounded by barren mountains and, on a clear night, a very full sky." },
+    { name: "Chhatru", blurb: "The roadhead on the Lahaul side where the trekking ends and the Chandratal drive begins." },
+    { name: "Chandratal Lake", blurb: "The crescent-shaped Moon Lake at about 4,300 m on the Samudra Tapu plateau, 60 km from Chhatru. Deep blue water that shifts colour through the day, ringed by white peaks." },
+    { name: "Atal Tunnel", blurb: "9.02 km under the Rohtang Pass at about 3,100 m, on the Day 5 drive. You go in at Lahaul and come out in green Solang a few minutes later." }
+  ];
+
+  TREKS[hamptaPassIndex].differentiators = [
+    "Duration: 5 Days / 4 Nights, Manali to Manali",
+    "Total trek distance: about 26 km, from Jobra to Chhatru",
+    "Max altitude: Hampta Pass 14,107 ft (4,310 m); Chandratal about 4,300 m",
+    "Grade: easy to moderate — no technical climbing, but a 7-9 hour pass day and a cold glacial stream crossing",
+    "Season: mid-June to September; the pass is under snow and closed from November to May",
+    "Stay: 4 nights camping in tents, at Chika, Balu Ka Ghera, and Shea Goru or Chhatru"
+  ];
+
+  TREKS[hamptaPassIndex].idealFor =
+    "First-time Himalayan trekkers who want a real pass crossing without technical ground; trekkers with limited leave who want maximum variety in five days; photographers, for the landscape change and Chandratal; and experienced trekkers looking for a short, high-value trip out of Manali. Children from 9 to 12 years with a parent, and fit trekkers up to about 62, both do this trek.";
+
+  TREKS[hamptaPassIndex].importantNote =
+    "The pass day is the one to prepare for: 9-10 km in 7-9 hours, a steep ascent over rock and snow patches, and a steep, knee-punishing descent on the far side. Day 4 opens with a barefoot crossing of a glacial stream — the water is painfully cold even in summer, so pack a quick-dry towel and a spare pair of socks within reach. The Chandratal excursion depends entirely on the road being open, and it is not always. Carry an original photo ID with photocopies; forest permits for Hampta and the separate Chandratal permit are arranged for you. Travel insurance with emergency evacuation cover is strongly recommended, and trekkers over 60 need a medical certificate and preferably an ECG or TMT report.";
+
+  TREKS[hamptaPassIndex].sourceCaveat =
+    "The source material gives the departure window as both \"mid-June to September\" (and states the pass is snowbound and closed November to May) and, on the dates line, as \"daily, May to mid-September\". The months and availability above follow the mid-June to September figure, as the one the rest of the write-up supports; the fare of ₹7,500 is carried over from the earlier listing and is still unconfirmed by the client. The campsite on night 4 is published as \"Shea Goru / Chhatru\" and the Chandratal excursion as road-dependent, so both are shown as published rather than fixed. The written guide below remains the client's \"Crossing Hampta Pass\" blog article; the newer article copy supplied with this write-up is published as the About section instead, so the two cannot drift apart.";
+
+  TREKS[hamptaPassIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: minimum 9-12 years depending on the batch; maximum around 60-62, with no strict upper limit for a genuinely fit trekker" },
+    { icon: "Users", text: "Anyone under 18 must be accompanied by a parent or guardian" },
+    { icon: "HeartPulse", text: "Over 60: allowed with good fitness, a medical certificate and preferably an ECG / TMT report" },
+    { icon: "ShieldAlert", text: "Not recommended with serious heart disease, asthma, bronchitis or other lung conditions, high blood pressure, diabetes, or chronic liver, kidney or neurological disease — written clearance from a doctor is required if any apply" },
+    { icon: "IdCard", text: "Original government photo ID with photocopies, plus a doctor-signed medical fitness certificate" },
+    { icon: "ShieldAlert", text: "Travel insurance with emergency evacuation cover strongly recommended" },
+    { icon: "Footprints", text: "No prior trekking experience required — it is one of the best first Himalayan treks — though some previous trekking helps" }
+  ];
+
+  TREKS[hamptaPassIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk comfortably for 5-6 hours a day; the pass day asks for 7-9" },
+    { icon: "Activity", text: "Able to jog or run 4-5 km in 30-35 minutes" },
+    { icon: "TrendingUp", text: "Able to sustain a brisk uphill walk for 4-5 hours" },
+    { icon: "HeartPulse", text: "BMI ideally below 28" },
+    { icon: "Activity", text: "Preparation: regular walking, jogging and leg work for 4-6 weeks before the trek" }
+  ];
+
+  TREKS[hamptaPassIndex].howToReach = {
+    intro: "The trek starts and ends at Manali. Reach Manali the night before — pickup on Day 1 is at 9:00 AM.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Bhuntar Airport, Kullu (KUU)",
+      detail: "About 50 km from Manali, roughly 1.5 hours by taxi or bus. Daily flights from Delhi. Mountain flights are weather-prone, so the overnight Volvo is the more reliable option in season."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Joginder Nagar, Chandigarh or Pathankot",
+      detail: "There is no direct train to Manali. Delhi to Chandigarh is about 3.5 hours by train, then 8 hours by bus to Manali. Delhi to Pathankot is about 8 hours, then 7 hours by bus."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Delhi to Manali by overnight Volvo, then Manali to Jobra by cab",
+      route: ["Delhi", "Chandigarh", "Manali", "Jobra", "Chika", "Balu Ka Ghera", "Hampta Pass", "Shea Goru", "Chhatru", "Chandratal", "Manali"],
+      facts: [
+        { label: "Delhi - Manali", value: "540 km / 12-13 hrs" },
+        { label: "Chandigarh - Manali", value: "310 km / 8 hrs" },
+        { label: "Bhuntar Airport - Manali", value: "50 km / 1.5 hrs" },
+        { label: "Manali - Jobra", value: "1-1.5 hrs (included in the package)" },
+        { label: "Chhatru - Chandratal", value: "about 60 km, road permitting" }
+      ],
+      options: [
+        { from: "Delhi ISBT Kashmere Gate", name: "Daily overnight Volvo and HRTC buses to Manali", note: "The best option — an overnight departure from Delhi puts you in Manali by about 8 AM, in time for the 9 AM Day 1 reporting" }
+      ]
+    },
+    pickup: {
+      point: "Manali — Mall Road / Old Manali",
+      time: "9:00 AM on Day 1",
+      dropPoint: "Manali",
+      dropTime: "Afternoon on Day 5",
+      note: "If you arrive the night before, stay in Manali — we can arrange it. Delhi-Manali transport is not included in the package but can be arranged at extra cost."
+    }
+  };
+
+  TREKS[hamptaPassIndex].inclusions = [
+    { title: "Transportation", description: "Manali to Manali by cab — Manali to Jobra on Day 1 and Chhatru to Manali on Day 5, via the Atal Tunnel." },
+    { title: "Accommodation", description: "4 nights of camping in tents on a sharing basis, at Chika, Balu Ka Ghera, and Shea Goru or Chhatru." },
+    { title: "Meals", description: "All vegetarian meals from Day 1 lunch to Day 5 breakfast — breakfast, lunch, dinner and evening snacks." },
+    { title: "Trek Support", description: "Experienced local trek leader, guide, cook and support staff with the group throughout." },
+    { title: "Camping Equipment", description: "Tents, sleeping bags, mattresses, kitchen tent and toilet tent." },
+    { title: "Permits & Fees", description: "Forest permit, camping charges and entry fees, including the separate Chandratal permit." },
+    { title: "Safety", description: "First-aid kit, oxygen cylinder and walkie-talkie." },
+    { title: "Chandratal Excursion", description: "Cab from Chhatru to Chandratal Lake and back, subject to the road being open." }
+  ];
+
+  TREKS[hamptaPassIndex].exclusions = [
+    { title: "Transport To & From Manali", description: "Delhi to Manali and Manali to Delhi. Can be arranged at extra cost." },
+    { title: "Personal Expenses", description: "Tea, snacks, bottled water, laundry and shopping." },
+    { title: "Pony & Porter", description: "Pony or porter for personal luggage, available at extra cost." },
+    { title: "Personal Trekking Gear", description: "Trekking shoes, jacket, raincoat, trekking pole and backpack." },
+    { title: "Medical & Emergency", description: "Any medical expense or emergency evacuation cost, and travel insurance." },
+    { title: "Taxes", description: "5% GST, where a bill is required." },
+    { title: "Others", description: "Anything not listed under inclusions." }
+  ];
+
+  TREKS[hamptaPassIndex].itinerary = [
+    {
+      day: 1,
+      title: "Manali to Jobra by road, Jobra to Chika on foot",
+      driveDistance: "Manali - Jobra",
+      drivingTime: "1-1.5 Hours",
+      trekDistance: "2-3 km",
+      trekDuration: "1-2 Hours",
+      pickupPoint: "Manali — Mall Road / Old Manali",
+      pickupTime: "9:00 AM",
+      altitudePoints: [
+        { location: "Manali", m: 2050, ft: 6726 },
+        { location: "Jobra", m: 3078, ft: 10100 },
+        { location: "Chika", m: 3100, ft: 10170 }
+      ],
+      altitudeGain: { m: 1050, ft: 3444 },
+      description: "A short scenic drive to the roadhead, then an easy walk along the Rani river through maple, pine and birch into the meadows of Chika.",
+      detailedParagraphs: [
+        "The day starts early in Manali with a drive of about an hour to an hour and a half to Jobra, a small roadhead at around 3,078 m. The road itself is worth the seat — deodar and pine forest, small mountain villages, and the Beas valley opening up below as the town falls away behind.",
+        "From Jobra the actual trekking begins with a gentle two to three kilometre walk, about one to two hours. The trail follows the Rani river, also called Rani Nallah, through dense maple, pine and birch forest with the sound of the stream never far off.",
+        "After a short climb the forest opens suddenly into the wide green meadows of Chika. The first campsite is set beside the river with tall mountains on every side — an easy, relaxed start to the trek."
+      ],
+      highlights: ["Deodar Forest Drive", "Rani River Trail", "Meadow Campsite at Chika"],
+      meals: "Lunch, Dinner",
+      stayType: "Camping — Chika"
+    },
+    {
+      day: 2,
+      title: "Chika to Balu Ka Ghera",
+      trekDistance: "7-8 km",
+      trekDuration: "5-6 Hours",
+      altitudePoints: [
+        { location: "Chika", m: 3100, ft: 10170 },
+        { location: "Balu Ka Ghera", m: 3783, ft: 12410 }
+      ],
+      altitudeGain: { m: 683, ft: 2240 },
+      description: "Out of the forest and into open alpine country — boulder fields, stream crossings, wildflower meadows, and the first proper view of Deo Tibba.",
+      detailedParagraphs: [
+        "A longer and more beautiful day — seven to eight kilometres over five to six hours, climbing steadily from Chika at about 3,100 m to Balu Ka Ghera at about 3,783 m.",
+        "The trail leaves the dense forest behind and enters open alpine country. You walk alongside large boulder fields, cross several small gushing streams, and pass through wide meadows that fill with pink, yellow and purple wildflowers through the summer. On a clear day the first grand views of Deo Tibba and the snow ridges around it open up, and they stay with you for the rest of the walk.",
+        "Balu Ka Ghera means 'a bed of sand' — a large flat ground laid down by river silt, with the river running alongside and mountains all around. It is a spacious, beautiful campsite and an important acclimatisation stop before the pass.",
+        "Most trekkers eat early, watch the sunset go down the valley, and turn in — the next morning starts before dawn."
+      ],
+      highlights: ["Wildflower Meadows", "First Views of Deo Tibba", "Acclimatisation Camp"],
+      meals: "Breakfast, Lunch, Dinner",
+      stayType: "Camping — Balu Ka Ghera"
+    },
+    {
+      day: 3,
+      title: "Balu Ka Ghera to Shea Goru via Hampta Pass",
+      trekDistance: "9-10 km",
+      trekDuration: "7-9 Hours",
+      altitudePoints: [
+        { location: "Balu Ka Ghera", m: 3783, ft: 12410 },
+        { location: "Hampta Pass", m: 4310, ft: 14107 },
+        { location: "Shea Goru", m: 3600, ft: 11811 }
+      ],
+      altitudeGain: { m: 527, ft: 1697 },
+      description: "The big day. A steep climb to the pass at 14,107 ft, green Kullu behind and the Lahaul desert in front, then a steep descent into the glacial valley of Shea Goru.",
+      detailedParagraphs: [
+        "The longest, hardest and most rewarding day of the trek, and it starts very early — nine to ten kilometres in seven to nine hours.",
+        "The first half is a steep, continuous ascent from Balu Ka Ghera towards the pass, over rocky ground, snow patches in June and July, and narrow ridges, until you reach the top at 14,107 ft.",
+        "Standing on the pass is the moment people come for. Behind you is the lush green Kullu Valley you have just walked out of; in front, the completely different world of brown, barren, cold Lahaul, with the Pir Panjal, glaciers and the distant shapes of Deo Tibba and Indrasen laid out across it.",
+        "After time at the top for photographs and rest, the trail drops steeply down the far side into a glacial valley. The descent is slippery in places and hard on the knees — trekking poles matter here more than anywhere else on the route.",
+        "The day ends at Shea Goru, a cold, windy campsite beside a glacial stream at around 3,600 m, surrounded by barren mountain. After a day like that most people are asleep early, under a sky with nothing in the way of it."
+      ],
+      highlights: ["Hampta Pass — 14,107 ft", "Pir Panjal Panorama", "Deo Tibba & Indrasen", "First View of Lahaul"],
+      meals: "Breakfast, Lunch, Dinner",
+      stayType: "Camping — Shea Goru"
+    },
+    {
+      day: 4,
+      title: "Shea Goru to Chhatru, excursion to Chandratal Lake",
+      trekDistance: "5-6 km",
+      trekDuration: "2-3 Hours",
+      driveDistance: "about 60 km each way to Chandratal",
+      altitudePoints: [
+        { location: "Shea Goru", m: 3600, ft: 11811 },
+        { location: "Chhatru", m: 3350, ft: 10990 },
+        { location: "Chandratal", m: 4300, ft: 14108 }
+      ],
+      altitudeGain: null,
+      description: "A barefoot glacial stream crossing, an easy descent to the roadhead at Chhatru, and the drive out to the crescent-shaped Moon Lake.",
+      detailedParagraphs: [
+        "The day opens with a short but memorable river crossing at Shea Goru — an icy glacial stream, usually crossed barefoot with the guide's help. The water is painfully cold even in summer, so have a towel and dry socks ready on the far bank.",
+        "After the crossing the trail descends gradually for five to six kilometres over two to three hours through a dry, rocky, wide valley to Chhatru, the roadhead on the Lahaul side.",
+        "From Chhatru it is a drive of about sixty kilometres to Chandratal, through high-altitude desert, past small dhabas and across vast open plain.",
+        "Chandratal sits at about 4,300 m — a crescent-shaped lake of deep blue water that changes colour as the light moves, ringed by white peaks and cloud. Most groups spend one to two hours walking around it and photographing it before driving back to Chhatru for the night.",
+        "The Chandratal leg depends entirely on the road being open, which it is not always. When it is shut, the day ends at Chhatru."
+      ],
+      highlights: ["Glacial Stream Crossing", "Chandratal — the Moon Lake", "Lahaul High Desert"],
+      meals: "Breakfast, Lunch, Dinner",
+      stayType: "Camping — Chhatru"
+    },
+    {
+      day: 5,
+      title: "Chhatru to Manali via the Atal Tunnel",
+      driveDistance: "100-120 km",
+      drivingTime: "4-5 Hours",
+      altitudePoints: [
+        { location: "Chhatru", m: 3350, ft: 10990 },
+        { location: "Manali", m: 2050, ft: 6726 }
+      ],
+      altitudeGain: null,
+      description: "The drive home through Lahaul and under Rohtang — nine kilometres of tunnel, and green Solang on the far side.",
+      detailedParagraphs: [
+        "The last day is a scenic return drive from Chhatru to Manali, about 100 to 120 km in four to five hours depending on road and weather.",
+        "The road runs through the stark Lahaul landscape, past small villages and river valleys, before entering the Atal Tunnel — 9.02 km long, at about 3,100 m, under the Rohtang Pass.",
+        "Crossing it feels like changing countries in a few minutes: you go in at cold, brown Lahaul and come out in green, forested, busy Solang Valley near Manali.",
+        "The drive ends in Manali by afternoon and the trek concludes — snow, meadows, a high pass, a desert valley and a moon-shaped lake, all inside five days."
+      ],
+      highlights: ["Atal Tunnel — 9.02 km under Rohtang", "Lahaul River Valleys", "Solang Valley"],
+      meals: "Breakfast",
+      stayType: "Trek ends — no overnight"
+    }
+  ];
+
+  TREKS[hamptaPassIndex].faqs = [
+    {
+      title: "What is the Hampta Pass Trek?",
+      description: "A 5-day high-altitude crossover trek in Himachal Pradesh connecting the green Kullu Valley with the barren Chandra Valley in Lahaul. It is known for the dramatic landscape change at the pass, the glaciers and meadows along the way, and the Chandratal Lake excursion."
+    },
+    {
+      title: "Where is Hampta Pass located?",
+      description: "In the Pir Panjal range of the Himalayas near Manali, Himachal Pradesh, between the Kullu Valley on one side and the Lahaul Valley on the other."
+    },
+    {
+      title: "What is the maximum altitude of Hampta Pass?",
+      description: "14,107 feet (4,310 metres) at the top of the pass. Chandratal Lake sits at a similar altitude, around 4,300 metres."
+    },
+    {
+      title: "How difficult is the Hampta Pass trek?",
+      description: "Graded easy to moderate, and suitable for beginners with basic fitness. There is no technical climbing. The pass-crossing day is the hard part — a steep climb and an equally steep descent, 7 to 9 hours of walking."
+    },
+    {
+      title: "What is the total distance and duration?",
+      description: "About 26 km of trekking across 5 days and 4 nights, starting from Jobra near Manali and ending at Chhatru in Lahaul."
+    },
+    {
+      title: "What is the best time to do this trek?",
+      description: "Mid-June to September. June and July hold snow near the pass, which makes the crossing more of an adventure; August brings the most wildflowers on the Kullu side; September has the clearest skies and the best views. The pass is closed under snow from November to May."
+    },
+    {
+      title: "Is it suitable for beginners?",
+      description: "Yes — it is one of the best first Himalayan treks there is. No technical climbing and no prior high-altitude experience are needed, but basic fitness and four to six weeks of preparation are essential."
+    },
+    {
+      title: "What are the minimum and maximum ages?",
+      description: "Minimum is usually 9 to 12 years depending on the batch, and anyone under 18 must be with a parent or guardian. There is no strict upper limit, but trekkers above 60 should be genuinely fit and carry a medical certificate, preferably with an ECG or TMT report."
+    },
+    {
+      title: "What fitness is required?",
+      description: "You should be able to walk 5 to 6 hours a day, jog 4 to 5 km in 30 to 35 minutes, and sustain a brisk uphill walk for 4 to 5 hours. BMI ideally below 28. Four to six weeks of regular walking, jogging and leg work before the trek is the recommendation."
+    },
+    {
+      title: "What documents do I need?",
+      description: "An original government photo ID with photocopies, a medical fitness certificate signed by a doctor, and travel insurance with emergency evacuation cover. The forest permit for Hampta and the separate Chandratal permit are arranged by us."
+    },
+    {
+      title: "Is Chandratal Lake included?",
+      description: "Yes — the Day 4 excursion from Chhatru is included, subject to weather and the road being open. It is a crescent-shaped lake at about 4,300 m, known for its blue water and its setting."
+    },
+    {
+      title: "What is the stay like?",
+      description: "Four nights of camping in tents on a sharing basis, at Chika, Balu Ka Ghera, and Shea Goru or Chhatru. Tents, sleeping bags, mattresses, a kitchen tent and a toilet tent are all provided. There are no hotels or guest houses on this route."
+    },
+    {
+      title: "Do I really have to cross a river barefoot?",
+      description: "On Day 4, yes — a short crossing of a glacial stream below Shea Goru, usually done barefoot with the guide's help. It is very cold but it is quick. Keep a quick-dry towel and a spare pair of socks where you can reach them."
+    }
+  ];
+
+  TREKS[hamptaPassIndex].similarTreks = ["sar-pass-trek", "beas-kund-trek", "valley-of-flowers-trek", "kashmir-great-lakes-trek"];
+}
+
 /**
  * Photography the client shot on these four listings, from
  * `public/Trips_gallery/`. The source files were iPhone HEIFs, which only
@@ -14704,6 +15042,384 @@ if (hamptaPassIndex !== -1) {
 
 const valleyOfFlowersIndex = TREKS.findIndex(t => t.slug === 'valley-of-flowers-trek');
 if (valleyOfFlowersIndex !== -1) {
+  TREKS[valleyOfFlowersIndex].minAge = 8;
+  TREKS[valleyOfFlowersIndex].maxAge = 65;
+  TREKS[valleyOfFlowersIndex].minAgeWithGuardian = 8;
+
+  TREKS[valleyOfFlowersIndex].intro =
+    "Six days from Rishikesh into the one corner of Garhwal that is at its best in the monsoon. The Valley of Flowers is a UNESCO World Heritage Site in Chamoli — 87 sq km holding more than 500 species of flower, in bloom for roughly three and a half months of the year. Above it, at 15,200 ft, sits Hemkund Sahib, the highest Gurudwara in the world, beside a glacial lake ringed by seven peaks. Both are day walks out of Ghangaria, so you climb light and sleep at the same base three nights running.";
+
+  TREKS[valleyOfFlowersIndex].aboutParagraphs = [
+    "The Valley of Flowers was stumbled into in 1931 by the British mountaineer Frank Smythe, on his way down from Kamet, and has been a national park since 1982 and a UNESCO World Heritage Site since 2005. For most of the year it is under snow. For about fourteen weeks from late June it is a floor of colour — Blue Poppy, Brahma Kamal, Cobra Lily, Himalayan Bell Flower, Himalayan Rose — with the Pushpawati river running through the middle of it and snow peaks closing the far end.",
+    "Nobody stays inside the valley. The forest department clears it every evening, so the valley is walked as a day trek out of Ghangaria: 4 km in to the meadows at about 12,200 ft, as long as you like inside, and out before the 5 PM gate time.",
+    "Hemkund Sahib is the other half of the trip and a different kind of day. Six kilometres of steep trail from Ghangaria, with roughly 1,100 stone stairs in the upper section, bring you to a glacial lake at 15,200 ft surrounded by seven peaks. Guru Gobind Singh Ji is believed to have meditated here in a previous birth. There is a Gurudwara, a langar serving hot khichdi, tea and kada prasad, and very little oxygen — it is the hardest day of the trek and the one most people talk about afterwards.",
+    "The walking itself is not technical. There is no ice axe, no rope, no exposure. What the trek asks for is the ability to walk 10-12 km in a day and to keep climbing stairs for four or five hours, which is why it works as a first Himalayan trek and why families and mixed-age groups do it."
+  ];
+
+  TREKS[valleyOfFlowersIndex].highlights = [
+    "Valley of Flowers National Park — UNESCO World Heritage Site, 500+ flower species across 87 sq km",
+    "Hemkund Sahib at 15,200 ft — the highest Gurudwara in the world, beside a glacial lake ringed by seven peaks",
+    "Blue Poppy, Brahma Kamal, Cobra Lily and Himalayan Bell Flower, at peak bloom through August",
+    "The Pushpawati river, waterfalls and glacier views along the valley floor",
+    "Langar at Hemkund — hot khichdi, tea and kada prasad at the top of the climb",
+    "Three nights at a single base in Ghangaria, so both big days are walked with a daypack",
+    "Dhari Devi Temple and the Devprayag Sangam on the drive back"
+  ];
+
+  TREKS[valleyOfFlowersIndex].usps = [
+    {
+      title: "Nature and devotion on one trip",
+      description: "The only Himalayan trek where a UNESCO World Heritage valley and the world's highest Gurudwara sit four kilometres apart, walked on consecutive days from the same base."
+    },
+    {
+      title: "A real Himalayan trek a beginner can finish",
+      description: "No technical climbing, no crossings, no exposure — graded moderate purely on distance and the Hemkund stair climb. First-timers and families with children aged 8 and above complete it regularly."
+    },
+    {
+      title: "One base, three nights",
+      description: "Ghangaria is the base for both the valley and Hemkund, so you carry a daypack on the two big days and come back to the same guest house, bed and hot dinner each evening."
+    },
+    {
+      title: "A season that cannot be moved",
+      description: "The valley is only open and in bloom from roughly July to mid-September, and Ghangaria has a fixed, small number of beds. This is not a trek that can be slotted in whenever it suits."
+    },
+    {
+      title: "A photographer's trek",
+      description: "Flowers, waterfalls, the Pushpawati river and the peaks above Hemkund inside six days — with the caveat that the same monsoon that produces the bloom also produces the cloud."
+    }
+  ];
+
+  TREKS[valleyOfFlowersIndex].destinationHighlights = [
+    { name: "Govindghat / Pandukeshwar", blurb: "The road head on the Rishikesh-Badrinath highway where Day 1 ends and the trek begins. Hotel stay with proper rooms and hot water, and the last reliable ATM and mobile network is behind you at Joshimath." },
+    { name: "Pulna", blurb: "A four-kilometre drive above Govindghat, and the actual trailhead. The walk to Ghangaria starts here, cutting the old 13 km approach down to 10 km." },
+    { name: "Ghangaria", blurb: "The base village at 10,000 ft, where both day treks start and finish. Guest houses, a small market, a Gurudwara and a helipad — no hotels, no ATM, patchy BSNL and Jio." },
+    { name: "Valley of Flowers", blurb: "4 km from Ghangaria, entered through a forest check post. 87 sq km of national park at about 12,200 ft with 500+ flower species, the Pushpawati river and glacier views. Day entry only — the valley is cleared by 5 PM." },
+    { name: "Hemkund Sahib", blurb: "6 km and about 4,500 ft above Ghangaria at 15,200 ft. The world's highest Gurudwara, a glacial lake, seven peaks and a langar. Roughly 1,100 stone stairs in the upper section." },
+    { name: "Dhari Devi & Devprayag", blurb: "Stops on the Day 6 drive back — the riverside Dhari Devi temple, and the confluence at Devprayag where the Bhagirathi and Alaknanda become the Ganga." }
+  ];
+
+  TREKS[valleyOfFlowersIndex].differentiators = [
+    "Duration: 6 Days / 5 Nights, Rishikesh to Rishikesh",
+    "Total trek distance: about 38 km across the four walking days",
+    "Max altitude: Hemkund Sahib 15,200 ft; Valley of Flowers about 12,200 ft; base at Ghangaria 10,000 ft",
+    "Season: roughly 1 July to 15 September, with peak bloom in August — the valley closes under snow after the season",
+    "Stay: 2 nights hotel at Govindghat / Pandukeshwar + 3 nights guest house at Ghangaria",
+    "Ghangaria bed capacity is limited, so batches fill well before the season starts"
+  ];
+
+  TREKS[valleyOfFlowersIndex].idealFor =
+    "First-time Himalayan trekkers who want a real high-altitude trip without technical ground; families with children aged 8 and above; couples; solo travellers joining a fixed batch; photographers and nature lovers; and anyone who wants the Hemkund Sahib darshan on foot rather than by pony.";
+
+  TREKS[valleyOfFlowersIndex].importantNote =
+    "The valley is a day-entry park: entry is from the forest check post with a permit and ID, and everyone must be out before 5 PM. Carry your original Aadhaar or government photo ID — it is checked. There is no accommodation inside the valley and no ATM beyond Joshimath, so carry cash. Network runs out at Joshimath; BSNL and Jio work intermittently at Ghangaria and not at all in the valley. This is a monsoon trek, so a proper raincoat or poncho is not optional. Pony (roughly ₹1,500-2,500) and porter (roughly ₹1,000-1,500) are available at Ghangaria at your own cost. Children under 8 and travellers over 65 should plan on the valley only and skip the Hemkund day.";
+
+  TREKS[valleyOfFlowersIndex].sourceCaveat =
+    "The source material gives the park's open window as both 1 June to 31 October (the official national-park season) and 1 July to 15 September (the window Trip My Soul actually runs departures in, when the bloom is on) — both are kept as published, and the months and departure note above reflect the operating window. Hemkund Sahib is listed at 15,200 ft here, as published in the itinerary; some of the batch photo captions in the gallery below carry an older 14,200 ft figure. Day 5 is described as ending at Pandukeshwar and Day 6 as starting from either Pandukeshwar or Govindghat, depending on where the batch is housed.";
+
+  TREKS[valleyOfFlowersIndex].eligibilityCriteria = [
+    { icon: "User", text: "Age: minimum 8 years with a parent; ideal 12-55 years; maximum 65 years if fit. Under 8 and over 65 should do the valley only, not Hemkund" },
+    { icon: "IdCard", text: "Original Aadhaar or government photo ID compulsory, plus 2 passport-size photos — checked at the forest post and for the valley permit" },
+    { icon: "HeartPulse", text: "Medical fitness certificate required for travellers aged 55 and above" },
+    { icon: "ShieldAlert", text: "Should not attempt Hemkund: heart patients, uncontrolled high BP, severe asthma, pregnancy, recent surgery, knee problems or severe joint pain, or a history of breathing difficulty at altitude" },
+    { icon: "Activity", text: "Mild BP or diabetes is fine — carry your medication and a doctor's clearance" },
+    { icon: "Users", text: "Solo travellers welcome and safe — every batch runs with a trek leader, and female travellers are on every departure" }
+  ];
+
+  TREKS[valleyOfFlowersIndex].fitnessCriteria = [
+    { icon: "Footprints", text: "Able to walk 10-12 km in a day — the Hemkund day is 12 km round trip" },
+    { icon: "TrendingUp", text: "Able to climb stairs or uphill continuously for 4-5 hours — Hemkund has roughly 1,100 stone stairs" },
+    { icon: "Activity", text: "No athletic background needed, but basic cardio fitness is non-negotiable at 15,200 ft" },
+    { icon: "Backpack", text: "Only a daypack on the two trek days — main luggage stays at Ghangaria or the road-head hotel" },
+    { icon: "Activity", text: "Preparation: 30 minutes of walking, or about 3 km, daily for the 15 days before the trek" }
+  ];
+
+  TREKS[valleyOfFlowersIndex].howToReach = {
+    intro: "The trek starts and ends at Rishikesh. Reach Rishikesh a night before if your train or flight lands late — pickup on Day 1 is at 6:30 AM.",
+    air: {
+      summaryLabel: "Nearest Airport",
+      summary: "Jolly Grant Airport, Dehradun (DED)",
+      detail: "About 20 km from Rishikesh, roughly 45 minutes by taxi. Daily flights from Delhi and most metros. From Rishikesh, the trek vehicle picks you up."
+    },
+    train: {
+      summaryLabel: "Nearest Railway Station",
+      summary: "Haridwar, Rishikesh or Dehradun",
+      detail: "Haridwar is the best-connected of the three — Shatabdi, Jan Shatabdi and Mussoorie Express run from Delhi in 4-5 hours. Haridwar to Rishikesh is 25 km, about 40 minutes."
+    },
+    road: {
+      summaryLabel: "Route",
+      summary: "Rishikesh to Govindghat via Devprayag, Rudraprayag, Karnaprayag, Chamoli and Joshimath",
+      route: ["Delhi", "Haridwar", "Rishikesh", "Devprayag", "Rudraprayag", "Karnaprayag", "Chamoli", "Joshimath", "Govindghat", "Pulna", "Ghangaria"],
+      facts: [
+        { label: "Delhi - Rishikesh", value: "240 km / 6 hrs" },
+        { label: "Rishikesh - Govindghat", value: "280 km / 10-11 hrs (included in the package)" },
+        { label: "Govindghat - Pulna", value: "4 km / short drive" },
+        { label: "Pulna - Ghangaria", value: "10 km trek / 5-6 hrs" }
+      ],
+      options: [
+        { from: "Delhi ISBT Kashmere Gate", name: "Daily Volvo and Uttarakhand Roadways buses to Rishikesh and Haridwar", note: "An overnight bus puts you in Rishikesh in time for the 6:30 AM Day 1 pickup, but a night's stay in Rishikesh beforehand is the safer plan — we can arrange it" }
+      ]
+    },
+    pickup: {
+      point: "Rishikesh — Tapovan, near Laxman Jhula (Tapovan / Bus Stand)",
+      time: "6:30 AM sharp on Day 1",
+      dropPoint: "Rishikesh — Tapovan / Natraj Chowk",
+      dropTime: "6:30 - 8:00 PM on Day 6",
+      note: "If you arrive the night before, stay in Rishikesh; we can arrange accommodation on request."
+    }
+  };
+
+  TREKS[valleyOfFlowersIndex].inclusions = [
+    { title: "Transportation", description: "Rishikesh to Rishikesh by Tempo Traveller or cab, allocated by group size, including the Govindghat-Pulna legs. All toll, parking, fuel and driver allowance included." },
+    { title: "Accommodation", description: "5 nights — 2 nights in a hotel at Govindghat / Pandukeshwar and 3 nights in a Ghangaria guest house, with clean washroom facilities." },
+    { title: "Meals", description: "5 breakfasts, 5 vegetarian dinners, and 2 packed lunches on the Valley of Flowers and Hemkund Sahib trek days (Day 3 and Day 4)." },
+    { title: "Trek Support", description: "An experienced local trek leader with the group throughout the trek, including the route and fitness briefing on Day 1." },
+    { title: "Permits & Fees", description: "Valley of Flowers entry permit and forest department charges." },
+    { title: "Safety", description: "Basic first-aid kit and an oxygen cylinder with the group." }
+  ];
+
+  TREKS[valleyOfFlowersIndex].exclusions = [
+    { title: "Meals Not Listed", description: "Lunch en route on the drive days and any personal meals outside the inclusions above." },
+    { title: "Pony, Porter & Palki", description: "Pony, porter and palki charges at Ghangaria — roughly ₹1,500-2,500 for a pony and ₹1,000-1,500 for a porter, paid directly on site." },
+    { title: "Personal Expenses", description: "Tea, snacks, bottled water, laundry and shopping." },
+    { title: "Medical & Emergency", description: "Any medical expense, emergency evacuation or helicopter cost." },
+    { title: "Taxes", description: "5% GST, where a bill is required." },
+    { title: "Others", description: "Anything not listed under inclusions." }
+  ];
+
+  TREKS[valleyOfFlowersIndex].itinerary = [
+    {
+      day: 1,
+      title: "Rishikesh to Joshimath to Govindghat / Pandukeshwar",
+      driveDistance: "280 km",
+      drivingTime: "10-11 Hours",
+      pickupPoint: "Rishikesh — Tapovan / Bus Stand",
+      pickupTime: "6:30 AM",
+      altitudePoints: [
+        { location: "Rishikesh", m: 372, ft: 1220 },
+        { location: "Govindghat", m: 1828, ft: 6000 }
+      ],
+      altitudeGain: { m: 1456, ft: 4780 },
+      description: "The full Alaknanda road, past all the prayags — Devprayag, Rudraprayag and Karnaprayag — to the road head at Govindghat.",
+      detailedParagraphs: [
+        "Pickup at 6:30 AM from Rishikesh (Tapovan or Bus Stand). The drive runs via Devprayag, Srinagar, Rudraprayag, Karnaprayag, Chamoli and Joshimath, with breakfast en route and lunch at Pipalkoti.",
+        "Reach Govindghat or Pandukeshwar in the evening and check in to the hotel.",
+        "The trek leader briefs the group on the route, the fitness the next days ask for, and what to pack into a daypack versus what stays behind.",
+        "Dinner and overnight stay at the hotel."
+      ],
+      highlights: ["Devprayag & Rudraprayag Sangams", "Lunch at Pipalkoti", "Trek Leader Briefing"],
+      meals: "Dinner",
+      stayType: "Hotel — Govindghat / Pandukeshwar"
+    },
+    {
+      day: 2,
+      title: "Govindghat to Pulna to Ghangaria",
+      driveDistance: "4 km",
+      trekDistance: "10 km",
+      trekDuration: "5-6 Hours",
+      altitudePoints: [
+        { location: "Pulna", m: 1920, ft: 6300 },
+        { location: "Ghangaria", m: 3048, ft: 10000 }
+      ],
+      altitudeGain: { m: 1128, ft: 3700 },
+      description: "The first walking day — a steady 10 km climb up the Bhyundar valley alongside the river, through forest and past waterfalls, to the base village.",
+      detailedParagraphs: [
+        "Breakfast at the hotel at 7:00 AM and pack a daypack. At 8:00 AM, a short drive to Pulna, the trek starting point.",
+        "The trek starts around 8:30 AM and climbs to Ghangaria at 10,000 ft, via Bhyundar village, waterfalls and forest. The trail is well made and busy — it is also the pilgrim route to Hemkund — so there is no route-finding to do, only walking.",
+        "Reach Ghangaria around 1:00 PM and check in to the guest house, followed by lunch.",
+        "The evening is free to walk the small market and the Gurudwara, and to let the altitude settle. Dinner and overnight at Ghangaria."
+      ],
+      highlights: ["Bhyundar Village", "Riverside Waterfalls", "Ghangaria Market & Gurudwara"],
+      meals: "Breakfast, Dinner",
+      stayType: "Guest House — Ghangaria"
+    },
+    {
+      day: 3,
+      title: "Ghangaria to Valley of Flowers and back",
+      trekDistance: "8 km",
+      trekDuration: "6-7 Hours",
+      altitudePoints: [
+        { location: "Ghangaria", m: 3048, ft: 10000 },
+        { location: "Valley of Flowers", m: 3719, ft: 12200 }
+      ],
+      altitudeGain: { m: 671, ft: 2200 },
+      description: "The day the trip is named for — 4 km into the UNESCO valley, as long as you want inside it, and back out before the gate closes.",
+      detailedParagraphs: [
+        "Early breakfast at 6:30 AM. Pack the packed lunch, water and a raincoat — the valley has no shelter and no shops.",
+        "Entry at 7:00 AM from the forest check post, where the permit and ID are checked.",
+        "Trek 4 km into the valley, climbing to about 12,200 ft. The rest of the day is spent inside: 500+ flower species, Blue Poppy and Brahma Kamal among them, the Pushpawati river, waterfalls and glacier views at the head of the valley.",
+        "Packed lunch inside the valley. Start back by 3:30 PM — the forest department requires everyone to be out before 5 PM, and this is not negotiable.",
+        "Back at Ghangaria around 5:00 PM for hot tea. Dinner and overnight at the guest house."
+      ],
+      highlights: ["500+ Flower Species", "Pushpawati River", "Glacier Views at the Valley Head"],
+      meals: "Breakfast, Packed Lunch, Dinner",
+      stayType: "Guest House — Ghangaria"
+    },
+    {
+      day: 4,
+      title: "Ghangaria to Hemkund Sahib and back",
+      trekDistance: "12 km",
+      trekDuration: "7-8 Hours",
+      altitudePoints: [
+        { location: "Ghangaria", m: 3048, ft: 10000 },
+        { location: "Hemkund Sahib", m: 4633, ft: 15200 }
+      ],
+      altitudeGain: { m: 1585, ft: 5200 },
+      description: "The hardest day — 6 km and 5,200 ft up to the highest Gurudwara in the world, with roughly 1,100 stone stairs in the upper section.",
+      detailedParagraphs: [
+        "Early breakfast at 5:30 AM and an early start, so the descent is done before the afternoon weather comes in.",
+        "The trek begins at 6:00 AM — a steep, zig-zagging climb with roughly 1,100 stone stairs in its upper half. Walk it slowly; pace matters more than fitness above 13,000 ft.",
+        "Reach Hemkund Sahib at 15,200 ft around 10:30 AM. Darshan and Ardas at the Gurudwara, then langar — hot khichdi, tea and kada prasad, which is exactly what the body wants at that altitude.",
+        "Time at the Hemkund lake, with the seven peaks around it and the water clear to the bed.",
+        "Start down at 1:00 PM and reach Ghangaria around 4:30 PM. Rest, dinner and a celebration evening. Overnight at the guest house."
+      ],
+      highlights: ["Highest Gurudwara in the World", "Hemkund Lake & Seven Peaks", "Langar at 15,200 ft"],
+      meals: "Breakfast, Packed Lunch, Dinner",
+      stayType: "Guest House — Ghangaria"
+    },
+    {
+      day: 5,
+      title: "Ghangaria to Govindghat to Pandukeshwar",
+      trekDistance: "10 km",
+      trekDuration: "4-5 Hours",
+      driveDistance: "4 km + drive to Pandukeshwar",
+      altitudePoints: [
+        { location: "Ghangaria", m: 3048, ft: 10000 },
+        { location: "Pandukeshwar", m: 1920, ft: 6300 }
+      ],
+      altitudeGain: null,
+      description: "The same 10 km trail, walked downhill — an easy descent back to Pulna, then the drive to the night's stay.",
+      detailedParagraphs: [
+        "Breakfast at 8:00 AM and check out of the Ghangaria guest house.",
+        "Start down at 8:30 AM — 10 km of easy downhill on the trail you came up. Knees feel this more than lungs, so trekking poles earn their keep here.",
+        "Reach Pulna around 12:30 PM and drive to Govindghat for lunch.",
+        "Drive on to Pandukeshwar and check in to the hotel. Dinner and overnight stay."
+      ],
+      highlights: ["Easy Downhill Trail", "Lunch at Govindghat"],
+      meals: "Breakfast, Dinner",
+      stayType: "Hotel — Pandukeshwar"
+    },
+    {
+      day: 6,
+      title: "Pandukeshwar / Govindghat to Rishikesh drop",
+      driveDistance: "250 km",
+      drivingTime: "8-9 Hours",
+      altitudePoints: [
+        { location: "Pandukeshwar", m: 1920, ft: 6300 },
+        { location: "Rishikesh", m: 372, ft: 1220 }
+      ],
+      altitudeGain: null,
+      description: "The drive back down the Alaknanda, with a temple stop and the Devprayag confluence on the way.",
+      detailedParagraphs: [
+        "Breakfast at 7:30 AM and check out. The drive to Rishikesh starts at 8:00 AM.",
+        "Stops en route at the Dhari Devi temple for darshan and at the Devprayag Sangam, where the Bhagirathi meets the Alaknanda, for photographs. Lunch en route.",
+        "Reach Rishikesh between 6:30 and 8:00 PM. Drop at Tapovan or Natraj Chowk. Trip ends.",
+        "Book any onward train or flight for the following morning rather than the same night — the drive is long and mountain roads do not keep to schedule."
+      ],
+      highlights: ["Dhari Devi Temple", "Devprayag Sangam"],
+      meals: "Breakfast",
+      stayType: "Trip ends — no overnight"
+    }
+  ];
+
+  TREKS[valleyOfFlowersIndex].faqs = [
+    {
+      title: "When does the Valley of Flowers open?",
+      description: "The national park's official season runs 1 June to 31 October. The bloom, and our departures, run roughly 1 July to 15 September, with peak bloom in August. After September the valley closes under snow."
+    },
+    {
+      title: "Can beginners do this trek?",
+      description: "Yes — this is one of the best first Himalayan treks there is. There is no technical ground at all. Build up to walking 3 km a day for the fortnight before you come and you will be comfortable."
+    },
+    {
+      title: "How difficult is Hemkund Sahib?",
+      description: "It is the hard day: 6 km of steep climbing with roughly 1,100 stone stairs, gaining 5,200 ft and finishing at 15,200 ft. Walked slowly it is very doable, and pony and palki are available from Ghangaria at your own cost."
+    },
+    {
+      title: "Will I get mobile network?",
+      description: "Network holds up to Joshimath. At Ghangaria, BSNL and Jio work intermittently. There is no network at all inside the Valley of Flowers. Carry a power bank."
+    },
+    {
+      title: "Can kids and senior citizens go?",
+      description: "Yes, between 8 and 65 years, subject to fitness. Children under 8 and travellers over 65 should do the Valley of Flowers day and skip Hemkund. Travellers aged 55 and above need a medical fitness certificate."
+    },
+    {
+      title: "What about food?",
+      description: "Breakfast and dinner are included for all five nights, both vegetarian. Packed lunch is provided on Day 3 and Day 4, the two trek days. Langar is served at Hemkund Sahib. Lunch on the drive days is not included."
+    },
+    {
+      title: "What is the stay and washroom situation?",
+      description: "A hotel at Govindghat or Pandukeshwar for two nights and a Ghangaria guest house with a clean washroom for three. There is no camping on this trek and no accommodation of any kind inside the valley."
+    },
+    {
+      title: "Does the trek run in the rain?",
+      description: "Yes. This is a monsoon trek — light rain is normal in July and August and the trek is safe in it. Carry a proper raincoat or poncho and a dry bag for electronics."
+    },
+    {
+      title: "Are ponies and porters available?",
+      description: "Yes, easily, from Ghangaria. A pony costs roughly ₹1,500-2,500 and a porter roughly ₹1,000-1,500, paid directly. Neither is included in the package."
+    },
+    {
+      title: "Is it safe for solo female travellers?",
+      description: "Yes. Every batch has female travellers and the trek leader stays with the group throughout. The Ghangaria route is also a busy pilgrim trail, so it is never deserted."
+    },
+    {
+      title: "Do I need an ID or permit?",
+      description: "Yes — carry your original Aadhaar card and two passport-size photos. The Valley of Flowers entry permit is arranged by us and included in the package."
+    },
+    {
+      title: "Will I find an ATM?",
+      description: "ATMs run out at Joshimath. There is no ATM at Ghangaria. Draw whatever cash you need for ponies, porters, tea and shopping before you leave Joshimath."
+    }
+  ];
+
+  TREKS[valleyOfFlowersIndex].article = {
+    title: "Valley of Flowers & Hemkund Sahib: The Most Beautiful Trek in India",
+    standfirst: "A UNESCO World Heritage valley that blooms for fourteen weeks a year, and the highest Gurudwara in the world four kilometres above it.",
+    sections: [
+      {
+        heading: "A valley that only exists for part of the year",
+        paragraphs: [
+          "Hidden in the lap of Uttarakhand there is a stretch of ground where flowers bloom at every step. This is the Valley of Flowers — and it is not a trek so much as a season you turn up for.",
+          "When you walk in from Ghangaria it looks as though someone has spread a coloured carpet over the earth. More than 500 species bloom together: Blue Poppy, Brahma Kamal, Cobra Lily, Himalayan Rose. The Pushpawati river runs through the middle, waterfalls come down the sides, and snow peaks close the far end.",
+          "It was found by accident. In 1931 the British mountaineer Frank Smythe came down off Kamet, lost his way, and walked into it. It has been a national park since 1982 and a UNESCO World Heritage Site since 2005."
+        ]
+      },
+      {
+        heading: "And then Hemkund Sahib",
+        paragraphs: [
+          "At 15,200 ft, ringed by seven peaks, Hemkund Sahib is the highest Gurudwara in the world. A glacial lake sits beside it, clear to the bed and cold enough to make the point.",
+          "Guru Gobind Singh Ji is believed to have meditated here in a previous birth. The 6 km climb from Ghangaria, with roughly 1,100 stone stairs in the upper half, is the hardest thing the trek asks of you. The langar at the top — hot khichdi, tea, kada prasad — is also the best meal of the week, for reasons that have as much to do with altitude as with cooking.",
+          "This is the only trek in India where nature and devotion sit four kilometres apart and you can walk both on consecutive days."
+        ]
+      },
+      {
+        heading: "What the six days look like",
+        paragraphs: [
+          "Day 1 is a long road day from Rishikesh to Govindghat, 280 km down the Alaknanda past Devprayag, Rudraprayag and Karnaprayag. Day 2 walks 10 km up the Bhyundar valley from Pulna to Ghangaria at 10,000 ft, which becomes home for three nights.",
+          "Day 3 is the valley: in through the forest check post at 7 AM, 4 km to the meadows at 12,200 ft, the whole day inside, and out before the 5 PM gate time. Day 4 is Hemkund — up at 5:30 AM, 6 km of stairs, darshan and langar at 15,200 ft, back down by late afternoon.",
+          "Day 5 walks the 10 km back down to Pulna and drives to Pandukeshwar. Day 6 is the drive home, with Dhari Devi and the Devprayag Sangam on the way. 38 km of trekking in total."
+        ]
+      },
+      {
+        heading: "Who this trek is for",
+        paragraphs: [
+          "If you can walk 10-12 km in a day and climb stairs for four or five hours, you can do this trek. There is no technical ground anywhere on it, which is why it works for first-timers, for families with children aged 8 and over, and for mixed-fitness groups.",
+          "What it does require is honesty about altitude. Hemkund finishes at 15,200 ft, and heart conditions, uncontrolled blood pressure, severe asthma, pregnancy, recent surgery and knee trouble are all reasons to do the valley day and sit the Hemkund day out. Nobody will think less of you; the valley is the better half anyway."
+        ]
+      },
+      {
+        heading: "Book early, and come in the right fortnight",
+        paragraphs: [
+          "The valley is open for about three and a half months and in real bloom for far less. August is peak. Ghangaria has a small, fixed number of beds and no way to add more, so departures fill well before the season starts.",
+          "This is also a monsoon trek. The rain that makes the bloom also makes the trail slippery and the cloud low, so bring a proper raincoat, waterproof your bag, and treat a clear afternoon at Hemkund as a gift rather than a schedule."
+        ]
+      }
+    ],
+    signoff: "Trip My Soul runs daily Valley of Flowers and Hemkund Sahib departures from Rishikesh through the July to mid-September season."
+  };
+
+  TREKS[valleyOfFlowersIndex].similarTreks = ["hampta-pass-trek", "beas-kund-trek", "har-ki-dun-trek", "kuari-pass-trek"];
+
   TREKS[valleyOfFlowersIndex].heroImage =
     "/Trips_gallery/Valley%20of%20flowers/8e450bc7-8b4e-4cc2-bc7c-b1a83f75d3b2.jpg.jpeg";
 
