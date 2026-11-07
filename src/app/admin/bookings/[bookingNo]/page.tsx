@@ -3,8 +3,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Plus, X } from "lucide-react";
+import { ArrowLeft, Ban, CheckCircle2, Plus, StickyNote, UserX, X } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { adminSend } from "@/lib/client/adminApi";
 import type {
   AdminBookingDetailResponse,
   AdminManualPaymentKind,
@@ -46,6 +47,13 @@ export default function AdminBookingDetailPage() {
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
 
+  const [showCancel, setShowCancel] = useState(false);
+  const [cancelReason, setCancelReason] = useState("");
+  const [actionBusy, setActionBusy] = useState(false);
+  const [actionError, setActionError] = useState<string | null>(null);
+  const [noteText, setNoteText] = useState("");
+  const [noteBusy, setNoteBusy] = useState(false);
+
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -76,6 +84,40 @@ export default function AdminBookingDetailPage() {
   }, [load]);
 
   const due = detail ? Math.max(detail.totalAmount - detail.paidAmount, 0) : 0;
+  const isCancelled = detail?.status === "cancelled";
+  const canMarkOutcome = detail ? ["confirmed", "partially_paid"].includes(detail.status) : false;
+  const canCancel = detail ? !["cancelled", "completed"].includes(detail.status) : false;
+
+  const updateBooking = async (body: Record<string, unknown>) => {
+    setActionBusy(true);
+    setActionError(null);
+    try {
+      await adminSend(`/api/v1/admin/bookings/${encodeURIComponent(bookingNo)}`, "PATCH", body);
+      setShowCancel(false);
+      setCancelReason("");
+      await load();
+    } catch (err) {
+      setActionError(err instanceof Error ? err.message : "Could not update the booking.");
+    } finally {
+      setActionBusy(false);
+    }
+  };
+
+  const addNote = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!noteText.trim()) return;
+    setNoteBusy(true);
+    setActionError(null);
+    try {
+      await adminSend(`/api/v1/admin/bookings/${encodeURIComponent(bookingNo)}/notes`, "POST", { body: noteText });
+      setNoteText("");
+      await load();
+    } catch (err) {
+      setActionError(err instanceof Error ? err.message : "Could not save the note.");
+    } finally {
+      setNoteBusy(false);
+    }
+  };
 
   const openForm = () => {
     setAmount(due > 0 ? String(due) : "");
@@ -178,7 +220,12 @@ export default function AdminBookingDetailPage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-gray-600 border-t border-gray-100 pt-4">
           <div>
             <span className="block text-[9px] uppercase text-gray-400 font-bold">Customer</span>
-            <span className="block font-bold text-brand-dark-text">{detail.customer.name}</span>
+            <Link
+              href={`/admin/customers/${detail.customerId}`}
+              className="block font-bold text-brand-forest hover:underline"
+            >
+              {detail.customer.name}
+            </Link>
             <span className="block text-gray-400">{detail.customer.email}</span>
             <span className="block text-gray-400">{detail.customer.phone}</span>
           </div>
@@ -200,6 +247,60 @@ export default function AdminBookingDetailPage() {
         </div>
       </div>
 
+      {isCancelled && (
+        <div className="p-4 bg-red-500/10 border border-red-500/20 text-red-700 rounded-2xl text-xs">
+          <span className="font-bold">Cancelled {formatDate(detail.cancelledAt)}.</span>{" "}
+          {detail.cancellationReason && <span>Reason: {detail.cancellationReason}</span>}
+          {detail.paidAmount > 0 && (
+            <span className="block mt-1">
+              {formatInr(detail.paidAmount)} was paid on this booking — process any refund from Razorpay / accounts.
+            </span>
+          )}
+        </div>
+      )}
+
+      {detail.canEdit && (canCancel || canMarkOutcome) && (
+        <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex flex-wrap items-center gap-2">
+          <span className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mr-2">Actions</span>
+          {canMarkOutcome && (
+            <>
+              <button
+                disabled={actionBusy}
+                onClick={() => updateBooking({ action: "set_status", status: "completed" })}
+                className="flex items-center gap-1.5 px-3 py-2 border border-gray-200 rounded-xl text-xs font-bold hover:bg-emerald-50 disabled:opacity-50"
+              >
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Mark trip completed
+              </button>
+              <button
+                disabled={actionBusy}
+                onClick={() => updateBooking({ action: "set_status", status: "no_show" })}
+                className="flex items-center gap-1.5 px-3 py-2 border border-gray-200 rounded-xl text-xs font-bold hover:bg-amber-50 disabled:opacity-50"
+              >
+                <UserX className="w-3.5 h-3.5 text-amber-600" /> Mark no-show
+              </button>
+            </>
+          )}
+          {canCancel && (
+            <button
+              disabled={actionBusy}
+              onClick={() => {
+                setActionError(null);
+                setShowCancel(true);
+              }}
+              className="flex items-center gap-1.5 px-3 py-2 border border-red-200 text-red-600 rounded-xl text-xs font-bold hover:bg-red-50 disabled:opacity-50"
+            >
+              <Ban className="w-3.5 h-3.5" /> Cancel booking
+            </button>
+          )}
+        </div>
+      )}
+
+      {actionError && !showCancel && (
+        <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-600 rounded-2xl text-xs font-semibold">
+          {actionError}
+        </div>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm text-center">
           <span className="block text-[9px] uppercase text-gray-400 font-bold">Total Amount</span>
@@ -218,7 +319,7 @@ export default function AdminBookingDetailPage() {
       <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-extrabold font-serif text-brand-dark-text">Payment History</h2>
-          {due > 0 && (
+          {due > 0 && !isCancelled && (
             <button
               onClick={openForm}
               className="flex items-center gap-1.5 px-4 py-2 bg-brand-forest text-white rounded-full font-bold text-xs hover:bg-brand-forest-light transition"
@@ -265,6 +366,89 @@ export default function AdminBookingDetailPage() {
           </table>
         </div>
       </div>
+
+      <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm space-y-4">
+        <h2 className="text-lg font-extrabold font-serif text-brand-dark-text flex items-center gap-2">
+          <StickyNote className="w-4 h-4 text-brand-dusk-orange" /> Internal Notes
+        </h2>
+        <form onSubmit={addNote} className="flex flex-col sm:flex-row gap-2">
+          <textarea
+            rows={2}
+            value={noteText}
+            onChange={(e) => setNoteText(e.target.value)}
+            placeholder="Pickup change, dietary request, call summary..."
+            className="flex-grow p-3 rounded-xl border border-gray-200 focus:outline-none text-sm"
+          />
+          <button
+            type="submit"
+            disabled={noteBusy || !noteText.trim()}
+            className="px-5 py-2 bg-brand-forest hover:bg-brand-forest-light text-white rounded-xl font-bold text-xs disabled:opacity-50 self-start sm:self-stretch"
+          >
+            {noteBusy ? "Saving..." : "Add note"}
+          </button>
+        </form>
+        {detail.notes.length === 0 ? (
+          <p className="text-xs text-gray-400">No notes yet.</p>
+        ) : (
+          <ul className="space-y-3">
+            {detail.notes.map((n) => (
+              <li key={n.id} className="border-l-2 border-brand-dusk-orange/40 pl-3">
+                <p className="text-sm text-brand-dark-text whitespace-pre-wrap">{n.body}</p>
+                <p className="text-[10px] text-gray-400 mt-0.5">
+                  {n.staffName ?? "Staff"} · {formatDate(n.createdAt)}
+                </p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {showCancel && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 max-w-lg w-full space-y-4 shadow-2xl relative">
+            <button
+              onClick={() => setShowCancel(false)}
+              className="absolute top-4 right-4 p-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <h3 className="text-lg font-extrabold font-serif text-brand-dark-text">Cancel {detail.bookingNo}?</h3>
+            <p className="text-xs text-gray-500">
+              The booking&apos;s {detail.pax} seat(s) go back to the departure. No refund is issued automatically
+              {detail.paidAmount > 0 ? ` — ${formatInr(detail.paidAmount)} was paid, so process any refund separately.` : "."}
+            </p>
+            {actionError && (
+              <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-600 rounded-2xl text-xs font-semibold">
+                {actionError}
+              </div>
+            )}
+            <textarea
+              rows={3}
+              value={cancelReason}
+              onChange={(e) => setCancelReason(e.target.value)}
+              placeholder="Reason for cancelling (required)"
+              className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none text-sm"
+            />
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => setShowCancel(false)}
+                className="w-1/2 py-3 rounded-full border border-gray-200 hover:bg-gray-50 text-gray-700 font-bold text-xs"
+              >
+                Keep booking
+              </button>
+              <button
+                type="button"
+                disabled={actionBusy || cancelReason.trim().length < 3}
+                onClick={() => updateBooking({ action: "cancel", reason: cancelReason })}
+                className="w-1/2 py-3 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-xs disabled:opacity-50"
+              >
+                {actionBusy ? "Cancelling..." : "Cancel booking"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showForm && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">

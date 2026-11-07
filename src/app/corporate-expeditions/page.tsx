@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Users, GraduationCap, Building2, Shield, ArrowRight, CheckCircle2, Phone, Mail } from "lucide-react";
+import { submitLead } from "@/lib/client/leadsApi";
 
 export default function CorporateExpeditionsPage() {
   const [formData, setFormData] = useState({
@@ -18,10 +19,37 @@ export default function CorporateExpeditionsPage() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setSubmitting(true);
+    try {
+      await submitLead({
+        formType: "corporate",
+        name: formData.contactPerson,
+        phone: formData.phone,
+        email: formData.email,
+        travelMonth: formData.tentativeMonth || undefined,
+        message: formData.notes || undefined,
+        details: {
+          company: formData.orgName,
+          groupSize: formData.groupSize,
+          purpose: formData.groupType,
+          region: formData.preferredRegion,
+        },
+        consentMarketing: true,
+        website: honeypot,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -85,6 +113,17 @@ export default function CorporateExpeditionsPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4 text-xs font-sans">
+              {/* Honeypot: hidden from people, filled by bots. */}
+              <input
+                type="text"
+                name="website"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] w-px h-px opacity-0"
+              />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="font-bold text-gray-700 block mb-1">Company / Institution Name</label>
@@ -185,11 +224,16 @@ export default function CorporateExpeditionsPage() {
                 />
               </div>
 
+              {error && (
+                <p role="alert" className="text-xs font-semibold text-red-600">{error}</p>
+              )}
+
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl bg-[#0B2545] hover:bg-brand-dusk-orange text-white font-bold shadow-lg transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider"
+                disabled={submitting}
+                className="w-full py-4 rounded-xl bg-[#0B2545] hover:bg-brand-dusk-orange disabled:opacity-60 text-white font-bold shadow-lg transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider"
               >
-                <span>Submit Proposal Request</span>
+                <span>{submitting ? "Sending..." : "Submit Proposal Request"}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </form>

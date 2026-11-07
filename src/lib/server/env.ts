@@ -37,6 +37,13 @@ export const env = {
   get resendBookingsInbox() {
     return required("RESEND_BOOKINGS_INBOX");
   },
+  /**
+   * Team inbox that gets an alert for every new website enquiry. Optional —
+   * falls back to RESEND_BOOKINGS_INBOX so one inbox can receive both.
+   */
+  get leadsNotifyInbox() {
+    return process.env.LEADS_NOTIFY_INBOX || required("RESEND_BOOKINGS_INBOX");
+  },
   get emailVerificationSecret() {
     return required("EMAIL_VERIFICATION_SECRET");
   },

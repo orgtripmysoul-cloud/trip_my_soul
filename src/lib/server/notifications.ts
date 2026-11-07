@@ -4,6 +4,14 @@ import { sendEmail } from "./resend";
 import { renderBookingConfirmationEmail, type BookingConfirmationVars } from "./email-templates/bookingConfirmation";
 import { renderPaymentReceivedEmail, type PaymentReceivedVars } from "./email-templates/paymentReceived";
 import { renderTripReminderEmail, type TripReminderVars } from "./email-templates/tripReminder";
+import {
+  renderLeadAutoReplyEmail,
+  renderLeadDuplicateEnquiryEmail,
+  renderLeadNewAssignedEmail,
+  renderLeadNewTeamEmail,
+  type LeadAutoReplyVars,
+  type LeadNotificationVars,
+} from "./email-templates/leadNotifications";
 
 const MAX_ATTEMPTS = 8;
 /** Exponential backoff in minutes: 1, 2, 4, 8, 16, 32, 64, 128. */
@@ -58,7 +66,9 @@ export async function dispatchPendingNotifications(limit = 25): Promise<{ sent: 
       await db
         .from("notification_outbox")
         .update({
-          status: exhausted ? "failed" : "failed",
+          // Exhausted rows are parked as "cancelled" so the dispatcher stops
+          // retrying them forever; last_error keeps the reason for debugging.
+          status: exhausted ? "cancelled" : "failed",
           attempts,
           last_error: err instanceof Error ? err.message : "Unknown error",
           next_attempt_at: new Date(Date.now() + backoffMinutes(attempts) * 60_000).toISOString(),
@@ -80,6 +90,14 @@ function renderTemplate(templateCode: string, vars: Record<string, unknown>): Pr
       return renderPaymentReceivedEmail(vars as unknown as PaymentReceivedVars);
     case "booking.trip_reminder":
       return renderTripReminderEmail(vars as unknown as TripReminderVars);
+    case "lead.new_assigned":
+      return renderLeadNewAssignedEmail(vars as unknown as LeadNotificationVars);
+    case "lead.new_team":
+      return renderLeadNewTeamEmail(vars as unknown as LeadNotificationVars);
+    case "lead.duplicate_enquiry":
+      return renderLeadDuplicateEnquiryEmail(vars as unknown as LeadNotificationVars);
+    case "lead.auto_reply":
+      return renderLeadAutoReplyEmail(vars as unknown as LeadAutoReplyVars);
     default:
       throw new Error(`Unknown notification template: ${templateCode}`);
   }

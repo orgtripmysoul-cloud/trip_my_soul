@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Send, MessageSquare, BadgeCheck, X } from "lucide-react";
 import { OFFICES } from "@/data/db";
+import { submitLead } from "@/lib/client/leadsApi";
 
 export default function ContactUsPage() {
   const [name, setName] = useState("");
@@ -10,15 +11,34 @@ export default function ContactUsPage() {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name && email && phone) {
+    if (!name || !email || !phone) return;
+    setError(null);
+    setSubmitting(true);
+    try {
+      await submitLead({
+        formType: "contact_us",
+        name,
+        phone,
+        email,
+        message: message || undefined,
+        consentMarketing: true,
+        website: honeypot,
+      });
       setSubmitted(true);
       setName("");
       setEmail("");
       setPhone("");
       setMessage("");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -89,6 +109,17 @@ export default function ContactUsPage() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Honeypot: hidden from people, filled by bots. */}
+              <input
+                type="text"
+                name="website"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] w-px h-px opacity-0"
+              />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Name */}
                 <div className="space-y-1">
@@ -145,13 +176,18 @@ export default function ContactUsPage() {
                 />
               </div>
 
+              {error && (
+                <p role="alert" className="text-xs font-semibold text-red-600">{error}</p>
+              )}
+
               {/* Submit */}
               <button
                 type="submit"
-                className="w-full bg-brand-forest hover:bg-brand-forest-light text-white py-3.5 rounded-full font-bold shadow-md transition flex items-center justify-center gap-2"
+                disabled={submitting}
+                className="w-full bg-brand-forest hover:bg-brand-forest-light disabled:opacity-60 text-white py-3.5 rounded-full font-bold shadow-md transition flex items-center justify-center gap-2"
               >
                 <Send className="w-4 h-4 shrink-0" />
-                <span>Submit Query</span>
+                <span>{submitting ? "Sending..." : "Submit Query"}</span>
               </button>
             </form>
           </div>

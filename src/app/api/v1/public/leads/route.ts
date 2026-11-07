@@ -1,8 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import "server-only";
 import { supabaseAdmin } from "@/lib/server/supabase";
 import { checkRateLimit, recordRateLimitHit } from "@/lib/server/rateLimit";
 import { getClientIp } from "@/lib/server/requestIp";
+import { dispatchPendingNotifications } from "@/lib/server/notifications";
+import { env } from "@/lib/server/env";
 import { AppError, errorResponseBody, statusForError } from "@/lib/server/errors";
 import { LEAD_FORM_TYPES, type CreateLeadRequest, type CreateLeadResponse, type LeadFormType } from "@/lib/types/crm";
 
@@ -20,7 +22,7 @@ const DETAIL_KEYS: Record<LeadFormType, string[]> = {
   callback: ["preferredTime"],
   custom_tour: ["destinations", "duration", "budgetPerPerson", "hotelCategory", "interests"],
   b2b: ["company", "gstin", "city", "agentType", "expectedVolume"],
-  corporate: ["company", "groupSize", "purpose", "budget"],
+  corporate: ["company", "groupSize", "purpose", "budget", "region"],
   admin: [],
 };
 
@@ -144,6 +146,28 @@ export async function POST(request: NextRequest) {
     }
 
     const row = Array.isArray(data) ? data[0] : data;
+
+    // Team alert for every brand-new enquiry (repeat enquiries already alert
+    // the owner from inside create_lead). Best-effort: a failure here must
+    // never turn a saved enquiry into an error for the visitor.
+    if (row?.lead_id && !row.is_duplicate) {
+      try {
+        await queueTeamAlert(row.lead_id, row.lead_no, body, name, phone);
+      } catch (alertErr) {
+        console.error("[leads] could not queue team alert", alertErr);
+      }
+    }
+
+    // Send queued emails (owner alert, team alert, customer auto-reply) right
+    // after the response, instead of waiting for the daily cron.
+    after(async () => {
+      try {
+        await dispatchPendingNotifications(10);
+      } catch (dispatchErr) {
+        console.error("[leads] dispatch failed", dispatchErr);
+      }
+    });
+
     const responseBody: CreateLeadResponse = {
       ok: true,
       leadNo: row?.lead_no ?? "",
@@ -153,4 +177,44 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     return NextResponse.json(errorResponseBody(err), { status: statusForError(err) });
   }
+}
+
+async function queueTeamAlert(
+  leadId: string,
+  leadNo: string,
+  body: CreateLeadRequest,
+  name: string,
+  phone: string
+): Promise<void> {
+  const db = supabaseAdmin();
+  const { data: lead } = await db.from("leads").select("owner_id").eq("id", leadId).maybeSingle();
+  let ownerName: string | null = null;
+  if (lead?.owner_id) {
+    const { data: owner } = await db.from("staff").select("full_name").eq("id", lead.owner_id).maybeSingle();
+    ownerName = owner?.full_name ?? null;
+  }
+
+  const company = body.details?.company;
+  const { error } = await db.from("notification_outbox").insert({
+    template_code: "lead.new_team",
+    channel: "email",
+    recipient: env.leadsNotifyInbox,
+    recipient_type: "staff",
+    vars: {
+      lead_no: leadNo,
+      name,
+      phone,
+      email: body.email?.trim() || null,
+      trek: body.trekName?.trim() || null,
+      form_type: body.formType,
+      message: body.message?.trim() || null,
+      travel_month: body.travelMonth?.trim() || null,
+      owner_name: ownerName,
+      company: typeof company === "string" ? company : null,
+    },
+    entity_type: "lead",
+    entity_id: leadId,
+    priority: 2,
+  });
+  if (error) throw error;
 }

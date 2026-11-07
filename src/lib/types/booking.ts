@@ -182,7 +182,28 @@ export interface AdminBookingDetailResponse {
   endDate: string | null;
   travellers: AdminBookingTraveller[];
   payments: AdminPaymentRecord[];
+  customerId: string;
+  cancelledAt: string | null;
+  cancellationReason: string | null;
+  notes: AdminBookingNote[];
+  /** Whether the viewer may cancel / change status (bookings × edit). */
+  canEdit: boolean;
 }
+
+export interface AdminBookingNote {
+  id: string;
+  body: string;
+  staffName: string | null;
+  createdAt: string;
+}
+
+/** Statuses an admin may set by hand. Everything else is driven by payments. */
+export const ADMIN_SETTABLE_BOOKING_STATUSES = ["completed", "no_show"] as const;
+export type AdminSettableBookingStatus = (typeof ADMIN_SETTABLE_BOOKING_STATUSES)[number];
+
+export type AdminUpdateBookingRequest =
+  | { action: "cancel"; reason: string }
+  | { action: "set_status"; status: AdminSettableBookingStatus };
 
 export type AdminManualPaymentMethod = "cash" | "upi_manual" | "bank_transfer" | "other";
 export type AdminManualPaymentKind = "advance" | "installment" | "final" | "other";

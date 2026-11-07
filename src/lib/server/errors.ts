@@ -70,6 +70,9 @@ export function fromPostgresError(error: { code?: string; message?: string }): A
   ) {
     return new AppError("NOT_FOUND", "We couldn't find that booking.");
   }
+  if (message.includes("BOOKING_NOT_CANCELLABLE")) {
+    return new AppError("VALIDATION_FAILED", "This booking is already cancelled or completed.");
+  }
   if (message.includes("BOOKING_NOT_PAYABLE")) {
     return new AppError("VALIDATION_FAILED", "This booking cannot accept further payments.");
   }

@@ -104,6 +104,7 @@ export default function AdminBookingsListPage() {
           <option value="confirmed">Confirmed</option>
           <option value="cancelled">Cancelled</option>
           <option value="completed">Completed</option>
+          <option value="no_show">No-show</option>
         </select>
         <select
           value={paymentState}

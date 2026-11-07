@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import "server-only";
 import { supabaseAdmin } from "@/lib/server/supabase";
 import { requireStaff } from "@/lib/server/adminAuth";
+import { requirePermission } from "@/lib/server/permissions";
 import { errorResponseBody, statusForError } from "@/lib/server/errors";
 import type { AdminBookingListItem, AdminBookingListResponse } from "@/lib/types/booking";
 
@@ -12,7 +13,8 @@ const MAX_LIMIT = 100;
 
 export async function GET(request: NextRequest) {
   try {
-    await requireStaff(request);
+    const staff = await requireStaff(request);
+    await requirePermission(staff, "bookings", "view");
 
     const params = request.nextUrl.searchParams;
     const q = params.get("q")?.trim() || null;

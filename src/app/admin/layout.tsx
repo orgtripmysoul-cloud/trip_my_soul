@@ -9,6 +9,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 const NAV_LINKS = [
   { href: "/admin", label: "Dashboard" },
   { href: "/admin/leads", label: "Leads" },
+  { href: "/admin/customers", label: "Customers" },
   { href: "/admin/bookings", label: "Bookings" },
   { href: "/admin/payments", label: "Payments" },
   { href: "/admin/quotes", label: "Custom Quotes" },
@@ -91,6 +92,21 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <span>Sign Out</span>
           </button>
         </div>
+        {/* Mobile nav: the desktop links are hidden below sm. */}
+        <nav className="sm:hidden flex gap-4 overflow-x-auto px-4 pb-3 text-xs font-bold">
+          {NAV_LINKS.map((link) => {
+            const active = link.href === "/admin" ? pathname === "/admin" : pathname.startsWith(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`whitespace-nowrap transition ${active ? "text-brand-dusk-orange" : "hover:text-brand-dusk-orange"}`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
       </header>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">{children}</main>
     </div>

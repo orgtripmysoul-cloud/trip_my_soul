@@ -1,9 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import "server-only";
 import { supabaseAdmin } from "@/lib/server/supabase";
 import { requireStaff } from "@/lib/server/adminAuth";
 import { requirePermission, canSeeAllLeads, maskPhone } from "@/lib/server/permissions";
 import { logActivity } from "@/lib/server/activityLog";
+import { dispatchPendingNotifications } from "@/lib/server/notifications";
 import { AppError, errorResponseBody, statusForError } from "@/lib/server/errors";
 import {
   LEAD_STATUSES,
@@ -228,7 +229,25 @@ export async function POST(request: NextRequest) {
         .from("leads")
         .update({ owner_id: staff.id, assigned_at: new Date().toISOString() })
         .eq("id", row.lead_id);
+
+      // create_lead() queued a "new lead assigned" email to whoever the
+      // round-robin picked; the lead now belongs to the creator, so that
+      // alert would be wrong. Cancel it before it is sent.
+      await supabaseAdmin()
+        .from("notification_outbox")
+        .update({ status: "cancelled" })
+        .eq("entity_id", row.lead_id)
+        .eq("template_code", "lead.new_assigned")
+        .eq("status", "pending");
     }
+
+    after(async () => {
+      try {
+        await dispatchPendingNotifications(10);
+      } catch (dispatchErr) {
+        console.error("[admin/leads] dispatch failed", dispatchErr);
+      }
+    });
 
     await logActivity(staff, request, {
       action: "create",
