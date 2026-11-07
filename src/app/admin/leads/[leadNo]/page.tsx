@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { adminGet, adminSend, formatDate, formatDateTime, relativeTime, toLocalInputValue } from "@/lib/client/adminApi";
 import LeadStatusPill from "@/components/admin/LeadStatusPill";
+import { MARKETING_CHANNEL_LABELS, type MarketingChannel } from "@/lib/attribution";
 import {
   LEAD_FORM_TYPE_LABELS,
   LEAD_LOST_REASONS,
@@ -172,9 +173,22 @@ export default function AdminLeadDetailPage() {
               </div>
             )}
 
-            {(lead.landingPage || Object.keys(lead.utm).length > 0) && (
+            {(lead.landingPage || lead.channel || Object.keys(lead.utm).length > 0) && (
               <div className="mt-4 pt-4 border-t border-gray-50">
                 <div className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-2">Attribution</div>
+                <dl className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs mb-3">
+                  <Field
+                    label="Channel"
+                    value={
+                      lead.channel
+                        ? MARKETING_CHANNEL_LABELS[lead.channel as MarketingChannel] ?? lead.channel
+                        : "Unknown"
+                    }
+                  />
+                  <Field label="Came from" value={lead.referrer ?? "—"} />
+                  <Field label="Entry page" value={lead.landingPage ?? "—"} />
+                  {lead.conversionPage && <Field label="Form submitted on" value={lead.conversionPage} />}
+                </dl>
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(lead.utm).map(([key, value]) => (
                     <span key={key} className="px-2 py-1 bg-gray-50 rounded-lg text-[10px] font-mono text-gray-600">
@@ -182,7 +196,6 @@ export default function AdminLeadDetailPage() {
                     </span>
                   ))}
                 </div>
-                {lead.landingPage && <div className="text-[10px] text-gray-400 mt-2 break-all">{lead.landingPage}</div>}
               </div>
             )}
           </Card>

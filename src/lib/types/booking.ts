@@ -1,4 +1,5 @@
 import type { TrekAddOnKey } from "@/data/addOns";
+import type { AttributionPayload } from "@/lib/attribution";
 
 /** Shared request/response shapes between the checkout UI and the API routes. No secrets here. */
 
@@ -22,6 +23,8 @@ export interface CreateBookingRequest {
   verificationToken: string;
   /** Optional partial-payment amount for the first payment; omit to pay the full trek total now. */
   payNowAmount?: number;
+  /** Where the booker came from — powers revenue-by-channel on the admin dashboard. */
+  attribution?: AttributionPayload;
 }
 
 export interface CreateBookingResponse {

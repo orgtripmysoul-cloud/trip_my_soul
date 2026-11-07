@@ -1,4 +1,5 @@
 /** Shared CRM contracts between the API routes, the admin panel and the website forms. */
+import type { AttributionPayload } from "@/lib/attribution";
 
 export const LEAD_STATUSES = [
   "new",
@@ -151,6 +152,9 @@ export interface LeadUtm {
   term?: string;
   content?: string;
   gclid?: string;
+  /** Google Ads click IDs used on iOS / app traffic in place of gclid. */
+  gbraid?: string;
+  wbraid?: string;
   fbclid?: string;
 }
 
@@ -170,6 +174,8 @@ export interface CreateLeadRequest {
   details?: Record<string, string | number | boolean | null>;
   utm?: LeadUtm;
   landingPage?: string;
+  /** Visit tracking from src/lib/client/attribution.ts (referrer, entry page, first touch). */
+  attribution?: AttributionPayload;
   consentMarketing?: boolean;
   /** Honeypot — must stay empty. A filled value is silently treated as spam. */
   website?: string;
@@ -231,6 +237,10 @@ export interface AdminLeadDetail extends AdminLeadListItem {
   message: string | null;
   landingPage: string | null;
   utm: LeadUtm;
+  /** Marketing channel bucket (see src/lib/attribution.ts); null before tracking existed. */
+  channel: string | null;
+  referrer: string | null;
+  conversionPage: string | null;
   details: Record<string, unknown>;
   lostReason: LeadLostReason | null;
   lostNote: string | null;
@@ -279,4 +289,30 @@ export interface AdminDashboardResponse {
     lastMonth: { total: number; converted: number; rate: number };
   };
   leaderboard: { staffId: string; name: string; assigned: number; converted: number; rate: number }[];
+  marketing: AdminMarketingSummary;
+}
+
+export const MARKETING_RANGES = ["7d", "30d", "90d", "month"] as const;
+export type MarketingRange = (typeof MARKETING_RANGES)[number];
+
+export interface AdminMarketingSummary {
+  range: MarketingRange;
+  /** ISO start of the reporting window (IST-aligned). */
+  since: string;
+  totalLeads: number;
+  /** Leads whose channel is known — the rest predate tracking. */
+  trackedLeads: number;
+  byChannel: {
+    channel: string;
+    label: string;
+    leads: number;
+    converted: number;
+    rate: number;
+    bookings: number;
+    revenue: number;
+  }[];
+  topLandingPages: { page: string; leads: number; converted: number; rate: number }[];
+  topTreks: { trek: string; leads: number; converted: number }[];
+  /** Null when the viewer can't see revenue (salesperson scope). */
+  revenue: { bookings: number; collected: number } | null;
 }

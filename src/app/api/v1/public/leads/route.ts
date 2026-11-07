@@ -5,6 +5,7 @@ import { checkRateLimit, recordRateLimitHit } from "@/lib/server/rateLimit";
 import { getClientIp } from "@/lib/server/requestIp";
 import { dispatchPendingNotifications } from "@/lib/server/notifications";
 import { env } from "@/lib/server/env";
+import { saveLeadAttribution } from "@/lib/server/attribution";
 import { AppError, errorResponseBody, statusForError } from "@/lib/server/errors";
 import { LEAD_FORM_TYPES, type CreateLeadRequest, type CreateLeadResponse, type LeadFormType } from "@/lib/types/crm";
 
@@ -151,6 +152,7 @@ export async function POST(request: NextRequest) {
     // the owner from inside create_lead). Best-effort: a failure here must
     // never turn a saved enquiry into an error for the visitor.
     if (row?.lead_id && !row.is_duplicate) {
+      await saveLeadAttribution(row.lead_id, input.attribution);
       try {
         await queueTeamAlert(row.lead_id, row.lead_no, body, name, phone);
       } catch (alertErr) {

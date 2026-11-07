@@ -1,6 +1,7 @@
 "use client";
 
 import type { CreateLeadRequest, CreateLeadResponse, LeadUtm } from "@/lib/types/crm";
+import { getAttribution } from "@/lib/client/attribution";
 
 /**
  * Reads campaign attribution from the current URL.
@@ -53,13 +54,17 @@ export function currentLandingPage(): string | undefined {
 }
 
 export async function submitLead(body: CreateLeadRequest): Promise<CreateLeadResponse> {
+  // utm / landingPage describe the visit credited with this enquiry (its entry
+  // page, not the page the form sits on — that is attribution.conversionPage).
+  const attribution = body.attribution ?? getAttribution();
   const res = await fetch("/api/v1/public/leads", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       ...body,
-      utm: body.utm ?? captureUtm(),
-      landingPage: body.landingPage ?? currentLandingPage(),
+      utm: body.utm ?? attribution.touch?.utm ?? captureUtm(),
+      landingPage: body.landingPage ?? attribution.touch?.landingPage ?? currentLandingPage(),
+      attribution,
     }),
   });
 

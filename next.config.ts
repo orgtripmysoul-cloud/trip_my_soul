@@ -27,9 +27,21 @@ function assertPublicEnvVars() {
   );
 }
 
+const NO_INDEX_HEADER = [{ key: "X-Robots-Tag", value: "noindex, nofollow" }];
+
 const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
+  },
+  // Private surfaces must never be indexed. The header is the instruction that
+  // also covers non-HTML responses (API JSON, CSV exports) where a <meta>
+  // robots tag can't exist; /admin additionally sets noindex metadata.
+  async headers() {
+    return [
+      { source: "/admin", headers: NO_INDEX_HEADER },
+      { source: "/admin/:path*", headers: NO_INDEX_HEADER },
+      { source: "/api/:path*", headers: NO_INDEX_HEADER },
+    ];
   },
 };
 

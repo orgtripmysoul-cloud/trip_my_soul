@@ -5,6 +5,7 @@ import { requireStaff } from "@/lib/server/adminAuth";
 import { requirePermission, canSeeAllLeads, maskPhone } from "@/lib/server/permissions";
 import { logActivity } from "@/lib/server/activityLog";
 import { dispatchPendingNotifications } from "@/lib/server/notifications";
+import { channelFromLeadSource, istStartOfDay } from "@/lib/attribution";
 import { AppError, errorResponseBody, statusForError } from "@/lib/server/errors";
 import {
   LEAD_STATUSES,
@@ -13,6 +14,7 @@ import {
   type AdminLeadListResponse,
   type LeadStatus,
   type CreateLeadRequest,
+  type LeadSource,
 } from "@/lib/types/crm";
 
 export const dynamic = "force-dynamic";
@@ -99,9 +101,10 @@ export async function GET(request: NextRequest) {
       ops.push({ op: "lt", column: "follow_up_at", value: new Date().toISOString() });
     }
     if (due === "today") {
-      const end = new Date();
-      end.setHours(23, 59, 59, 999);
-      ops.push({ op: "gte", column: "follow_up_at", value: new Date(new Date().setHours(0, 0, 0, 0)).toISOString() });
+      // "Today" in India time — the server clock is UTC.
+      const start = istStartOfDay();
+      const end = new Date(start.getTime() + 24 * 60 * 60 * 1000 - 1);
+      ops.push({ op: "gte", column: "follow_up_at", value: start.toISOString() });
       ops.push({ op: "lte", column: "follow_up_at", value: end.toISOString() });
     }
 
@@ -227,7 +230,11 @@ export async function POST(request: NextRequest) {
     if (row?.lead_id && !row?.is_duplicate) {
       await supabaseAdmin()
         .from("leads")
-        .update({ owner_id: staff.id, assigned_at: new Date().toISOString() })
+        .update({
+          owner_id: staff.id,
+          assigned_at: new Date().toISOString(),
+          channel: channelFromLeadSource(source as LeadSource),
+        })
         .eq("id", row.lead_id);
 
       // create_lead() queued a "new lead assigned" email to whoever the

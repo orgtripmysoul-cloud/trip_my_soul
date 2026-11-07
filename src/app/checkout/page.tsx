@@ -25,6 +25,7 @@ import {
   verifyPayment,
 } from "@/lib/client/checkoutApi";
 import type { BookingLookupResponse, CreateBookingRequest, CreateBookingResponse } from "@/lib/types/booking";
+import { getAttribution } from "@/lib/client/attribution";
 
 type FlowState =
   | "form"
@@ -398,6 +399,7 @@ function CheckoutContent() {
       couponCode: appliedCouponCode || undefined,
       verificationToken,
       payNowAmount: payOption === "registration" ? registrationFeeAmount : undefined,
+      attribution: getAttribution(),
     };
 
     try {

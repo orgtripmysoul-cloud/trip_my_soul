@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import AttributionTracker from "@/components/analytics/AttributionTracker";
 import { clampDescription, SITE_URL } from "@/lib/seo";
 
 export const viewport = {
@@ -75,6 +76,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
         />
+        <AttributionTracker />
         <Navbar />
         <main className="flex-grow pt-[56px] lg:pt-[64px] min-w-0 overflow-x-clip">{children}</main>
         <Footer />

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import "server-only";
+import { saveBookingAttribution } from "@/lib/server/attribution";
 import { supabaseAdmin } from "@/lib/server/supabase";
 import { resolveCatalogTrek } from "@/lib/server/catalog";
 import { computeBookingPricing, type TravellerInput } from "@/lib/server/pricing";
@@ -154,6 +155,9 @@ export async function POST(request: NextRequest) {
     const booking = created.booking as { id: string; booking_no: string };
     const hold = created.hold as { expires_at: string };
     const payment = created.payment as { id: string; amount: number };
+
+    // Marketing attribution for revenue-by-channel reporting. Never blocks checkout.
+    await saveBookingAttribution(booking.id, (rawBody as { attribution?: unknown }).attribution);
 
     let order;
     try {
