@@ -3,7 +3,6 @@ import { render } from "@react-email/render";
 import * as React from "react";
 import LeadNotification from "../../../../emails/lead-notification";
 import LeadAutoReply from "../../../../emails/lead-auto-reply";
-import { SITE_URL } from "@/lib/seo";
 import { LEAD_FORM_TYPE_LABELS, type LeadFormType } from "@/lib/types/crm";
 
 type Rendered = { subject: string; html: string; text: string };
@@ -29,10 +28,6 @@ export interface LeadNotificationVars {
 export interface LeadAutoReplyVars {
   name: string;
   trek?: string | null;
-}
-
-function adminLeadUrl(leadNo: string): string {
-  return `${SITE_URL}/admin/leads/${encodeURIComponent(leadNo)}`;
 }
 
 function formLabel(formType?: string | null): string {
@@ -69,7 +64,6 @@ export function renderLeadNewAssignedEmail(vars: LeadNotificationVars): Promise<
       heading: "A new lead has been assigned to you",
       intro: "Please call the customer as soon as possible — fast responses convert best.",
       rows: rowsFor(vars),
-      adminUrl: adminLeadUrl(vars.lead_no),
     })
   );
 }
@@ -82,7 +76,6 @@ export function renderLeadNewTeamEmail(vars: LeadNotificationVars): Promise<Rend
       heading: "New enquiry received on the website",
       intro: "A visitor just submitted an enquiry. Details are below.",
       rows: rowsFor(vars),
-      adminUrl: adminLeadUrl(vars.lead_no),
     })
   );
 }
@@ -95,7 +88,6 @@ export function renderLeadDuplicateEnquiryEmail(vars: LeadNotificationVars): Pro
       heading: "Your lead enquired again",
       intro: "This customer submitted another enquiry. Their new message has been added to the lead timeline.",
       rows: rowsFor(vars),
-      adminUrl: adminLeadUrl(vars.lead_no),
     })
   );
 }

@@ -14,7 +14,7 @@ const vars = {
 };
 
 describe("lead notification emails", () => {
-  it("renders the team alert with contact details, form label and an admin link", async () => {
+  it("renders the team alert with contact details and form label", async () => {
     const { renderLeadNewTeamEmail } = await import("./leadNotifications");
     const { subject, html, text } = await renderLeadNewTeamEmail(vars);
 
@@ -23,7 +23,6 @@ describe("lead notification emails", () => {
     expect(html).toContain("+919876543210");
     expect(html).toContain("Acme Pvt Ltd");
     expect(html).toContain("Unassigned");
-    expect(html).toContain("/admin/leads/TMS-L-26-00042");
     expect(text).toContain("Asha Rao");
   });
 

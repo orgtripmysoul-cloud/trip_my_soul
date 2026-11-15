@@ -24,7 +24,6 @@ export default function robots(): MetadataRoute.Robots {
       // this comment. Keep the noindex tags either way — they are the real
       // instruction; the Disallow is only a crawl-budget saving.
       disallow: [
-        "/admin",
         "/auth",
         "/dashboard",
         "/login",

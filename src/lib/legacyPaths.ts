@@ -17,7 +17,6 @@ const LIVE_SUBTREES = [
   "/blogs",
   "/policies",
   "/pay",
-  "/admin",
   "/auth",
   "/api",
   "/dashboard",

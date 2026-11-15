@@ -1,4 +1,4 @@
-import { Button, Text } from "@react-email/components";
+import { Text } from "@react-email/components";
 import * as React from "react";
 import { BRAND, EmailLayout } from "./components/EmailLayout";
 
@@ -6,8 +6,6 @@ export interface LeadNotificationProps {
   heading: string;
   intro: string;
   rows: { label: string; value: string }[];
-  /** Absolute URL to the lead in the admin panel. */
-  adminUrl: string;
 }
 
 function Row({ label, value }: { label: string; value: React.ReactNode }) {
@@ -20,7 +18,7 @@ function Row({ label, value }: { label: string; value: React.ReactNode }) {
 }
 
 /** Internal staff alert for lead events (new, assigned, repeat enquiry). */
-export default function LeadNotification({ heading, intro, rows, adminUrl }: LeadNotificationProps) {
+export default function LeadNotification({ heading, intro, rows }: LeadNotificationProps) {
   return (
     <EmailLayout previewText={heading}>
       <Text style={{ fontSize: 18, fontWeight: 700, color: BRAND.navy, margin: "0 0 8px" }}>{heading}</Text>
@@ -33,23 +31,6 @@ export default function LeadNotification({ heading, intro, rows, adminUrl }: Lea
           ))}
         </tbody>
       </table>
-
-      <Button
-        href={adminUrl}
-        style={{
-          display: "inline-block",
-          marginTop: 24,
-          backgroundColor: BRAND.navy,
-          color: "#ffffff",
-          fontSize: 13,
-          fontWeight: 700,
-          padding: "12px 20px",
-          borderRadius: 999,
-          textDecoration: "none",
-        }}
-      >
-        Open in admin panel
-      </Button>
     </EmailLayout>
   );
 }
