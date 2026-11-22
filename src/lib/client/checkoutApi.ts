@@ -31,6 +31,7 @@ export const ERROR_MESSAGES: Record<string, string> = {
   PAYMENT_VERIFICATION_FAILED: "We couldn't verify that payment. Please contact support with your booking number.",
   GATEWAY_UNAVAILABLE: "Payment service is temporarily unavailable. Please try again.",
   NOT_FOUND: "We couldn't find that booking.",
+  DB_OPERATION_FAILED: "We couldn't save your booking. Please try again.",
   INTERNAL_ERROR: "Something went wrong. Please try again.",
   SERVICE_UNAVAILABLE: "This service is temporarily unavailable. Please try again shortly.",
   EMAIL_NOT_VERIFIED: "Please verify your email before booking.",

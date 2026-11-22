@@ -11,6 +11,10 @@ import { PHASE_PRODUCTION_BUILD } from "next/constants";
 const REQUIRED_PUBLIC_ENV_VARS = [
   "NEXT_PUBLIC_SUPABASE_URL",
   "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+  // Razorpay's publishable key id (not a secret). Without it the checkout
+  // modal can't open, and the failure only shows up when a traveller tries
+  // to pay — far too late to notice.
+  "NEXT_PUBLIC_RAZORPAY_KEY_ID",
 ] as const;
 
 function assertPublicEnvVars() {
