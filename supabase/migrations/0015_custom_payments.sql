@@ -128,7 +128,12 @@ begin
   insert into payments (booking_id, kind, amount, currency, status)
   values (
     v_booking.id,
-    case when v_initial_amount >= p_total_amount then 'full' else 'advance' end,
+    -- The ::payment_kind casts are load-bearing: a CASE over two bare string
+    -- literals resolves to text, and there is no assignment cast from text to
+    -- an enum, so payments.kind would fail with 42804 on every checkout.
+    -- See 0014_fix_enum_casts.sql and 0019_restore_payment_kind_cast.sql.
+    case when v_initial_amount >= p_total_amount then 'full'::payment_kind
+         else 'advance'::payment_kind end,
     v_initial_amount, 'INR', 'created'
   )
   returning * into v_payment;

@@ -11,6 +11,14 @@ import { PHASE_PRODUCTION_BUILD } from "next/constants";
 const REQUIRED_PUBLIC_ENV_VARS = [
   "NEXT_PUBLIC_SUPABASE_URL",
   "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+  // NEXT_PUBLIC_RAZORPAY_KEY_ID deliberately does NOT belong here, despite the
+  // prefix. Nothing in the browser bundle reads it: it is read server-side via
+  // env.publicRazorpayKeyId (src/lib/server/env.ts) inside force-dynamic API
+  // routes and handed to the browser in the response body. So it is never
+  // inlined at build time, setting it on a running deployment takes effect on
+  // the next request, and gating the build on it only breaks deploys that
+  // would otherwise work. Its absence is already caught at runtime by
+  // required() in env.ts.
 ] as const;
 
 function assertPublicEnvVars() {

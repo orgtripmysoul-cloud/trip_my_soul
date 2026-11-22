@@ -7,6 +7,7 @@ export const ERROR_CODES = [
   "PAYMENT_VERIFICATION_FAILED",
   "GATEWAY_UNAVAILABLE",
   "NOT_FOUND",
+  "DB_OPERATION_FAILED",
   "INTERNAL_ERROR",
   "SERVICE_UNAVAILABLE",
   "EMAIL_NOT_VERIFIED",
@@ -26,6 +27,7 @@ const STATUS_BY_CODE: Record<ErrorCode, number> = {
   PAYMENT_VERIFICATION_FAILED: 400,
   GATEWAY_UNAVAILABLE: 502,
   NOT_FOUND: 404,
+  DB_OPERATION_FAILED: 500,
   INTERNAL_ERROR: 500,
   SERVICE_UNAVAILABLE: 503,
   EMAIL_NOT_VERIFIED: 403,
@@ -85,5 +87,34 @@ export function fromPostgresError(error: { code?: string; message?: string }): A
   if (message.includes("INVALID_METHOD")) {
     return new AppError("VALIDATION_FAILED", "Unsupported payment method.");
   }
+  // A Postgres error code with none of our own raise-exception messages means
+  // the database itself rejected the statement (a type mismatch, a constraint,
+  // a missing function) rather than a business rule we raised deliberately.
+  // Distinguishing it from a generic failure makes these visible in logs and
+  // dashboards instead of being lost in the INTERNAL_ERROR bucket — the
+  // 42804 cast regression (see 0019_restore_payment_kind_cast.sql) looked
+  // exactly like any other 500 from the outside.
+  if (error.code) {
+    return new AppError("DB_OPERATION_FAILED", "We couldn't save your booking. Please try again.");
+  }
   return new AppError("INTERNAL_ERROR", "Something went wrong. Please try again.");
+}
+
+/**
+ * Logs the shape of a server-side failure for debugging.
+ *
+ * Deliberately logs only the error's own diagnostic fields. Request bodies
+ * (traveller names, emails, phone numbers), environment values, tokens and
+ * API keys must never reach the logs, so nothing but the error is accepted
+ * here and nothing but these five fields is read off it.
+ */
+export function logError(endpoint: string, error: unknown): void {
+  const e = (error ?? {}) as { message?: unknown; code?: unknown; details?: unknown; hint?: unknown; stack?: unknown };
+  console.error(`[${endpoint}]`, {
+    message: typeof e.message === "string" ? e.message : undefined,
+    code: typeof e.code === "string" ? e.code : undefined,
+    details: typeof e.details === "string" ? e.details : undefined,
+    hint: typeof e.hint === "string" ? e.hint : undefined,
+    stack: typeof e.stack === "string" ? e.stack : undefined,
+  });
 }

@@ -6,7 +6,7 @@ import { resolveCatalogTrek } from "@/lib/server/catalog";
 import { computeBookingPricing, type TravellerInput } from "@/lib/server/pricing";
 import { createRazorpayOrder } from "@/lib/server/razorpay";
 import { claimIdempotencyKey, completeIdempotencyKey, releaseIdempotencyKey } from "@/lib/server/idempotency";
-import { AppError, errorResponseBody, statusForError, fromPostgresError } from "@/lib/server/errors";
+import { AppError, errorResponseBody, logError, statusForError, fromPostgresError } from "@/lib/server/errors";
 import { isValidInrAmount, isValidPax, toPaise } from "@/lib/money";
 import { env } from "@/lib/server/env";
 import { verifyVerificationToken } from "@/lib/server/verificationToken";
@@ -173,7 +173,14 @@ export async function POST(request: NextRequest) {
       throw err;
     }
 
-    await db.rpc("attach_gateway_order", { p_payment_id: payment.id, p_gateway_order_id: order.id });
+    // The order exists at Razorpay by this point; if we fail to record its id
+    // against the payment row, verification later has nothing to match on, so
+    // this must fail the request rather than return a booking we can't settle.
+    const { error: attachError } = await db.rpc("attach_gateway_order", {
+      p_payment_id: payment.id,
+      p_gateway_order_id: order.id,
+    });
+    if (attachError) throw fromPostgresError(attachError);
 
     const responseBody: CreateBookingResponse = {
       bookingNo: booking.booking_no,
@@ -189,6 +196,11 @@ export async function POST(request: NextRequest) {
     await completeIdempotencyKey(ENDPOINT, idempotencyKey, 200, responseBody);
     return NextResponse.json(responseBody, { status: 200 });
   } catch (err) {
+    // AppErrors are the expected, already-understood failures (validation,
+    // sold-out departures, expired holds) and carry no diagnostic value.
+    // Anything else is a surprise — log its shape so the next 500 is
+    // diagnosable from the logs alone.
+    if (!(err instanceof AppError)) logError(ENDPOINT, err);
     // Errors are not cached against the key — release it so the client can
     // retry the same request (e.g. after a transient gateway failure)
     // instead of being stuck replaying a stale failure for 24h.
